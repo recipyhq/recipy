@@ -2,3 +2,9 @@ MALLOC_ARENA_MAX: '2'
 
 development:
   REDIS_URL: 'redis://localhost:6379/1'
+
+  SMTP_USERNAME: <%= Rails.application.credentials[:mailtrap][:username] %>
+  SMTP_PASSWORD: <%= Rails.application.credentials[:mailtrap][:password] %>
+  SMTP_DOMAIN: 'smtp.mailtrap.io'
+  SMTP_ADDRESS: 'smtp.mailtrap.io'
+  SMTP_PORT: '2525'
