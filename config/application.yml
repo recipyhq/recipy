@@ -1,0 +1,4 @@
+MALLOC_ARENA_MAX: '2'
+
+development:
+  REDIS_URL: 'redis://localhost:6379/1'
