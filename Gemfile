@@ -20,6 +20,7 @@ gem 'sidekiq'
 gem 'figaro'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
+gem 'sentry-raven'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
