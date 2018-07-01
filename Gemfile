@@ -33,6 +33,8 @@ group :development do
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-airbnb', require: false
   gem 'rails-erd', require: false
 end
 
