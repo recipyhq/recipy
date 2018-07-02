@@ -37,6 +37,7 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-airbnb', require: false
   gem 'rails-erd', require: false
+  gem 'bullet'
 end
 
 group :production do
