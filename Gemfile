@@ -9,7 +9,8 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
-gem 'mini_racer', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
@@ -19,8 +20,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sidekiq'
 gem 'figaro'
 gem 'rack-timeout'
-gem 'newrelic_rpm'
-gem 'sentry-raven'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +37,12 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-airbnb', require: false
   gem 'rails-erd', require: false
+end
+
+group :production do
+  gem 'newrelic_rpm'
+  gem 'sentry-raven'
+  gem 'sqreen'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
