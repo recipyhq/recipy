@@ -30,6 +30,8 @@ PreCommit:
   RuboCop:
     enabled: true
     command: ['bundle', 'exec', 'rubocop']
+    exclude:
+      - 'db/schema.rb'
   TrailingWhitespace:
     enabled: true
   YarnCheck:
