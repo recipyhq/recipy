@@ -1,0 +1,10 @@
+version: "2"
+plugins:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  eslint:
+    enabled: true
+  rubocop:
+    enabled: true
