@@ -1,0 +1,75 @@
+PreCommit:
+  AuthorEmail:
+    enabled: true
+  AuthorName:
+    enabled: true
+  BrokenSymlinks:
+    enabled: true
+  BundleAudit:
+    enabled: true
+    command: ['bundle', 'exec', 'bundler-audit']
+  BundleCheck:
+    enabled: true
+  BundleOutdated:
+    enabled: true
+  CaseConflicts:
+    enabled: true
+  EsLint:
+    enabled: true
+    required_executable: 'node'
+    flags: ['-f', 'compact']
+    command: ['./node_modules/.bin/eslint']
+  Fasterer:
+    enabled: true
+  ForbiddenBranches:
+    enabled: true
+  MergeConflicts:
+    enabled: true
+  RailsSchemaUpToDate:
+    enabled: true
+  RuboCop:
+    enabled: true
+    command: ['bundle', 'exec', 'rubocop']
+  TrailingWhitespace:
+    enabled: true
+  YarnCheck:
+    enabled: true
+
+CommitMsg:
+  CapitalizedSubject:
+    enabled: false
+  EmptyMessage:
+    enabled: true
+  MessageFormat:
+    enabled: true
+    pattern: '(tests|chore|perf|refactor|docs|style|feat|fix)[:](.+)'
+    expected_pattern_message: '<tests|chore|perf|refactor|docs|style|feat|fix>: <commit message description>'
+    sample_message: 'refactor: refactored onboarding flow'
+  SingleLineSubject:
+    enabled: false
+  TextWidth:
+    enabled: true
+  TrailingPeriod:
+    enabled: true
+
+PrePush:
+  Breakeman:
+    enabled: true
+
+PostCheckout:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+
+PostMerge:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+
+PostRewrite:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true

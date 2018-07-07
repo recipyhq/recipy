@@ -46,6 +46,7 @@ group :development do
   gem 'rubocop-airbnb', require: false
   gem 'rails-erd', require: false
   gem 'bullet'
+  gem 'overcommit'
 end
 
 group :production do
