@@ -55,7 +55,6 @@ CommitMsg:
 PrePush:
   Breakeman:
     enabled: true
-    command: ['bundle', 'exec', 'brakeman']
 
 PostCheckout:
   BundleInstall:
@@ -63,3 +62,14 @@ PostCheckout:
   YarnInstall:
     enabled: true
 
+PostMerge:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
+
+PostRewrite:
+  BundleInstall:
+    enabled: true
+  YarnInstall:
+    enabled: true
