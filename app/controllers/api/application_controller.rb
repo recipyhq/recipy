@@ -1,4 +1,4 @@
-class ApiController < ActionController::Base
+class API::ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
 
