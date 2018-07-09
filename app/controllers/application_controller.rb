@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
-  include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
 
-  before_action :authenticate_user!
-  after_action :verify_policy_scoped, only: :index
-  after_action :verify_authorized, except: :index
+  before_action :authenticate_user!, unless: :active_admin_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :active_admin_controller?
+  after_action :verify_authorized, except: :index, unless: :active_admin_controller?
 end
