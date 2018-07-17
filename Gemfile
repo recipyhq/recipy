@@ -24,6 +24,7 @@ gem 'pundit'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    admin?
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    admin?
   end
 
   def create?
-    false
+    admin?
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    admin?
   end
 
   def edit?
@@ -31,11 +31,11 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    admin?
   end
 
-  def scope
-    Pundit.policy_scope!(user, record.class)
+  def destroy_all?
+    destroy?
   end
 
   class Scope
@@ -47,7 +47,13 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.all
     end
+  end
+
+  private
+
+  def admin?
+    @user.is_a?(Admin)
   end
 end
