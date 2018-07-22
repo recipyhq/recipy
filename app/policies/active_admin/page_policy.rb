@@ -1,9 +1,9 @@
 module ActiveAdmin
   class PagePolicy
-    attr_reader :user, :page
+    attr_reader :admin, :page
 
-    def initialize(user, page)
-      @user = user
+    def initialize(admin, page)
+      @admin = admin
       @page = page
     end
 
