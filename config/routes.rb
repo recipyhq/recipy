@@ -41,4 +41,6 @@ Rails.application.routes.draw do
     authenticated :users do
     end
   end
+
+  root to: redirect(I18n.default_locale.to_s)
 end
