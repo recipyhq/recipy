@@ -105,6 +105,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.6.4)
+      devise (>= 4.4)
     devise_token_auth (0.2.0)
       devise (> 3.5.2, < 4.5)
       rails (< 6)
@@ -382,6 +384,7 @@ DEPENDENCIES
   capybara
   chromedriver-helper
   devise
+  devise-i18n
   devise_token_auth
   factory_bot_rails
   fasterer
@@ -423,4 +426,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
