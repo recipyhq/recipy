@@ -45,6 +45,7 @@ group :development do
   gem 'strong_migrations'
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
+  gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-airbnb', require: false
