@@ -1,3 +1,5 @@
 module Cook
-  class BaseController < ApplicationController; end
+  class BaseController < ApplicationController
+    include Localizable
+  end
 end

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def disable_pundit_checks?
     is_a?(ActiveAdmin::BaseController) || is_a?(DeviseController)
   end
+
+  def set_admin_locale
+    I18n.locale = :en
+  end
 end

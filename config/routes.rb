@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admins, ActiveAdmin::Devise.config
-  devise_for :users
+  devise_for :users, path: ':locale/users'
 
   ActiveAdmin.routes(self)
 
-  scope module: 'cook' do
+  scope module: 'cook', path: ':locale' do
     unauthenticated :users do
       root to: 'home#index', as: :unauthenticated_cook_root
     end
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope module: 'producer', path: 'producer' do
+  scope module: 'producer', path: ':locale/producer' do
     unauthenticated :users do
       root to: 'home#index', as: :unauthenticated_producer_root
     end
@@ -39,4 +39,6 @@ Rails.application.routes.draw do
     authenticated :users do
     end
   end
+
+  root to: redirect(I18n.default_locale.to_s)
 end
