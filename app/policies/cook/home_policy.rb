@@ -1,4 +1,4 @@
-module User
+module Cook
   class HomePolicy
     attr_reader :user, :record
 
