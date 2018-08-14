@@ -23,6 +23,7 @@ gem 'rack-timeout'
 gem 'pundit'
 gem 'devise'
 gem 'devise_token_auth'
+gem 'devise-i18n'
 gem 'omniauth'
 gem 'activeadmin'
 
