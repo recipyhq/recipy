@@ -24,6 +24,5 @@ before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake assets:precompile
-  - bundle exec sidekiq -t 25
 
 script: bundle exec rspec
