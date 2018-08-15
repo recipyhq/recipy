@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Users::HomeController, type: :controller do
+RSpec.describe Cook::HomeController, type: :controller do
   describe "GET #index" do
     before { get :index }
 

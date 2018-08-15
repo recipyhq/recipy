@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Producers::HomeController, type: :controller do
+RSpec.describe Producer::HomeController, type: :controller do
   describe "GET #index" do
     before { get :index }
 
