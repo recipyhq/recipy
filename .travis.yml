@@ -13,7 +13,7 @@ bundler_args: --without production
 
 before_script:
   - sudo service postgresql stop
-  - sudo service redis stop
+  - sudo service redis-server stop
   - docker-compose up --build -d
   - rake db:create
   - rake db:migrate
