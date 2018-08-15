@@ -1,5 +1,5 @@
-module Producer
+module Cook
   def self.table_name_prefix
-    'producer_'
+    'cook_'
   end
 end

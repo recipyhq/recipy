@@ -1,4 +1,4 @@
-module Producers
+module Cook
   class BaseController < ApplicationController
     include Localizable
   end

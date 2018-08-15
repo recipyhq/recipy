@@ -1,11 +1,21 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  after_action :verify_authorized, except: :index, unless: :disable_pundit_checks?
-  after_action :verify_policy_scoped, only: :index, unless: :disable_pundit_checks?
+  with_options unless: :disable_pundit_checks? do
+    after_action :verify_authorized, except: :index
+    after_action :verify_policy_scoped, only: :index
+  end
 
   def disable_pundit_checks?
-    is_a?(ActiveAdmin::BaseController) || is_a?(DeviseController)
+    devise_controller? || active_admin_controller? || active_admin_devise_controller?
+  end
+
+  def active_admin_controller?
+    is_a?(ActiveAdmin::BaseController)
+  end
+
+  def active_admin_devise_controller?
+    self.class.to_s.match(/^ActiveAdmin::Devise::/).present?
   end
 
   def set_admin_locale

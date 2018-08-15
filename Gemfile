@@ -19,7 +19,6 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sidekiq'
 gem 'figaro'
-gem 'rack-timeout'
 gem 'pundit'
 gem 'devise'
 gem 'devise_token_auth'
@@ -56,6 +55,7 @@ group :development do
 end
 
 group :production do
+  gem 'rack-timeout'
   gem 'newrelic_rpm'
   gem 'sentry-raven'
   gem 'sqreen'
