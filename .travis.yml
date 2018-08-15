@@ -6,8 +6,9 @@ services:
   - docker
 
 cache:
-  - bundler
-  - yarn
+  bundler: true
+  directories:
+  - node_modules
 
 before_install:
   - nvm install
