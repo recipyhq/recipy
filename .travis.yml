@@ -15,7 +15,7 @@ before_install:
   - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
 
 install:
-  - bundle install --without development production
+  - bundle install --deployment --without development production
   - yarn install --production
 
 before_script:
