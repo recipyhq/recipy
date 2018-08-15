@@ -13,7 +13,7 @@ bundler_args: --without production
 
 before_install:
   - nvm install
-  - npm install -g yarn@$`(jq -r '.engines.yarn' package.json)`
+  - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
 
 install:
   - yarn install
@@ -24,6 +24,7 @@ before_script:
   - docker-compose up --build -d
   - bundle exec rake db:create
   - bundle exec rake db:migrate
+  - bundle exec rake assets:precompile
   - bundle exec sidekiq -t 25
 
 script: bundle exec rspec
