@@ -1,0 +1,22 @@
+language: ruby
+
+sudo: required
+
+services:
+  - docker
+
+cache:
+  - bundler
+  - yarn
+
+bundler_args: --without production
+
+before_script:
+  - docker-compose pull
+  - docker-compose build
+  - docker-compose start
+
+  - rake db:create
+  - rake db:migrate
+
+script: bundle exec rspec
