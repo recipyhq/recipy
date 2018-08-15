@@ -9,13 +9,14 @@ cache:
   - bundler
   - yarn
 
-bundler_args: --without production
+bundler_args: --without development production
 
 before_install:
   - nvm install
   - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
 
 install:
+  - bundle install
   - yarn install
 
 before_script:
