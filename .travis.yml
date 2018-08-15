@@ -13,7 +13,7 @@ bundler_args: --without production
 
 before_install:
   - nvm install
-  - npm install -g yarn@1.9.7
+  - npm install -g yarn@$`(jq -r '.engines.yarn' package.json)`
 
 install:
   - yarn install
