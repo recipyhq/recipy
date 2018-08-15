@@ -12,8 +12,8 @@ cache:
 bundler_args: --without production
 
 before_script:
-  - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/redis stop
+  - sudo service postgresql stop
+  - sudo service redis stop
   - docker-compose up --build -d
   - rake db:create
   - rake db:migrate
