@@ -1,0 +1,29 @@
+language: ruby
+
+sudo: required
+
+services:
+  - docker
+
+cache:
+  bundler: true
+  directories:
+  - node_modules
+
+before_install:
+  - nvm install
+  - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
+
+install:
+  - bundle install --deployment --without development production
+  - yarn install --production
+
+before_script:
+  - sudo service postgresql stop
+  - sudo service redis-server stop
+  - docker-compose up --build -d
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake assets:precompile
+
+script: bundle exec rspec
