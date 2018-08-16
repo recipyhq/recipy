@@ -75,12 +75,8 @@
   },
   "addons": [
     "mailtrap",
-    "newrelic",
     "heroku-postgresql",
-    "heroku-redis",
-    "scheduler",
-    "sentry",
-    "sqreen"
+    "heroku-redis"
   ],
   "buildpacks": [
     {
