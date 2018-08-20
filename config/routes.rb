@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, ActiveAdmin::Devise.config
+  devise_for :administrators, ActiveAdmin::Devise.config
   devise_for :users, path: ':locale/users'
 
   ActiveAdmin.routes(self)

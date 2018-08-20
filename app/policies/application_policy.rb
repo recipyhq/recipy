@@ -54,6 +54,6 @@ class ApplicationPolicy
   private
 
   def admin?
-    @user.is_a?(Admin)
+    @user.is_a?(Administrator)
   end
 end
