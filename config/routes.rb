@@ -1,8 +1,16 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :administrators, ActiveAdmin::Devise.config
   devise_for :users, path: ':locale/users'
 
   ActiveAdmin.routes(self)
+
+  namespace :admin do
+    authenticate :administrator do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
 
   scope module: 'cook', path: ':locale' do
     unauthenticated :user do
