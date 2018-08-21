@@ -8,7 +8,11 @@ module Localizable
   end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if active_admin_controller? || active_admin_devise_controller?
+      I18n.locale = :en
+    else
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
   end
 
   def default_url_options
