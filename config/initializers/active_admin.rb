@@ -238,6 +238,12 @@ ActiveAdmin.setup do |config|
             url: "https://dashboard.heroku.com/apps/#{ENV['HEROKU_APP_NAME']}",
             html_options: { target: :blank }
           )
+        elsif Rails.env.development?
+          tools.add(
+            label: "MailDev",
+            url: "http://127.0.0.1:1080",
+            html_options: { target: :blank }
+          )
         end
 
         tools.add label: "Sidekiq", url: "/admin/sidekiq", html_options: { target: :blank }
