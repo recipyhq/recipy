@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include Localizable
 
   with_options unless: :disable_pundit_checks? do
     after_action :verify_authorized, except: :index
@@ -16,9 +17,5 @@ class ApplicationController < ActionController::Base
 
   def active_admin_devise_controller?
     self.class.to_s.match(/^ActiveAdmin::Devise::/).present?
-  end
-
-  def set_admin_locale
-    I18n.locale = :en
   end
 end
