@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
+class DeviseCreateAdministrators < ActiveRecord::Migration[5.2]
   def change
-    create_table :admins do |t|
+    create_table :administrators do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -21,10 +21,17 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
+      ## Lockable
+      t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.datetime :locked_at
+
+
       t.timestamps null: false
     end
 
-    add_index :admins, :email,                unique: true
-    add_index :admins, :reset_password_token, unique: true
+    add_index :administrators, :email,                unique: true
+    add_index :administrators, :reset_password_token, unique: true
+    add_index :administrators, :unlock_token,         unique: true
   end
 end

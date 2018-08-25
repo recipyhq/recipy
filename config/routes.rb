@@ -1,31 +1,39 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  devise_for :admins, ActiveAdmin::Devise.config
+  devise_for :administrators, ActiveAdmin::Devise.config
   devise_for :users, path: ':locale/users'
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    authenticate :administrator do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
+
   scope module: 'cook', path: ':locale' do
-    unauthenticated :users do
+    unauthenticated :user do
       root to: 'home#index', as: :unauthenticated_cook_root
     end
 
-    authenticate :users do
+    authenticate :user do
     end
 
-    authenticated :users do
+    authenticated :user do
       root to: 'home#index', as: :authenticated_cook_root
     end
   end
 
   scope module: 'producer', path: ':locale/producer' do
-    unauthenticated :users do
+    unauthenticated :user do
       root to: 'home#index', as: :unauthenticated_producer_root
     end
 
-    authenticate :users do
+    authenticate :user do
     end
 
-    authenticated :users do
+    authenticated :user do
       root to: 'home#index', as: :authenticated_producer_root
     end
   end
@@ -33,10 +41,10 @@ Rails.application.routes.draw do
   namespace :api do
     mount_devise_token_auth_for 'User', at: 'users'
 
-    unauthenticated :users do
+    unauthenticated :user do
     end
 
-    authenticated :users do
+    authenticated :user do
     end
   end
 

@@ -1,4 +1,6 @@
-ActiveAdmin.register Admin do
+ActiveAdmin.register Administrator do
+  menu priority: 3
+
   permit_params :email, :password, :password_confirmation
 
   index do
