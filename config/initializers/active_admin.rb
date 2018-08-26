@@ -248,6 +248,9 @@ ActiveAdmin.setup do |config|
 
         tools.add label: "Sidekiq", url: "/admin/sidekiq", html_options: { target: :blank }
       end
+
+      menu.add label: "Cooks", priority: 5
+      menu.add label: "Producers", priority: 6
     end
   end
 
