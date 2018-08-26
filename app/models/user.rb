@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :omniauthable, :confirmable, :recoverable, :registerable,
+  devise :database_authenticatable, :confirmable, :recoverable, :registerable,
          :rememberable, :trackable, :timeoutable, :validatable, :lockable
 
   include DeviseTokenAuth::Concerns::User
