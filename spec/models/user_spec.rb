@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
       dependent(:destroy)
   end
 
-  describe '.confirmed?' do
+  describe '#confirmed?' do
     context 'when unconfirmed' do
       subject(:user) { FactoryBot.create(:user, :unconfirmed) }
 
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.unconfirmed?' do
+  describe '#unconfirmed?' do
     context 'when confirmed' do
       subject(:user) { FactoryBot.create(:user) }
 
@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.locked?' do
+  describe '#locked?' do
     context 'when unlocked' do
       subject(:user) { FactoryBot.create(:user) }
 
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.unlocked?' do
+  describe '#unlocked?' do
     context 'when locked' do
       subject(:user) { FactoryBot.create(:user, :locked) }
 
