@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :omniauthable, :confirmable, :recoverable, :registerable,
-         :rememberable, :trackable, :timeoutable, :validatable, :lockable
-
   include DeviseTokenAuth::Concerns::User
+
+  devise :database_authenticatable, :confirmable, :recoverable, :registerable,
+         :rememberable, :trackable, :timeoutable, :validatable, :lockable
 
   has_one :cook_account,
           source: :account,
@@ -22,5 +22,21 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def confirmed?
+    confirmed_at.present?
+  end
+
+  def unconfirmed?
+    !confirmed?
+  end
+
+  def locked?
+    locked_at.present?
+  end
+
+  def unlocked?
+    !locked?
   end
 end
