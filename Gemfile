@@ -25,6 +25,7 @@ gem 'devise_token_auth'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'activeadmin'
+gem 'mjml-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

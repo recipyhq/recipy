@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5.5",
+    "mjml": "^4.1.2",
     "stimulus": "^1.0.1",
     "uikit": "^3.0.0-rc.11"
   },
