@@ -26,6 +26,7 @@ gem 'devise-i18n'
 gem 'omniauth'
 gem 'activeadmin'
 gem 'mjml-rails'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

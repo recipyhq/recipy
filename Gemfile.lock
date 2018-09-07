@@ -322,6 +322,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    simple_form (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -413,6 +416,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   sidekiq
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqreen
