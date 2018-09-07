@@ -21,7 +21,7 @@ Devise.setup do |config|
   config.mailer_sender = 'noreply@recipy.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'DeviseMailer'
+  # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
   config.parent_mailer = 'ApplicationMailer'
