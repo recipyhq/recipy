@@ -1,7 +1,14 @@
-<mj-text color="#00FF00">Hello <%= @resource.email %>!</mj-text>
+<% content_for :title, t('.subject') %>
 
-<mj-text>Your account has been locked due to an excessive number of unsuccessful sign in attemmj-textts.</mj-text>
-
-<mj-text>Click the link below to unlock your account:</mj-text>
-
-<mj-text><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></mj-text>
+<mj-section background-color="#FFFFFF">
+    <mj-column>
+        <mj-text font-size="16px"><%= t('devise.mailer.hello_email', email: @resource.email) %></mj-text>
+        <mj-text font-size="16px"><%= t('.content') %></mj-text>
+    </mj-column>
+</mj-section>
+<mj-section>
+    <mj-column width="100%">
+        <mj-text font-size="16px"><%= t('.info') %></mj-text>
+    </mj-column>
+    <mj-button font-size="16px" border-radius="20px" background-color="#3498db" href="<%= unlock_url(@resource, unlock_token: @token) %>"><%= t('.button') %></mj-button>
+</mj-section>
