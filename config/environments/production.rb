@@ -56,7 +56,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -75,7 +75,7 @@ Rails.application.configure do
     address: ENV['SMTP_ADDRESS'],
     port: ENV['SMTP_PORT'],
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
