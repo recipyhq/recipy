@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  
   scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
-    devise_for :users
 
     scope module: 'cook' do
       unauthenticated :user do

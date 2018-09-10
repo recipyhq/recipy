@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   devise :database_authenticatable, :confirmable, :recoverable, :registerable,
-         :rememberable, :trackable, :timeoutable, :validatable, :lockable
+         :rememberable, :trackable, :timeoutable, :validatable, :lockable, :omniauthable, omniauth_providers: %i[twitter]
 
   has_one :cook_account,
           source: :account,
