@@ -1,6 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Membership, type: :model do
-  it { should belong_to(:user) }
-  it { should belong_to(:account) }
+  it { expect(subject).to belong_to(:user) }
+  it { expect(subject).to belong_to(:account) }
 end
