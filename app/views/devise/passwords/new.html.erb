@@ -1,15 +1,29 @@
-<h2><%= t(".forgot_your_password") %></h2>
+<!--<div class="background-action uk-height-small"></div>-->
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<div uk-height-viewport class="uk-background-cover uk-height-large" style="background-image: url(<%= image_url '/assets/password_new/back_password_new.jpg ' %>)">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <div id="password-new-container" class="uk-padding-small uk-position-center uk-background-muted opaque-effect">
+
+    <h2><span class="uk-text-xlarge uk-text-bold uk-text-left color-action">
+      <%= t(".forgot_your_password") %>
+  </span></h2>
+
+    <div class="uk-padding-small">
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-input">
+          <%= f.input :email, required: true, autofocus: true, :input_html => {:class => 'uk-input'} %>
+        </div>
+
+        <div class="form-actions uk-padding-small">
+          <%= f.button :submit, t(".send_me_reset_password_instructions"), class: 'uk-button-primary' %>
+        </div>
+      <% end %>
+
+    </div>
+    <%= render "devise/shared/links" %>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".send_me_reset_password_instructions") %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
