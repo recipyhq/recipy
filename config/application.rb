@@ -28,7 +28,7 @@ module Recipy
     # the framework and any gems in your application.
     config.generators do |g|
       g.assets false
-      g.test_framework :rspec, controller_specs: false
+      g.test_framework :rspec, controller_specs: false, routing_spec: false
     end
   end
 end
