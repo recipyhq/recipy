@@ -1,4 +1,8 @@
-<p><%= t('.greeting', recipient: @email) %></p>
+<mj-text>
+    <p class="sentence"><%= t('.greeting', recipient: @email) %></p>
 
-<p><%= t('.instruction') %></p>
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p class="sentence"><%= t('.instruction') %></p>
+</mj-text>
+<mj-text>
+    <a class="button" href="<%= confirmation_url(@resource, confirmation_token: @token) %>"><%= t('.action') %></a>
+</mj-text>
