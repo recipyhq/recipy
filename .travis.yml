@@ -12,11 +12,10 @@ cache:
 
 before_install:
   - nvm install
-  - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
+  - npm install -g yarn@1.9.4
 
 install:
   - bundle install --deployment --without development production
-  - npm install yarn@1.9.4
   - yarn install --production
 
 before_script:
