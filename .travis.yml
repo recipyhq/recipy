@@ -16,7 +16,7 @@ before_install:
 
 install:
   - bundle install --deployment --without development production
-  - yarn install
+  - npm install yarn@1.9.4
   - yarn install --production
 
 before_script:
