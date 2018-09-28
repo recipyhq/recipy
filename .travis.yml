@@ -12,6 +12,7 @@ cache:
 
 before_install:
   - nvm install
+  - yarn install
   - npm install -g yarn@`$(jq -r '.engines.yarn' package.json)`
 
 install:
