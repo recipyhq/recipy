@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   devise :database_authenticatable, :confirmable, :recoverable, :registerable,
-         :rememberable, :trackable, :timeoutable, :validatable, :lockable, :omniauthable, omniauth_providers: %i[twitter]
+         :rememberable, :trackable, :timeoutable, :validatable, :lockable,
+         :omniauthable, omniauth_providers: %i(twitter)
 
   has_one :cook_account,
           source: :account,
@@ -19,6 +20,13 @@ class User < ActiveRecord::Base
           dependent: :destroy
 
   has_many :memberships, dependent: :destroy
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
+  end
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
