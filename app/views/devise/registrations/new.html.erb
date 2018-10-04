@@ -1,17 +1,28 @@
-<h2><%= t(".sign_up") %></h2>
+<div uk-height-viewport class="uk-vertical-align uk-background-cover" style="background-image: url(<%= image_url '/assets/registration/background_food.jpg' %>); -webkit-filter: blur(5px)">
+</div>
+  <div class="uk-position-center uk-background-muted uk-vertical-align-middle" style="border: 0px solid; padding: 10px; box-shadow: 3px 3px 3px 0px #888888;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <form class="uk-panel">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+    <h2 class="uk-text-center"><%= t(".sign_up") %></h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs uk-text-left">
+        <ul>
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), class:'uk-form-row' %>
+        <%= f.input :password_confirmation, required: true, class:'uk-form-row' %>
+        </ul>
+      </div>
+
+      <div class="form-actions uk-text-center">
+        <%= f.button :submit, t(".sign_up"), class:'uk-button-primary uk-button-large' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+    </form>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_up") %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
