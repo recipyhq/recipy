@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users,
-             only: :omniauth_callbacks,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # only: :omniauth_callbacks, omniauth_callbacks
   scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
