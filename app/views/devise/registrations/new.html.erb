@@ -1,23 +1,24 @@
-<div uk-height-viewport class="uk-vertical-align uk-background-cover" style="background-image: url(<%= image_url '/assets/registration/background_food.jpg' %>); -webkit-filter: blur(5px)">
+<div uk-height-viewport class="uk-vertical-align uk-background-cover sign_up_background";
+     xmlns:-webkit-filter="http://www.w3.org/1999/xhtml"/>">
 </div>
   <div class="uk-position-center uk-background-muted uk-vertical-align-middle" style="border: 0px solid; padding: 10px; box-shadow: 3px 3px 3px 0px #888888;">
 
-    <form class="uk-panel">
+    <form class="uk-panel uk-form-stacked">
 
-    <h2 class="uk-text-center"><%= t(".sign_up") %></h2>
+    <h2 class="uk-text-center title_sign_up"><%= t(".sign_up") %></h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
-      <div class="form-inputs uk-text-left">
+      <div class="uk-form-row">
         <ul>
-        <%= f.input :email, required: true, autofocus: true %>
-        <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), class:'uk-form-row' %>
-        <%= f.input :password_confirmation, required: true, class:'uk-form-row' %>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: "uk-input"}%>
+        <%= f.input :password, required: true, hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), input_html: {class: "uk-input"}%>
+        <%= f.input :password_confirmation, required: true, input_html: {class: "uk-input"}%>
         </ul>
       </div>
 
-      <div class="form-actions uk-text-center">
+      <div class="uk-text-center">
         <%= f.button :submit, t(".sign_up"), class:'uk-button-primary uk-button-large' %>
       </div>
     <% end %>
