@@ -30,5 +30,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-# Ignore default files confif from macOS
+# Ignore macOS config
 .DS_Store
