@@ -56,6 +56,7 @@ group :development do
   gem 'rails-erd', require: false
   gem 'bullet'
   gem 'overcommit'
+  gem 'omniauth-google-oauth2'
 end
 
 group :production do

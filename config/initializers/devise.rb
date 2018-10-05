@@ -281,7 +281,8 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, "APP_ID", "APP_TOKEN", callback_url: "http://localhost:3000/users/sign_in"
-  config.omniauth :twitter, "API_KEY", "API_SECRET"
+  config.omniauth :twitter, "API_KEY", "API_SECRET", callback_url: "http://localhost:3000/users/sign_in"
+  config.omniauth :google_oauth2, "", "", callback_url: "http://localhost:3000/users/sign_in"
   # callback_url: "http://localhost:3000/users/sign_in"
   # Need a real callback url for twitter because it doesn't support http
 end

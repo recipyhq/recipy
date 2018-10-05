@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :confirmable, :recoverable, :registerable,
          :rememberable, :trackable, :timeoutable, :validatable, :lockable,
-         :omniauthable, omniauth_providers: %i(facebook)
+         :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   has_one :cook_account,
           source: :account,
