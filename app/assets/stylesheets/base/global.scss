@@ -1,16 +1,12 @@
 
 body {
-  background-color: $default-color;
+  background-color: $recipy-default-color;
 }
 
-.background-action {
-  background-color: $primary-color;
+.text-xlarge {
+  font-size: x-large;
 }
 
-.color-action {
-  color: $primary-color;
-}
-
-.height-max {
-  height: 100%;
+.title {
+  font-size: xx-large;
 }

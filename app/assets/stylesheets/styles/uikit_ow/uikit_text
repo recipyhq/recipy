@@ -1,8 +1,0 @@
-.uk-text-xlarge {
-  font-size: 32px;
-}
-
-.uk-text-title {
-  font-size: 48px;
-  width: auto;
-}

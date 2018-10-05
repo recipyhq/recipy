@@ -1,8 +1,8 @@
-<div uk-height-viewport class="uk-background-cover uk-height-large" style="background-image: url(<%= image_url '/assets/password_new/back_password_new.jpg ' %>)">
+<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper">
 
-  <div class="uk-padding-small uk-position-center uk-background-muted opaque-effect">
+  <div class="uk-padding-small uk-position-center uk-background-muted">
 
-    <h2 class="uk-text-xlarge uk-text-bold uk-text-left color-action">
+    <h2 class="title uk-text-bold uk-text-left action_title">
       <%= t(".forgot_your_password") %>
     </h2>
 
@@ -10,7 +10,7 @@
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
-        <div class="form-input">
+        <div>
           <%= f.input :email, required: true, autofocus: true, input_html: { class: 'uk-input' } %>
         </div>
 
