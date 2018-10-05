@@ -6,7 +6,6 @@ services:
   - docker
 
 cache:
-  yarn: false
   bundler: true
   directories:
   - node_modules

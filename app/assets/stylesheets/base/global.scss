@@ -1,22 +1,14 @@
 
 body {
-  background-color: #FBFBFB;
+  background-color: $background-color;
 }
 
 .background-action {
-  background-color: #FF9A3B;
+  background-color: $action-color;
 }
 
 .color-action {
-  color: #FF9A3B;
-}
-
-.blur-effect {
-  opacity: 0.33;
-}
-
-.opaque-effect {
-  opacity: 1;
+  color: $action-color;
 }
 
 .height-max {
