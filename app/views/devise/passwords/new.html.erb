@@ -2,16 +2,16 @@
 
   <div class="uk-padding-small uk-position-center uk-background-muted opaque-effect">
 
-    <h2><span class="uk-text-xlarge uk-text-bold uk-text-left color-action">
+    <h2 class="uk-text-xlarge uk-text-bold uk-text-left color-action">
       <%= t(".forgot_your_password") %>
-  </span></h2>
+    </h2>
 
     <div class="uk-padding-small">
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-input">
-          <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
+          <%= f.input :email, required: true, autofocus: true, input_html: { class: 'uk-input' } %>
         </div>
 
         <div class="uk-padding-small">

@@ -1,14 +1,14 @@
 
 body {
-  background-color: $background-color;
+  background-color: $default-color;
 }
 
 .background-action {
-  background-color: $action-color;
+  background-color: $primary-color;
 }
 
 .color-action {
-  color: $action-color;
+  color: $primary-color;
 }
 
 .height-max {
