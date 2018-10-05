@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'omniauth-twitter'
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -26,6 +25,8 @@ gem 'devise_token_auth'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 gem 'activeadmin'
 gem 'mjml-rails'
 gem 'simple_form'
@@ -56,7 +57,6 @@ group :development do
   gem 'rails-erd', require: false
   gem 'bullet'
   gem 'overcommit'
-  gem 'omniauth-google-oauth2'
 end
 
 group :production do
