@@ -282,13 +282,13 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, Rails.application.credentials.facebook[:app_id],
                   Rails.application.credentials.facebook[:app_secret],
-                  callback_url: "http://localhost:3000/users/sign_in"
+                  callback_url: "https://staging-recipy.herokuapp.com"
   config.omniauth :twitter, Rails.application.credentials.twitter[:app_id],
                   Rails.application.credentials.twitter[:app_secret],
-                  callback_url: "http://localhost:3000/users/sign_in"
+                  callback_url: "https://staging-recipy.herokuapp.com"
   config.omniauth :google_oauth2, Rails.application.credentials.google[:app_id],
                   Rails.application.credentials.google[:app_secret],
-                  callback_url: "http://localhost:3000/users/sign_in"
+                  callback_url: "https://staging-recipy.herokuapp.com"
   # callback_url: "http://localhost:3000/users/sign_in"
   # Need a real callback url for twitter because it doesn't support http
 end
