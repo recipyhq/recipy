@@ -22,6 +22,9 @@
     "HEROKU_SLUG_DESCRIPTION": {
       "required": true
     },
+    "HOST": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },
