@@ -4,11 +4,14 @@
     "postdeploy": "bundle exec rake db:schema:load db:seed"
   },
   "env": {
-    "HOST": {
+    "HEROKU_APP_NAME": {
       "required": true
     },
     "RAILS_MASTER_KEY": {
       "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
     }
   },
   "formation": {
