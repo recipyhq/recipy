@@ -1,11 +1,11 @@
 .wallpaper {
-  background-image: url("/assets/registration_new/back_registration_new.jpg");
+  background-image: url(asset-path('registration_edit/back_registration_edit.jpg'));
 }
 
-.action_button {
+.recipy-button {
   background-color: $recipy-primary-color;
 }
 
-.action_title {
+.recipy-title {
   color: $recipy-primary-color;
 }
