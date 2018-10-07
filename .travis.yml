@@ -22,8 +22,7 @@ before_script:
   - sudo service postgresql stop
   - sudo service redis-server stop
   - docker-compose up --build -d
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
+  - bundle exec rake db:setup
   - bundle exec rake assets:precompile
 
 script: bundle exec rspec
