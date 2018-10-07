@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
     self.class.to_s.match(/^ActiveAdmin::Devise::/).present?
   end
 
+  private
+
   def disable_pundit_checks?
     devise_controller? || active_admin_controller? || active_admin_devise_controller?
   end
