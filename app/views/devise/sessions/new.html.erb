@@ -1,18 +1,35 @@
- <h2><%= t(".sign_in") %></h2>
+<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper-session-new ">
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-       <form class="uk-panel uk-panel-box uk-form">
+  <div class="uk-padding-small uk-position-center uk-background-muted">
 
-       <%= f.input :email, required: false, autofocus: true %>
-        <%= f.input :password, required: false %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <h2 class="uk-text-center title"><%= t(".sign_in") %></h2>
+    <div class="uk-margin">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-       </form>
+        <div class='uk-inline uk-width-1-1'>
+          <%= f.input :email, placeholder: t("placeholder_email"), label: false, autofocus: true, input_html: {class: "uk-input uk-margin"} %>
+          <%= f.input :password, placeholder: t("placeholder_password"), label: false, input_html: {class: "uk-input uk-margin"} %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, t(".sign_in")%>
+        <div>
+          <%= f.button :submit, t(".sign_in"), class: 'uk-width-1-1 uk-button uk-button-primary uk-button-large' %>
+        </div>
+
+        <div class="uk-text-center">
+          <%= link_to user_twitter_omniauth_authorize_path do %>
+            <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="twitter"></i>
+          <% end %>
+          <%= link_to user_facebook_omniauth_authorize_path do %>
+            <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="facebook"></i>
+          <% end %>
+          <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+            <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="google-plus"></i>
+          <% end %>
+        </div>
+
+      <% end %>
+      <%= render "devise/shared/links" %>
       </div>
-    <% end %>
-
-  <%= render "devise/shared/links" %>
 </div>
