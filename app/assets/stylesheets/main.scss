@@ -4,4 +4,8 @@
 @import "base/override";
 
 /* styles */
-@import "styles/registration_new/styles_global";
+@import "styles/registration_edit/styles_global";
+@import "styles/password_new/styles_global";
+
+/* UIkit*/
+@import "styles/overwrite/uikit";
