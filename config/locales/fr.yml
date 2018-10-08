@@ -1,0 +1,16 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
+              blank: "Le champ Courriel ne doit pas être vide"
+            password:
+              blank: "Le champ Mot de passe ne doit pas être vide"
+            password_confirmation:
+              confirmation: "Vérification du mot de passe incorrect. Veuillez réessayer"
+            current_password:
+              invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
+              blank: "Le champ Mot de passe actuel ne doit pas être vide"
