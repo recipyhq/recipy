@@ -8,26 +8,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <%= render 'layouts/navbar' %>
   <body>
-  <nav class="uk-navbar-container " uk-navbar>
-    <div class="uk-navbar-left">
-      <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
-      <ul class="uk-navbar-nav">
-        <li><a href="#">Plat du jour</a></li>
-        <li><a href="#">Planning de la semaine</a></li>
-        <li><a href="#">Recette au hasard</a></li>
-        <li><a href="#">Nos partenaires</a></li>
-      </ul>
-    </div>
-      <div class="uk-navbar-right">
-        <div class="uk-navbar-item">
-          <form action="javascript:void(0)">
-            <input class="uk-input uk-form-width-medium " type="text" placeholder="crêpes, carotte, veggie...">
-            <button class="uk-button uk-button-default">Rechercher</button>
-          </form>
-        </div>
-      </div>
-  </nav>
     <%= yield %>
   </body>
 </html>
