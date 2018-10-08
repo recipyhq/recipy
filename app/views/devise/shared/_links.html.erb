@@ -15,6 +15,7 @@
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+
   <div class="uk-margin uk-width-large uk-margin-auto uk-text-center">
     <%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name) %>
   </div>
