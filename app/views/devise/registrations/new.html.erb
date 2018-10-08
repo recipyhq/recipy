@@ -12,9 +12,9 @@
 
       <div class="uk-form-row">
         <ul>
-        <%= f.input :email, required: true, autofocus: true, input_html: {class: "uk-input"}%>
-        <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), input_html: {class: "uk-input"}%>
-        <%= f.input :password_confirmation, required: true, input_html: {class: "uk-input"}%>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'}%>
+        <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), input_html: {class: 'uk-input'}%>
+        <%= f.input :password_confirmation, required: true, input_html: {class: 'uk-input'}%>
         </ul>
       </div>
 
@@ -28,11 +28,11 @@
           <% end %>
 
           <%= link_to user_facebook_omniauth_authorize_path do  %>
-            <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="facebook"></a>
+            <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="facebook"></i>
           <% end %>
 
           <%= link_to user_google_oauth2_omniauth_authorize_path do  %>
-            <a href="" class="uk-icon-button" uk-icon="google-plus"></a>
+            <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="google-plus"></i>
           <% end %>
         </div>
     <% end %>
