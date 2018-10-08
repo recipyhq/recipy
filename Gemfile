@@ -19,13 +19,15 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sidekiq'
 gem 'figaro'
-gem 'rack-timeout'
 gem 'pundit'
 gem 'devise'
 gem 'devise_token_auth'
+gem 'devise-i18n'
 gem 'omniauth'
 gem 'activeadmin'
 gem 'phony_rails'
+gem 'mjml-rails'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -46,6 +48,7 @@ group :development do
   gem 'strong_migrations'
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
+  gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-airbnb', require: false
@@ -55,6 +58,7 @@ group :development do
 end
 
 group :production do
+  gem 'rack-timeout'
   gem 'newrelic_rpm'
   gem 'sentry-raven'
   gem 'sqreen'

@@ -1,44 +1,53 @@
-Rails.application.routes.draw do
-  devise_for :admins, ActiveAdmin::Devise.config
-  devise_for :users
-  devise_for :producers
+require 'sidekiq/web'
 
+Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
-  scope module: 'users' do
-    unauthenticated :users do
-      root to: 'home#index', as: :unauthenticated_user_root
-    end
+  devise_for :administrators, ActiveAdmin::Devise.config
 
-    authenticate :users do
-    end
-
-    authenticated :users do
-      root to: 'home#index', as: :authenticated_user_root
+  namespace :admin do
+    authenticate :administrator do
+      mount Sidekiq::Web => '/sidekiq'
     end
   end
 
-  scope module: 'producers', path: 'producer' do
-    unauthenticated :producers do
-      root to: 'home#index', as: :unauthenticated_producer_root
+  scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
+    devise_for :users
+
+    scope module: 'cook' do
+      unauthenticated :user do
+        root to: 'home#index', as: :unauthenticated_cook_root
+      end
+
+      authenticate :user do
+      end
+
+      authenticated :user do
+        root to: 'home#index', as: :authenticated_cook_root
+      end
     end
 
-    authenticate :producers do
+    scope module: 'producer', path: '/producer' do
+      unauthenticated :user do
+        root to: 'home#index', as: :unauthenticated_producer_root
+      end
+
+      authenticate :user do
+      end
+
+      authenticated :user do
+        root to: 'home#index', as: :authenticated_producer_root
+      end
     end
 
-    authenticated :producers do
-      root to: 'home#index', as: :authenticated_producer_root
-    end
-  end
+    namespace :api do
+      mount_devise_token_auth_for 'User', at: 'users'
 
-  namespace :api do
-    mount_devise_token_auth_for 'User', at: 'users'
-    mount_devise_token_auth_for 'Producer', at: 'producers'
+      unauthenticated :user do
+      end
 
-    unauthenticated :users do
-    end
-
-    authenticated :users do
+      authenticated :user do
+      end
     end
   end
 end

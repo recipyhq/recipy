@@ -1,0 +1,48 @@
+<mjml>
+    <mj-head>
+        <mj-style>
+            * {
+                font-family: "Helvetica";
+            }
+            .sentence {
+                font-size: 1em;
+                color: #3c3c3c;
+            }
+            .button {
+                text-align: center;
+                font-size: 1.2em;
+                color: #F3F3F3;
+                padding: 10px;
+                text-decoration: none;
+                border-radius: 20px;
+                background-color: #3498db;
+                font-weight: "bold";
+            }
+        </mj-style>
+    </mj-head>
+    <mj-body background-color="#FFFFFF">
+        <mj-section padding-bottom="0px" background-color="#FBFBFB">
+            <mj-column width="100%">
+                <mj-button font-size="20px" color="#FBFBFB" align="left" font-family="Helvetica" border-radius="2px" href="#" background-color="#FF9A3B">Recipy</mj-button>
+                <mj-divider horizontal-spacing="0" vertical-spacing="0" padding-top="20" padding-bottom="0px" padding-left="0px" padding-right="0px" border-width="1px" border-color="#F3F3F3"></mj-divider>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#3c3c3c">
+            <mj-text align="center" color="#fbfbfb" class="title">
+                <h2><%= yield(:title) %></h2>
+            </mj-text>
+        </mj-section>
+        <mj-section background="#FFFFFF">
+            <%= yield %>
+        </mj-section>
+        <mj-section background-color="#FBFBFB">
+            <mj-column>
+                <mj-text align="center" class="sentence">Stay in touch!</mj-text>
+                <mj-social mode="horizontal">
+                    <mj-social-element name="twitter"></mj-social-element>
+                    <mj-social-element name="facebook"></mj-social-element>
+                </mj-social>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

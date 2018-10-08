@@ -40,21 +40,20 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
+  # Use a real queuing backend for Active Job (and separate queues per environment)
+  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_name_prefix = "recipy_#{Rails.env}"
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    user_name: ENV['SMTP_USERNAME'],
-    password: ENV['SMTP_PASSWORD'],
-    domain: ENV['SMTP_DOMAIN'],
     address: ENV['SMTP_ADDRESS'],
     port: ENV['SMTP_PORT'],
-    authentication: :plain,
-    enable_starttls_auto: true,
   }
 
   # Print deprecation notices to the Rails logger.
