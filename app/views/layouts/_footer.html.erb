@@ -1,12 +1,26 @@
-<div id="push"></div>
 <footer class="footer navbar-fixed-bottom">
 	<div class="container">
 		<nav>
 			<ul>
-	      		<li><%= link_to "Contact Us", "#" %></li>
-	      		<li><%= link_to "Terms of Use",   "#" %></li>
-	      		<li><%= link_to "Privacy Policy",   "#" %></li>
-	      		<li><%= link_to "How it Works?",   "#" %></li>
+        <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body">
+              <h3> A propos de Recipy</h3>
+              <li> <%= link_to 'Le concept', '#'%></li>
+              <li> <%= link_to 'A propos de l\'équipe', '#'%> </li>
+              <li> <%= link_to 'Besoin d\'aide ?', '#'%> </li>
+            </div>
+          </div>
+          <div>
+            <div class="uk-card uk-card-default uk-card-body">
+              <h3> Une question ?</h3>
+              <li> <%= link_to 'Vous êtes producteur ? ', '#'%> </li>
+              <li> <%= link_to 'Question fréquentes', '#'%> </li>
+              <li> <%= link_to 'Presse', '#'%> </li>
+            </div>
+          </div>
+        </div>
+        <h4><%= link_to 'Nous contactez', '#' %></h4>
 			</ul>
 		</nav>
 	</div>
