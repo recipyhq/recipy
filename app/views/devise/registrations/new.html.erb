@@ -3,42 +3,39 @@
 </div>
 <div class="uk-position-center uk-background-muted uk-vertical-align-middle sign_up_global">
 
-  <form class="uk-panel uk-form-stacked">
+  <h2 class="uk-text-center sign_up_title"><%= t(".sign_up") %></h2>
 
-    <h2 class="uk-text-center sign_up_title"><%= t(".sign_up") %></h2>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-
-      <div class="uk-form-row">
-        <ul>
-          <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
-          <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), input_html: {class: 'uk-input'} %>
-          <%= f.input :password_confirmation, required: true, input_html: {class: 'uk-input'} %>
-        </ul>
-      </div>
-
-      <div class="uk-text-center">
-        <%= f.button :submit, t(".sign_up"), class: 'uk-button-primary uk-button-large' %>
-      </div>
-
-      <div class="uk-text-center">
-        <%= link_to user_twitter_omniauth_authorize_path do %>
-          <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="twitter"></i>
-        <% end %>
-        <%= link_to user_facebook_omniauth_authorize_path do %>
-          <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="facebook"></i>
-        <% end %>
-
-        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
-          <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="google-plus"></i>
-        <% end %>
-      </div>
-    <% end %>
-
-    <div class="uk-text-center">
-      <%= render "devise/shared/links" %>
+    <div class="uk-form-row">
+      <ul>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
+        <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length), input_html: {class: 'uk-input'} %>
+        <%= f.input :password_confirmation, required: true, input_html: {class: 'uk-input'} %>
+      </ul>
     </div>
 
-  </form>
+    <div class="uk-text-center">
+      <%= f.button :submit, t(".sign_up"), class: 'uk-button-primary uk-button-large' %>
+    </div>
+
+    <div class="uk-text-center">
+      <%= link_to user_twitter_omniauth_authorize_path do %>
+        <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="twitter"></i>
+      <% end %>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="facebook"></i>
+      <% end %>
+
+      <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+        <i class="uk-icon-button uk-margin-small-right sign_up_social" uk-icon="google-plus"></i>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="uk-text-center">
+    <%= render "devise/shared/links" %>
+  </div>
+
 </div>
