@@ -19,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: 'Twitter') if is_navigational_format?
     else
       session['devise.twitter_data'] = request.env['omniauth.auth']
-      redirect_to new_user_registration_url
+      redirect_to authenticated_cook_root_url
     end
   end
 
@@ -31,7 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
     else
       session['devise.google_data'] = request.env['omniauth.auth'].except(:extra)
-      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join('\n')
+      redirect_to authenticated_cook_root_url, alert: @user.errors.full_messages.join('\n')
     end
   end
 
