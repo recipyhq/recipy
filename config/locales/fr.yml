@@ -1,3 +1,6 @@
 fr:
     placeholder_email: "Adresse e-mail"
     placeholder_password: "Mot de passe"
+
+    shared_links:
+      no_account: "Vous n'avez pas de compte ?"

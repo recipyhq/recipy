@@ -33,3 +33,6 @@ en:
   hello: "Hello world"
   placeholder_email: "E-mail adress"
   placeholder_password: "Password"
+
+  shared_links:
+    no_account: "No account ?"
