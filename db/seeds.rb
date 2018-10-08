@@ -1,3 +1,7 @@
 if Rails.env.development?
-  Admin.create!(email: 'admin@recipy.com', password: 'password', password_confirmation: 'password')
+  Administrator.create! do |admin|
+    admin.email = 'admin@recipy.com'
+    admin.password = 'password'
+    admin.password_confirmation = 'password'
+  end
 end
