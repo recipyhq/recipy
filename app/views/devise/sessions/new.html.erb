@@ -1,19 +1,24 @@
-<div class="uk-margin uk-width-large uk-margin-auto ">
-<h2><center><%= t(".sign_in") %></center></h2>
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   		<div class="uk-margin">
-    <div class='uk-inline uk-width-1-1'>   
-    <%= f.input :email, required: false, label: false, autofocus: true, placeholder: 'Adresse e-mail', input_html: {class: "uk-input uk-margin", type: "text"}%>
-    <%= f.input :password, required: false, label: false, placeholder: 'Mot de passe', input_html: {class: "uk-input uk-margin", type: "text"} %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?%>
-    </div>
-  </div>
+<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper ">
 
-  <div>
-    <%= f.button :submit, t(".sign_in"), class: 'uk-width-1-1 uk-button uk-button-primary uk-button-large' %>
-  </div>
-<% end %>
-						
-					</div>	
+  <div class="uk-padding-small uk-position-center uk-background-muted">
 
-<%= render "devise/shared/links" %>
+    <h2 class="uk-text-center title"><%= t(".sign_in") %></h2>
+    <div class="uk-margin">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class='uk-inline uk-width-1-1'>
+          <%= f.input :email, placeholder: t("placeholder_email"), label: false, autofocus: true, input_html: {class: "uk-input uk-margin"} %>
+          <%= f.input :password, placeholder: t("placeholder_password"), label: false, input_html: {class: "uk-input uk-margin"} %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        </div>
+
+        <div>
+          <%= f.button :submit, t(".sign_in"), class: 'uk-width-1-1 uk-button uk-button-primary uk-button-large' %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+      </div>
+</div>
+
+

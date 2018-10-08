@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  placeholder_email: "E-mail adress"
+  placeholder_password: "Password"
