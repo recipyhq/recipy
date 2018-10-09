@@ -1,14 +1,9 @@
 <% content_for :title, t('.subject') %>
 
-<mj-section background-color="#FFFFFF">
-    <mj-column>
-        <mj-text font-size="16px"><%= t('.greeting', recipient: @resource.email) %></mj-text>
-        <mj-text font-size="16px"><%= t('.message') %></mj-text>
-    </mj-column>
-</mj-section>
-<mj-section>
-    <mj-column width="100%">
-        <mj-text font-size="16px"><%= t('.instruction') %></mj-text>
-    </mj-column>
-    <mj-button font-size="16px" border-radius="20px" background-color="#3498db" href="<%= unlock_url(@resource, unlock_token: @token) %>"><%= t('.action') %></mj-button>
-</mj-section>
+<mj-text>
+    <p><%= t('.greeting', recipient: @resource.email) %></p>
+    <p><%= t('.message') %></p>
+
+    <p><%= t('.instruction') %></p>
+</mj-text>
+<mj-button href="<%= unlock_url(@resource, unlock_token: @token) %>"><%= t('.action') %></mj-button>

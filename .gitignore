@@ -33,8 +33,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-<<<<<<< HEAD
 # Ignore macOS config
 .DS_Store
-=======
->>>>>>> master
