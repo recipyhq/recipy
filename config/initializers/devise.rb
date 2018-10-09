@@ -289,6 +289,5 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, Rails.application.credentials.google[:app_id],
                   Rails.application.credentials.google[:app_secret],
                   callback_url: "https://staging-recipy.herokuapp.com"
-  # callback_url: "http://localhost:3000/users/sign_in"
   # Need a real callback url for twitter because it doesn't support http
 end
