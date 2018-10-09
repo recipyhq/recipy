@@ -1,0 +1,247 @@
+
+<!--Navigation bar for mobile-->
+<div class="uk-hidden@s">
+
+  <nav class="uk-navbar" uk-navbar="">
+
+    <div class="uk-navbar-center">
+      <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
+    </div>
+
+  </nav>
+</div>
+
+<!--Navigation pour web browsers-->
+<div class="uk-visible@s">
+
+  <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" style="background-color: white">
+
+
+
+  <nav class="uk-navbar" uk-navbar style="position: relative;">
+
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo uk-text-small" href="#">Recipy</a>
+    </div>
+
+      <div class="uk-navbar-center">
+
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="#" uk-scroll>Accueil</a></li>
+          <li><a href="#concept" uk-scroll>Concept</a></li>
+          <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!--Main image-->
+ <div class="uk-section-default main-presentation">
+
+<!--   image-->
+   <div uk-image class="uk-background-norepeat uk-background-center-center uk-background-image@s uk-padding-remove-top">
+
+     <div class="uk-width-1-1">
+       <div class="uk-container">
+         <div class="uk-margin uk-text-center uk-scrollspy-inview uk-animation-slide-top-small">
+           <%= image_tag "food-salad-healthy-lunch (1).jpg", class: 'uk-img' %>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+   <div class="uk-margin uk-margin-medium"></div>
+
+<!--   texte-->
+   <div class="uk-width-1-1@m uk-first-column">
+     <h2 class="uk-width-xxlarge uk-margin-auto uk-text-center uk-scrollspy-inview uk-animation-slide-top-small">
+       Nous sommes Recipy, nous créeons la révolution culinaire de demain.
+     </h2>
+     <p class="uk-width-xxlarge uk-margin-auto uk-text-center uk-scrollspy-inview uk-animation-slide-top-small">Scrollez et apprenez en plus sur nous.</p>
+   </div>
+
+   <div class="uk-grid-medium uk-flex-middle uk-grid-margin-medium uk-grid uk-grid-stack" uk-grid="">
+     <div class="uk-width-1-1@m uk-first-column">
+       <hr>
+     </div>
+   </div>
+
+ </div>
+
+<!--Concept screen-->
+<div class="uk-section uk-section-default" id="concept">
+  <div class="uk-container">
+    <h3>Recipy  le concept</h3>
+
+<!--    concept grid-->
+    <div class="uk-child-width-1-3@s uk-grid-small uk-text-left" uk-grid="masonry: true">
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class=" uk-card-body">
+            Un service simple, accessible et intégré aux outils d'avant, d’aujourd’hui et de demain.
+          </div>
+        </div>
+      </div>
+
+      <!--      Food Waste-->
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class=" uk-card-body">
+            <%= image_tag "waste (1).png", class: 'uk-img' %>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class=" uk-card-body">
+            Recipy donnera aussi aux novices la possibilité de réaliser des recettes simples et délicieuses avec des produits locaux.
+          </div>
+        </div>
+      </div>
+
+      <!--      Iphone-->
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class=" uk-card-body">
+            <%= image_tag "iphone.png", class: 'uk-img' %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class="uk-card-body">
+            Recipy permettra d’éviter le gaspillage des aliments restés dans la cuisine du consommateur.
+          </div>
+        </div>
+      </div>
+
+      <!--      Fork and knife-->
+      <div>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class=" uk-card-body">
+            <%= image_tag "cutlery.png", class: 'uk-img' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    Concept text-->
+    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+       <div class="uk-card uk-card-default uk-card-body">Nous, Recipy, voulons “Révolutionner l’alimentation des Français”.
+            <br>Pour ce faire, nous proposons un site web ainsi qu’une application mobile qui va permettre d’éviter le gaspillage des aliments. <br>
+          </div>
+      </div>
+
+    <div class="uk-child-width-expand@s" uk-grid>
+      <div class="uk-grid-item-match">
+        <div class="uk-card uk-card-default uk-card-body">
+          <h3>Comment ça marche ?</h3>
+          <p>L’utilisateur aura juste besoin de renseigner ce qu’il reste dans son frigo et nous lui fournirons une liste de recettes adaptée et simple à réaliser.</p>
+          <p>Mais nous lui proposons aussi un panel de recettes et lui donnons la possibilité de générer une liste de courses.</p>
+        </div>
+      </div>
+
+      <div class="uk-grid-item-match">
+        <div class="uk-card uk-card-default uk-card-body">
+          <%= image_tag "recipeImage.jpg", class: 'uk-img' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-margin-top uk-margin-medium"></div>
+
+    <div class="uk-card uk-card-default uk-card-body">
+      <p>De plus, nous souhaitons mettre en avant les produits des producteurs locaux. Cela passe par la liste de courses. En effet, lorsque nous allons générer cette liste, nous allons en priorité, rediriger vers ces producteurs locaux.</p>
+      <p>Nous voulons mettre en avant les producteurs locaux, en mettant en avant leurs produits. Car nous voulons privilégier la qualité tout en permettant au consommateur de parcourir le moins de distance possible afin de lui faire gagner du temps.</p>
+      <p>Du côté consommateur, nous voulons lui proposer également un panel très complet pour les recettes. Pour cela, nous voulons mettre en place une recherche poussée permettant de trouver exactement ce que le consommateur voudra.</p>
+
+    </div>
+  </div>
+
+</div>
+<hr>
+
+<!--Formulaire-->
+<div class="uk-section uk-section-default uk-padding-remove-top" id="joinUs">
+  <div class="uk-container">
+    <h3>Rejoignez nous!</h3>
+
+    <% if flash[:success]  %>
+      <div class="uk-alert-success" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%= flash[:success] %></p>
+      </div>
+    <% end %>
+
+
+    <% if flash[:danger] %>
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p><%= flash[:danger] %></p>
+        </div>
+    <% end %>
+
+    <div class="uk-container uk-container-large">
+      <%= simple_form_for @landing_page, defaults: { input_html: { class: 'uk-input' }, label:false } do |f| %>
+        <div class="uk-margin">
+        <%= f.input :name, type: "text", placeholder: "Nom" %>
+        </div>
+        <div class="uk-margin">
+        <%= f.input :firstname, placeholder: "Prénom"%>
+        </div>
+          <div class="uk-margin">
+          <%= f.input :email, placeholder: "Email"%>
+          </div>
+        <%= f.button :submit, "Valider" ,class: 'uk-button uk-button-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+</div>
+<!--  Footer-->
+<div class="uk-section-default footer" id="footer">
+  <div class="uk-container">
+
+<!--    Recipy-->
+    <div class="uk-margin-top uk-margin-small">
+      <div class="uk-flex-middle uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
+        <div class="uk-width-1-1@m uk-first-column">
+          <div class="uk-margin-small uk-text-center uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class="" style="">
+            <h1 style="color: #FFFFFF;">Recipy</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    Footer grid-->
+    <div class="uk-flex-middle uk-margin uk-grid" uk-grid="">
+
+      <div class="uk-width-expand@s uk-first-column">
+
+        <h3 class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class="" style="">
+          5-9 Rue du Palais Rihour, 59000 Lille, France </h3>
+
+      </div>
+
+      <div class="uk-width-expand@s">
+
+        <h3 class="uk-margin-remove-top uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class="" style="">
+          Made with ❤️ by Recipy Team </h3>
+
+
+      </div>
+      <div class="uk-width-expand@s">
+
+        <h3 class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class="" style="">
+          contact@recipy.com</h3>
+      </div>
+    </div>
+    <div class="uk-padding-bottom uk-padding-medium"></div>
+  </div>
+</div>
