@@ -1,8 +1,7 @@
 <mj-text>
-    <p class="sentence"><%= t('.greeting', recipient: @email) %></p>
+    <p><%= t('.greeting', recipient: @email) %></p>
 
-    <p class="sentence"><%= t('.instruction') %></p>
+    <p><%= t('.instruction') %></p>
 </mj-text>
-<mj-text>
-    <a class="button" href="<%= confirmation_url(@resource, confirmation_token: @token) %>"><%= t('.action') %></a>
-</mj-text>
+
+<mj-button class="button" href="<%= confirmation_url(@resource, confirmation_token: @token) %>"><%= t('.action') %></mj-button>
