@@ -12,5 +12,6 @@
  *
  *= require uikit/dist/css/uikit
  *= require main
+ *= require landing_pages
  *= require_self
  */

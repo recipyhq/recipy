@@ -1,9 +1,17 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :landing_pages
+
   ActiveAdmin.routes(self)
 
   devise_for :administrators, ActiveAdmin::Devise.config
+
+  namespace :landing_pages do
+    unauthenticated :user do
+      root to: 'landing_pages#index'
+    end
+  end
 
   namespace :admin do
     authenticate :administrator do

@@ -1,0 +1,44 @@
+#main {
+  height: 120vh;
+  background-image: linear-gradient( 110.3deg,  rgba(255,154,59,1) 3%, rgba(255,197,59,1) 97.7% );
+}
+
+div.text_title {
+  text-align: center;
+}
+
+.image-size {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+#div_join {
+  margin: 0 auto;
+  background-color: red;
+  vertical-align: middle
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.main-presentation {
+  text-align: center;
+}
+
+.footer {
+  background-color: #FF9A3C;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+}

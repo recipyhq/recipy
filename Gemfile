@@ -9,6 +9,8 @@ gem 'puma', '~> 3.11'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
+gem 'simple_form'
+
 # gem 'mini_racer', platforms: :ruby
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
@@ -30,7 +32,6 @@ gem 'omniauth-google-oauth2'
 gem 'activeadmin'
 gem 'phony_rails'
 gem 'mjml-rails'
-gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
