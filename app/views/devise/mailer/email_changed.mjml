@@ -1,0 +1,12 @@
+<mj-text>
+  <p><%= t('.greeting', recipient: @email) %></p>
+</mj-text>
+
+
+<mj-text>
+  <% if @resource.try(:unconfirmed_email?) %>
+    <p><%= t('.message', email: @resource.unconfirmed_email) %></p>
+  <% else %>
+    <p><%= t('.message', email: @resource.email) %></p>
+  <% end %>
+</mj-text>
