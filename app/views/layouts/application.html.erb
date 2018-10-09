@@ -9,8 +9,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body class="<%= controller_name %> <%= action_name%>">
 <%= render 'layouts/navbar' %>
+<body class="<%= controller_name %> <%= action_name%>">
 <div class="container-fluid">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %> col-md-8 col-md-offset-2 main"><%= value %></div>
