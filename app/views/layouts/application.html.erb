@@ -10,6 +10,7 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="<%= controller_name %> <%= action_name%>">
+<%= render 'layouts/navbar' %>
 <div class="container-fluid">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %> col-md-8 col-md-offset-2 main"><%= value %></div>
@@ -19,7 +20,6 @@
     <%= yield %>
   </div>
   </head>
-  <%= render 'layouts/navbar' %>
   <body>
     <%= render 'layouts/footer' %>
     <% debug(params) if Rails.env.development? %>
