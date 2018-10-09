@@ -28,6 +28,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'activeadmin'
+gem 'phony_rails'
 gem 'mjml-rails'
 gem 'simple_form'
 

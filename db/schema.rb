@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 2018_08_20_201952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prospects", force: :cascade do |t|
+    t.string "kind", default: "producer"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
