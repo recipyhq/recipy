@@ -27,11 +27,13 @@
                 <mj-divider horizontal-spacing="0" vertical-spacing="0" padding-top="20" padding-bottom="0px" padding-left="0px" padding-right="0px" border-width="1px" border-color="#F3F3F3"></mj-divider>
             </mj-column>
         </mj-section>
-        <mj-section background-color="#3c3c3c">
-            <mj-text align="center" color="#fbfbfb" class="title">
-                <h2><%= yield(:title) %></h2>
-            </mj-text>
-        </mj-section>
+        <% if content_for?(:title) %>
+            <mj-section background-color="#3c3c3c">
+                <mj-text align="center" color="#fbfbfb" class="title">
+                    <h2><%= yield(:title) %></h2>
+                </mj-text>
+            </mj-section>
+        <% end %>
         <mj-section background="#FFFFFF">
             <%= yield %>
         </mj-section>

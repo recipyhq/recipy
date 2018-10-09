@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore JetBrains IDE config
+/.idea
+
 # Ignore bundler config.
 /.bundle
 
@@ -30,5 +33,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-# Support for Jetbrains suite
-.idea/**
+# Ignore macOS config
+.DS_Store
