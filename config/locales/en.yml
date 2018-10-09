@@ -30,6 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  hello: "Hello world"
+  placeholder_email: "E-mail adress"
+  placeholder_password: "Password"
+
+  shared_links:
+    no_account: "No account ?"
   activerecord:
     errors:
       models:
@@ -45,4 +51,3 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
-
