@@ -1,0 +1,21 @@
+/* Styles */
+
+.sign_up_global{
+  border: 0px solid;
+  padding: 40px;
+  box-shadow: 3px 3px 10px 0px $recipy-tertiary-color-clear;
+}
+
+.sign_up_title{
+  color: $recipy-primary-color;
+  font-weight: bold;
+}
+
+.sign_up_background{
+  background-image: url(asset-path("registration/background_food.jpg"));
+ // -webkit-filter: blur(5px)
+}
+
+.sign_up_social{
+  margin: 3%;
+}
