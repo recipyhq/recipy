@@ -31,3 +31,23 @@
 
 en:
   hello: "Hello world"
+  placeholder_email: "E-mail adress"
+  placeholder_password: "Password"
+
+  shared_links:
+    no_account: "No account ?"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "An account already exists with this email address. Please try again"
+              blank: "The Email field must not be empty"
+            password:
+              blank: "The Password field must not be empty"
+            password_confirmation:
+              confirmation: "Incorrect password verification. Please try again"
+            current_password:
+              invalid: "The current password is incorrect. Please try again"
+              blank: "The Current password field must not be empty"

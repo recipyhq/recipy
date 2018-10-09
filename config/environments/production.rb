@@ -31,7 +31,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and
+  # `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -56,13 +57,13 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter = :sidekiq
   # config.active_job.queue_name_prefix = "recipy_#{Rails.env}"
 
   config.action_mailer.delivery_method = :smtp
@@ -75,7 +76,7 @@ Rails.application.configure do
     address: ENV['SMTP_ADDRESS'],
     port: ENV['SMTP_PORT'],
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.

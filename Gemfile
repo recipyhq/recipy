@@ -26,7 +26,11 @@ gem 'devise'
 gem 'devise_token_auth'
 gem 'devise-i18n'
 gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 gem 'activeadmin'
+gem 'phony_rails'
 gem 'mjml-rails'
 
 group :development, :test do

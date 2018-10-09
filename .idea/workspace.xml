@@ -2,49 +2,82 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c174c0a-6e66-4ca9-bd2d-38e250982a65" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ventinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/recipy.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/cutlery.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/food-salad-healthy-lunch (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/iphone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/recipeImage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/waste (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/landing_pages.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/landing_pages_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/landing_pages_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/landing_page.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/landing_pages/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180909062333_create_landing_pages.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180911084528_create_landing_pages_user_table.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20181008140447_add_nameto_landing_page.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20181008140615_add_name_to_landing_page.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20181008140632_add_first_name_to_landing_page.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20181008140644_add_email_to_landing_page.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/controllers/landing_pages_controller_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/landing_pages.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/helpers/landing_pages_helper_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/models/landing_page_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/requests/landing_pages_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/routing/landing_pages_routing_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/views/landing_pages/edit.html.erb_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/views/landing_pages/index.html.erb_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/views/landing_pages/new.html.erb_spec.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/views/landing_pages/show.html.erb_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/confirmation_new/churros.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/password_new/back_password_new.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/password_new/logo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/registration/background_food.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/registration_edit/back_registration_edit.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/wallpapers/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/confirmation_new/confirmation_new.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/overwrite/uikit.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/password_new/styles_global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/registration_edit/styles_global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/sessions_new/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/styles/sign_up/sign_up.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/users/omniauth_callbacks_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/controllers/new_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/jobs/sentry_job.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/mailers/devise_mailer.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/prospect.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/email_changed.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/password_change.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/mails/devise.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/default_url_options.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/sentry.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/locales/fr.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20180812145950_create_prospects.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/factories/prospects.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/jobs/sentry_job_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/models/prospect_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/recipy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/recipy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nvmrc" beforeDir="false" afterPath="$PROJECT_DIR$/.nvmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/base/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/base/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/base/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/base/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/hello_controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cook/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cook/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/mailer/email_changed.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/mailer/password_change.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/shared/_links.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/shared/_links.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/mailer.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/initializers/simple_form.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/simple_form.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -113,7 +146,7 @@
         <entry file="file://$PROJECT_DIR$/app/views/landing_pages/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-803">
-              <caret line="151" column="12" lean-forward="true" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
+              <caret line="151" column="12" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#6;n#!!top" expanded="true" />
               </folding>
@@ -121,11 +154,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
               <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simple_form.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/initializers/simple_form.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -156,6 +198,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/landing_pages.scss" />
         <option value="$PROJECT_DIR$/app/views/landing_pages/index.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/initializers/simple_form.rb" />
       </list>
     </option>
   </component>
@@ -200,55 +243,6 @@
             <path>
               <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
               <item name="recipy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="recipy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipy" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="migrate" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -405,16 +399,15 @@
       <workItem from="1538324927486" duration="1561000" />
       <workItem from="1538961716250" duration="1816000" />
       <workItem from="1538986307055" duration="16390000" />
-      <workItem from="1539059153989" duration="12385000" />
+      <workItem from="1539059153989" duration="13286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54435000" />
+    <option name="totallyTimeSpent" value="55336000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="808" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28397712" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -444,20 +437,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/landing_pages_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/landing_pages/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -672,7 +651,7 @@
     <entry file="file://$PROJECT_DIR$/app/views/landing_pages/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-803">
-          <caret line="151" column="12" lean-forward="true" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
+          <caret line="151" column="12" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#6;n#!!top" expanded="true" />
           </folding>
@@ -683,6 +662,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/wrap_parameters.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/simple_form.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
