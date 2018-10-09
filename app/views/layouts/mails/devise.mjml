@@ -49,9 +49,8 @@
         }
       </mj-style>
     </mj-head>
-  
     <mj-body background-color="#eee" css-class="body">
-  
+
       <mj-section>
 
           <mj-column>
@@ -59,11 +58,11 @@
               <h1>Recipy</h1>
             </mj-text>
           </mj-column>
-      
+
       </mj-section>
-  
+
       <mj-section background-color="#fff">
-  
+
         <mj-column>
           <% if content_for?(:title) %>
             <mj-text align="left">
@@ -81,11 +80,11 @@
           <mj-column>
             <mj-text>
               <p class="grey">Envoyé avec ♥ par Recipy</p>
-              <p class="grey">Recipy, France</p>	
+              <p class="grey">Recipy, France</p>
             </mj-text>
           </mj-column>
-        
+
       </mj-section>
     </mj-body>
-  
+
   </mjml>
