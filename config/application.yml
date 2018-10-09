@@ -7,3 +7,9 @@ development:
 
   SMTP_ADDRESS: 'localhost'
   SMTP_PORT: '1025'
+
+  DEFAULT_URL_HOST: 'localhost'
+
+test:
+  DEFAULT_URL_HOST: 'localhost'
+
