@@ -47,15 +47,16 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'strong_migrations'
+  gem 'xray-rails'
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
+  gem 'strong_migrations'
+  gem 'bullet'
   gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-airbnb', require: false
   gem 'rails-erd', require: false
-  gem 'bullet'
   gem 'overcommit', require: false
 end
 
