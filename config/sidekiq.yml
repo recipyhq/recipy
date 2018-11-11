@@ -1,4 +1,4 @@
-:concurrency: 16
+:concurrency: 10
 :queues:
   - default
   - mailers
