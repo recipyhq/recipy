@@ -1,0 +1,32 @@
+<nav class="uk-navbar-container" uk-navbar>
+  <div class="uk-navbar-left">
+
+    <%= link_to unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' do %>
+      <% image_tag 'logo', class: 'navbar__logo' %>
+    <% end %>
+
+    <ul class="uk-navbar-nav"></ul>
+  </div>
+
+  <div class="uk-navbar-right">
+    <ul class="uk-navbar-nav">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to nil, '' %>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Déconnexion
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </li>
+      <% else %>
+        <li><%= link_to "M'inscrire", new_user_registration_path %></li>
+        <li><%= link_to 'Connexion', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

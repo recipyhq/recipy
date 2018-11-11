@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
     scope module: 'cook' do
@@ -47,15 +47,15 @@ Rails.application.routes.draw do
         root to: 'home#index', as: :authenticated_producer_root
       end
     end
+  end
 
-    namespace :api do
-      mount_devise_token_auth_for 'User', at: 'users'
+  namespace :api do
+    mount_devise_token_auth_for 'User', at: 'users'
 
-      unauthenticated :user do
-      end
+    unauthenticated :user do
+    end
 
-      authenticated :user do
-      end
+    authenticated :user do
     end
   end
 end

@@ -1,26 +1,15 @@
-<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper">
+<div class="uk-position-center">
+  <div class="uk-width-large">
+    <h2 class="uk-text-center"><%= t('.resend_confirmation_instructions') %></h2>
 
-  <div class="uk-padding-small uk-position-center uk-background-muted">
+    <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
+      <%= f.input :email, required: true, autofocus: true %>
 
-    <h2 class="title uk-text-bold uk-text-left action_title">
-      <%= t(".resend_confirmation_instructions") %>
-    </h2>
+      <div class="uk-margin-medium">
+        <%= f.button :submit, t('.resend_confirmation_instructions'), class: 'uk-width-1-1' %>
+      </div>
+    <% end %>
 
-    <div class="uk-padding-small">
-      <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
-        <%= f.full_error :confirmation_token %>
-
-        <div>
-          <%= f.input :email, required: true, autofocus: true, input_html: { class: 'uk-input' } %>
-        </div>
-
-        <div class="uk-padding-small uk-text-center">
-          <%= f.button :submit, t(".resend_confirmation_instructions"), class: 'uk-button uk-button-primary' %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
-    </div>
+    <%= render 'devise/shared/links' %>
   </div>
 </div>

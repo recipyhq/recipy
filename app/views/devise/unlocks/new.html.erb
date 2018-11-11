@@ -1,27 +1,15 @@
-<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper">
-  <div class="uk-padding-small uk-position-center uk-background-muted">
+<div class="uk-position-center">
+  <div class="uk-width-large">
+    <h2 class="uk-text-center"><%= t('.resend_unlock_instructions') %></h2>
 
-      <h2 class="title uk-text-bold uk-text-left action_title">
-        <%= t(".resend_unlock_instructions") %>
-      </h2>
+    <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name)) do |f| %>
+      <%= f.input :email, required: true, autofocus: true %>
 
-      <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
-        <%= f.full_error :unlock_token %>
-        <div class="uk-padding-small uk-text-center">
+      <div class="uk-margin-medium">
+        <%= f.button :submit, t('.resend_unlock_instructions'), class: 'uk-width-1-1' %>
+      </div>
+    <% end %>
 
-        <div class="form-inputs uk-padding-small uk-text-center">
-          <%= f.input :email, required: true, autofocus: true %>
-        </div>
-
-        <div class="form-actions uk-padding-small uk-text-center">
-          <%= f.button :submit, t(".resend_unlock_instructions") %>
-        </div>
-      <% end %>
-
-    </div>
-    <div class="form-actions uk-padding-small uk-text-center uk-text-bottom">
-      <%= render "devise/shared/links" %>
-    </div>
+    <%= render 'devise/shared/links' %>
   </div>
 </div>

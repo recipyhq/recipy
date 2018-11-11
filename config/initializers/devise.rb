@@ -280,14 +280,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.omniauth :facebook, Rails.application.credentials.facebook[:app_id],
-                  Rails.application.credentials.facebook[:app_secret],
-                  callback_url: "https://staging-recipy.herokuapp.com"
-  config.omniauth :twitter, Rails.application.credentials.twitter[:app_id],
-                  Rails.application.credentials.twitter[:app_secret],
-                  callback_url: "https://staging-recipy.herokuapp.com"
-  config.omniauth :google_oauth2, Rails.application.credentials.google[:app_id],
-                  Rails.application.credentials.google[:app_secret],
-                  callback_url: "https://staging-recipy.herokuapp.com"
   # Need a real callback url for twitter because it doesn't support http
 end
