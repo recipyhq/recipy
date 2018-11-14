@@ -8,7 +8,7 @@ development:
   SMTP_ADDRESS: 'localhost'
   SMTP_PORT: '1025'
 
-  DEFAULT_URL_HOST: 'localhost'
+  DEFAULT_URL_HOST: '127.0.0.1'
 
   FACEBOOK_KEY: '<%= Rails.application.credentials[:development][:omniauth][:facebook][:key] %>'
   FACEBOOK_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:facebook][:secret] %>'
@@ -16,5 +16,6 @@ development:
   TWITTER_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:twitter][:secret] %>'
   GOOGLE_KEY: '<%= Rails.application.credentials[:development][:omniauth][:google][:key] %>'
   GOOGLE_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:google][:secret] %>'
+
 test:
   DEFAULT_URL_HOST: 'localhost'
