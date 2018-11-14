@@ -1,12 +1,5 @@
 MALLOC_ARENA_MAX: '2'
 
-FACEBOOK_KEY: '<%= Rails.application.credentials[:omniauth][:facebook][:key] %>'
-FACEBOOK_SECRET: '<%= Rails.application.credentials[:omniauth][:facebook][:secret] %>'
-TWITTER_KEY: '<%= Rails.application.credentials[:omniauth][:twitter][:key] %>'
-TWITTER_SECRET: '<%= Rails.application.credentials[:omniauth][:twitter][:secret] %>'
-GOOGLE_KEY: '<%= Rails.application.credentials[:omniauth][:google][:key] %>'
-GOOGLE_SECRET: '<%= Rails.application.credentials[:omniauth][:google][:secret] %>'
-
 development:
   WEB_CONCURRENCY: '0'
 
@@ -17,5 +10,11 @@ development:
 
   DEFAULT_URL_HOST: 'localhost'
 
+  FACEBOOK_KEY: '<%= Rails.application.credentials[:development][:omniauth][:facebook][:key] %>'
+  FACEBOOK_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:facebook][:secret] %>'
+  TWITTER_KEY: '<%= Rails.application.credentials[:development][:omniauth][:twitter][:key] %>'
+  TWITTER_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:twitter][:secret] %>'
+  GOOGLE_KEY: '<%= Rails.application.credentials[:development][:omniauth][:google][:key] %>'
+  GOOGLE_SECRET: '<%= Rails.application.credentials[:development][:omniauth][:google][:secret] %>'
 test:
   DEFAULT_URL_HOST: 'localhost'
