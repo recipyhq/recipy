@@ -5,10 +5,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     omniauth_authentication(:facebook)
   end
 
-  def twitter
-    omniauth_authentication(:twitter)
-  end
-
   def google_oauth2
     omniauth_authentication(:google)
   end
