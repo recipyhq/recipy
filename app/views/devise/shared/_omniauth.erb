@@ -1,15 +1,10 @@
-<% if Rails.env.production? %>
-  <div class="uk-margin-small uk-text-center">
-    <%= link_to user_facebook_omniauth_authorize_path, class: 'uk-button uk-button-primary uk-width-1-1 uk-flex uk-flex-middle' do %>
-      <span uk-icon="icon: facebook"></span>
-      <div class="uk-margin-auto">Connexion avec Facebook</div>
-    <% end %>
-  </div>
-
-  <div class="uk-margin-small uk-text-center">
-    <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'uk-button uk-button-primary uk-width-1-1 uk-flex uk-flex-middle' do %>
-      <span uk-icon="icon: google" class="uk-margin-small-right"></span>
-      <div class="uk-margin-auto">Connexion avec Google</div>
-    <% end %>
-  </div>
+<% if Rails.env.production? && devise_mapping.omniauthable? %>
+  <% resource_class.omniauth_providers.each do |provider| %>
+    <div class="uk-margin-small uk-text-center">
+      <%= link_to omniauth_authorize_path(resource_name, provider), class: 'uk-button uk-button-primary uk-width-1-1 uk-flex uk-flex-middle' do %>
+        <span uk-icon="icon: <%= provider %>"></span>
+        <div class="uk-margin-auto"><%= t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)) %></div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
