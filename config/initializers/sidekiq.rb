@@ -1,3 +1,5 @@
+return unless Rails.env.production?
+
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV['REDIS_URL'], network_timeout: 5 }
 end
