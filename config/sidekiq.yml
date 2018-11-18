@@ -1,4 +1,10 @@
-:concurrency: 10
+:verbose: <%= ENV.fetch('SIDEKIQ_VERBOSE', false) %>
+:timeout: <%= ENV.fetch('SIDEKIQ_TIMEOUT', 30) %>
+:concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 10) %>
+
 :queues:
-  - default
-  - mailers
+- [critical, 4]
+- [mailers, 4]
+- [default, 2]
+- [low, 1]
+- [sentries, 1]
