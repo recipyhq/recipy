@@ -36,6 +36,25 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def edit
+    find_ingredient
+  end
+
+  def update
+    find_ingredient
+    if @ingredient.update(ingredient_params)
+      redirect_to ingredients_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    find_ingredient
+    @ingredient.destroy
+    redirect_to ingredients_path
+  end
+
   private
 
   def find_ingredient
