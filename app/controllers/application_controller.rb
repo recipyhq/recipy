@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token, if: :api_controller?
 
+
   with_options unless: :disable_pundit_checks? do
     after_action :verify_authorized, except: :index
     after_action :verify_policy_scoped, only: :index
@@ -20,10 +21,11 @@ class ApplicationController < ActionController::Base
   def active_admin_devise_controller?
     self.class.to_s.match(/^ActiveAdmin::Devise::/).present?
   end
-
+  
   private
 
   def disable_pundit_checks?
     devise_controller? || active_admin_controller? || active_admin_devise_controller?
   end
+  
 end

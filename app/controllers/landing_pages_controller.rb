@@ -1,21 +1,20 @@
-class LandingPagesController < InheritedResources::Base
+class LandingPagesController < ApplicationController
+
+  before_action :disable_nav
+
 
   def index
     skip_policy_scope
     skip_authorization
-    @landing_page = LandingPage.new()
   end
 
   def validate
     skip_authorization
   end
 
-  def new
-    skip_authorization
-  end
-
   def create
     skip_authorization
+
     name = landing_page_params['name']
     firstname = landing_page_params['firstname']
     email = landing_page_params['email']
@@ -23,26 +22,26 @@ class LandingPagesController < InheritedResources::Base
     name.inspect
     firstname.inspect
     email.inspect
-    if (name.nil?) || (firstname.nil?) || (email.nil?)
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: "Les champs ne doivent pas être vide" }
-      return
-    end
+ 
 
-    landing_page = LandingPage.new(landing_page_params)
-    if (landing_page.valid?)
-      landing_page.save
+    prospect = Prospect.new(landing_page_params)
+    if (prospect.valid?)
+      prospect.save
       redirect_to landing_pages_path(anchor: 'joinUs'), flash: { success: "Bienvenu sur Recipy!" }
     else
-      @landing_page = landing_page
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: "Oh boy!" }
+      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: prospect.errors.full_messages.to_sentence }
 
     end
   end
 
   private
 
+  def disable_nav
+    @disable_nav = true
+  end
+
   def landing_page_params
-    params.require(:landing_page).permit(:name, :firstname, :email)
+    params.require(:prospect).permit(:last_name, :first_name, :email)
   end
 
 end
