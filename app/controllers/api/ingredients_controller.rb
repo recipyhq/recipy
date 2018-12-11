@@ -18,13 +18,16 @@ class Api::IngredientsController < ApplicationController
   end
 
   def create
-    new_ingredient = Ingredient.new(ingredient_params)
-    if new_ingredient.valid?
-      new_ingredient.save
-      redirect_to api_ingredient_path(new_ingredient.id)
+    if !params[:ingredient].key?(:name)
+      render :json => { Status: "KO", Cause: t("ingredient.no_null") }.as_json
     else
-      @ingredient = new_ingredient
-      render :json => @ingredient.as_json
+      new_ingredient = Ingredient.new(ingredient_params)
+      if new_ingredient.valid?
+        new_ingredient.save
+        redirect_to api_ingredient_path(new_ingredient.id)
+      else
+        render :json => { Status: "KO", Cause: t("ingredient.not_created") }.as_json
+      end
     end
   end
 

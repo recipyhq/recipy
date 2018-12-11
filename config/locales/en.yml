@@ -51,3 +51,8 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+
+  ingredient:
+    no_title: "Missing ingredient title"
+    not_created: "Ingredient cannot be created"
+    no_null: "Ingredient cannot be null"

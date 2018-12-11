@@ -19,3 +19,9 @@ fr:
             current_password:
               invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
+
+  ingredient:
+    no_title: "Titre de l'ingrédient manquant"
+    not_created: "L'ingrédient n'a pas pu être créé"
+    no_null: "L'ingredient ne peut pas être nul"
+
