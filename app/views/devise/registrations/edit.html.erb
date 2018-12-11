@@ -3,10 +3,8 @@
   <div class="uk-padding-small uk-position-center uk-background-muted">
 
     <h2 class="uk-text-bold uk-text-left recipy-title">
-      <%= t(".title", resource: resource_name.to_s.humanize) %>
+      <%= t("activerecord.errors.models.user.views.edit_title", resource: resource_name.to_s.humanize) %>
     </h2>
-
-    <%= resource.avatar.attached? %>
 
     <div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
@@ -23,8 +21,10 @@
           <% end %>
 
           <div class="uk-padding-small">
-            <% if resource.avatar.attached? %>
-              <%= image_tag resource.avatar.variant(resize:'100x100', rotate: '-90  ' ) %>
+            <% if resource.avatar.attached? && resource.avatar.blob.content_type.starts_with?('image/')%>
+              <%= image_tag resource.avatar.variant(resize: '100x100') %>
+            <% else %>
+              <p><%= t('activerecord.errors.models.user.attributes.avatar.not_found') %></p>
             <% end %>
             <%= f.input :avatar %>
           </div>

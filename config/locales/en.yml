@@ -51,6 +51,10 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+            avatar:
+              not_found: "No avatar was found"
+          views:
+              edit_title: "Edit your profile"
 
   ingredient:
     no_title: "Missing ingredient title"
