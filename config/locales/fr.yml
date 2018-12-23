@@ -19,3 +19,32 @@ fr:
             current_password:
               invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
+  recipe:
+      title:
+        index: "Toutes les recettes"
+        edit: "Modifier votre recette"
+        new: "Création d'une recette"
+        title: "Titre"
+        score: "Note"
+        step: "Etape(s)"
+        time: "Temps de préparation (en min)"
+        description: "Description"
+        difficulty: "Difficulté"
+        ingredient: "Ingrédient(s)"
+        utensil: "Ustensile(s)"
+      action:
+        edit: "Modifier"
+        show: "Afficher"
+        new: "Nouvelle recette"
+        destroy: "Supprimer"
+        back: "Précédent"
+        confirm: "Êtes-vous sûr ?"
+      creation:
+        invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
+        valid: "Nouvelle recette créée! Merci"
+        confirm: "Valider"
+      edit:
+        invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
+        valid: "Votre recette a été modifiée avec succés!"
+      destroy:
+        valid: "Votre recette a été supprimée"

@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :recipes
   resources :landing_pages
 
   ActiveAdmin.routes(self)
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
         root to: 'home#index', as: :authenticated_producer_root
       end
     end
+    resources :recipe
   end
 
   namespace :api do

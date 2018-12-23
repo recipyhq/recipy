@@ -51,3 +51,32 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+  recipe:
+    title:
+      index: "All recipes"
+      edit: "Edit your recipe"
+      new: "Create a new recipe"
+      title: "Title"
+      score: "Score"
+      step: "Step"
+      time: "Time (min)"
+      description: "Description"
+      difficulty: "Difficulty"
+      ingredient: "Ingredient(s)"
+      utensil: "Utensil(s)"
+    action:
+      edit: "Edit"
+      show: "Show"
+      new: "New recipe"
+      destroy: "Destroy"
+      back: "Back"
+      confirm: "Are you sure ?"
+    creation:
+      invalid: "Your recipe is invalide, please make sure to fill the required fields"
+      valid: "New recipe created! Thank you"
+      confirm: "Validate"
+    edit:
+      invalid: "Your recipe is invalide, please make sure to fill the required fields"
+      valid: "Your recipe has been successfully modified!"
+    destroy:
+      valid: "Your recipe have been deleted"
