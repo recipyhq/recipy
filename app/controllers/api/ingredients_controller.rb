@@ -10,7 +10,7 @@ class Api::IngredientsController < ApplicationController
 
   def show
     find_ingredient
-    render json: @ingredient
+    render json: @ingredient.as_json
   end
 
   def new
@@ -18,8 +18,9 @@ class Api::IngredientsController < ApplicationController
   end
 
   def create
-    if !params[:ingredient].key?(:name)
-      render :json => { Status: "KO", Cause: t("ingredient.no_null") }.as_json
+    if (!params[:ingredient].key?(:name) || !params[:ingredient].key?(:description)) ||
+      params[:ingredient].keys.length != 3
+      render :json => { Status: "KO", Cause: t("ingredient.unrecognized") }.as_json
     else
       new_ingredient = Ingredient.new(ingredient_params)
       if new_ingredient.valid?
@@ -44,17 +45,21 @@ class Api::IngredientsController < ApplicationController
 
   def destroy
     find_ingredient
-    @ingredient.destroy
-    redirect_to api_ingredients_path
+    if !@ingredient.nil?
+      @ingredient.destroy
+      redirect_to api_ingredients_path
+    else
+      render :json => { Status: "KO", Cause: t("ingredient.unrecognized") }.as_json
+    end
   end
 
   private
 
   def find_ingredient
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find_by_id(params[:id])
   end
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :description)
+    params.require(:ingredient).permit(:name, :description, :tags, :ingredient_tag_ids => [])
   end
 end

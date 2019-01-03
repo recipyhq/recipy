@@ -53,10 +53,12 @@ en:
               blank: "The Current password field must not be empty"
             avatar:
               not_found: "No avatar was found"
-          views:
-              edit_title: "Edit your profile"
+  views:
+    edit:
+      title: "Edit your profile"
 
   ingredient:
+    unrecognized: ""
     no_title: "Missing ingredient title"
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
