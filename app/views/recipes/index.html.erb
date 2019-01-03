@@ -14,8 +14,6 @@
       <th><%= t("recipe.title.score") %></th>
       <th><%= t("recipe.title.difficulty") %></th>
       <th><%= t("recipe.title.description") %></th>
-      <th><%= t("recipe.title.ingredient") %></th>
-      <th><%= t("recipe.title.utensil") %></th>
       <th><%= t("recipe.title.step") %></th>
       <th><%= t("recipe.title.time") %></th>
       <th colspan="3"></th>
@@ -29,8 +27,6 @@
         <td><%= recipe.score %></td>
         <td><%= recipe.difficulty %></td>
         <td><%= recipe.description %></td>
-        <td><%= recipe.ingredients.first.title %></td>
-        <td><%= recipe.utensils.first.title %></td>
         <td><%= recipe.step %></td>
         <td><%= recipe.time %></td>
         <td><%= link_to t("recipe.action.show"), recipe %></td>

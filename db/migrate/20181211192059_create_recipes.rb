@@ -7,9 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :step
       t.integer :difficulty
       t.integer :time
-
       t.timestamps
     end
   end
 end
-

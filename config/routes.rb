@@ -48,7 +48,7 @@ Rails.application.routes.draw do
         root to: 'home#index', as: :authenticated_producer_root
       end
     end
-    resources :recipe
+    resources :recipes
   end
 
   namespace :api do
@@ -59,5 +59,6 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
+    resources :recipes
   end
 end

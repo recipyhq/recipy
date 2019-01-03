@@ -9,6 +9,8 @@ class RecipesController < InheritedResources::Base
 
   def show
     find_recipe
+    view = @recipe.view
+    @recipe.update_attribute(:view, view + 1)
   end
 
   def new
@@ -51,7 +53,7 @@ class RecipesController < InheritedResources::Base
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty,
-                                   :ingredients)
+    params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
+                                   :ingredient_ids, :utensil_ids)
   end
 end
