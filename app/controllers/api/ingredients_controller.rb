@@ -5,12 +5,12 @@ class Api::IngredientsController < ApplicationController
   def index
     skip_policy_scope
     @ingredients = Ingredient.all
-    render json: @ingredients.as_json
+    render json: @ingredients.as_json(:include => :ingredient_tags)
   end
 
   def show
     find_ingredient
-    render json: @ingredient.as_json
+    render json: @ingredient.as_json(:include => :ingredient_tags)
   end
 
   def new
