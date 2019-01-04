@@ -1,9 +1,14 @@
 if Rails.env.development?
-  Administrator.create! do |admin|
-    admin.email = 'admin@recipy.com'
-    admin.password = 'password'
-    admin.password_confirmation = 'password'
-  end
+  ## Administrator.create! do |admin|
+  ##  admin.email = 'admin@recipy.com'
+  ##  admin.password = 'password'
+  ##  admin.password_confirmation = 'password'
+  ## end
+end
+Administrator.create! do |admin|
+  admin.email = 'admin@recipy.com'
+  admin.password = 'password'
+  admin.password_confirmation = 'password'
 end
 IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Viande"
