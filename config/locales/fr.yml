@@ -19,6 +19,13 @@ fr:
             current_password:
               invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
+            avatar:
+              not_found: "Aucun avatar n'a été trouvé"
+
+  views:
+    edit:
+      title: "Editer son profil"
+
   recipe:
       title:
         index: "Toutes les recettes"
@@ -48,3 +55,9 @@ fr:
         valid: "Votre recette a été modifiée avec succés!"
       destroy:
         valid: "Votre recette a été supprimée"
+
+  ingredient:
+    unrecognized: "Ingredient non reconnu par l'application"
+    no_title: "Titre de l'ingrédient manquant"
+    not_created: "L'ingrédient n'a pas pu être créé"
+    no_null: "L'ingredient ne peut pas être nul"

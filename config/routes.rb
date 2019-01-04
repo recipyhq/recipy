@@ -60,5 +60,6 @@ Rails.application.routes.draw do
     authenticated :user do
     end
     resources :recipes
+    resources :ingredients
   end
 end

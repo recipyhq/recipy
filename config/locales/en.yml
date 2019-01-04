@@ -51,6 +51,13 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+            avatar:
+              not_found: "No avatar was found"
+
+  views:
+    edit:
+      title: "Edit your profile"
+
   recipe:
     title:
       index: "All recipes"
@@ -80,3 +87,9 @@ en:
       valid: "Your recipe has been successfully modified!"
     destroy:
       valid: "Your recipe have been deleted"
+
+  ingredient:
+    unrecognized: ""
+    no_title: "Missing ingredient title"
+    not_created: "Ingredient cannot be created"
+    no_null: "Ingredient cannot be null"

@@ -3,7 +3,7 @@
   <div class="uk-padding-small uk-position-center uk-background-muted">
 
     <h2 class="uk-text-bold uk-text-left recipy-title">
-      <%= t(".title", resource: resource_name.to_s.humanize) %>
+      <%= t("views.edit.title", resource: resource_name.to_s.humanize) %>
     </h2>
 
     <div>
@@ -21,15 +21,25 @@
           <% end %>
 
           <div class="uk-padding-small">
-            <%= f.input :password, autocomplete: "off", placeholder: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false, input_html: { class: 'uk-input' } %>
+            <% if resource.avatar.attached? && resource.avatar.blob.content_type.starts_with?('image/')%>
+              <%= image_tag resource.avatar.variant(resize: '100x100') %>
+            <% else %>
+              <p><%= t('activerecord.errors.models.user.attributes.avatar.not_found') %></p>
+            <% end %>
+            <%= f.input :avatar %>
+          </div>
+
+
+          <div class="uk-padding-small">
+            <%= f.input :password, autocomplete: "off", placeholder: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false, input_html: {class: 'uk-input'} %>
           </div>
 
           <div class="uk-padding-small">
-            <%= f.input :password_confirmation, required: false, input_html: { class: 'uk-input' } %>
+            <%= f.input :password_confirmation, required: false, input_html: {class: 'uk-input'} %>
           </div>
 
           <div class="uk-padding-small">
-            <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true, input_html: { class: 'uk-input' } %>
+            <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true, input_html: {class: 'uk-input'} %>
           </div>
         </div>
 

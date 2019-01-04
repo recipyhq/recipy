@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :ingredient do
-    title { "MyString" }
+    name { "MyString" }
+    description { "MyText" }
   end
 end
