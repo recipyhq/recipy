@@ -56,7 +56,7 @@ class Api::RecipesController < ApplicationController
     if !Recipe.find_by_id(params[:id]).nil?
       @recipe = Recipe.find(params[:id])
     else
-      render :json => { Status: "KO", Cause: "error: wrong id" }.as_json
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json
     end
   end
 

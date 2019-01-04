@@ -87,6 +87,8 @@ en:
       valid: "Your recipe has been successfully modified!"
     destroy:
       valid: "Your recipe have been deleted"
+    api:
+      invalid_id: "Unfindable recipe, wrong ID"
 
   ingredient:
     unrecognized: ""

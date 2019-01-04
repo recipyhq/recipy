@@ -15,9 +15,9 @@ ActiveAdmin.register Recipe do
     column :difficulty
     column :time
     column :ingredient do |recipe|
-      table_for recipe.ingredients.order('title ASC') do
+      table_for recipe.ingredients.order('name ASC') do
         column do |elem|
-          elem.title
+          elem.name
         end
       end
     end
@@ -41,9 +41,9 @@ ActiveAdmin.register Recipe do
       row :step
       row :difficulty
       row :time
-      table_for recipe.ingredients.order('title ASC') do
+      table_for recipe.ingredients.order('name ASC') do
         column "Ingredients" do |elem|
-          elem.title
+          elem.name
         end
       end
       table_for recipe.utensils.order('title ASC') do

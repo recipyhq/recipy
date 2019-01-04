@@ -55,6 +55,8 @@ fr:
         valid: "Votre recette a été modifiée avec succés!"
       destroy:
         valid: "Votre recette a été supprimée"
+      api:
+        invalid_id: "Recette introuvable, mauvais ID"
 
   ingredient:
     unrecognized: "Ingredient non reconnu par l'application"
