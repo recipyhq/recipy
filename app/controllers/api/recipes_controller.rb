@@ -5,7 +5,7 @@ class Api::RecipesController < ApplicationController
   def index
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment => :blob)
+                               :image_attachment => :blob).all
     render json: @recipes.as_json(include: [
       :recipe_ingredients, :ingredients,
       :recipe_utensils, :utensils,
@@ -16,8 +16,10 @@ class Api::RecipesController < ApplicationController
     find_recipe
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
-    render json: @recipe.as_json(:include => [:recipe_ingredients, :recipe_utensils],
-                                 methods: %i(image_url))
+    render json: @recipe.as_json(:include => [
+      :recipe_ingredients, :ingredients,
+      :recipe_utensils, :utensils,
+    ], methods: %i(image_url))
   end
 
   def new
@@ -26,9 +28,13 @@ class Api::RecipesController < ApplicationController
 
   def create
     new_recipe = Recipe.new(recipe_params)
-    if new_recipe.valid?
-      new_recipe.save
-      render :json => { Status: "OK", Cause: t("recipe.creation.valid") }.as_json
+    if new_recipe.valid? && new_recipe.image.attached?
+      if new_recipe.image.blob.content_type.starts_with?('image/')
+        new_recipe.save
+        render :json => { Status: "OK", Cause: t("recipe.creation.valid") }.as_json
+      else
+        render :json => { Status: "KO", Cause: t("recipe.creation.invalid_image") }.as_json
+      end
     else
       render :json => { Status: "KO", Cause: t("recipe.creation.invalid") }.as_json
     end
@@ -59,7 +65,8 @@ class Api::RecipesController < ApplicationController
 
   def find_recipe
     if !Recipe.find_by_id(params[:id]).nil?
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
+                                :image_attachment => :blob).find(params[:id])
     else
       render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json
     end

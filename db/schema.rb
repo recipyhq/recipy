@@ -89,20 +89,6 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "landing_pages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "firstname"
-    t.string "email"
-  end
-
-  create_table "landing_pages_user_tables", force: :cascade do |t|
-    t.string "name"
-    t.string "firstName"
-    t.string "email"
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.string "account_type"

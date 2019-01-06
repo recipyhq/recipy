@@ -8,6 +8,8 @@ ActiveAdmin.register Ingredient do
     id_column
     column :name
     column :description
+    column :created_at
+    column :updated_at
     column :ingredient_tag_ids do |ingredient|
       table_for ingredient.ingredient_tags.order('name ASC') do
         column do |elem|
@@ -22,6 +24,8 @@ ActiveAdmin.register Ingredient do
     attributes_table do
       row :name
       row :description
+      row :created_at
+      row :updated_at
       table_for ingredient.ingredient_tags.order('name ASC') do
         column "Tags" do |tag|
           tag.name

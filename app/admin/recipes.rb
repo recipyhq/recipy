@@ -1,7 +1,7 @@
 ActiveAdmin.register Recipe do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :title, :description, :step, :difficulty, :time, :view, :score,
+  permit_params :title, :description, :step, :difficulty, :time, :view, :score, :image,
                 :utensil_ids => [], :ingredient_ids => []
 
   index do
@@ -38,6 +38,13 @@ ActiveAdmin.register Recipe do
       row :view
       row :score
       row :description
+      unless :image.nil?
+        row :image do |ad|
+          unless ad.image.attachment.nil?
+            image_tag url_for(ad.image.variant(resize: '100x100'))
+          end
+        end
+      end
       row :step
       row :difficulty
       row :time
@@ -60,6 +67,7 @@ ActiveAdmin.register Recipe do
       f.input :description
       f.input :step
       f.input :difficulty
+      f.input :image, :as => :file
       f.input :time
       f.input :ingredients, :as => :check_boxes
       f.input :utensils, :as => :check_boxes
