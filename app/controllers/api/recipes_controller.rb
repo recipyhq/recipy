@@ -5,7 +5,7 @@ class Api::RecipesController < ApplicationController
   def index
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment)
+                               :image_attachment => :blob)
     render json: @recipes.as_json(include: [
       :recipe_ingredients, :ingredients,
       :recipe_utensils, :utensils,
@@ -16,7 +16,8 @@ class Api::RecipesController < ApplicationController
     find_recipe
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
-    render json: @recipe.as_json(:include => [:recipe_ingredients, :recipe_utensils, :image])
+    render json: @recipe.as_json(:include => [:recipe_ingredients, :recipe_utensils],
+                                 methods: %i(image_url))
   end
 
   def new
@@ -66,6 +67,6 @@ class Api::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
-                                   :ingredient_ids => [], :utensil_ids => [])
+                                   :image, :ingredient_ids => [], :utensil_ids => [])
   end
 end
