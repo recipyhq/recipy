@@ -158,13 +158,15 @@ Utensil.create! do |utensil|
 end
 Recipe.create! do |recipe|
   recipe.title = "Boeuf carottes"
-  recipe.description = "Repas familiale très aprécié en France"
+  recipe.description = "Repas familiale très apprécié en France"
   recipe.step = "Coupez la viande en plusieurs morceaux.
 Les faire cuire dans une casserole"
   recipe.time = 30
   recipe.difficulty = 5
   recipe.ingredients << Ingredient.find_by_name("Boeuf")
   recipe.ingredients << Ingredient.find_by_name("Carotte")
+  recipe.recipe_ingredients[0].quantity = "200 gr"
+  recipe.recipe_ingredients[1].quantity = "2 pièces"
   recipe.utensils << Utensil.find_by_title("Marmite")
 end
 Recipe.create! do |recipe|
@@ -174,9 +176,13 @@ Recipe.create! do |recipe|
 Étalez le beurre avec un couteau et disposez le jambon sur le dessus.
 Enfin mettez la deuxième tranche de pain au-dessus du jambon."
   recipe.time = 5
+  recipe.person = 4
   recipe.difficulty = 1
   recipe.ingredients << Ingredient.find_by_name("Jambon")
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.ingredients << Ingredient.find_by_name("Pain")
+  recipe.recipe_ingredients[0].quantity = "4 tranches"
+  recipe.recipe_ingredients[1].quantity = "1 noisette"
+  recipe.recipe_ingredients[2].quantity = "2 tranches"
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
