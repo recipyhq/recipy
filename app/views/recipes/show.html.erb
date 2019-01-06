@@ -10,6 +10,10 @@
   <%= @recipe.title %>
 </p>
 
+<div>
+  <td><%= image_tag(@recipe.image.variant(resize: '100x100')) %></td>
+</div>
+
 <p>
   <strong><%= t("recipe.title.score") %>:</strong>
   <%= @recipe.score %>

@@ -52,9 +52,11 @@ fr:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Nouvelle recette créée! Merci"
         confirm: "Valider"
+        invalid_image: "Fichier image invalide"
       edit:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
+        invalid_image: "Fichier image invalide"
       destroy:
         valid: "Votre recette a été supprimée"
       api:

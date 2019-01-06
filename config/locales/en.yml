@@ -84,9 +84,11 @@ en:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "New recipe created! Thank you"
       confirm: "Validate"
+      invalid_image: "Invalid image file"
     edit:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"
+      invalid_image: "Invalid image file"
     destroy:
       valid: "Your recipe have been deleted"
     api:

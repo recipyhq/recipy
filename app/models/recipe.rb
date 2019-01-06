@@ -8,4 +8,10 @@ class Recipe < ApplicationRecord
   has_many :ingredients, :through => :recipe_ingredients
   has_many :recipe_utensils
   has_many :utensils, :through => :recipe_utensils
+  has_one_attached :image
+  validates :image, presence: true
+
+  def image_url
+    Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  end
 end

@@ -4,18 +4,19 @@ class Api::RecipesController < ApplicationController
 
   def index
     skip_policy_scope
-    @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils)
+    @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
+                               :image_attachment)
     render json: @recipes.as_json(include: [
       :recipe_ingredients, :ingredients,
       :recipe_utensils, :utensils,
-    ])
+    ], methods: %i(image_url))
   end
 
   def show
     find_recipe
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
-    render json: @recipe.as_json(:include => [:recipe_ingredients, :recipe_utensils])
+    render json: @recipe.as_json(:include => [:recipe_ingredients, :recipe_utensils, :image])
   end
 
   def new
