@@ -11,7 +11,9 @@
 </p>
 
 <div>
-  <td><%= image_tag(@recipe.image.variant(resize: '100x100')) %></td>
+  <% if @recipe.image.attached? && @recipe.image.blob.content_type.starts_with?('image/') %>
+    <td><%= image_tag(@recipe.image.variant(resize: '100x100')) %></td>
+  <% end %>
 </div>
 
 <p>
