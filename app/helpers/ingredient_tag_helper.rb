@@ -1,0 +1,2 @@
+module IngredientTagHelper
+end

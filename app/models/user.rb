@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :timeoutable, :validatable, :lockable,
          :omniauthable, omniauth_providers: %i(facebook twitter google_oauth2)
 
+  has_one_attached :avatar
+
   has_one :cook_account,
           source: :account,
           source_type: 'Cook::Account',

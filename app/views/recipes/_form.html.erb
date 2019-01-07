@@ -1,0 +1,17 @@
+
+
+<%= simple_form_for(@recipe) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :title, label: t("recipe.title.title") %>
+    <%= f.file_field :image%>
+    <%= f.input :description, label: t("recipe.title.description") %>
+    <%= f.input :step, label: t("recipe.title.step") %>
+    <%= f.input :difficulty, label: t("recipe.title.difficulty") %>
+    <%= f.input :time, label: t("recipe.title.time") %>
+
+  <div class="uk-margin-medium">
+    <%= f.button :submit, t("recipe.creation.confirm") %>
+  </div>
+<% end %>

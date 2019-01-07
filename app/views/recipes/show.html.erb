@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<%  if flash[:success] %>
+  <div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+<p>
+  <strong><%= t("recipe.title.title") %>:</strong>
+  <%= @recipe.title %>
+</p>
+
+<div>
+  <% if @recipe.image.attached? && @recipe.image.blob.content_type.starts_with?('image/') %>
+    <td><%= image_tag(@recipe.image.variant(resize: '100x100')) %></td>
+  <% end %>
+</div>
+
+<p>
+  <strong><%= t("recipe.title.score") %>:</strong>
+  <%= @recipe.score %>
+</p>
+
+<p>
+  <strong><%= t("recipe.title.difficulty") %>:</strong>
+  <%= @recipe.difficulty %>
+</p>
+
+<p>
+  <strong><%= t("recipe.title.description") %>:</strong>
+  <%= @recipe.description %>
+</p>
+
+<p>
+  <strong><%= t("recipe.title.step") %>:</strong>
+  <%= @recipe.step %>
+</p>
+
+<p>
+  <strong><%= t("recipe.title.time") %>:</strong>
+  <%= @recipe.time %>
+</p>
+
+<%= link_to t("recipe.action.edit"), edit_recipe_path(@recipe) %> |
+<%= link_to t("recipe.action.back"), recipes_path %>

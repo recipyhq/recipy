@@ -19,3 +19,51 @@ fr:
             current_password:
               invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
+            avatar:
+              not_found: "Aucun avatar n'a été trouvé"
+      messages:
+        record_invalid: "Enregistrement invalide"
+
+  views:
+    edit:
+      title: "Editer son profil"
+
+  recipe:
+      title:
+        index: "Toutes les recettes"
+        edit: "Modifier votre recette"
+        new: "Création d'une recette"
+        title: "Titre"
+        score: "Note"
+        step: "Etape(s)"
+        time: "Temps de préparation (en min)"
+        description: "Description"
+        difficulty: "Difficulté"
+        ingredient: "Ingrédient(s)"
+        utensil: "Ustensile(s)"
+      action:
+        edit: "Modifier"
+        show: "Afficher"
+        new: "Nouvelle recette"
+        destroy: "Supprimer"
+        back: "Précédent"
+        confirm: "Êtes-vous sûr ?"
+      creation:
+        invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
+        valid: "Nouvelle recette créée! Merci"
+        confirm: "Valider"
+        invalid_image: "Fichier image invalide"
+      edit:
+        invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
+        valid: "Votre recette a été modifiée avec succés!"
+        invalid_image: "Fichier image invalide"
+      destroy:
+        valid: "Votre recette a été supprimée"
+      api:
+        invalid_id: "Recette introuvable, mauvais ID"
+
+  ingredient:
+    unrecognized: "Ingredient non reconnu par l'application"
+    no_title: "Titre de l'ingrédient manquant"
+    not_created: "L'ingrédient n'a pas pu être créé"
+    no_null: "L'ingredient ne peut pas être nul"

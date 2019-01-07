@@ -51,3 +51,51 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+            avatar:
+              not_found: "No avatar was found"
+      messages:
+        record_invalid: "Invalid record"
+
+  views:
+    edit:
+      title: "Edit your profile"
+
+  recipe:
+    title:
+      index: "All recipes"
+      edit: "Edit your recipe"
+      new: "Create a new recipe"
+      title: "Title"
+      score: "Score"
+      step: "Step"
+      time: "Time (min)"
+      description: "Description"
+      difficulty: "Difficulty"
+      ingredient: "Ingredient(s)"
+      utensil: "Utensil(s)"
+    action:
+      edit: "Edit"
+      show: "Show"
+      new: "New recipe"
+      destroy: "Destroy"
+      back: "Back"
+      confirm: "Are you sure ?"
+    creation:
+      invalid: "Your recipe is invalide, please make sure to fill the required fields"
+      valid: "New recipe created! Thank you"
+      confirm: "Validate"
+      invalid_image: "Invalid image file"
+    edit:
+      invalid: "Your recipe is invalide, please make sure to fill the required fields"
+      valid: "Your recipe has been successfully modified!"
+      invalid_image: "Invalid image file"
+    destroy:
+      valid: "Your recipe have been deleted"
+    api:
+      invalid_id: "Unfindable recipe, wrong ID"
+
+  ingredient:
+    unrecognized: ""
+    no_title: "Missing ingredient title"
+    not_created: "Ingredient cannot be created"
+    no_null: "Ingredient cannot be null"
