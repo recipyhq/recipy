@@ -85,7 +85,7 @@ class Api::RecipesController < ApplicationController
 
     @recipes.each do |recipe|
       build_recipe_ingredients(recipe, @mrg_tab)
-      @recipes_hash[i]['ingredient'] = @mrg_tab
+      @recipes_hash[i]['ingredients'] = @mrg_tab
       i += 1
     end
   end
