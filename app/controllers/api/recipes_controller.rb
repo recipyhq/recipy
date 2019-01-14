@@ -5,21 +5,25 @@ class Api::RecipesController < ApplicationController
   def index
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment => :blob).all
-    render json: @recipes.as_json(include: [
-      :recipe_ingredients, :ingredients,
-      :recipe_utensils, :utensils,
-    ], methods: %i(image_url))
+                               :image_attachment).all
+
+    build_recipe_list_ingredients
+
+    render json: @recipes_hash
   end
 
   def show
     find_recipe
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
-    render json: @recipe.as_json(:include => [
-      :recipe_ingredients, :ingredients,
-      :recipe_utensils, :utensils,
-    ], methods: %i(image_url))
+
+    recipe = @recipe.as_json(:include => [:utensils], methods: %i(image_url))
+    tab = []
+
+    build_recipe_ingredients(@recipe, tab)
+    recipe['ingredients'] = tab
+
+    render json: recipe
   end
 
   def new
@@ -63,10 +67,33 @@ class Api::RecipesController < ApplicationController
 
   private
 
+  def build_recipe_ingredients(recipe, tab)
+    i = 0
+    recipe.ingredients.each do |ingredient|
+      mrg = { :ingredient => ingredient, :quantity => recipe.recipe_ingredients[i].quantity }
+      i += 1
+      tab.push(mrg)
+    end
+  end
+
+  def build_recipe_list_ingredients
+    i = 0
+    @mrg_tab = []
+    @recipes_hash = @recipes.as_json(include: [
+      :utensils,
+    ], methods: %i(image_url))
+
+    @recipes.each do |recipe|
+      build_recipe_ingredients(recipe, @mrg_tab)
+      @recipes_hash[i]['ingredients'] = @mrg_tab
+      i += 1
+    end
+  end
+
   def find_recipe
     if !Recipe.find_by_id(params[:id]).nil?
       @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                                :image_attachment => :blob).find(params[:id])
+                                :image_attachment, :image_attachment => :blob).find(params[:id])
     else
       render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json
     end

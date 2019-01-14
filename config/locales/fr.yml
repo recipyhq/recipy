@@ -42,6 +42,7 @@ fr:
         ingredient: "Ingrédient(s)"
         ingredient_number: "Nombre d'ingrédients"
         utensil: "Ustensile(s)"
+        image: "image"
       action:
         edit: "Modifier"
         show: "Afficher"

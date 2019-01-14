@@ -4,12 +4,21 @@ ActiveAdmin.register Recipe do
   permit_params :title, :description, :step, :difficulty, :time, :view, :score, :image,
                 :utensil_ids => [], :ingredient_ids => []
 
+  includes :image_attachment
+
   index do
     selectable_column
     id_column
     column :title
     column :view
     column :score
+    unless :image.nil?
+      column :image do |ad|
+        unless ad.image.attachment.nil?
+          image_tag url_for(ad.image.variant(resize: '30x30'))
+        end
+      end
+    end
     column :description
     column :step
     column :difficulty
