@@ -41,6 +41,7 @@ fr:
         difficulty: "Difficulté"
         ingredient: "Ingrédient(s)"
         utensil: "Ustensile(s)"
+        image: "image"
       action:
         edit: "Modifier"
         show: "Afficher"

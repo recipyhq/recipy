@@ -73,6 +73,7 @@ en:
       difficulty: "Difficulty"
       ingredient: "Ingredient(s)"
       utensil: "Utensil(s)"
+      image: "image"
     action:
       edit: "Edit"
       show: "Show"
