@@ -7,11 +7,23 @@
     <%= f.input :title, label: t("recipe.title.title") %>
     <%= f.file_field :image%>
     <%= f.input :description, label: t("recipe.title.description") %>
+  <div class="uk-form-horizontal">
+    <%= f.label :utensil_ids, label: t("recipe.title.ingredient") %>
+  </div>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
+  <%#<%= f.select :utensil_ids, options_for_select(Utensil.all.sort), {:include_blank => true, :multiple => true, :size =>10} %>
+  <div class="uk-form-horizontal">
+    <%= f.label :utensil_ids, label: t("recipe.title.utensil")%>
+  </div>
+    <%= f.collection_check_boxes :utensil_ids, Utensil.all, :id, :title%>
     <%= f.input :step, label: t("recipe.title.step") %>
-    <%= f.input :difficulty, label: t("recipe.title.difficulty") %>
+    <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
+    <%= f.number_field :difficulty, max: 10, class:"uk-input"%>
     <%= f.input :time, label: t("recipe.title.time") %>
 
   <div class="uk-margin-medium">
+    <div class="uk-text-center">
     <%= f.button :submit, t("recipe.creation.confirm") %>
+    </div>
   </div>
 <% end %>

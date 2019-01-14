@@ -1,11 +1,17 @@
-<h1><%= t("recipe.title.new") %></h1>
-<% if flash[:danger] %>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p><%= flash[:danger] %></p>
-  </div>
+<div class="uk-position-center">
+  <div class="uk-width-xxlarge">
+    <h2 class="uk-text-center"><%= t("recipe.title.new") %></h2>
+
+  <% if flash[:danger] %>
+    <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p><%= flash[:danger] %></p>
+    </div>
   <%end %>
 
 <%= render 'form', recipe: @recipe %>
 
 <%= link_to t("recipe.action.back"), recipes_path %>
+
+  </div>
+</div>
