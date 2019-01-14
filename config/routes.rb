@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       end
     end
     resources :recipes
+    get 'search' => "search#index"
   end
   
   namespace :api do
