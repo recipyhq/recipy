@@ -1,6 +1,6 @@
 <div class="uk-child-width-2@s uk-light" uk-grid>
     <div>
-        <div class="uk-background-cover uk-height-large uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/assets/password_new/back_password_new.jpg);">
+        <div class="uk-background-cover uk-height-large uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(<%= asset_path 'password_new/back_password_new.jpg' %>);">
             <%= simple_form_for :search,
                                 url: search_path,
                                 :method => :get,
