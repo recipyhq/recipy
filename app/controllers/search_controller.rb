@@ -12,7 +12,7 @@ class SearchController < ApplicationController
     @search_difficulty = search_params['difficulty'] || nil
     @search_ingredients = search_params['ingredients'] || []
     @search_time = search_params['time'] || nil
-    @recipes = Recipe.search_by_fields(@search_query, ['title', 'description', 'step'])
+    @recipes = Recipe.includes(:image_attachment).search_by_fields(@search_query, ['title', 'description', 'step'])
     @recipes = @recipes.by_value_max(:difficulty, @search_difficulty)
     @recipes = @recipes.by_value_max(:time, @search_time)
     @recipes = @recipes.have_ingredients(@search_ingredients)

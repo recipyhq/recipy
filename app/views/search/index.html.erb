@@ -27,6 +27,13 @@
         <% @recipes.each do |recipe| %>
             <div>
                 <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <% if recipe.image.attached? %>
+                            <%= image_tag recipe.image, :crop => :fill %>
+                        <% else %>
+                            <%= image_tag "https://picsum.photos/400/200" %>
+                        <% end %>
+                    </div>
                     <div class="uk-card-body">
                         <h3 class="uk-card-title"><%= recipe.title %> <span class="uk-label uk-label-warning"><%= recipe.score %> / 5</span></h3>
                         <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
