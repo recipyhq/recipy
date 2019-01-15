@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     end
     resources :recipes
     resources :ingredients
+    get 'search' => "search#index"
   end
 
   match "/404", :to => "errors#not_found", :via => :all
