@@ -44,7 +44,7 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def self.page(num, per_page)
+  def self.to_page(num, per_page)
     limit(per_page).offset((num - 1) * per_page)
   end
 end
