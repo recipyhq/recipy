@@ -7,42 +7,45 @@
     <p><%= flash[:success] %></p>
   </div>
 <% end %>
-<table>
-  <thead>
-  <tr>
-    <th><%= t("recipe.title.title") %></th>
-    <th><%= t("recipe.title.score") %></th>
-    <th><%= t("recipe.title.difficulty") %></th>
-    <th><%= t("recipe.title.image") %></th>
-    <th><%= t("recipe.title.description") %></th>
-    <th><%= t("recipe.title.step") %></th>
-    <th><%= t("recipe.title.time") %></th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
 
-  <tbody>
+<tbody>
+<div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m uk-grid-match uk-padding" uk-grid>
   <% @recipes.each do |recipe| %>
-    <tr>
-      <td><%= recipe.title %></td>
-      <td><%= recipe.score %></td>
-      <td><%= recipe.difficulty %></td>
-      <% if recipe.image.attached? %>
-        <td><%= image_tag recipe.image.variant(resize: '100x100') %></td>
-      <% else %>
-        <td>Pas d'image</td>
-      <% end %>
-      <td><%= recipe.description %></td>
-      <td><%= recipe.step %></td>
-      <td><%= recipe.time %></td>
-      <td><%= link_to t("recipe.action.show"), recipe %></td>
-      <td><%= link_to t("recipe.action.edit"), edit_recipe_path(recipe) %></td>
-      <td><%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")} %></td>
-    </tr>
+    <div>
+      <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top uk-text-center uk-display-block uk-height-medium ">
+          <div class="uk-margin-top uk-align-center">
+            <% if recipe.image.attached? %>
+              <%= image_tag(recipe.image.variant(resize: '300x400')) %>
+            <% else %>
+              <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="uk-card-body">
+          <h3 class="uk-card-title">
+            <%= recipe.title %>
+            <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
+              / 10</span>
+          </h3>
+          <div class="uk-child-width-5-2@s">
+            <p class="uk-text-truncate"> <%= recipe.description %></p>
+          </div>
+          <div class="info-recipe">
+            <span class="name">Difficulté</span>
+            <progress class="uk-progress" value=<%= recipe.difficulty %> max="10"></progress>
+          </div>
+        </div>
+        <div class="uk-card-footer uk-text-center">
+          <p class="uk-button uk-button-default"><%= link_to t("recipe.action.show"), recipe %></p>
+          <p class="uk-button uk-button-default"> <%= link_to t("recipe.action.edit"), edit_recipe_path(recipe) %></p>
+          <p class="uk-button uk-button-default uk-margin-small-top"> <%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")} %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-  </tbody>
-</table>
+</div>
+</tbody>
 
-<br>
-
-<%= link_to t("recipe.action.new"), new_recipe_path %>
+<span class="uk-button uk-button-default uk-align-center"><%= link_to t("recipe.action.new"), new_recipe_path %>
+</span>
