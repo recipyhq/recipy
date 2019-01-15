@@ -6,7 +6,7 @@ class ErrorsController < ApplicationController
     render(:status => 404)
   end
 
-  def not_found
+  def external_server_error
     render(:status => 500)
   end
 end
