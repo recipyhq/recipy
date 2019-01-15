@@ -1,0 +1,91 @@
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css' %>
+<%= stylesheet_link_tag 'search' %>
+
+<%= simple_form_for :search,
+                    url: search_path,
+                    :method => :get,
+                    html: {
+                        class: "uk-grid-small uk-grid uk-padding search_form"
+                    },
+                    defaults: {
+                        wrapper_class: "uk-width-1-1",
+                        required: false
+                    } do |f| %>
+    <%= f.input :q, :placeholder => t("search.search"), as: :string, input_html: { value: @search_query }, wrapper_class: "uk-width-2-3@s", label: false %>
+    <div class="uk-width-1-3@s">
+        <%= f.button :submit, t("search.search_btn"), class: "uk-width-1-1" %>
+    </div>
+    <div class="uk-width-1-1 uk-margin">
+        <hr class="uk-divider-icon">
+    </div>
+    <%= f.input :difficulty, :label => t("search.difficulty"), :prompt => t("search.difficulty_max"), :selected => @search_difficulty, collection: 0..10, as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s" %>
+    <%= f.input :ingredients, :label => t("search.ingredient"), :selected => @search_ingredients, collection: @ingredients_select, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredients-select", multiple: true } , wrapper_class: "uk-width-1-4@s", defaults: { input_class: "" } %>
+    <%= f.input :time, :label => t("search.time"), :prompt => t("search.time_max"), :selected => @search_time, collection: (0..@time_max).step(5), as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s" %>
+<% end %>
+<div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m uk-padding" uk-grid>
+    <% if (@recipes.uniq.count > 0) %>
+        <% @recipes.each do |recipe| %>
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <% if recipe.image.attached? %>
+                            <%= image_tag recipe.image, :crop => :fill %>
+                        <% else %>
+                            <%= image_tag "https://picsum.photos/400/200" %>
+                        <% end %>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title"><%= recipe.title %> <span class="uk-label uk-label-warning"><%= recipe.score %> / 5</span></h3>
+                        <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
+                        <div class="info-recipe">
+                            <span class="name"><%= t("recipe.title.difficulty") %> (<%= recipe.difficulty %> / 10)</span>
+                            <progress class="uk-progress" value="<%= recipe.difficulty %>" max="10"></progress>
+                            <span class="name"><%= t("recipe.title.time") %></span>
+                            <span class="info"><%= recipe.time %></span>
+                            <span class="name"><%= t("recipe.title.ingredient_number") %></span>
+                            <span class="info"><%= recipe.ingredients.count %></span>
+                        </div>
+                    </div>
+                    <div class="uk-card-footer">
+                        <%= link_to t("search.read_more"), recipe, class: "uk-button uk-button-text" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="uk-width-1-1 uk-alert-primary" uk-alert><%= t("search.no_results") %></div>
+    <% end %>
+</div>
+
+<% if (@page > 0 && @page <= @page_max) %>
+<ul class="uk-pagination uk-flex-center" uk-margin>
+    <% if (@page > 1) %>
+    <li><%= link_to "<span uk-pagination-previous></span>".html_safe, request.params.merge(page: @page - 1) %></li>
+    <li><%= link_to "1", request.params.merge(page: 1) %></li>
+    <% end %>
+    <% if (@page > 2) %>
+    <li class="uk-disabled"><span>...</span></li>
+    <li><a href="#"><%= @page - 1 %></a></li>
+    <% end %>
+    <li class="uk-active"><span><%= @page %></span></li>
+    <% if (@page < @page_max - 1) %>
+    <li class="uk-disabled"><span>...</span></li>
+    <li><%= link_to "#{@page + 1}", request.params.merge(page: @page + 1) %></li>
+    <% end %>
+    <% if (@page != @page_max) %>
+        <li><%= link_to "#{@page_max}", request.params.merge(page: @page_max) %></li>
+        <li><%= link_to "<span uk-pagination-next></span>".html_safe, request.params.merge(page: @page + 1) %></li>
+    <% end %>
+</ul>
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
+<script>
+new SlimSelect({
+  select: '#ingredients-select',
+  searchingText: 'Recherche...',
+  searchText: "Désolé il n'y a pas votre ingrédient dans la liste.",
+  searchPlaceholder: 'Recherche ingrédient',
+  placeholder: 'Ingrédients'
+})
+</script>
