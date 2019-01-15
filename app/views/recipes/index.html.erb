@@ -1,42 +1,34 @@
 <p id="notice"><%= notice %></p>
-
-<h1><%= t("recipe.title.index") %></h1>
+<div class="uk-text-center">
+  <h1><%= "Recettes :" %></h1>
+</div>
 <%  if flash[:success] %>
   <div class="uk-alert-success" uk-alert>
     <a class="uk-alert-close" uk-close></a>
     <p><%= flash[:success] %></p>
   </div>
 <% end %>
-<table>
-  <thead>
-    <tr>
-      <th><%= t("recipe.title.title") %></th>
-      <th><%= t("recipe.title.score") %></th>
-      <th><%= t("recipe.title.difficulty") %></th>
-      <th><%= t("recipe.title.description") %></th>
-      <th><%= t("recipe.title.step") %></th>
-      <th><%= t("recipe.title.time") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.score %></td>
-        <td><%= recipe.difficulty %></td>
-        <td><%= recipe.description %></td>
-        <td><%= recipe.step %></td>
-        <td><%= recipe.time %></td>
-        <td><%= link_to t("recipe.action.show"), recipe %></td>
-        <td><%= link_to t("recipe.action.edit"), edit_recipe_path(recipe) %></td>
-        <td><%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: { confirm: t("recipe.action.confirm") } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
+  <% @recipes.each do |recipe| %>
+    <div class="uk-card uk-card-default uk-flex-center uk-flex-middle uk-card-body uk-text-center">
+      <div>
+        <%= link_to recipe.title , recipe, :class=>"uk-article-title uk-text-center" %>
+      </div>
+      <%= recipe.description %>
+      <div class="uk-text-right">
+        <%= recipe.time %> minutes
+      </div>
+      <%= link_to edit_recipe_path(recipe) do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to recipe, method: :delete, data: { confirm: t("recipe.action.confirm") } do %>
+        <i class ="fa fa-lf fa-trash"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to  new_recipe_path , :class=>"uk-card uk-flex-center uk-flex-middle uk-card-body uk-text-left" do%>
+    <i class="far fa-4x fa-plus-square"></i>
+  <% end %>
+</div>
 
 <br>
-
-<%= link_to t("recipe.action.new"), new_recipe_path %>
