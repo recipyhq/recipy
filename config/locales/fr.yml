@@ -40,6 +40,7 @@ fr:
         description: "Description"
         difficulty: "Difficulté"
         ingredient: "Ingrédient(s)"
+        ingredient_number: "Nombre d'ingrédients"
         utensil: "Ustensile(s)"
         image: "image"
       action:
@@ -68,3 +69,14 @@ fr:
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
+
+  search:
+    read_more: "Lire la suite"
+    search: "Rechercher..."
+    search_btn: "Rechercher"
+    difficulty: "Difficulté"
+    difficulty_max: "Difficulté max"
+    ingredient: "Ingrédients"
+    time: "Temps (en min)"
+    time_max: "Temps maximum"
+    no_results: "Aucune recettes ne correspond à vos critères de recherche."

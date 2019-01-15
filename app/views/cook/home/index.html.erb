@@ -1,3 +1,25 @@
+<div class="uk-child-width-2@s uk-light" uk-grid>
+    <div>
+        <div class="uk-background-cover uk-height-large uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(<%= asset_path 'password_new/back_password_new.jpg' %>);">
+            <%= simple_form_for :search,
+                                url: search_path,
+                                :method => :get,
+                                html: {
+                                    class: "uk-search uk-search-large"
+                                },
+                                defaults: {
+                                    wrapper: false,
+                                    :input_html => {
+                                        :class => 'uk-search-input'
+                                    }
+                                } do |f| %>
+                <span uk-search-icon></span>
+                <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher...", as: :string %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
 <h1>Cook::Home#index</h1>
 
 <%= link_to "Edit profile", edit_user_registration_path %>
