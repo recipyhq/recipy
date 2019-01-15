@@ -10,6 +10,7 @@ class RecipesController < InheritedResources::Base
   def show
     find_recipe
     view = @recipe.view
+    print @recipe.utensils
     @recipe.update_attribute(:view, view + 1)
   end
 
@@ -19,7 +20,7 @@ class RecipesController < InheritedResources::Base
 
   def create
     new_recipe = Recipe.new(recipe_params)
-    if new_recipe.valid? && new_recipe.image.attached?
+    if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
       if new_recipe.image.blob.content_type.starts_with?('image/')
         new_recipe.save
         redirect_to recipe_path(new_recipe.id), flash: { success: t("recipe.creation.valid") }
@@ -62,6 +63,6 @@ class RecipesController < InheritedResources::Base
 
   def recipe_params
     params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
-                                   :image, :ingredient_ids, :utensil_ids)
+                                   :image, :ingredient_ids => [], :utensil_ids => [])
   end
 end
