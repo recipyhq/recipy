@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
 <p id="notice"><%= notice %></p>
 <%  if flash[:success] %>
   <div class="uk-alert-success" uk-alert>
@@ -5,41 +8,96 @@
     <p><%= flash[:success] %></p>
   </div>
 <% end %>
-<p>
-  <strong><%= t("recipe.title.title") %>:</strong>
-  <%= @recipe.title %>
-</p>
 
-<div>
-  <% if @recipe.image.attached? && @recipe.image.blob.content_type.starts_with?('image/') %>
-    <td><%= image_tag(@recipe.image.variant(resize: '100x100')) %></td>
-  <% end %>
+<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
+
+  <div class="uk-width-1-3@m">
+  <div class="uk-card uk-card-default uk-padding" name="ingredient">
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center"> <i class="fas fa-lemon"></i> Ingrédients <i class="fas fa-carrot"></i> </h3>
+        </div>
+      </div>
+    </div>
+    <ul class="uk-list uk-list-bullet">
+      <div class="uk-card-body">
+        <% i = 0 %>
+        <%@recipe.ingredients.each do | ingredient| %>
+          <div class="uk-text-center"> <li> <%= ingredient.name %>
+            <%= @recipe.recipe_ingredients[i].quantity %></li>
+            <% i += 1 %>
+          </div>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+  </div>
+
+
+<div class="uk-width-1-2@m">
+  <div class="uk-card uk-card-default uk-padding-large" name="recipe">
+    <div class="uk-card-header">
+      <h1 class="uk-article-title uk-margin-remove-bottom uk-text-center">
+        <%= @recipe.title %>
+      </h1>
+      <% if @recipe.image.attached? && @recipe.image.blob.content_type.starts_with?('image/') %>
+        <div class="uk-flex uk-flex-center uk-flex-middle uk-light"> <td><%= image_tag(@recipe.image.variant(resize: '500x500')) %></td> </div>
+      <% end %>
+    </div>
+    <div class="uk-card-body">
+      <div class="uk-text-center">
+        <p>
+          <%= @recipe.description %>
+        </p>
+      </div>
+      <p>
+      <h3> Préparation : </h3>
+      <%= @recipe.step %>
+      </p>
+    </div>
+    <div class="uk-card-footer">
+      <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
+        <div>
+          <div class="uk-card uk-card-default uk-card-body">
+            <strong><%= t("recipe.title.score") %>:</strong>
+            <%= @recipe.score %>
+            <strong> / 5 </strong>
+          </div>
+        </div>
+        <div>
+          <div class="uk-card uk-card-default uk-card-body">
+            <%= @recipe.time %>
+            <strong> minutes </strong>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div> Difficulté </div>
+      <div> <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress> </div>
+      <br>
+      <%= link_to "Liste des recettes", recipes_path , :class=>"uk-center uk-button uk-button-text"%>
+    </div>
+  </div>
 </div>
 
-<p>
-  <strong><%= t("recipe.title.score") %>:</strong>
-  <%= @recipe.score %>
-</p>
 
-<p>
-  <strong><%= t("recipe.title.difficulty") %>:</strong>
-  <%= @recipe.difficulty %>
-</p>
-
-<p>
-  <strong><%= t("recipe.title.description") %>:</strong>
-  <%= @recipe.description %>
-</p>
-
-<p>
-  <strong><%= t("recipe.title.step") %>:</strong>
-  <%= @recipe.step %>
-</p>
-
-<p>
-  <strong><%= t("recipe.title.time") %>:</strong>
-  <%= @recipe.time %>
-</p>
-
-<%= link_to t("recipe.action.edit"), edit_recipe_path(@recipe) %> |
-<%= link_to t("recipe.action.back"), recipes_path %>
+  <div class="uk-width-1-3@m">
+  <div class="uk-card uk-card-default uk-padding" name="ustensile">
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center"> <i class="fas fa-utensils"></i> Ustensiles <i class="fas fa-utensil-spoon"></i> </h3>
+        </div>
+      </div>
+    </div>
+    <ul class="uk-list uk-list-bullet">
+      <div class="uk-card-body">
+        <%@recipe.utensils.each do | ustensile| %>
+          <div class="uk-text-center"> <li> <%= ustensile.title %></li> </div>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+  </div>
+</div>

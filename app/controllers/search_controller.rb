@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   before_action :skip_authorization
-  @@per_page = 20
+  @@per_page = 1
 
   def index
     skip_policy_scope
@@ -12,12 +12,12 @@ class SearchController < ApplicationController
     @search_difficulty = search_params['difficulty'] || nil
     @search_ingredients = search_params['ingredients'] || []
     @search_time = search_params['time'] || nil
-    @recipes = Recipe.includes(:image_attachment).search_by_fields(@search_query, ['title', 'description', 'step'])
+    @recipes = Recipe.search_by_fields(@search_query, ['title', 'description', 'step'])
     @recipes = @recipes.by_value_max(:difficulty, @search_difficulty)
     @recipes = @recipes.by_value_max(:time, @search_time)
     @recipes = @recipes.have_ingredients(@search_ingredients)
     @page_max = (@recipes.uniq.count / @@per_page).ceil
     @page_max = @page_max > 0 ? @page_max : 1;
-    @recipes = @recipes.page(@page, @@per_page)
+    @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment)
   end
 end

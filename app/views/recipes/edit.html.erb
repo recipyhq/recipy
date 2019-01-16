@@ -1,4 +1,6 @@
-<h1><%= t("recipe.title.edit") %></h1>
+<div class="uk-position-center">
+  <div class="uk-width-xxlarge">
+    <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
 <% if flash[:danger] %>
   <div class="uk-alert-danger" uk-alert>
@@ -10,3 +12,6 @@
 
 <%= link_to t("recipe.action.show"), @recipe %> |
 <%= link_to t("recipe.action.back"), recipes_path %>
+
+  </div>
+</div>
