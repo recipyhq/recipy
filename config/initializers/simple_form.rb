@@ -140,3 +140,11 @@ SimpleForm.setup do |config|
   config.input_field_valid_class = 'uk-form-success'
   config.input_field_error_class = 'uk-form-danger'
 end
+
+SimpleForm.setup do |config|
+  config.wrappers :checkbox, class: "uk-checkbox" do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :input, class: 'uk-checkbox'
+  end
+end

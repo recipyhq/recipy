@@ -15,21 +15,13 @@ class LandingPagesController < ApplicationController
   def create
     skip_authorization
 
-    name = landing_page_params['name']
-    firstname = landing_page_params['firstname']
-    email = landing_page_params['email']
-
-    name.inspect
-    firstname.inspect
-    email.inspect
- 
-
     prospect = Prospect.new(landing_page_params)
     if (prospect.valid?)
       prospect.save
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { success: "Bienvenu sur Recipy!" }
+      ProspectMailer.signup_newsletter(prospect).deliver
+      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { success: "Bienvenue sur Recipy! Nous venons de vous envoyez un email" }
     else
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: prospect.errors.full_messages.to_sentence }
+      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: prospect.errors.full_messages }
 
     end
   end

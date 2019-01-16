@@ -168,7 +168,7 @@
 <!--Formulaire-->
 <div class="uk-section uk-section-default uk-padding-remove-top" id="joinUs">
   <div class="uk-container">
-    <h3>Rejoignez nous!</h3>
+    <h3>Inscrivez vous à notre newsletters pour ne manquez aucune information!</h3>
 
     <% if flash[:success]  %>
       <div class="uk-alert-success" uk-alert>
@@ -195,8 +195,18 @@
         </div>
           <div class="uk-margin">
           <%= f.input :email, placeholder: "Email"%>
-          </div>
+          </div> 
+          <div>
+            <div class="uk-margin">
+            <p>
+              En cliquant sur valider, j'accepte les conditions générales de Recipy
+            </p>
+            </div>
+        </div>
+
         <%= f.button :submit, "Valider" ,class: 'uk-button uk-button-primary' %>
+       
+       <p> Les données recueillies par Recipy sont utilisés pour vous informer de nos offres. Conformément à la loi "Informatique et Libertés du 6 Janvier 1978", vous disposez d’un droit d’accès, de modifications, de rectification, et de suppression des données vous concernant. Pour toute demande, adressez vous à : Leroy Merlin, 5-9 Rue du Palais Rihour, 59000 Lille, recipy.epitech.eu s’engage à la confidentialité, et à la protection de vos données.</p>
       <% end %>
     </div>
   </div>

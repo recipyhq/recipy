@@ -1,0 +1,5 @@
+<mj-text>
+<h1> Bonjour <%= @prospect.first_name %>,</h1>
+
+<h2>Merci de vous êtes inscrit à notre newsletter</h2>
+</mj-text>

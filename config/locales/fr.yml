@@ -21,9 +21,14 @@ fr:
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
         prospect:
           attributes:
+            last_name: 
+              blank: "Le champ Nom ne doit pas être vide"
+            first_name:
+              blank: "Le champ Prénom ne doit pas être vide"
             email:
               taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
               blank: "Le champ Courriel ne doit pas être vide"
+              invalid: "L'email est invalide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
       messages:
