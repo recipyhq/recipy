@@ -11,20 +11,20 @@
     <ul class="uk-navbar-nav">
       <% if user_signed_in? %>
         <li>
-          <%= link_to nil, '' %>
+          <a><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Déconnexion
+                  <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
                 <% end %>
               </li>
             </ul>
           </div>
         </li>
       <% else %>
-        <li><%= link_to "M'inscrire", new_user_registration_path %></li>
-        <li><%= link_to 'Connexion', new_user_session_path %></li>
+        <li><%= link_to t('navbar.sign_up'), new_user_registration_path %></li>
+        <li><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
       <% end %>
     </ul>
   </div>
