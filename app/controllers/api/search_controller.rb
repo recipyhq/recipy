@@ -1,6 +1,7 @@
 class Api::SearchController < ApplicationController
   before_action :skip_authorization
-  @@per_page = 20
+  @@per_page = 24
+  @@sort_possibilities = [["by_nothing", "no"], ["by_note_desc", 'note_desc'], ["by_note_asc", 'note_asc']];
 
   def index
     skip_policy_scope
@@ -12,10 +13,14 @@ class Api::SearchController < ApplicationController
     @search_difficulty = search_params['difficulty'] || nil
     @search_ingredients = search_params['ingredients'] || []
     @search_time = search_params['time'] || nil
+    @sort = search_params['sort'] || 'no'
     @recipes = Recipe.search_by_fields(@search_query, ['title', 'description', 'step'])
     @recipes = @recipes.by_value_max(:difficulty, @search_difficulty)
     @recipes = @recipes.by_value_max(:time, @search_time)
     @recipes = @recipes.have_ingredients(@search_ingredients)
+    if (@sort == 'note_desc' || @sort == 'note_asc')
+      @recipes = @recipes.order(score: (@sort == 'note_desc') ? :desc : :asc)
+    end
     @page_max = (@recipes.uniq.count / @@per_page).ceil
     @page_max = @page_max > 0 ? @page_max : 1;
     @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment)
@@ -25,6 +30,7 @@ class Api::SearchController < ApplicationController
       page_max: @page_max,
       ingredients: @ingredients_select,
       time_max: @time_max,
+      sort: @sort,
       search: {
         query: @search_query,
         difficulty: @search_difficulty,

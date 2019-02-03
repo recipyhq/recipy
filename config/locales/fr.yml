@@ -80,3 +80,8 @@ fr:
     time: "Temps (en min)"
     time_max: "Temps maximum"
     no_results: "Aucune recettes ne correspond à vos critères de recherche."
+    sort_by: "Trier par"
+    sort:
+      by_nothing: "Ne pas trier"
+      by_note_desc: "Par note décroissante"
+      by_note_asc: "Par note croissante"
