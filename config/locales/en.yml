@@ -34,6 +34,15 @@ en:
   placeholder_email: "E-mail adress"
   placeholder_password: "Password"
 
+  devise:
+    facebook: "Sign in with Facebook"
+    google_oauth2: "Sign in with Google +"
+
+  navbar:
+    log_out: "Log out"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+
   shared_links:
     no_account: "No account ?"
   activerecord:

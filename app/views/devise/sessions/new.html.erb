@@ -12,7 +12,7 @@
       <%= f.input :email, required: true, autofocus: true %>
       <%= f.input :password, required: true %>
 
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
 
       <div class="uk-margin-medium">
         <%= f.button :submit, t('.sign_in'), class: 'uk-width-1-1' %>
