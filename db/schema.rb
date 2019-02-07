@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_135751) do
+ActiveRecord::Schema.define(version: 2019_02_03_193559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quantity_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipe_ingredients", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
@@ -137,13 +149,13 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
     t.string "title"
     t.integer "score", default: 0
     t.text "description"
-    t.text "step"
     t.integer "difficulty"
     t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "view", default: 0
     t.integer "person", default: 1
+    t.text "steps", array: true
   end
 
   create_table "related_ingredient_tags", force: :cascade do |t|
@@ -153,6 +165,15 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_related_ingredient_tags_on_ingredient_id"
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
+  end
+
+  create_table "related_recipe_categories", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "recipe_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_category_id"], name: "index_related_recipe_categories_on_recipe_category_id"
+    t.index ["recipe_id"], name: "index_related_recipe_categories_on_recipe_id"
   end
 
   create_table "users", force: :cascade do |t|
