@@ -159,8 +159,7 @@ end
 Recipe.create! do |recipe|
   recipe.title = "Boeuf carottes"
   recipe.description = "Repas familiale très apprécié en France"
-  recipe.step = "Coupez la viande en plusieurs morceaux.
-Les faire cuire dans une casserole"
+  recipe.step = "Cuire la viande"
   recipe.time = 30
   recipe.difficulty = 5
   recipe.ingredients << Ingredient.find_by_name("Boeuf")
@@ -172,9 +171,7 @@ end
 Recipe.create! do |recipe|
   recipe.title = "Sandwich jambon beurre"
   recipe.description = "Le sandwich français par excellence."
-  recipe.step = "Prenez une tranche de pain.
-Étalez le beurre avec un couteau et disposez le jambon sur le dessus.
-Enfin mettez la deuxième tranche de pain au-dessus du jambon."
+  recipe.step = "Coupez le pain et le fromage"
   recipe.time = 5
   recipe.person = 4
   recipe.difficulty = 1
