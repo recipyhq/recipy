@@ -2,6 +2,15 @@ fr:
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
 
+  devise:
+    facebook: "Se connecter avec Facebook"
+    google_oauth2: "Se connecter avec Google +"
+
+  navbar:
+    log_out: "Déconnexion"
+    sign_in: "Me connecter"
+    sign_up: "M'inscrire"
+
   shared_links:
     no_account: "Vous n'avez pas de compte ?"
   activerecord:
