@@ -3,8 +3,6 @@ ActiveAdmin.register QuantityType do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   permit_params :name
 
-  includes :quantity_equivalency
-
   form do |f|
     f.inputs "Add / Edit Quantity type" do
       f.input :name

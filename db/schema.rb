@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_163912) do
+ActiveRecord::Schema.define(version: 2019_02_10_190417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,14 @@ ActiveRecord::Schema.define(version: 2019_02_07_163912) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quantity_equivalencies", force: :cascade do |t|
+    t.integer "gram_equivalency"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_quantity_equivalencies_on_quantity_type_id"
+  end
+
   create_table "quantity_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -165,6 +173,15 @@ ActiveRecord::Schema.define(version: 2019_02_07_163912) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_related_ingredient_tags_on_ingredient_id"
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
+  end
+
+  create_table "related_quantity_types", force: :cascade do |t|
+    t.bigint "quantity_type_id"
+    t.bigint "quantity_equivalency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_equivalency_id"], name: "index_related_quantity_types_on_quantity_equivalency_id"
+    t.index ["quantity_type_id"], name: "index_related_quantity_types_on_quantity_type_id"
   end
 
   create_table "related_recipe_categories", force: :cascade do |t|

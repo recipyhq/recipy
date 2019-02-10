@@ -1,7 +1,7 @@
 ActiveAdmin.register QuantityEquivalency do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :gram_equivalency
+  permit_params :gram_equivalency, :quantity_type_id
 
   includes :quantity_type
 
@@ -9,24 +9,36 @@ ActiveAdmin.register QuantityEquivalency do
     selectable_column
     id_column
     column :gram_equivalency
-    column :quantity_type do |i|
-      puts "_______________________"
-      puts i.inspect
-      puts "_______________________"
-      table_for i.quantity_type do
-        column "Quantity Types" do |elem|
-          elem.name
-        end
-      end
-    end
+    column :quantity_type
     column :created_at
     actions
+  end
+
+  show do
+    attributes_table do
+      row :gram_equivalency
+      row :quantity_type
+      row :created_at
+    end
+  end
+
+  controller do
+    def create
+      puts params[:quantity_equivalency].inspect
+      @quantity_equivalency = QuantityEquivalency.new
+      q = QuantityType.find(params[:quantity_equivalency][:quantity_type_id])
+      @quantity_equivalency.quantity_type = q
+      @quantity_equivalency.gram_equivalency = params[:quantity_equivalency][:gram_equivalency]
+      @quantity_equivalency.created_at = Time.now
+      @quantity_equivalency.updated_at = Time.now
+      super
+    end
   end
 
   form do |f|
     f.inputs "Add / Edit Quantity Equivalency" do
       f.input :gram_equivalency
-      f.input :id, collection: QuantityType.pluck(:id, :name), as: :select
+      f.input :quantity_type, collection: QuantityType.all, as: :select
     end
     actions
   end
