@@ -24,7 +24,6 @@ ActiveAdmin.register QuantityEquivalency do
 
   controller do
     def create
-      puts params[:quantity_equivalency].inspect
       @quantity_equivalency = QuantityEquivalency.new
       q = QuantityType.find(params[:quantity_equivalency][:quantity_type_id])
       @quantity_equivalency.quantity_type = q

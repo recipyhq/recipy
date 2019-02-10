@@ -2,9 +2,15 @@ ActiveAdmin.register Recipe do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   permit_params :title, :description, :step, :difficulty, :time, :view, :score, :image,
-                :utensil_ids => [], :ingredient_ids => []
+                :utensil_ids => [], :ingredient_ids => [], :recipe_category_ids => []
 
-  includes :image_attachment
+  includes :image_attachment, :recipe_categories
+
+  controller do
+    def scoped_collection
+      Recipe.includes(:image_attachment => :blob)
+    end
+  end
 
   index do
     selectable_column
@@ -34,6 +40,13 @@ ActiveAdmin.register Recipe do
       table_for recipe.utensils.order('title ASC') do
         column do |elem|
           elem.title
+        end
+      end
+    end
+    column :recipe_categories do |recipe|
+      table_for recipe.recipe_categories do
+        column do |elem|
+          elem.name
         end
       end
     end
@@ -67,6 +80,11 @@ ActiveAdmin.register Recipe do
           elem.title
         end
       end
+      table_for recipe.recipe_categories do
+        column "Category" do |elem|
+          elem.name
+        end
+      end
     end
   end
 
@@ -78,6 +96,7 @@ ActiveAdmin.register Recipe do
       f.input :difficulty
       f.input :image, :as => :file
       f.input :time
+      f.input :recipe_categories, as: :check_boxes
       f.input :ingredients, :as => :check_boxes
       f.input :utensils, :as => :check_boxes
     end

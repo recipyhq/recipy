@@ -5,4 +5,6 @@ class Ingredient < ApplicationRecord
   has_many :recipes, :through => :recipe_ingredients
   has_many :related_ingredient_tags
   has_many :ingredient_tags, through: :related_ingredient_tags
+  has_many :related_quantity_equivalencies
+  has_many :quantity_equivalencies, through: :related_quantity_equivalencies
 end

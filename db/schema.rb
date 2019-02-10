@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_190417) do
+ActiveRecord::Schema.define(version: 2019_02_10_221526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,15 @@ ActiveRecord::Schema.define(version: 2019_02_10_190417) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_related_ingredient_tags_on_ingredient_id"
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
+  end
+
+  create_table "related_quantity_equivalencies", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "quantity_equivalency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_related_quantity_equivalencies_on_ingredient_id"
+    t.index ["quantity_equivalency_id"], name: "index_related_quantity_equivalencies_on_quantity_equivalency_id"
   end
 
   create_table "related_quantity_types", force: :cascade do |t|

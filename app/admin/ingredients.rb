@@ -1,15 +1,22 @@
 ActiveAdmin.register Ingredient do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :name, :description, :ingredient_tag_ids => []
+  permit_params :name, :description, :quantity_equivalency_ids => [], :ingredient_tag_ids => []
+
+  includes :related_quantity_equivalencies,
+           :quantity_equivalencies => :quantity_type
+
+  controller do
+    def scoped_collection
+      Ingredient.includes(:quantity_equivalencies => :quantity_type)
+    end
+  end
 
   index do
     selectable_column
     id_column
     column :name
     column :description
-    column :created_at
-    column :updated_at
     column :ingredient_tag_ids do |ingredient|
       table_for ingredient.ingredient_tags.order('name ASC') do
         column do |elem|
@@ -17,6 +24,15 @@ ActiveAdmin.register Ingredient do
         end
       end
     end
+    column :quantity_equivalency_ids do |ingredient|
+      table_for ingredient.quantity_equivalencies do
+        column do |elem|
+          elem.gram_equivalency.to_s + "g - " + elem.quantity_type.name
+        end
+      end
+    end
+    column :created_at
+    column :updated_at
     actions
   end
 
@@ -31,6 +47,11 @@ ActiveAdmin.register Ingredient do
           tag.name
         end
       end
+      table_for ingredient.quantity_equivalencies do
+        column "Quantity equivalencies" do |quantity_equiv|
+          quantity_equiv.gram_equivalency.to_s + "g - " + quantity_equiv.quantity_type.name
+        end
+      end
     end
   end
 
@@ -39,6 +60,7 @@ ActiveAdmin.register Ingredient do
       f.input :name
       f.input :description
       f.input :ingredient_tags, :as => :check_boxes
+      f.input :quantity_equivalencies, :as => :check_boxes
     end
     actions
   end
