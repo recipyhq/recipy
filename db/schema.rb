@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_221526) do
+ActiveRecord::Schema.define(version: 2019_02_14_190554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,14 @@ ActiveRecord::Schema.define(version: 2019_02_10_221526) do
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
+  create_table "recipe_quantities", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_recipe_quantities_on_quantity_type_id"
+  end
+
   create_table "recipe_utensils", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "utensil_id"
@@ -200,6 +208,15 @@ ActiveRecord::Schema.define(version: 2019_02_10_221526) do
     t.datetime "updated_at", null: false
     t.index ["recipe_category_id"], name: "index_related_recipe_categories_on_recipe_category_id"
     t.index ["recipe_id"], name: "index_related_recipe_categories_on_recipe_id"
+  end
+
+  create_table "related_recipe_quantities", force: :cascade do |t|
+    t.bigint "recipe_quantity_id"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_related_recipe_quantities_on_quantity_type_id"
+    t.index ["recipe_quantity_id"], name: "index_related_recipe_quantities_on_recipe_quantity_id"
   end
 
   create_table "users", force: :cascade do |t|

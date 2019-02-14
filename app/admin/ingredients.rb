@@ -10,6 +10,23 @@ ActiveAdmin.register Ingredient do
     def scoped_collection
       Ingredient.includes(:quantity_equivalencies => :quantity_type)
     end
+
+    def update
+      @ingredient = Ingredient.find_by_id(params[:id])
+      @ingredient.update(params.require(:ingredient).permit(:name,
+                                                            :description,
+                                                            :quantity_equivalency_ids => [],
+                                                            :ingredient_tag_ids => []))
+      super
+    end
+
+    def destroy
+      @ingredient = Ingredient.find_by_id(params[:id])
+      unless @ingredient.nil?
+        @ingredient.destroy
+      end
+      super
+    end
   end
 
   index do
@@ -60,9 +77,13 @@ ActiveAdmin.register Ingredient do
       f.input :name
       f.input :description
       f.input :ingredient_tags, :as => :check_boxes
-      f.input :quantity_equivalencies, :as => :check_boxes
+      f.input :quantity_equivalencies,
+              :as => :check_boxes,
+              collection: QuantityEquivalency.includes(:quantity_type).all.map { |t|
+                [t.gram_equivalency.to_s + "g - " + t.quantity_type.name, t.id]
+              }
+      actions
     end
-    actions
   end
   #
   # or
