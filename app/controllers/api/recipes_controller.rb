@@ -101,6 +101,6 @@ class Api::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
-                                   :image, :ingredient_ids => [], :utensil_ids => [])
+                                   :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
   end
 end

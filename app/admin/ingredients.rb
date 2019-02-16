@@ -1,10 +1,10 @@
 ActiveAdmin.register Ingredient do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :name, :description, :quantity_equivalency_ids => [], :ingredient_tag_ids => []
+  permit_params :name, :description, :quantity_equivalency_ids => [],
+                                     :ingredient_tag_ids => []
 
-  includes :related_quantity_equivalencies,
-           :quantity_equivalencies => :quantity_type
+  includes :quantity_equivalencies => :quantity_type
 
   controller do
     def scoped_collection
@@ -34,6 +34,13 @@ ActiveAdmin.register Ingredient do
     id_column
     column :name
     column :description
+    # unless :image.nil?
+    #   column :image do |ad|
+    #     unless ad.image.attachment.nil?
+    #       image_tag url_for(ad.image.variant(resize: '30x30'))
+    #     end
+    #   end
+    # end
     column :ingredient_tag_ids do |ingredient|
       table_for ingredient.ingredient_tags.order('name ASC') do
         column do |elem|
@@ -49,16 +56,21 @@ ActiveAdmin.register Ingredient do
       end
     end
     column :created_at
-    column :updated_at
     actions
   end
 
   show do
     attributes_table do
       row :name
+      # unless :image.nil?
+      #   row :image do |ad|
+      #     unless ad.image.attachment.nil?
+      #       image_tag url_for(ad.image.variant(resize: '100x100'))
+      #     end
+      #   end
+      # end
       row :description
       row :created_at
-      row :updated_at
       table_for ingredient.ingredient_tags.order('name ASC') do
         column "Tags" do |tag|
           tag.name
@@ -76,6 +88,7 @@ ActiveAdmin.register Ingredient do
     f.inputs "Add / Edit Ingredient" do
       f.input :name
       f.input :description
+      # f.input :image, :as => :file
       f.input :ingredient_tags, :as => :check_boxes
       f.input :quantity_equivalencies,
               :as => :check_boxes,

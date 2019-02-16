@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_190554) do
+ActiveRecord::Schema.define(version: 2019_02_16_184325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,9 +139,10 @@ ActiveRecord::Schema.define(version: 2019_02_14_190554) do
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "quantity"
+    t.bigint "recipe_quantity_id"
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+    t.index ["recipe_quantity_id"], name: "index_recipe_ingredients_on_recipe_quantity_id"
   end
 
   create_table "recipe_quantities", force: :cascade do |t|
@@ -166,12 +167,14 @@ ActiveRecord::Schema.define(version: 2019_02_14_190554) do
     t.integer "score", default: 0
     t.text "description"
     t.integer "difficulty"
-    t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "view", default: 0
     t.integer "person", default: 1
     t.text "step"
+    t.text "steps", default: [], array: true
+    t.integer "preparation_time"
+    t.integer "cooking_time"
   end
 
   create_table "related_ingredient_tags", force: :cascade do |t|
@@ -208,6 +211,15 @@ ActiveRecord::Schema.define(version: 2019_02_14_190554) do
     t.datetime "updated_at", null: false
     t.index ["recipe_category_id"], name: "index_related_recipe_categories_on_recipe_category_id"
     t.index ["recipe_id"], name: "index_related_recipe_categories_on_recipe_id"
+  end
+
+  create_table "related_recipe_ingr_quants", force: :cascade do |t|
+    t.bigint "recipe_ingredient_id"
+    t.bigint "recipe_quantity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_ingredient_id"], name: "index_related_recipe_ingr_quants_on_recipe_ingredient_id"
+    t.index ["recipe_quantity_id"], name: "index_related_recipe_ingr_quants_on_recipe_quantity_id"
   end
 
   create_table "related_recipe_quantities", force: :cascade do |t|

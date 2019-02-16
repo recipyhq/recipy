@@ -77,6 +77,6 @@ fr:
     difficulty: "Difficulté"
     difficulty_max: "Difficulté max"
     ingredient: "Ingrédients"
-    time: "Temps (en min)"
+    cooking_time: "Temps de cuisson (en min)"
     time_max: "Temps maximum"
     no_results: "Aucune recettes ne correspond à vos critères de recherche."

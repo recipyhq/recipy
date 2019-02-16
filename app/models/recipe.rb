@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   validates :title, presence: true
-  validates :time, presence: true
+  validates :cooking_time, presence: true
   validates :step, presence: true
   validates :difficulty, presence: true
   validates :description, presence: true
@@ -12,6 +12,10 @@ class Recipe < ApplicationRecord
   has_many :utensils, :through => :recipe_utensils
   has_one_attached :image
   validates :image, presence: true
+
+  def steps_raw
+    steps.join("\r\n") unless steps.nil?
+  end
 
   def image_url
     Rails.application.routes.url_helpers.url_for(image) if image.attached?

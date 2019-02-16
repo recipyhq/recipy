@@ -1,14 +1,30 @@
 ActiveAdmin.register Recipe do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :title, :description, :step, :difficulty, :time, :view, :score, :image,
-                :utensil_ids => [], :ingredient_ids => [], :recipe_category_ids => []
+  permit_params :title, :description, :step, :difficulty, :cooking_time, :preparation_time,
+                :view, :score, :image,
+                :utensil_ids => [], :ingredient_ids => [],
+                :recipe_category_ids => [], :steps => []
 
-  includes :image_attachment, :recipe_categories
+  includes :recipe_categories, :image_attachment => :blob
 
   controller do
     def scoped_collection
       Recipe.includes(:image_attachment => :blob)
+    end
+
+    def create
+      steps = params[:recipe][:steps_raw]
+      split_steps = steps.split("\n")
+      params[:recipe][:steps] = split_steps.collect(&:strip)
+      super
+    end
+
+    def update
+      steps = params[:recipe][:steps_raw]
+      split_steps = steps.split("\n")
+      params[:recipe][:steps] = split_steps.collect(&:strip)
+      super
     end
   end
 
@@ -21,14 +37,16 @@ ActiveAdmin.register Recipe do
     unless :image.nil?
       column :image do |ad|
         unless ad.image.attachment.nil?
-          image_tag url_for(ad.image.variant(resize: '30x30'))
+          image_tag url_for(ad.image.variant(resize: '100x100'))
         end
       end
     end
     column :description
     column :step
+    column :steps_raw
     column :difficulty
-    column :time
+    column :cooking_time
+    column :preparation_time
     column :ingredient do |recipe|
       table_for recipe.ingredients.order('name ASC') do
         column do |elem|
@@ -68,8 +86,10 @@ ActiveAdmin.register Recipe do
         end
       end
       row :step
+      row :steps_raw
       row :difficulty
-      row :time
+      row :cooking_time
+      row :preparation_time
       table_for recipe.ingredients.order('name ASC') do
         column "Ingredients" do |elem|
           elem.name
@@ -93,9 +113,11 @@ ActiveAdmin.register Recipe do
       f.input :title
       f.input :description
       f.input :step
+      f.input :steps_raw, as: :text
       f.input :difficulty
       f.input :image, :as => :file
-      f.input :time
+      f.input :cooking_time
+      f.input :preparation_time
       f.input :recipe_categories, as: :check_boxes
       f.input :ingredients, :as => :check_boxes
       f.input :utensils, :as => :check_boxes
