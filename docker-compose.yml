@@ -18,5 +18,5 @@ services:
     container_name: recipy_maildev
     image: djfarrelly/maildev:latest
     ports:
-      - '127.0.0.1:1080:80'
+      - '127.0.0.1:8084:80'
       - '127.0.0.1:1025:25'
