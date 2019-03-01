@@ -4,4 +4,4 @@
     <p><%= t('.instruction') %></p>
 </mj-text>
 
-<mj-button class="button" href="<%= confirmation_url(@resource, confirmation_token: @token) %>"><%= t('.action') %></mj-button>
+<mj-button css-class="button" href="<%= confirmation_url(@resource, confirmation_token: @token) %>"><%= t('.action') %></mj-button>

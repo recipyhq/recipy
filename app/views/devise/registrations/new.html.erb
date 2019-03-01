@@ -9,7 +9,7 @@
 
       <%= f.input :email, required: true, autofocus: true %>
       <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
-      <%= f.input :password_confirmation %>
+      <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
 
       <div class="uk-margin-medium">
         <%= f.button :submit, t('.sign_up'), class: 'uk-width-1-1' %>

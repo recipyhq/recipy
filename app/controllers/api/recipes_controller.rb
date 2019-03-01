@@ -32,7 +32,7 @@ class Api::RecipesController < ApplicationController
 
   def create
     new_recipe = Recipe.new(recipe_params)
-    if new_recipe.valid? && new_recipe.image.attached?
+    if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
       if new_recipe.image.blob.content_type.starts_with?('image/')
         new_recipe.save
         render :json => { Status: "OK", Cause: t("recipe.creation.valid") }.as_json
