@@ -1,7 +1,8 @@
 class Recipe < ApplicationRecord
   validates :title, presence: true
   validates :cooking_time, presence: true
-  validates :step, presence: true
+  validates :preparation_time, presence: true
+  validates :person, presence: true
   validates :difficulty, presence: true
   validates :description, presence: true
   has_many :related_recipe_categories
@@ -12,6 +13,8 @@ class Recipe < ApplicationRecord
   has_many :utensils, :through => :recipe_utensils
   has_one_attached :image
   validates :image, presence: true
+
+  accepts_nested_attributes_for :recipe_ingredients
 
   def steps_raw
     steps.join("\r\n") unless steps.nil?

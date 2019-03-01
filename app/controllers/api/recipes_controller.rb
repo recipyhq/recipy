@@ -4,8 +4,9 @@ class Api::RecipesController < ApplicationController
 
   def index
     skip_policy_scope
-    @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment).all
+    @recipes = Recipe.includes(:recipe_utensils,
+                               :ingredients, :utensils,
+                               :recipe_ingredients => :recipe_quantity).all.with_attached_image
 
     build_recipe_list_ingredients
 
@@ -70,7 +71,13 @@ class Api::RecipesController < ApplicationController
   def build_recipe_ingredients(recipe, tab)
     i = 0
     recipe.ingredients.each do |ingredient|
-      mrg = { :ingredient => ingredient, :quantity => recipe.recipe_ingredients[i].quantity }
+      mrg = {
+        :ingredient => ingredient,
+        :quantity => [
+          recipe.recipe_ingredients[i].recipe_quantity.value,
+          recipe.recipe_ingredients[i].recipe_quantity.quantity_type.name,
+        ],
+      }
       i += 1
       tab.push(mrg)
     end
