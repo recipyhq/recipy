@@ -1,57 +1,61 @@
-
-<!--Navigation bar for mobile-->
-<div class="uk-hidden@s">
-
-  <nav class="uk-navbar" uk-navbar="">
-
-    <div class="uk-navbar-center">
-      <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
-    </div>
-
-  </nav>
+<div class="uk-cover-container" uk-height-viewport>
+  <img src="<%= asset_path 'cover.jpg' %>" alt="cover" uk-cover>
+  <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container">
+      <h1>Landing page</h1>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s uk-padding">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, ullam quae explicabo error velit nemo pariatur quidem ratione vitae fugit minima vel quisquam esse cupiditate illum nulla qui et. Excepturi.</p>
+      <div class="info uk-flex uk-flex-column uk-flex-middle">
+        <span>Scrollez vers le bas pour en apprendre plus</span>
+        <span class="down-icon bounce" uk-icon="icon: chevron-down; ratio: 2"></span>
+      </div>
+  </div>
 </div>
 
-<!--Navigation pour web browsers-->
-<div class="uk-visible@s">
-
-  <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" style="background-color: white">
-
-
-
-  <nav class="uk-navbar" uk-navbar style="position: relative;">
-
-    <div class="uk-navbar-left">
-      <a class="uk-navbar-item uk-logo uk-text-small" href="#">Recipy</a>
-    </div>
-
-      <div class="uk-navbar-center">
-
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+  <div class="uk-position-absolute uk-position-top">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+      <div class="uk-navbar-left uk-visible@m">
         <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="#" uk-scroll>Accueil</a></li>
+          <li><a href="#" uk-scroll>Accueil</a></li>
           <li><a href="#concept" uk-scroll>Concept</a></li>
           <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
         </ul>
-
+      </div>
+      <div class="uk-navbar-center uk-visible@m">
+        <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
+      </div>
+      <div class="uk-navbar-right uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <li><a href="#">Donnez nous votre avis !</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-left uk-hidden@m">
+        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
+      </div>
+      <div class="uk-navbar-right uk-hidden@m">
+        <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
       </div>
     </nav>
   </div>
+</div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h3>Navigation</h3>
+        <ul class="uk-list uk-list-divider uk-list-large">
+          <li><a href="#" uk-scroll>Accueil</a></li>
+          <li><a href="#concept" uk-scroll>Concept</a></li>
+          <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
+          <li><a href="#">Donnez nous votre avis !</a></li>
+        </ul>
+    </div>
 </div>
 
 <!--Main image-->
  <div class="uk-section-default main-presentation">
 
 <!--   image-->
-   <div uk-image class="uk-background-norepeat uk-background-center-center uk-background-image@s uk-padding-remove-top">
-
-     <div class="uk-width-1-1">
-       <div class="uk-container">
-         <div class="uk-margin uk-text-center uk-scrollspy-inview uk-animation-slide-top-small">
-           <%= image_tag "food-salad-healthy-lunch (1).jpg", class: 'uk-img' %>
-         </div>
-       </div>
-     </div>
-
-   </div>
 
    <div class="uk-margin uk-margin-medium"></div>
 
