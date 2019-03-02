@@ -19,7 +19,7 @@ class Api::RecipesController < ApplicationController
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
 
-    recipe = @recipe.as_json(:include => [:utensils], methods: %i(image_url))
+    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
     tab = []
 
     build_recipe_ingredients(@recipe, tab)
@@ -35,7 +35,7 @@ class Api::RecipesController < ApplicationController
   def create
     new_recipe = Recipe.new(recipe_params)
     if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
-      if new_recipe.image.blob.content_type.starts_with?('image/')
+      if new_recipe.image.blob.image?
         new_recipe.save
         render :json => { Status: "OK", Cause: t("recipe.creation.valid") }.as_json
       else
@@ -109,7 +109,7 @@ class Api::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
+    params.require(:recipe).permit(:title, :score, :time, :description, :difficulty, :view,
                                    :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
   end
 end
