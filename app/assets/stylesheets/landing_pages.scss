@@ -1,6 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Montserrat:700|Quicksand');
 @import './base/variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
-
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     -moz-transform: translateY(0);
@@ -26,6 +25,14 @@
   -moz-animation: bounce 2s infinite;
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite;
+}
+
+.cover {
+  background-color: $recipy-secondary-color;
+}
+
+.uk-section-secondary {
+  background-color: $recipy-secondary-color;
 }
 
 .uk-navbar {
@@ -74,8 +81,10 @@
 }
 
 .uk-logo {
-  font-family: 'Lobster Two', cursive;
-  font-size: 2.8em;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.2em;
+  border-color: $recipy-primary-color;
+  font-weight: bolder;
   text-shadow: 1px 2px 4px $recipy-secondary-color;
   color: $recipy-primary-color;
   &:hover {
@@ -86,14 +95,20 @@
 
 .cover-text-container {
 
+  margin-top: 80px;
+
   h1 {
     font-family: 'Lobster Two', cursive;
-    font-size: 4em;
+    text-align: center;
   }
 
-  & > * {
+  & * {
     color: $recipy-default-color !important;
     text-shadow: 1px 2px 4px $recipy-secondary-color;
+  }
+
+  & .project-info {
+    text-align: center;
   }
 
   & .down-icon {
@@ -101,3 +116,15 @@
   }
 }
 
+.landing-title {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.uk-section-footer {
+  background-color: $recipy-primary-color;
+  color: $recipy-secondary-color;
+
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+  }
+}
