@@ -4,7 +4,7 @@ class RecipesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @recipes = Recipe.includes(:image_attachment).all
+    @recipes = Recipe.includes(:image_attachment => :blob).all
   end
 
   def show

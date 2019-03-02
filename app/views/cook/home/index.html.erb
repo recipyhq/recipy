@@ -19,14 +19,13 @@
       <% end %>
 
       <tbody>
-      <div class="uk-align-center uk-margin-large-left uk-margin-large-right uk-margin-xlarge-bottom uk-margin-xlarge-top uk-background-muted uk-text-center">
+      <div class="uk-align-center uk-margin-xlarge-bottom uk-margin-xlarge-top uk-background-muted uk-text-center">
         <p style="margin-bottom: 0" class="uk-h2 uk-margin-medium-top uk-align-center uk-text-emphasis">Nos recettes les
           plus populaires</p>
         <div class="uk-grid-small uk-child-width-1-4@m uk-grid-match uk-padding" uk-grid>
           <% @recipes.each do |recipe| %>
-            <div>
               <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top uk-text-center uk-display-block uk-height-medium ">
+                <div class="uk-card-media-top uk-text-center uk-display-block ">
                   <div class="uk-margin-top uk-align-center">
                     <% if recipe.image.attached? %>
                       <%= image_tag(recipe.image.variant(resize: '300x400')) %>
@@ -47,7 +46,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           <% end %>
         </div>
       </div>
