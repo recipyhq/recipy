@@ -1,14 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-<<<<<<< HEAD
   
   resources :landing_pages, :only => [:index, :new, :create]
-=======
-
-  resources :landing_pages, :path => '/landing_pages', :only => [:index, :new, :create]
-
->>>>>>> master
 
   ActiveAdmin.routes(self)
   
