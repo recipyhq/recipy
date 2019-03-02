@@ -28,6 +28,11 @@ fr:
             current_password:
               invalid: "Le mot de passe actuel est incorrect. Veuillez réessayer"
               blank: "Le champ Mot de passe actuel ne doit pas être vide"
+        prospect:
+          attributes:
+            email:
+              taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
+              blank: "Le champ Courriel ne doit pas être vide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
       messages:

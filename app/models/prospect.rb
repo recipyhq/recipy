@@ -5,6 +5,6 @@ class Prospect < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, format: Devise.email_regexp, presence: true
+  validates :email, format: Devise.email_regexp, presence: true, uniqueness: true
   validates :phone, phony_plausible: true, allow_blank: true
 end

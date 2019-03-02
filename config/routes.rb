@@ -1,9 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :recipes
-  resources :landing_pages
-  
+
+  resources :landing_pages, :path => '/landing_pages', :only => [:index, :new, :create]
+
+
   ActiveAdmin.routes(self)
   
   devise_for :administrators, ActiveAdmin::Devise.config

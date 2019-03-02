@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' unless @disable_nav %>
     <%= yield %>
   </body>
 </html>

@@ -186,12 +186,12 @@
     <% end %>
 
     <div class="uk-container uk-container-large">
-      <%= simple_form_for @landing_page, defaults: { input_html: { class: 'uk-input' }, label:false } do |f| %>
+      <%= simple_form_for Prospect.new,  url: landing_pages_path(Prospect.new), defaults: { input_html: { class: 'uk-input' }, label:false } do |f| %>
         <div class="uk-margin">
-        <%= f.input :name, type: "text", placeholder: "Nom" %>
+        <%= f.input :last_name, type: "text", placeholder: "Nom" %>
         </div>
         <div class="uk-margin">
-        <%= f.input :firstname, placeholder: "Prénom"%>
+        <%= f.input :first_name, placeholder: "Prénom"%>
         </div>
           <div class="uk-margin">
           <%= f.input :email, placeholder: "Email"%>
