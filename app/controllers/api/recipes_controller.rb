@@ -6,7 +6,8 @@ class Api::RecipesController < ApplicationController
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_utensils,
                                :ingredients, :utensils,
-                               :recipe_ingredients => :recipe_quantity).all.with_attached_image
+                               recipe_ingredients:
+                                 [:recipe_quantity => :quantity_type]).all.with_attached_image
 
     build_recipe_list_ingredients
 
@@ -91,6 +92,7 @@ class Api::RecipesController < ApplicationController
     ], methods: %i(image_url))
 
     @recipes.each do |recipe|
+      @mrg_tab.clear
       build_recipe_ingredients(recipe, @mrg_tab)
       @recipes_hash[i]['ingredients'] = @mrg_tab
       i += 1
