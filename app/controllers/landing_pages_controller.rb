@@ -30,7 +30,6 @@ class LandingPagesController < ApplicationController
       redirect_to landing_pages_path(anchor: 'join-us'), flash: { success: "Merci, nous vous contacterons dès qu'il y aura des nouveautés." }
     else
       redirect_to landing_pages_path(anchor: 'join-us'), flash: { danger: prospect.errors.full_messages.to_sentence }
-
     end
   end
 
