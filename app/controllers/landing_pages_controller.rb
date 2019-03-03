@@ -27,10 +27,9 @@ class LandingPagesController < ApplicationController
     prospect = Prospect.new(landing_page_params)
     if (prospect.valid?)
       prospect.save
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { success: "Bienvenu sur Recipy!" }
+      redirect_to landing_pages_path(anchor: 'join-us'), flash: { success: "Merci, nous vous contacterons dès qu'il y aura des nouveautés." }
     else
-      redirect_to landing_pages_path(anchor: 'joinUs'), flash: { danger: prospect.errors.full_messages.to_sentence }
-
+      redirect_to landing_pages_path(anchor: 'join-us'), flash: { danger: prospect.errors.full_messages.to_sentence }
     end
   end
 
