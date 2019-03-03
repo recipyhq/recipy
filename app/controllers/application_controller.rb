@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, if: :api_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   with_options unless: :disable_pundit_checks? do
     after_action :verify_authorized, except: :index
     after_action :verify_policy_scoped, only: :index
