@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'activeadmin'
 gem 'phony_rails'
 gem 'figaro'
+gem 'bullet'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -50,7 +51,6 @@ group :development do
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'strong_migrations'
-  gem 'bullet'
   gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
