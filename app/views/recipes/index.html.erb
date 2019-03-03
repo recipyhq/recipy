@@ -38,7 +38,7 @@
         </div>
         <div class="uk-card-footer uk-text-center">
           <p class="uk-button uk-button-default"><%= link_to t("recipe.action.show"), recipe %></p>
-          <p class="uk-button uk-button-default"> <%= link_to t("recipe.action.edit"), edit_recipe_path(recipe) %></p>
+          <p class="uk-button uk-button-default"><%= link_to t("recipe.action.edit"), edit_recipe_path(recipe) %></p>
           <p class="uk-button uk-button-default uk-margin-small-top"> <%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")} %></p>
         </div>
       </div>

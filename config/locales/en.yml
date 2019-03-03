@@ -60,6 +60,12 @@ en:
             current_password:
               invalid: "The current password is incorrect. Please try again"
               blank: "The Current password field must not be empty"
+        prospect:
+          attributes:
+            email:
+              taken: "An account already exists with this email address. Please try again"
+              blank: "The Email field must not be empty"
+
             avatar:
               not_found: "No avatar was found"
       messages:
