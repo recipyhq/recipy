@@ -33,26 +33,29 @@ ActiveAdmin.register Recipe do
                                                      :recipe_category_ids => [],
                                                      :utensil_ids => [],
                                                      :recipe_ingredients_attributes => {})
-
-      steps = recipe_params[:steps_raw]
-      split_steps = steps.split("\n")
-      recipe_params[:steps] = split_steps.collect(&:strip)
-      recipe_params.delete(:steps_raw)
       new_ingredients = recipe_params[:recipe_ingredients_attributes]
-      recipe_params.delete(:recipe_ingredients_attributes)
-      new_recipe = Recipe.new(recipe_params)
-      new_ingredients.each do |elem|
-        new_recipe.ingredients << Ingredient.find(elem[1].values[0])
+      if new_ingredients.nil?
+        flash[:html_alert] = t('recipe.creation.missing_ingredients')
+      else
+        steps = recipe_params[:steps_raw]
+        split_steps = steps.split("\n")
+        recipe_params[:steps] = split_steps.collect(&:strip)
+        recipe_params.delete(:steps_raw)
+        recipe_params.delete(:recipe_ingredients_attributes)
+        new_recipe = Recipe.new(recipe_params)
+        new_ingredients.each do |elem|
+          new_recipe.ingredients << Ingredient.find(elem[1].values[0])
 
-        recipe_quantity = RecipeQuantity.new(value: elem[1].values[1].values[0])
-        recipe_quantity.quantity_type = QuantityType.find(elem[1].values[1].values[1])
-        recipe_quantity.save
+          recipe_quantity = RecipeQuantity.new(value: elem[1].values[1].values[0])
+          recipe_quantity.quantity_type = QuantityType.find(elem[1].values[1].values[1])
+          recipe_quantity.save
 
-        last = new_recipe.recipe_ingredients.last
-        last.recipe_quantity = recipe_quantity
+          last = new_recipe.recipe_ingredients.last
+          last.recipe_quantity = recipe_quantity
+        end
+        new_recipe.save
+        redirect_to admin_recipes_url
       end
-      new_recipe.save
-      redirect_to admin_recipes_url
     end
 
     def update

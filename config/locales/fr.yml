@@ -65,6 +65,7 @@ fr:
         back: "Précédent"
         confirm: "Êtes-vous sûr ?"
       creation:
+        missing_ingredients: "La recette a au moins besoin d'un ingrédient !"
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Nouvelle recette créée! Merci"
         confirm: "Valider"

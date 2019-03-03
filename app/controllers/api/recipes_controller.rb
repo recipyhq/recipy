@@ -71,16 +71,27 @@ class Api::RecipesController < ApplicationController
 
   def build_recipe_ingredients(recipe, tab)
     i = 0
-    recipe.ingredients.each do |ingredient|
-      mrg = {
-        :ingredient => ingredient,
-        :quantity => [
-          recipe.recipe_ingredients[i].recipe_quantity.value,
-          recipe.recipe_ingredients[i].recipe_quantity.quantity_type.name,
-        ],
-      }
-      i += 1
-      tab.push(mrg)
+    if recipe.recipe_ingredients.nil? || recipe.ingredients.nil?
+      tab.push([])
+    else
+      recipe.ingredients.each do |ingredient|
+        if recipe.recipe_ingredients[i].recipe_quantity.nil?
+          value = nil
+          quantity_name = nil
+        else
+          value = recipe.recipe_ingredients[i].recipe_quantity.value
+          quantity_name = recipe.recipe_ingredients[i].recipe_quantity.quantity_type.name
+        end
+        mrg = {
+          :ingredient => ingredient,
+          :quantity => [
+            value,
+            quantity_name,
+          ],
+        }
+        i += 1
+        tab.push(mrg)
+      end
     end
   end
 
