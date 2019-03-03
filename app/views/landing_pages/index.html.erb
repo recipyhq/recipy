@@ -13,7 +13,7 @@
       </div>
       <div class="uk-navbar-right uk-visible@m">
         <ul class="uk-navbar-nav">
-          <li><a href="#">Donnez nous votre avis !</a></li>
+          <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
         </ul>
       </div>
       <div class="uk-navbar-left uk-hidden@m">
@@ -24,6 +24,34 @@
       </div>
     </nav>
   </div>
+</div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h3>Navigation</h3>
+        <ul class="uk-list uk-list-divider uk-list-large">
+          <li><a href="#" uk-scroll>Accueil</a></li>
+          <li><a href="#concept" uk-scroll>Concept</a></li>
+          <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
+          <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="feedback" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
+        <button class="uk-modal-close-outside" type="button" uk-close></button>
+        <h2 class="uk-modal-title landing-title">Donnez nous votre avis !</h2>
+        <div class="uk-flex uk-flex-column">
+          <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/producer.jpg' %>" uk-img>
+            <a href="https://goo.gl/forms/4aw43qwppuar54tu1" class="button-feedback" target="blank">En tant que producteur</a>
+          </div>
+          <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/cooker.jpg' %>" uk-img>
+            <a href="https://goo.gl/forms/QsQLLkDKau2xZmay1" class="button-feedback" target="blank">En tant que cuisinier</a>
+          </div>
+        </div>
+    </div>
 </div>
 
 <div class="cover">
@@ -42,49 +70,40 @@
   </div>
 </div>
 
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar">
-
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <h3>Navigation</h3>
-        <ul class="uk-list uk-list-divider uk-list-large">
-          <li><a href="#" uk-scroll>Accueil</a></li>
-          <li><a href="#concept" uk-scroll>Concept</a></li>
-          <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
-          <li><a href="#">Donnez nous votre avis !</a></li>
-        </ul>
-    </div>
-</div>
-
 <div id="concept">
-  <div class="uk-section uk-section-large uk-section-muted uk-section-secondary">
+  <div class="uk-section uk-section-large uk-section-secondary">
     <div class="uk-container">
       <h2 class="landing-title uk-margin">CONCEPT</h2>
       <p class="uk-text-small">
-        Recipy est votre nouveau compagnon pour la réalisation de tous vos plats au quotidien. Il vous assiste dans la trouvaille de nouveaux plats succulents et dans leur réalisation. Au-delà de tout cela, nous nous engageons à vous apprendre une nouvelle manière de consommer, plus respectueuse pour l’environnement tout en restant dans vos frais. En effet, Recipy vous propose tout au long du parcours en sa compagnie, d’effectuer les achats de vos produits manquants auprès de producteurs locaux partenaires. Recipy est connecté aux technologies d’aujourd’hui et de demain pour vous proposer tous les jours la manières la plus simple de rendre agréable des moments du quotidien : « que va-t-on manger cette semaine ? » ou encore « où ai-je donc mis ma liste de course ? ». Plus d’embarrât, Recipy contient de nombreuses fonctionnalités pour facilité votre vie de cuisinier amateur ou professionnel. Recipy va vous prouver qu’il peut être simple d’éviter le gaspillage et le tout, en mangeant mieux !
+        Recipy est votre nouveau compagnon pour la réalisation de tous vos plats au quotidien. Il vous assiste dans la trouvaille de nouveaux plats succulents et dans leur réalisation. Au-delà de tout cela, nous nous engageons à vous apprendre une nouvelle manière de consommer, plus respectueuse pour l’environnement tout en restant dans vos frais. En effet, Recipy vous propose tout au long du parcours en sa compagnie, d’effectuer les achats de vos produits manquants auprès de producteurs locaux partenaires. Recipy est connecté aux technologies d’aujourd’hui et de demain pour vous proposer tous les jours la manières la plus simple de rendre agréable des moments du quotidien : « que va-t-on manger cette semaine ? » ou encore « où ai-je donc mis ma liste de course ? ». Plus d'embarras, Recipy contient de nombreuses fonctionnalités pour faciliter votre vie de cuisinier amateur ou professionnel. Recipy va vous prouver qu’il peut être simple d’éviter le gaspillage et le tout, en mangeant mieux !
       </p>
     </div>
   </div>
-  <div class="uk-child-width-expand@s uk-margin uk-padding" uk-grid>
-      <div class="uk-width-1-3@m uk-text-center">
-        <img data-src="<%= asset_path 'landing/iphone.png' %>" alt="iphone" height="200" width="200" uk-img>
-        <p class="uk-text-lead uk-text-center">Un service simple, accessible et intégré aux outils d'avant, d’aujourd’hui et de demain.</p>
-      </div>
-      <div class="uk-width-1-3@m uk-text-center">
-        <img data-src="<%= asset_path 'landing/cutlery.png' %>" alt="iphone" height="200" width="200" uk-img>
-        <p class="uk-text-lead uk-text-center">Qui donne aux novices la possibilité de réaliser des recettes simples et délicieuses avec des produits locaux.</p>
-      </div>
-      <div class="uk-width-1-3@m uk-text-center">
-        <img data-src="<%= asset_path 'landing/waste.png' %>" alt="iphone" height="200" width="200" uk-img>
-        <p class="uk-text-lead uk-text-center">Permettant d’éviter le gaspillage des aliments restés dans la cuisine du consommateur.</p>
-      </div>
+  <div class="uk-section uk-section-large uk-section-default">
+    <div class="uk-container">
+      <h2 class="landing-title uk-margin">UN SERVICE SIMPLE</h2>
+    </div>
+    <div class="uk-child-width-expand@s uk-margin uk-padding" uk-grid>
+        <div class="uk-width-1-3@m uk-text-center">
+          <img data-src="<%= asset_path 'landing/iphone.png' %>" alt="iphone" height="200" width="200" uk-img>
+          <p class="uk-text-lead uk-text-center">Accessible et intégré aux outils d'avant, d’aujourd’hui et de demain.</p>
+        </div>
+        <div class="uk-width-1-3@m uk-text-center">
+          <img data-src="<%= asset_path 'landing/cutlery.png' %>" alt="iphone" height="200" width="200" uk-img>
+          <p class="uk-text-lead uk-text-center">Qui donne aux novices la possibilité de réaliser des recettes simples, délicieuses, le tout avec des produits locaux.</p>
+        </div>
+        <div class="uk-width-1-3@m uk-text-center">
+          <img data-src="<%= asset_path 'landing/waste.png' %>" alt="iphone" height="200" width="200" uk-img>
+          <p class="uk-text-lead uk-text-center">Permettant d’éviter le gaspillage des aliments restés dans la cuisine du consommateur.</p>
+        </div>
+    </div>
   </div>
 </div>
 
 <div class="uk-section uk-section-large uk-section-muted uk-section-secondary" id="join-us">
   <div class="uk-container uk-margin">
     <h2 class="landing-title">RECIPY ARRIVE BIENTÔT</h2>
-    <p class="uk-text-saml">Inscrivez vous pour recevoir les informations sur l'évolution du projet. Et possiblement l'accés anticipé à Recipy.</p>
+    <p class="uk-text-saml">Inscrivez vous pour recevoir les informations sur l'évolution du projet.</p>
   </div>
   <div class="uk-container">
 
@@ -116,11 +135,21 @@
           </div>
         <%= f.button :submit, "Valider" ,class: 'uk-button uk-button-primary' %>
       <% end %>
+
+      <p class="rgpd-small">
+        *RECIPY, responsable du traitement, collecte votre nom, prénom et adresse email pour vous envoyer les actualités concernant RECIPY. Vous bénéficiez d'un droit d’accès, de rectification et d'opposition. Pour plus d'information sur vos droits informatique & Liberté cliquez <a href="#">ici</a>
+      </p>
     </div>
   </div>
 
 
 
+</div>
+<div class="uk-section uk-section-small uk-section-default">
+  <div class="uk-container uk-text-center uk-padding">
+    <h2 class="landing-title uk-margin">ESSAYEZ LA BETA DÈS MAINTENANT</h2>
+    <a href="/beta" class="button-landing">Accéder à la beta</a>
+  </div>
 </div>
 <!--  Footer-->
 <div class="uk-section uk-section-small uk-section-muted uk-section-footer">
@@ -135,11 +164,13 @@
     <div class="uk-width-expand@s uk-first-column">
       <p class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>5-9 Rue du Palais Rihour<br>59000 Lille<br>France</p>
     </div>
-    <div class="uk-width-expand@s">
-      <p class="uk-margin-remove-top uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>Made with ❤️<br>Recipy Team </p>
+    <div class="uk-width-expand@s uk-flex uk-flex-row uk-text-left uk-flex-between">
+      <a href="https://twitter.com/recipyapp" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: twitter"></span>   Twitter</a>
+      <a href="https://www.facebook.com/recipyapp" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: facebook"></span>   Facebook</a>
+      <a href="https://www.instagram.com/recipy_hq" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: instagram"></span>   Instagram</a>
     </div>
     <div class="uk-width-expand@s">
-      <p class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>contact@recipy.com</p>
+      <a href="mailto:contact@recipy.com" class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>contact@recipy.com</a>
     </div>
   </div>
 </div>

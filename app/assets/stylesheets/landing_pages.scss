@@ -117,6 +117,7 @@
 }
 
 .landing-title {
+  color: $recipy-secondary-color;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -126,5 +127,67 @@
 
   h1 {
     font-family: 'Quicksand', sans-serif;
+  }
+}
+
+.uk-modal-dark {
+  color: $recipy-default-color;
+  background-color: $recipy-secondary-color;
+
+  .landing-title {
+    color: $recipy-default-color;
+  }
+
+  .button-feedback {
+    font: 'Quicksand', sans-serif;
+    color: $recipy-secondary-color;
+    background-color: $recipy-primary-color;
+    padding: 15px 30px;
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: 0.3s;
+    font-size: 1.2em;
+
+    &:hover {
+      opacity: 0.95;
+      color: $recipy-secondary-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.rgpd-small {
+  font-size: 0.5em;
+  color: lighten($recipy-secondary-color, 30%);
+  & > a {
+    color: $recipy-primary-color !important;
+  }
+}
+
+.uk-section-footer {
+  & a { 
+    color: $recipy-secondary-color;
+  }
+}
+
+.uk-section-default {
+  background-color: $recipy-default-color !important;
+  color: $recipy-secondary-color;
+}
+
+.button-landing {
+  font: 'Quicksand', sans-serif;
+  color: $recipy-secondary-color;
+  background-color: $recipy-primary-color;
+  padding: 15px 30px;
+  border-radius: 3px;
+  opacity: 1;
+  transition: 0.3s;
+  font-size: 1.2em;
+
+  &:hover {
+    opacity: 0.8;
+    color: $recipy-secondary-color;
+    text-decoration: none;
   }
 }
