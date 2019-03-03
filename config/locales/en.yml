@@ -83,7 +83,8 @@ en:
       title: "Title"
       score: "Score"
       step: "Step"
-      time: "Time (min)"
+      cooking_time: "Cooking Time (min)"
+      preparation_time: "Preparation Time (min)"
       description: "Description"
       difficulty: "Difficulty"
       ingredient: "Ingredient(s)"
@@ -97,6 +98,7 @@ en:
       back: "Back"
       confirm: "Are you sure ?"
     creation:
+      missing_ingredients: "A recipe needs at least one ingredient!"
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "New recipe created! Thank you"
       confirm: "Validate"

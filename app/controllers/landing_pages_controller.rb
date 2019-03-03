@@ -1,7 +1,5 @@
 class LandingPagesController < ApplicationController
-
   before_action :disable_nav
-
 
   def index
     skip_policy_scope
@@ -22,14 +20,16 @@ class LandingPagesController < ApplicationController
     name.inspect
     firstname.inspect
     email.inspect
- 
 
     prospect = Prospect.new(landing_page_params)
-    if (prospect.valid?)
+    if prospect.valid?
       prospect.save
-      redirect_to landing_pages_path(anchor: 'join-us'), flash: { success: "Merci, nous vous contacterons dès qu'il y aura des nouveautés." }
+      redirect_to landing_pages_path(anchor: 'join-us'),
+                  flash:
+                    { success: "Merci, nous vous contacterons dès qu'il y aura des nouveautés." }
     else
-      redirect_to landing_pages_path(anchor: 'join-us'), flash: { danger: prospect.errors.full_messages.to_sentence }
+      redirect_to landing_pages_path(anchor: 'join-us'),
+                  flash: { danger: prospect.errors.full_messages.to_sentence }
     end
   end
 
@@ -42,6 +42,4 @@ class LandingPagesController < ApplicationController
   def landing_page_params
     params.require(:prospect).permit(:last_name, :first_name, :email)
   end
-
 end
-

@@ -65,6 +65,7 @@ fr:
         back: "Précédent"
         confirm: "Êtes-vous sûr ?"
       creation:
+        missing_ingredients: "La recette a au moins besoin d'un ingrédient !"
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Nouvelle recette créée! Merci"
         confirm: "Valider"
@@ -91,7 +92,7 @@ fr:
     difficulty: "Difficulté"
     difficulty_max: "Difficulté max"
     ingredient: "Ingrédients"
-    time: "Temps (en min)"
+    cooking_time: "Temps de cuisson (en min)"
     time_max: "Temps maximum"
     no_results: "Aucune recettes ne correspond à vos critères de recherche."
     sort_by: "Trier par"

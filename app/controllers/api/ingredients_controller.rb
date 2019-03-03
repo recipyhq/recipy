@@ -60,6 +60,7 @@ class Api::IngredientsController < ApplicationController
   end
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :description, :tags, :ingredient_tag_ids => [])
+    params.require(:ingredient).permit(:name, :description, :tags, :image,
+                                       :ingredient_tag_ids => [])
   end
 end
