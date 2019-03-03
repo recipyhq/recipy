@@ -166,12 +166,12 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.string "title"
     t.integer "score", default: 0
     t.text "description"
+    t.text "step"
     t.integer "difficulty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "view", default: 0
     t.integer "person", default: 1
-    t.text "step"
     t.text "steps", default: [], array: true
     t.integer "preparation_time"
     t.integer "cooking_time"
