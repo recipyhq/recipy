@@ -25,7 +25,7 @@ class Api::RecipesController < ApplicationController
     build_recipe_ingredients(@recipe, tab)
     recipe['ingredients'] = tab
 
-    render json: recipe
+    render json: recipe.except(:step, :time)
   end
 
   def new
@@ -95,6 +95,8 @@ class Api::RecipesController < ApplicationController
       @mrg_tab.clear
       build_recipe_ingredients(recipe, @mrg_tab)
       @recipes_hash[i]['ingredients'] = @mrg_tab
+      @recipes_hash[i].delete('time')
+      @recipes_hash[i].delete('step')
       i += 1
     end
   end

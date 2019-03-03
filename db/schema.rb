@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.text "description"
     t.text "step"
     t.integer "difficulty"
+    t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "view", default: 0
