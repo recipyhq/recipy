@@ -46,12 +46,13 @@ ActiveAdmin.register Recipe do
         new_ingredients.each do |elem|
           new_recipe.ingredients << Ingredient.find(elem[1].values[0])
 
-          recipe_quantity = RecipeQuantity.new(value: elem[1].values[1].values[0])
-          recipe_quantity.quantity_type = QuantityType.find(elem[1].values[1].values[1])
-          recipe_quantity.save
-
-          last = new_recipe.recipe_ingredients.last
-          last.recipe_quantity = recipe_quantity
+          unless elem[1].values[1].nil?
+            recipe_quantity = RecipeQuantity.new(value: elem[1].values[1].values[0])
+            recipe_quantity.quantity_type = QuantityType.find(elem[1].values[1].values[1])
+            recipe_quantity.save
+            last = new_recipe.recipe_ingredients.last
+            last.recipe_quantity = recipe_quantity
+          end
         end
         new_recipe.save
         redirect_to admin_recipes_url
