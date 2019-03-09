@@ -5,9 +5,12 @@ class Api::RecipesController < ApplicationController
   def index
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_utensils,
-                               :ingredients, :utensils,
+                               :utensils,
                                recipe_ingredients:
-                                 [:recipe_quantity => :quantity_type]).all.with_attached_image
+                                 [
+                                   :ingredient,
+                                   :recipe_quantity => :quantity_type,
+                                 ]).all.with_attached_image
 
     build_recipe_list_ingredients
 
@@ -20,10 +23,7 @@ class Api::RecipesController < ApplicationController
     @recipe.update_attribute(:view, view + 1)
 
     recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
-    tab = []
-
-    build_recipe_ingredients(@recipe, tab)
-    recipe['ingredients'] = tab
+    recipe['ingredients'] = build_recipe_ingredients(@recipe)
 
     render json: recipe.except(:step, :time)
   end
@@ -69,43 +69,41 @@ class Api::RecipesController < ApplicationController
 
   private
 
-  def build_recipe_ingredients(recipe, tab)
-    i = 0
+  def build_recipe_ingredients(recipe)
+    @tab = []
     if recipe.recipe_ingredients.nil? || recipe.ingredients.nil?
-      tab.push([])
+      @tab.push([])
     else
-      recipe.ingredients.each do |ingredient|
-        if recipe.recipe_ingredients[i].recipe_quantity.nil?
-          value = nil
-          quantity_name = nil
+      recipe.recipe_ingredients.each do |elem|
+        if elem.recipe_quantity.nil?
+          mrg = {
+            :ingredient => elem.ingredient,
+            :quantity => nil,
+          }
         else
-          value = recipe.recipe_ingredients[i].recipe_quantity.value
-          quantity_name = recipe.recipe_ingredients[i].recipe_quantity.quantity_type.name
+          mrg = {
+            :ingredient => elem.ingredient,
+            :quantity => [
+              elem.recipe_quantity.value,
+              elem.recipe_quantity.quantity_type.name,
+            ],
+          }
         end
-        mrg = {
-          :ingredient => ingredient,
-          :quantity => [
-            value,
-            quantity_name,
-          ],
-        }
-        i += 1
-        tab.push(mrg)
+        @tab.push(mrg)
       end
     end
+    @tab
   end
 
   def build_recipe_list_ingredients
     i = 0
-    @mrg_tab = []
     @recipes_hash = @recipes.as_json(include: [
       :utensils,
     ], methods: %i(image_url))
 
     @recipes.each do |recipe|
-      @mrg_tab.clear
-      build_recipe_ingredients(recipe, @mrg_tab)
-      @recipes_hash[i]['ingredients'] = @mrg_tab
+      build_recipe_ingredients(recipe)
+      @recipes_hash[i]['ingredients'] = build_recipe_ingredients(recipe)
       @recipes_hash[i].delete('time')
       @recipes_hash[i].delete('step')
       i += 1
@@ -114,8 +112,12 @@ class Api::RecipesController < ApplicationController
 
   def find_recipe
     if !Recipe.find_by_id(params[:id]).nil?
-      @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                                :image_attachment, :image_attachment => :blob).find(params[:id])
+      @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :utensils,
+                                :image_attachment, recipe_ingredients: [
+                                  :ingredient,
+                                  :recipe_quantity => :quantity_type,
+                                ],
+                                                   :image_attachment => :blob).find(params[:id])
     else
       render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json
     end

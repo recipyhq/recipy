@@ -389,10 +389,8 @@ Recipe.create! do |recipe|
     RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
     RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
-  recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.create!(:quantity_type => QuantityType.find_by_name("Non défini"))
-  recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.create!(:quantity_type => QuantityType.find_by_name("Non défini"))
+  recipe.recipe_ingredients[2].recipe_quantity = nil
+  recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Four")
