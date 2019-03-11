@@ -5057,7 +5057,7 @@ mjml-wrapper@4.3.1:
     mjml-core "4.3.1"
     mjml-section "4.3.1"
 
-mjml@^4.2.0:
+mjml@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/mjml/-/mjml-4.3.1.tgz#0db0026f6ef538b53e05f29d7011eab768f337c9"
   integrity sha512-hUCdCodoWcLGaRifSCFuLo32ZSlh70kM44wUzEd3iXpaCfgaCen9YfykL4wSMkDogA1llMd2yWggRUVc8V2R+A==
