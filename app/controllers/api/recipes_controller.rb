@@ -5,7 +5,7 @@ class Api::RecipesController < ApplicationController
   def index
     skip_policy_scope
     @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment).all
+                               :image_attachment => :blob).all
 
     build_recipe_list_ingredients
 

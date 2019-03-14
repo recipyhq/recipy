@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_135751) do
+ActiveRecord::Schema.define(version: 2019_03_11_212148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,23 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
   end
 
+  create_table "shopping_list_ingredients", force: :cascade do |t|
+    t.bigint "shopping_list_id"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_shopping_list_ingredients_on_ingredient_id"
+    t.index ["shopping_list_id"], name: "index_shopping_list_ingredients_on_shopping_list_id"
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shopping_lists_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -193,4 +210,5 @@ ActiveRecord::Schema.define(version: 2019_01_06_135751) do
   end
 
   add_foreign_key "memberships", "users"
+  add_foreign_key "shopping_lists", "users"
 end
