@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_184325) do
+ActiveRecord::Schema.define(version: 2019_03_19_144125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "entilted"
+    t.string "city"
+    t.string "zip"
+    t.string "state"
+    t.string "country"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "longitude"
+    t.integer "latitude"
   end
 
   create_table "administrators", force: :cascade do |t|
@@ -89,6 +102,20 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "landing_pages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "firstname"
+    t.string "email"
+  end
+
+  create_table "landing_pages_user_tables", force: :cascade do |t|
+    t.string "name"
+    t.string "firstName"
+    t.string "email"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.string "account_type"
@@ -97,6 +124,22 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.datetime "updated_at", null: false
     t.index ["account_type", "account_id"], name: "index_memberships_on_account_type_and_account_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "openning_hours", force: :cascade do |t|
+    t.time "open"
+    t.time "close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "day"
+  end
+
+  create_table "point_of_sales", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "market_type"
   end
 
   create_table "producer_accounts", force: :cascade do |t|
@@ -231,6 +274,24 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.datetime "updated_at", null: false
     t.index ["quantity_type_id"], name: "index_related_recipe_quantities_on_quantity_type_id"
     t.index ["recipe_quantity_id"], name: "index_related_recipe_quantities_on_recipe_quantity_id"
+  end
+
+  create_table "related_sale_addresses", force: :cascade do |t|
+    t.bigint "point_of_sale_id"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_related_sale_addresses_on_address_id"
+    t.index ["point_of_sale_id"], name: "index_related_sale_addresses_on_point_of_sale_id"
+  end
+
+  create_table "related_sale_hours", force: :cascade do |t|
+    t.bigint "point_of_sale_id"
+    t.bigint "opening_hours_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opening_hours_id"], name: "index_related_sale_hours_on_opening_hours_id"
+    t.index ["point_of_sale_id"], name: "index_related_sale_hours_on_point_of_sale_id"
   end
 
   create_table "users", force: :cascade do |t|

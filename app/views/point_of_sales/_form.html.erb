@@ -1,0 +1,23 @@
+
+
+<%= simple_form_for(@point_of_sale) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :market_type %>
+
+  <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
+    <%= a.input :entilted %>
+    <%= a.input :city %>
+    <%= a.input :zip %>
+    <%= a.input :state %>
+    <%= a.input :country %>
+    <%= a.input :phone %>
+  <% end %>
+
+  <div class="uk-margin-medium">
+    <%= f.button :submit %>
+  </div>
+<% end %>

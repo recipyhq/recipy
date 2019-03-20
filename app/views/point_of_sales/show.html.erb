@@ -1,0 +1,26 @@
+<% if flash[:danger] %>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:danger] %></p>
+  </div>
+<%end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @point_of_sale.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @point_of_sale.description %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @point_of_sale.market_type %>
+</p>
+
+<%= link_to 'Edit', edit_point_of_sale_path(@point_of_sale) %> |
+<%= link_to 'Back', point_of_sales_path %>

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         end
       end
       resources :recipes
+      resources :point_of_sales
       get 'search' => "search#index"
     end
   end
