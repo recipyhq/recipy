@@ -1,44 +1,193 @@
-#main {
-  height: 120vh;
-  background-image: linear-gradient( 110.3deg,  rgba(255,154,59,1) 3%, rgba(255,197,59,1) 97.7% );
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Montserrat:700|Quicksand');
+@import './base/variables.scss';
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(+15px);
+    -ms-transform: translateY(+15px);
+    -webkit-transform: translateY(+15px);
+    transform: translateY(+15px);
+  }
+  60% {
+    -moz-transform: translateY(+30px);
+    -ms-transform: translateY(+30px);
+    -webkit-transform: translateY(+30px);
+    transform: translateY(+30px);
+  }
 }
 
-div.text_title {
-  text-align: center;
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
 }
 
-.image-size {
-  max-width: 300px;
-  max-height: 200px;
+.cover {
+  background-color: $recipy-secondary-color;
 }
 
-#div_join {
-  margin: 0 auto;
-  background-color: red;
-  vertical-align: middle
+.uk-section-secondary {
+  background-color: $recipy-secondary-color;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.uk-navbar {
+  background: none;
+  background-color: none;
+  transition: 0.5s;
 }
 
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
+.uk-navbar-sticky {
+  background-color: $recipy-secondary-color;
+  transition: 0.5s;
+
+  .uk-logo {
+    text-shadow: none;
+  }
+
+  .uk-navbar-toggle-icon {
+    background-color: transparent;
+    transition: 0.2s;
+  }
+
+  .uk-navbar-nav > li > a {
+    color: $recipy-default-color;
+  }
 }
 
-.main-presentation {
-  text-align: center;
+.uk-navbar-toggle-icon {
+  color: $recipy-default-color;
+  background-color: $recipy-primary-color;
 }
 
-.footer {
-  background-color: #FF9A3C;
+.uk-navbar-nav > li > a {
+  color: $recipy-default-color;
+  animation: opacity 1s ease-in-out;
+  transition: 0.3s;
+  text-shadow: 1px 2px 4px $recipy-secondary-color;
+  font-size: 1em;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus {
+    color: $recipy-default-color;
+  }
 }
 
-h2 {
-  display: block;
-  font-size: 1.5em;
+.uk-logo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.2em;
+  border-color: $recipy-primary-color;
+  font-weight: bolder;
+  text-shadow: 1px 2px 4px $recipy-secondary-color;
+  color: $recipy-primary-color;
+  &:hover {
+    color: $recipy-primary-color;
+    opacity: 1;
+  }
+}
+
+.cover-text-container {
+
+  margin-top: 80px;
+
+  h1 {
+    font-family: 'Lobster Two', cursive;
+    text-align: center;
+  }
+
+  & * {
+    color: $recipy-default-color !important;
+    text-shadow: 1px 2px 4px $recipy-secondary-color;
+  }
+
+  & .project-info {
+    text-align: center;
+  }
+
+  & .down-icon {
+    color: $recipy-primary-color;
+  }
+}
+
+.landing-title {
+  color: $recipy-secondary-color;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.uk-section-footer {
+  background-color: $recipy-primary-color;
+  color: $recipy-secondary-color;
+
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+  }
+}
+
+.uk-modal-dark {
+  color: $recipy-default-color;
+  background-color: $recipy-secondary-color;
+
+  .landing-title {
+    color: $recipy-default-color;
+  }
+
+  .button-feedback {
+    font: 'Quicksand', sans-serif;
+    color: $recipy-secondary-color;
+    background-color: $recipy-primary-color;
+    padding: 15px 30px;
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: 0.3s;
+    font-size: 1.2em;
+
+    &:hover {
+      opacity: 0.95;
+      color: $recipy-secondary-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.rgpd-small {
+  font-size: 0.5em;
+  color: lighten($recipy-secondary-color, 30%);
+  & > a {
+    color: $recipy-primary-color !important;
+  }
+}
+
+.uk-section-footer {
+  & a { 
+    color: $recipy-secondary-color;
+  }
+}
+
+.uk-section-default {
+  background-color: $recipy-default-color !important;
+  color: $recipy-secondary-color;
+}
+
+.button-landing {
+  font: 'Quicksand', sans-serif;
+  color: $recipy-secondary-color;
+  background-color: $recipy-primary-color;
+  padding: 15px 30px;
+  border-radius: 3px;
+  opacity: 1;
+  transition: 0.3s;
+  font-size: 1.2em;
+
+  &:hover {
+    opacity: 0.8;
+    color: $recipy-secondary-color;
+    text-decoration: none;
+  }
 }

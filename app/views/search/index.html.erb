@@ -20,7 +20,7 @@
     </div>
     <%= f.input :difficulty, :label => t("search.difficulty"), :prompt => t("search.difficulty_max"), :selected => @search_difficulty, collection: 0..10, as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s" %>
     <%= f.input :ingredients, :label => t("search.ingredient"), :selected => @search_ingredients, collection: @ingredients_select, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredients-select", multiple: true } , wrapper_class: "uk-width-1-4@s", defaults: { input_class: "" } %>
-    <%= f.input :time, :label => t("search.time"), :prompt => t("search.time_max"), :selected => @search_time, collection: (0..@time_max).step(5), as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s" %>
+    <%= f.input :cooking_time, :label => t("search.cooking_time"), :prompt => t("search.time_max"), :selected => @search_time, collection: (0..@time_max).step(5), as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s" %>
     <%= f.input :sort, :label => t("search.sort_by"), :prompt => t("search.sort_by"), :selected => @sort, collection: @sort_possibilities, as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s", :label_method => lambda { |el| t "search.sort.#{el.first}" } %>
 <% end %>
 <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m uk-padding" uk-grid>
@@ -41,8 +41,8 @@
                         <div class="info-recipe">
                             <span class="name"><%= t("recipe.title.difficulty") %> (<%= recipe.difficulty %> / 10)</span>
                             <progress class="uk-progress" value="<%= recipe.difficulty %>" max="10"></progress>
-                            <span class="name"><%= t("recipe.title.time") %></span>
-                            <span class="info"><%= recipe.time %></span>
+                            <span class="name"><%= t("recipe.title.cooking_time") %></span>
+                            <span class="info"><%= recipe.cooking_time %></span>
                             <span class="name"><%= t("recipe.title.ingredient_number") %></span>
                             <span class="info"><%= recipe.ingredients.count %></span>
                         </div>

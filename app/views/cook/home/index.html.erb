@@ -1,28 +1,56 @@
-<div class="uk-child-width-2@s uk-light" uk-grid>
-    <div>
-        <div class="uk-background-cover uk-height-large uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(<%= asset_path 'password_new/back_password_new.jpg' %>);">
-            <%= simple_form_for :search,
-                                url: search_path,
-                                :method => :get,
-                                html: {
-                                    class: "uk-search uk-search-large"
-                                },
-                                defaults: {
-                                    wrapper: false,
-                                    :input_html => {
-                                        :class => 'uk-search-input'
-                                    }
-                                } do |f| %>
-                <span uk-search-icon></span>
-                <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher...", as: :string %>
-            <% end %>
+<div class="uk-child-width-2@s" uk-grid>
+  <div class="uk-align-center">
+    <div class="uk-background-cover uk-height-match uk-panel uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="background-image: url(<%= asset_path 'wallpapers/home_blured.jpg' %>);">
+      <h1 style="color: whitesmoke" class="uk-margin-large-top uk-text-bold">Vous avez faim ?</h1>
+      <%= simple_form_for :search,
+                          url: search_path,
+                          :method => :get,
+                          html: {
+                            class: "uk-search uk-search-large uk-search-default uk-background-muted uk-width-1-2",
+                          },
+                          defaults: {
+                            wrapper: false,
+                            :input_html => {
+                              :class => 'uk-search-input'
+                            }
+                          } do |f| %>
+        <span uk-search-icon></span>
+        <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher un plat...", as: :string %>
+      <% end %>
+
+      <tbody>
+      <div class="uk-align-center uk-margin-xlarge-bottom uk-margin-xlarge-top uk-background-muted uk-text-center">
+        <p style="margin-bottom: 0" class="uk-h2 uk-margin-medium-top uk-align-center uk-text-emphasis">Nos recettes les
+          plus populaires</p>
+        <div class="uk-grid-small uk-child-width-1-4@m uk-grid-match uk-padding" uk-grid>
+          <% @recipes.each do |recipe| %>
+              <div class="uk-card uk-card-default">
+                <div class="uk-card-media-top uk-text-center uk-display-block ">
+                  <div class="uk-margin-top uk-align-center">
+                    <% if recipe.image.attached? %>
+                      <%= image_tag(recipe.image.variant(resize: '300x400')) %>
+                    <% else %>
+                      <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="uk-card-body">
+                  <h3 class="uk-card-title">
+                    <%= link_to recipe.title, recipe %>
+                    </br>
+                    <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
+                      / 10</span>
+                  </h3>
+                  <div class="uk-child-width-5-2@s">
+                    <p class="uk-text-truncate"> <%= recipe.description %></p>
+                  </div>
+                </div>
+              </div>
+          <% end %>
         </div>
+      </div>
+      </tbody>
     </div>
+  </div>
 </div>
-
-<h1>Cook::Home#index</h1>
-
-<%= link_to "Edit profile", edit_user_registration_path %>
-
-<%= link_to('logout', destroy_user_session_path, method: :delete) %>
 

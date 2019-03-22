@@ -4,8 +4,13 @@ class Api::RecipesController < ApplicationController
 
   def index
     skip_policy_scope
-    @recipes = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                               :image_attachment => :blob).all
+    @recipes = Recipe.includes(:recipe_utensils,
+                               :utensils,
+                               recipe_ingredients:
+                                 [
+                                   :ingredient,
+                                   :recipe_quantity => :quantity_type,
+                                 ]).all.with_attached_image
 
     build_recipe_list_ingredients
 
@@ -17,13 +22,10 @@ class Api::RecipesController < ApplicationController
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
 
-    recipe = @recipe.as_json(:include => [:utensils], methods: %i(image_url))
-    tab = []
+    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
+    recipe['ingredients'] = build_recipe_ingredients(@recipe)
 
-    build_recipe_ingredients(@recipe, tab)
-    recipe['ingredients'] = tab
-
-    render json: recipe
+    render json: recipe.except(:step, :time)
   end
 
   def new
@@ -33,7 +35,7 @@ class Api::RecipesController < ApplicationController
   def create
     new_recipe = Recipe.new(recipe_params)
     if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
-      if new_recipe.image.blob.content_type.starts_with?('image/')
+      if new_recipe.image.blob.image?
         new_recipe.save
         render :json => { Status: "OK", Cause: t("recipe.creation.valid") }.as_json
       else
@@ -67,40 +69,62 @@ class Api::RecipesController < ApplicationController
 
   private
 
-  def build_recipe_ingredients(recipe, tab)
-    i = 0
-    recipe.ingredients.each do |ingredient|
-      mrg = { :ingredient => ingredient, :quantity => recipe.recipe_ingredients[i].quantity }
-      i += 1
-      tab.push(mrg)
+  def build_recipe_ingredients(recipe)
+    @tab = []
+    if recipe.recipe_ingredients.nil? || recipe.ingredients.nil?
+      @tab.push([])
+    else
+      recipe.recipe_ingredients.each do |elem|
+        if elem.recipe_quantity.nil?
+          mrg = {
+            :ingredient => elem.ingredient,
+            :quantity => nil,
+          }
+        else
+          mrg = {
+            :ingredient => elem.ingredient,
+            :quantity => [
+              elem.recipe_quantity.value,
+              elem.recipe_quantity.quantity_type.name,
+            ],
+          }
+        end
+        @tab.push(mrg)
+      end
     end
+    @tab
   end
 
   def build_recipe_list_ingredients
     i = 0
-    @mrg_tab = []
     @recipes_hash = @recipes.as_json(include: [
       :utensils,
     ], methods: %i(image_url))
 
     @recipes.each do |recipe|
-      build_recipe_ingredients(recipe, @mrg_tab)
-      @recipes_hash[i]['ingredients'] = @mrg_tab
+      build_recipe_ingredients(recipe)
+      @recipes_hash[i]['ingredients'] = build_recipe_ingredients(recipe)
+      @recipes_hash[i].delete('time')
+      @recipes_hash[i].delete('step')
       i += 1
     end
   end
 
   def find_recipe
     if !Recipe.find_by_id(params[:id]).nil?
-      @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :ingredients, :utensils,
-                                :image_attachment, :image_attachment => :blob).find(params[:id])
+      @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :utensils,
+                                :image_attachment, recipe_ingredients: [
+                                  :ingredient,
+                                  :recipe_quantity => :quantity_type,
+                                ],
+                                                   :image_attachment => :blob).find(params[:id])
     else
       render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json
     end
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
-                                   :image, :ingredient_ids => [], :utensil_ids => [])
+    params.require(:recipe).permit(:title, :score, :time, :description, :difficulty, :view,
+                                   :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
   end
 end
