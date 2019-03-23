@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_184325) do
+ActiveRecord::Schema.define(version: 2019_03_13_175949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,24 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "producer_accounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -179,6 +196,15 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.integer "cooking_time"
   end
 
+  create_table "related_ingr_products", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_related_ingr_products_on_ingredient_id"
+    t.index ["product_id"], name: "index_related_ingr_products_on_product_id"
+  end
+
   create_table "related_ingredient_tags", force: :cascade do |t|
     t.bigint "ingredient_id"
     t.bigint "ingredient_tag_id"
@@ -186,6 +212,33 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_related_ingredient_tags_on_ingredient_id"
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
+  end
+
+  create_table "related_price_quantities", force: :cascade do |t|
+    t.bigint "price_id"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_related_price_quantities_on_price_id"
+    t.index ["quantity_type_id"], name: "index_related_price_quantities_on_quantity_type_id"
+  end
+
+  create_table "related_product_prices", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_related_product_prices_on_price_id"
+    t.index ["product_id"], name: "index_related_product_prices_on_product_id"
+  end
+
+  create_table "related_product_tags", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "product_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_related_product_tags_on_product_id"
+    t.index ["product_tag_id"], name: "index_related_product_tags_on_product_tag_id"
   end
 
   create_table "related_quantity_equivalencies", force: :cascade do |t|
