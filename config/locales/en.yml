@@ -117,3 +117,5 @@ en:
     no_title: "Missing ingredient title"
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
+  products:
+    missing_price_element: "Missing an element in the price"

@@ -100,3 +100,5 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+  products:
+    missing_price_element: "Il manque un élément dans le prix"

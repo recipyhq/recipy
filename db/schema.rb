@@ -130,8 +130,10 @@ ActiveRecord::Schema.define(version: 2019_03_23_171427) do
 
   create_table "prices", force: :cascade do |t|
     t.integer "value"
+    t.bigint "quantity_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_prices_on_quantity_type_id"
   end
 
   create_table "producer_accounts", force: :cascade do |t|
