@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       end
       resources :recipes
       resources :point_of_sales
-      resources :products, :only => [:new, :create]
+      resources :products, :only => [:new, :create, :edit, :update]
       get 'search' => "search#index"
     end
   end
