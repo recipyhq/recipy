@@ -1,0 +1,24 @@
+
+
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message:
+                             f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :ingredient, collection: Ingredient.all.map { |v| [v.name, v.id] }.to_a,
+              as: :select, :include_blank => false %>
+
+  <%= f.association :point_of_sales, as: :check_boxes,
+                    input_html: { class: 'uk-checkbox uk-margin-left'} %>
+
+  <%= f.simple_fields_for :price, @product.price do |a| %>
+    <%= a.input :value %>
+    <%= a.input :quantity_type, :label => t("quantity_type.label"),
+                collection: QuantityType.all.map { |v| [v.name, v.id] }.to_a,
+                as: :select, :include_blank => false %>
+  <% end %>
+
+  <div class="uk-margin-medium">
+    <%= f.button :submit %>
+  </div>
+<% end %>

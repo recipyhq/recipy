@@ -1,0 +1,12 @@
+<h1><%= t("products.title") %></h1>
+
+<% if flash[:success] %>
+  <div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Back', products_path %>
