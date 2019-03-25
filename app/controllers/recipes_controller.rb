@@ -10,7 +10,13 @@ class RecipesController < InheritedResources::Base
   def show
     find_recipe
     view = @recipe.view
-    print @recipe.utensils
+    if (user_signed_in?)
+      user_score = @recipe.recipe_scores.find_by(:user_id => current_user.id)
+
+      if (user_score)
+        @user_score = user_score.value
+      end
+    end
     @recipe.update_attribute(:view, view + 1)
   end
 

@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
+  
   scope 'beta' do
+    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
       scope module: 'cook' do
         unauthenticated :user do
@@ -41,7 +42,9 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
-      resources :recipes
+      resources :recipes, param: :id do
+        resources :scores, only: [:create]
+      end
       get 'search' => "search#index"
     end
   end

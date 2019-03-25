@@ -58,6 +58,7 @@ fr:
         utensil: "Ustensile(s)"
         image: "image"
       action:
+        set_score: "Noter"
         edit: "Modifier"
         show: "Afficher"
         new: "Nouvelle recette"

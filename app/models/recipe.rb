@@ -11,6 +11,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, :through => :recipe_ingredients
   has_many :recipe_utensils
   has_many :utensils, :through => :recipe_utensils
+  has_many :recipe_scores, dependent: :destroy
   has_one_attached :image
   validates :image, presence: true
 
@@ -18,6 +19,10 @@ class Recipe < ApplicationRecord
 
   def steps_raw
     steps.join("\r\n") unless steps.nil?
+  end
+
+  def score
+    self.recipe_scores.average(:value)
   end
 
   def image_url
