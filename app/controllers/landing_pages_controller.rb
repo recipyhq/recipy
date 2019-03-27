@@ -1,7 +1,17 @@
 class LandingPagesController < ApplicationController
-  before_action :disable_nav
+  before_action :disable_nav, :disable_footer
 
   def index
+    skip_policy_scope
+    skip_authorization
+  end
+
+  def privacy_policy
+    skip_policy_scope
+    skip_authorization
+  end
+
+  def legal_notice
     skip_policy_scope
     skip_authorization
   end
@@ -37,6 +47,10 @@ class LandingPagesController < ApplicationController
 
   def disable_nav
     @disable_nav = true
+  end
+
+  def disable_footer
+    @disable_footer = true
   end
 
   def landing_page_params

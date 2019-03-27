@@ -1,7 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :landing_pages, path: '/',  :only => [:index, :new, :create]
+  resources :landing_pages, path: '/', :only => [:index, :new, :create]
+  get '/privacy_policy', to: "landing_pages#privacy_policy"
+  get '/legal_notice', to: "landing_pages#legal_notice"
 
   ActiveAdmin.routes(self)
 

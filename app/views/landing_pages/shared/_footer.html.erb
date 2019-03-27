@@ -1,0 +1,34 @@
+<!--  Footer-->
+<div class="uk-section uk-section-small uk-section-muted uk-section-footer landing-footer">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-grid uk-text-center " uk-grid="">
+      <div class="uk-width-expand@s uk-first-column">
+        <img data-src="<%= asset_path 'landing/logo.png' %>" alt="iphone" height="200" width="200" uk-img>
+        <ul class="uk-list">
+          <li><span uk-icon="icon: home"></span> 5-9 rue du palais Rihour, 59 800 Lille, France</li>
+        </ul>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between ">
+        <h1>A propos</h1>
+        <p class="uk-text-justify">Nous voulons “Révolutionner l’alimentation des Français”, en proposant un service simple, accessible, intégré aux outils d’aujourd’hui et de demain. Il permettra d’éviter le gaspillage des aliments restés dans la cuisine du consommateur. Il donnera aussi aux novices la possibilité de réaliser des recettes simples et délicieuses avec des produits locaux.</p>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between">
+        <h1>Accès principaux</h1>
+        <ul class="uk-list">
+          <li><%= link_to 'Mentions légales', controller: "landing_pages", action: "legal_notice" %></li>
+          <li><%= link_to 'Politique de confidentialité', controller: "landing_pages", action: "privacy_policy" %></li>
+          <li><%= mail_to "recipyhq@gmail.com", "Nous contacter" %></li>
+        </ul>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between">
+        <h1>Rejoignez nous</h1>
+        <ul class="uk-list">
+          <li><a href="https://www.facebook.com/recipyapp" target="blank"><span uk-icon="icon: facebook"></span>   Facebook</a></li>
+          <li><a href="https://twitter.com/recipyapp" target="blank"><span uk-icon="icon: twitter"></span>   Twitter</a></li>
+          <li><a href="https://www.instagram.com/recipy_hq" target="blank"><span uk-icon="icon: instagram"></span>   Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
