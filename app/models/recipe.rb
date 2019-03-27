@@ -22,7 +22,7 @@ class Recipe < ApplicationRecord
   end
 
   def score
-    self.recipe_scores.average(:value)
+    self.recipe_scores.average(:value) || 0.0
   end
 
   def image_url

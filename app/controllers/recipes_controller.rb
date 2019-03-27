@@ -11,13 +11,10 @@ class RecipesController < InheritedResources::Base
     find_recipe
     view = @recipe.view
     if (user_signed_in?)
-      user_score = @recipe.recipe_scores.find_by(:user_id => current_user.id)
-
-      if (user_score)
-        @user_score = user_score.value
-      end
+      @feedback_user = @recipe.recipe_scores.find_by(:user_id => current_user.id)
     end
     @recipe.update_attribute(:view, view + 1)
+    @recipe_feedbacks = @recipe.recipe_scores
   end
 
   def new
@@ -64,7 +61,7 @@ class RecipesController < InheritedResources::Base
   private
 
   def find_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:recipe_ingredients => [:ingredient, :recipe_quantity => :quantity_type]).find(params[:id])
   end
 
   def recipe_params

@@ -49,6 +49,7 @@ fr:
         new: "Création d'une recette"
         title: "Titre"
         score: "Note"
+        comment: "Commentaire"
         step: "Etape(s)"
         time: "Temps de préparation (en min)"
         description: "Description"
@@ -59,6 +60,7 @@ fr:
         image: "image"
       action:
         set_score: "Noter"
+        set_comment: "Ajouter un commentaire"
         edit: "Modifier"
         show: "Afficher"
         new: "Nouvelle recette"
