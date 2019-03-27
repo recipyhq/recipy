@@ -36,8 +36,7 @@
 }
 
 .uk-navbar {
-  background: none;
-  background-color: none;
+  background: transparent none;
   transition: 0.5s;
 }
 
@@ -121,12 +120,14 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.uk-section-footer {
+.landing-footer {
   background-color: $recipy-primary-color;
   color: $recipy-secondary-color;
 
   h1 {
     font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
   }
 }
 
@@ -157,16 +158,17 @@
 }
 
 .rgpd-small {
-  font-size: 0.5em;
+  font-size: 10px;
   color: lighten($recipy-secondary-color, 30%);
   & > a {
     color: $recipy-primary-color !important;
   }
 }
 
-.uk-section-footer {
-  & a { 
+.landing-footer {
+  & a {
     color: $recipy-secondary-color;
+    font-size: 17px;
   }
 }
 

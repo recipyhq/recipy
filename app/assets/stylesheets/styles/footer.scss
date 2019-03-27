@@ -1,0 +1,12 @@
+@import './base/variables.scss';
+
+.app_footer {
+  background-color: $recipy-secondary-color;
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+  }
+}
+
+.app_footer h3, .app_footer a {
+  color: white;
+}
