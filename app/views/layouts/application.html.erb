@@ -15,5 +15,6 @@
   <body>
     <%= render 'shared/navbar' unless @disable_nav %>
     <%= yield %>
+    <%= render 'shared/footer' unless @disable_footer %>
   </body>
 </html>
