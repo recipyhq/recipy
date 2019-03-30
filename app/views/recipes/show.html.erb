@@ -66,18 +66,20 @@
     <div>
       <div class="uk-container uk-padding">
         <h2 class="title"><%= t("recipe.title.preparation") %></h2>
-        <ul class="uk-list uk-list-bullet">
-            <% @recipe.steps.each do |step| %>
-              <li><%= step %></li>
-            <% end %>
-        </ul>
-        <div class="uk-grid-small" uk-grid>
-          <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.preparation_time") %></div>
-          <div><%= minute_to_time(@recipe.preparation_time) %></div>
-        </div>
-        <div class="uk-grid-small" uk-grid>
-          <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.cooking_time") %></div>
-          <div><%= minute_to_time(@recipe.cooking_time) %></div>
+        <div class="uk-card uk-card-default uk-card-body">
+          <ul class="uk-list uk-list-bullet">
+              <% @recipe.steps.each do |step| %>
+                <li><%= step %></li>
+              <% end %>
+          </ul>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.preparation_time") %></div>
+            <div><%= minute_to_time(@recipe.preparation_time) %></div>
+          </div>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.cooking_time") %></div>
+            <div><%= minute_to_time(@recipe.cooking_time) %></div>
+          </div>
         </div>
       </div>
     </div>
