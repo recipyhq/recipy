@@ -3,30 +3,19 @@ class ScoresController < ApplicationController
   before_action :authenticate_user!
   before_action :find_recipe!
 
-  def set_value
+  def set_value_and_content
     score = @recipe.recipe_scores.create_with(user_id: current_user.id).find_or_create_by(user_id: current_user.id)
 
-    score.update(:value => score_value_params[:value])
-
-    redirect_back fallback_location: recipe_path(:id => @recipe.id)
-  end
-
-  def set_content
-    score = @recipe.recipe_scores.create_with(user_id: current_user.id).find_or_create_by(user_id: current_user.id)
-
-    score.update(:content => score_content_params[:content])
+    score.update(:value => score_params[:value])
+    score.update(:content => score_params[:content])
 
     redirect_back fallback_location: recipe_path(:id => @recipe.id)
   end
 
   private
 
-  def score_value_params
-    params.require(:recipe_score).permit(:value)
-  end
-
-  def score_content_params
-    params.require(:recipe_score).permit(:content)
+  def score_params
+    params.require(:recipe_score).permit(:value, :content)
   end
 
   def find_recipe!

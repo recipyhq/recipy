@@ -25,6 +25,10 @@ class Recipe < ApplicationRecord
     self.recipe_scores.average(:value) || 0.0
   end
 
+  def score_count
+    self.recipe_scores.count();
+  end
+
   def image_url
     Rails.application.routes.url_helpers.url_for(image) if image.attached?
   end

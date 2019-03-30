@@ -43,8 +43,7 @@ Rails.application.routes.draw do
         end
       end
       resources :recipes, param: :id do
-        post '/feedback/score', to: 'scores#set_value', as: 'feedback_score'
-        post '/feedback/comment', to: 'scores#set_content', as: 'feedback_comment'
+        post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       end
       get 'search' => "search#index"
     end

@@ -61,7 +61,7 @@ class RecipesController < InheritedResources::Base
   private
 
   def find_recipe
-    @recipe = Recipe.includes(:recipe_ingredients => [:ingredient, :recipe_quantity => :quantity_type]).find(params[:id])
+    @recipe = Recipe.includes(:recipe_ingredients => [:ingredient, :recipe_quantity => :quantity_type], :recipe_scores => [:user => [:avatar_attachment]]).find(params[:id])
   end
 
   def recipe_params
