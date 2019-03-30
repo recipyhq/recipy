@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_184325) do
+ActiveRecord::Schema.define(version: 2019_03_26_140527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,17 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
     t.index ["quantity_type_id"], name: "index_recipe_quantities_on_quantity_type_id"
   end
 
+  create_table "recipe_scores", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "recipe_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+    t.index ["recipe_id"], name: "index_recipe_scores_on_recipe_id"
+    t.index ["user_id"], name: "index_recipe_scores_on_user_id"
+  end
+
   create_table "recipe_utensils", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "utensil_id"
@@ -165,7 +176,6 @@ ActiveRecord::Schema.define(version: 2019_02_16_184325) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.integer "score", default: 0
     t.text "description"
     t.text "step"
     t.integer "difficulty"

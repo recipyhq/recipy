@@ -1,4 +1,4 @@
-class Api::IngredientsController < ApplicationController
+class Api::IngredientsController < Api::BaseController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
 

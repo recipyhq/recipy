@@ -1,4 +1,4 @@
-class Api::SearchController < ApplicationController
+class Api::SearchController < Api::BaseController
   before_action :skip_authorization
   @@per_page = 24
   @@sort_possibilities = [

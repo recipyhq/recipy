@@ -39,7 +39,7 @@
                     <%= link_to recipe.title, recipe %>
                     </br>
                     <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
-                      / 10</span>
+                      / 5</span>
                   </h3>
                   <div class="uk-child-width-5-2@s">
                     <p class="uk-text-truncate"> <%= recipe.description %></p>

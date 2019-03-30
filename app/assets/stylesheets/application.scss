@@ -15,3 +15,18 @@
  *= require landing_pages
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Montserrat:700|Quicksand');
+@import './base/variables.scss';
+
+.uk-section-secondary {
+  background-color: $recipy-secondary-color;
+}
+
+.title {
+  color: $recipy-secondary-color;
+  font-family: 'Montserrat', sans-serif;
+}
+
+progress.uk-progress[value]::-webkit-progress-value {
+  background-color: $recipy-primary-color;
+}

@@ -1,103 +1,163 @@
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-</head>
-<p id="notice"><%= notice %></p>
-<%  if flash[:success] %>
-  <div class="uk-alert-success" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p><%= flash[:success] %></p>
-  </div>
-<% end %>
-
-<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
-
-  <div class="uk-width-1-3@m">
-  <div class="uk-card uk-card-default uk-padding" name="ingredient">
-    <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-expand">
-          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center"> <i class="fas fa-lemon"></i> Ingrédients <i class="fas fa-carrot"></i> </h3>
-        </div>
-      </div>
-    </div>
-    <ul class="uk-list uk-list-bullet">
-      <div class="uk-card-body">
-        <% i = 0 %>
-        <%@recipe.ingredients.each do | ingredient| %>
-          <div class="uk-text-center"> <li> <%= ingredient.name %>
-            <%= @recipe.recipe_ingredients[i].quantity %></li>
-            <% i += 1 %>
-          </div>
-        <% end %>
-      </div>
-    </ul>
-  </div>
-  </div>
-
-
-<div class="uk-width-1-2@m">
-  <div class="uk-card uk-card-default uk-padding-large" name="recipe">
-    <div class="uk-card-header">
-      <h1 class="uk-article-title uk-margin-remove-bottom uk-text-center">
-        <%= @recipe.title %>
-      </h1>
-      <% if @recipe.image.attached? && @recipe.image.blob.content_type.starts_with?('image/') %>
-        <div class="uk-flex uk-flex-center uk-flex-middle uk-light"> <td><%= image_tag(@recipe.image.variant(resize: '500x500')) %></td> </div>
-      <% end %>
-    </div>
-    <div class="uk-card-body">
-      <div class="uk-text-center">
-        <p>
-          <%= @recipe.description %>
-        </p>
-      </div>
-      <p>
-      <h3> Préparation : </h3>
-      <%= @recipe.step %>
-      </p>
-    </div>
-    <div class="uk-card-footer">
-      <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
-        <div>
-          <div class="uk-card uk-card-default uk-card-body">
-            <strong><%= t("recipe.title.score") %>:</strong>
-            <%= @recipe.score %>
-            <strong> / 5 </strong>
-          </div>
-        </div>
-        <div>
-          <div class="uk-card uk-card-default uk-card-body">
-            <%= @recipe.cooking_time %>
-            <strong> minutes </strong>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div> Difficulté </div>
-      <div> <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress> </div>
-      <br>
-      <%= link_to "Liste des recettes", recipes_path , :class=>"uk-center uk-button uk-button-text"%>
-    </div>
+<div class="uk-child-width-1-1@m" uk-grid>
+  <div>
+    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;"></div>
   </div>
 </div>
 
 
-  <div class="uk-width-1-3@m">
-  <div class="uk-card uk-card-default uk-padding" name="ustensile">
-    <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-expand">
-          <h3 class="uk-card-title uk-margin-remove-bottom uk-text-center"> <i class="fas fa-utensils"></i> Ustensiles <i class="fas fa-utensil-spoon"></i> </h3>
+<div class="uk-section uk-section-secondary uk-light">
+    <div class="uk-container">
+        <h2 class="title"><%= @recipe.title %></h2>
+        <p><%= @recipe.description %></p>
+        <div class="uk-child-width-1-3@m" uk-grid>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
+              <% if @recipe.score_count > 0 %>
+                <p><%= @recipe.score %> / 5</p>
+              <% else %>
+                <p><%= t("recipe.title.no_score") %></p>
+              <% end %>
+            </div>
+          </div>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.time") %></h5>
+              <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
+            </div>
+          </div>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
+              <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
+            </div>
+          </div>          
+        </div>
+    </div>
+</div>
+
+<div class="uk-section uk-section-default">
+  <div class="uk-child-width-1-2@m" uk-grid>
+    <div>
+      <div class="uk-padding">
+        <h2 class="title"><%= t("recipe.title.ingredient") %></h2>
+        <div class="uk-card uk-card-default uk-card-body">
+          <%@recipe.recipe_ingredients.each do |recipe_ingredient| %>
+              <div class="uk-grid-small" uk-grid>
+                  <div class="uk-width-expand" uk-leader="fill: -"><%= recipe_ingredient.ingredient.name %></div>
+                  <% if (recipe_ingredient.recipe_quantity) %>
+                    <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
+                  <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div  class="uk-padding">
+        <h2 class="title"><%= t("recipe.title.ustensil") %></h2>
+        <div class="uk-card uk-card-default uk-card-body">
+          <ul>
+          <%@recipe.utensils.each do | ustensile| %>
+            <li> <%= ustensile.title %></li>
+          <% end %>
+          </ul>
         </div>
       </div>
     </div>
-    <ul class="uk-list uk-list-bullet">
-      <div class="uk-card-body">
-        <%@recipe.utensils.each do | ustensile| %>
-          <div class="uk-text-center"> <li> <%= ustensile.title %></li> </div>
-        <% end %>
+    <div>
+      <div class="uk-container uk-padding">
+        <h2 class="title"><%= t("recipe.title.preparation") %></h2>
+        <div class="uk-card uk-card-default uk-card-body">
+          <ul class="uk-list uk-list-bullet">
+              <% @recipe.steps.each do |step| %>
+                <li><%= step %></li>
+              <% end %>
+          </ul>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.preparation_time") %></div>
+            <div><%= minute_to_time(@recipe.preparation_time) %></div>
+          </div>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.cooking_time") %></div>
+            <div><%= minute_to_time(@recipe.cooking_time) %></div>
+          </div>
+        </div>
       </div>
-    </ul>
+    </div>
   </div>
+  <hr class="uk-divider-icon">
+  <p id="notice"><%= notice %></p>
+  <%  if flash[:success] %>
+    <div class="uk-alert-success" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p><%= flash[:success] %></p>
+    </div>
+  <% end %>
+  <div class="uk-container">
+    <div class="uk-flex uk-flex-middle uk-padding uk-padding-remove-left uk-padding-remove-right">
+      <div>
+        <h2 class="title uk-margin-remove-bottom"><%= t("recipe.title.all_feedback") %></h2>
+      </div>
+      <div class="uk-padding uk-padding-remove-top uk-padding-remove-bottom">
+          <% if user_signed_in? %>
+            <a class="uk-button uk-button-default uk-button-small" href="#feedback" uk-toggle><%= t('recipe.action.give_feedback') %></a>
+          <% else %>
+            <a class="uk-link-muted" href="<%= new_user_session_path(:next => request.original_url) %>"><%= t('recipe.title.connect_to_give_feedback') %></a>
+          <% end %>
+      </div>
+    </div>
+    <% if @recipe_feedbacks.length < 1 %>
+      <p><%= t('recipe.title.no_feedback') %></p>
+    <% else %>
+      <% @recipe_feedbacks.each do |recipe_feedback| %>
+        <hr>
+        <article class="uk-comment">
+          <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+              <% if recipe_feedback.user.avatar.attached? %>
+                <div class="uk-width-auto">
+                    <img class="uk-comment-avatar" src="<%= url_for(recipe_feedback.user.avatar.variant resize: '200x200') %>" width="50" height="50" alt="">
+                </div>
+              <% end %>
+              <div class="uk-width-expand">
+                  <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#"><%= recipe_feedback.user.email %></a></h4>
+                  <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                      <li><%= recipe_feedback.updated_at.to_time.strftime('%d/%m/%Y %H:%M') %></li>
+                      <% if recipe_feedback.value %>
+                        <li><%= recipe_feedback.value %> / 5</li>
+                      <% end %>
+                  </ul>
+              </div>
+          </header>
+          <% if recipe_feedback.content %>
+            <div class="uk-comment-body">
+              <p><%= recipe_feedback.content %></p>
+            </div>
+          <% end %>
+      </article>
+      <% end %>
+    <% end %>
   </div>
+</div>
+
+<div id="feedback" class="uk-modal-container" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
+        <button class="uk-modal-close-outside" type="button" uk-close></button>
+        <h2 class="uk-modal-title landing-title"><%= t('recipe.title.give_feedback_for', recipe_title: @recipe.title) %></h2>
+        <%= simple_form_for :recipe_score,
+            url: recipe_feedback_path(:recipe_id => @recipe.id),
+            :method => :post,
+            defaults: {
+              wrapper: false,
+              label: false
+            } do |f| %>
+          <div class="uk-margin">
+            <%= f.input :value, :prompt => t("recipe.title.score"), :selected => (@feedback_user) ? @feedback_user.value : nil, collection: 0..5, as: :select, input_html: { class: 'uk-select' } %>
+          </div>
+          <div class="uk-margin">
+            <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content: nil, class: 'uk-textarea' %>
+          </div>
+          <div>
+            <%= f.button :submit, t("recipe.action.feedback") %>
+          </div>
+        <% end %>
+    </div>
 </div>

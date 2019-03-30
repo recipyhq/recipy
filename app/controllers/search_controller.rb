@@ -26,6 +26,6 @@ class SearchController < ApplicationController
     end
     @page_max = (@recipes.uniq.count / @@per_page).ceil
     @page_max = @page_max > 0 ? @page_max : 1
-    @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment)
+    @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment => :blob).all
   end
 end
