@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def api_controller?
-    self.class.to_s.match(/^DeviseTokenAuth::/).present? || is_a?(API::BaseController)
+    self.class.to_s.match(/^DeviseTokenAuth::/).present? || is_a?(Api::BaseController)
   end
 
   def active_admin_controller?
