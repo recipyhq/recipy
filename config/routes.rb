@@ -57,7 +57,9 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
-    resources :recipes
+    resources :recipes, param: :id do
+      post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+    end
     resources :ingredients
     get 'search' => "search#index"
   end
