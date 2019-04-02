@@ -1,56 +1,57 @@
-<div class="uk-child-width-2@s" uk-grid>
-  <div class="uk-align-center">
-    <div class="uk-background-cover uk-height-match uk-panel uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="background-image: url(<%= asset_path 'wallpapers/home_blured.jpg' %>);">
-      <h1 style="color: whitesmoke" class="uk-margin-large-top uk-text-bold">Vous avez faim ?</h1>
-      <%= simple_form_for :search,
-                          url: search_path,
-                          :method => :get,
-                          html: {
-                            class: "uk-search uk-search-large uk-search-default uk-background-muted uk-width-1-2",
-                          },
-                          defaults: {
-                            wrapper: false,
-                            :input_html => {
-                              :class => 'uk-search-input'
-                            }
-                          } do |f| %>
-        <span uk-search-icon></span>
-        <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher un plat...", as: :string %>
-      <% end %>
-
-      <tbody>
-      <div class="uk-align-center uk-margin-xlarge-bottom uk-margin-xlarge-top uk-background-muted uk-text-center">
-        <p style="margin-bottom: 0" class="uk-h2 uk-margin-medium-top uk-align-center uk-text-emphasis">Nos recettes les
-          plus populaires</p>
-        <div class="uk-grid-small uk-child-width-1-4@m uk-grid-match uk-padding" uk-grid>
-          <% @recipes.each do |recipe| %>
-              <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top uk-text-center uk-display-block ">
-                  <div class="uk-margin-top uk-align-center">
-                    <% if recipe.image.attached? %>
-                      <%= image_tag(recipe.image.variant(resize: '300x400')) %>
-                    <% else %>
-                      <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="uk-card-body">
-                  <h3 class="uk-card-title">
-                    <%= link_to recipe.title, recipe %>
-                    </br>
-                    <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
-                      / 5</span>
-                  </h3>
-                  <div class="uk-child-width-5-2@s">
-                    <p class="uk-text-truncate"> <%= recipe.description %></p>
-                  </div>
-                </div>
-              </div>
-          <% end %>
-        </div>
+  <div class="uk-cover-container uk-height-medium">
+    <img src="<%= asset_path 'wallpapers/home_blured.jpg' %>" alt="cover" uk-cover>
+    <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle">
+      <h1 class="title title-light uk-padding uk-padding-remove-bottom">Vous avez faim ?</h1>
+      <div class="uk-width-1-1 uk-padding uk-text-center">
+        <%= simple_form_for :search,
+                            url: search_path,
+                            :method => :get,
+                            html: {
+                              class: "uk-search uk-search-large uk-background-muted uk-search-default uk-width-1-1@s uk-width-1-2@m uk-align-center uk-margin",
+                            },
+                            defaults: {
+                              wrapper: false,
+                              :input_html => {
+                                :class => 'uk-search-input'
+                              }
+                            } do |f| %>
+          <span uk-search-icon></span>
+          <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher un plat...", as: :string %>
+        <% end %>
+        <a class="link-light" href="<%= recipe_path(@random_recipe) %>">Trouver une recette aléatoire</a>
       </div>
-      </tbody>
     </div>
   </div>
-</div>
-
+  <div class="uk-section uk-section-default">
+    <div class="uk-container">
+      <h2 class="title">Nos recettes les plus populaires</h2>
+      <div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@m uk-child-width-1-2@s uk-grid-match" uk-grid>
+        <% @recipes.each do |recipe| %>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-media-top uk-text-center uk-display-block ">
+                <div class="uk-margin-top uk-align-center">
+                  <% if recipe.image.attached? %>
+                    <%= image_tag(recipe.image.variant(resize: '300x400')) %>
+                  <% else %>
+                    <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="uk-card-body">
+                <h3 class="uk-card-title">
+                  <%= link_to recipe.title, recipe %>
+                  </br>
+                  <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
+                    / 5</span>
+                </h3>
+                <div class="uk-child-width-5-2@s">
+                  <p class="uk-text-truncate"> <%= recipe.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
