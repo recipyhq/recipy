@@ -1,8 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-
-  resources :landing_pages, path: '/',  :only => [:index, :new, :create]
+  resources :landing_pages, path: '/', :only => [:index, :new, :create]
+  get '/privacy_policy', to: "landing_pages#privacy_policy"
+  get '/legal_notice', to: "landing_pages#legal_notice"
 
   ActiveAdmin.routes(self)
 
@@ -14,9 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   scope 'beta' do
+    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
       scope module: 'cook' do
         unauthenticated :user do
@@ -43,8 +45,10 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
-      resources :recipes
       resources :shopping_lists
+      resources :recipes, param: :id do
+        post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+      end
       get 'search' => "search#index"
     end
   end
@@ -57,7 +61,9 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
-    resources :recipes
+    resources :recipes, param: :id do
+      post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+    end
     resources :ingredients
     resources :shopping_lists
     get 'search' => "search#index"

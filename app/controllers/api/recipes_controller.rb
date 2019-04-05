@@ -1,4 +1,4 @@
-class Api::RecipesController < ApplicationController
+class Api::RecipesController < Api::BaseController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
 
@@ -23,7 +23,9 @@ class Api::RecipesController < ApplicationController
     @recipe.update_attribute(:view, view + 1)
 
     recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
+    recipe['score'] = @recipe.recipe_scores.average(:value)
     recipe['ingredients'] = build_recipe_ingredients(@recipe)
+    recipe['scores'] = build_recipe_scores(@recipe)
 
     render json: recipe.except(:step, :time)
   end
@@ -95,6 +97,27 @@ class Api::RecipesController < ApplicationController
     @tab
   end
 
+  def build_recipe_scores(recipe)
+    @tab = []
+    if recipe.recipe_scores.nil?
+      return @tab
+    else
+      recipe.recipe_scores.each do |score|
+        mrg = {
+          :value => score.value,
+          :content => score.content,
+          :updatedAt => score.updated_at,
+          :user => {
+            :email => score.user.email,
+            :avatar => score.user.avatar.attached? ? rails_blob_url(score.user.avatar) : nil,
+          }
+        }
+        @tab.push(mrg)
+      end
+    end
+    @tab
+  end
+
   def build_recipe_list_ingredients
     i = 0
     @recipes_hash = @recipes.as_json(include: [
@@ -116,7 +139,7 @@ class Api::RecipesController < ApplicationController
                                 :image_attachment, recipe_ingredients: [
                                   :ingredient,
                                   :recipe_quantity => :quantity_type,
-                                ],
+                                ], :recipe_scores => [:user => [:avatar_attachment]],
                                                    :image_attachment => :blob).find(params[:id])
     else
       render :json => { Status: "KO", Cause: t("recipe.api.invalid_id") }.as_json

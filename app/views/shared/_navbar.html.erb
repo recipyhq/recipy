@@ -11,7 +11,7 @@
     <ul class="uk-navbar-nav">
       <% if user_signed_in? %>
         <li>
-          <a><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
+          <a><%= current_user.email %><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
               <li>
