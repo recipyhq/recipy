@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, label: "Titre" %>
+  <%= f.input :name, label: "Titre", :input_html => { :value => params[:name] } %>
 
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
 

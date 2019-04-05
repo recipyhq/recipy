@@ -11,12 +11,12 @@ class ShoppingListsController < InheritedResources::Base
     find_shopping_list
   end
 
-  def edit
-    find_shopping_list
-  end
-
   def new
     @shopping_list = ShoppingList.new
+  end
+
+  def edit
+    find_shopping_list
   end
 
   def create
@@ -27,6 +27,23 @@ class ShoppingListsController < InheritedResources::Base
       redirect_to shopping_list_path(new_shopping_list.id), flash: {success: "Grand succès !"}
     else
       redirect_to new_shopping_list_path, flash: {danger: "Erreur lors de la création de la liste de courses"}
+    end
+  end
+
+  def update
+    find_shopping_list
+    if @shopping_list.update(shopping_list_params)
+      redirect_to shopping_list_path, flash: {success: "Votre liste a été modifiée avec succés !"}
+    else
+      redirect_to edit_shopping_list_path(@shopping_list), flash: {danger: "Paramètres invalides"}
+    end
+  end
+
+  def destroy
+    find_shopping_list
+    unless @shopping_list.nil?
+      @shopping_list.destroy
+      redirect_to shopping_lists_path, flash: {success: "Votre liste a été supprimée"}
     end
   end
 
