@@ -10,7 +10,7 @@
   <div class="uk-form-horizontal">
     <%= f.label :utensil_ids, label: t("recipe.title.ingredient") %>
   </div>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.where(:confirmed => true).all, :id, :name%>
   <%#<%= f.select :utensil_ids, options_for_select(Utensil.all.sort), {:include_blank => true, :multiple => true, :size =>10} %>
   <div class="uk-form-horizontal">
     <%= f.label :utensil_ids, label: t("recipe.title.utensil")%>
