@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     end
     resources :recipes
     resources :ingredients
+    resources :notebooks
     get 'search' => "search#index"
   end
 
