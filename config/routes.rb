@@ -44,6 +44,9 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
+
+      resources :ingredients, only: [:new, :create]
+
       resources :recipes, param: :id do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       end
@@ -59,6 +62,7 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
+
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
     end
