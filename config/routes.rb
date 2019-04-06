@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :landing_pages, path: '/',  :only => [:index, :new, :create]
+  resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   ActiveAdmin.routes(self)
 
@@ -42,7 +42,9 @@ Rails.application.routes.draw do
         end
       end
       resources :recipes
+      resources :notebooks
       get 'search' => "search#index"
+      post 'add_recipe' => "notebooks#add_recipe"
     end
   end
 

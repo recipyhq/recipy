@@ -1,0 +1,12 @@
+
+<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
+    <div class="uk-card uk-card-default uk-width-1-1@m">
+      <div class="uk-card-header uk-card-title uk-text-center"> Edition du carnet de recette </div>
+    <div class="uk-card-body">
+      <%= render 'form', notebook: @notebook %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Show', @notebook %> |
+<%= link_to 'Back', notebooks_path %>
