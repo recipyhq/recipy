@@ -9,7 +9,7 @@ class SearchController < ApplicationController
   def index
     skip_policy_scope
     @page = (params['page'] || 1).to_i.abs
-    @time_max = Recipe.maximum("cooking_time")
+    @time_max = Recipe.maximum("cooking_time") || 60
     @ingredients_select = Ingredient.all.map { |v| [v.name, v.id] }.to_a
     search_params = params['search'] || {}
     @search_query = search_params['q'] || ""
