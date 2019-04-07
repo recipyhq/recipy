@@ -6,7 +6,13 @@
     <p><%= flash[:success] %></p>
   </div>
 <% end %>
+<% if flash[:danger] %>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:danger] %></p>
+  </div>
+<% end %>
 
-<%= render 'form', product: @product %>
+<%= render 'form_new', product: @product %>
 
-<%= link_to 'Back', products_path %>
+<%= link_to t("recipe.action.back"), products_path %>

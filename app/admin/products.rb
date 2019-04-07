@@ -5,6 +5,11 @@ ActiveAdmin.register Product do
   includes :ingredient, :price => [:quantity_type]
 
   controller do
+    def index
+      Bullet.enable = false
+      super
+    end
+
     def create
       product_params = params.require(:product).permit(:point_of_sale_ids => [],
                                                        :ingredient_id => [],
@@ -50,7 +55,7 @@ ActiveAdmin.register Product do
     column :point_of_sales do |prod|
       table_for prod.point_of_sales.order('name ASC') do
         column do |elem|
-          elem.name + " - " + elem.address.city
+          elem.name + " (" + elem.address.city + ")"
         end
       end
     end
@@ -102,7 +107,13 @@ ActiveAdmin.register Product do
     f.inputs "Add / Edit Product" do
       f.input :product_tags, :as => :check_boxes
       f.input :ingredient, :as => :check_boxes
-      f.input :point_of_sales, :as => :check_boxes
+      f.input :point_of_sales, :as => :check_boxes,
+                               collection: PointOfSale.includes(:address).all.map { |t|
+                                 [
+                                   t.name + " (" + t.address.entilted + " / " + t.address.city +
+                                                                       ")", t.id,
+                                 ]
+                               }
       f.has_many :price, new_record: true do |fff|
         fff.input :value
         fff.input :quantity_type, :collection => QuantityType.all
