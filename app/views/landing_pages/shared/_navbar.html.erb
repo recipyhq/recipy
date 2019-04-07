@@ -1,0 +1,57 @@
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+  <div class="uk-position-absolute uk-position-top">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+      <div class="uk-navbar-left uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <li><a href="/" <% if action_name == 'index' %>uk-scroll<% end %>>Accueil</a></li>
+          <li><a href="/#concept" <% if action_name == 'index' %>uk-scroll<% end %>>Concept</a></li>
+          <li><a href="/#join-us" <% if action_name == 'index' %>uk-scroll<% end %>>Rejoignez Nous</a></li>
+          <li><a href="/beta">Accéder à la beta</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-center uk-visible@m">
+        <a class="uk-navbar-item uk-logo" href="/">Recipy</a>
+      </div>
+      <div class="uk-navbar-right uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-left uk-hidden@m">
+        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
+      </div>
+      <div class="uk-navbar-right uk-hidden@m">
+        <a class="uk-navbar-item uk-logo" href="#" <% if action_name == 'index' %>uk-scroll<% end %>>Recipy</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <h3>Navigation</h3>
+    <ul class="uk-list uk-list-divider uk-list-large">
+      <li><a href="#" <% if action_name == 'index' %>uk-scroll<% end %>>Accueil</a></li>
+      <li><a href="#concept" <% if action_name == 'index' %>uk-scroll<% end %>>Concept</a></li>
+      <li><a href="#joinUs" <% if action_name == 'index' %>uk-scroll<% end %>>Rejoignez Nous</a></li>
+      <li><a href="/beta">Accéder à la beta</a></li>
+      <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="feedback" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
+    <button class="uk-modal-close-outside" type="button" uk-close></button>
+    <h2 class="uk-modal-title landing-title">Donnez nous votre avis !</h2>
+    <div class="uk-flex uk-flex-column">
+      <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/producer.jpg' %>" uk-img>
+        <a href="https://goo.gl/forms/4aw43qwppuar54tu1" class="button-feedback" target="blank">En tant que producteur</a>
+      </div>
+      <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/cooker.jpg' %>" uk-img>
+        <a href="https://goo.gl/forms/QsQLLkDKau2xZmay1" class="button-feedback" target="blank">En tant que cuisinier</a>
+      </div>
+    </div>
+  </div>
+</div>

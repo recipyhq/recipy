@@ -1,27 +1,24 @@
-<footer class="footer navbar-fixed-bottom">
-	<div class="container">
-		<nav>
-			<ul>
-        <div class="uk-grid-small uk-child-width-expand@s uk-text-center" uk-grid>
-          <div>
-            <div class="uk-card uk-card-default uk-card-body">
-              <h3> A propos de Recipy</h3>
-              <li> <%= link_to 'Le concept', '#'%></li>
-              <li> <%= link_to 'A propos de l\'équipe', '#'%> </li>
-              <li> <%= link_to 'Besoin d\'aide ?', '#'%> </li>
-            </div>
-          </div>
-          <div>
-            <div class="uk-card uk-card-default uk-card-body">
-              <h3> Une question ?</h3>
-              <li> <%= link_to 'Vous êtes producteur ? ', '#'%> </li>
-              <li> <%= link_to 'Question fréquentes', '#'%> </li>
-              <li> <%= link_to 'Presse', '#'%> </li>
-            </div>
-          </div>
-        </div>
-        <h4><%= link_to 'Nous contactez', '#' %></h4>
-			</ul>
-		</nav>
-	</div>
-</footer>
+<div class="uk-section uk-section-small uk-section-muted uk-section-footer app_footer">
+  <div class="uk-flex-middle uk-grid uk-text-center" uk-grid="">
+    <div class="uk-width-expand@s uk-first-column">
+      <h3> A propos de Recipy</h3>
+      <ul class="uk-list">
+        <li><%= link_to 'Le concept', '#'%></li>
+        <li><%= link_to 'A propos de l\'équipe', '#'%></li>
+        <li><%= link_to 'Besoin d\'aide ?', '#'%></li>
+      </ul>
+    </div>
+    <div class="uk-width-expand@s">
+      <h3> Une question ?</h3>
+      <ul class="uk-list">
+        <li><%= link_to 'Vous êtes producteur ? ', '#'%></li>
+        <li><%= link_to 'Question fréquentes', '#'%></li>
+        <li><%= link_to 'Presse', '#'%></li>
+      </ul>
+
+    </div>
+    <div class="uk-width-expand@s">
+      <a href="mailto:recipyhq@gmail.com" class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>recipyhq@gmail.com</a>
+    </div>
+  </div>
+</div>
