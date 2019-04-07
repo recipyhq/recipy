@@ -1,5 +1,6 @@
 module API
-  class BaseController < ApplicationController
-    include DeviseTokenAuth::Concerns::SetUserByToken
-  end
+end
+class Api::BaseController < ApplicationController
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  respond_to :json
 end
