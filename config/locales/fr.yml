@@ -50,7 +50,7 @@ fr:
         title: "Titre"
         score_with_count: "Note (%{count})"
         score: "Note"
-        new_ingredient: "Demander l'ajout d'un nouvel ingrédient"
+        new_ingredient: "Proposer un ingrédient"
         comment: "Commentaire"
         step: "Etape(s)"
         time: "Temps"
