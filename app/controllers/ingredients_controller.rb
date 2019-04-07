@@ -1,11 +1,7 @@
 class IngredientsController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
-
-  def index
-    skip_policy_scope
-    @ingredients = Ingredient.all
-  end
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @ingredient = Ingredient.new
@@ -19,7 +15,7 @@ class IngredientsController < ApplicationController
       new_ingredient = Ingredient.new(ingredient_params)
       if new_ingredient.valid?
         new_ingredient.save
-        redirect_to api_ingredient_path(new_ingredient.id)
+        redirect_to new_recipe_path
       else
         redirect_to new_ingredient_path, flash: { danger: t("recipe.creation.invalid") }
       end
