@@ -114,6 +114,8 @@ fr:
     edited: "Produit correctement mis à jour !"
     not_edited: "Le produit n'a pas été modifié"
     edit_title: "Editer le produit"
+    deleted: "Produit correctement supprimé"
+    not_found: "Produit non trouvé"
 
   quantity_type:
     label: "Type de Quantité"

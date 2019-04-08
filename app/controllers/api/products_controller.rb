@@ -60,7 +60,7 @@ class Api::ProductsController < ApplicationController
     @product_params[:price_attributes].delete(:quantity_type)
 
     unless price.update(@product_params[:price_attributes])
-      redirect_to edit_product_path, flash: { danger: t("products.price.not_valid") }
+      render :json => { Status: "KO", Cause: t("products.price.not_valid") }.as_json
       return
     end
 
@@ -70,20 +70,18 @@ class Api::ProductsController < ApplicationController
     @product.ingredient = Ingredient.find(ingredient_id)
 
     if @product.update!(@product_params)
-      redirect_to edit_product_path, flash: { success: t("products.edited") }
+      render :json => { Status: "OK", Cause: t("products.edited") }.as_json
     else
-      redirect_to edit_product_path, flash: { danger: t("products.not_edited") }
+      render :json => { Status: "KO", Cause: t("products.not_edited") }.as_json
     end
   end
 
   # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
+    @product.price.destroy
+    @product.related_product_price.destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render :json => { Status: "OK" }.as_json
   end
 
   private
@@ -91,6 +89,8 @@ class Api::ProductsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    render :json => { Status: "KO", Cause: t("products.not_found") }.as_json
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
