@@ -31,9 +31,12 @@
             </div>
             <div class="uk-card-body">
               <div class="uk-margin-top uk-text-center" uk-tooltip="title: <%= recipe.title %>">
-                  <%= image_tag(Recipe.find_by_id(recipe).image.variant(resize: '200x200'))%>
+                  <%= image_tag(Recipe.find_by_id(recipe.id).image.variant(resize: '200x200'))%>
               </div>
             </div>
+            <td><%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), method: :post do %></td>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
           </div>
         </div>
       <% end %>

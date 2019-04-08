@@ -52,7 +52,11 @@ class NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
-    puts "bite"
+    # find_notebook
+    @notebook = Notebook.find(params[:notebook])
+    tmp = Recipe.find_by_id(params[:id])
+    @notebook.recipes.delete(tmp)
+    redirect_to notebook_path(@notebook.id)
   end
 
   private

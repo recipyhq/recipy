@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       end
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
+      post 'remove_recipe' => "notebooks#remove_recipe"
     end
   end
 

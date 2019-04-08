@@ -25,9 +25,18 @@ class Api::NotebooksController < InheritedResources::Base
 
   def create
     new_notebook = Notebook.new(notebook_params)
-    new_notebook.save!
-    render :json => { Status: "OK", Cause: "Nouvelle recette créée !" }.as_json
+    if new_notebook.save
+      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+    else
+      render json: new_notebook.errors, status: :unprocessable_entity
+    end
   end
+
+  # def create
+  # new_notebook = Notebook.new(notebook_params)
+  # new_notebook.save!
+  # render :json => { Status: "OK", Cause: "Nouvelle recette créée !" }.as_json
+  # end
 
   def add_recipe
     find_notebook
