@@ -148,8 +148,10 @@ ActiveRecord::Schema.define(version: 2019_03_23_171427) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_products_on_ingredient_id"
   end
 
   create_table "prospects", force: :cascade do |t|

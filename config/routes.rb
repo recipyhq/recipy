@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       end
       resources :recipes
       resources :point_of_sales
+      resources :products, :only => [:new, :create, :edit, :update]
       get 'search' => "search#index"
     end
   end
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
     resources :recipes
     resources :ingredients
     resources :point_of_sales
+    resources :products
     get 'search' => "search#index"
   end
 

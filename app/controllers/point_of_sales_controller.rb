@@ -64,8 +64,12 @@ class PointOfSalesController < InheritedResources::Base
 
   def point_of_sale_params
     @point_of_sale_param = params.require(:point_of_sale).permit(:name, :description,
-                                          :market_type,
-                                          address:
-                                          [:entilted, :city, :zip, :state, :country, :phone])
+                                                                 :market_type,
+                                                                 address:
+                                                                 [
+                                                                   :entilted,
+                                                                   :city, :zip, :state,
+                                                                   :country, :phone,
+                                                                 ])
   end
 end

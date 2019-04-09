@@ -1,11 +1,19 @@
 ActiveAdmin.register Product do
-  permit_params :product_tag_ids, :ingredient_id, price_attributes: [:value, :quantity_type_id]
+  permit_params :product_tag_ids, :ingredient_id, :point_of_sale_ids => [],
+                                                  price_attributes: [:value, :quantity_type_id]
 
   includes :ingredient, :price => [:quantity_type]
 
   controller do
+    def index
+      Bullet.enable = false
+      super
+    end
+
     def create
-      product_params = params.require(:product).permit(:ingredient_id => [], :product_tag_ids => [],
+      product_params = params.require(:product).permit(:point_of_sale_ids => [],
+                                                       :ingredient_id => [],
+                                                       :product_tag_ids => [],
                                                        :price_attributes => {})
       new_price = product_params[:price_attributes]
       ingredient_id = product_params[:ingredient_id][1]
@@ -44,6 +52,13 @@ ActiveAdmin.register Product do
         end
       end
     end
+    column :point_of_sales do |prod|
+      table_for prod.point_of_sales.order('name ASC') do
+        column do |elem|
+          elem.name + " (" + elem.address.city + ")"
+        end
+      end
+    end
     column :ingredient do |prod|
       table_for prod.ingredient do
         column do |elem|
@@ -69,9 +84,19 @@ ActiveAdmin.register Product do
           tag.name
         end
       end
+      table_for product.point_of_sales do
+        column "Point of sales" do |sale|
+          sale.name + " - " + sale.address.city
+        end
+      end
       table_for product.price do
         column "Price" do |price|
           price.value.to_s + "€ / " + price.quantity_type.name
+        end
+      end
+      table_for product.ingredient do
+        column "Ingredient" do |ingredient|
+          ingredient.name
         end
       end
       row :created_at
@@ -82,6 +107,13 @@ ActiveAdmin.register Product do
     f.inputs "Add / Edit Product" do
       f.input :product_tags, :as => :check_boxes
       f.input :ingredient, :as => :check_boxes
+      f.input :point_of_sales, :as => :check_boxes,
+                               collection: PointOfSale.includes(:address).all.map { |t|
+                                 [
+                                   t.name + " (" + t.address.entilted + " / " + t.address.city +
+                                                                       ")", t.id,
+                                 ]
+                               }
       f.has_many :price, new_record: true do |fff|
         fff.input :value
         fff.input :quantity_type, :collection => QuantityType.all

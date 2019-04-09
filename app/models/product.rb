@@ -8,6 +8,6 @@ class Product < ApplicationRecord
   has_many :related_sale_products
   has_many :point_of_sales, through: :related_sale_products
 
-  accepts_nested_attributes_for :price
+  accepts_nested_attributes_for :price, allow_destroy: true
   accepts_nested_attributes_for :ingredient
 end

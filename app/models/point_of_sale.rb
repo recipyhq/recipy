@@ -8,4 +8,7 @@ class PointOfSale < ApplicationRecord
   has_one :address, through: :related_sale_address
   has_many :related_sale_products
   has_many :products, through: :related_sale_products
+
+  accepts_nested_attributes_for :products
+  accepts_nested_attributes_for :address, :allow_destroy => true
 end
