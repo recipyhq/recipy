@@ -68,7 +68,6 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
-    puts "bite"
   end
 
   private
