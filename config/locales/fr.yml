@@ -67,6 +67,10 @@ fr:
         give_feedback_for: "Donnez nous votre avis pour '%{recipe_title}' !"
         connect_to_give_feedback: "Connectez-vous et donnez votre avis."
         no_score: "Pas de notes pour le moment."
+        utensil: "Ustensiles"
+        nb_person: "Pour combien de personnes ?"
+        quantity_value: "Quantité"
+        quantity_type: "Type de la quantité"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"

@@ -90,6 +90,9 @@ en:
       ingredient: "Ingredient(s)"
       utensil: "Utensil(s)"
       image: "image"
+      nb_person: "For how many people ?"
+      quantity_value: "Quantity"
+      quantity_type: "Quantity type"
     action:
       edit: "Edit"
       show: "Show"
