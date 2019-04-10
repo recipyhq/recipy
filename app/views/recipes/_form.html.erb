@@ -8,12 +8,12 @@
     <%= f.file_field :image%>
     <%= f.input :description, label: t("recipe.title.description") %>
   <div class="uk-form-horizontal">
-    <%= f.label :utensil_ids, label: t("recipe.title.ingredient") %>
+    <%= f.label :utensil_ids, label: ("#{t("recipe.title.ingredient")} (#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, { :class => "uk-text-small" }})").html_safe %>
   </div>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.where(:confirmed => true).all, :id, :name%>
   <%#<%= f.select :utensil_ids, options_for_select(Utensil.all.sort), {:include_blank => true, :multiple => true, :size =>10} %>
   <div class="uk-form-horizontal">
-    <%= f.label :utensil_ids, label: t("recipe.title.utensil")%>
+    <%= f.label :utensil_ids, label: t("recipe.title.utensil") %>
   </div>
     <%= f.collection_check_boxes :utensil_ids, Utensil.all, :id, :title%>
     <%= f.input :step, label: t("recipe.title.step") %>
