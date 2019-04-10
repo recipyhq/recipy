@@ -1,5 +1,11 @@
-<h1>New Ingredient</h1>
-
-<%= render 'form', ingredient: @ingredient %>
-
-<%= link_to 'Back', ingredients_path %>
+<div class="uk-section uk-section-secondary">
+    <div class="uk-container">
+      <h1><%= t("ingredient.title.new_ingredient") %></h1>
+      <p>Vous pouvez nous demander à ajouter un ingrédient, celui-ci sera analysé par l'équipe dans les 48h et sera validé si il est correct et qu'il n'existe pas déjà.</p>
+    </div>
+</div>
+<div class="uk-section">
+    <div class="uk-container">
+      <%= render 'form', ingredient: @ingredient %>
+    </div>
+</div>

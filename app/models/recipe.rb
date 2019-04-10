@@ -8,7 +8,7 @@ class Recipe < ApplicationRecord
   has_many :related_recipe_categories
   has_many :recipe_categories, :through => :related_recipe_categories
   has_many :recipe_ingredients
-  has_many :ingredients, :through => :recipe_ingredients
+  has_many :ingredients, -> { where(confirmed: true) }, :through => :recipe_ingredients
   has_many :recipe_utensils
   has_many :utensils, :through => :recipe_utensils
   has_many :recipe_scores, dependent: :destroy

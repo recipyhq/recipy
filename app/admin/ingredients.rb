@@ -15,6 +15,7 @@ ActiveAdmin.register Ingredient do
       @ingredient = Ingredient.find_by_id(params[:id])
       @ingredient.update(params.require(:ingredient).permit(:name,
                                                             :description,
+                                                            :confirmed,
                                                             :quantity_equivalency_ids => [],
                                                             :ingredient_tag_ids => []))
       super
@@ -56,6 +57,7 @@ ActiveAdmin.register Ingredient do
       end
     end
     column :created_at
+    column :confirmed
     actions
   end
 
@@ -71,6 +73,7 @@ ActiveAdmin.register Ingredient do
       # end
       row :description
       row :created_at
+      row :confirmed
       table_for ingredient.ingredient_tags.order('name ASC') do
         column "Tags" do |tag|
           tag.name
@@ -87,6 +90,7 @@ ActiveAdmin.register Ingredient do
   form do |f|
     f.inputs "Add / Edit Ingredient" do
       f.input :name
+      f.input :confirmed, :as => :boolean
       f.input :description
       # f.input :image, :as => :file
       f.input :ingredient_tags, :as => :check_boxes

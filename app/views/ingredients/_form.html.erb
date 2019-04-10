@@ -1,15 +1,26 @@
-
-
-<%= simple_form_for(@ingredient) do |f| %>
+<%= simple_form_for @ingredient,
+  html: {
+    class: "uk-form-stacked"
+  },
+  defaults: {
+    label_html: {
+      class: "uk-form-label"
+    }
+  } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.input :name, label: t("ingredient.title.name") %>
+    <%= f.input :description, label: t("ingredient.title.description") %>
+  </div>
+
+  <div class="uk-margin">
+    <%= f.label t("ingredient.title.type"), class: "uk-form-label" %>
+    <%= f.collection_check_boxes :ingredient_tag_ids, IngredientTag.all, :id, :name %>
   </div>
 
   <div class="uk-margin-medium">
-    <%= f.button :submit %>
+    <%= f.button :submit, t("ingredient.title.create") %>
   </div>
 <% end %>

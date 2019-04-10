@@ -166,6 +166,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Jambon"
+  ingredient.confirmed = true
   ingredient.description = "Viande de porc coupé en tranches."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
@@ -178,6 +179,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Beurre"
+  ingredient.confirmed = true
   ingredient.description = "Corps gras utile pour la cuisson et la garniture"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Corps gras"),
@@ -192,6 +194,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Baguette de pain"
+  ingredient.confirmed = true
   ingredient.description = "Base de la boulangerie française"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Vegan"),
@@ -204,6 +207,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Tomate"
+  ingredient.confirmed = true
   ingredient.description = "Fruit rouge typique des pays du sud."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Vegan"),
@@ -219,6 +223,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Chair à saucisse"
+  ingredient.confirmed = true
   ingredient.description = "viande de porc hachée"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
@@ -228,6 +233,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Sel"
+  ingredient.confirmed = true
   ingredient.description = "Condiment pour asaisonner"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Condiment"),
@@ -240,6 +246,7 @@ end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Poivre"
+  ingredient.confirmed = true
   ingredient.description = "Condiment pour asaisonner"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Condiment"),

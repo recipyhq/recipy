@@ -50,6 +50,7 @@ fr:
         title: "Titre"
         score_with_count: "Note (%{count})"
         score: "Note"
+        new_ingredient: "Proposer un ingrédient"
         comment: "Commentaire"
         step: "Etape(s)"
         time: "Temps"
@@ -94,6 +95,13 @@ fr:
         invalid_id: "Recette introuvable, mauvais ID"
 
   ingredient:
+    title:
+      new_ingredient: "Proposer un ingrédient"
+      create: "Demander d'ajouter l'ingrédient"
+      name: "Nom de l'ingrédient"
+      description: "Descriptif de l'ingrédient"
+      type: "Type d'ingrédient"
+      quantity: "Équivalence en quantité d'ingrédients"
     unrecognized: "Ingredient non reconnu par l'application"
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
