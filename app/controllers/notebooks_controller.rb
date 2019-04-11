@@ -6,7 +6,9 @@ class NotebooksController < InheritedResources::Base
     skip_policy_scope
     # @notebooks = Notebook.all
     @notebook_recipes_select = Recipe.all.map { |v| [v.title, v.id] }.to_a
-    @notebooks = Notebook.includes(:image_attachment => :blob).all
+    if user_signed_in?
+      @notebooks = Notebook.includes(:image_attachment => :blob).where(:user_id => current_user.id)
+    end
   end
 
   def show
@@ -15,11 +17,11 @@ class NotebooksController < InheritedResources::Base
 
   def new
     skip_authorization
-    @notebook = Notebook.new
+    @notebook = current_user.notebooks.build
   end
 
   def create
-    new_notebook = Notebook.new(notebook_params)
+    new_notebook = current_user.notebooks.build(notebook_params)
     new_notebook.save!
     redirect_to notebook_path(new_notebook.id), flash: { success: "Nouveau notebook créée." }
   end
