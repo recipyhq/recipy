@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<p id="notice"><%= notice %></p>
+<div>
+  <br>
+  <%= link_to 'Menu des carnets', notebooks_path, class: "uk-padding-small uk-button uk-button-text"%>
+</div>
+<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
+  <div class="uk-card uk-card-default uk-width-1-1@m">
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand uk-text-center">
+          <h3 class="uk-card-title uk-margin-remove-bottom"> <%= @notebook.title %>
+          <td><%= link_to edit_notebook_path(@notebook) do %></td>
+              <i class="far fa-edit"> </i>
+            <% end %>
+            </h3>
+        </div>
+      </div>
+        <div class="uk-width-expand uk-text-center"> <br>
+          <%= @notebook.description %>
+        </div>
+    </div>
+    <br>
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-padding-small" uk-grid="masonry: true">
+      <%@notebook.recipes.each do | recipe| %>
+        <div>
+          <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
+            <div class="uk-card-header">
+              <%= link_to recipe.title, recipe, :class => "uk-button uk-button-text "%>
+            </div>
+            <div class="uk-card-body ">
+              <div class="uk-margin-top uk-text-center" uk-tooltip="title: <%= recipe.title %>">
+                  <%= image_tag(Recipe.find_by_id(recipe.id).image.variant(resize: '200x200'))%>
+              </div>
+            </div>
+            <td><%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), method: :post do %></td>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div>
+        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
+            <div>
+              <div class="uk-margin-top uk-text-center">
+            <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
+                  <%= f.input :id, :input_html => { :value => @notebook.id}, as: :hidden %>
+                  <%= f.input :recipes, collection: Recipe.all, as: :select %>
+                  <br>
+                  <%= f.button :submit, :value => "Ajouter cette recette" %>
+            <%end %>
+                <br>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+

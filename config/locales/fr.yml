@@ -122,3 +122,7 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+  notebook:
+    edit:
+      invalid: "Le carnet de recette n'est pas conforme"
+      invalid_image: "L'image est invalide"

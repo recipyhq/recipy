@@ -1,3 +1,4 @@
+# rubocop:disable all
 class SearchController < ApplicationController
   before_action :skip_authorization
   @@per_page = 24
@@ -29,3 +30,4 @@ class SearchController < ApplicationController
     @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment => :blob).all
   end
 end
+# rubocop:enable all

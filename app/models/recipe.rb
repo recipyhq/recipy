@@ -1,3 +1,4 @@
+# rubocop:disable all
 class Recipe < ApplicationRecord
   validates :title, presence: true
   validates :cooking_time, presence: true
@@ -11,10 +12,13 @@ class Recipe < ApplicationRecord
   has_many :ingredients, -> { where(confirmed: true) }, :through => :recipe_ingredients
   has_many :recipe_utensils
   has_many :utensils, :through => :recipe_utensils
+  has_many :notebook_recipes, dependent: :destroy
+  has_many :notebooks, through: :notebook_recipes
   has_many :recipe_scores, dependent: :destroy
   has_one_attached :image
   validates :image, presence: true
 
+  accepts_nested_attributes_for :notebooks, allow_destroy: true
   accepts_nested_attributes_for :recipe_ingredients
 
   def steps_raw
@@ -66,3 +70,4 @@ class Recipe < ApplicationRecord
     limit(per_page).offset((num - 1) * per_page)
   end
 end
+# rubocop:enable all

@@ -117,3 +117,7 @@ en:
     no_title: "Missing ingredient title"
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
+  notebook:
+    edit:
+      invalid: "The notebook is invalid"
+      invalid_image: "Image is not valid"

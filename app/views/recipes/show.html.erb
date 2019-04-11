@@ -1,10 +1,8 @@
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
-    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;"></div>
+    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;)"></div>
   </div>
 </div>
-
-
 <div class="uk-section uk-section-secondary uk-light">
     <div class="uk-container">
         <h2 class="title"><%= @recipe.title %></h2>
@@ -31,28 +29,55 @@
               <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
               <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
             </div>
-          </div>          
+          </div>
         </div>
     </div>
+  <div class="uk-container">
+    <h2 class="title"><%= @recipe.title %></h2>
+    <p><%= @recipe.description %></p>
+    <div class="uk-child-width-1-3@m" uk-grid>
+      <div>
+        <div class="uk-text-center">
+          <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
+          <% if @recipe.score_count > 0 %>
+            <p><%= @recipe.score %> / 5</p>
+          <% else %>
+            <p><%= t("recipe.title.no_score") %></p>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <div class="uk-text-center">
+          <h5 class="title"><%= t("recipe.title.time") %></h5>
+          <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
+        </div>
+      </div>
+      <div>
+        <div class="uk-text-center">
+          <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
+          <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <div class="uk-section uk-section-default">
   <div class="uk-child-width-1-2@m" uk-grid>
     <div>
       <div class="uk-padding">
         <h2 class="title"><%= t("recipe.title.ingredient") %></h2>
         <div class="uk-card uk-card-default uk-card-body">
-          <%@recipe.recipe_ingredients.each do |recipe_ingredient| %>
-              <div class="uk-grid-small" uk-grid>
-                  <div class="uk-width-expand" uk-leader="fill: -"><%= recipe_ingredient.ingredient.name %></div>
-                  <% if (recipe_ingredient.recipe_quantity) %>
-                    <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
-                  <% end %>
-              </div>
+          <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+            <div class="uk-grid-small" uk-grid>
+              <div class="uk-width-expand" uk-leader="fill: -"><%= recipe_ingredient.ingredient.name %></div>
+              <% if (recipe_ingredient.recipe_quantity) %>
+                <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
-      <div  class="uk-padding">
+      <div class="uk-padding">
         <h2 class="title"><%= t("recipe.title.ustensil") %></h2>
         <div class="uk-card uk-card-default uk-card-body">
           <ul>

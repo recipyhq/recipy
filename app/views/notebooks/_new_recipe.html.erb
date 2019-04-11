@@ -1,0 +1,6 @@
+<%= simple_form_for(@notebook) do |f| %>
+  <%= f.input :recipes, collection: Recipe.all, as: :select %>
+  <div class="uk-margin-medium">
+    <%= f.button :submit %>
+  </div>
+<%end %>

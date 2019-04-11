@@ -1,0 +1,17 @@
+<div>
+  <br>
+  <%= link_to 'Menu des carnets', notebooks_path, class: "uk-padding-small uk-text-large uk-button uk-button-text"%>
+</div>
+<div>
+  <div class="uk-card-header uk-card-title uk-text-center"> Edition d'un carnet de recettes </div>
+  <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
+    <div class="uk-align-center">
+      <div class="uk-card uk-card-default uk-width-1-1@m">
+        <div class="uk-card-body">
+          <%= render 'form', notebook: @notebook %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

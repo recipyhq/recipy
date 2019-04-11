@@ -1,3 +1,4 @@
+# rubocop:disable all
 class Api::SearchController < Api::BaseController
   before_action :skip_authorization
   @@per_page = 24
@@ -46,3 +47,4 @@ class Api::SearchController < Api::BaseController
     render json: values.as_json
   end
 end
+# rubocop:enable all

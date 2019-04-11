@@ -1,3 +1,4 @@
+# rubocop:disable all
 class RecipesController < InheritedResources::Base
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
@@ -70,3 +71,4 @@ class RecipesController < InheritedResources::Base
                                    :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
   end
 end
+# rubocop:enable all

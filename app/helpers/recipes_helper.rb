@@ -1,3 +1,4 @@
+# rubocop:disable all
 module RecipesHelper
   def minute_to_time(minutes)
     hours = minutes / 60
@@ -11,3 +12,4 @@ module RecipesHelper
     "#{hours} h #{minutes} m"
   end
 end
+# rubocop:enable all
