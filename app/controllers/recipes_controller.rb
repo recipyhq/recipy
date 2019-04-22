@@ -118,4 +118,3 @@ class RecipesController < InheritedResources::Base
                                    :image, :recipe_ingredients_attributes => {}, :utensil_ids => [])
   end
 end
-# rubocop:enable all
