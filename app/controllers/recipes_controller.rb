@@ -41,12 +41,12 @@ class RecipesController < InheritedResources::Base
       # puts @recipe_params
       new_recipe = Recipe.new(@recipe_params)
       new_ingredients.each do |elem|
-        puts "******************"
-        puts "ingredient_id =>" + elem[1].values[0]
-        puts "ingredient_id =>" + elem[1].values[1].values[0]
-        puts "ingredient_id =>" + elem[1].values[1].values[1]
-        puts elem[1].values[1].inspect
-        puts "******************"
+        # puts "******************"
+        # puts "ingredient_id =>" + elem[1].values[0]
+        # puts "ingredient_id =>" + elem[1].values[1].values[0]
+        # puts "ingredient_id =>" + elem[1].values[1].values[1]
+        # puts elem[1].values[1].inspect
+        # puts "******************"
         new_recipe.ingredients << Ingredient.find(elem[1].values[0])
         if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
           recipe_quantity = RecipeQuantity.create!(:value => elem[1].values[1].values[0],
@@ -56,10 +56,12 @@ class RecipesController < InheritedResources::Base
           last.recipe_quantity = recipe_quantity
         end
       end
-      puts "\n\n\n"
-      puts new_recipe.inspect
-      puts new_recipe.recipe_ingredients.inspect
+      # puts "\n\n\n"
+      # puts new_recipe.inspect
+      # puts new_recipe.recipe_ingredients.inspect
       new_recipe.save
+
+      redirect_to recipe_path(Recipe.last.id), flash: { success: t("recipe.creation.valid") }
     end
 
     # new_recipe = Recipe.new(recipe_params)
@@ -115,6 +117,7 @@ class RecipesController < InheritedResources::Base
   def recipe_params
     params.require(:recipe).permit(:title, :score, :steps, :cooking_time, :preparation_time,
                                    :description, :difficulty, :person,
-                                   :image, :recipe_ingredients_attributes => {}, :utensil_ids => [])
+                                   :image, :recipe_ingredients_attributes => {}, :utensil_ids => [],
+                                           :recipe_category_ids => [])
   end
 end

@@ -10,6 +10,7 @@
     <div class="uk-width-xxlarge">
       <%= f.input :title, label: t("recipe.title.title") %>
       <%= f.file_field :image %>
+      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "recipe-category-select", multiple: true}, defaults: {input_class: ""} %>
       <%= f.input :description, label: t("recipe.title.description"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
     </div>
   </div>
@@ -29,7 +30,7 @@
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "utensils-select", multiple: true}, defaults: {input_class: ""} %>
-      <%= f.input :steps, text: "", label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
+      <%= f.input :steps, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
       <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
       <%= f.number_field :difficulty, max: 10, min: 0, class: "uk-input" %>
       <div class="uk-margin-medium" uk-grid>
@@ -56,8 +57,17 @@
     select: '#utensils-select',
     searchingText: 'Recherche...',
     searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
-    searchPlaceholder: 'Recherche ustensile',
+    searchPlaceholder: 'Rechercher un ustensile',
     placeholder: 'Ustensiles'
   });
+  new SlimSelect({
+    select: '#recipe-category-select',
+    searchingText: 'Recherche...',
+    searchText: 'Désolé il n\'y a pas la catégorie recherché dans la liste.',
+    searchPlaceholder: 'Rechercher une catégorie',
+    placeholder: 'Catégories'
+  });
+  document.getElementById('steps_textarea').value = '';
+
 </script>
 

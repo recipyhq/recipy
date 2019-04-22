@@ -93,6 +93,7 @@ en:
       nb_person: "For how many people ?"
       quantity_value: "Quantity"
       quantity_type: "Quantity type"
+      category: "Category(ies)"
     action:
       edit: "Edit"
       show: "Show"

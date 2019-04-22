@@ -72,6 +72,7 @@ fr:
         nb_person: "Pour combien de personnes ?"
         quantity_value: "Quantité"
         quantity_type: "Type de la quantité"
+        category: "Catégorie(s)"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
