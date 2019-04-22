@@ -1,3 +1,4 @@
+# rubocop:disable all
 module ApplicationHelper
   def user_avatar(user, size)
     if user.image.attached?
@@ -13,3 +14,4 @@ module ApplicationHelper
     end
   end
 end
+# rubocop:enable all
