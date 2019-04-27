@@ -30,7 +30,7 @@
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "utensils-select", multiple: true}, defaults: {input_class: ""} %>
-      <%= f.input :steps, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
+      <%= f.input :steps_raw, as: :text, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
       <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
       <%= f.number_field :difficulty, max: 10, min: 0, class: "uk-input" %>
       <div class="uk-margin-medium" uk-grid>

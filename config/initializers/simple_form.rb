@@ -19,7 +19,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.use :label
-    b.use :input, error_class: 'uk-form-danger', valid_class: 'uk-form-success'
+    b.use :input, error_class: 'uk-form-danger'
     b.use :hint, wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: 'uk-text-danger' }
   end

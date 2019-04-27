@@ -1,0 +1,76 @@
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css' %>
+<%= stylesheet_link_tag 'recipe_form' %>
+
+<%= simple_form_for(@recipe, html: {
+  class: "uk-padding recipe_form"
+},) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.input :title, label: t("recipe.title.title"), input_class: false %>
+      <%= f.file_field :image %>
+      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "recipe-category-select", multiple: true}, defaults: {input_class: ""} %>
+      <%= f.input :description, label: t("recipe.title.description"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
+    </div>
+  </div>
+  <hr class="uk-divider-icon">
+  <div id="recipe_ingredients" uk-grid>
+    <%= f.simple_fields_for :recipe_ingredients do |recipe_ingredient| %>
+        <% unless recipe_ingredient.object.ingredient.nil? %>
+          <%= render "edit_recipe_ingredient_fields", f: recipe_ingredient %>
+        <% end %>
+    <% end %>
+  </div>
+  <div>
+    <div class="uk-text-center">
+      <h3><%= link_to_add_association 'Add ingredient', f, :recipe_ingredients, partial: 'edit_recipe_ingredient_fields', data: {
+        association_insertion_node: '#recipe_ingredients', association_insertion_method: :append
+      }, class: "uk-link" %></h3>
+    </div>
+  </div>
+  <hr class="uk-divider-icon">
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "utensils-select", multiple: true}, defaults: {input_class: ""} %>
+      <%= f.input :steps_raw, as: :text, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
+      <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
+      <%= f.number_field :difficulty, max: 10, min: 0, class: "uk-input" %>
+      <div class="uk-margin-medium" uk-grid>
+        <div class="uk-width-1-2">
+          <%= f.input :cooking_time, label: t("recipe.title.cooking_time") %>
+        </div>
+        <div class="uk-width-1-2">
+          <%= f.input :preparation_time, label: t("recipe.title.preparation_time") %>
+        </div>
+      </div>
+      <%= f.input :person, label: t("recipe.title.nb_person") %>
+    </div>
+  </div>
+  <div class="uk-margin-medium">
+    <div class="uk-text-center">
+      <%= f.button :submit, t("recipe.creation.confirm") %>
+    </div>
+  </div>
+<% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
+<script>
+
+  new SlimSelect({
+    select: '#utensils-select',
+    searchingText: 'Recherche...',
+    searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
+    searchPlaceholder: 'Rechercher un ustensile',
+    placeholder: 'Ustensiles'
+  });
+  new SlimSelect({
+    select: '#recipe-category-select',
+    searchingText: 'Recherche...',
+    searchText: 'Désolé il n\'y a pas la catégorie recherchée dans la liste.',
+    searchPlaceholder: 'Rechercher une catégorie',
+    placeholder: 'Catégories'
+  });
+
+</script>
+

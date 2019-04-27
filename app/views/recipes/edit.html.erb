@@ -8,7 +8,7 @@
     <p><%= flash[:danger] %></p>
   </div>
 <%end %>
-<%= render 'form', recipe: @recipe %>
+<%= render 'edit_form', recipe: @recipe %>
 
 <%= link_to t("recipe.action.show"), @recipe %> |
 <%= link_to t("recipe.action.back"), recipes_path %>

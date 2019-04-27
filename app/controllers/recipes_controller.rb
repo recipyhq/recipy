@@ -32,7 +32,7 @@ class RecipesController < InheritedResources::Base
     if new_ingredients.nil?
       flash[:html_alert] = t('recipe.creation.missing_ingredients')
     else
-      steps = @recipe_params[:steps]
+      steps = @recipe_params[:steps_raw]
       split_steps = steps.split("\r\n")
       @recipe_params[:steps] = split_steps.collect(&:strip)
       @recipe_params.delete(:steps_raw)
@@ -82,15 +82,37 @@ class RecipesController < InheritedResources::Base
   end
 
   def update
+    Bullet.enable = false
     find_recipe
-    if @recipe.update(recipe_params)
-      if @recipe.image.blob.content_type.starts_with?('image/')
-        redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
-      else
-        redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
-      end
+    @recipe_params = recipe_params
+    steps = @recipe_params[:steps_raw]
+    split_steps = steps.split("\n")
+    @recipe_params[:steps] = split_steps.collect(&:strip)
+    new_ingredients = @recipe_params[:recipe_ingredients_attributes]
+    @recipe_params.delete(:recipe_ingredients_attributes)
+    if new_ingredients.nil?
+      flash[:html_alert] = t('recipe.creation.missing_ingredients')
     else
-      redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
+      @recipe.recipe_ingredients.destroy_all
+      new_ingredients.each do |elem|
+        @recipe.ingredients << Ingredient.find(elem[1].values[0])
+        if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+          recipe_quantity = RecipeQuantity.create!(:value => elem[1].values[1].values[0],
+                                                   :quantity_type =>
+                                                     QuantityType.find(elem[1].values[1].values[1]))
+          last = @recipe.recipe_ingredients.last
+          last.recipe_quantity = recipe_quantity
+        end
+      end
+      if @recipe.update(@recipe_params)
+        if @recipe.image.blob.content_type.starts_with?('image/')
+          redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
+        else
+          redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
+        end
+      else
+        redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
+      end
     end
   end
 
@@ -103,7 +125,10 @@ class RecipesController < InheritedResources::Base
   private
 
   def find_recipe_edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:recipe_ingredients => [
+      :ingredient,
+      :recipe_quantity => :quantity_type,
+    ]).find(params[:id])
   end
 
   def find_recipe
@@ -115,7 +140,7 @@ class RecipesController < InheritedResources::Base
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :score, :steps, :cooking_time, :preparation_time,
+    params.require(:recipe).permit(:title, :score, :steps_raw, :cooking_time, :preparation_time,
                                    :description, :difficulty, :person,
                                    :image, :recipe_ingredients_attributes => {}, :utensil_ids => [],
                                            :recipe_category_ids => [])
