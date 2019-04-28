@@ -24,6 +24,7 @@
       <h3><%= link_to_add_association 'Add ingredient', f, :recipe_ingredients, partial: 'recipe_ingredient_fields', data: {
         association_insertion_node: '#recipe_ingredients', association_insertion_method: :append
       }, class: "uk-link" %></h3>
+      <%= f.label :utensil_ids, label: ("(#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, {:class => "uk-text-medium"}})").html_safe %>
     </div>
   </div>
   <hr class="uk-divider-icon">
@@ -31,8 +32,7 @@
     <div class="uk-width-xxlarge">
       <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "utensils-select", multiple: true}, defaults: {input_class: ""} %>
       <%= f.input :steps_raw, as: :text, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
-      <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
-      <%= f.number_field :difficulty, max: 10, min: 0, class: "uk-input" %>
+      <%= f.input :difficulty, as: :range, label: "#{t("recipe.title.difficulty")}:", input_class: false, input_html: {class: "uk-range", step: 1, max: 10, min: 0, oninput: "changeRangeValue()"} %>
       <div class="uk-margin-medium" uk-grid>
         <div class="uk-width-1-2">
           <%= f.input :cooking_time, label: t("recipe.title.cooking_time") %>
@@ -68,6 +68,12 @@
     placeholder: 'Catégories'
   });
   document.getElementById('steps_textarea').value = '';
+
+  const changeRangeValue = function () {
+    let difValue = document.getElementById('recipe_difficulty').value;
+    console.log(document.getElementById('recipe_difficulty').labels);
+    document.getElementById('recipe_difficulty').labels[0].innerHTML = "<abbr title='required'>*</abbr> <%= "#{t("recipe.title.difficulty")}: "%>" + difValue + '/10';
+  };
 
 </script>
 

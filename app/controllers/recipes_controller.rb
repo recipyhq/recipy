@@ -90,6 +90,7 @@ class RecipesController < InheritedResources::Base
     @recipe_params[:steps] = split_steps.collect(&:strip)
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
     @recipe_params.delete(:recipe_ingredients_attributes)
+    @recipe_params.delete(:steps_raw)
     if new_ingredients.nil?
       flash[:html_alert] = t('recipe.creation.missing_ingredients')
     else
@@ -117,7 +118,9 @@ class RecipesController < InheritedResources::Base
   end
 
   def destroy
+    Bullet.enable = false
     find_recipe
+    @recipe.image.purge_later
     @recipe.destroy
     redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
   end

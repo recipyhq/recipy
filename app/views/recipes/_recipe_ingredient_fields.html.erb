@@ -3,7 +3,7 @@
     <h3 class="uk-card-title">A new Ingredient</h3>
     <div class=" uk-grid">
       <div class="uk-width-1-1">
-        <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"} %>
+        <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"} %>
       </div>
       <%= f.simple_fields_for RecipeQuantity.new do |ff| %>
         <div class="uk-width-1-2">
