@@ -98,6 +98,10 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
+      my_recipes:
+        link: "Mes recettes"
+        title: "Toutes mes recettes"
 
   ingredient:
     title:

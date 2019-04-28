@@ -63,18 +63,6 @@ class RecipesController < InheritedResources::Base
 
       redirect_to recipe_path(Recipe.last.id), flash: { success: t("recipe.creation.valid") }
     end
-
-    # new_recipe = Recipe.new(recipe_params)
-    # if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
-    #   if new_recipe.image.blob.content_type.starts_with?('image/')
-    #     new_recipe.save
-    #     redirect_to recipe_path(new_recipe.id), flash: { success: t("recipe.creation.valid") }
-    #   else
-    #     redirect_to new_recipe_path, flash: { danger: t("recipe.creation.invalid_image") }
-    #   end
-    # else
-    #   redirect_to new_recipe_path, flash: { danger: t("recipe.creation.invalid") }
-    # end
   end
 
   def edit
@@ -145,7 +133,8 @@ class RecipesController < InheritedResources::Base
   def recipe_params
     params.require(:recipe).permit(:title, :score, :steps_raw, :cooking_time, :preparation_time,
                                    :description, :difficulty, :person,
-                                   :image, :recipe_ingredients_attributes => {}, :utensil_ids => [],
+                                   :image, :recipe_ingredients_attributes => {},
+                                           :utensil_ids => [],
                                            :recipe_category_ids => [])
   end
 end

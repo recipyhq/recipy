@@ -115,6 +115,10 @@ en:
       valid: "Your recipe have been deleted"
     api:
       invalid_id: "Unfindable recipe, wrong ID"
+      invalid_user_id: "User not found"
+    my_recipes:
+      link: "My recipes"
+      title: "All my recipes"
 
   ingredient:
     unrecognized: ""

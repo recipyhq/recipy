@@ -18,6 +18,8 @@ class Recipe < ApplicationRecord
   has_one_attached :image
   validates :image, presence: true
 
+  belongs_to :user
+
   accepts_nested_attributes_for :notebooks, allow_destroy: true
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
   accepts_nested_attributes_for :recipe_utensils, allow_destroy: true

@@ -18,6 +18,27 @@ class Api::RecipesController < Api::BaseController
     render json: @recipes_hash
   end
 
+  def show_user_recipes
+    skip_policy_scope
+    begin
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json, status: :not_found
+      return
+    end
+    @recipes = Recipe.where(:user => user).includes(:recipe_utensils,
+                               :utensils,
+                               recipe_ingredients:
+                                 [
+                                   :ingredient,
+                                   :recipe_quantity => :quantity_type,
+                                 ]).all.with_attached_image
+
+    build_recipe_list_ingredients
+
+    render json: @recipes_hash
+  end
+
   def show
     find_recipe
     view = @recipe.view
