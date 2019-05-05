@@ -18,6 +18,10 @@ fr:
     contact_us: "Nous contacter"
     legal_notice: "Mentions légales"
     privacy_policy: "Politique de confidentitalité"
+    quote: "Ensemble, gaspillons moins. Mangeons mieux."
+
+  avatar:
+    not_found: "Aucun avatar"
 
   shared_links:
     no_account: "Vous n'avez pas de compte ?"
