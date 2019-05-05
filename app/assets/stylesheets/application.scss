@@ -45,3 +45,47 @@
 progress.uk-progress[value]::-webkit-progress-value {
   background-color: $recipy-primary-color;
 }
+
+.star-ratings {
+  unicode-bidi: bidi-override;
+  color: $recipy-default-color;
+  font-size: 20px;
+  position: relative;
+  display: block;
+  padding: 0;
+  width: 88px;
+  
+  &-value {
+    color: $recipy-primary-color;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    overflow: hidden;
+  }
+
+  &.star-dark {
+    color: $recipy-tertiary-color-clear !important;
+  }
+}
+
+.info-recipe {
+  span {
+    display: block;
+  }
+  
+  span.name{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  span.info{
+    font-size: 12px;
+  }
+  
+  progress{
+    height: 6px;
+    margin: 5px 0;
+  }
+}

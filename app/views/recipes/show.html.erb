@@ -12,7 +12,10 @@
             <div class="uk-text-center">
               <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
               <% if @recipe.score_count > 0 %>
-                <p><%= @recipe.score %> / 5</p>
+                <div class="star-ratings uk-align-center">
+                  <div class="star-ratings-value" style="width: <%= @recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
               <% else %>
                 <p><%= t("recipe.title.no_score") %></p>
               <% end %>
@@ -32,34 +35,6 @@
           </div>
         </div>
     </div>
-  <div class="uk-container">
-    <h2 class="title"><%= @recipe.title %></h2>
-    <p><%= @recipe.description %></p>
-    <div class="uk-child-width-1-3@m" uk-grid>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
-          <% if @recipe.score_count > 0 %>
-            <p><%= @recipe.score %> / 5</p>
-          <% else %>
-            <p><%= t("recipe.title.no_score") %></p>
-          <% end %>
-        </div>
-      </div>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.time") %></h5>
-          <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
-        </div>
-      </div>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
-          <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="uk-section uk-section-default">
   <div class="uk-child-width-1-2@m" uk-grid>
@@ -144,11 +119,14 @@
               <% end %>
               <div class="uk-width-expand">
                   <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#"><%= recipe_feedback.user.email %></a></h4>
+                  <% if recipe_feedback.value %>
+                    <div class="star-ratings star-dark">
+                      <div class="star-ratings-value" style="width: <%= recipe_feedback.value * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                  <% end %>
                   <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                       <li><%= recipe_feedback.updated_at.to_time.strftime('%d/%m/%Y %H:%M') %></li>
-                      <% if recipe_feedback.value %>
-                        <li><%= recipe_feedback.value %> / 5</li>
-                      <% end %>
                   </ul>
               </div>
           </header>
