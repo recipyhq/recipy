@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope 'beta' do
+  scope 'beta' do    
     devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do

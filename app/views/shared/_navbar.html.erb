@@ -1,19 +1,21 @@
-<nav class="uk-navbar-container" uk-navbar>
-  <div class="uk-navbar-left">
-
-    <%= link_to unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' do %>
-    <% end %>
-
-    <ul class="uk-navbar-nav"></ul>
-  </div>
-
+<nav class="uk-navbar-container navbar-recipy" uk-navbar="mode: click">
+  <%= link_to 'Recipy', unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' %>
   <div class="uk-navbar-right">
-    <ul class="uk-navbar-nav">
+    <ul class="uk-navbar-nav uk-visible@s">
+      <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
       <% if user_signed_in? %>
         <li>
-          <a><%= current_user.email %><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
-          <div class="uk-navbar-dropdown">
+          <a href="#">
+            <%= current_user.email %>
+            <span class="uk-icon uk-margin-small-left" uk-icon="icon: chevron-down"></span>  
+          </a>
+          <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="<%= current_page_class?(edit_user_registration_path) %>">
+                <%= link_to edit_user_registration_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
+                <% end %>
+              </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
@@ -23,9 +25,41 @@
           </div>
         </li>
       <% else %>
-        <li><%= link_to t('navbar.sign_up'), new_user_registration_path %></li>
-        <li><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
+        <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
+      <% end %>
+    </ul>
+    <div class="uk-hidden@s">
+      <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
+    </div>
+  </div>
+</nav>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <h3>Navigation</h3>
+    <ul class="uk-nav uk-nav-default">
+      <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
+      <% if user_signed_in? %>
+        <li class="uk-parent">
+            <a href="#"><%= current_user.email %></a>
+            <ul class="uk-nav-sub">
+              <li class="<%= current_page_class?(edit_user_registration_path) %>">
+                <%= link_to edit_user_registration_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
+                <% end %>
+              </li>
+            </ul>
+        </li>
+      <% else %>
+        <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
       <% end %>
     </ul>
   </div>
-</nav>
+</div>
+

@@ -89,3 +89,34 @@ progress.uk-progress[value]::-webkit-progress-value {
     margin: 5px 0;
   }
 }
+
+.navbar-recipy {
+  background-color: $recipy-secondary-color !important;
+
+  .uk-logo {
+    text-shadow: none;
+  }
+
+  .uk-navbar-toggle-icon {
+    background-color: transparent;
+    transition: 0.2s;
+  }
+
+  .uk-navbar-nav > li {
+    & > a {
+      color: $recipy-default-color;
+    }
+
+    &.uk-active > a {
+      color: lighten($color: $recipy-primary-color, $amount: 10);
+    }
+  }
+}
+
+.uk-button-primary {
+  background-color: $recipy-primary-color;
+
+  &:hover {
+    background-color: darken($color: $recipy-primary-color, $amount: 10) !important;
+  }
+}

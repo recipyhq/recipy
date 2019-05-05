@@ -8,8 +8,16 @@ fr:
 
   navbar:
     log_out: "Déconnexion"
-    sign_in: "Me connecter"
+    sign_in: "Se connecter"
     sign_up: "M'inscrire"
+    edit_user: 'Modifier mon profil'
+
+  footer:
+    infos: "Informations"
+    join_us: "Rejoignez nous"
+    contact_us: "Nous contacter"
+    legal_notice: "Mentions légales"
+    privacy_policy: "Politique de confidentitalité"
 
   shared_links:
     no_account: "Vous n'avez pas de compte ?"
@@ -108,6 +116,7 @@ fr:
     no_null: "L'ingredient ne peut pas être nul"
 
   search:
+    title: "Rechercher"
     read_more: "Lire la suite"
     search: "Rechercher..."
     search_btn: "Rechercher"
