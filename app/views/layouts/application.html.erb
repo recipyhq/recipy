@@ -30,6 +30,7 @@
 
   <body>
     <%= render 'shared/navbar' unless @disable_nav %>
+    <%= render 'shared/notification' %>
     <%= yield %>
     <%= render 'shared/footer' unless @disable_footer %>
   </body>

@@ -120,3 +120,44 @@ progress.uk-progress[value]::-webkit-progress-value {
     background-color: darken($color: $recipy-primary-color, $amount: 10) !important;
   }
 }
+
+.notification-wrapper {
+  background-color:transparent;
+  pointer-events: none;
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 200px;
+  flex-direction: column-reverse;
+
+  .notification {
+    width: 90%;
+    background-color: $recipy-notification-default;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin: 5px 0;
+    border-radius: 3px;
+    text-align: center;
+    padding: 10px 0;
+    color: $recipy-notification-content;
+
+    &.alert {
+      background-color: $recipy-notification-alert;
+    }
+
+    &.notice {
+      background-color: $recipy-notification-notice;
+    }
+
+    &.error {
+      background-color: $recipy-notification-error;
+    }
+
+    &.success {
+      background-color: $recipy-notification-success;
+    }
+  }
+}
