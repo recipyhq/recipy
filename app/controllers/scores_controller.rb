@@ -10,6 +10,7 @@ class ScoresController < ApplicationController
     score.update(:value => score_params[:value])
     score.update(:content => score_params[:content])
 
+    flash[:success] = t('feedback.notification')
     redirect_back fallback_location: recipe_path(:id => @recipe.id)
   end
 

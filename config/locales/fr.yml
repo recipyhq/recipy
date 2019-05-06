@@ -139,3 +139,6 @@ fr:
     edit:
       invalid: "Le carnet de recette n'est pas conforme"
       invalid_image: "L'image est invalide"
+
+  feedback:
+    notification: "Votre avis a bien été pris en compte."
