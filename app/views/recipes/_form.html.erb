@@ -1,25 +1,32 @@
-
-
 <%= simple_form_for(@recipe) do |f| %>
+
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <%= f.input :title, label: t("recipe.title.title") %>
     <%= f.file_field :image%>
     <%= f.input :description, label: t("recipe.title.description") %>
-  <div class="uk-form-horizontal">
-    <%= f.label :utensil_ids, label: ("#{t("recipe.title.ingredient")} (#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, { :class => "uk-text-small" }})").html_safe %>
-  </div>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.where(:confirmed => true).all, :id, :name%>
-  <%#<%= f.select :utensil_ids, options_for_select(Utensil.all.sort), {:include_blank => true, :multiple => true, :size =>10} %>
-  <div class="uk-form-horizontal">
-    <%= f.label :utensil_ids, label: t("recipe.title.utensil") %>
-  </div>
+    <div class="uk-form-horizontal">
+      <%= f.label :utensil_ids, label: ("#{t("recipe.title.ingredient")} (#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, { :class => "uk-text-small" }})").html_safe %>
+    </div>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.where(:confirmed => true).all, :id, :name %>
+    <%= f.input :ingredients, :label => false, :selected => @recipe.ingredients.map { |v| v.id }.to_a, collection: Ingredient.where(:confirmed => true).all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredients-select", multiple: true } , wrapper_class: "", defaults: { input_class: "" } %>
+    <%#<%= f.select :utensil_ids, options_for_select(Utensil.all.sort), {:include_blank => true, :multiple => true, :size =>10} %>
+    <div class="uk-form-horizontal">
+      <%= f.label :utensil_ids, label: t("recipe.title.utensil") %>
+    </div>
     <%= f.collection_check_boxes :utensil_ids, Utensil.all, :id, :title%>
+    <%= f.input :utensils, :label => false, :selected => @recipe.utensils.map { |v| v.id }.to_a, collection: Utensil.all.map { |v| [v.title, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: { id: "utensils-select", multiple: true } , wrapper_class: "", defaults: { input_class: "" } %>
+
     <%= f.input :step, label: t("recipe.title.step") %>
-    <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
-    <%= f.number_field :difficulty, max: 10, class:"uk-input"%>
-    <%= f.input :cooking_time, label: t("recipe.title.time") %>
+    <div class="uk-form-horizontal">
+      <%= f.label :difficulty, label: t("recipe.title.difficulty") %>
+    </div>
+    <%= f.number_field :difficulty, max: 10, min: 0, class:"uk-input"%>
+    <div class="uk-form-horizontal">
+      <%= f.label :cooking_time, label: t("recipe.title.time") %>
+    </div>
+    <%= f.number_field :cooking_time, min: 0, class:"uk-input" %>
 
   <div class="uk-margin-medium">
     <div class="uk-text-center">

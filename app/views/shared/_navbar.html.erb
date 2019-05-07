@@ -11,6 +11,11 @@
           </a>
           <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="<%= current_page_class?(new_recipe_path) %>">
+                <%= link_to new_recipe_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span><%= t('navbar.new_recipe') %>
+                <% end %>
+              </li>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
@@ -44,6 +49,11 @@
         <li class="uk-parent">
             <a href="#"><%= current_user.email %></a>
             <ul class="uk-nav-sub">
+              <li class="<%= current_page_class?(new_recipe_path) %>">
+                <%= link_to new_recipe_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span><%= t('navbar.new_recipe') %>
+                <% end %>
+              </li>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>

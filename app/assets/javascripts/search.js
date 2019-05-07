@@ -8,4 +8,12 @@ document.addEventListener('turbolinks:load', () => {
     searchPlaceholder: 'Recherche ingrédient',
     placeholder: 'Ingrédients',
   });
+
+  new SlimSelect({
+    select: '#utensils-select',
+    searchingText: 'Recherche...',
+    searchText: "Désolé il n'y a pas votre ustensil dans la liste.",
+    searchPlaceholder: 'Recherche ustensil',
+    placeholder: 'Ustensils',
+  });
 });
