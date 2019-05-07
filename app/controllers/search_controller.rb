@@ -11,7 +11,7 @@ class SearchController < ApplicationController
     skip_policy_scope
     @page = (params['page'] || 1).to_i.abs
     @time_max = Recipe.maximum("cooking_time") || 60
-    @ingredients_select = Ingredient.all.map { |v| [v.name, v.id] }.to_a
+    @ingredients_select = Ingredient.all.where(:confirmed => true).map { |v| [v.name, v.id] }.to_a
     search_params = params['search'] || {}
     @search_query = search_params['q'] || ""
     @search_difficulty = search_params['difficulty'] || nil

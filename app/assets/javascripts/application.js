@@ -24,6 +24,6 @@ $(document).ready(() => {
       $(el).fadeOut('slow', () => {
         $(this).remove();
       });
-    }, 2000 + 1000 * ind);
+    }, 3000 + 1000 * ind);
   });
 });
