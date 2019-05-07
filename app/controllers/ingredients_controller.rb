@@ -10,14 +10,14 @@ class IngredientsController < ApplicationController
   def create
     if (!params[:ingredient].key?(:name) || !params[:ingredient].key?(:description)) ||
       params[:ingredient].keys.length != 3
-      redirect_to new_ingredient_path, flash: { danger: t("recipe.creation.invalid") }
+      redirect_to new_ingredient_path, flash: { danger: t("ingredient.creation.invalid") }
     else
       new_ingredient = Ingredient.new(ingredient_params)
       if new_ingredient.valid?
         new_ingredient.save
-        redirect_to new_recipe_path
+        redirect_to new_recipe_path, flash: { success: t('ingredient.creation.valid') }
       else
-        redirect_to new_ingredient_path, flash: { danger: t("recipe.creation.invalid") }
+        redirect_to new_ingredient_path, flash: { danger: t("ingredient.creation.invalid") }
       end
     end
   end

@@ -119,6 +119,9 @@ fr:
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
+    creation:
+      valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
+      invalid: "Votre n'est pas valide."
 
   search:
     title: "Rechercher"
