@@ -24,7 +24,7 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def create
-    new_notebook = Notebook.new(notebook_params)
+    new_notebook = Notebook.new(notebook_params_api)
     if new_notebook.save
       render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
     else
@@ -84,5 +84,9 @@ class Api::NotebooksController < InheritedResources::Base
 
   def notebook_params
     params.require(:notebook).permit(:title, :description, :image, :recipes)
+  end
+
+  def notebook_params_api
+    params.require(:notebook).permit(:title, :description, :user_id)
   end
 end
