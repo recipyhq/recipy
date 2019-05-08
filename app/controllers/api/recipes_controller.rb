@@ -148,6 +148,7 @@ class Api::RecipesController < Api::BaseController
 
     @recipes.each do |recipe|
       build_recipe_ingredients(recipe)
+      @recipes_hash[i]['score'] = recipe.recipe_scores.average(:value)
       @recipes_hash[i]['ingredients'] = build_recipe_ingredients(recipe)
       @recipes_hash[i].delete('time')
       @recipes_hash[i].delete('step')
