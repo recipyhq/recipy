@@ -61,9 +61,9 @@ class RecipesController < InheritedResources::Base
   def add_ingredients_to_list
     @recipe = Recipe.find(params[:recipe_id])
     shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
-    shopping_list << @recipe.ingredients
+    shopping_list.ingredients << @recipe.ingredients
     shopping_list.save
-    redirect_to shopping_list_path(id: tmp.id)
+    redirect_to shopping_list_path(id: shopping_list.id)
   end
 
   private

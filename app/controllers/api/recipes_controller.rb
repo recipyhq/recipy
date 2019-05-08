@@ -69,6 +69,17 @@ class Api::RecipesController < Api::BaseController
     end
   end
 
+  def add_ingredients_to_list
+    @recipe = Recipe.find(params[:recipe_id])
+    shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
+    shopping_list.ingredients << @recipe.ingredients
+    if shopping_list.save
+      render :json => { Status: "OK", Cause: "Les ingrédients ont été ajoutés à la liste"}.as_json
+    else
+      render :json => { Status: "KO", Cause: "Erreur lors de la sauvegarde de la liste de courses. Veuillez réessayer."}.as_json
+    end
+  end
+
   private
 
   def build_recipe_ingredients(recipe)
@@ -149,5 +160,9 @@ class Api::RecipesController < Api::BaseController
   def recipe_params
     params.require(:recipe).permit(:title, :score, :time, :description, :difficulty, :view,
                                    :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
+  end
+
+  def shopping_list_params
+    params.require(:recipe).permit(:shopping_lists, :id)
   end
 end
