@@ -4,7 +4,7 @@ class Api::ShoppingListsController < ApplicationController
 
   def index
     skip_policy_scope
-    @shopping_lists = ShoppingList.includes(:ingredients)
+    @shopping_lists = ShoppingList.includes(:ingredients).where(user_id: params[:user_id])
 
     build_shopping_lists_ingredients
 
@@ -30,21 +30,20 @@ class Api::ShoppingListsController < ApplicationController
 
   def create
     new_shopping_list = ShoppingList.new(shopping_list_params)
-    new_shopping_list.user_id = 1
     if new_shopping_list.valid?
       new_shopping_list.save
-      render :json => { Status: "OK", Cause: "Nouvelle liste créée !" }.as_json
+      render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
     else
-      render :json => { Status: "OK", Cause: "Erreur lors de la création de la liste, veuillez réessayer" }.as_json
+      render :json => {Status: "OK", Cause: "Erreur lors de la création de la liste, veuillez réessayer"}.as_json
     end
   end
 
   def update
     find_shopping_list
     if @shopping_list.update(shopping_list_params)
-      render :json => { Status: "OK", Cause: "Votre liste a été modifiée avec succés !" }.as_json
+      render :json => {Status: "OK", Cause: "Votre liste a été modifiée avec succés !"}.as_json
     else
-      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
+      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
     end
   end
 
@@ -52,7 +51,7 @@ class Api::ShoppingListsController < ApplicationController
     find_shopping_list
     unless @shopping_list.nil?
       @shopping_list.destroy
-      render :json => { Status: "OK", Cause: "Votre liste a bien été supprimée" }.as_json
+      render :json => {Status: "OK", Cause: "Votre liste a bien été supprimée"}.as_json
     end
   end
 
@@ -63,7 +62,7 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def shopping_list_params
-    params.require(:shopping_list).permit(:name, :ingredient_ids => [])
+    params.require(:shopping_list).permit(:name, :user_id, :ingredient_ids => [])
   end
 
   def build_shopping_list_ingredients(shopping_list)

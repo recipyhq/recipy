@@ -12,6 +12,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_utensils
   has_many :utensils, :through => :recipe_utensils
   has_many :recipe_scores, dependent: :destroy
+  has_many :shopping_lists, through: :ingredients
   has_one_attached :image
   validates :image, presence: true
 

@@ -1,14 +1,18 @@
 class ShoppingListsController < InheritedResources::Base
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
+  before_action :authenticate_user!
 
   def index
     skip_policy_scope
-    @shopping_lists = ShoppingList.all
+    @shopping_lists = current_user.shopping_lists
   end
 
   def show
     find_shopping_list
+    if @shopping_list.nil? || @shopping_list == []
+      redirect_to shopping_lists_path, flash: {danger: "Liste de courses inconnue"}
+    end
   end
 
   def new
@@ -50,7 +54,7 @@ class ShoppingListsController < InheritedResources::Base
   private
 
   def find_shopping_list
-    @shopping_list = ShoppingList.find(params[:id])
+    @shopping_list = ShoppingList.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def shopping_list_params
