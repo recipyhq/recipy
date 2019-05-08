@@ -1,3 +1,4 @@
+# rubocop:disable all
 class Api::RecipesController < Api::BaseController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
@@ -166,3 +167,4 @@ class Api::RecipesController < Api::BaseController
     params.require(:recipe).permit(:shopping_lists, :id)
   end
 end
+# rubocop:enable all

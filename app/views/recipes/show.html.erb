@@ -1,25 +1,35 @@
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
-    <% if @recipe.image.attached? %>
-      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;)"></div>
-    <% end %>
+    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;)"></div>
   </div>
 </div>
-
-
 <div class="uk-section uk-section-secondary uk-light">
-  <div class="uk-container">
-    <h2 class="title"><%= @recipe.title %></h2>
-    <p><%= @recipe.description %></p>
-    <div class="uk-child-width-1-3@m" uk-grid>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
-          <% if @recipe.score_count > 0 %>
-            <p><%= @recipe.score %> / 5</p>
-          <% else %>
-            <p><%= t("recipe.title.no_score") %></p>
-          <% end %>
+    <div class="uk-container">
+        <h2 class="title"><%= @recipe.title %></h2>
+        <p><%= @recipe.description %></p>
+        <div class="uk-child-width-1-3@m" uk-grid>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.score_with_count", count: @recipe.score_count) %></h5>
+              <% if @recipe.score_count > 0 %>
+                <p><%= @recipe.score %> / 5</p>
+              <% else %>
+                <p><%= t("recipe.title.no_score") %></p>
+              <% end %>
+            </div>
+          </div>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.time") %></h5>
+              <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
+            </div>
+          </div>
+          <div>
+            <div class="uk-text-center">
+              <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
+              <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
+            </div>
+          </div>
         </div>
       </div>
       <div>
@@ -37,7 +47,6 @@
     </div>
   </div>
 </div>
-
 <div class="uk-section uk-section-default">
   <div class="uk-child-width-1-2@m" uk-grid>
     <div>
@@ -146,25 +155,25 @@
 </div>
 
 <div id="feedback" class="uk-modal-container" uk-modal>
-  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
-    <button class="uk-modal-close-outside" type="button" uk-close></button>
-    <h2 class="uk-modal-title landing-title"><%= t('recipe.title.give_feedback_for', recipe_title: @recipe.title) %></h2>
-    <%= simple_form_for :recipe_score,
-                        url: recipe_feedback_path(:recipe_id => @recipe.id),
-                        :method => :post,
-                        defaults: {
-                          wrapper: false,
-                          label: false
-                        } do |f| %>
-      <div class="uk-margin">
-        <%= f.input :value, :prompt => t("recipe.title.score"), :selected => (@feedback_user) ? @feedback_user.value : nil, collection: 0..5, as: :select, input_html: {class: 'uk-select'} %>
-      </div>
-      <div class="uk-margin">
-        <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content : nil, class: 'uk-textarea' %>
-      </div>
-      <div>
-        <%= f.button :submit, t("recipe.action.feedback") %>
-      </div>
-    <% end %>
-  </div>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
+        <button class="uk-modal-close-outside" type="button" uk-close></button>
+        <h2 class="uk-modal-title landing-title"><%= t('recipe.title.give_feedback_for', recipe_title: @recipe.title) %></h2>
+        <%= simple_form_for :recipe_score,
+            url: recipe_feedback_path(:recipe_id => @recipe.id),
+            :method => :post,
+            defaults: {
+              wrapper: false,
+              label: false
+            } do |f| %>
+          <div class="uk-margin">
+            <%= f.input :value, :prompt => t("recipe.title.score"), :selected => (@feedback_user) ? @feedback_user.value : nil, collection: 0..5, as: :select, input_html: { class: 'uk-select' } %>
+          </div>
+          <div class="uk-margin">
+            <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content: nil, class: 'uk-textarea' %>
+          </div>
+          <div>
+            <%= f.button :submit, t("recipe.action.feedback") %>
+          </div>
+        <% end %>
+    </div>
 </div>

@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   scope 'beta' do
     devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
@@ -45,12 +44,19 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
+
       resources :shopping_lists
+      resources :recipes
+      resources :notebooks
+      resources :ingredients, only: [:new, :create]
+      
       resources :recipes, param: :id do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
         post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
       end
       get 'search' => "search#index"
+      post 'add_recipe' => "notebooks#add_recipe"
+      post 'remove_recipe' => "notebooks#remove_recipe"
     end
   end
 
@@ -62,12 +68,14 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
+
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
     end
     resources :ingredients
     resources :shopping_lists
+    resources :notebooks
     get 'search' => "search#index"
   end
 
