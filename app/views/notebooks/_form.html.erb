@@ -1,17 +1,22 @@
 
 
-<%= simple_form_for(@notebook) do |f| %>
+<%= simple_form_for(@notebook, class: '') do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <%= f.input :title, label: "Nom du carnet de recettes" %>
+  <% if notebook.image.attached? %>
+    <%= image_tag(notebook.image.variant(resize: '200x200')) %>
+  <% else %>
+    <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
+  <% end %>
+  <div class="uk-form-horizontal">
+    <%= f.label :image, label: t("notebook.form.img") %>
+  </div>
+  <%= f.file_field :image, :label => "test" %>
+  <%= f.input :title, label: t('notebook.form.name') %>
   <%= f.input :description, label: "Décrivez le style de carnet que  vous réaliser" %>
   <%#= f.input :recipes, collection: Recipe.all, as: :select, label: "Selectionnez votre première recette à ajouter"%>
-  <div> Une photo de votre choix qui illustrera votre carnet de recettes : </div> <br>
-  <%= f.file_field :image%>
 
-  <div class="uk-margin-medium">
-    <%= f.button :submit, :value => "Valider"%>
-  </div>
+  <%= f.button :submit, :value => "Valider" %>
+  <%= link_to t('notebook.back'), notebooks_path, class: "" %>
 <% end %>
 

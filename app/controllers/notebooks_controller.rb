@@ -66,9 +66,9 @@ class NotebooksController < InheritedResources::Base
 
   def find_notebook
     if params[:id].nil?
-      @notebook = Notebook.find(params[:notebook][:id])
+      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:notebook][:id])
     else
-      @notebook = Notebook.find(params[:id])
+      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:id])
     end
   end
 

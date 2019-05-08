@@ -106,6 +106,7 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+      name: "Recette"
 
   ingredient:
     title:
@@ -146,3 +147,17 @@ fr:
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
+
+  notebook:
+    title: 'Mes carnets de recette'
+    add: 'Créer un carnet de recette'
+    delete: 'Supprimer'
+    edit: 'Éditer'
+    edit_name: 'Édition du carnet "%{name}"'
+    open: 'Consulter'
+    confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
+    back: 'Retourner à la liste des carnets de recette'
+    form:
+      name: "Nom du carnet de recettes"
+      desc: "Description du style de carnet que vous réalisez"
+      img: "Image illustrant votre carnet"
