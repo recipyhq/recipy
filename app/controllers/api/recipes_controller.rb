@@ -72,12 +72,16 @@ class Api::RecipesController < Api::BaseController
 
   def add_ingredients_to_list
     @recipe = Recipe.find(params[:recipe_id])
-    shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
-    shopping_list.ingredients << @recipe.ingredients
-    if shopping_list.save
-      render :json => { Status: "OK", Cause: "Les ingrédients ont été ajoutés à la liste"}.as_json
+    if @recipe
+      shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
+      shopping_list.ingredients << @recipe.ingredients
+      if shopping_list.save
+        render :json => { Status: "OK", Cause: "Les ingrédients ont été ajoutés à la liste"}.as_json
+      else
+        render :json => { Status: "KO", Cause: "Erreur lors de la sauvegarde de la liste de courses. Veuillez réessayer."}.as_json
+      end
     else
-      render :json => { Status: "KO", Cause: "Erreur lors de la sauvegarde de la liste de courses. Veuillez réessayer."}.as_json
+      render :json => { Status: "KO", Cause: "Paramètres incomplets"}.as_json
     end
   end
 
@@ -164,7 +168,7 @@ class Api::RecipesController < Api::BaseController
   end
 
   def shopping_list_params
-    params.require(:recipe).permit(:shopping_lists, :id)
+    params.permit(:shopping_lists, :id)
   end
 end
 # rubocop:enable all

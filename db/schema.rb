@@ -194,7 +194,6 @@ ActiveRecord::Schema.define(version: 2019_04_10_233703) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.integer "score", default: 0
     t.text "description"
     t.text "step"
     t.integer "difficulty"
@@ -317,7 +316,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_233703) do
   end
 
   add_foreign_key "memberships", "users"
-  add_foreign_key "shopping_lists", "users"
   add_foreign_key "notebook_recipes", "notebooks"
   add_foreign_key "notebook_recipes", "recipes"
+  add_foreign_key "shopping_lists", "users"
 end
