@@ -14,7 +14,7 @@ class Api::NotebooksController < InheritedResources::Base
 
   def show
     find_notebook
-    notebook = @notebook.as_json(:include => [:recipes])
+    notebook = @notebook.as_json(:include => [:recipes], methods: %i(image_url))
     render json: notebook
   end
 
@@ -31,12 +31,6 @@ class Api::NotebooksController < InheritedResources::Base
       render json: new_notebook.errors, status: :unprocessable_entity
     end
   end
-
-  # def create
-  # new_notebook = Notebook.new(notebook_params)
-  # new_notebook.save!
-  # render :json => { Status: "OK", Cause: "Nouvelle recette créée !" }.as_json
-  # end
 
   def add_recipe
     find_notebook
