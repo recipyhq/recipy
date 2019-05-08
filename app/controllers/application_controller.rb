@@ -1,3 +1,4 @@
+# rubocop:disable all
 class ApplicationController < ActionController::Base
   include Pundit
   include Localizable
@@ -43,3 +44,4 @@ class ApplicationController < ActionController::Base
     params[:next] || authenticated_cook_root_path
   end
 end
+# rubocop:enable all

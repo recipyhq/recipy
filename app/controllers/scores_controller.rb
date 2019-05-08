@@ -1,3 +1,4 @@
+# rubocop:disable all
 class ScoresController < ApplicationController
   before_action :skip_authorization
   before_action :authenticate_user!
@@ -22,3 +23,4 @@ class ScoresController < ApplicationController
     @recipe = Recipe.find_by_id(params[:recipe_id])
   end
 end
+# rubocop:enable all
