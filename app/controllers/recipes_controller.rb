@@ -121,7 +121,7 @@ class RecipesController < InheritedResources::Base
   private
 
   def find_recipes_by_user_id
-    @recipes = Recipe.where(user: current_user).all.with_attached_image
+    @recipes = Recipe.where(user: current_user).where.not(user: nil).all.with_attached_image
   end
 
   def find_recipe_edit
