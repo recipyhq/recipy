@@ -30,9 +30,13 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' unless @disable_nav %>
     <%= render 'shared/notification' %>
-    <%= yield %>
-    <%= render 'shared/footer' unless @disable_footer %>
+    <div class="app">
+      <%= render 'shared/navbar' unless @disable_nav %>
+      <%= yield %>
+    </div>
+    <div class="footer">
+      <%= render 'shared/footer' unless @disable_footer %>
+    </div>
   </body>
 </html>

@@ -181,3 +181,20 @@ progress.uk-progress[value]::-webkit-progress-value {
 .ss-main .ss-multi-selected .ss-add {
   margin: 14px 12px;
 }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.app { 
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
