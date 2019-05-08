@@ -21,7 +21,7 @@
   <% end %>
   <div>
     <div class="uk-text-center">
-      <h3><%= link_to_add_association 'Add ingredient', f, :recipe_ingredients, partial: 'recipe_ingredient_fields', data: {
+      <h3><%= link_to_add_association t("recipe.action.new_ingredient"), f, :recipe_ingredients, partial: 'recipe_ingredient_fields', data: {
         association_insertion_node: '#recipe_ingredients', association_insertion_method: :append
       }, class: "uk-link" %></h3>
       <%= f.label :utensil_ids, label: ("(#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, {:class => "uk-text-medium"}})").html_safe %>

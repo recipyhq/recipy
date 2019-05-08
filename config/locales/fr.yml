@@ -73,6 +73,9 @@ fr:
         quantity_value: "Quantité"
         quantity_type: "Type de la quantité"
         category: "Catégorie(s)"
+        new_ingredient_elem: "Nouvel ingredient"
+        number_views: "Nombre de vues :"
+        number_feedbacks: "Nombre de commentaires :"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
@@ -82,6 +85,8 @@ fr:
         destroy: "Supprimer"
         back: "Précédent"
         confirm: "Êtes-vous sûr ?"
+        new_ingredient: "Ajouter un ingrédient"
+        delete_ingredient: "Supprimer"
       creation:
         missing_ingredients: "La recette a au moins besoin d'un ingrédient !"
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
@@ -94,6 +99,7 @@ fr:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
         invalid_image: "Fichier image invalide"
+        wrong_user: "Vous n'êtes pas autorisé à modifier cette recette !"
       destroy:
         valid: "Votre recette a été supprimée"
       api:

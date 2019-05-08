@@ -18,6 +18,10 @@ class RecipesController < InheritedResources::Base
     @recipe_feedbacks = @recipe.recipe_scores
   end
 
+  def show_user_recipes
+    find_recipes_by_user_id
+  end
+
   def new
     @recipe = Recipe.new
     @recipe.recipe_ingredients.build
@@ -59,6 +63,7 @@ class RecipesController < InheritedResources::Base
       # puts "\n\n\n"
       # puts new_recipe.inspect
       # puts new_recipe.recipe_ingredients.inspect
+      new_recipe.user = current_user
       new_recipe.save
 
       redirect_to recipe_path(Recipe.last.id), flash: { success: t("recipe.creation.valid") }
@@ -114,6 +119,10 @@ class RecipesController < InheritedResources::Base
   end
 
   private
+
+  def find_recipes_by_user_id
+    @recipes = Recipe.where(user: current_user).all.with_attached_image
+  end
 
   def find_recipe_edit
     @recipe = Recipe.includes(:recipe_ingredients => [

@@ -94,6 +94,10 @@ en:
       quantity_value: "Quantity"
       quantity_type: "Quantity type"
       category: "Category(ies)"
+      new_ingredient: "Propose a new ingredient"
+      new_ingredient_elem: "New Ingredient"
+      number_views: "Number of views:"
+      number_feedbacks: "Number of feedbacks:"
     action:
       edit: "Edit"
       show: "Show"
@@ -101,6 +105,8 @@ en:
       destroy: "Destroy"
       back: "Back"
       confirm: "Are you sure ?"
+      new_ingredient: "Add a new ingredient"
+      delete_ingredient: "Remove"
     creation:
       missing_ingredients: "A recipe needs at least one ingredient!"
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
@@ -111,6 +117,7 @@ en:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"
       invalid_image: "Invalid image file"
+      wrong_user: "You are not allowed to modify this recipe!"
     destroy:
       valid: "Your recipe have been deleted"
     api:

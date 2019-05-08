@@ -35,6 +35,12 @@
             <span class="name">Difficulté</span>
             <progress class="uk-progress" value=<%= recipe.difficulty %> max="10"></progress>
           </div>
+          <div class="info-recipe">
+            <span class="name"><%= t("recipe.title.number_views") + " " + recipe.view.to_s %></span>
+          </div>
+          <div class="info-recipe">
+            <span class="name"><%= t("recipe.title.number_feedbacks") + " " + recipe.score_count.to_s %></span>
+          </div>
         </div>
         <div class="uk-card-footer uk-text-center">
           <p class="uk-button uk-button-default"><%= link_to t("recipe.action.show"), recipe %></p>
