@@ -35,9 +35,9 @@
                 <div class="uk-card-media-top uk-text-center uk-display-block ">
                   <div class="uk-margin-top uk-align-center">
                     <% if recipe.image.attached? %>
-                      <%= puts "****##****" %>
+                      <%= puts "********" %>
                       <%= puts recipe.image&.variant(resize: '300x400') %>
-                      <%= puts "****##****" %>
+                      <%= puts "********" %>
                       <%= image_tag(recipe.image.variant(resize: '300x400')) %>
                     <% else %>
                       <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
