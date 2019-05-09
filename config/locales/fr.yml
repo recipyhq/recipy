@@ -35,6 +35,29 @@ fr:
               blank: "Le champ Courriel ne doit pas être vide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
+        recipe:
+          attributes:
+            title:
+              blank: "Le titre de la recette ne doit pas être vide"
+              invalid: "Le titre de la recette est invalide"
+            cooking_time:
+              blank: "Le temps de cuisson ne doit pas être vide."
+              invalid: "Le temps de cuisson n'est pas valide."
+            image:
+              blank: "La recette doit posséder une image"
+              invalid: "L'image n'est pas valide"
+            preparation_time:
+              blank: "Le temps de préparation de la recette ne doit pas être vide"
+              invalid: "Le temps de préparation est invalide"
+            person:
+              blank: "Le nombre de personne n'est pas bon"
+              invalid: "Le nombred de personne est invalide"
+            difficulty:
+              blank: "La difficulté ne doit pas être vide"
+              invalid: "La difficulté est incorrecte"
+            description:
+              blank: "La description ne doit pas être vide"
+              invalid: "La description est incorrect"
       messages:
         record_invalid: "Enregistrement invalide"
 

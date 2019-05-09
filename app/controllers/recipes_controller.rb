@@ -5,7 +5,7 @@ class RecipesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @recipes = Recipe.includes(:image_attachment => :blob).all
+    @recipes = Recipe.all.with_attached_image
   end
 
   def show
@@ -30,27 +30,24 @@ class RecipesController < InheritedResources::Base
   def create
     @recipe_params = recipe_params
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
-    # puts "********"
-    # puts new_ingredients.to_h
-    # puts "********"
     if new_ingredients.nil?
-      flash[:html_alert] = t('recipe.creation.missing_ingredients')
+      redirect_to new_recipe_path, flash: {
+        danger: { test: [t('recipe.creation.missing_ingredients')] },
+      }
     else
       steps = @recipe_params[:steps_raw]
       split_steps = steps.split("\r\n")
       @recipe_params[:steps] = split_steps.collect(&:strip)
       @recipe_params.delete(:steps_raw)
       @recipe_params.delete(:recipe_ingredients_attributes)
-      # puts "\n\n\n"
-      # puts @recipe_params
       new_recipe = Recipe.new(@recipe_params)
+      if new_recipe.invalid?
+        redirect_to new_recipe_path, flash: {
+          danger: new_recipe.errors.messages,
+        }
+        return
+      end
       new_ingredients.each do |elem|
-        # puts "******************"
-        # puts "ingredient_id =>" + elem[1].values[0]
-        # puts "ingredient_id =>" + elem[1].values[1].values[0]
-        # puts "ingredient_id =>" + elem[1].values[1].values[1]
-        # puts elem[1].values[1].inspect
-        # puts "******************"
         new_recipe.ingredients << Ingredient.find(elem[1].values[0])
         if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
           recipe_quantity = RecipeQuantity.create!(:value => elem[1].values[1].values[0],
@@ -60,9 +57,6 @@ class RecipesController < InheritedResources::Base
           last.recipe_quantity = recipe_quantity
         end
       end
-      # puts "\n\n\n"
-      # puts new_recipe.inspect
-      # puts new_recipe.recipe_ingredients.inspect
       new_recipe.user = current_user
       new_recipe.save
 
@@ -85,17 +79,22 @@ class RecipesController < InheritedResources::Base
     @recipe_params.delete(:recipe_ingredients_attributes)
     @recipe_params.delete(:steps_raw)
     if new_ingredients.nil?
-      flash[:html_alert] = t('recipe.creation.missing_ingredients')
+      redirect_to edit_recipe_path(@recipe), flash: {
+        danger: { test: [t('recipe.creation.missing_ingredients')] },
+      }
     else
       @recipe.recipe_ingredients.destroy_all
       new_ingredients.each do |elem|
-        @recipe.ingredients << Ingredient.find(elem[1].values[0])
-        if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
-          recipe_quantity = RecipeQuantity.create!(:value => elem[1].values[1].values[0],
-                                                   :quantity_type =>
-                                                     QuantityType.find(elem[1].values[1].values[1]))
-          last = @recipe.recipe_ingredients.last
-          last.recipe_quantity = recipe_quantity
+        if elem[1].values[2] == "false"
+          @recipe.ingredients << Ingredient.find(elem[1].values[0])
+          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+            value = elem[1].values[1]
+            recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
+                                                     :quantity_type =>
+                                                       QuantityType.find(value.values[1]))
+            last = @recipe.recipe_ingredients.last
+            last.recipe_quantity = recipe_quantity
+          end
         end
       end
       if @recipe.update(@recipe_params)

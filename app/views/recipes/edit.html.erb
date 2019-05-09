@@ -3,10 +3,12 @@
     <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
     <% if flash[:danger] %>
-      <div class="uk-alert-danger" uk-alert>
-        <a class="uk-alert-close" uk-close></a>
-        <p><%= flash[:danger] %></p>
-      </div>
+      <% flash.each do |key, value| %>
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+        </div>
+      <% end %>
     <% end %>
 
     <% if @recipe.user != current_user %>
