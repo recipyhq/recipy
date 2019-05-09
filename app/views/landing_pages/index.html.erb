@@ -1,71 +1,20 @@
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-  <div class="uk-position-absolute uk-position-top">
-    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-      <div class="uk-navbar-left uk-visible@m">
-        <ul class="uk-navbar-nav">
-          <li><a href="#" uk-scroll>Accueil</a></li>
-          <li><a href="#concept" uk-scroll>Concept</a></li>
-          <li><a href="#join-us" uk-scroll>Rejoignez Nous</a></li>
-        </ul>
-      </div>
-      <div class="uk-navbar-center uk-visible@m">
-        <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
-      </div>
-      <div class="uk-navbar-right uk-visible@m">
-        <ul class="uk-navbar-nav">
-          <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
-        </ul>
-      </div>
-      <div class="uk-navbar-left uk-hidden@m">
-        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
-      </div>
-      <div class="uk-navbar-right uk-hidden@m">
-        <a class="uk-navbar-item uk-logo" href="#">Recipy</a>
-      </div>
-    </nav>
-  </div>
-</div>
-
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar">
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <h3>Navigation</h3>
-        <ul class="uk-list uk-list-divider uk-list-large">
-          <li><a href="#" uk-scroll>Accueil</a></li>
-          <li><a href="#concept" uk-scroll>Concept</a></li>
-          <li><a href="#joinUs" uk-scroll>Rejoignez Nous</a></li>
-          <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
-        </ul>
-    </div>
-</div>
-
-<div id="feedback" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
-        <button class="uk-modal-close-outside" type="button" uk-close></button>
-        <h2 class="uk-modal-title landing-title">Donnez nous votre avis !</h2>
-        <div class="uk-flex uk-flex-column">
-          <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/producer.jpg' %>" uk-img>
-            <a href="https://goo.gl/forms/4aw43qwppuar54tu1" class="button-feedback" target="blank">En tant que producteur</a>
-          </div>
-          <div class="uk-height-medium uk-flex-1 uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-text-center" data-src="<%= asset_path 'landing/cooker.jpg' %>" uk-img>
-            <a href="https://goo.gl/forms/QsQLLkDKau2xZmay1" class="button-feedback" target="blank">En tant que cuisinier</a>
-          </div>
-        </div>
-    </div>
-</div>
-
+<%= render 'landing_pages/shared/navbar' %>
 <div class="cover">
   <div class="uk-cover-container" uk-height-viewport  uk-parallax="blur: 10">
     <img src="<%= asset_path 'cover.jpg' %>" alt="cover" uk-cover>
     <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container">
-        <h1>Ensemble gaspillons moins, mangeons mieux.</h1>
-        <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s uk-padding project-info">
-          Recipy est la première application à proposer des recettes personnalisées en réduisant le gaspillage alimentaire. En effet, Recipy propose à ses utilisateurs de découvrir de nouvelles recettes basées sur leurs goûts, en consommant de manière locale. Enfin, l’application permet à l’utilisateur de ne pas se soucier de sa liste de courses hebdomadaire, car elle directement générée et intégrée dans les outils d’aujourd’hui et de demain.
-        </p>
-        <div class="info uk-flex uk-flex-column uk-flex-middle">
-          <span>Scrollez vers le bas pour en apprendre plus</span>
+      <h1>Ensemble gaspillons moins, mangeons mieux.</h1>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s uk-padding project-info">
+        Recipy est la première application à proposer des recettes personnalisées en réduisant le gaspillage alimentaire. En effet, Recipy propose à ses utilisateurs de découvrir de nouvelles recettes basées sur leurs goûts, en consommant de manière locale. Enfin, l’application permet à l’utilisateur de ne pas se soucier de sa liste de courses hebdomadaire, car elle directement générée et intégrée dans les outils d’aujourd’hui et de demain.
+      </p>
+      <p class="uk-text-small">
+        <a href="#concept" uk-scroll>Cliquez ici pour en savoir plus</a>
+      </p>
+      <div class="info uk-flex uk-flex-column uk-flex-middle">
+        <a href="#concept" uk-scroll>
           <span class="down-icon bounce" uk-icon="icon: chevron-down; ratio: 2"></span>
-        </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -151,26 +100,4 @@
     <a href="/beta" class="button-landing">Accéder à la beta</a>
   </div>
 </div>
-<!--  Footer-->
-<div class="uk-section uk-section-small uk-section-muted uk-section-footer">
-  <div class="uk-container">
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin">
-      <div class="uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>
-        <img data-src="<%= asset_path 'landing/logo.png' %>" alt="iphone" height="200" width="200" uk-img>
-      </div>
-    </div>
-  </div>
-  <div class="uk-flex-middle uk-grid uk-text-center" uk-grid="">
-    <div class="uk-width-expand@s uk-first-column">
-      <p class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>5-9 Rue du Palais Rihour<br>59000 Lille<br>France</p>
-    </div>
-    <div class="uk-width-expand@s uk-flex uk-flex-row uk-text-left uk-flex-between">
-      <a href="https://twitter.com/recipyapp" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: twitter"></span>   Twitter</a>
-      <a href="https://www.facebook.com/recipyapp" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: facebook"></span>   Facebook</a>
-      <a href="https://www.instagram.com/recipy_hq" class="uk-flex uk-flex-middle" target="blank"><span uk-icon="icon: instagram"></span>   Instagram</a>
-    </div>
-    <div class="uk-width-expand@s">
-      <a href="mailto:recipyhq@gmail.com" class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>recipyhq@gmail.com</a>
-    </div>
-  </div>
-</div>
+<%= render 'landing_pages/shared/footer' %>

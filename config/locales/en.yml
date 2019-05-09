@@ -118,7 +118,6 @@ en:
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
     label: "Ingredient"
-
   products:
     missing_price_element: "Missing an element in the price"
     created: "Succesfully creation of your product !"
@@ -140,3 +139,7 @@ en:
     missing_address: "MIssing address"
     wrong_address: "You address is incorrect"
     label: "Point(s) of sales"
+  notebook:
+    edit:
+      invalid: "The notebook is invalid"
+      invalid_image: "Image is not valid"

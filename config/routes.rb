@@ -3,6 +3,9 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
+  get '/privacy_policy', to: "landing_pages#privacy_policy"
+  get '/legal_notice', to: "landing_pages#legal_notice"
+
   ActiveAdmin.routes(self)
 
   devise_for :administrators, ActiveAdmin::Devise.config
@@ -12,9 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
   scope 'beta' do
+    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
       scope module: 'cook' do
         unauthenticated :user do
@@ -44,7 +47,15 @@ Rails.application.routes.draw do
       resources :recipes
       resources :point_of_sales
       resources :products, :only => [:new, :create, :edit, :update]
+      resources :notebooks
+      resources :ingredients, only: [:new, :create]
+      resources :recipes, param: :id do
+        post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+      end
+
       get 'search' => "search#index"
+      post 'add_recipe' => "notebooks#add_recipe"
+      post 'remove_recipe' => "notebooks#remove_recipe"
     end
   end
 
@@ -56,10 +67,14 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
-    resources :recipes
+
+    resources :recipes, param: :id do
+      post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+    end
     resources :ingredients
     resources :point_of_sales
     resources :products
+    resources :notebooks
     get 'search' => "search#index"
   end
 
