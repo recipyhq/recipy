@@ -4,13 +4,26 @@ class Api::PointOfSalesController < ApplicationController
 
   def index
     skip_policy_scope
-    @point_of_sales = PointOfSale.includes(:address).all
-    render json: @point_of_sales.as_json(:include => [:address])
+    begin
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: "invalid user" }.as_json, status: :not_found
+      return
+    end
+    @point_of_sales = PointOfSale.includes(:address, :products,
+                                           :openning_hours).where(:user => user).all
+    render json: @point_of_sales.as_json(:include => [:address, :products, :openning_hours])
   end
 
   def show
+    begin
+      User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: "invalid user" }.as_json, status: :not_found
+      return
+    end
     find_pointofsale
-    render json: @point_of_sale.as_json(:include => [:address])
+    render json: @point_of_sale.as_json(:include => [:address, :products, :openning_hours])
   end
 
   def new
@@ -42,7 +55,10 @@ class Api::PointOfSalesController < ApplicationController
 
   def update
     find_pointofsale
-    if @point_of_sale.update(point_of_sale_params)
+    adress_params = point_of_sale_params[:address]
+    @point_of_sale_param.extract!(:address)
+    pointofsale = @point_of_sale_param
+    if @point_of_sale.address.update(adress_params) && @point_of_sale.update(pointofsale)
       redirect_to api_point_of_sale_path
     else
       render :json => { Status: "KO", Cause: t('fail to update point of sale') }.as_json
@@ -58,7 +74,9 @@ class Api::PointOfSalesController < ApplicationController
   private
 
   def find_pointofsale
-    @point_of_sale = PointOfSale.find(params[:id])
+    id = params[:id]
+    user = User.find(params[:user_id])
+    @point_of_sale = PointOfSale.where(:id => id).where(:user => user)
   end
 
   def point_of_sale_params

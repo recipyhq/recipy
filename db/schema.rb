@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_171427) do
+ActiveRecord::Schema.define(version: 2019_05_09_180027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_171427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "market_type"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_point_of_sales_on_user_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -330,10 +332,10 @@ ActiveRecord::Schema.define(version: 2019_03_23_171427) do
 
   create_table "related_sale_hours", force: :cascade do |t|
     t.bigint "point_of_sale_id"
-    t.bigint "opening_hours_id"
+    t.bigint "openning_hour_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["opening_hours_id"], name: "index_related_sale_hours_on_opening_hours_id"
+    t.index ["openning_hour_id"], name: "index_related_sale_hours_on_openning_hour_id"
     t.index ["point_of_sale_id"], name: "index_related_sale_hours_on_point_of_sale_id"
   end
 
@@ -384,4 +386,5 @@ ActiveRecord::Schema.define(version: 2019_03_23_171427) do
   end
 
   add_foreign_key "memberships", "users"
+  add_foreign_key "point_of_sales", "users"
 end

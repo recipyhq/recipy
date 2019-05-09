@@ -12,12 +12,14 @@ class Api::ProductsController < ApplicationController
     ingredient_id = @product_params[:ingredient]
     price = @product_params[:price_attributes]
     if price.nil? || price[:value].empty? || price[:quantity_type].empty?
-      render :json => { Status: "KO", Cause: t("products.missing_price_element") }.as_json
+      render :json => { Status: "KO", Cause: t("products.missing_price_element") }.as_json,
+             status: :not_implemented
     else
       new_price = Price.new(:value => price[:value], :quantity_type_id => price[:quantity_type],
                             :quantity_type => QuantityType.find(price[:quantity_type]))
       if !new_price.save!
-        render :json => { Status: "KO", Cause: t("products.missing_price_element") }.as_json
+        render :json => { Status: "KO", Cause: t("products.missing_price_element") }.as_json,
+               status: :not_implemented
         return
       end
       @product_params.delete(:price_attributes)
@@ -33,7 +35,8 @@ class Api::ProductsController < ApplicationController
         ingredients: { name: @product.ingredient.name }
       )
       if !exist.empty?
-        render :json => { Status: "KO", Cause: t("products.already_exist") }.as_json
+        render :json => { Status: "KO", Cause: t("products.already_exist") }.as_json,
+               status: :not_modified
         return
       else
         @product.save!
@@ -60,7 +63,8 @@ class Api::ProductsController < ApplicationController
     @product_params[:price_attributes].delete(:quantity_type)
 
     unless price.update(@product_params[:price_attributes])
-      render :json => { Status: "KO", Cause: t("products.price.not_valid") }.as_json
+      render :json => { Status: "KO", Cause: t("products.price.not_valid") }.as_json,
+             status: :not_implemented
       return
     end
 
@@ -72,7 +76,8 @@ class Api::ProductsController < ApplicationController
     if @product.update!(@product_params)
       render :json => { Status: "OK", Cause: t("products.edited") }.as_json
     else
-      render :json => { Status: "KO", Cause: t("products.not_edited") }.as_json
+      render :json => { Status: "KO", Cause: t("products.not_edited") }.as_json,
+             status: :not_modified
     end
   end
 
@@ -90,7 +95,7 @@ class Api::ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render :json => { Status: "KO", Cause: t("products.not_found") }.as_json
+    render :json => { Status: "KO", Cause: t("products.not_found") }.as_json, status: :not_found
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

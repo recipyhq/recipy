@@ -31,6 +31,7 @@ gem 'phony_rails'
 gem 'figaro'
 gem 'bullet'
 gem 'country_select'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
