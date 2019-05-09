@@ -3,7 +3,7 @@
     <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
     <% if flash[:danger] %>
-      <% flash.each do |key, value| %>
+      <% flash.each do |key, v  alue| %>
         <div class="uk-alert-danger" uk-alert>
           <a class="uk-alert-close" uk-close></a>
             <div class="alert alert-<%= key %>"><%= value %></div>
