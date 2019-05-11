@@ -56,7 +56,8 @@ class Api::NotebooksController < InheritedResources::Base
       new_notebook = @notebook.as_json(:include => [:recipes])
       render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
     else
-      render :json => { Status: "KO", Cause: "Recette déjà ajouté" }.as_json
+      new_notebook = @notebook.as_json(:include => [:recipes])
+      render json: new_notebook, status: :conflict, location: new_api_notebook_url(new_notebook)
     end
   end
 
