@@ -84,11 +84,11 @@ QuantityType.create! do |quantity_type|
 end
 
 QuantityType.create! do |quantity_type|
-  quantity_type.name = "Cuillière(s) à soupe"
+  quantity_type.name = "Cuillère(s) à soupe"
 end
 
 QuantityType.create! do |quantity_type|
-  quantity_type.name = "Cuillière(s) à café"
+  quantity_type.name = "Cuillère(s) à café"
 end
 
 QuantityType.create! do |quantity_type|
@@ -140,7 +140,7 @@ end
 # For Semoule ingredient
 QuantityEquivalency.create! do |quantity_equivalency|
   quantity_equivalency.gram_equivalency = 12
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Cuillière(s) à soupe")
+  quantity_equivalency.quantity_type = QuantityType.find_by_name("Cuillère(s) à soupe")
 end
 
 QuantityEquivalency.create! do |quantity_equivalency|
@@ -1143,7 +1143,7 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[3].recipe_quantity =
     RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -1195,17 +1195,17 @@ Recipe.create! do |recipe|
     RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
     RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[8].recipe_quantity =
     RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[10].recipe_quantity = nil
   recipe.recipe_ingredients[11].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -1262,7 +1262,7 @@ Recipe.create! do |recipe|
 end
 
 Recipe.create! do |recipe|
-  recipe.title = "Acocat crevettes"
+  recipe.title = "Avocat crevettes"
   recipe.description = "Entrée fraîche et délicieuse en été"
   recipe.steps = [
     "Peler les avocats et les couper en cubes grossièrement. Ecraser finement à la fourchette. Ajouter quelques gouttes de jus de citron pour ne pas qu'ils noircissent.",
@@ -1304,9 +1304,11 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[4].recipe_quantity =
     RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
     RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Brin(s)"))
-  recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
+  recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Verre")
   recipe.utensils << Utensil.find_by_title("Fourchette")
@@ -1617,7 +1619,7 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[0].recipe_quantity =
     RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) a soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
     RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
@@ -1661,9 +1663,9 @@ Recipe.create! do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Farine")
   recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) a soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
     RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
