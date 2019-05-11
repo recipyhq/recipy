@@ -117,6 +117,18 @@ class RecipesController < InheritedResources::Base
     redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
   end
 
+  def add_ingredients_to_list
+    @recipe = Recipe.find(params[:recipe_id])
+    if @recipe
+      shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
+      shopping_list.ingredients << @recipe.ingredients
+      if shopping_list.save
+        redirect_to shopping_list_path(id: shopping_list.id),
+                    flash: { success: "Les ingrédients ont été ajoutés à la liste" }
+      end
+    end
+  end
+
   private
 
   def find_recipes_by_user_id
@@ -144,5 +156,9 @@ class RecipesController < InheritedResources::Base
                                    :image, :recipe_ingredients_attributes => {},
                                            :utensil_ids => [],
                                            :recipe_category_ids => [])
+  end
+
+  def shopping_list_params
+    params.require(:recipe).permit(:shopping_lists, :id)
   end
 end

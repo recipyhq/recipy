@@ -32,6 +32,20 @@
       </div>
     </div>
   </div>
+  <div>
+    <div class="uk-text-center">
+      <h5 class="title"><%= t("recipe.title.time") %></h5>
+      <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
+    </div>
+  </div>
+  <div>
+    <div class="uk-text-center">
+      <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
+      <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
+    </div>
+  </div>
+</div>
+</div>
 </div>
 <div class="uk-section uk-section-default">
   <div class="uk-child-width-1-2@m" uk-grid>
@@ -46,6 +60,12 @@
                 <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
               <% end %>
             </div>
+          <% end %>
+          <% if current_user %>
+            <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
+              <%= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id), label: "Ajouter à une liste de courses :" %>
+              <%= f.button :submit, "Confirmer" %>
+            <% end %>
           <% end %>
         </div>
       </div>
