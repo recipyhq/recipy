@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_180027) do
+ActiveRecord::Schema.define(version: 2019_05_11_113027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,7 +171,9 @@ ActiveRecord::Schema.define(version: 2019_05_09_180027) do
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["ingredient_id"], name: "index_products_on_ingredient_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "prospects", force: :cascade do |t|
@@ -418,4 +420,5 @@ ActiveRecord::Schema.define(version: 2019_05_09_180027) do
   add_foreign_key "notebook_recipes", "notebooks"
   add_foreign_key "notebook_recipes", "recipes"
   add_foreign_key "point_of_sales", "users"
+  add_foreign_key "products", "users"
 end

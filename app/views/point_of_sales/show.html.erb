@@ -53,10 +53,10 @@
   <%= @point_of_sale.address[:phone] %>
 </p>
 
+<strong>Hours</strong>
 <% if !@point_of_sale.openning_hours.nil? %>
   <% @point_of_sale.openning_hours.each do |hours| %>
     <p>
-      <strong>Hours</strong>
       <strong>day</strong>
       <%= hours["day"] %>
     </p>
@@ -67,11 +67,27 @@
     </p>
 
     <p>
-      <strong>open</strong>
+      <strong>close</strong>
       <%= hours["close"].strftime("%H:%M") %>
     </p>
   <% end %>
 <% end %>
+
+<strong>Product</strong>
+<% if !@point_of_sale.products.nil? %>
+  <% @point_of_sale.products.each do |product| %>
+    <p>
+      <strong>Name</strong>
+      <%= product.ingredient.name %>
+    </p>
+
+    <p>
+      <strong>Price</strong>
+      <%= product.price.value.to_s + "€ / " + product.price.quantity_type.name%>
+    </p>
+  <% end %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_point_of_sale_path(@point_of_sale) %> |
 <%= link_to 'Back', point_of_sales_path %>

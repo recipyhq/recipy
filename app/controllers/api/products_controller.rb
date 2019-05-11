@@ -2,6 +2,7 @@ class Api::ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
   before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @product = Product.new(price: Price.new)
@@ -39,6 +40,7 @@ class Api::ProductsController < ApplicationController
                status: :not_modified
         return
       else
+        @product.user = current_user
         @product.save!
         render :json => { Status: "OK", Cause: t("products.created") }.as_json
         return
