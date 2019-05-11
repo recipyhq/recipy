@@ -52,7 +52,6 @@ class Api::NotebooksController < InheritedResources::Base
     @notebook = Notebook.find(params[:notebook_id])
     tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
     if !@notebook.recipes.exists?(:id => tmp.id)
-      puts "inside"
       @notebook.recipes << tmp
       new_notebook = @notebook.as_json(:include => [:recipes])
       render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
