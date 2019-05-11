@@ -14,7 +14,7 @@ class Api::NotebooksController < InheritedResources::Base
 
   def show
     find_notebook
-    notebook = @notebook.as_json(:include => [:recipes], methods: %i(image_url))
+    notebook = @notebook.as_json(:include => [:recipes])
     render json: notebook
   end
 
@@ -24,7 +24,7 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def create
-    new_notebook = Notebook.new(notebook_params_api)
+    new_notebook = Notebook.new(notebook_params)
     if new_notebook.save
       render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
     else
