@@ -71,6 +71,10 @@ Rails.application.routes.draw do
     end
     resources :ingredients
     resources :notebooks
+    resources :notebooks, param: :id do
+      post 'add_recipe' => "notebooks#add_recipe"
+      post 'remove_recipe' => "notebooks#remove_recipe"
+    end
     get 'search' => "search#index"
   end
 

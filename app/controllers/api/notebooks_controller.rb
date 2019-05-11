@@ -32,13 +32,6 @@ class Api::NotebooksController < InheritedResources::Base
     end
   end
 
-  def add_recipe
-    find_notebook
-    tmp = Recipe.find_by_id(notebook_params[:recipes])
-    @notebook.recipes << tmp
-    redirect_to notebook_path(id: @notebook.id)
-  end
-
   def update
     find_notebook
     if @notebook.update(notebook_params_without_recipes)
@@ -53,6 +46,15 @@ class Api::NotebooksController < InheritedResources::Base
     else
       render :json => { Status: "KO", Cause: "Recette invalide" }.as_json
     end
+  end
+
+  def add_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    @notebook.recipes << tmp
+    puts @notebook.recipes.size
+    new_notebook = @notebook.as_json(:include => [:recipes])
+    render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
   end
 
   def destroy
