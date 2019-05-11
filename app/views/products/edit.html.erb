@@ -1,0 +1,16 @@
+<h1><%= t("products.edit_title") %></h1>
+
+<% if flash[:success] %>
+  <div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:success] %></p>
+  </div>
+<% end %>
+<% if flash[:danger] %>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:danger] %></p>
+  </div>
+<% end %>
+
+<%= render 'form_edit', product: @product %>

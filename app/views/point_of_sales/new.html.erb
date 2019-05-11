@@ -1,0 +1,17 @@
+<div class="uk-container">
+<h2 class="uk-text-center"/>
+
+    <% if flash[:danger] %>
+      <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%= flash[:danger] %></p>
+      </div>
+    <%end %>
+
+      <h1>New Point Of Sale</h1>
+
+    <%= render 'form', point_of_sale: @point_of_sale %>
+
+    <%= link_to 'Back', point_of_sales_path %>
+
+</div>

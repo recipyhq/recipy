@@ -1,0 +1,35 @@
+<%= simple_form_for(PointOfSale.new) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :market_type %>
+
+  <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
+    <%= a.input :entilted %>
+    <%= a.input :city %>
+    <%= a.input :zip %>
+    <%= a.input :state %>
+    <%= a.input :country %>
+    <%= a.input :phone %>
+  <% end %>
+
+  <%= f.simple_fields_for OpenningHour.new do |ff| %>
+    <div id="openning_hours" uk-grid>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="uk-text-center">
+      <h3><%= link_to_add_association 'Add opening hour', f, :openning_hours, partial: 'opening_hours_fields', data: {
+        association_insertion_node: '#openning_hours', association_insertion_method: :append
+      }, class: "uk-link" %>
+      </h3>
+    </div>
+  </div>
+
+  <div class="uk-margin-medium">
+    <%= f.button :submit %>
+  </div>
+<% end %>

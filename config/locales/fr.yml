@@ -106,6 +106,7 @@ fr:
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
+    label: "Ingrédient"
 
   search:
     read_more: "Lire la suite"
@@ -122,6 +123,26 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+  products:
+    missing_price_element: "Il manque un élément dans le prix"
+    created: "Création de votre produit réussie !"
+    title: "Création d'un nouveau produit"
+    price:
+      label: "Prix"
+      not_valid: "Le nouveau prix est incorrect"
+    tag: "Liste des tags"
+    already_exist: "Ce produit existe déjà"
+    edited: "Produit correctement mis à jour !"
+    not_edited: "Le produit n'a pas été modifié"
+    edit_title: "Editer le produit"
+    deleted: "Produit correctement supprimé"
+    not_found: "Produit non trouvé"
+  quantity_type:
+    label: "Type de Quantité"
+  point_of_sale:
+    missing_address: "Adresse manquante"
+    wrong_address: "Votre adress est incorrect"
+    label: "Point de vente(s)"
   notebook:
     edit:
       invalid: "Le carnet de recette n'est pas conforme"

@@ -1,0 +1,93 @@
+<% if flash[:danger] %>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:danger] %></p>
+  </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @point_of_sale.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @point_of_sale.description %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @point_of_sale.market_type %>
+</p>
+
+<p>
+  <strong>Address</strong>
+  <strong>entilted</strong>
+  <%= @point_of_sale.address[:entilted] %>
+</p>
+
+<p>
+  <strong>city</strong>
+  <%= @point_of_sale.address[:city] %>
+</p>
+
+<p>
+  <strong>zip</strong>
+  <%= @point_of_sale.address[:zip] %>
+</p>
+
+<p>
+  <strong>state</strong>
+  <%= @point_of_sale.address[:state] %>
+</p>
+
+<p>
+  <strong>country</strong>
+  <%= @point_of_sale.address[:country] %>
+</p>
+
+<p>
+  <strong>phone</strong>
+  <%= @point_of_sale.address[:phone] %>
+</p>
+
+<strong>Hours</strong>
+<% if !@point_of_sale.openning_hours.nil? %>
+  <% @point_of_sale.openning_hours.each do |hours| %>
+    <p>
+      <strong>day</strong>
+      <%= hours["day"] %>
+    </p>
+
+    <p>
+      <strong>open</strong>
+      <%= hours["open"].strftime("%H:%M") %>
+    </p>
+
+    <p>
+      <strong>close</strong>
+      <%= hours["close"].strftime("%H:%M") %>
+    </p>
+  <% end %>
+<% end %>
+
+<strong>Product</strong>
+<% if !@point_of_sale.products.nil? %>
+  <% @point_of_sale.products.each do |product| %>
+    <p>
+      <strong>Name</strong>
+      <%= product.ingredient.name %>
+    </p>
+
+    <p>
+      <strong>Price</strong>
+      <%= product.price.value.to_s + "€ / " + product.price.quantity_type.name%>
+    </p>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_point_of_sale_path(@point_of_sale) %> |
+<%= link_to 'Back', point_of_sales_path %>

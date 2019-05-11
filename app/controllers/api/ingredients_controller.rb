@@ -4,7 +4,7 @@ class Api::IngredientsController < Api::BaseController
 
   def index
     skip_policy_scope
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.where(:confirmed => true).all
     render json: @ingredients.as_json(:includes => :ingredient_tags)
   end
 
