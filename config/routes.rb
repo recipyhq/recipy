@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :administrators, ActiveAdmin::Devise.config
+
   namespace :admin do
     authenticate :administrator do
       mount Sidekiq::Web => '/sidekiq'
@@ -44,13 +45,17 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
+
+      resources :shopping_lists
       resources :recipes
       resources :point_of_sales
       resources :products, :only => [:new, :create, :edit, :update]
       resources :notebooks
       resources :ingredients, only: [:new, :create]
+
       resources :recipes, param: :id do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+        post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
       end
 
       get 'search' => "search#index"
@@ -70,10 +75,12 @@ Rails.application.routes.draw do
 
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+      post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
     end
     resources :ingredients
     resources :point_of_sales
     resources :products
+    resources :shopping_lists
     resources :notebooks
     get 'search' => "search#index"
   end
