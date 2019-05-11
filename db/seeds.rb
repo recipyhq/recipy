@@ -856,6 +856,39 @@ Ingredient.create! do |ingredient|
   ]
 end
 
+# Ingredient for palmier au basilic
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Pâte feuilletée"
+  ingredient.confirmed = true
+  ingredient.description = "Base dans les tartes et les amuse-bouches."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Bon marché"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Basilic"
+  ingredient.confirmed = true
+  ingredient.description = "Herbe très utilisée dans les plats du Sud."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Herbe"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Fleur de sel"
+  ingredient.confirmed = true
+  ingredient.description = "Condiment très utilisé dans la finition d'un plat."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
 # Utensils
 Utensil.create! do |utensil|
   utensil.title = "Fouet"
@@ -1598,4 +1631,50 @@ Recipe.create! do |recipe|
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
+
+Recipe.create! do |recipe|
+  recipe.title = "Palmiers au basilic"
+  recipe.description = "Apéritif très savoureux pendant l'été."
+  recipe.steps = [
+    "Émincer les oignons et couper les blancs de poulet en dés.",
+    "Faire revenir légèrement les oignons dans un peu d'huile, y mettre à faire saisir le poulet à feu vif et le laisser cuire 20/30 minutes à feu doux, saler, poivrer.",
+    "En fin de cuisson ajouter les cuillères de curry en poudre, laisser cuire 5/10 minutes à feu doux.",
+    "Ajouter la crème fraîche. Mélanger sans laisser bouillir. Éteindre le feu et saupoudrer de persil hâché.",
+    "Servir avec du riz blanc ou des pâtes fraîches.",
+    "Régalez-vous !",
+    "Pour ceux qui désirent une recette plus légère, couper la crème fraîche avec du lait.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Apéritif"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/poulet_curry.jpg'),
+                      filename: 'poulet_curry.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 15
+  recipe.preparation_time = 30
+  recipe.person = 5
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Pâte feuilletée")
+  recipe.ingredients << Ingredient.find_by_name("Ail")
+  recipe.ingredients << Ingredient.find_by_name("Basilic")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+  recipe.ingredients << Ingredient.find_by_name("Fleur de sel")
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) a soupe"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity = nil
+  recipe.recipe_ingredients[4].recipe_quantity = nil
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+end
+
 # rubocop:enable all
