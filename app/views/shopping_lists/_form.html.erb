@@ -1,0 +1,16 @@
+<%= simple_form_for(@shopping_list) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :name, label: "Titre", :input_html => { :value => params[:name] } %>
+
+  <%#= f.input :ingredient_ids, collection: Ingredient.all, as: :select %>
+
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+
+  <div class="uk-margin-medium">
+    <div class="uk-text-center">
+      <%= f.button :submit, "Confirmer" %>
+    </div>
+  </div>
+<% end %>

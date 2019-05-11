@@ -28,12 +28,12 @@ class RecipesController < InheritedResources::Base
     if new_recipe.valid? && new_recipe.image.attached? && new_recipe.difficulty <= 10
       if new_recipe.image.blob.content_type.starts_with?('image/')
         new_recipe.save
-        redirect_to recipe_path(new_recipe.id), flash: { success: t("recipe.creation.valid") }
+        redirect_to recipe_path(new_recipe.id), flash: {success: t("recipe.creation.valid")}
       else
-        redirect_to new_recipe_path, flash: { danger: t("recipe.creation.invalid_image") }
+        redirect_to new_recipe_path, flash: {danger: t("recipe.creation.invalid_image")}
       end
     else
-      redirect_to new_recipe_path, flash: { danger: t("recipe.creation.invalid") }
+      redirect_to new_recipe_path, flash: {danger: t("recipe.creation.invalid")}
     end
   end
 
@@ -45,19 +45,30 @@ class RecipesController < InheritedResources::Base
     find_recipe
     if @recipe.update(recipe_params)
       if @recipe.image.blob.content_type.starts_with?('image/')
-        redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
+        redirect_to recipe_path, flash: {success: t("recipe.edit.valid")}
       else
-        redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
+        redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid_image")}
       end
     else
-      redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
+      redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid")}
     end
   end
 
   def destroy
     find_recipe
     @recipe.destroy
-    redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
+    redirect_to recipes_path, flash: {success: t("recipe.destroy.valid")}
+  end
+
+  def add_ingredients_to_list
+    @recipe = Recipe.find(params[:recipe_id])
+    if @recipe
+      shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
+      shopping_list.ingredients << @recipe.ingredients
+      if shopping_list.save
+        redirect_to shopping_list_path(id: shopping_list.id), flash: {success: "Les ingrédients ont été ajoutés à la liste"}
+      end
+    end
   end
 
   private
@@ -67,8 +78,12 @@ class RecipesController < InheritedResources::Base
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :score, :step, :time, :description, :difficulty, :view,
+    params.require(:recipe).permit(:title, :score, :step, :zztime, :description, :difficulty, :view,
                                    :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
+  end
+
+  def shopping_list_params
+    params.require(:recipe).permit(:shopping_lists, :id)
   end
 end
 # rubocop:enable all

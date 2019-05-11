@@ -1,0 +1,36 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<div>
+  <div class="uk-card uk-card-default">
+    <div class="uk-card-body">
+      <div id="printable" class="uk-text-center">
+        <h3 class="uk-card-title">
+          <%= @shopping_list.name %>
+        </h3>
+      </div>
+      <ul class="uk-list uk-text-center">
+        <% @shopping_list.ingredients.each do |ingredient| %>
+          <li>
+            <%= ingredient.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+<!--    <button class="print"> Print this </button>-->
+    <div class="uk-card-footer uk-text-center">
+      <p class="uk-button uk-button-default"><%= link_to t("recipe.action.edit"), edit_shopping_list_path(@shopping_list) %></p>
+      <p class="uk-button uk-button-default"> <%= link_to t("recipe.action.destroy"), @shopping_list, method: :delete, data: {confirm: t("recipe.action.confirm")} %></p>
+      <p><%= link_to "Retour à mes listes de courses", shopping_lists_path , :class=>"uk-text-center uk-button uk-button-text"%></p>
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  $(function() {
+    console.log("TOTOT");
+    $("#printable").find('.print').on('click', function() {
+      $.print("#printable");
+    });
+  });
+</script>
+

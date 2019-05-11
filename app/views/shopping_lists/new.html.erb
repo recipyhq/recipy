@@ -1,0 +1,21 @@
+<tbody>
+<div class="uk-position-center">
+  <div class="uk-width-xxlarge">
+    <h2 class="uk-text-center">Nouvelle liste de courses</h2>
+
+    <% if flash[:danger] %>
+      <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%= flash[:danger] %></p>
+      </div>
+    <% end %>
+
+    <%= render 'form', shopping_list: @shopping_list %>
+
+    <%= link_to 'Revenir à mes listes', shopping_lists_path %>
+
+  </div>
+</div>
+<tbody>
+
+
