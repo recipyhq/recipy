@@ -57,6 +57,7 @@ class Api::ShoppingListsController < ApplicationController
 
   private
 
+  # a
   def find_shopping_list
     @shopping_list = ShoppingList.find(params[:id])
   end
