@@ -52,7 +52,6 @@ class Api::NotebooksController < InheritedResources::Base
     @notebook = Notebook.find(params[:notebook_id])
     tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
     @notebook.recipes << tmp
-    puts @notebook.recipes.size
     new_notebook = @notebook.as_json(:include => [:recipes])
     render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
   end
@@ -64,6 +63,11 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    @notebook.recipes.delete(tmp)
+    new_notebook = @notebook.as_json(:include => [:recipes])
+    render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
   end
 
   private
