@@ -135,6 +135,10 @@ QuantityType.create! do |quantity_type|
   quantity_type.name = "Brin(s)"
 end
 
+QuantityType.create! do |quantity_type|
+  quantity_type.name = "Feuille(s)"
+end
+
 # Quantity Equivalencies
 
 # For Semoule ingredient
@@ -183,7 +187,7 @@ end
 # Ingredients (sandwich jambon beurre) declaration
 
 Ingredient.create! do |ingredient|
-  ingredient.name = "Jambon"
+  ingredient.name = "Jambon blanc"
   ingredient.confirmed = true
   ingredient.description = "Viande de porc coupé en tranches."
   ingredient.ingredient_tags << [
@@ -491,7 +495,7 @@ Ingredient.create! do |ingredient|
 end
 
 Ingredient.create! do |ingredient|
-  ingredient.name = "Ail"
+  ingredient.name = "Gousse d'ail"
   ingredient.confirmed = true
   ingredient.description = "Condiment très utilisé en cuisine au multiples bienfaits"
   ingredient.ingredient_tags << [
@@ -889,6 +893,154 @@ Ingredient.create! do |ingredient|
   ]
 end
 
+# Ingredients for Welsh
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Pain de campagne"
+  ingredient.confirmed = true
+  ingredient.description = "Pain ressemblant beaucoup aux pains fabriqués au Moyen-Âge."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Cheddar"
+  ingredient.confirmed = true
+  ingredient.description = "Spécialité fromgère anglaise. Fait à base de lait de vache."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Bière brune"
+  ingredient.confirmed = true
+  ingredient.description = "Spécialité belge"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Boisson"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sauce Worcestershire"
+  ingredient.confirmed = true
+  ingredient.description = "Sauce anglaise à base de poisson."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+end
+
+# Ingredient for ratatouille
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Courgette"
+  ingredient.confirmed = true
+  ingredient.description = "Légume d'été vert."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Été"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Aubergine"
+  ingredient.confirmed = true
+  ingredient.description = "Légume violet d'été"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Été"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Poivron vert"
+  ingredient.confirmed = true
+  ingredient.description = "Légume d'été vert au goût amer"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Été"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Poivron rouge"
+  ingredient.confirmed = true
+  ingredient.description = "Légume d'été rouge au goût amer."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Été"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Oignon"
+  ingredient.confirmed = true
+  ingredient.description = "Condiment qui est la base de la cuisine."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Été"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Bouquet garni"
+  ingredient.confirmed = true
+  ingredient.description = "Ensemble d'herbe afin de donner beaucoup de goût à un jus ou un plat."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Herbe"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+# Ingredients for steaks végétaux
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Lentilles"
+  ingredient.confirmed = true
+  ingredient.description = "Légume de base dans la cuisine vegan."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Carotte"
+  ingredient.confirmed = true
+  ingredient.description = "Légume orange d'hiver."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Hiver"),
+  ]
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Maïzena"
+  ingredient.confirmed = true
+  ingredient.description = "Farine de maïs."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+end
+
 # Utensils
 Utensil.create! do |utensil|
   utensil.title = "Fouet"
@@ -968,6 +1120,12 @@ end
 Utensil.create! do |utensil|
   utensil.title = "Poche à douille"
 end
+Utensil.create! do |utensil|
+  utensil.title = "Plaque à patisserie"
+end
+Utensil.create! do |utensil|
+  utensil.title = "Plat au four"
+end
 
 # Recipe Categories
 
@@ -1018,7 +1176,7 @@ Recipe.create! do |recipe|
   recipe.preparation_time = 5
   recipe.person = 1
   recipe.difficulty = 1
-  recipe.ingredients << Ingredient.find_by_name("Jambon")
+  recipe.ingredients << Ingredient.find_by_name("Jambon blanc")
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.ingredients << Ingredient.find_by_name("Baguette de pain")
   recipe.recipe_ingredients[0].recipe_quantity =
@@ -1183,7 +1341,7 @@ Recipe.create! do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Parmesan")
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.ingredients << Ingredient.find_by_name("Jus de citron")
-  recipe.ingredients << Ingredient.find_by_name("Ail")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
   recipe.ingredients << Ingredient.find_by_name("Moutarde de Dijon")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
@@ -1638,25 +1796,27 @@ Recipe.create! do |recipe|
   recipe.title = "Palmiers au basilic"
   recipe.description = "Apéritif très savoureux pendant l'été."
   recipe.steps = [
-    "Émincer les oignons et couper les blancs de poulet en dés.",
-    "Faire revenir légèrement les oignons dans un peu d'huile, y mettre à faire saisir le poulet à feu vif et le laisser cuire 20/30 minutes à feu doux, saler, poivrer.",
-    "En fin de cuisson ajouter les cuillères de curry en poudre, laisser cuire 5/10 minutes à feu doux.",
-    "Ajouter la crème fraîche. Mélanger sans laisser bouillir. Éteindre le feu et saupoudrer de persil hâché.",
-    "Servir avec du riz blanc ou des pâtes fraîches.",
+    "Pelez les gousses d'ail, mixez-les avec le basilic et l'huile d'olive jusqu'à ce que vous obteniez une purée épaisse.",
+    "Abaissez la pâte feuilletée sur une planche farinée en un rectangle d'environ 40 sur 30 cm.",
+    "Étalez la purée de basilic sur la surface de la pâte, repliez les deux grands côtés vers le centré badigeonnez la pâte d'huile d'olive,",
+    "Repliez à nouveau les côtés vers le centre, huilez encore, repliez une nouvelle fois vers le centre afin d'obtenir une sorte de rouleau. ",
+    "Placez-le 30 min au congélateur.",
+    "Préchauffez le four Th.6 (180°C) sortez le rouleau de pâte du congélateur, coupez-le en tranches d'un cm d'épaisseur.",
+    "Posez-les sur une plaque à pâtisserie huilée avec l'huile de tournesol.",
+    "Saupoudrez de quelques grains de fleur de sel et laissez cuire 15 min.",
     "Régalez-vous !",
-    "Pour ceux qui désirent une recette plus légère, couper la crème fraîche avec du lait.",
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Apéritif"),
   ]
-  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/poulet_curry.jpg'),
-                      filename: 'poulet_curry.jpg', content_type: 'image/jpg')
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/palmier_basilic.jpg'),
+                      filename: 'palmier_basilic.jpg', content_type: 'image/jpg')
   recipe.cooking_time = 15
   recipe.preparation_time = 30
   recipe.person = 5
   recipe.difficulty = 5
   recipe.ingredients << Ingredient.find_by_name("Pâte feuilletée")
-  recipe.ingredients << Ingredient.find_by_name("Ail")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
   recipe.ingredients << Ingredient.find_by_name("Basilic")
   recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
   recipe.ingredients << Ingredient.find_by_name("Fleur de sel")
@@ -1665,18 +1825,125 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[0].recipe_quantity =
     RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
-  recipe.recipe_ingredients[3].recipe_quantity = nil
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
-  recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Mixeur")
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Plaque à patisserie")
+  recipe.utensils << Utensil.find_by_title("Four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Welsh"
+  recipe.description = "Plat typique nordiste. Un bon plat copieux très bon en hiver."
+  recipe.steps = [
+    "Préchauffez le four à 180°C (th.6). Faites griller vos tranches de pain de campagne (1 par personne) dans un grille-pain et disposez-les dans des plats individuels allant au four.",
+    "Sur chaque tranche de pain, disposez une tranche de jambon.",
+    "Coupez le Cheddar en dés. Faites-le fondre dans une casserole à feu très doux sans cesser de remuer avec une cuillère en bois.",
+    "Quand la consistance devient nappante, ajoutez-y la bière, la sauce Worcestershire et le Tabasco puis mélangez.",
+    "Une fois que tous les ingrédients sont bien mélangés, vous pouvez incorporer la moutarde.",
+    "Dès ébullition, versez immédiatement sur chaque assiette, directement sur le pain et le jambon et enfournez votre Welsh pendant quelques minutes pour faire gratiner le fromage fondu.",
+    "Servez bien chaud, dès la sortie du four.",
+    "Régalez-vous !",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/welsh.jpeg'),
+                      filename: 'welsh.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 15
+  recipe.preparation_time = 20
+  recipe.person = 4
+  recipe.difficulty = 4
+  recipe.ingredients << Ingredient.find_by_name("Pain de campagne")
+  recipe.ingredients << Ingredient.find_by_name("Jambon blanc")
+  recipe.ingredients << Ingredient.find_by_name("Cheddar")
+  recipe.ingredients << Ingredient.find_by_name("Bière brune")
+  recipe.ingredients << Ingredient.find_by_name("Sauce Worcestershire")
+  recipe.ingredients << Ingredient.find_by_name("Tabasco")
+  recipe.ingredients << Ingredient.find_by_name("Moutarde de Dijon")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Plat au four")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+  recipe.utensils << Utensil.find_by_title("Four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Ratatouille"
+  recipe.description = "Accompagnement estivale, riche en vitamines."
+  recipe.steps = [
+    "Lavez et détaillez les courgettes, l'aubergine, le poivron vert et le rouge, en cubes de taille moyenne. Coupez les tomates en quartiers et émincez l'oignon.",
+    "Dans une poêle, versez un peu d'huile d'olive.",
+    "Ajoutez par les poivrons, puis les aubergines, les courgettes et enfin les oignons et les tomates que vous cuirez ensemble.",
+    "Après avoir fait cuire les légumes, ajoutez-les tous aux tomates et aux oignons, baissez le feu puis mélangez.",
+    "Ajoutez un beau bouquet garni de thym, de romarin et de laurier, salez, poivrez, puis couvrez pour laisser mijoter 40 minutes en remuant régulièrement.",
+    "À environ 10 minutes du terme de la cuisson, ajoutez les deux belles gousses d'ail écrasées puis couvrez de nouveau.",
+    "Assaisonner de nouveau selon vos goûts. ",
+    "Régalez-vous !",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Accompagnement"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ratatouille.jpg'),
+                      filename: 'ratatouille.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 60
+  recipe.preparation_time = 20
+  recipe.person = 4
+  recipe.difficulty = 3
+  recipe.ingredients << Ingredient.find_by_name("Courgette")
+  recipe.ingredients << Ingredient.find_by_name("Aubergine")
+  recipe.ingredients << Ingredient.find_by_name("Poivron vert")
+  recipe.ingredients << Ingredient.find_by_name("Poivron rouge")
+  recipe.ingredients << Ingredient.find_by_name("Tomate")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Bouquet garni")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity = nil
+  recipe.recipe_ingredients[9].recipe_quantity = nil
+  recipe.recipe_ingredients[10].recipe_quantity = nil
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
 # rubocop:enable all
