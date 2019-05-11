@@ -34,7 +34,7 @@ class Api::ShoppingListsController < ApplicationController
       new_shopping_list.save
       render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
     else
-      render :json => {Status: "OK", Cause: "Erreur lors de la création de la liste, veuillez réessayer"}.as_json
+      render :json => {Status: "KO", Cause: "Erreur lors de la création de la liste, veuillez réessayer"}.as_json
     end
   end
 
@@ -66,12 +66,13 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def build_shopping_list_ingredients(shopping_list)
-    @tab = []
+    @tab = {}
     if shopping_list.ingredients.nil?
-      @tab.push([])
+      @tab = {}
     else
       shopping_list.ingredients.each do |elem|
-        @tab.push(elem.name)
+        @tab[elem.name] =
+          ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id, ingredient_id: elem.id).checked
       end
     end
     @tab
