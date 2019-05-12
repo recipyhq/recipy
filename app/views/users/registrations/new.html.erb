@@ -1,0 +1,32 @@
+<div class="uk-cover-container" uk-height-viewport>
+  <img src="<%= asset_path 'registration/registration-cover2.jpg' %>" alt="cover" uk-cover>
+  <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container">
+
+  <div class="uk-align-center uk-flex uk-flex-center">
+  <div class="uk-width-large">
+    <h2 class="uk-text-center"><%= t('.sign_up') %></h2>
+
+
+    <div class="uk-container">
+      <%= render 'devise/shared/omniauth' %>
+      <hr class="uk-divider-icon">
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
+        <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
+        <%= f.input :newsletters, :label => "S'inscrire à la newsletter ?" ,input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
+
+      <div class="uk-margin-medium">
+        <%= f.button :submit, t('.sign_up'), class: 'uk-width-1-1 button-sign-in' %>
+      </div>
+    <% end %>
+      <%= render 'devise/shared/links' %>
+
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+

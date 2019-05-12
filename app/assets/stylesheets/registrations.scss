@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two|Montserrat:700|Quicksand');
+@import './base/variables.scss';
+
+.div-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.div-table-container {
+  width: 50%;
+  display: table-cell;
+}
+
+.button-sign-in {
+  font: 'Quicksand', sans-serif;
+  color: $recipy-secondary-color;
+  background-color: $recipy-primary-color;
+  padding: 8px;
+  border-radius: 3px;
+  opacity: 1;
+  transition: 0.3s;
+  font-size: 1.2em;
+
+  &:hover {
+    opacity: 0.8;
+    color: $recipy-secondary-color;
+    text-decoration: none;
+  }
+}

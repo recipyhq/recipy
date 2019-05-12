@@ -1,0 +1,30 @@
+<div class="uk-cover-container" uk-height-viewport>
+  <img src="<%= asset_path 'confirmation_new/churros.jpeg' %>" alt="cover" uk-cover>
+  <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container">
+
+    <div class="uk-container">
+      <h2 class="uk-text-center"><%= t('producer.new.Welcome') %></h2>
+
+    </div>
+    <div class="uk-align-center uk-flex uk-flex-center">
+      <div class="uk-width-large">
+
+
+        <div class="uk-container">
+          <%= simple_form_for(@user, url: createproducer_path) do |f| %>
+
+            <%= f.input :first_name, required: true, autofocus: true %>
+            <%= f.input :last_name, required: true, autofocus: true %>
+            <%= f.input :bio, label: "Veuillez renseigner une description", input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
+
+
+            <div class="uk-margin-medium">
+              <%= f.button :submit, "Valider", class: 'uk-width-1-1 button-sign-in' %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
