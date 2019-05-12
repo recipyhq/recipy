@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="uk-text-center">
+  <span class="uk-text-lead">Mes listes de courses</span></div>
+
+<tbody>
+<div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m uk-grid-match uk-padding " uk-grid>
+  <% if @shopping_lists %>
+    <% @shopping_lists.each do |shopping_list| %>
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-body">
+            <div class="uk-text-center">
+              <h3 class="uk-card-title">
+                <%= shopping_list.name %>
+              </h3>
+            </div>
+            <ul class="uk-list uk-text-center">
+              <% shopping_list.ingredients.first(5).each do |ingredient| %>
+                <li>
+                  <%= ingredient.name %>
+                </li>
+              <% end %>
+              <% if shopping_list.ingredients.count > 5 %>
+                <div class="uk-text uk-text-center">
+                  ...
+                </div>
+              <% end %>
+            </ul>
+          </div>
+          <div class="uk-card-footer uk-text-center">
+            <p class="uk-button uk-button-default"><%= link_to t("recipe.action.show"), shopping_list %></p>
+            <p class="uk-button uk-button-default"><%= link_to t("recipe.action.edit"), edit_shopping_list_path(shopping_list) %></p>
+            <p class="uk-button uk-button-default uk-margin-small-top"> <%= link_to t("recipe.action.destroy"), shopping_list, method: :delete, data: {confirm: t("recipe.action.confirm")} %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="uk-card uk-card-default">
+    <div class="uk-card-body uk-flex uk-flex-center uk-flex-middle">
+      <%= link_to new_shopping_list_path do %>
+        <span uk-icon="icon: plus-circle; ratio: 3"></span>
+      <% end %>
+    </div>
+  </div>
+</div>
+</tbody>

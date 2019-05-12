@@ -2,12 +2,14 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
+
   get '/privacy_policy', to: "landing_pages#privacy_policy"
   get '/legal_notice', to: "landing_pages#legal_notice"
 
   ActiveAdmin.routes(self)
 
   devise_for :administrators, ActiveAdmin::Devise.config
+
   namespace :admin do
     authenticate :administrator do
       mount Sidekiq::Web => '/sidekiq'
@@ -43,14 +45,19 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
       end
-      resources :recipes
-      resources :notebooks
 
+      resources :shopping_lists
+      resources :recipes
+      resources :point_of_sales
+      resources :products, :only => [:new, :create, :edit, :update]
+      resources :notebooks
       resources :ingredients, only: [:new, :create]
 
       resources :recipes, param: :id do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+        post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
       end
+
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
       post 'remove_recipe' => "notebooks#remove_recipe"
@@ -68,8 +75,12 @@ Rails.application.routes.draw do
 
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
+      post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
     end
     resources :ingredients
+    resources :point_of_sales
+    resources :products
+    resources :shopping_lists
     resources :notebooks
     resources :notebooks, param: :id do
       post 'add_recipe' => "notebooks#add_recipe"

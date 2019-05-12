@@ -15,6 +15,7 @@ class Recipe < ApplicationRecord
   has_many :notebook_recipes, dependent: :destroy
   has_many :notebooks, through: :notebook_recipes
   has_many :recipe_scores, dependent: :destroy
+  has_many :shopping_lists, through: :ingredients
   has_one_attached :image
   validates :image, presence: true
 

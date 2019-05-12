@@ -117,6 +117,28 @@ en:
     no_title: "Missing ingredient title"
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
+    label: "Ingredient"
+  products:
+    missing_price_element: "Missing an element in the price"
+    created: "Succesfully creation of your product !"
+    title: "Creation of a new product"
+    price:
+      label: "Price"
+      not_valid: "The price is incorrect"
+    tag: "Tags"
+    already_exist: "This product already exists"
+    edited: "Product succesfully updated !"
+    not_edited: "The product has not been modified"
+    edit_title: "Edit the product"
+    deleted: "Product correctly removed"
+    not_found: "Product not found"
+
+  quantity_type:
+    label: "Quantity type"
+  point_of_sale:
+    missing_address: "MIssing address"
+    wrong_address: "You address is incorrect"
+    label: "Point(s) of sales"
   notebook:
     edit:
       invalid: "The notebook is invalid"
