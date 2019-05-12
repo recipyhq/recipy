@@ -15,7 +15,7 @@ class Api::NotebooksController < InheritedResources::Base
   def show
     find_notebook
     notebook = @notebook.as_json(:include => [:recipes])
-    render json: notebook, status: :ok, location: new_api_notebook_url(notebook)
+    render json: notebook, status: :ok
   end
 
   def new
@@ -82,7 +82,7 @@ class Api::NotebooksController < InheritedResources::Base
   def user_notebook_id
     notebooks = []
     Notebook.all.each do |n|
-      if params[:notebook][:user_id] == n.user_id
+      if params[:user_id] == n.user_id
         notebooks << n
       end
     end
