@@ -32,7 +32,6 @@ gem 'figaro'
 gem 'bullet'
 gem 'country_select'
 gem 'cocoon'
-gem 'strong_migrations'
 gem 'coffee-rails', '~> 5.0.0'
 
 group :development, :test do
