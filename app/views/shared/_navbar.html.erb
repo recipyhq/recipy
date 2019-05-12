@@ -13,12 +13,13 @@
             <ul class="uk-nav uk-navbar-dropdown-nav">
               <li class="<%= current_page_class?(my_recipes_path) %>">
                 <%= link_to my_recipes_path do %>
-                <%# TODO: METTRE LE LIEN VERS MES RECETTES %>
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
                 <% end %>
               </li>
-              <li>
-                Lien liste de course
+              <li class="<%= current_page_class?(shopping_lists_path) %>">
+                <%= link_to shopping_lists_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.courses') %>
+                <% end %>
               </li>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>

@@ -1,6 +1,6 @@
 
-<div class="uk-margin-small uk-text-center">
-  <h1>Liste des producers</h1>
+<div class="uk-container uk-padding">
+  <h2 class="title">Liste des producers</h2>
   <% @users.each do |user| %>
     <li><%= link_to user.first_name + " " + user.last_name, show_producer_path(user.id)%></li>
   <% end %>

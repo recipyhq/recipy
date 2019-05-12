@@ -79,7 +79,8 @@ fr:
 
   producer:
     new:
-      Welcome: "Hop Hop Hop! Pas si vite, avant de devenir un producteur, nous avons besoin de collecter quelques informations sur vous"
+      welcome: "Devenir producteur"
+ 
   navbar:
     producer: "Producteurs"
     log_out: "Déconnexion"
@@ -87,6 +88,7 @@ fr:
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
     my_recipes: 'Mes recettes'
+    courses: 'Listes de course'
 
   footer:
     infos: "Informations"
@@ -298,3 +300,8 @@ fr:
       name: "Nom du carnet de recettes"
       desc: "Description du style de carnet que vous réalisez"
       img: "Image illustrant votre carnet"
+
+  shopping_list:
+    title: "Listes de course"
+    go_back: 'Revenir à mes listes'
+    new: "Créer une liste de course"
