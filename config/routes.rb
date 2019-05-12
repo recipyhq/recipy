@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   }
 
   scope 'beta' do
-
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
       scope module: 'cook' do
         unauthenticated :user do
@@ -96,13 +95,10 @@ Rails.application.routes.draw do
       post 'add_recipe' => "notebooks#add_recipe"
       post 'remove_recipe' => "notebooks#remove_recipe"
     end
-    # need to be fix
-    post 'notebooks/user_notebook_id' => "notebooks#user_notebook_id"
+    get 'my_notebooks' => "notebooks#user_notebook_id"
     get 'search' => "search#index"
-
     get 'my_recipes' => "recipes#show_user_recipes"
   end
-
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#external_server_error", :via => :all
