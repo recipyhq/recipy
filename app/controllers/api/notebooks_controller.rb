@@ -25,10 +25,14 @@ class Api::NotebooksController < InheritedResources::Base
 
   def create
     new_notebook = Notebook.new(notebook_params_api)
-    if new_notebook.save
-      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
-    else
+    if new_notebook.title.empty? || new_notebook.description.empty?
       render json: new_notebook.errors, status: :unprocessable_entity
+    else
+      if new_notebook.save
+        render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+      else
+        render json: new_notebook.errors, status: :unprocessable_entity
+      end
     end
   end
 
