@@ -1,10 +1,12 @@
-<div class="uk-container uk-padding">
-  <div class="uk-width-xxlarge uk-align-center">
-    <h2 class="title"><%= t("recipe.title.new") %></h2>
+<div class="">
+  <div class="uk-padding">
+    <h2 class="uk-text-center title"><%= t("recipe.title.new") %></h2>
 
     <%= render 'form', recipe: @recipe %>
 
-    <%= link_to t("recipe.action.back"), recipes_path %>
+    <div class="uk-container">
+      <%= link_to t("recipe.action.back"), recipes_path %>
+    </div>
 
   </div>
 </div>
