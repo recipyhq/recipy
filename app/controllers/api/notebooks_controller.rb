@@ -14,7 +14,7 @@ class Api::NotebooksController < InheritedResources::Base
 
   def show
     find_notebook
-    notebook = @notebook.as_json(:include => [:recipes], methods: %i(image_url))
+    notebook = @notebook.as_json(:include => [:recipes])
     render json: notebook
   end
 
@@ -30,13 +30,6 @@ class Api::NotebooksController < InheritedResources::Base
     else
       render json: new_notebook.errors, status: :unprocessable_entity
     end
-  end
-
-  def add_recipe
-    find_notebook
-    tmp = Recipe.find_by_id(notebook_params[:recipes])
-    @notebook.recipes << tmp
-    redirect_to notebook_path(id: @notebook.id)
   end
 
   def update
@@ -55,6 +48,19 @@ class Api::NotebooksController < InheritedResources::Base
     end
   end
 
+  def add_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    if !@notebook.recipes.exists?(:id => tmp.id)
+      @notebook.recipes << tmp
+      new_notebook = @notebook.as_json(:include => [:recipes])
+      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+    else
+      new_notebook = @notebook.as_json(:include => [:recipes])
+      render json: new_notebook, status: :conflict, location: new_api_notebook_url(new_notebook)
+    end
+  end
+
   def destroy
     find_notebook
     @notebook.destroy
@@ -62,6 +68,11 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    @notebook.recipes.delete(tmp)
+    new_notebook = @notebook.as_json(:include => [:recipes])
+    render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
   end
 
   private
