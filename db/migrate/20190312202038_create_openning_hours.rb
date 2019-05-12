@@ -3,7 +3,7 @@ class CreateOpenningHours < ActiveRecord::Migration[5.2]
     create_table :openning_hours do |t|
       t.time :open
       t.time :close
-      t.integer :day
+      t.string :day
 
       t.timestamps
     end
