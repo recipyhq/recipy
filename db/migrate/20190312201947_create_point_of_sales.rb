@@ -3,7 +3,7 @@ class CreatePointOfSales < ActiveRecord::Migration[5.2]
     create_table :point_of_sales do |t|
       t.string :name
       t.string :description
-      t.integer :type
+      t.string :market_type
 
       t.timestamps
     end

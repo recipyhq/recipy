@@ -15,7 +15,7 @@ class Api::NotebooksController < InheritedResources::Base
   def show
     find_notebook
     notebook = @notebook.as_json(:include => [:recipes])
-    render json: notebook
+    render json: notebook, status: :ok
   end
 
   def new
@@ -25,10 +25,14 @@ class Api::NotebooksController < InheritedResources::Base
 
   def create
     new_notebook = Notebook.new(notebook_params_api)
-    if new_notebook.save
-      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
-    else
+    if new_notebook.title.empty? || new_notebook.description.empty?
       render json: new_notebook.errors, status: :unprocessable_entity
+    else
+      if new_notebook.save
+        render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+      else
+        render json: new_notebook.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -73,6 +77,21 @@ class Api::NotebooksController < InheritedResources::Base
     @notebook.recipes.delete(tmp)
     new_notebook = @notebook.as_json(:include => [:recipes])
     render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+  end
+
+  def user_notebook_id
+    notebooks = []
+    Notebook.all.each do |n|
+      if params[:user_id] == n.user_id
+        notebooks << n
+      end
+    end
+    notebook_json = notebooks.as_json
+    if notebooks.empty?
+      render json: notebook_json, status: :not_found
+    else
+      render json: notebook_json, status: :ok
+    end
   end
 
   private
