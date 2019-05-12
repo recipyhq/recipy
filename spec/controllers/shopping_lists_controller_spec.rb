@@ -24,17 +24,16 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe ShoppingListsController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # ShoppingList. As you add validations to ShoppingList, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     skip("Add a hash of attributes valid for your model")
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     skip("Add a hash of attributes invalid for your model")
-  }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -52,7 +51,7 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       shopping_list = ShoppingList.create! valid_attributes
-      get :show, params: {id: shopping_list.to_param}, session: valid_session
+      get :show, params: { id: shopping_list.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -60,7 +59,7 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "GET #edit" do
     it "returns a success response" do
       shopping_list = ShoppingList.create! valid_attributes
-      get :edit, params: {id: shopping_list.to_param}, session: valid_session
+      get :edit, params: { id: shopping_list.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -68,20 +67,20 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new ShoppingList" do
-        expect {
-          post :create, params: {shopping_list: valid_attributes}, session: valid_session
-        }.to change(ShoppingList, :count).by(1)
+        expect do
+          post :create, params: { shopping_list: valid_attributes }, session: valid_session
+        end.to change(ShoppingList, :count).by(1)
       end
 
       it "redirects to the created shopping_list" do
-        post :create, params: {shopping_list: valid_attributes}, session: valid_session
+        post :create, params: { shopping_list: valid_attributes }, session: valid_session
         expect(response).to redirect_to(ShoppingList.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {shopping_list: invalid_attributes}, session: valid_session
+        post :create, params: { shopping_list: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
     end
@@ -89,20 +88,22 @@ RSpec.describe ShoppingListsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
+      let(:new_attributes) do
         skip("Add a hash of attributes valid for your model")
-      }
+      end
 
       it "updates the requested shopping_list" do
         shopping_list = ShoppingList.create! valid_attributes
-        put :update, params: {id: shopping_list.to_param, shopping_list: new_attributes}, session: valid_session
+        put :update, params: { id: shopping_list.to_param, shopping_list: new_attributes },
+                     session: valid_session
         shopping_list.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the shopping_list" do
         shopping_list = ShoppingList.create! valid_attributes
-        put :update, params: {id: shopping_list.to_param, shopping_list: valid_attributes}, session: valid_session
+        put :update, params: { id: shopping_list.to_param, shopping_list: valid_attributes },
+                     session: valid_session
         expect(response).to redirect_to(shopping_list)
       end
     end
@@ -110,7 +111,8 @@ RSpec.describe ShoppingListsController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         shopping_list = ShoppingList.create! valid_attributes
-        put :update, params: {id: shopping_list.to_param, shopping_list: invalid_attributes}, session: valid_session
+        put :update, params: { id: shopping_list.to_param, shopping_list: invalid_attributes },
+                     session: valid_session
         expect(response).to be_successful
       end
     end
@@ -119,16 +121,15 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested shopping_list" do
       shopping_list = ShoppingList.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: shopping_list.to_param}, session: valid_session
-      }.to change(ShoppingList, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: shopping_list.to_param }, session: valid_session
+      end.to change(ShoppingList, :count).by(-1)
     end
 
     it "redirects to the shopping_lists list" do
       shopping_list = ShoppingList.create! valid_attributes
-      delete :destroy, params: {id: shopping_list.to_param}, session: valid_session
+      delete :destroy, params: { id: shopping_list.to_param }, session: valid_session
       expect(response).to redirect_to(shopping_lists_url)
     end
   end
-
 end

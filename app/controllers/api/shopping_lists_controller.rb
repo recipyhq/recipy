@@ -32,18 +32,21 @@ class Api::ShoppingListsController < ApplicationController
     new_shopping_list = ShoppingList.new(shopping_list_params)
     if new_shopping_list.valid?
       new_shopping_list.save
-      render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
+      render :json => { Status: "OK", Cause: "Nouvelle liste créée !" }.as_json
     else
-      render :json => {Status: "KO", Cause: "Erreur lors de la création de la liste, veuillez réessayer"}.as_json
+      render :json => {
+        Status: "KO",
+        Cause: "Erreur lors de la création de la liste, veuillez réessayer",
+      }.as_json
     end
   end
 
   def update
     find_shopping_list
     if @shopping_list.update(shopping_list_params)
-      render :json => {Status: "OK", Cause: "Votre liste a été modifiée avec succés !"}.as_json
+      render :json => { Status: "OK", Cause: "Votre liste a été modifiée avec succés !" }.as_json
     else
-      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
+      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
     end
   end
 
@@ -51,7 +54,7 @@ class Api::ShoppingListsController < ApplicationController
     find_shopping_list
     unless @shopping_list.nil?
       @shopping_list.destroy
-      render :json => {Status: "OK", Cause: "Votre liste a bien été supprimée"}.as_json
+      render :json => { Status: "OK", Cause: "Votre liste a bien été supprimée" }.as_json
     end
   end
 
@@ -73,7 +76,8 @@ class Api::ShoppingListsController < ApplicationController
     else
       shopping_list.ingredients.each do |elem|
         @tab[elem.name] =
-          ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id, ingredient_id: elem.id).checked
+          ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id,
+                                         ingredient_id: elem.id).checked
       end
     end
     @tab
@@ -88,6 +92,4 @@ class Api::ShoppingListsController < ApplicationController
       i += 1
     end
   end
-
 end
-

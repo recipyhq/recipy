@@ -102,7 +102,7 @@ RSpec.describe PointOfSalesController, type: :controller do
       it "updates the requested point_of_sale" do
         point_of_sale = PointOfSale.create! valid_attributes
         put :update, params: { id: point_of_sale.to_param, point_of_sale: new_attributes },
-                                            session: valid_session
+                     session: valid_session
         point_of_sale.reload
         skip("Add assertions for updated state")
       end
@@ -110,7 +110,7 @@ RSpec.describe PointOfSalesController, type: :controller do
       it "redirects to the point_of_sale" do
         point_of_sale = PointOfSale.create! valid_attributes
         put :update, params: { id: point_of_sale.to_param, point_of_sale: valid_attributes },
-                              session: valid_session
+                     session: valid_session
         expect(response).to redirect_to(point_of_sale)
       end
     end
@@ -119,7 +119,7 @@ RSpec.describe PointOfSalesController, type: :controller do
       it "returns a success response (i.e. to display the 'edit' template)" do
         point_of_sale = PointOfSale.create! valid_attributes
         put :update, params: { id: point_of_sale.to_param, point_of_sale: invalid_attributes },
-                              session: valid_session
+                     session: valid_session
         expect(response).to be_successful
       end
     end

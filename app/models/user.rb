@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :recipe_scores, dependent: :destroy
   has_many :shopping_lists, dependent: :destroy
   has_many :notebooks
+  has_many :recipes
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

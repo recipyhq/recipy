@@ -1,0 +1,36 @@
+.recipe_form .textarea {
+  height: 200px;
+}
+
+.recipe_form .multiple_ingredients {
+  max-height: 80px;
+  overflow: scroll;
+}
+
+.recipe_form .multiple_ingredients span.checkbox {
+  display: block;
+}
+
+.recipe_form .multiple_ingredients span.checkbox label{
+  font-weight: normal;
+}
+
+.ss-main .ss-single-selected {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.ss-main .ss-multi-selected {
+  border: none;
+  width:100%;
+  height: 100%;
+}
+
+.ss-main .ss-multi-selected .ss-add {
+  margin: 14px 12px;
+}
+
+.ss-value {
+  height: 26px;
+}

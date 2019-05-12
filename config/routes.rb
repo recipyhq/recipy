@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
       post 'remove_recipe' => "notebooks#remove_recipe"
+      get 'my_recipes' => "recipes#show_user_recipes"
     end
   end
 
@@ -87,6 +88,8 @@ Rails.application.routes.draw do
       post 'remove_recipe' => "notebooks#remove_recipe"
     end
     get 'search' => "search#index"
+
+    get 'my_recipes' => "recipes#show_user_recipes"
   end
 
   match "/404", :to => "errors#not_found", :via => :all

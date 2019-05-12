@@ -342,6 +342,8 @@ end
 Recipe.create! do |recipe|
   recipe.title = "Sandwich jambon beurre"
   recipe.description = "Le sandwich français par excellence."
+  # recipe.user_id = nil
+  # recipe.user = nil
   recipe.steps = [
     "Coupez la baguette en deux dans le sens de l'horizontale",
     "Étalez le beurre sur l'un des deux côté",

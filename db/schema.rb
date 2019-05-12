@@ -248,6 +248,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_161416) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
+    t.integer "score", default: 0
     t.text "description"
     t.text "step"
     t.integer "difficulty"
@@ -259,6 +260,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_161416) do
     t.text "steps", default: [], array: true
     t.integer "preparation_time"
     t.integer "cooking_time"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "related_ingr_products", force: :cascade do |t|
@@ -438,5 +441,6 @@ ActiveRecord::Schema.define(version: 2019_05_11_161416) do
   add_foreign_key "notebook_recipes", "recipes"
   add_foreign_key "point_of_sales", "users"
   add_foreign_key "products", "users"
+  add_foreign_key "recipes", "users"
   add_foreign_key "shopping_lists", "users"
 end

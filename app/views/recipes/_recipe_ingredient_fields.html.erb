@@ -1,0 +1,21 @@
+<div class="nested-fields uk-width-1-3">
+  <div class="uk-card uk-card-default uk-card-body">
+    <h3 class="uk-card-title"><%= t("recipe.title.new_ingredient_elem") %></h3>
+    <div class=" uk-grid">
+      <div class="uk-width-1-1">
+        <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"} %>
+      </div>
+      <%= f.simple_fields_for RecipeQuantity.new do |ff| %>
+        <div class="uk-width-1-2">
+          <%= ff.input :value, label: t("recipe.title.quantity_value") %>
+        </div>
+        <div class="uk-width-1-2">
+          <%= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select, collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a %>
+        </div>
+      <% end %>
+    </div>
+    <div class="uk-text-center uk-margin-medium-top">
+      <h4 class="uk-margin-remove"><%= link_to_remove_association t("recipe.action.delete_ingredient"), f, class: "uk-link" %></h4>
+    </div>
+  </div>
+</div>

@@ -35,6 +35,29 @@ fr:
               blank: "Le champ Courriel ne doit pas être vide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
+        recipe:
+          attributes:
+            title:
+              blank: "Le titre de la recette ne doit pas être vide"
+              invalid: "Le titre de la recette est invalide"
+            cooking_time:
+              blank: "Le temps de cuisson ne doit pas être vide."
+              invalid: "Le temps de cuisson n'est pas valide."
+            image:
+              blank: "La recette doit posséder une image"
+              invalid: "L'image n'est pas valide"
+            preparation_time:
+              blank: "Le temps de préparation de la recette ne doit pas être vide"
+              invalid: "Le temps de préparation est invalide"
+            person:
+              blank: "Le nombre de personne n'est pas bon"
+              invalid: "Le nombred de personne est invalide"
+            difficulty:
+              blank: "La difficulté ne doit pas être vide"
+              invalid: "La difficulté est incorrecte"
+            description:
+              blank: "La description ne doit pas être vide"
+              invalid: "La description est incorrect"
       messages:
         record_invalid: "Enregistrement invalide"
 
@@ -68,6 +91,14 @@ fr:
         give_feedback_for: "Donnez nous votre avis pour '%{recipe_title}' !"
         connect_to_give_feedback: "Connectez-vous et donnez votre avis."
         no_score: "Pas de notes pour le moment."
+        utensil: "Ustensiles"
+        nb_person: "Pour combien de personnes ?"
+        quantity_value: "Quantité"
+        quantity_type: "Type de la quantité"
+        category: "Catégorie(s)"
+        new_ingredient_elem: "Nouvel ingredient"
+        number_views: "Nombre de vues :"
+        number_feedbacks: "Nombre de commentaires :"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
@@ -77,6 +108,8 @@ fr:
         destroy: "Supprimer"
         back: "Précédent"
         confirm: "Êtes-vous sûr ?"
+        new_ingredient: "Ajouter un ingrédient"
+        delete_ingredient: "Supprimer"
       creation:
         missing_ingredients: "La recette a au moins besoin d'un ingrédient !"
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
@@ -89,10 +122,15 @@ fr:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
         invalid_image: "Fichier image invalide"
+        wrong_user: "Vous n'êtes pas autorisé à modifier cette recette !"
       destroy:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
+      my_recipes:
+        link: "Mes recettes"
+        title: "Toutes mes recettes"
 
   ingredient:
     title:

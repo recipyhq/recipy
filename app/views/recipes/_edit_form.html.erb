@@ -1,27 +1,30 @@
 <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css' %>
 <%= stylesheet_link_tag 'recipe_form' %>
 
-<%= simple_form_for(Recipe.new, html: {
+<%= simple_form_for(@recipe, html: {
   class: "uk-padding recipe_form"
 },) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
-      <%= f.input :title, label: t("recipe.title.title") %>
+      <%= f.input :title, label: t("recipe.title.title"), input_class: false %>
       <%= f.file_field :image %>
       <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "recipe-category-select", multiple: true}, defaults: {input_class: ""} %>
       <%= f.input :description, label: t("recipe.title.description"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
     </div>
   </div>
   <hr class="uk-divider-icon">
-  <%= f.simple_fields_for RecipeIngredient.new do |ff| %>
-    <div id="recipe_ingredients" uk-grid="masonry: true">
-    </div>
-  <% end %>
+  <div id="recipe_ingredients" uk-grid>
+    <%= f.simple_fields_for :recipe_ingredients do |recipe_ingredient| %>
+      <% unless recipe_ingredient.object.ingredient.nil? %>
+        <%= render "edit_recipe_ingredient_fields", f: recipe_ingredient %>
+      <% end %>
+    <% end %>
+  </div>
   <div>
     <div class="uk-text-center">
-      <h3><%= link_to_add_association t("recipe.action.new_ingredient"), f, :recipe_ingredients, partial: 'recipe_ingredient_fields', data: {
+      <h3><%= link_to_add_association t("recipe.action.new_ingredient"), f, :recipe_ingredients, partial: 'edit_recipe_ingredient_fields', data: {
         association_insertion_node: '#recipe_ingredients', association_insertion_method: :append
       }, class: "uk-link" %></h3>
       <%= f.label :utensil_ids, label: ("(#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, {:class => "uk-text-medium"}})").html_safe %>
@@ -51,8 +54,10 @@
   </div>
 <% end %>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
 <script>
+
   new SlimSelect({
     select: '#utensils-select',
     searchingText: 'Recherche...',
@@ -63,15 +68,16 @@
   new SlimSelect({
     select: '#recipe-category-select',
     searchingText: 'Recherche...',
-    searchText: 'Désolé il n\'y a pas la catégorie recherché dans la liste.',
+    searchText: 'Désolé il n\'y a pas la catégorie recherchée dans la liste.',
     searchPlaceholder: 'Rechercher une catégorie',
     placeholder: 'Catégories'
   });
-  document.getElementById('steps_textarea').value = '';
+
+  let difValue = document.getElementById('recipe_difficulty').value;
+  document.getElementById('recipe_difficulty').labels[0].innerHTML = "<abbr title='required'>*</abbr> <%= "#{t("recipe.title.difficulty")}: "%>" + difValue + '/10';
 
   const changeRangeValue = function () {
     let difValue = document.getElementById('recipe_difficulty').value;
-    console.log(document.getElementById('recipe_difficulty').labels);
     document.getElementById('recipe_difficulty').labels[0].innerHTML = "<abbr title='required'>*</abbr> <%= "#{t("recipe.title.difficulty")}: "%>" + difValue + '/10';
   };
 

@@ -6,11 +6,11 @@ class Recipe < ApplicationRecord
   validates :person, presence: true
   validates :difficulty, presence: true
   validates :description, presence: true
-  has_many :related_recipe_categories
+  has_many :related_recipe_categories, dependent: :destroy
   has_many :recipe_categories, :through => :related_recipe_categories
-  has_many :recipe_ingredients
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, -> { where(confirmed: true) }, :through => :recipe_ingredients
-  has_many :recipe_utensils
+  has_many :recipe_utensils, dependent: :destroy
   has_many :utensils, :through => :recipe_utensils
   has_many :notebook_recipes, dependent: :destroy
   has_many :notebooks, through: :notebook_recipes
@@ -19,8 +19,11 @@ class Recipe < ApplicationRecord
   has_one_attached :image
   validates :image, presence: true
 
+  belongs_to :user, optional: true
+
   accepts_nested_attributes_for :notebooks, allow_destroy: true
-  accepts_nested_attributes_for :recipe_ingredients
+  accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
+  accepts_nested_attributes_for :recipe_utensils, allow_destroy: true
 
   def steps_raw
     steps.join("\r\n") unless steps.nil?

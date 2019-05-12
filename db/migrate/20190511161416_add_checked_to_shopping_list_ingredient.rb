@@ -7,5 +7,4 @@ class AddCheckedToShoppingListIngredient < ActiveRecord::Migration[5.2]
   def down
     remove_column :shopping_list_ingredients, :checked
   end
-
 end

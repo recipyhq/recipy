@@ -68,6 +68,29 @@ en:
 
             avatar:
               not_found: "No avatar was found"
+        recipe:
+          attributes:
+            title:
+              blank: "The recipe title cannot be blank"
+              invalid: "The recipe title is invalid"
+            cooking_time:
+              blank: "The cooking time cannot be empty"
+              invalid: "The cooking time is invalid"
+            image:
+              blank: "The recipe must have an image"
+              invalid: "The image is invalid"
+            preparation_time:
+              blank: "The preparation time cannot be blank"
+              invalid: "The preparation time is invalid"
+            person:
+              blank: "Le number of persons cannot be blank"
+              invalid: "The number of person is invalid"
+            difficulty:
+              blank: "The difficulty cannot be blank"
+              invalid: "The difficulty is invalid"
+            description:
+              blank: "The description cannot be empty"
+              invalid: "The description is incorrect"
       messages:
         record_invalid: "Invalid record"
 
@@ -90,6 +113,14 @@ en:
       ingredient: "Ingredient(s)"
       utensil: "Utensil(s)"
       image: "image"
+      nb_person: "For how many people ?"
+      quantity_value: "Quantity"
+      quantity_type: "Quantity type"
+      category: "Category(ies)"
+      new_ingredient: "Propose a new ingredient"
+      new_ingredient_elem: "New Ingredient"
+      number_views: "Number of views:"
+      number_feedbacks: "Number of feedbacks:"
     action:
       edit: "Edit"
       show: "Show"
@@ -97,6 +128,8 @@ en:
       destroy: "Destroy"
       back: "Back"
       confirm: "Are you sure ?"
+      new_ingredient: "Add a new ingredient"
+      delete_ingredient: "Remove"
     creation:
       missing_ingredients: "A recipe needs at least one ingredient!"
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
@@ -107,10 +140,15 @@ en:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"
       invalid_image: "Invalid image file"
+      wrong_user: "You are not allowed to modify this recipe!"
     destroy:
       valid: "Your recipe have been deleted"
     api:
       invalid_id: "Unfindable recipe, wrong ID"
+      invalid_user_id: "User not found"
+    my_recipes:
+      link: "My recipes"
+      title: "All my recipes"
 
   ingredient:
     unrecognized: ""

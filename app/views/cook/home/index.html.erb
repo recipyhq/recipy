@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <% if (@recipes.length > 0) %>
+  <% if @recipes.length > 0 %>
     <div class="uk-section uk-section-default">
       <div class="uk-container">
         <h2 class="title">Nos recettes les plus populaires</h2>
@@ -35,6 +35,9 @@
                 <div class="uk-card-media-top uk-text-center uk-display-block ">
                   <div class="uk-margin-top uk-align-center">
                     <% if recipe.image.attached? %>
+                      <%= puts "********" %>
+                      <%= puts recipe.image&.variant(resize: '300x400') %>
+                      <%= puts "********" %>
                       <%= image_tag(recipe.image.variant(resize: '300x400')) %>
                     <% else %>
                       <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>

@@ -18,18 +18,6 @@
           <% end %>
         </div>
       </div>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.time") %></h5>
-          <p><%= minute_to_time(@recipe.cooking_time + @recipe.preparation_time) %></p>
-        </div>
-      </div>
-      <div>
-        <div class="uk-text-center">
-          <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
-          <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
-        </div>
-      </div>
     </div>
   </div>
   <div>

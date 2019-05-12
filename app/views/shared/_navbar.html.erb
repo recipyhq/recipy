@@ -16,6 +16,11 @@
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
               <li>
+                <%= link_to my_recipes_path, method: :get do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('recipe.my_recipes.link') %>
+                <% end %>
+              </li>
+              <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
                 <% end %>
