@@ -13,12 +13,27 @@
       <li><%= link_to t('navbar.producer'), unauthenticated_producer_root_path%></li>
 
       <% if user_signed_in? %>
-        <li><%= link_to t('navbar.my_profil'), edit_user_registration_path%></li>
-
         <li>
-          <a><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
+        <a><%= t('navbar.my_profil') %><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2"/></a>
+        <div class="uk-navbar-dropdown">
+          <ul class="uk-nav uk-navbar-dropdown-nav">
+            <li><%= link_to t('navbar.my_user_profil'), edit_user_registration_path%></li>
+            <% if current_user.isProducer == true %>
+              <li><%= link_to t('navbar.my_producer_profil'), show_producer_path(current_user.id)%></li>
+            <% end %>
+          </ul>
+        </div>
+        </li>
+        <li><%= link_to "Carnets", notebooks_path, :class => "uk-navbar-nav" %></li>
+        <li>
+          <a><%= current_user.email %><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2"/></a>
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li>
+                <%= link_to my_recipes_path, method: :get do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('recipe.my_recipes.link') %>
+                <% end %>
+              </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>

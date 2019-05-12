@@ -86,6 +86,8 @@ fr:
     sign_in: "Me connecter"
     sign_up: "M'inscrire"
     my_profil: "Mon profil"
+    my_user_profil: "Mon profil utilisateur"
+    my_producer_profil: "Mon profil producteur"
 
   shared_links:
     no_account: "Vous n'avez pas de compte ?"
@@ -111,6 +113,29 @@ fr:
               blank: "Le champ Courriel ne doit pas être vide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
+        recipe:
+          attributes:
+            title:
+              blank: "Le titre de la recette ne doit pas être vide"
+              invalid: "Le titre de la recette est invalide"
+            cooking_time:
+              blank: "Le temps de cuisson ne doit pas être vide."
+              invalid: "Le temps de cuisson n'est pas valide."
+            image:
+              blank: "La recette doit posséder une image"
+              invalid: "L'image n'est pas valide"
+            preparation_time:
+              blank: "Le temps de préparation de la recette ne doit pas être vide"
+              invalid: "Le temps de préparation est invalide"
+            person:
+              blank: "Le nombre de personne n'est pas bon"
+              invalid: "Le nombred de personne est invalide"
+            difficulty:
+              blank: "La difficulté ne doit pas être vide"
+              invalid: "La difficulté est incorrecte"
+            description:
+              blank: "La description ne doit pas être vide"
+              invalid: "La description est incorrect"
       messages:
         record_invalid: "Enregistrement invalide"
 
@@ -124,42 +149,80 @@ fr:
         edit: "Modifier votre recette"
         new: "Création d'une recette"
         title: "Titre"
+        score_with_count: "Note (%{count})"
         score: "Note"
+        new_ingredient: "Proposer un ingrédient"
+        comment: "Commentaire"
         step: "Etape(s)"
-        time: "Temps de préparation (en min)"
+        time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
         ingredient: "Ingrédient(s)"
+        preparation: "Préparation"
+        preparation_time: "Temps de préparation"
+        cooking_time: "Temps de cuisson"
         ingredient_number: "Nombre d'ingrédients"
-        utensil: "Ustensile(s)"
+        ustensil: "Ustensile(s)"
         image: "image"
+        all_feedback: "Tous les avis"
+        no_feedback: "Aucun avis pour le moment, soyez le premier à en donner un."
+        give_feedback_for: "Donnez nous votre avis pour '%{recipe_title}' !"
+        connect_to_give_feedback: "Connectez-vous et donnez votre avis."
+        no_score: "Pas de notes pour le moment."
+        utensil: "Ustensiles"
+        nb_person: "Pour combien de personnes ?"
+        quantity_value: "Quantité"
+        quantity_type: "Type de la quantité"
+        category: "Catégorie(s)"
+        new_ingredient_elem: "Nouvel ingredient"
+        number_views: "Nombre de vues :"
+        number_feedbacks: "Nombre de commentaires :"
       action:
+        give_feedback: "Donner votre avis"
+        feedback: "Donner mon avis"
         edit: "Modifier"
         show: "Afficher"
         new: "Nouvelle recette"
         destroy: "Supprimer"
         back: "Précédent"
         confirm: "Êtes-vous sûr ?"
+        new_ingredient: "Ajouter un ingrédient"
+        delete_ingredient: "Supprimer"
       creation:
         missing_ingredients: "La recette a au moins besoin d'un ingrédient !"
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Nouvelle recette créée! Merci"
         confirm: "Valider"
         invalid_image: "Fichier image invalide"
+        feedback:
+          valid: "Votre avis a bien été pris en compte! Merci"
       edit:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
         invalid_image: "Fichier image invalide"
+        wrong_user: "Vous n'êtes pas autorisé à modifier cette recette !"
       destroy:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
+      my_recipes:
+        link: "Mes recettes"
+        title: "Toutes mes recettes"
 
   ingredient:
+    title:
+      new_ingredient: "Proposer un ingrédient"
+      create: "Demander d'ajouter l'ingrédient"
+      name: "Nom de l'ingrédient"
+      description: "Descriptif de l'ingrédient"
+      type: "Type d'ingrédient"
+      quantity: "Équivalence en quantité d'ingrédients"
     unrecognized: "Ingredient non reconnu par l'application"
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
+    label: "Ingrédient"
 
   search:
     read_more: "Lire la suite"
@@ -176,3 +239,27 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+  products:
+    missing_price_element: "Il manque un élément dans le prix"
+    created: "Création de votre produit réussie !"
+    title: "Création d'un nouveau produit"
+    price:
+      label: "Prix"
+      not_valid: "Le nouveau prix est incorrect"
+    tag: "Liste des tags"
+    already_exist: "Ce produit existe déjà"
+    edited: "Produit correctement mis à jour !"
+    not_edited: "Le produit n'a pas été modifié"
+    edit_title: "Editer le produit"
+    deleted: "Produit correctement supprimé"
+    not_found: "Produit non trouvé"
+  quantity_type:
+    label: "Type de Quantité"
+  point_of_sale:
+    missing_address: "Adresse manquante"
+    wrong_address: "Votre adress est incorrect"
+    label: "Point de vente(s)"
+  notebook:
+    edit:
+      invalid: "Le carnet de recette n'est pas conforme"
+      invalid_image: "L'image est invalide"

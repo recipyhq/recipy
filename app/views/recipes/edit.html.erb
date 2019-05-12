@@ -1,17 +1,31 @@
-<div class="uk-position-center">
-  <div class="uk-width-xxlarge">
+<div class="">
+  <div class="">
     <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
-<% if flash[:danger] %>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p><%= flash[:danger] %></p>
-  </div>
-<%end %>
-<%= render 'form', recipe: @recipe %>
+    <% if flash[:danger] %>
+      <% flash.each do |key, v  alue| %>
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+        </div>
+      <% end %>
+    <% end %>
 
-<%= link_to t("recipe.action.show"), @recipe %> |
-<%= link_to t("recipe.action.back"), recipes_path %>
+    <% if @recipe.user != current_user %>
+      <% Bullet.enable = false %>
+      <div class="uk-position-bottom-center uk-position-relative">
+        <div class="uk-text-center">
+          <span class="uk-text-lead"><%= t("recipe.edit.wrong_user") %></span>
+        </div>
+      </div>
+    <% else %>
+
+      <%= render 'edit_form', recipe: @recipe %>
+
+    <% end %>
+
+    <%= link_to t("recipe.action.show"), @recipe %> |
+    <%= link_to t("recipe.action.back"), recipes_path %>
 
   </div>
 </div>

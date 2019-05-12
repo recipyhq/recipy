@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
           dependent: :destroy
 
   has_many :memberships, dependent: :destroy
+  has_many :recipe_scores, dependent: :destroy
+  has_many :shopping_lists, dependent: :destroy
+  has_many :notebooks
+  has_many :recipes
+  has_many :point_of_sales
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

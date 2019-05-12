@@ -14,6 +14,7 @@ module Producer
 
     def new
       @user = current_user
+      @user.save
     end
 
     def create
@@ -23,6 +24,9 @@ module Producer
     def patch
       @user = current_user
       @user.isProducer = true
+      @user.last_name = params[:user][:last_name]
+      @user.first_name = params[:user][:first_name]
+      @user.bio = params[:user][:bio]
       @user.save
       redirect_to edit_user_registration_path
     end

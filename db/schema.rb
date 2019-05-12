@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_103900) do
+ActiveRecord::Schema.define(version: 2019_05_12_170241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "entilted"
+    t.string "city"
+    t.string "zip"
+    t.string "state"
+    t.string "country"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "longitude"
+    t.integer "latitude"
+  end
+
   create_table "administrators", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -87,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "confirmed", default: false
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -99,9 +113,67 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "notebook_recipes", force: :cascade do |t|
+    t.bigint "notebook_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notebook_id"], name: "index_notebook_recipes_on_notebook_id"
+    t.index ["recipe_id"], name: "index_notebook_recipes_on_recipe_id"
+  end
+
+  create_table "notebooks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "openning_hours", force: :cascade do |t|
+    t.time "open"
+    t.time "close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "day"
+  end
+
+  create_table "point_of_sales", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "market_type"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_point_of_sales_on_user_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_prices_on_quantity_type_id"
+  end
+
   create_table "producer_accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "product_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["ingredient_id"], name: "index_products_on_ingredient_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "prospects", force: :cascade do |t|
@@ -154,6 +226,17 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.index ["quantity_type_id"], name: "index_recipe_quantities_on_quantity_type_id"
   end
 
+  create_table "recipe_scores", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "recipe_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+    t.index ["recipe_id"], name: "index_recipe_scores_on_recipe_id"
+    t.index ["user_id"], name: "index_recipe_scores_on_user_id"
+  end
+
   create_table "recipe_utensils", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "utensil_id"
@@ -177,6 +260,17 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.text "steps", default: [], array: true
     t.integer "preparation_time"
     t.integer "cooking_time"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "related_ingr_products", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_related_ingr_products_on_ingredient_id"
+    t.index ["product_id"], name: "index_related_ingr_products_on_product_id"
   end
 
   create_table "related_ingredient_tags", force: :cascade do |t|
@@ -186,6 +280,33 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_related_ingredient_tags_on_ingredient_id"
     t.index ["ingredient_tag_id"], name: "index_related_ingredient_tags_on_ingredient_tag_id"
+  end
+
+  create_table "related_price_quantities", force: :cascade do |t|
+    t.bigint "price_id"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_related_price_quantities_on_price_id"
+    t.index ["quantity_type_id"], name: "index_related_price_quantities_on_quantity_type_id"
+  end
+
+  create_table "related_product_prices", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_related_product_prices_on_price_id"
+    t.index ["product_id"], name: "index_related_product_prices_on_product_id"
+  end
+
+  create_table "related_product_tags", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "product_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_related_product_tags_on_product_id"
+    t.index ["product_tag_id"], name: "index_related_product_tags_on_product_tag_id"
   end
 
   create_table "related_quantity_equivalencies", force: :cascade do |t|
@@ -233,6 +354,51 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.index ["recipe_quantity_id"], name: "index_related_recipe_quantities_on_recipe_quantity_id"
   end
 
+  create_table "related_sale_addresses", force: :cascade do |t|
+    t.bigint "point_of_sale_id"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_related_sale_addresses_on_address_id"
+    t.index ["point_of_sale_id"], name: "index_related_sale_addresses_on_point_of_sale_id"
+  end
+
+  create_table "related_sale_hours", force: :cascade do |t|
+    t.bigint "point_of_sale_id"
+    t.bigint "openning_hour_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["openning_hour_id"], name: "index_related_sale_hours_on_openning_hour_id"
+    t.index ["point_of_sale_id"], name: "index_related_sale_hours_on_point_of_sale_id"
+  end
+
+  create_table "related_sale_products", force: :cascade do |t|
+    t.bigint "point_of_sale_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["point_of_sale_id"], name: "index_related_sale_products_on_point_of_sale_id"
+    t.index ["product_id"], name: "index_related_sale_products_on_product_id"
+  end
+
+  create_table "shopping_list_ingredients", force: :cascade do |t|
+    t.bigint "shopping_list_id"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "checked", default: false
+    t.index ["ingredient_id"], name: "index_shopping_list_ingredients_on_ingredient_id"
+    t.index ["shopping_list_id"], name: "index_shopping_list_ingredients_on_shopping_list_id"
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shopping_lists_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -261,6 +427,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
     t.string "last_name"
     t.boolean "newsletters"
     t.boolean "isProducer"
+    t.string "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -275,4 +442,10 @@ ActiveRecord::Schema.define(version: 2019_05_12_103900) do
   end
 
   add_foreign_key "memberships", "users"
+  add_foreign_key "notebook_recipes", "notebooks"
+  add_foreign_key "notebook_recipes", "recipes"
+  add_foreign_key "point_of_sales", "users"
+  add_foreign_key "products", "users"
+  add_foreign_key "recipes", "users"
+  add_foreign_key "shopping_lists", "users"
 end

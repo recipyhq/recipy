@@ -1,10 +1,10 @@
-class Api::IngredientsController < ApplicationController
+class Api::IngredientsController < Api::BaseController
   skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
 
   def index
     skip_policy_scope
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.where(:confirmed => true).all
     render json: @ingredients.as_json(:includes => :ingredient_tags)
   end
 
