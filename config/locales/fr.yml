@@ -11,7 +11,7 @@ fr:
     sign_in: "Se connecter"
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
-    new_recipe: 'Nouvelle recette'
+    my_recipes: 'Mes recettes'
 
   footer:
     infos: "Informations"
