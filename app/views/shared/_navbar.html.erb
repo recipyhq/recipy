@@ -11,8 +11,8 @@
           </a>
           <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
-              <li class="<%= current_page_class?(new_recipe_path) %>">
-                <%= link_to new_recipe_path do %>
+              <li class="<%= current_page_class?(my_recipes_path) %>">
+                <%= link_to my_recipes_path do %>
                 <%# TODO: METTRE LE LIEN VERS MES RECETTES %>
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
                 <% end %>
