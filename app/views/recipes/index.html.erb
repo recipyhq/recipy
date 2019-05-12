@@ -25,14 +25,10 @@
                 </div>
                 <div class="uk-card-footer">
                     <%= link_to t("recipe.action.show"), recipe, class: "uk-button uk-button-text" %>
-                    <%= link_to t("recipe.action.edit"), edit_recipe_path(recipe), class: "uk-button uk-button-text" %>
-                    <%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>
                 </div>
             </div>
         </div>
       <% end %>
     </div>
-
-    <span class="uk-button uk-button-default uk-align-center uk-margin-bottom"><%= link_to t("recipe.action.new"), new_recipe_path %></span>
   </div>
 </div>
