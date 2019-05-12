@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/legal_notice', to: "landing_pages#legal_notice"
 
   ActiveAdmin.routes(self)
-
   devise_for :administrators, ActiveAdmin::Devise.config
   namespace :admin do
     authenticate :administrator do
@@ -14,7 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
 
   scope 'beta' do
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
         end
 
         authenticate :user do
+          root to: 'home#index', as: :authenticate_cook_root
         end
 
         authenticated :user do
@@ -37,11 +41,15 @@ Rails.application.routes.draw do
         end
 
         authenticate :user do
+          root to: 'home#index', as: :authenticate_producer_root
         end
 
         authenticated :user do
           root to: 'home#index', as: :authenticated_producer_root
         end
+        get 'createproducer' => 'home#new'
+        get 'producer/:id' => 'home#show', as: :show_producer
+        patch 'createproducer' => 'home#patch'
       end
       resources :recipes
       get 'search' => "search#index"
@@ -60,6 +68,7 @@ Rails.application.routes.draw do
     resources :ingredients
     get 'search' => "search#index"
   end
+
 
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#external_server_error", :via => :all

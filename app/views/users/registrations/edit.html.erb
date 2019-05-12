@@ -1,8 +1,8 @@
-<div uk-height-viewport class="uk-background-cover uk-height-large wallpaper-edit">
+<div class="uk-container uk-padding uk-padding-top">
 
-  <div class="uk-padding-small uk-position-center uk-background-muted">
+  <div class="">
 
-    <h2 class="uk-text-bold uk-text-left recipy-title">
+    <h2 class="uk-text-bold uk-text-center recipy-title">
       <%= t("views.edit.title", resource: resource_name.to_s.humanize) %>
     </h2>
 
@@ -44,10 +44,23 @@
         </div>
 
         <div class="uk-padding-small uk-text-center">
-          <%= f.button :submit, t('.update') %>
+          <%= f.button :submit, t('.update'), class: 'uk-width-1-1 button-sign-in' %>
         </div>
       <% end %>
     </div>
+
+    <% if current_user.isProducer == true %>
+      <div class="uk-margin-small uk-text-center">
+        <p>Félicitations vous êtes un producteur!</p>
+      </div>
+    <% else %>>
+      <div class="uk-margin-small uk-text-center">
+        <%= link_to createproducer_path, style:"color:#FFFFFF;background-color:orange", class: 'uk-width-1-1 button-sign-in' do %>
+          Devenir producteur
+        <% end %>
+      </div>
+    <% end %>
+
 
     <div class="uk-text-center">
       <h3 class="uk-text-lead uk-margin-remove-bottom">
@@ -55,11 +68,9 @@
       </h3>
 
       <p class="uk-margin-remove-top">
-        <%= t('.unhappy') %>
         <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete %>
       </p>
 
-      <%= link_to t('devise.shared.links.back'), :back %>
     </div>
   </div>
 </div>

@@ -2,14 +2,19 @@
   <div class="uk-navbar-left">
 
     <%= link_to unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' do %>
-    <% end %>
+      <%= image_tag "landing/logo.png", class: 'uk-img', height: '150', width: '150'%>
+  <% end %>
 
     <ul class="uk-navbar-nav"></ul>
   </div>
 
   <div class="uk-navbar-right">
     <ul class="uk-navbar-nav">
+      <li><%= link_to t('navbar.producer'), unauthenticated_producer_root_path%></li>
+
       <% if user_signed_in? %>
+        <li><%= link_to t('navbar.my_profil'), edit_user_registration_path%></li>
+
         <li>
           <a><span class="uk-icon" uk-icon="icon: chevron-down; ratio: 2" /></a>
           <div class="uk-navbar-dropdown">

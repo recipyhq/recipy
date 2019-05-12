@@ -13,5 +13,11 @@
  *= require uikit/dist/css/uikit
  *= require main
  *= require landing_pages
+ *= require registrations
  *= require_self
  */
+
+.btn {
+  font: 'Quicksand', sans-serif;
+  border-radius: 3px;
+}
