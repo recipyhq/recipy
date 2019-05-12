@@ -1,5 +1,6 @@
 <div class="uk-container uk-padding">
   <h2 class="title"><%= t("recipe.my_recipes.title") %></h2>
+  <%= link_to t("recipe.action.new"), new_recipe_path, class: "uk-button uk-button-default uk-width-1 uk-margin-bottom" %>
   <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>
     <% @recipes.each do |recipe| %>
       <div>
