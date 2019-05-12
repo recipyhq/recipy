@@ -1,0 +1,47 @@
+<div class="uk-container">
+<p id="notice"><%= notice %></p>
+
+<% if flash[:danger] %>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= flash[:danger] %></p>
+  </div>
+<%end %>
+
+  <div class="uk-flex uk-flex-center">
+    <h1>Point Of Sales</h1>
+  </div>
+  <div class="uk-flex uk-flex-center">
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Market Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.point_of_sales.each do |point_of_sale| %>
+      <tr>
+        <td><%= point_of_sale.name %></td>
+        <td><%= point_of_sale.description %></td>
+        <td><%= point_of_sale.market_type %></td>
+          <td><%= link_to 'Show', point_of_sale %></td>
+          <% if current_user && current_user.id == @user.id %>
+      <td><%= link_to 'Edit', edit_point_of_sale_path(point_of_sale) %></td>
+          <td><%= link_to 'Destroy', point_of_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+
+<br>
+<% if current_user && current_user.id == @user.id %>
+  <%= link_to 'New Point Of Sale', new_point_of_sale_path %>
+<% end %>
+</div>

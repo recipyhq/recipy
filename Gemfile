@@ -30,6 +30,9 @@ gem 'activeadmin'
 gem 'phony_rails'
 gem 'figaro'
 gem 'bullet'
+gem 'country_select'
+gem 'cocoon'
+gem 'coffee-rails', '~> 5.0.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -50,7 +53,6 @@ group :development do
   gem 'xray-rails'
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
-  gem 'strong_migrations'
   gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false

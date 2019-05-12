@@ -22,8 +22,29 @@
         <%= f.button :submit, t('.update'), class: 'uk-width-1-1' %>
       <% end %>
 
+    <% if current_user.isProducer == true %>
+      <div class="uk-margin-small uk-text-center">
+        <p>Félicitations vous êtes un producteur!</p>
+      </div>
+    <% else %>>
+      <div class="uk-margin-small uk-text-center">
+        <%= link_to createproducer_path, style:"color:#FFFFFF;background-color:orange", class: 'uk-width-1-1 button-sign-in' do %>
+          Devenir producteur
+        <% end %>
+      </div>
+    <% end %>
+
+
     <div class="uk-text-center">
       <%= link_to t('devise.shared.links.back'), :back, class: 'uk-button uk-button-default uk-margin-top uk-width-1-1' %>
+      <h3 class="uk-text-lead uk-margin-remove-bottom">
+        <%= t('.cancel_my_account') %>
+      </h3>
+
+      <p class="uk-margin-remove-top">
+        <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete %>
+      </p>
+
     </div>
   </div>
 </div>

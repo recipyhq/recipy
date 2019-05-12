@@ -1,10 +1,22 @@
-<div class="uk-container uk-padding">
-  <div class="uk-width-xxlarge uk-align-center">
-    <h2 class="title"><%= t("recipe.title.edit") %></h2>
-<%= render 'form', recipe: @recipe %>
+<div class="">
+  <div class="">
+    <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
-<%= link_to t("recipe.action.show"), @recipe %> |
-<%= link_to t("recipe.action.back"), recipes_path %>
+    <% if @recipe.user != current_user %>
+      <% Bullet.enable = false %>
+      <div class="uk-position-bottom-center uk-position-relative">
+        <div class="uk-text-center">
+          <span class="uk-text-lead"><%= t("recipe.edit.wrong_user") %></span>
+        </div>
+      </div>
+    <% else %>
+
+      <%= render 'edit_form', recipe: @recipe %>
+
+    <% end %>
+
+    <%= link_to t("recipe.action.show"), @recipe %> |
+    <%= link_to t("recipe.action.back"), recipes_path %>
 
   </div>
 </div>

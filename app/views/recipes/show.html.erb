@@ -50,15 +50,21 @@
               <% end %>
             </div>
           <% end %>
+          <% if current_user %>
+            <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
+              <%= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id), label: "Ajouter à une liste de courses :" %>
+              <%= f.button :submit, "Confirmer" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="uk-padding">
         <h2 class="title"><%= t("recipe.title.ustensil") %></h2>
         <div class="uk-card uk-card-default uk-card-body">
           <ul>
-          <%@recipe.utensils.each do | ustensile| %>
-            <li> <%= ustensile.title %></li>
-          <% end %>
+            <% @recipe.utensils.each do |ustensile| %>
+              <li> <%= ustensile.title %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -68,9 +74,9 @@
         <h2 class="title"><%= t("recipe.title.preparation") %></h2>
         <div class="uk-card uk-card-default uk-card-body">
           <ul class="uk-list uk-list-bullet">
-              <% @recipe.steps.each do |step| %>
-                <li><%= step %></li>
-              <% end %>
+            <% @recipe.steps.each do |step| %>
+              <li><%= step %></li>
+            <% end %>
           </ul>
           <div class="uk-grid-small" uk-grid>
             <div class="uk-width-expand" uk-leader="fill: -"><%= t("recipe.title.preparation_time") %></div>
@@ -91,11 +97,11 @@
         <h2 class="title uk-margin-remove-bottom"><%= t("recipe.title.all_feedback") %></h2>
       </div>
       <div class="uk-padding uk-padding-remove-top uk-padding-remove-bottom">
-          <% if user_signed_in? %>
-            <a class="uk-button uk-button-default uk-button-small" href="#feedback" uk-toggle><%= t('recipe.action.give_feedback') %></a>
-          <% else %>
-            <a class="uk-link-muted" href="<%= new_user_session_path(:next => request.original_url) %>"><%= t('recipe.title.connect_to_give_feedback') %></a>
-          <% end %>
+        <% if user_signed_in? %>
+          <a class="uk-button uk-button-default uk-button-small" href="#feedback" uk-toggle><%= t('recipe.action.give_feedback') %></a>
+        <% else %>
+          <a class="uk-link-muted" href="<%= new_user_session_path(:next => request.original_url) %>"><%= t('recipe.title.connect_to_give_feedback') %></a>
+        <% end %>
       </div>
     </div>
     <% if @recipe_feedbacks.length < 1 %>
@@ -122,38 +128,49 @@
                       <li><%= recipe_feedback.updated_at.to_time.strftime('%d/%m/%Y %H:%M') %></li>
                   </ul>
               </div>
+            <% end %>
+            <div class="uk-width-expand">
+              <h4 class="uk-comment-title uk-margin-remove">
+                <a class="uk-link-reset" href="#"><%= recipe_feedback.user.email %></a></h4>
+              <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                <li><%= recipe_feedback.updated_at.to_time.strftime('%d/%m/%Y %H:%M') %></li>
+                <% if recipe_feedback.value %>
+                  <li><%= recipe_feedback.value %> / 5</li>
+                <% end %>
+              </ul>
+            </div>
           </header>
           <% if recipe_feedback.content %>
             <div class="uk-comment-body">
               <p><%= recipe_feedback.content %></p>
             </div>
           <% end %>
-      </article>
+        </article>
       <% end %>
     <% end %>
   </div>
 </div>
 
 <div id="feedback" class="uk-modal-container" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
-        <button class="uk-modal-close-outside" type="button" uk-close></button>
-        <h2 class="uk-modal-title landing-title"><%= t('recipe.title.give_feedback_for', recipe_title: @recipe.title) %></h2>
-        <%= simple_form_for :recipe_score,
-            url: recipe_feedback_path(:recipe_id => @recipe.id),
-            :method => :post,
-            defaults: {
-              wrapper: false,
-              label: false
-            } do |f| %>
-          <div class="uk-margin">
-            <%= f.input :value, :prompt => t("recipe.title.score"), :selected => (@feedback_user) ? @feedback_user.value : nil, collection: 0..5, as: :select, input_html: { class: 'uk-select' } %>
-          </div>
-          <div class="uk-margin">
-            <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content: nil, class: 'uk-textarea' %>
-          </div>
-          <div>
-            <%= f.button :submit, t("recipe.action.feedback") %>
-          </div>
-        <% end %>
-    </div>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-modal-dark">
+    <button class="uk-modal-close-outside" type="button" uk-close></button>
+    <h2 class="uk-modal-title landing-title"><%= t('recipe.title.give_feedback_for', recipe_title: @recipe.title) %></h2>
+    <%= simple_form_for :recipe_score,
+                        url: recipe_feedback_path(:recipe_id => @recipe.id),
+                        :method => :post,
+                        defaults: {
+                          wrapper: false,
+                          label: false
+                        } do |f| %>
+      <div class="uk-margin">
+        <%= f.input :value, :prompt => t("recipe.title.score"), :selected => (@feedback_user) ? @feedback_user.value : nil, collection: 0..5, as: :select, input_html: {class: 'uk-select'} %>
+      </div>
+      <div class="uk-margin">
+        <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content : nil, class: 'uk-textarea' %>
+      </div>
+      <div>
+        <%= f.button :submit, t("recipe.action.feedback") %>
+      </div>
+    <% end %>
+  </div>
 </div>

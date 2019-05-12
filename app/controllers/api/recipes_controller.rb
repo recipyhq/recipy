@@ -18,6 +18,27 @@ class Api::RecipesController < Api::BaseController
     render json: @recipes_hash
   end
 
+  def show_user_recipes
+    skip_policy_scope
+    begin
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json, status: :not_found
+      return
+    end
+    @recipes = Recipe.where(:user => user).includes(:recipe_utensils,
+                               :utensils,
+                               recipe_ingredients:
+                                 [
+                                   :ingredient,
+                                   :recipe_quantity => :quantity_type,
+                                 ]).all.with_attached_image
+
+    build_recipe_list_ingredients
+
+    render json: @recipes_hash
+  end
+
   def show
     find_recipe
     view = @recipe.view
@@ -67,6 +88,21 @@ class Api::RecipesController < Api::BaseController
     if !@recipe.nil?
       @recipe.destroy
       render :json => { Status: "OK", Cause: t("recipe.destroy.valid") }.as_json
+    end
+  end
+
+  def add_ingredients_to_list
+    @recipe = Recipe.find(params[:recipe_id])
+    if @recipe
+      shopping_list = ShoppingList.find_by_id(shopping_list_params[:shopping_lists])
+      shopping_list.ingredients << @recipe.ingredients
+      if shopping_list.save
+        render :json => { Status: "OK", Cause: "Les ingrédients ont été ajoutés à la liste"}.as_json
+      else
+        render :json => { Status: "KO", Cause: "Erreur lors de la sauvegarde de la liste de courses. Veuillez réessayer."}.as_json
+      end
+    else
+      render :json => { Status: "KO", Cause: "Paramètres incomplets"}.as_json
     end
   end
 
@@ -127,6 +163,7 @@ class Api::RecipesController < Api::BaseController
 
     @recipes.each do |recipe|
       build_recipe_ingredients(recipe)
+      @recipes_hash[i]['score'] = recipe.recipe_scores.average(:value)
       @recipes_hash[i]['ingredients'] = build_recipe_ingredients(recipe)
       @recipes_hash[i].delete('time')
       @recipes_hash[i].delete('step')
@@ -150,6 +187,10 @@ class Api::RecipesController < Api::BaseController
   def recipe_params
     params.require(:recipe).permit(:title, :score, :time, :description, :difficulty, :view,
                                    :image, :ingredient_ids => [], :utensil_ids => [], :steps => [])
+  end
+
+  def shopping_list_params
+    params.permit(:shopping_lists, :id)
   end
 end
 # rubocop:enable all

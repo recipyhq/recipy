@@ -1,2 +1,7 @@
-<h1>Producer::Home#index</h1>
-<p>Find me in app/views/producer/home/index.html.erb</p>
+
+<div class="uk-margin-small uk-text-center">
+  <h1>Liste des producers</h1>
+  <% @users.each do |user| %>
+    <li><%= link_to user.first_name + " " + user.last_name, show_producer_path(user.id)%></li>
+  <% end %>
+</div>

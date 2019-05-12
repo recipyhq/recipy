@@ -1,0 +1,127 @@
+<div class="cover">
+  <div class="uk-cover-container" uk-height-viewport style="background-color: #F7F7F7">
+    <img src="<%= asset_path 'producer/producer_background.jpg' %>" alt="cover" uk-cover>
+    <div class="uk-position-cover uk-flex uk-flex-top uk-flex-column uk-flex-middle cover-text-container">
+
+      <div class="uk-column-1-2 uk-flex uk-flex-middle">
+
+        <img src="<%= asset_path 'producer/user.png' %>" class="uk-img" height="400" width="400" alt="cover">
+        <table class="uk-table" >
+
+          <tbody>
+          <tr>
+            <td>
+              <h1><%= @user.last_name + " " + @user.first_name %></h1>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+          </tbody>
+
+
+        </table>
+      </div>
+
+      <div class="uk-container uk-padding uk-padding-top">
+        <h3> <%= @user.bio %></h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--<div style="height: 100%; background-color: #F7F7F7">-->
+<!--  <br>-->
+<!--  <div class=" uk-margin uk-margin-top uk-margin-large">-->
+<!--    <div class="uk-container uk-margin uk-margin-top">-->
+
+<!--      <div class="uk-grid uk-grid-">-->
+
+<!--        <div class="uk-width-expand@m">-->
+<!--          <div class="uk-card uk-card-default uk-card-body">-->
+<!--            <h1>Les points de collectes de Julien</h1>-->
+
+<!--            <h2>Cliquez sur un point de collecte pour accéder aux produits proposer par Julien</h2>-->
+<!--            <br>-->
+
+<!--            <button class="collapsible" onclick="displayCollectPoint()">Lille, 16 rue des boulanger </button>-->
+<!--            <div class="content">-->
+<!--              <table class="uk-table uk-table-divider">-->
+
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                  <th>Nom du produit</th>-->
+<!--                  <th>Quantité</th>-->
+<!--                  <th>Prix au kg</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                  <td>-->
+<!--                    <img src="<%#= asset_path 'producer/carrottes.jpg' %>" alt="cover" height="75" width="75">-->
+<!--                    Carrotte-->
+<!--                  </td>-->
+<!--                  <td>15kg</td>-->
+<!--                  <td>2€</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>-->
+<!--                    <img src="<%#= asset_path 'producer/pommedeterre.jpg' %>" alt="cover" height="75" width="75">-->
+<!--                    Pomme de terre-->
+<!--                  </td>-->
+<!--                  <td>10kg</td>-->
+<!--                  <td>2€</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--            </div>-->
+
+<!--            <br>-->
+
+<!--            <button class="collapsible" onclick="displayCollectPoint()">Lyon 55 rue des cavaliers </button>-->
+<!--            <div class="content">-->
+<!--              <table class="uk-table uk-table-divider">-->
+
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                  <th>Nom du produit</th>-->
+<!--                  <th>Quantité</th>-->
+<!--                  <th>Prix au kg</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                  <td>-->
+<!--                    <img src="<%#= asset_path 'producer/aubergine.jpg' %>" alt="cover" height="75" width="75">-->
+<!--                    Aubergine-->
+<!--                  </td>-->
+<!--                  <td>10kg</td>-->
+<!--                  <td>1€</td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                  <td>-->
+<!--                    <img src="<%#= asset_path 'producer/raisin.jpg' %>" alt="cover" height="75" width="75">-->
+<!--                    Raisin-->
+<!--                  </td>-->
+<!--                  <td>50kg</td>-->
+<!--                  <td>3€</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<%= render 'point_of_sales/index' %>
+
