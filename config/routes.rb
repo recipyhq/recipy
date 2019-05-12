@@ -88,7 +88,7 @@ Rails.application.routes.draw do
       post 'remove_recipe' => "notebooks#remove_recipe"
     end
     # need to be fix
-    post 'notebooks/user_notebook_id' => "notebooks#user_notebook_id"
+    post 'user_notebook_id' => "notebooks#user_notebook_id"
     get 'search' => "search#index"
 
     get 'my_recipes' => "recipes#show_user_recipes"
