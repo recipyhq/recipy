@@ -82,13 +82,14 @@ fr:
       welcome: "Devenir producteur"
  
   navbar:
-    producer: "Producteurs"
+    producers: "Producteurs"
     log_out: "Déconnexion"
     sign_in: "Se connecter"
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
     my_recipes: 'Mes recettes'
     courses: 'Listes de course'
+    point_of_sales: "Points de vente"
 
   footer:
     infos: "Informations"

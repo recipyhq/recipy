@@ -3,6 +3,8 @@
   <div class="uk-navbar-right">
     <ul class="uk-navbar-nav uk-visible@s">
       <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
+      <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
+      <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
       <% if user_signed_in? %>
         <li>
           <a href="#">
@@ -55,18 +57,30 @@
     <h3>Navigation</h3>
     <ul class="uk-nav uk-nav-default">
       <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
+      <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
+      <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
       <% if user_signed_in? %>
         <li class="uk-parent">
             <a href="#"><%= current_user.email %></a>
             <ul class="uk-nav-sub">
-              <li class="<%= current_page_class?(new_recipe_path) %>">
-                <%= link_to new_recipe_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: file-edit"></span><%= t('navbar.new_recipe') %>
+              <li class="<%= current_page_class?(my_recipes_path) %>">
+                <%= link_to my_recipes_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
+                <% end %>
+              </li>
+              <li class="<%= current_page_class?(shopping_lists_path) %>">
+                <%= link_to shopping_lists_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.courses') %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to my_recipes_path, method: :get do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('recipe.my_recipes.link') %>
                 <% end %>
               </li>
               <li>
