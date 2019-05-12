@@ -80,12 +80,15 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def user_notebook_id
-    notebooks = []
-    Notebook.all.each do |n|
-      if params[:user_id] == n.user_id
-        notebooks << n
-      end
+    skip_policy_scope
+    begin
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
+      return
     end
+    notebooks = Notebook.where(:user => user).all
     notebook_json = notebooks.as_json
     if notebooks.empty?
       render json: notebook_json, status: :not_found
