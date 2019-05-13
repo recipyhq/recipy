@@ -9,7 +9,7 @@ class PointOfSalesController < InheritedResources::Base
   end
 
   def show
-    find_pointofsale
+    find_pointofsale_ingredients
     # puts "----###############################"
     # puts @point_of_sale.openning_hours[1]["open"].strftime("%H:%M")
     # puts @point_of_sale.openning_hours[1]["close"].strftime("%H:%M")
@@ -136,6 +136,12 @@ class PointOfSalesController < InheritedResources::Base
   end
 
   private
+
+  def find_pointofsale_ingredients
+    @point_of_sale = PointOfSale.includes(
+      :products => [:ingredient, :price => :quantity_type]
+    ).find(params[:id])
+  end
 
   def find_pointofsale
     @point_of_sale = PointOfSale.find(params[:id])

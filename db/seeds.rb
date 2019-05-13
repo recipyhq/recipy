@@ -6,6 +6,14 @@ if Rails.env.development?
   end
 end
 
+ProductTag.create! do |product_tag|
+  product_tag.name = "Bio"
+end
+
+ProductTag.create! do |product_tag|
+  product_tag.name = "Sans Pesticide"
+end
+
 # Ingredient tags declaration
 
 IngredientTag.create! do |ingredient_tag|

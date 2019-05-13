@@ -10,5 +10,4 @@
 
 <%= render 'form_edit', point_of_sale: @point_of_sale %>
 
-<%= link_to 'Show', @point_of_sale %> |
-<%= link_to 'Back', point_of_sales_path %>
+<%= link_to t("recipe.action.back"), show_producer_path(current_user.id) %>
