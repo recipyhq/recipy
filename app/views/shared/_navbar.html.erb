@@ -28,11 +28,13 @@
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to my_recipes_path, method: :get do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('recipe.my_recipes.link') %>
-                <% end %>
-              </li>
+              <% if current_user.isProducer == true %>
+                <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
+                  <%= link_to show_producer_path(current_user.id) do %>
+                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%=  t('navbar.my_producer_profile') %>
+                  <% end %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
@@ -78,11 +80,13 @@
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to my_recipes_path, method: :get do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('recipe.my_recipes.link') %>
-                <% end %>
-              </li>
+              <% if current_user.isProducer == true %>
+                <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
+                  <%= link_to show_producer_path(current_user.id) do %>
+                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%=  t('navbar.my_producer_profile') %>
+                  <% end %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>

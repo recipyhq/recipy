@@ -2,17 +2,17 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :market_type %>
+  <%= f.input :name, label: t('point_of_sale.name') %>
+  <%= f.input :description, label: t('point_of_sale.desc') %>
+  <%= f.input :market_type, label: t('point_of_sale.market_type') %>
 
   <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
-    <%= a.input :entilted %>
-    <%= a.input :city %>
-    <%= a.input :zip %>
-    <%= a.input :state %>
-    <%= a.input :country %>
-    <%= a.input :phone %>
+    <%= a.input :entilted, label: t('point_of_sale.entilted') %>
+    <%= a.input :city, label: t('point_of_sale.city') %>
+    <%= a.input :zip, label: t('point_of_sale.zip') %>
+    <%= a.input :state, label: t('point_of_sale.state') %>
+    <%= a.input :country, label: t('point_of_sale.country') %>
+    <%= a.input :phone, label: t('point_of_sale.phone') %>
   <% end %>
 
   <div id="openning_hours" uk-grid>
@@ -25,7 +25,7 @@
 
   <div>
     <div class="uk-text-center">
-      <h3><%= link_to_add_association 'Add opening hour', f, :openning_hours, partial: 'opening_hours_fields', data: {
+      <h3><%= link_to_add_association t('point_of_sale.add_opening_hour'), f, :openning_hours, partial: 'opening_hours_fields', data: {
         association_insertion_node: '#openning_hours', association_insertion_method: :append
       }, class: "uk-link" %>
       </h3>
@@ -33,6 +33,6 @@
   </div>
 
   <div class="uk-margin-medium">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('point_of_sale.validate'), class: "uk-button uk-button-primary" %>
   </div>
 <% end %>

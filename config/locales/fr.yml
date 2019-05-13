@@ -83,6 +83,7 @@ fr:
  
   navbar:
     producers: "Producteurs"
+    my_producer_profile: "Mon profil producteur"
     log_out: "Déconnexion"
     sign_in: "Se connecter"
     sign_up: "M'inscrire"
@@ -276,10 +277,32 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
+  
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"
-    label: "Point de vente(s)"
+    title: "Point de vente(s)"
+    name: "Nom"
+    desc: "Description"
+    entilted: "Adresse"
+    city: "Ville"
+    zip: "Code postal"
+    state: "Région"
+    country: "Pays"
+    phone: "Numéro de téléphone"
+    day: "Jour"
+    open_hour: "Horaire d'ouverture"
+    close_hour: "Horaire de fermeture"
+    market_type: "Type de point de vente"
+    remove: "Retirer"
+    add_opening_hour: "Ajouter horaire d'ouverture"
+    add: "Ajouter un point de vente"
+    new: "Nouveau point de vente"
+    back: "Retour"
+    show: "Voir le point de vente"
+    edit: "Édition du point de vente"
+    validate: "Valider"
+
   notebook:
     edit:
       invalid: "Le carnet de recette n'est pas conforme"
