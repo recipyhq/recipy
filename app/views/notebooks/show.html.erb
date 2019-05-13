@@ -1,92 +1,51 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-<p id="notice"><%= notice %></p>
-<div>
-  <br>
-  <%= link_to 'Menu des carnets', notebooks_path, class: "uk-padding-small uk-button uk-button-text" %>
-</div>
-<div class="uk-background-fixed uk-background-center-center uk-background-cover" style="background-image: url(https://images.unsplash.com/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=1357&q=80);">
-  <div class="uk-card uk-card-default uk-width-1-1@m uk-card-secondary">
-    <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-expand uk-text-center">
-          <h3 class="uk-card-title uk-margin-remove-bottom"> <%= @notebook.title %>
-            <td><%= link_to edit_notebook_path(@notebook) do %></td>
-                <i class="far fa-edit"> </i>
-              <% end %>
-              </h3>
-        </div>
-      </div>
-      <div class="uk-width-expand uk-text-center"><br>
-        <%= @notebook.description %>
-      </div>
-    </div>
-  </div>
-  <br>
+<div class="uk-child-width-1-1@m" uk-grid>
   <div>
-    <div class="uk-child-width-1-2@m uk-child-width-1-3@m uk-text-center uk-padding-small" uk-grid="masonry: true">
-      <% @notebook.recipes.each do |recipe| %>
-        <div>
-          <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
-            <div class="uk-card-header">
-              <%= link_to recipe.title, recipe, :class => "uk-button uk-button-text " %>
+    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@notebook.image.variant resize: '1000x1000') %>;)"></div>
+  </div>
+</div>
+<div class="uk-section uk-section-secondary uk-light">
+    <div class="uk-container">
+        <h2 class="title"><%= @notebook.title %></h2>
+        <p><%= @notebook.description %></p>
+    </div>
+</div>
+
+<div class="uk-container uk-padding">
+  <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>
+    <% @notebook.recipes.each do |recipe| %>
+      <div>
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+                <% if recipe.image.attached? %>
+                    <%= image_tag recipe.image, :crop => :fill %>
+                <% else %>
+                    <%= image_tag "https://picsum.photos/400/200" %>
+                <% end %>
             </div>
             <div class="uk-card-body">
-              <% if Recipe.find_by_id(recipe.id).image.attached? %>
-                <%= image_tag(Recipe.find_by_id(recipe.id).image.variant(resize: '200x200')) %>
-              <% else %>
-                <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
-              <% end %>
+                <h3 class="uk-card-title"><%= recipe.title %></h3>
+                <div class="star-ratings star-dark">
+                    <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <p class="uk-text-truncate"><%= recipe.description %></p>
             </div>
-            <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), method: :post do %> </td>
-                <i class="far fa-trash-alt"></i>
-              <% end %>
-              </div>
+            <div class="uk-card-footer">
+                <%= link_to t("recipe.action.show"), recipe, class: "uk-button uk-button-text" %>
+            </div>
         </div>
-      <% end %>
-      <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ">
-          <div class="uk-margin-top uk-text-center">
-            <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
-              <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
-              <%= f.input :recipes, collection: Recipe.all, as: :select %>
-              <%= f.button :submit, :value => "Ajouter cette recette" %>
-            <% end %>
-            <br>
-          </div>
+      </div>
+    <% end %>
+    <div>
+      <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ">
+        <div class="uk-card-body">
+          <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
+            <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
+            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.all, as: :select %>
+            <%= f.button :submit, :value => "Ajouter cette recette" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-<!--  beside is a work around for the bugged footer-->
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </div>

@@ -1,24 +1,32 @@
-<div class="uk-section uk-section-small uk-section-muted uk-section-footer app_footer">
-  <div class="uk-flex-middle uk-grid uk-text-center" uk-grid="">
-    <div class="uk-width-expand@s uk-first-column">
-      <h3> A propos de Recipy</h3>
-      <ul class="uk-list">
-        <li><%= link_to 'Le concept', '#'%></li>
-        <li><%= link_to 'A propos de l\'équipe', '#'%></li>
-        <li><%= link_to 'Besoin d\'aide ?', '#'%></li>
-      </ul>
-    </div>
-    <div class="uk-width-expand@s">
-      <h3> Une question ?</h3>
-      <ul class="uk-list">
-        <li><%= link_to 'Vous êtes producteur ? ', '#'%></li>
-        <li><%= link_to 'Question fréquentes', '#'%></li>
-        <li><%= link_to 'Presse', '#'%></li>
-      </ul>
-
-    </div>
-    <div class="uk-width-expand@s">
-      <a href="mailto:recipyhq@gmail.com" class="uk-text-center uk-h4 uk-scrollspy-inview uk-animation-slide-top-small" uk-scrollspy-class>recipyhq@gmail.com</a>
+<!--  Footer-->
+<div class="uk-section uk-section-xsmall uk-section-muted uk-section-footer landing-footer">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-grid uk-text-center " uk-grid="">
+      <div class="uk-width-expand@s uk-first-column">
+        <img data-src="<%= asset_path 'landing/logo.png' %>" alt="iphone" height="150" width="150" uk-img>
+        <ul class="uk-list">
+          <li><span uk-icon="icon: home"></span> 5-9 rue du palais Rihour, 59 800 Lille, France</li>
+        </ul>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between ">
+        <p class="uk-text-center">“<%= t('footer.quote') %>”</p>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between">
+        <h1><%= t('footer.infos') %></h1>
+        <ul class="uk-list">
+          <li><%= link_to t('footer.legal_notice'), legal_notice_path	%></li>
+          <li><%= link_to t('footer.privacy_policy'), privacy_policy_path	 %></li>
+          <li><%= mail_to "recipyhq@gmail.com", t('footer.contact_us') %></li>
+        </ul>
+      </div>
+      <div class="uk-width-expand@s uk-flex-between">
+        <h1><%= t('footer.join_us') %></h1>
+        <ul class="uk-list">
+          <li><a href="https://www.facebook.com/recipyapp" target="blank"><span uk-icon="icon: facebook"></span>   Facebook</a></li>
+          <li><a href="https://twitter.com/recipyapp" target="blank"><span uk-icon="icon: twitter"></span>   Twitter</a></li>
+          <li><a href="https://www.instagram.com/recipy_hq" target="blank"><span uk-icon="icon: instagram"></span>   Instagram</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

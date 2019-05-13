@@ -1,17 +1,7 @@
-<div class="uk-container">
-<h2 class="uk-text-center"/>
+<div class="uk-container uk-padding">
+  <h2 class="title"><%= t('point_of_sale.new') %></h2>
 
-    <% if flash[:danger] %>
-      <div class="uk-alert-danger" uk-alert>
-        <a class="uk-alert-close" uk-close></a>
-        <p><%= flash[:danger] %></p>
-      </div>
-    <%end %>
+  <%= render 'form', point_of_sale: @point_of_sale %>
 
-      <h1>New Point Of Sale</h1>
-
-    <%= render 'form', point_of_sale: @point_of_sale %>
-
-    <%= link_to 'Back', point_of_sales_path %>
-
+  <%= link_to t('point_of_sale.back'), point_of_sales_path %>
 </div>

@@ -3,17 +3,17 @@
     <h3 class="uk-card-title">Hours</h3>
     <div class=" uk-grid">
       <div class="uk-width-1-1">
-        <%= f.input :day, label: 'Day' %>
+        <%= f.input :day, label: t('point_of_sale.day') %>
       </div>
       <div class="uk-width-1-2">
-        <%= f.input :open, label: 'Open hour' %>
+        <%= f.input :open, label: t('point_of_sale.open_hour') %>
       </div>
       <div class="uk-width-1-2">
-        <%= f.input :close, label: 'Close hour' %>
+        <%= f.input :close, label: t('point_of_sale.close_hour') %>
       </div>
     </div>
     <div class="uk-text-center uk-margin-medium-top">
-      <h4 class="uk-margin-remove"><%= link_to_remove_association "Remove", f, class: "uk-link" %></h4>
+      <h4 class="uk-margin-remove"><%= link_to_remove_association t("point_of_sale.remove"), f, class: "uk-link" %></h4>
     </div>
   </div>
 </div>

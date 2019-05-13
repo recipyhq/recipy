@@ -1,76 +1,42 @@
-<div class="uk-container uk-padding uk-padding-top">
-
-  <div class="">
-
-    <h2 class="uk-text-bold uk-text-center recipy-title">
+<div class="uk-container">
+  <div class="uk-padding">
+    <h2 class="uk-text-bold uk-text-left title">
       <%= t("views.edit.title", resource: resource_name.to_s.humanize) %>
+      <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete, class: "uk-text-small" %>
     </h2>
-
-    <div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= f.error_notification %>
-
-        <div class="uk-padding-small">
-
-          <div class="uk-padding-small">
-            <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
-          </div>
-
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></p>
-          <% end %>
-
-          <div class="uk-padding-small">
-            <% if resource.avatar.attached? && resource.avatar.blob.content_type.starts_with?('image/')%>
-              <%= image_tag resource.avatar.variant(resize: '100x100') %>
-            <% else %>
-              <p><%= t('activerecord.errors.models.user.attributes.avatar.not_found') %></p>
-            <% end %>
-            <%= f.input :avatar %>
-          </div>
-
-
-          <div class="uk-padding-small">
-            <%= f.input :password, autocomplete: "off", placeholder: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false, input_html: {class: 'uk-input'} %>
-          </div>
-
-          <div class="uk-padding-small">
-            <%= f.input :password_confirmation, required: false, input_html: {class: 'uk-input'} %>
-          </div>
-
-          <div class="uk-padding-small">
-            <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true, input_html: {class: 'uk-input'} %>
-          </div>
-        </div>
-
-        <div class="uk-padding-small uk-text-center">
-          <%= f.button :submit, t('.update'), class: 'uk-width-1-1 button-sign-in' %>
-        </div>
+        <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></p>
+        <% end %>
+        <% if resource.avatar.attached? && resource.avatar.blob.content_type.starts_with?('image/')%>
+          <%= image_tag resource.avatar.variant(resize: '100x100') %>
+        <% else %>
+          <p><%= t('avatar.not_found') %></p>
+        <% end %>
+        <%= f.input :avatar %>
+        <%= f.input :password, autocomplete: "off", placeholder: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false, input_html: {class: 'uk-input'} %>
+        <%= f.input :password_confirmation, required: false, input_html: {class: 'uk-input'} %>
+        <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true, input_html: {class: 'uk-input'} %>
+        <%= f.button :submit, t('.update'), class: 'uk-width-1-1' %>
       <% end %>
-    </div>
 
     <% if current_user.isProducer == true %>
       <div class="uk-margin-small uk-text-center">
-        <p>Félicitations vous êtes un producteur!</p>
+        <p>Vous êtes un producteur !</p>
       </div>
-    <% else %>>
+    <% else %>
       <div class="uk-margin-small uk-text-center">
-        <%= link_to createproducer_path, style:"color:#FFFFFF;background-color:orange", class: 'uk-width-1-1 button-sign-in' do %>
-          Devenir producteur
+        <%= link_to createproducer_path, class: 'uk-button uk-button-primary uk-width-1-1' do %>
+          Demander à être producteur
         <% end %>
       </div>
     <% end %>
 
 
     <div class="uk-text-center">
-      <h3 class="uk-text-lead uk-margin-remove-bottom">
-        <%= t('.cancel_my_account') %>
-      </h3>
-
-      <p class="uk-margin-remove-top">
-        <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete %>
-      </p>
-
+      <%= link_to t('devise.shared.links.back'), :back, class: 'uk-button uk-button-default uk-margin-top uk-width-1-1' %>
     </div>
   </div>
 </div>

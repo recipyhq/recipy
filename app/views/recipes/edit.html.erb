@@ -2,15 +2,6 @@
   <div class="">
     <h2 class="uk-text-center"><%= t("recipe.title.edit") %></h2>
 
-    <% if flash[:danger] %>
-      <% flash.each do |key, v  alue| %>
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-            <div class="alert alert-<%= key %>"><%= value %></div>
-        </div>
-      <% end %>
-    <% end %>
-
     <% if @recipe.user != current_user %>
       <% Bullet.enable = false %>
       <div class="uk-position-bottom-center uk-position-relative">

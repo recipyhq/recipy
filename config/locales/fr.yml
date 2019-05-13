@@ -79,12 +79,30 @@ fr:
 
   producer:
     new:
-      Welcome: "Hop Hop Hop! Pas si vite, avant de devenir un producteur, nous avons besoin de collecter quelques informations sur vous"
+      welcome: "Devenir producteur"
+ 
   navbar:
-    producer: "Producteurs"
+    producers: "Producteurs"
+    my_producer_profile: "Mon profil producteur"
     log_out: "Déconnexion"
-    sign_in: "Me connecter"
+    sign_in: "Se connecter"
     sign_up: "M'inscrire"
+    edit_user: 'Modifier mon profil'
+    my_recipes: 'Mes recettes'
+    courses: 'Listes de course'
+    point_of_sales: "Points de vente"
+    notebooks: "Carnets de recette"
+
+  footer:
+    infos: "Informations"
+    join_us: "Rejoignez nous"
+    contact_us: "Nous contacter"
+    legal_notice: "Mentions légales"
+    privacy_policy: "Politique de confidentitalité"
+    quote: "Ensemble, gaspillons moins. Mangeons mieux."
+
+  avatar:
+    not_found: "Aucun avatar"
     my_profil: "Mon profil"
     my_user_profil: "Mon profil utilisateur"
     my_producer_profil: "Mon profil producteur"
@@ -205,7 +223,8 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
-        invalid_user_id: "Utilisateur non trouvé"
+      name: "Recette"
+      invalid_user_id: "Utilisateur non trouvé"
       my_recipes:
         link: "Mes recettes"
         title: "Toutes mes recettes"
@@ -222,9 +241,13 @@ fr:
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
+    creation:
+      valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
+      invalid: "Votre n'est pas valide."
     label: "Ingrédient"
 
   search:
+    title: "Rechercher"
     read_more: "Lire la suite"
     search: "Rechercher..."
     search_btn: "Rechercher"
@@ -239,6 +262,7 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+
   products:
     missing_price_element: "Il manque un élément dans le prix"
     created: "Création de votre produit réussie !"
@@ -255,11 +279,57 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
+  
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"
-    label: "Point de vente(s)"
+    title: "Point de vente(s)"
+    name: "Nom"
+    desc: "Description"
+    entilted: "Adresse"
+    city: "Ville"
+    zip: "Code postal"
+    state: "Région"
+    country: "Pays"
+    phone: "Numéro de téléphone"
+    day: "Jour"
+    hours: "Horaires"
+    open_hour: "Horaire d'ouverture"
+    close_hour: "Horaire de fermeture"
+    market_type: "Type de point de vente"
+    remove: "Retirer"
+    add_opening_hour: "Ajouter horaire d'ouverture"
+    add: "Ajouter un point de vente"
+    new: "Nouveau point de vente"
+    back: "Retour"
+    show: "Voir le point de vente"
+    edit: "Éditer le point de vente"
+    delete: "Supprimer le point de vente"
+    validate: "Valider"
+
   notebook:
     edit:
       invalid: "Le carnet de recette n'est pas conforme"
       invalid_image: "L'image est invalide"
+
+  feedback:
+    notification: "Votre avis a bien été pris en compte."
+
+  notebook:
+    title: 'Mes carnets de recette'
+    add: 'Créer un carnet de recette'
+    delete: 'Supprimer'
+    edit: 'Éditer'
+    edit_name: 'Édition du carnet "%{name}"'
+    open: 'Consulter'
+    confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
+    back: 'Retourner à la liste des carnets de recette'
+    form:
+      name: "Nom du carnet de recettes"
+      desc: "Description du style de carnet que vous réalisez"
+      img: "Image illustrant votre carnet"
+
+  shopping_list:
+    title: "Listes de course"
+    go_back: 'Revenir à mes listes'
+    new: "Créer une liste de course"

@@ -1,4 +1,3 @@
-<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css' %>
 <%= stylesheet_link_tag 'recipe_form' %>
 
 <%= simple_form_for(Recipe.new, html: {
@@ -44,6 +43,7 @@
       <%= f.input :person, label: t("recipe.title.nb_person") %>
     </div>
   </div>
+
   <div class="uk-margin-medium">
     <div class="uk-text-center">
       <%= f.button :submit, t("recipe.creation.confirm") %>
@@ -51,22 +51,7 @@
   </div>
 <% end %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
 <script>
-  new SlimSelect({
-    select: '#utensils-select',
-    searchingText: 'Recherche...',
-    searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
-    searchPlaceholder: 'Rechercher un ustensile',
-    placeholder: 'Ustensiles'
-  });
-  new SlimSelect({
-    select: '#recipe-category-select',
-    searchingText: 'Recherche...',
-    searchText: 'Désolé il n\'y a pas la catégorie recherché dans la liste.',
-    searchPlaceholder: 'Rechercher une catégorie',
-    placeholder: 'Catégories'
-  });
   document.getElementById('steps_textarea').value = '';
 
   const changeRangeValue = function () {
@@ -74,6 +59,5 @@
     console.log(document.getElementById('recipe_difficulty').labels);
     document.getElementById('recipe_difficulty').labels[0].innerHTML = "<abbr title='required'>*</abbr> <%= "#{t("recipe.title.difficulty")}: "%>" + difValue + '/10';
   };
-
 </script>
 

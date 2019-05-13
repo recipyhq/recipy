@@ -2,11 +2,9 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, label: "Titre", :input_html => { :value => params[:name] } %>
+  <%= f.input :name, label: "Titre", :input_html => { :value => @shopping_list.name } %>
 
-  <%#= f.input :ingredient_ids, collection: Ingredient.all, as: :select %>
-
-  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <%= f.input :ingredient_ids, :label => false, :selected => @shopping_list.ingredient_ids, collection: Ingredient.where(:confirmed => true).all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredients-select", multiple: true } , wrapper_class: "", defaults: { input_class: "" } %>
 
   <div class="uk-margin-medium">
     <div class="uk-text-center">

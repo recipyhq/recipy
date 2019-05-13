@@ -23,14 +23,20 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' unless @disable_nav %>
-    <%= yield %>
-    <%= render 'shared/footer' unless @disable_footer %>
+    <%= render 'shared/notification' %>
+    <div class="app">
+      <%= render 'shared/navbar' unless @disable_nav %>
+      <%= yield %>
+    </div>
+    <div class="footer">
+      <%= render 'shared/footer' unless @disable_footer %>
+    </div>
   </body>
 </html>

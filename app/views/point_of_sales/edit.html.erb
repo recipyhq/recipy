@@ -1,13 +1,9 @@
-<% if flash[:danger] %>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p><%= flash[:danger] %></p>
-  </div>
-<%end %>
-
-<h1>Editing Point Of Sale</h1>
+<div class="uk-container uk-padding">
+  <h2 class="title"><%= t("point_of_sale.edit") %></h2>
 
 
-<%= render 'form_edit', point_of_sale: @point_of_sale %>
+  <%= render 'form_edit', point_of_sale: @point_of_sale %>
 
-<%= link_to t("recipe.action.back"), show_producer_path(current_user.id) %>
+  <%= link_to t('point_of_sale.show'), @point_of_sale %> |
+  <%= link_to t('point_of_sale.back'), point_of_sales_path %>
+</div>

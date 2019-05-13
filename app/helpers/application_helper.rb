@@ -13,5 +13,10 @@ module ApplicationHelper
       nil
     end
   end
+
+  def current_page_class?(test_path)
+    return 'uk-active' if current_page?(test_path)
+    ''
+  end
 end
 # rubocop:enable all

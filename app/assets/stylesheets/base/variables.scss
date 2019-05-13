@@ -11,3 +11,13 @@ $recipy-tertiary-color-medium: #424242;
 ** navbar
 */
 $navbar-logo-height: 45px;
+
+/*
+** Notification
+*/
+$recipy-notification-content: #474747;
+$recipy-notification-default: darken($color: #FBFBFB, $amount: 50%);
+$recipy-notification-alert: #ffbc51;
+$recipy-notification-notice: #aae0de;
+$recipy-notification-success: #62e55e;
+$recipy-notification-error: #e55e5e;

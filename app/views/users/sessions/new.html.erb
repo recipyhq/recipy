@@ -1,34 +1,24 @@
-<div class="uk-cover-container" uk-height-viewport>
-  <img src="<%= asset_path 'registration/background_food.jpg' %>" alt="cover" uk-cover>
-  <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container">
-    <div class="uk-align-center uk-flex uk-flex-center">
-      <div class="uk-width-large">
-        <h2 class="uk-text-center"><%= t('.sign_in') %></h2>
+<div class="uk-container uk-padding">
+  <div class="uk-width-large uk-align-center">
+    <h2 class="uk-text-center title"><%= t('.sign_in') %></h2>
 
-        <div class="uk-container">
+    <%= render 'devise/shared/omniauth' %>
 
-          <div class="">
-            <%= render 'devise/shared/omniauth' %>
-          </div>
+    <hr class="uk-divider-icon">
 
-          <hr class="uk-divider-icon">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name, :next => params[:next] || nil)) do |f| %>
+      <%= f.error_notification %>
 
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= f.error_notification %>
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :password, required: true %>
 
-            <%= f.input :email, required: true, autofocus: true %>
-            <%= f.input :password, required: true %>
+      <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
 
-            <%= f.input :remember_me, input_html: {class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
-
-            <div class="uk-margin-medium">
-              <%= f.button :submit, t('.sign_in'), class: 'uk-width-1-1 button-sign-in' %>
-            </div>
-          <% end %>
-
-          <%= render 'devise/shared/links' %>
-        </div>
+      <div class="uk-margin-medium">
+        <%= f.button :submit, t('.sign_in'), class: 'uk-width-1-1' %>
       </div>
-    </div>
+    <% end %>
+
+    <%= render 'devise/shared/links' %>
   </div>
 </div>

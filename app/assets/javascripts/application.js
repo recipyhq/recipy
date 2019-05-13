@@ -18,3 +18,14 @@
 //= require uikit/dist/js/uikit
 //= require uikit/dist/js/uikit-icons
 //= require_tree .
+
+$(document).ready(() => {
+  $('div#notification').each((ind, el) => {
+    console.log(el, ind);
+    setTimeout(() => {
+      $(el).fadeOut('slow', () => {
+        $(this).remove();
+      });
+    }, 3000 + 1000 * ind);
+  });
+});

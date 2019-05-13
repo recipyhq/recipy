@@ -55,22 +55,6 @@
     <p class="uk-text-saml">Inscrivez vous pour recevoir les informations sur l'évolution du projet.</p>
   </div>
   <div class="uk-container">
-
-    <% if flash[:success]  %>
-      <div class="uk-alert-success" uk-alert>
-        <a class="uk-alert-close" uk-close></a>
-        <p><%= flash[:success] %></p>
-      </div>
-    <% end %>
-
-
-    <% if flash[:danger] %>
-        <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%= flash[:danger] %></p>
-        </div>
-    <% end %>
-
     <div class="uk-container uk-container-large">
       <%= simple_form_for Prospect.new,  url: landing_pages_path(Prospect.new), defaults: { input_html: { class: 'uk-input' }, label:false } do |f| %>
         <div class="uk-margin">

@@ -1,93 +1,84 @@
-<% if flash[:danger] %>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p><%= flash[:danger] %></p>
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <h2 class="title">
+      <%= @point_of_sale.name %>
+    </h2>
+    <p><%= @point_of_sale.description %></p>
+    <dl>
+      <dt><%= t('point_of_sale.market_type') %></dt>
+      <dd><%= @point_of_sale.market_type %></dd>
+    </dl>
   </div>
-<% end %>
+</div>
+<div class="uk-section uk-section-secondary uk-light">
+  <div class="uk-container">
+    <h3 class="title"><%= t('point_of_sale.entilted') %></h3>
+    <dl>
+      <dd><%= @point_of_sale.address[:entilted] %></dd>
+      <dd><%= @point_of_sale.address[:city] %></dd>
+      <dd><%= @point_of_sale.address[:zip] %></dd>
+      <dd><%= @point_of_sale.address[:state] %></dd>
+      <dd><%= @point_of_sale.address[:country] %></dd>
+      <dd><%= @point_of_sale.address[:phone] %></dd>
+    </dl>
+  </div>
+</div>
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <h3 class="title"><%= t('point_of_sale.hours') %></h3>
+    <table class="uk-table uk-table-divided">
+      <thead>
+        <tr>
+          <th><%= t('point_of_sale.day') %></th>
+          <th><%= t('point_of_sale.open_hour') %></th>
+          <th><%= t('point_of_sale.close_hour') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if !@point_of_sale.openning_hours.nil? %>
+          <% @point_of_sale.openning_hours.each do |hours| %>
+            <tr>
+              <td><%= hours["day"] %></td>
+              <td><%= hours["open"].strftime("%H:%M") %></td>
+              <td><%= hours["close"].strftime("%H:%M") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <h3 class="title">Produits</h3>
+    <table class="uk-table uk-table-divided">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if !@point_of_sale.products.nil? %>
+          <% @point_of_sale.products.each do |product| %>
+            <tr>
+              <td><%= product.ingredient.name %></td>
+              <td><%= product.price.value.to_s + "€ / " + product.price.quantity_type.name %></td>
+              <% if current_user && current_user.id == @point_of_sale.user.id %>
+                <td><%= link_to "Éditer le produit", edit_product_path(product) %></td>
+                <td><%= link_to "Supprimer le produit", product, method: :delete, data: { confirm: 'Êtes vous sûr ?' } %></td>
 
-<p id="notice"><%= notice %></p>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <% if current_user && current_user.id == @point_of_sale.user.id %>
+      <%= link_to "Ajouter un produit", new_product_path, class: "uk-button uk-button-default" %><br><br>
+    <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @point_of_sale.name %>
-</p>
+    <% if current_user && current_user.id == @point_of_sale.user.id %>
+      <%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(@point_of_sale) %> | 
+    <% end %>
+    <%= link_to t('point_of_sale.back'), point_of_sales_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @point_of_sale.description %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @point_of_sale.market_type %>
-</p>
-
-<p>
-  <strong>Address</strong>
-  <strong>entilted</strong>
-  <%= @point_of_sale.address[:entilted] %>
-</p>
-
-<p>
-  <strong>city</strong>
-  <%= @point_of_sale.address[:city] %>
-</p>
-
-<p>
-  <strong>zip</strong>
-  <%= @point_of_sale.address[:zip] %>
-</p>
-
-<p>
-  <strong>state</strong>
-  <%= @point_of_sale.address[:state] %>
-</p>
-
-<p>
-  <strong>country</strong>
-  <%= @point_of_sale.address[:country] %>
-</p>
-
-<p>
-  <strong>phone</strong>
-  <%= @point_of_sale.address[:phone] %>
-</p>
-
-<strong>Hours</strong>
-<% if !@point_of_sale.openning_hours.nil? %>
-  <% @point_of_sale.openning_hours.each do |hours| %>
-    <p>
-      <strong>day</strong>
-      <%= hours["day"] %>
-    </p>
-
-    <p>
-      <strong>open</strong>
-      <%= hours["open"].strftime("%H:%M") %>
-    </p>
-
-    <p>
-      <strong>close</strong>
-      <%= hours["close"].strftime("%H:%M") %>
-    </p>
-  <% end %>
-<% end %>
-
-<strong>Product</strong>
-<% if !@point_of_sale.products.nil? %>
-  <% @point_of_sale.products.each do |product| %>
-    <p>
-      <strong>Name</strong>
-      <%= product.ingredient.name %>
-    </p>
-
-    <p>
-      <strong>Price</strong>
-      <%= product.price.value.to_s + "€ / " + product.price.quantity_type.name%>
-    </p>
-  <% end %>
-<% end %>
-
-
-<%= link_to 'Edit', edit_point_of_sale_path(@point_of_sale) %> |
-<%= link_to 'Back', show_producer_path %>

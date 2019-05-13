@@ -1,17 +1,18 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<div class="uk-background-fixed uk-background-center-center uk-background-cover" style="background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80);">
-  <br>
-  <% if user_signed_in? %>
-  <div class="uk-padding-small">
-  <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
+<div class="uk-container uk-padding">
+  <h2 class="title"><%= t('notebook.title') %></h2>
+  <div class="uk-margin-bottom">
+    <%= link_to t('notebook.add'), new_notebook_path, :class => 'uk-button uk-button-primary uk-width-1' %>
+  </div>
+  <div class="uk-child-width-1-1@s uk-child-width-1-3@m" uk-grid="masonry: true" name="gridglobal">
     <% @notebooks.each do |notebook| %>
       <div>
         <div class="uk-card uk-card-default uk-width-1-1@m">
           <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
               <div class="uk-width-expand uk-text-center">
-                <h3 class="uk-card-title uk-margin-remove-bottom"><%= link_to notebook.title, notebook, :class => "uk-button uk-button-text "%></h3>
+                <h3 class="uk-card-title uk-margin-remove-bottom"><%= notebook.title %></h3>
               </div>
             </div>
           </div>
@@ -29,40 +30,12 @@
             </div>
           </div>
           <div class="uk-card-footer">
-            <div class="uk-position-bottom-right">
-              <td><%= link_to edit_notebook_path(notebook), :style => "color:black" do %></td>
-                  <i class="fa-2x far fa-edit"> </i>
-                <% end %>
-                <td><%= link_to notebook, method: :delete, :style => "color:black", data: { confirm: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?' } do %></td>
-                    <i class="fa-2x far fa-trash-alt"> </i>
-                  <% end %>
-                  </div>
+            <%= link_to t('notebook.open'), notebook, class: 'uk-button uk-button-text' %>
+            <%= link_to t('notebook.edit'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
+            <%= link_to t('notebook.delete'), notebook, method: :delete, class: "uk-button uk-button-text", data: { confirm: t('notebook.confirm_delete') } %>
           </div>
         </div>
       </div>
     <% end %>
-    <div>
-      <div class="uk-padding-large">
-        <%= link_to new_notebook_path do %>
-          <i class="fa-8x far fa-plus-square"> </i>
-        <% end %>
-      </div>
-    </div>
   </div>
-  </div>
-    <% end %>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </div>

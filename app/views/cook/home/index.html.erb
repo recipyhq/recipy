@@ -28,34 +28,29 @@
     <div class="uk-section uk-section-default">
       <div class="uk-container">
         <h2 class="title">Nos recettes les plus populaires</h2>
-        <div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@m uk-child-width-1-2@s uk-grid-match" uk-grid>
+        <div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid>
           <% @recipes.each do |recipe| %>
             <div>
-              <div class="uk-card uk-card-default">
-                <div class="uk-card-media-top uk-text-center uk-display-block ">
-                  <div class="uk-margin-top uk-align-center">
-                    <% if recipe.image.attached? %>
-                      <%= puts "********" %>
-                      <%= puts recipe.image&.variant(resize: '300x400') %>
-                      <%= puts "********" %>
-                      <%= image_tag(recipe.image.variant(resize: '300x400')) %>
-                    <% else %>
-                      <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
-                    <% end %>
-                  </div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <% if recipe.image.attached? %>
+                            <%= image_tag recipe.image, :crop => :fill %>
+                        <% else %>
+                            <%= image_tag "https://picsum.photos/400/200" %>
+                        <% end %>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title"><%= recipe.title %></h3>
+                        <div class="star-ratings star-dark">
+                            <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
+                    </div>
+                    <div class="uk-card-footer">
+                        <%= link_to t("search.read_more"), recipe, class: "uk-button uk-button-text" %>
+                    </div>
                 </div>
-                <div class="uk-card-body">
-                  <h3 class="uk-card-title">
-                    <%= link_to recipe.title, recipe %>
-                    </br>
-                    <span class="uk-label uk-label-<%= ("success" if recipe.score > 7) || ("warning" if recipe.score > 5) || "danger" %>"><%= recipe.score %>
-                      / 5</span>
-                  </h3>
-                  <div class="uk-child-width-5-2@s">
-                    <p class="uk-text-truncate"> <%= recipe.description %></p>
-                  </div>
-                </div>
-              </div>
             </div>
           <% end %>
         </div>

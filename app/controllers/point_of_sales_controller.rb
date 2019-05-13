@@ -5,7 +5,7 @@ class PointOfSalesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @point_of_sales = PointOfSale.where(user: current_user).where.not(user: nil).all
+    @point_of_sales = PointOfSale.where.not(user: nil).all
   end
 
   def show

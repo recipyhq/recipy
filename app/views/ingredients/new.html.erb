@@ -1,11 +1,8 @@
-<div class="uk-section uk-section-secondary">
-    <div class="uk-container">
-      <h1><%= t("ingredient.title.new_ingredient") %></h1>
-      <p>Vous pouvez nous demander à ajouter un ingrédient, celui-ci sera analysé par l'équipe dans les 48h et sera validé si il est correct et qu'il n'existe pas déjà.</p>
-    </div>
-</div>
-<div class="uk-section">
-    <div class="uk-container">
-      <%= render 'form', ingredient: @ingredient %>
-    </div>
+<div class="uk-container uk-padding">
+  <h2 class="title"><%= t("ingredient.title.new_ingredient") %></h2>
+  <p>Vous pouvez nous demander à ajouter un ingrédient, celui-ci sera analysé par l'équipe dans les 48h et sera validé si il est correct et qu'il n'existe pas déjà.</p>
+  <div class="uk-container">
+    <%= render 'form', ingredient: @ingredient %>
+    <%= link_to t("recipe.action.back"), new_recipe_path %>
+  </div>
 </div>

@@ -1,0 +1,29 @@
+<div class="uk-container uk-padding">
+
+    <h2 class="title"><%= t('point_of_sale.title') %></h2>
+  <div class="uk-flex uk-flex-center">
+
+<table class="uk-table uk-table-divider">
+  <thead>
+    <tr>
+      <th><%= t('point_of_sale.name') %></th>
+      <th><%= t('point_of_sale.desc') %></th>
+      <th><%= t('point_of_sale.market_type') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @point_of_sales.each do |point_of_sale| %>
+      <tr>
+        <td><%= point_of_sale.name %></td>
+        <td><%= point_of_sale.description %></td>
+        <td><%= point_of_sale.market_type %></td>
+        <td><%= link_to t('point_of_sale.show'), point_of_sale %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+
+</div>

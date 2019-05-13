@@ -1,6 +1,6 @@
-<div class="uk-align-center uk-flex uk-flex-center">
-  <div class="uk-width-large">
-    <h2 class="uk-text-center"><%= t('.resend_confirmation_instructions') %></h2>
+<div class="uk-container uk-padding">
+  <div class="uk-width-large uk-align-center">
+    <h2 class="uk-text-center title"><%= t('.resend_confirmation_instructions') %></h2>
 
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
       <%= f.input :email, required: true, autofocus: true %>

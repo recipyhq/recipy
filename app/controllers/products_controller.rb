@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    redirect_to new_product_path, flash: { success: t("products.deleted") }
+    redirect_back fallback_location: new_product_path, flash: { success: t("products.deleted") }
   end
 
   private

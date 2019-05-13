@@ -17,7 +17,7 @@
 
   <div class="uk-margin">
     <%= f.label t("ingredient.title.type"), class: "uk-form-label" %>
-    <%= f.collection_check_boxes :ingredient_tag_ids, IngredientTag.all, :id, :name %>
+    <%= f.input :ingredient_tag_ids, :label => false, :selected => @ingredient.ingredient_tags.map { |v| v.id }.to_a, collection: IngredientTag.all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredienttags-select", multiple: true } , wrapper_class: "", defaults: { input_class: "" } %>
   </div>
 
   <div class="uk-margin-medium">

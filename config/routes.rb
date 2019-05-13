@@ -15,13 +15,14 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-  }
+  scope 'beta' do    
+    # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+    devise_for :users, controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks',
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+    }
 
-  scope 'beta' do
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
       scope module: 'cook' do
         unauthenticated :user do
@@ -57,7 +58,7 @@ Rails.application.routes.draw do
       resources :shopping_lists
       resources :recipes
       resources :point_of_sales
-      resources :products, :only => [:new, :create, :edit, :update]
+      resources :products, :only => [:new, :create, :edit, :update, :destroy]
       resources :notebooks
       resources :ingredients, only: [:new, :create]
 
