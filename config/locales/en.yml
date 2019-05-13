@@ -38,10 +38,76 @@ en:
     facebook: "Sign in with Facebook"
     google_oauth2: "Sign in with Google +"
 
+  users:
+    confirmations:
+      confirmed: "Your email address has been successfully confirmed."
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "Invalid %{authentication_keys} or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your email address before continuing."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock instructions"
+      email_changed:
+        subject: "Email Changed"
+      password_change:
+        subject: "Password Changed"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: "Your password has been changed successfully. You are now signed in."
+      updated_not_active: "Your password has been changed successfully."
+    registrations:
+      new:
+        sign_in: "Sign in"
+        destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+        signed_up: "Welcome! You have signed up successfully."
+        signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+        signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+        signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
+        update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
+        updated: "Your account has been updated successfully."
+        updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+    sessions:
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      already_signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    errors:
+      messages:
+        already_confirmed: "was already confirmed, please try signing in"
+        confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+        expired: "has expired, please request a new one"
+        not_found: "not found"
+        not_locked: "was not locked"
+        not_saved:
+          one: "1 error prohibited this %{resource} from being saved:"
+          other: "%{count} errors prohibited this %{resource} from being saved:"
+
   navbar:
     log_out: "Log out"
     sign_in: "Sign in"
     sign_up: "Sign up"
+    my_profil: "My profil"
 
   shared_links:
     no_account: "No account ?"
@@ -68,6 +134,29 @@ en:
 
             avatar:
               not_found: "No avatar was found"
+        recipe:
+          attributes:
+            title:
+              blank: "The recipe title cannot be blank"
+              invalid: "The recipe title is invalid"
+            cooking_time:
+              blank: "The cooking time cannot be empty"
+              invalid: "The cooking time is invalid"
+            image:
+              blank: "The recipe must have an image"
+              invalid: "The image is invalid"
+            preparation_time:
+              blank: "The preparation time cannot be blank"
+              invalid: "The preparation time is invalid"
+            person:
+              blank: "Le number of persons cannot be blank"
+              invalid: "The number of person is invalid"
+            difficulty:
+              blank: "The difficulty cannot be blank"
+              invalid: "The difficulty is invalid"
+            description:
+              blank: "The description cannot be empty"
+              invalid: "The description is incorrect"
       messages:
         record_invalid: "Invalid record"
 
@@ -90,6 +179,14 @@ en:
       ingredient: "Ingredient(s)"
       utensil: "Utensil(s)"
       image: "image"
+      nb_person: "For how many people ?"
+      quantity_value: "Quantity"
+      quantity_type: "Quantity type"
+      category: "Category(ies)"
+      new_ingredient: "Propose a new ingredient"
+      new_ingredient_elem: "New Ingredient"
+      number_views: "Number of views:"
+      number_feedbacks: "Number of feedbacks:"
     action:
       edit: "Edit"
       show: "Show"
@@ -97,6 +194,8 @@ en:
       destroy: "Destroy"
       back: "Back"
       confirm: "Are you sure ?"
+      new_ingredient: "Add a new ingredient"
+      delete_ingredient: "Remove"
     creation:
       missing_ingredients: "A recipe needs at least one ingredient!"
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
@@ -107,16 +206,43 @@ en:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"
       invalid_image: "Invalid image file"
+      wrong_user: "You are not allowed to modify this recipe!"
     destroy:
       valid: "Your recipe have been deleted"
     api:
       invalid_id: "Unfindable recipe, wrong ID"
+      invalid_user_id: "User not found"
+    my_recipes:
+      link: "My recipes"
+      title: "All my recipes"
 
   ingredient:
     unrecognized: ""
     no_title: "Missing ingredient title"
     not_created: "Ingredient cannot be created"
     no_null: "Ingredient cannot be null"
+    label: "Ingredient"
+  products:
+    missing_price_element: "Missing an element in the price"
+    created: "Succesfully creation of your product !"
+    title: "Creation of a new product"
+    price:
+      label: "Price"
+      not_valid: "The price is incorrect"
+    tag: "Tags"
+    already_exist: "This product already exists"
+    edited: "Product succesfully updated !"
+    not_edited: "The product has not been modified"
+    edit_title: "Edit the product"
+    deleted: "Product correctly removed"
+    not_found: "Product not found"
+
+  quantity_type:
+    label: "Quantity type"
+  point_of_sale:
+    missing_address: "MIssing address"
+    wrong_address: "You address is incorrect"
+    label: "Point(s) of sales"
   notebook:
     edit:
       invalid: "The notebook is invalid"

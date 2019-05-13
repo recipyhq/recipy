@@ -14,8 +14,8 @@ class Api::NotebooksController < InheritedResources::Base
 
   def show
     find_notebook
-    notebook = @notebook.as_json(:include => [:recipes], methods: %i(image_url))
-    render json: notebook
+    notebook = @notebook.as_json(:include => [:recipes])
+    render json: notebook, status: :ok
   end
 
   def new
@@ -25,18 +25,15 @@ class Api::NotebooksController < InheritedResources::Base
 
   def create
     new_notebook = Notebook.new(notebook_params_api)
-    if new_notebook.save
-      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
-    else
+    if new_notebook.title.empty? || new_notebook.description.empty?
       render json: new_notebook.errors, status: :unprocessable_entity
+    else
+      if new_notebook.save
+        render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+      else
+        render json: new_notebook.errors, status: :unprocessable_entity
+      end
     end
-  end
-
-  def add_recipe
-    find_notebook
-    tmp = Recipe.find_by_id(notebook_params[:recipes])
-    @notebook.recipes << tmp
-    redirect_to notebook_path(id: @notebook.id)
   end
 
   def update
@@ -55,6 +52,19 @@ class Api::NotebooksController < InheritedResources::Base
     end
   end
 
+  def add_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    if !@notebook.recipes.exists?(:id => tmp.id)
+      @notebook.recipes << tmp
+      new_notebook = @notebook.as_json(:include => [:recipes])
+      render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+    else
+      new_notebook = @notebook.as_json(:include => [:recipes])
+      render json: new_notebook, status: :conflict, location: new_api_notebook_url(new_notebook)
+    end
+  end
+
   def destroy
     find_notebook
     @notebook.destroy
@@ -62,6 +72,29 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
+    @notebook = Notebook.find(params[:notebook_id])
+    tmp = Recipe.find_by_id(params[:notebook][:recipe_id])
+    @notebook.recipes.delete(tmp)
+    new_notebook = @notebook.as_json(:include => [:recipes])
+    render json: new_notebook, status: :created, location: new_api_notebook_url(new_notebook)
+  end
+
+  def user_notebook_id
+    skip_policy_scope
+    begin
+      user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
+      return
+    end
+    notebooks = Notebook.where(:user => user).all
+    notebook_json = notebooks.as_json
+    if notebooks.empty?
+      render json: notebook_json, status: :not_found
+    else
+      render json: notebook_json, status: :ok
+    end
   end
 
   private

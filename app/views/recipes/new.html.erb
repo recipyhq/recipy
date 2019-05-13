@@ -1,13 +1,15 @@
-<div class="uk-position-center">
-  <div class="uk-width-xxlarge">
+<div class="">
+  <div class="">
     <h2 class="uk-text-center"><%= t("recipe.title.new") %></h2>
 
-  <% if flash[:danger] %>
-    <div class="uk-alert-danger" uk-alert>
-      <a class="uk-alert-close" uk-close></a>
-      <p><%= flash[:danger] %></p>
-    </div>
-  <%end %>
+    <% if flash[:danger] %>
+      <% flash[:danger].values.each do |value| %>
+        <div class="uk-alert-danger" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <div class="alert alert"><%= value[0] %></div>
+        </div>
+      <% end %>
+    <% end %>
 
 <%= render 'form', recipe: @recipe %>
 
