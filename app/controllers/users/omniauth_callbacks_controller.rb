@@ -5,7 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts "======="
     puts request.env['omniauth.auth'].inspect
     puts "======="
-    #omniauth_authentication(:facebook)
+    # omniauth_authentication(:facebook)
   end
 
   def google_oauth2

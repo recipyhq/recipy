@@ -15,4 +15,4 @@
 
 <%= render 'form_new', product: @product %>
 
-<%= link_to t("recipe.action.back"), products_path %>
+<%= link_to t("recipe.action.back"), show_producer_path(current_user.id) %>

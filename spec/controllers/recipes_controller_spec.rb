@@ -107,7 +107,8 @@ RSpec.describe RecipesController, type: :controller do
 
       it "updates the requested recipe" do
         recipe = Recipe.create! valid_attributes
-        put :update, params: { id: recipe.to_param, recipe: new_attributes }, sessions: valid_session
+        put :update,
+            params: { id: recipe.to_param, recipe: new_attributes }, sessions: valid_session
         recipe.reload
         skip("Add assertions for updated state")
       end
@@ -115,7 +116,7 @@ RSpec.describe RecipesController, type: :controller do
       it "redirects to the recipe" do
         recipe = Recipe.create! valid_attributes
         put :update, params: { id: recipe.to_param, recipe: valid_attributes },
-            sessions: valid_session
+                     sessions: valid_session
         expect(response).to redirect_to(recipe)
       end
     end
@@ -124,7 +125,7 @@ RSpec.describe RecipesController, type: :controller do
       it "returns a success response (i.e. to display the 'edit' template)" do
         recipe = Recipe.create! valid_attributes
         put :update, params: { id: recipe.to_param, recipe: invalid_attributes },
-            sessions: valid_session
+                     sessions: valid_session
         expect(response).to be_successful
       end
     end
