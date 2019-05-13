@@ -50,6 +50,12 @@
               <% end %>
             </div>
           <% end %>
+          <% if current_user && ShoppingList.where(user_id: current_user.id).count > 0 %>
+            <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
+              <%= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id), label: "Ajouter à une liste de courses :" %>
+              <%= f.button :submit, "Confirmer" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="uk-padding">
