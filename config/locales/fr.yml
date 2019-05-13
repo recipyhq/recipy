@@ -262,6 +262,7 @@ fr:
       by_nothing: "Ne pas trier"
       by_note_desc: "Par note décroissante"
       by_note_asc: "Par note croissante"
+
   products:
     missing_price_element: "Il manque un élément dans le prix"
     created: "Création de votre produit réussie !"
@@ -302,7 +303,8 @@ fr:
     new: "Nouveau point de vente"
     back: "Retour"
     show: "Voir le point de vente"
-    edit: "Édition du point de vente"
+    edit: "Éditer le point de vente"
+    delete: "Supprimer le point de vente"
     validate: "Valider"
 
   notebook:

@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       resources :shopping_lists
       resources :recipes
       resources :point_of_sales
-      resources :products, :only => [:new, :create, :edit, :update]
+      resources :products, :only => [:new, :create, :edit, :update, :destroy]
       resources :notebooks
       resources :ingredients, only: [:new, :create]
 

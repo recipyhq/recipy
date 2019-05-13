@@ -18,10 +18,10 @@
             <td><%= point_of_sale.name %></td>
             <td><%= point_of_sale.description %></td>
             <td><%= point_of_sale.market_type %></td>
-              <td><%= link_to 'Show', point_of_sale %></td>
-              <% if current_user && current_user.id == @user.id %>
-              <td><%= link_to 'Edit', edit_point_of_sale_path(point_of_sale) %></td>
-              <td><%= link_to 'Destroy', point_of_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to t('point_of_sale.show'), point_of_sale %></td>
+            <% if current_user && current_user.id == @user.id %>
+              <td><%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(point_of_sale) %></td>
+              <td><%= link_to t('point_of_sale.delete'), point_of_sale, method: :delete, data: { confirm: 'Êtes vous sûr ?' } %></td>
             <% end %>
           </tr>
         <% end %>

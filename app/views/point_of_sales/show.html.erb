@@ -46,6 +46,34 @@
         <% end %>
       </tbody>
     </table>
+    <h3 class="title">Produits</h3>
+    <table class="uk-table uk-table-divided">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if !@point_of_sale.products.nil? %>
+          <% @point_of_sale.products.each do |product| %>
+            <tr>
+              <td><%= product.ingredient.name %></td>
+              <td><%= product.price.value.to_s + "€ / " + product.price.quantity_type.name %></td>
+              <% if current_user && current_user.id == @point_of_sale.user.id %>
+                <td><%= link_to "Éditer le produit", edit_product_path(product) %></td>
+                <td><%= link_to "Supprimer le produit", product, method: :delete, data: { confirm: 'Êtes vous sûr ?' } %></td>
+
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <% if current_user && current_user.id == @point_of_sale.user.id %>
+      <%= link_to "Ajouter un produit", new_product_path, class: "uk-button uk-button-default" %><br><br>
+    <% end %>
 
     <% if current_user && current_user.id == @point_of_sale.user.id %>
       <%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(@point_of_sale) %> | 
@@ -53,19 +81,4 @@
     <%= link_to t('point_of_sale.back'), point_of_sales_path %>
   </div>
 </div>
-
-<%# <strong>Product</strong>
-<% if !@point_of_sale.products.nil? %>
-  <%# <% @point_of_sale.products.each do |product| %>
-    <%# <p>
-      <strong>Name</strong>
-      <%= product.ingredient.name %>
-    <%# </p>
-
-    <p>
-      <strong>Price</strong>
-      <%= product.price.value.to_s + "€ / " + product.price.quantity_type.name%>
-    <%# </p>
-  <% end %>
-<%# <% end %>
 

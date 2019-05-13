@@ -11,9 +11,9 @@
               as: :select, :include_blank => false, :label => t("ingredient.label"),
               :selected => @product.ingredient.id%>
 
-  <%= f.association :point_of_sales, as: :check_boxes, :label => t("point_of_sale.label"),
+  <%= f.association :point_of_sales, as: :check_boxes, :label => t("point_of_sale.title"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: PointOfSale..where(user: current_user).includes(:address).all.map {|t|
+                    collection: PointOfSale.where(user: current_user).includes(:address).all.map {|t|
                       [t.name + " (" + t.address.entilted + " / " + t.address.city + ")", t.id]} %>
 
   <%= f.simple_fields_for :price, @product.price do |a| %>
@@ -25,6 +25,6 @@
   <% end %>
 
   <div class="uk-margin-medium">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Mettre à jour" %>
   </div>
 <% end %>
