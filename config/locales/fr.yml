@@ -91,6 +91,7 @@ fr:
     my_recipes: 'Mes recettes'
     courses: 'Listes de course'
     point_of_sales: "Points de vente"
+    notebooks: "Carnets de recette"
 
   footer:
     infos: "Informations"

@@ -18,6 +18,11 @@
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
                 <% end %>
               </li>
+              <li class="<%= current_page_class?(notebooks_path) %>">
+                <%= link_to notebooks_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= t('navbar.notebooks') %>
+                <% end %>
+              </li>
               <li class="<%= current_page_class?(shopping_lists_path) %>">
                 <%= link_to shopping_lists_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.courses') %>
@@ -68,6 +73,11 @@
               <li class="<%= current_page_class?(my_recipes_path) %>">
                 <%= link_to my_recipes_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
+                <% end %>
+              </li>
+              <li class="<%= current_page_class?(notebooks_path) %>">
+                <%= link_to notebooks_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= t('navbar.notebooks') %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(shopping_lists_path) %>">
