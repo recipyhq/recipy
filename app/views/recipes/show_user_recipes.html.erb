@@ -20,8 +20,10 @@
                   </div>
                   <p class="uk-text-truncate"><%= recipe.description %></p>
                   <div class="info-recipe">
-                    <span class="name">Difficulté</span>
-                    <progress class="uk-progress" value=<%= recipe.difficulty %> max="10"></progress>
+                    <span class="name"><%= t("recipe.title.number_views") %></span>
+                    <span class="info"><%= recipe.view.to_s %></span>
+                    <span class="name"><%= t("recipe.title.number_feedbacks") %></span>
+                    <span class="info"><%= recipe.score_count.to_s %></span>
                   </div>
               </div>
               <div class="uk-card-footer">
