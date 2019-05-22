@@ -28,7 +28,7 @@ class NotebooksController < InheritedResources::Base
   end
 
   def add_recipe
-    find_notebook
+    @notebook = Notebook.find(params[:notebook][:id])
     tmp = Recipe.find_by_id(notebook_params[:recipes])
     @notebook.recipes << tmp
     redirect_to notebook_path(id: @notebook.id)
@@ -66,9 +66,10 @@ class NotebooksController < InheritedResources::Base
 
   def find_notebook
     if params[:id].nil?
-      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:notebook][:id])
+      @notebook = Notebook.includes(:recipes =>
+                                      [:image_attachment => :blob]).find(params[:notebook][:id])
     else
-      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:id])
+      @notebook = Notebook.find(params[:id])
     end
   end
 
