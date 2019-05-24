@@ -37,16 +37,12 @@ class NotebooksController < InheritedResources::Base
   def update
     find_notebook
     if @notebook.update(notebook_params_without_recipes)
-      if @notebook.image.blob.content_type.starts_with?('image/')
-        puts "\n\n\n\n\n\n\n\n\ntest 1\n\n\n\n\n\n\n\n\n\n\n\n"
+      if @notebook.image.attached? && @notebook.image.blob.content_type.starts_with?('image/')
         redirect_to notebook_path, flash: { success: t("notebook.edit.valid") }
       else
-        puts "\n\n\n\n\n\n\n\n\ntest 2\n\n\n\n\n\n\n\n\n\n\n\n"
-        redirect_to edit_notebook_path(@notebook),
-                    flash: { danger: t("notebook.edit.invalid_image") }
+        redirect_to notebook_path, flash: { success: t("notebook.edit.valid") }
       end
     else
-      puts "\n\n\n\n\n\n\n\n\ntest 3\n\n\n\n\n\n\n\n\n\n\n\n"
       redirect_to edit_notebook_path(@notebook), flash: { danger: t("notebook.edit.invalid") }
     end
   end
@@ -79,7 +75,7 @@ class NotebooksController < InheritedResources::Base
   end
 
   def notebook_params_without_recipes
-    params.require(:notebook).permit(:title, :description, :image)
+    params.require(:notebook).permit(:title, :description)
   end
 
   def notebook_params
