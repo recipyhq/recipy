@@ -28,10 +28,14 @@ class NotebooksController < InheritedResources::Base
   end
 
   def add_recipe
-    @notebook = Notebook.find(params[:notebook][:id])
+    find_notebook
     tmp = Recipe.find_by_id(notebook_params[:recipes])
-    @notebook.recipes << tmp
-    redirect_to notebook_path(id: @notebook.id)
+    if !@notebook.recipes.exists?(:id => tmp.id)
+      @notebook.recipes << tmp
+      redirect_to notebook_path(id: @notebook.id)
+    else
+      redirect_to notebook_path(id: @notebook.id), flash: { danger: "Impossible" }
+    end
   end
 
   def update
@@ -54,7 +58,6 @@ class NotebooksController < InheritedResources::Base
   end
 
   def remove_recipe
-    # find_notebook
     @notebook = Notebook.find(params[:notebook])
     tmp = Recipe.find_by_id(params[:id])
     @notebook.recipes.delete(tmp)
@@ -65,12 +68,11 @@ class NotebooksController < InheritedResources::Base
 
   def find_notebook
     if params[:id].nil?
-      @notebook = Notebook.includes(:recipes =>
-                                      [:image_attachment => :blob]).find(params[:notebook][:id])
-      puts "test"
+      puts "here !"
+      @notebook = Notebook.find(params[:notebook][:id])
     else
-      puts "no"
-      @notebook = Notebook.find(params[:id])
+      puts "damn"
+      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:id])
     end
   end
 
