@@ -52,7 +52,7 @@ class NotebooksController < InheritedResources::Base
   end
 
   def destroy
-    find_notebook
+    @notebook = Notebook.find(params[:id])
     @notebook.destroy
     redirect_to notebooks_path, flash: { success: t("notebook.destroy.valid") }
   end
