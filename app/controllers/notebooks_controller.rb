@@ -39,7 +39,7 @@ class NotebooksController < InheritedResources::Base
   end
 
   def update
-    find_notebook
+    @notebook = Notebook.find(params[:id])
     if @notebook.update(notebook_params_without_recipes)
       if @notebook.image.attached? && @notebook.image.blob.content_type.starts_with?('image/')
         redirect_to notebook_path, flash: { success: t("notebook.edit.valid") }
@@ -54,7 +54,7 @@ class NotebooksController < InheritedResources::Base
   def destroy
     @notebook = Notebook.find(params[:id])
     @notebook.destroy
-    redirect_to notebooks_path, flash: { success: t("notebook.destroy.valid") }
+    redirect_to notebooks_path, flash: { success: t("notebook.destroy") }
   end
 
   def remove_recipe
@@ -77,7 +77,7 @@ class NotebooksController < InheritedResources::Base
   end
 
   def notebook_params_without_recipes
-    params.require(:notebook).permit(:title, :description)
+    params.require(:notebook).permit(:title, :description, :image)
   end
 
   def notebook_params
