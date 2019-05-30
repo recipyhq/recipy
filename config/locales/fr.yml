@@ -307,11 +307,6 @@ fr:
     delete: "Supprimer le point de vente"
     validate: "Valider"
 
-  notebook:
-    edit:
-      invalid: "Le carnet de recette n'est pas conforme"
-      invalid_image: "L'image est invalide"
-
   feedback:
     notification: "Votre avis a bien été pris en compte."
 
@@ -319,7 +314,9 @@ fr:
     title: 'Mes carnets de recette'
     add: 'Créer un carnet de recette'
     delete: 'Supprimer'
-    edit: 'Éditer'
+    edit:
+      invalid: "L'edition est incorrect"
+      valid: "Carnet correctement modifié"
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
@@ -328,6 +325,7 @@ fr:
       name: "Nom du carnet de recettes"
       desc: "Description du style de carnet que vous réalisez"
       img: "Image illustrant votre carnet"
+    destroy: "Carnet correctement supprimé"
 
   shopping_list:
     title: "Listes de course"

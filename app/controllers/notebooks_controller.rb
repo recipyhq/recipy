@@ -30,18 +30,21 @@ class NotebooksController < InheritedResources::Base
   def add_recipe
     find_notebook
     tmp = Recipe.find_by_id(notebook_params[:recipes])
-    @notebook.recipes << tmp
-    redirect_to notebook_path(id: @notebook.id)
+    if !@notebook.recipes.exists?(:id => tmp.id)
+      @notebook.recipes << tmp
+      redirect_to notebook_path(id: @notebook.id)
+    else
+      redirect_to notebook_path(id: @notebook.id), flash: { danger: "Impossible" }
+    end
   end
 
   def update
-    find_notebook
+    @notebook = Notebook.find(params[:id])
     if @notebook.update(notebook_params_without_recipes)
-      if @notebook.image.blob.content_type.starts_with?('image/')
+      if @notebook.image.attached? && @notebook.image.blob.content_type.starts_with?('image/')
         redirect_to notebook_path, flash: { success: t("notebook.edit.valid") }
       else
-        redirect_to edit_notebook_path(@notebook),
-                    flash: { danger: t("notebook.edit.invalid_image") }
+        redirect_to notebook_path, flash: { success: t("notebook.edit.valid") }
       end
     else
       redirect_to edit_notebook_path(@notebook), flash: { danger: t("notebook.edit.invalid") }
@@ -49,13 +52,12 @@ class NotebooksController < InheritedResources::Base
   end
 
   def destroy
-    find_notebook
+    @notebook = Notebook.find(params[:id])
     @notebook.destroy
-    redirect_to notebooks_path, flash: { success: t("notebook.destroy.valid") }
+    redirect_to notebooks_path, flash: { success: t("notebook.destroy") }
   end
 
   def remove_recipe
-    # find_notebook
     @notebook = Notebook.find(params[:notebook])
     tmp = Recipe.find_by_id(params[:id])
     @notebook.recipes.delete(tmp)
@@ -66,8 +68,10 @@ class NotebooksController < InheritedResources::Base
 
   def find_notebook
     if params[:id].nil?
-      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:notebook][:id])
+      puts "here !"
+      @notebook = Notebook.find(params[:notebook][:id])
     else
+      puts "damn"
       @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:id])
     end
   end

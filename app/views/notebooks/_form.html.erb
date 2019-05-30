@@ -1,5 +1,3 @@
-
-
 <%= simple_form_for(@notebook, class: '') do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -13,10 +11,8 @@
   </div>
   <%= f.file_field :image, :label => "test" %>
   <%= f.input :title, label: t('notebook.form.name') %>
-  <%= f.input :description, label: "Décrivez le style de carnet que  vous réaliser" %>
+  <%= f.input :description, as: :text, label: "Décrivez le style de carnet que vous réalisez", input_html: {class: "uk-textarea size_textarea", rows: "10"}, input_class: false %>
   <%#= f.input :recipes, collection: Recipe.all, as: :select, label: "Selectionnez votre première recette à ajouter"%>
-
-  <%= f.button :submit, :value => "Valider" %>
-  <%= link_to t('notebook.back'), notebooks_path, class: "" %>
+  <%= f.button :submit, "Valider" %>
 <% end %>
 
