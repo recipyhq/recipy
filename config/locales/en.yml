@@ -218,11 +218,22 @@ en:
       title: "All my recipes"
 
   ingredient:
-    unrecognized: ""
-    no_title: "Missing ingredient title"
-    not_created: "Ingredient cannot be created"
-    no_null: "Ingredient cannot be null"
+    title:
+      new_ingredient: "Propose a new ingredient"
+      create: "Request to add the ingredient"
+      name: "Ingredient Name"
+      description: "Ingredient description"
+      type: "Ingredient type"
+      quantity: "Equivalence in grams of the ingredient in a certain type of quantity "
+    unrecognized: "Unrecognized ingredient"
+    no_title: "Missing ingredient name"
+    not_created: "The ingredient did not be created"
+    no_null: "The ingredient cannot be empty"
+    creation:
+      valid: "Your request has been taken into account and will be processed within 48 hours."
+      invalid: "Your request is not valid. This ingredient must already be in the database."
     label: "Ingredient"
+
   products:
     missing_price_element: "Missing an element in the price"
     created: "Succesfully creation of your product !"

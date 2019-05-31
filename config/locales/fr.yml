@@ -244,7 +244,7 @@ fr:
     no_null: "L'ingredient ne peut pas être nul"
     creation:
       valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
-      invalid: "Votre n'est pas valide."
+      invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
 
   search:
