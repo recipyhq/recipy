@@ -80,7 +80,7 @@ fr:
   producer:
     new:
       welcome: "Devenir producteur"
- 
+
   navbar:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
@@ -175,7 +175,8 @@ fr:
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
-        ingredient: "Ingrédient(s)"
+        ingredient: "Ingrédient"
+        ingredients: "Ingrédient(s)"
         preparation: "Préparation"
         preparation_time: "Temps de préparation"
         cooking_time: "Temps de cuisson"
@@ -279,7 +280,7 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
-  
+
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"

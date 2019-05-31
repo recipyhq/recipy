@@ -32,7 +32,7 @@ class RecipesController < InheritedResources::Base
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
     if new_ingredients.nil?
       redirect_to new_recipe_path, flash: {
-        danger: { test: [t('recipe.creation.missing_ingredients')] },
+        danger: t('recipe.creation.missing_ingredients'),
       }
     else
       steps = @recipe_params[:steps_raw]
@@ -43,18 +43,22 @@ class RecipesController < InheritedResources::Base
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
         redirect_to new_recipe_path, flash: {
-          danger: new_recipe.errors.messages,
+          danger: new_recipe.errors.values.to_sentence(words_connector: ' ',
+                                                       last_word_connector: ' '),
         }
         return
       end
       new_ingredients.each do |elem|
-        new_recipe.ingredients << Ingredient.find(elem[1].values[0])
-        if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
-          recipe_quantity = RecipeQuantity.create!(:value => elem[1].values[1].values[0],
-                                                   :quantity_type =>
-                                                     QuantityType.find(elem[1].values[1].values[1]))
-          last = new_recipe.recipe_ingredients.last
-          last.recipe_quantity = recipe_quantity
+        unless new_recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
+          new_recipe.ingredients << Ingredient.find(elem[1].values[0])
+          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+            value = elem[1].values[1]
+            recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
+                                                     :quantity_type =>
+                                                       QuantityType.find(value.values[1]))
+            last = new_recipe.recipe_ingredients.last
+            last.recipe_quantity = recipe_quantity
+          end
         end
       end
       new_recipe.user = current_user
@@ -80,20 +84,22 @@ class RecipesController < InheritedResources::Base
     @recipe_params.delete(:steps_raw)
     if new_ingredients.nil?
       redirect_to edit_recipe_path(@recipe), flash: {
-        danger: { test: [t('recipe.creation.missing_ingredients')] },
+        danger: t('recipe.creation.missing_ingredients'),
       }
     else
       @recipe.recipe_ingredients.destroy_all
       new_ingredients.each do |elem|
         if elem[1].values[2] == "false"
-          @recipe.ingredients << Ingredient.find(elem[1].values[0])
-          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
-            value = elem[1].values[1]
-            recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
-                                                     :quantity_type =>
-                                                       QuantityType.find(value.values[1]))
-            last = @recipe.recipe_ingredients.last
-            last.recipe_quantity = recipe_quantity
+          unless @recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
+            @recipe.ingredients << Ingredient.find(elem[1].values[0])
+            if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+              value = elem[1].values[1]
+              recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
+                                                       :quantity_type =>
+                                                         QuantityType.find(value.values[1]))
+              last = @recipe.recipe_ingredients.last
+              last.recipe_quantity = recipe_quantity
+            end
           end
         end
       end
@@ -132,7 +138,8 @@ class RecipesController < InheritedResources::Base
   private
 
   def find_recipes_by_user_id
-    @recipes = Recipe.where(user: current_user).where.not(user: nil).all.with_attached_image
+    @recipes = Recipe.where(user: current_user).where.
+      not(user: nil).order(:view => :desc).all.with_attached_image
   end
 
   def find_recipe_edit
