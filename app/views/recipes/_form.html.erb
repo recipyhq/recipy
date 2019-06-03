@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'recipe_form' %>
 
-<%= simple_form_for(@recipe, html: {
+<%= simple_form_for(Recipe.new, html: {
   class: "uk-padding recipe_form"
 },) do |f| %>
   <%= f.error_notification %>

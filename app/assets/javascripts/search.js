@@ -17,7 +17,7 @@ document.addEventListener('turbolinks:load', () => {
       searchingText: 'Recherche...',
       searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
       searchPlaceholder: 'Rechercher un ustensile',
-      placeholder: 'Ustensiles'
+      placeholder: 'Ustensiles',
     });
   }
 
