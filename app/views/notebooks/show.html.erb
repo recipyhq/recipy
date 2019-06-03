@@ -1,6 +1,10 @@
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
-    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@notebook.image.variant resize: '1000x1000') %>;)"></div>
+    <% if @notebook.image.attached? %>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@notebook.image.variant resize: '1000x1000') %>;)"></div>
+    <% else %>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png;)"></div>
+    <% end %>
   </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
