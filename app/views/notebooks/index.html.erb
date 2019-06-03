@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 <div class="uk-container uk-padding">
   <h2 class="title"><%= t('notebook.title') %></h2>
   <div class="uk-margin-bottom">
@@ -31,7 +29,7 @@
           </div>
           <div class="uk-card-footer">
             <%= link_to t('notebook.open'), notebook, class: 'uk-button uk-button-text' %>
-            <%= link_to t('notebook.edit'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
+            <%= link_to t('notebook.edite'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
             <%= link_to t('notebook.delete'), notebook, method: :delete, class: "uk-button uk-button-text", data: { confirm: t('notebook.confirm_delete') } %>
           </div>
         </div>
