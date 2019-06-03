@@ -5,7 +5,7 @@ module Producer
 
     def index
       skip_policy_scope
-      @users = User.where(isProducer: true).all
+      @users = User.where(isProducer: true).order(:first_name, :last_name).all
     end
 
     def show
