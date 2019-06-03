@@ -78,6 +78,7 @@ fr:
 
 
   producer:
+    list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
  
