@@ -3,13 +3,13 @@
   <div class="uk-navbar-right">
     <ul class="uk-navbar-nav uk-visible@s">
       <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
-      <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
-      <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
       <% if user_signed_in? %>
+        <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to "Carnets de recette", notebooks_path %></li>
+        <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to "Liste de course", shopping_lists_path %></li>
         <li>
           <a href="#">
             <%= current_user.email %>
-            <span class="uk-icon uk-margin-small-left" uk-icon="icon: chevron-down"></span>  
+            <span class="uk-icon uk-margin-small-left" uk-icon="icon: chevron-down"></span>
           </a>
           <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -19,13 +19,13 @@
                 <% end %>
               </li>
               <li class="<%= current_page_class?(notebooks_path) %>">
-                <%= link_to notebooks_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= t('navbar.notebooks') %>
+                <%= link_to unauthenticated_producer_root_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= "Producteur" %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(shopping_lists_path) %>">
-                <%= link_to shopping_lists_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.courses') %>
+                <%= link_to point_of_sales_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= "Point de vente" %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
@@ -36,7 +36,7 @@
               <% if current_user.isProducer == true %>
                 <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
                   <%= link_to show_producer_path(current_user.id) do %>
-                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%=  t('navbar.my_producer_profile') %>
+                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('navbar.my_producer_profile') %>
                   <% end %>
                 </li>
               <% end %>
@@ -49,6 +49,8 @@
           </div>
         </li>
       <% else %>
+        <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
+        <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
         <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
       <% end %>
     </ul>
@@ -64,47 +66,49 @@
     <h3>Navigation</h3>
     <ul class="uk-nav uk-nav-default">
       <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
-      <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
-      <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
       <% if user_signed_in? %>
+        <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to "Carnets de recette", notebooks_path %></li>
+        <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to "Liste de course", shopping_lists_path %></li>
         <li class="uk-parent">
-            <a href="#"><%= current_user.email %></a>
-            <ul class="uk-nav-sub">
-              <li class="<%= current_page_class?(my_recipes_path) %>">
-                <%= link_to my_recipes_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
-                <% end %>
-              </li>
-              <li class="<%= current_page_class?(notebooks_path) %>">
-                <%= link_to notebooks_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= t('navbar.notebooks') %>
-                <% end %>
-              </li>
-              <li class="<%= current_page_class?(shopping_lists_path) %>">
-                <%= link_to shopping_lists_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.courses') %>
-                <% end %>
-              </li>
-              <li class="<%= current_page_class?(edit_user_registration_path) %>">
-                <%= link_to edit_user_registration_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
-                <% end %>
-              </li>
-              <% if current_user.isProducer == true %>
-                <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
-                  <%= link_to show_producer_path(current_user.id) do %>
-                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%=  t('navbar.my_producer_profile') %>
-                  <% end %>
-                </li>
+          <a href="#"><%= current_user.email %></a>
+          <ul class="uk-nav-sub">
+            <li class="<%= current_page_class?(my_recipes_path) %>">
+              <%= link_to my_recipes_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
               <% end %>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
+            </li>
+            <li class="<%= current_page_class?(notebooks_path) %>">
+              <%= link_to unauthenticated_producer_root_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= "Producteur" %>
+              <% end %>
+            </li>
+            <li class="<%= current_page_class?(shopping_lists_path) %>">
+              <%= link_to point_of_sales_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= "Point de vente" %>
+              <% end %>
+            </li>
+            <li class="<%= current_page_class?(edit_user_registration_path) %>">
+              <%= link_to edit_user_registration_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
+              <% end %>
+            </li>
+            <% if current_user.isProducer == true %>
+              <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
+                <%= link_to show_producer_path(current_user.id) do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('navbar.my_producer_profile') %>
                 <% end %>
               </li>
-            </ul>
+            <% end %>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
+              <% end %>
+            </li>
+          </ul>
         </li>
       <% else %>
+        <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
+        <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
         <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
       <% end %>
     </ul>
