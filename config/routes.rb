@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :meal_plans
+  resources :meals
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
@@ -15,8 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope 'beta' do    
-    # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  scope 'beta' do
     devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
       sessions: 'users/sessions',
