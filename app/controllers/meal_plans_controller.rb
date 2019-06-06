@@ -72,6 +72,6 @@ class MealPlansController < ApplicationController
   end
 
   def meal_plan_params
-    params.fetch(:meal_plan, [])
+    params.fetch(:meal_plan)
   end
 end
