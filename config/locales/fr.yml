@@ -307,6 +307,12 @@ fr:
     edit: "Éditer le point de vente"
     delete: "Supprimer le point de vente"
     validate: "Valider"
+    incorrect_hours: "Horaires incorrectes"
+    creation_error: "Une erreur s'est produite pendant la création"
+    creation_success: "Point de vente créé"
+    update_error: "Une erreur s'est produite pendant la modification"
+    update_success: "Modification(s) effectuée(s) avec succés"
+    delete_success: "Point de vente supprimé"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
