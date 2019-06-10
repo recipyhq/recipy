@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
-  scope 'beta' do    
-    # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  scope 'beta' do
     devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
       sessions: 'users/sessions',
       registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
     }
 
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
@@ -82,6 +82,8 @@ Rails.application.routes.draw do
 
     authenticated :user do
     end
+
+    get 'user', to: 'user#info'
 
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
