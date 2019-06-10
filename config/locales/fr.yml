@@ -75,12 +75,22 @@ fr:
         not_saved:
           one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
           other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+    followed_producers:
+      followed_label: "Suivi par %{nb} personne(s)"
+      liked_label: "Liste des producteurs que je suis (%{nb})"
+      no_follow: "Vous ne suivez aucun producteur !"
+      link_to_all_prod: "Voir tous les producteurs de la plateforme"
+      action_follow: "Suivre"
+      action_unfollow: "Ne plus suivre"
+      link: "Les producteurs suivis"
+
+
 
 
   producer:
     new:
       welcome: "Devenir producteur"
- 
+
   navbar:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
@@ -279,7 +289,7 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
-  
+
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"

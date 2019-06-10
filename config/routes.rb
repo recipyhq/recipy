@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope 'beta' do    
+  scope 'beta' do
     # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
     devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
@@ -69,8 +69,11 @@ Rails.application.routes.draw do
 
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
+      post 'follow_producer' => "users/base#follow_producer"
+      post 'unfollow_producer' => "users/base#unfollow_producer"
       post 'remove_recipe' => "notebooks#remove_recipe"
       get 'my_recipes' => "recipes#show_user_recipes"
+      get 'liked_producers' => "users/base#show_liked_producers"
     end
   end
 

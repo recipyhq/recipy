@@ -9,13 +9,18 @@
         <li>
           <a href="#">
             <%= current_user.email %>
-            <span class="uk-icon uk-margin-small-left" uk-icon="icon: chevron-down"></span>  
+            <span class="uk-icon uk-margin-small-left" uk-icon="icon: chevron-down"></span>
           </a>
           <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
               <li class="<%= current_page_class?(my_recipes_path) %>">
                 <%= link_to my_recipes_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
+                <% end %>
+              </li>
+              <li class="<%= current_page_class?(liked_producers_path) %>">
+                <%= link_to liked_producers_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: heart"></span><%= t('users.followed_producers.link') %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(notebooks_path) %>">

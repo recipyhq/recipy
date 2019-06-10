@@ -1,7 +1,8 @@
 module Producer
   class HomeController < Producer::BaseController
     before_action :skip_authorization
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authenticate_user!,
+                  only: [:new, :create, :edit, :update, :destroy]
 
     def index
       skip_policy_scope
