@@ -16,12 +16,12 @@
       <% if current_user.liked_producers.any? {|user| user.id == @user.id.to_i} %>
         <%= simple_form_for @user, :url => unfollow_producer_url, :method => 'post' do |f| %>
           <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
-          <%= f.button :submit, :value => t("users.followed_producers.action_unfollow") %>
+          <%= f.button :submit, t("users.followed_producers.action_unfollow") %>
         <% end %>
       <% else %>
         <%= simple_form_for @user, :url => follow_producer_url, :method => 'post' do |f| %>
           <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
-          <%= f.button :submit, :value => t("users.followed_producers.action_follow") %>
+          <%= f.button :submit, t("users.followed_producers.action_follow") %>
         <% end %>
       <% end %>
     </div>
