@@ -1,7 +1,8 @@
 fr:
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
-
+  placeholder_first_name: "Prénom"
+  placeholder_last_name: "Nom"
   devise:
     facebook: "Se connecter avec Facebook"
     google_oauth2: "Se connecter avec Google +"
@@ -80,7 +81,7 @@ fr:
   producer:
     new:
       welcome: "Devenir producteur"
- 
+
   navbar:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
@@ -114,6 +115,10 @@ fr:
       models:
         user:
           attributes:
+            first_name:
+              blank: "Le champ Prénom ne doit pas être vide"
+            last_name:
+              blank: "Le champ Nom ne doit pas être vide"
             email:
               taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
               blank: "Le champ Courriel ne doit pas être vide"
@@ -279,7 +284,7 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
-  
+
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"
