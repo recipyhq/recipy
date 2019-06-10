@@ -333,3 +333,21 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+
+  slimselect:
+    ustensils:
+      placeholder: 'Ustensiles'
+      search_placeholder: 'Rechercher un ustensile...'
+      no_result: "Désolé il n'y a pas l'ustensile recherché dans la liste."
+    categories:
+      placeholder: 'Catégories'
+      search_placeholder: 'Rechercher une catégorie...'
+      no_result: "Désolé il n'y a pas la catégorie recherché dans la liste."
+    ingredients:
+      placeholder: 'Ingrédients'
+      search_placeholder: 'Rechercher un ingrédient...'
+      no_result: "Désolé il n'y a pas l'ingrédient recherché dans la liste."
+    ingredienttags:
+      placeholder: "Type d'ingrédient"
+      search_placeholder: "Rechercher un type d'ingrédient..."
+      no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."
