@@ -289,6 +289,7 @@ en:
     update_error: "Failed to update point of sale"
     update_success: "Point of sale has been updated"
     delete_success: "Point of sale deleted with success"
+    hour: "Hour"
   notebook:
     edit:
       invalid: "The notebook is invalid"

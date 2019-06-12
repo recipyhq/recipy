@@ -304,6 +304,7 @@ fr:
     phone: "Numéro de téléphone"
     day: "Jour"
     hours: "Horaires"
+    hour: "Heure"
     open_hour: "Horaire d'ouverture"
     close_hour: "Horaire de fermeture"
     market_type: "Type de point de vente"
