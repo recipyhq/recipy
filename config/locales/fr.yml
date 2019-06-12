@@ -96,7 +96,7 @@ fr:
     notebooks: "Mes carnets de recette"
     producer:
       list: "Liste des producteurs"
-      point_of_sales: "Points de vente"      
+      point_of_sales: "Points de vente"
 
   footer:
     infos: "Informations"
@@ -184,7 +184,8 @@ fr:
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
-        ingredient: "Ingrédient(s)"
+        ingredient: "Ingrédient"
+        ingredients: "Ingrédient(s)"
         preparation: "Préparation"
         preparation_time: "Temps de préparation"
         cooking_time: "Temps de cuisson"
@@ -252,7 +253,7 @@ fr:
     no_null: "L'ingredient ne peut pas être nul"
     creation:
       valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
-      invalid: "Votre n'est pas valide."
+      invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
 
   search:
@@ -303,6 +304,7 @@ fr:
     phone: "Numéro de téléphone"
     day: "Jour"
     hours: "Horaires"
+    hour: "Heure"
     open_hour: "Horaire d'ouverture"
     close_hour: "Horaire de fermeture"
     market_type: "Type de point de vente"
@@ -315,6 +317,12 @@ fr:
     edit: "Éditer le point de vente"
     delete: "Supprimer le point de vente"
     validate: "Valider"
+    incorrect_hours: "Horaires incorrectes"
+    creation_error: "Une erreur s'est produite pendant la création"
+    creation_success: "Point de vente créé"
+    update_error: "Une erreur s'est produite pendant la modification"
+    update_success: "Modification(s) effectuée(s) avec succés"
+    delete_success: "Point de vente supprimé"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."

@@ -56,7 +56,7 @@ progress.uk-progress[value]::-webkit-progress-value {
   display: block;
   padding: 0;
   width: 88px;
-  
+
   &-value {
     color: $recipy-primary-color;
     padding: 0;
@@ -76,16 +76,16 @@ progress.uk-progress[value]::-webkit-progress-value {
   span {
     display: block;
   }
-  
+
   span.name{
     font-size: 12px;
     font-weight: bold;
   }
-  
+
   span.info{
     font-size: 12px;
   }
-  
+
   progress{
     height: 6px;
     margin: 5px 0;
@@ -195,7 +195,7 @@ body {
   flex-direction: column;
 }
 
-.app { 
+.app {
   flex: 1 0 auto;
 }
 

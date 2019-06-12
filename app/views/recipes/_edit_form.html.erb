@@ -44,7 +44,7 @@
         slimselect: true,
         slimselectNoResult: t('slimselect.ustensils.no_result'),
         slimselectSearchPlaceholder: t('slimselect.ustensils.search_placeholder'),
-        slimselectPlaceholder: t('slimselect.ustensils.placeholder'),  
+        slimselectPlaceholder: t('slimselect.ustensils.placeholder'),
       }, defaults: {input_class: ""} %>
       <%= f.input :steps_raw, as: :text, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
       <%= f.input :difficulty, as: :range, label: "#{t("recipe.title.difficulty")}:", input_class: false, input_html: {class: "uk-range", step: 1, max: 10, min: 0, oninput: "changeRangeValue()"} %>

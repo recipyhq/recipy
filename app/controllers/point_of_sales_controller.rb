@@ -46,10 +46,15 @@ class PointOfSalesController < InheritedResources::Base
                              hour[1]["close(3i)"].to_i,
                              hour[1]["close(4i)"].to_i,
                              hour[1]["close(5i)"].to_i)
+        puts open < close
+        if !(open < close)
+          return redirect_to new_point_of_sale_path,
+                             flash: { danger: t('point_of_sale.incorrect_hours') }
+        end
         new_hours = OpenningHour.new(:day => day, :open => open, :close => close)
-        puts "############################"
-        puts new_hours
-        puts new_hours.class
+        # puts "############################"
+        # puts new_hours
+        # puts new_hours.class
         # puts new_hours[:openning_hour_id]
         puts new_hours[:day]
         puts new_hours[:open]
@@ -65,13 +70,13 @@ class PointOfSalesController < InheritedResources::Base
         new_pointofsale.address = new_address
         new_pointofsale.save
         redirect_to point_of_sale_path(new_pointofsale.id),
-                    flash: { success: 'point of sale created' }
+                    flash: { success: t('point_of_sale.creation_success') }
       else
-        redirect_to new_point_of_sale_path, flash: { danger: 'Invalid Address' }
+        redirect_to new_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
       end
     else
       redirect_to new_point_of_sale_path,
-                  flash: { danger: 'Error in the creation of the point of sale' }
+                  flash: { danger: t('point_of_sale.creation_error') }
     end
   end
 
@@ -84,9 +89,9 @@ class PointOfSalesController < InheritedResources::Base
     find_pointofsale
     new_address_params = point_of_sale_params[:address_attributes]
     new_openning_hours = point_of_sale_params[:openning_hours_attributes]
-    puts "############################"
-    puts @point_of_sale_param
-    puts "---------------------------"
+    # puts "############################"
+    # puts @point_of_sale_param
+    # puts "---------------------------"
     @point_of_sale_param.extract!(:address_attributes)
     @point_of_sale_param.extract!(:openning_hours_attributes)
     @point_of_sale.openning_hours.destroy_all
@@ -107,6 +112,10 @@ class PointOfSalesController < InheritedResources::Base
                                hour[1]["close(3i)"].to_i,
                                hour[1]["close(4i)"].to_i,
                                hour[1]["close(5i)"].to_i)
+          if !(open < close)
+            return redirect_to edit_point_of_sale_path(@point_of_sale),
+                               flash: { danger: t('point_of_sale.incorrect_hours') }
+          end
           new_hours = OpenningHour.new(:day => day, :open => open, :close => close)
           new_hours.save
           @point_of_sale.openning_hours << new_hours
@@ -122,17 +131,17 @@ class PointOfSalesController < InheritedResources::Base
     end
 
     if @point_of_sale.update(@point_of_sale_param)
-      redirect_to point_of_sale_path, flash: { success: 'Point of sale has been updated' }
+      redirect_to point_of_sale_path, flash: { success: t('point_of_sale.update_success') }
     else
       redirect_to edit_point_of_sale_path(@point_of_sale),
-                  flash: { danger: 'Failed to update point of sale' }
+                  flash: { danger: t('point_of_sale.update_error') }
     end
   end
 
   def destroy
     find_pointofsale
     @point_of_sale.destroy
-    redirect_to point_of_sales_path, flash: { success: 'Point of sale deleted with success' }
+    redirect_to point_of_sales_path, flash: { success: t('point_of_sale.delete_success') }
   end
 
   private
