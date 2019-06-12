@@ -5,7 +5,7 @@ module Producer
 
     def index
       skip_policy_scope
-      @users = User.where(isProducer: true).all
+      @users = User.where(isProducer: true).order(:first_name, :last_name).all
     end
 
     def show
@@ -24,8 +24,6 @@ module Producer
     def patch
       @user = current_user
       @user.isProducer = true
-      @user.last_name = params[:user][:last_name]
-      @user.first_name = params[:user][:first_name]
       @user.bio = params[:user][:bio]
       @user.save
       redirect_to edit_user_registration_path
