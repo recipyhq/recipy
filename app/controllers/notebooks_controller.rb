@@ -8,7 +8,7 @@ class NotebooksController < InheritedResources::Base
     # @notebooks = Notebook.all
     @notebook_recipes_select = Recipe.all.map { |v| [v.title, v.id] }.to_a
     if user_signed_in?
-      @notebooks = Notebook.includes(:image_attachment => :blob).where(:user_id => current_user.id)
+      @notebooks = Notebook.includes(:image_attachment => :blob).where(:user_id => current_user.id).order(:title)
     end
   end
 
@@ -68,10 +68,8 @@ class NotebooksController < InheritedResources::Base
 
   def find_notebook
     if params[:id].nil?
-      puts "here !"
-      @notebook = Notebook.find(params[:notebook][:id])
+      @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:notebook][:id])
     else
-      puts "damn"
       @notebook = Notebook.includes(:recipes => [:image_attachment => :blob]).find(params[:id])
     end
   end

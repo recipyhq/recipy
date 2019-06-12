@@ -7,7 +7,7 @@
                     input_html: {class: 'uk-checkbox uk-margin-left'},
                     collection: ProductTag.all %>
 
-  <%= f.input :ingredient, collection: Ingredient.all.map {|v| [v.name, v.id]}.to_a,
+  <%= f.input :ingredient, collection: Ingredient.all.order(:name).map {|v| [v.name, v.id]}.to_a,
               as: :select, :include_blank => false, :label => t("ingredient.label") %>
 
   <%= f.association :point_of_sales, as: :check_boxes, :label => t("point_of_sale.title"),
@@ -18,7 +18,7 @@
   <%= f.simple_fields_for :price, @product.price do |a| %>
     <%= a.input :value, :label => t("products.price.label")%>
     <%= a.input :quantity_type, :label => t("quantity_type.label"),
-                collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a,
+                collection: QuantityType.all.order(:name).map {|v| [v.name, v.id]}.to_a,
                 as: :select, :include_blank => false %>
   <% end %>
 

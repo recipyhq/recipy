@@ -1,13 +1,9 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
     <% if @notebook.image.attached? %>
       <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@notebook.image.variant resize: '1000x1000') %>;)"></div>
     <% else %>
-      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed">
-        <%= image_tag "https://bitsofco.de/content/images/2018/12/broken-1.png" %>
-      </div>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png;)"></div>
     <% end %>
   </div>
 </div>
@@ -31,13 +27,15 @@
                 <% end %>
             </div>
             <div class="uk-card-body">
-                <h3 class="uk-card-title"> <%= link_to recipe.title , recipe, class: "uk-button uk-button-text" %></h3>
-                <p class="uk-text"> <%= recipe.description %></p>
+                <h3 class="uk-card-title"><%= recipe.title %></h3>
+                <div class="star-ratings star-dark">
+                    <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <p class="uk-text-truncate"><%= recipe.description %></p>
             </div>
             <div class="uk-card-footer">
-              <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button uk-button-text uk-align-right', method: :post do %> </td>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
+                <%= link_to t("recipe.action.show"), recipe, class: "uk-button uk-button-text" %>
             </div>
         </div>
       </div>

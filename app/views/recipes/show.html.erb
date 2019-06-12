@@ -158,7 +158,7 @@
             <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content: nil, class: 'uk-textarea' %>
           </div>
           <div>
-            <%= f.button :submit, t("recipe.action.feedback") %>
+            <%= f.button :submit, t("recipe.action.feedback"), :class => "uk-button uk-button-primary" %>
           </div>
         <% end %>
     </div>

@@ -79,6 +79,7 @@ fr:
 
 
   producer:
+    list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
 
@@ -90,9 +91,12 @@ fr:
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
     my_recipes: 'Mes recettes'
-    courses: 'Listes de course'
+    shopping_lists: 'Mes listes de course'
     point_of_sales: "Points de vente"
-    notebooks: "Carnets de recette"
+    notebooks: "Mes carnets de recette"
+    producer:
+      list: "Liste des producteurs"
+      point_of_sales: "Points de vente"      
 
   footer:
     infos: "Informations"
@@ -319,9 +323,10 @@ fr:
     title: 'Mes carnets de recette'
     add: 'Créer un carnet de recette'
     delete: 'Supprimer'
+    edite: "Éditer"
     edit:
-      invalid: "L'edition est incorrect"
-      valid: "Carnet correctement modifié"
+      invalid: "Le carnet de recette n'est pas conforme"
+      invalid_image: "L'image est invalide"
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
@@ -336,3 +341,21 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+
+  slimselect:
+    ustensils:
+      placeholder: 'Ustensiles'
+      search_placeholder: 'Rechercher un ustensile...'
+      no_result: "Désolé il n'y a pas l'ustensile recherché dans la liste."
+    categories:
+      placeholder: 'Catégories'
+      search_placeholder: 'Rechercher une catégorie...'
+      no_result: "Désolé il n'y a pas la catégorie recherché dans la liste."
+    ingredients:
+      placeholder: 'Ingrédients'
+      search_placeholder: 'Rechercher un ingrédient...'
+      no_result: "Désolé il n'y a pas l'ingrédient recherché dans la liste."
+    ingredienttags:
+      placeholder: "Type d'ingrédient"
+      search_placeholder: "Rechercher un type d'ingrédient..."
+      no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."

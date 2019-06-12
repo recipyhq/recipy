@@ -10,7 +10,13 @@
     <div class="uk-width-xxlarge">
       <%= f.input :title, label: t("recipe.title.title"), input_class: false %>
       <%= f.file_field :image %>
-      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "recipe-category-select", multiple: true}, defaults: {input_class: ""} %>
+      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+        multiple: true,
+        slimselect: true,
+        slimselectNoResult: t('slimselect.categories.no_result'),
+        slimselectSearchPlaceholder: t('slimselect.categories.search_placeholder'),
+        slimselectPlaceholder: t('slimselect.categories.placeholder'),
+      }, defaults: {input_class: ""} %>
       <%= f.input :description, label: t("recipe.title.description"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
     </div>
   </div>
@@ -33,7 +39,13 @@
   <hr class="uk-divider-icon">
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
-      <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {id: "utensils-select", multiple: true}, defaults: {input_class: ""} %>
+      <%= f.input :utensil_ids, :label => t("recipe.title.utensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+        multiple: true,
+        slimselect: true,
+        slimselectNoResult: t('slimselect.ustensils.no_result'),
+        slimselectSearchPlaceholder: t('slimselect.ustensils.search_placeholder'),
+        slimselectPlaceholder: t('slimselect.ustensils.placeholder'),  
+      }, defaults: {input_class: ""} %>
       <%= f.input :steps_raw, as: :text, label: t("recipe.title.step"), input_html: {class: "uk-textarea textarea", rows: "5", id: "steps_textarea"}, input_class: false %>
       <%= f.input :difficulty, as: :range, label: "#{t("recipe.title.difficulty")}:", input_class: false, input_html: {class: "uk-range", step: 1, max: 10, min: 0, oninput: "changeRangeValue()"} %>
       <div class="uk-margin-medium" uk-grid>
@@ -57,21 +69,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
 <script>
-
-  new SlimSelect({
-    select: '#utensils-select',
-    searchingText: 'Recherche...',
-    searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
-    searchPlaceholder: 'Rechercher un ustensile',
-    placeholder: 'Ustensiles'
-  });
-  new SlimSelect({
-    select: '#recipe-category-select',
-    searchingText: 'Recherche...',
-    searchText: 'Désolé il n\'y a pas la catégorie recherchée dans la liste.',
-    searchPlaceholder: 'Rechercher une catégorie',
-    placeholder: 'Catégories'
-  });
 
   let difValue = document.getElementById('recipe_difficulty').value;
   document.getElementById('recipe_difficulty').labels[0].innerHTML = "<abbr title='required'>*</abbr> <%= "#{t("recipe.title.difficulty")}: "%>" + difValue + '/10';
