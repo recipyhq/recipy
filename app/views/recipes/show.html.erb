@@ -41,7 +41,7 @@
   <div class="uk-child-width-1-2@m" uk-grid>
     <div>
       <div class="uk-padding">
-        <h2 class="title"><%= t("recipe.title.ingredient") %></h2>
+        <h2 class="title"><%= t("recipe.title.ingredients") %></h2>
         <div class="uk-card uk-card-default uk-card-body">
           <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
             <div class="uk-grid-small" uk-grid>
@@ -59,7 +59,6 @@
               <% end %>
             <% else %>
               <%= button_to 'Créer une liste de course avec ces ingrédients', recipe_add_ingredients_to_new_list_url(@recipe), method: :post, class: "uk-button uk-button-default uk-margin-small-top" %>
-              <!--              <button uk-toggle="target: #new-list" type="button" class="uk-button uk-button-default uk-margin-small-top">Ajouter à une liste de courses</button>-->
             <% end %>
           <% end %>
         </div>
@@ -166,7 +165,7 @@
         <%= f.text_area :content, :label => t("recipe.title.comment"), :prompt => t("recipe.title.comment"), :value => (@feedback_user) ? @feedback_user.content : nil, class: 'uk-textarea' %>
       </div>
       <div>
-        <%= f.button :submit, t("recipe.action.feedback") %>
+        <%= f.button :submit, t("recipe.action.feedback"), :class => "uk-button uk-button-primary" %>
       </div>
     <% end %>
   </div>

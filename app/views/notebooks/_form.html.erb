@@ -13,6 +13,8 @@
   <%= f.input :title, label: t('notebook.form.name') %>
   <%= f.input :description, as: :text, label: "Décrivez le style de carnet que vous réalisez", input_html: {class: "uk-textarea size_textarea", rows: "10"}, input_class: false %>
   <%#= f.input :recipes, collection: Recipe.all, as: :select, label: "Selectionnez votre première recette à ajouter"%>
-  <%= f.button :submit, "Valider" %>
+
+  <%= f.button :submit, :value => "Valider" %>
+  <%= link_to t('notebook.back'), notebooks_path, class: "" %>
 <% end %>
 

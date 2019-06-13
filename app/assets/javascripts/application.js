@@ -21,7 +21,6 @@
 
 $(document).ready(() => {
   $('div#notification').each((ind, el) => {
-    console.log(el, ind);
     setTimeout(() => {
       $(el).fadeOut('slow', () => {
         $(this).remove();
