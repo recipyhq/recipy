@@ -11,7 +11,6 @@
       <%= f.input :password, required: true, placeholder: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length) %>
       <%= f.input :first_name, :label => (t('placeholder_first_name')), required: true, autofocus: true %>
       <%= f.input :last_name, :label => (t('placeholder_last_name')), required: true, autofocus: true %>
-      <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
       <%= f.input :newsletters, :label => "S'inscrire à la newsletter ?" ,input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
 
       <div class="uk-margin-medium">
