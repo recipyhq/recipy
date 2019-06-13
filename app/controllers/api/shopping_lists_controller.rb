@@ -70,14 +70,28 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def build_shopping_list_ingredients(shopping_list)
-    @tab = {}
-    if shopping_list.ingredients.nil?
-      @tab = {}
+    @tab = []
+    if shopping_list.shopping_list_ingredients.nil? || shopping_list.ingredients.nil?
+      @tab.push([])
     else
-      shopping_list.ingredients.each do |elem|
-        @tab[elem.name] =
-          ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id,
-                                         ingredient_id: elem.id).checked
+      shopping_list.shopping_list_ingredients.each do |elem|
+        if elem.shopping_list_quantity.nil?
+          mrg = {
+            :ingredient => elem.ingredient,
+            :checked => elem.checked,
+            :quantity => nil
+          }
+        else
+          mrg = {
+            :ingredient => elem.ingredient,
+            :checked => elem.checked,
+            :quantity => [
+              elem.shopping_list_quantity.value,
+              elem.shopping_list_quantity.quantity_type.name,
+            ],
+          }
+        end
+        @tab.push(mrg)
       end
     end
     @tab
