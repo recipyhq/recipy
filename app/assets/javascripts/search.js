@@ -1,43 +1,50 @@
 //
 //= require slimselect.min
 document.addEventListener('turbolinks:load', () => {
-  if (document.querySelector('#ingredients-select')) {
+  // For multiple select
+  // Add attribute like:
+  // slimselectNoResult -> No result when research
+  // slimselectPlaceholder -> Placeholder input
+  // slimselectSearchPlaceholder -> Placeholder for search bar in multiple select
+
+  const slimselectInputs = document.querySelectorAll('[slimselect]');
+
+  for (const slimselectInput of slimselectInputs) {
+    const slimselectNoResult = slimselectInput.getAttribute('slimselectNoResult') || 'Pas de résultat pour la recherche';
+    const slimselectSearchPlaceholder = slimselectInput.getAttribute('slimselectSearchPlaceholder') || 'Rechercher...';
+    const slimselectPlaceholder = slimselectInput.getAttribute('slimselectPlaceholder') || 'Choix multiple';
+
     new SlimSelect({
-      select: '#ingredients-select',
-      searchingText: 'Recherche...',
-      searchText: "Désolé il n'y a pas votre ingrédient dans la liste.",
-      searchPlaceholder: 'Recherche ingrédient',
-      placeholder: 'Ingrédients',
+      select: slimselectInput,
+      searchText: slimselectNoResult,
+      searchPlaceholder: slimselectSearchPlaceholder,
+      placeholder: slimselectPlaceholder,
     });
   }
 
-  if (document.querySelector('#utensils-select')) {
-    new SlimSelect({
-      select: '#utensils-select',
-      searchingText: 'Recherche...',
-      searchText: 'Désolé il n\'y a pas l\'ustensile recherché dans la liste.',
-      searchPlaceholder: 'Rechercher un ustensile',
-      placeholder: 'Ustensiles'
-    });
-  }
-
-  if (document.querySelector('#ingredienttags-select')) {
-    new SlimSelect({
-      select: '#ingredienttags-select',
-      searchingText: 'Recherche...',
-      searchText: "Désolé il n'y a pas votre type d'ingrédient dans la liste.",
-      searchPlaceholder: 'Recherche du type d\'ingrédient',
-      placeholder: 'Type d\'ingrédient',
-    });
-  }
-
-  if (document.querySelector('#recipe-category-select')) {
-    new SlimSelect({
-      select: '#recipe-category-select',
-      searchingText: 'Recherche...',
-      searchText: 'Désolé il n\'y a pas la catégorie recherché dans la liste.',
-      searchPlaceholder: 'Rechercher une catégorie',
-      placeholder: 'Catégories',
-    });
-  }
+  // window.onload = () => {
+  //   console.log('TEST on load');
+  //
+  //   $("input[id*='recipe_ingredients']").on('cocoon:after-insert', (e, insertedItem) => {
+  //
+  //     console.log('trigger');
+  //     const slimselectInputss = insertedItem.querySelectorAll('[slimselect]');
+  //
+  //     for (const slimselectInput of slimselectInputss) {
+  //       const slimselectNoResult = slimselectInput.getAttribute('slimselectNoResult') ||
+  //       'Pas de résultat pour la recherche';
+  //       const slimselectSearchPlaceholder =
+  //       slimselectInput.getAttribute('slimselectSearchPlaceholder') || 'Rechercher...';
+  //       const slimselectPlaceholder = slimselectInput.getAttribute('slimselectPlaceholder') ||
+  //       'Choix multiple';
+  //
+  //       new SlimSelect({
+  //         select: slimselectInput,
+  //         searchText: slimselectNoResult,
+  //         searchPlaceholder: slimselectSearchPlaceholder,
+  //         placeholder: slimselectPlaceholder,
+  //       });
+  //     }
+  //   });
+  // };
 });

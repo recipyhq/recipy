@@ -1,12 +1,12 @@
 <%= simple_form_for @ingredient,
-  html: {
-    class: "uk-form-stacked"
-  },
-  defaults: {
-    label_html: {
-      class: "uk-form-label"
-    }
-  } do |f| %>
+                    html: {
+                      class: "uk-form-stacked"
+                    },
+                    defaults: {
+                      label_html: {
+                        class: "uk-form-label"
+                      }
+                    } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -17,7 +17,13 @@
 
   <div class="uk-margin">
     <%= f.label t("ingredient.title.type"), class: "uk-form-label" %>
-    <%= f.input :ingredient_tag_ids, :label => false, :selected => @ingredient.ingredient_tags.map { |v| v.id }.to_a, collection: IngredientTag.all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: { id: "ingredienttags-select", multiple: true } , wrapper_class: "", defaults: { input_class: "" } %>
+    <%= f.input :ingredient_tag_ids, :label => false, :selected => @ingredient.ingredient_tags.map {|v| v.id}.to_a, collection: IngredientTag.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+      multiple: true,
+      slimselect: true,
+      slimselectNoResult: t('slimselect.ingredienttags.no_result'),
+      slimselectSearchPlaceholder: t('slimselect.ingredienttags.search_placeholder'),
+      slimselectPlaceholder: t('slimselect.ingredienttags.placeholder'),
+    }, wrapper_class: "", defaults: {input_class: ""} %>
   </div>
 
   <div class="uk-margin-medium">

@@ -3,10 +3,10 @@
     <div class=" uk-grid">
       <div class="uk-width-1-1">
         <% if !f.object.ingredient.nil? %>
-          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).all.map {|v| [v.name, v.id]}.to_a, as: :select, selected: f.object.ingredient.id,
+          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, selected: f.object.ingredient.id,
                       :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"} %>
         <% else %>
-          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).all.map {|v| [v.name, v.id]}.to_a, as: :select,
+          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select,
                       :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"} %>
         <% end %>
       </div>

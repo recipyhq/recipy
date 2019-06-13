@@ -33,6 +33,8 @@ en:
   hello: "Hello world"
   placeholder_email: "E-mail adress"
   placeholder_password: "Password"
+  placeholder_first_name: "First name"
+  placeholder_last_name: "Last name"
 
   devise:
     facebook: "Sign in with Facebook"
@@ -116,6 +118,10 @@ en:
       models:
         user:
           attributes:
+            first_name:
+              blank: "The First name field must not be empty"
+            last_name:
+                blank: "The Last name field must not be empty"
             email:
               taken: "An account already exists with this email address. Please try again"
               blank: "The Email field must not be empty"
@@ -176,7 +182,8 @@ en:
       preparation_time: "Preparation Time (min)"
       description: "Description"
       difficulty: "Difficulty"
-      ingredient: "Ingredient(s)"
+      ingredient: "Ingredient"
+      ingredients: "Ingredient(s)"
       utensil: "Utensil(s)"
       image: "image"
       nb_person: "For how many people ?"
@@ -217,11 +224,22 @@ en:
       title: "All my recipes"
 
   ingredient:
-    unrecognized: ""
-    no_title: "Missing ingredient title"
-    not_created: "Ingredient cannot be created"
-    no_null: "Ingredient cannot be null"
+    title:
+      new_ingredient: "Propose a new ingredient"
+      create: "Request to add the ingredient"
+      name: "Ingredient Name"
+      description: "Ingredient description"
+      type: "Ingredient type"
+      quantity: "Equivalence in grams of the ingredient in a certain type of quantity "
+    unrecognized: "Unrecognized ingredient"
+    no_title: "Missing ingredient name"
+    not_created: "The ingredient did not be created"
+    no_null: "The ingredient cannot be empty"
+    creation:
+      valid: "Your request has been taken into account and will be processed within 48 hours."
+      invalid: "Your request is not valid. This ingredient must already be in the database."
     label: "Ingredient"
+
   products:
     missing_price_element: "Missing an element in the price"
     created: "Succesfully creation of your product !"
@@ -240,9 +258,38 @@ en:
   quantity_type:
     label: "Quantity type"
   point_of_sale:
-    missing_address: "MIssing address"
+    missing_address: "Missing address"
     wrong_address: "You address is incorrect"
-    label: "Point(s) of sales"
+    title: "Point(s) of sales"
+    name: "Name"
+    desc: "Description"
+    entilted: "Address"
+    city: "City"
+    zip: "Zip Code"
+    state: "State"
+    country: "Country"
+    phone: "Phone number"
+    day: "Day"
+    hours: "Hours"
+    open_hour: "Openning Hours"
+    close_hour: "Closing Hours"
+    market_type: "Point of sale's type"
+    remove: "Remove"
+    add_opening_hour: "Add Openning Hours"
+    add: "Add point of sale"
+    new: "New point of sale"
+    back: "Back"
+    show: "Show point of sale"
+    edit: "Edit point of sale"
+    delete: "Delete point of sale"
+    validate: "Validate"
+    incorrect_hours: "Incorrect Hours"
+    creation_error: "Error in the creation of the point of sale"
+    creation_success: "Point of sale created"
+    update_error: "Failed to update point of sale"
+    update_success: "Point of sale has been updated"
+    delete_success: "Point of sale deleted with success"
+    hour: "Hour"
   notebook:
     edit:
       invalid: "The notebook is invalid"

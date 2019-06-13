@@ -1,7 +1,8 @@
 fr:
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
-
+  placeholder_first_name: "Prénom"
+  placeholder_last_name: "Nom"
   devise:
     facebook: "Se connecter avec Facebook"
     google_oauth2: "Se connecter avec Google +"
@@ -78,9 +79,10 @@ fr:
 
 
   producer:
+    list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
- 
+
   navbar:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
@@ -89,9 +91,12 @@ fr:
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
     my_recipes: 'Mes recettes'
-    courses: 'Listes de course'
+    shopping_lists: 'Mes listes de course'
     point_of_sales: "Points de vente"
-    notebooks: "Carnets de recette"
+    notebooks: "Mes carnets de recette"
+    producer:
+      list: "Liste des producteurs"
+      point_of_sales: "Points de vente"
 
   footer:
     infos: "Informations"
@@ -114,6 +119,10 @@ fr:
       models:
         user:
           attributes:
+            first_name:
+              blank: "Le champ Prénom ne doit pas être vide"
+            last_name:
+              blank: "Le champ Nom ne doit pas être vide"
             email:
               taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
               blank: "Le champ Courriel ne doit pas être vide"
@@ -175,7 +184,8 @@ fr:
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
-        ingredient: "Ingrédient(s)"
+        ingredient: "Ingrédient"
+        ingredients: "Ingrédient(s)"
         preparation: "Préparation"
         preparation_time: "Temps de préparation"
         cooking_time: "Temps de cuisson"
@@ -243,7 +253,7 @@ fr:
     no_null: "L'ingredient ne peut pas être nul"
     creation:
       valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
-      invalid: "Votre n'est pas valide."
+      invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
 
   search:
@@ -279,7 +289,7 @@ fr:
     not_found: "Produit non trouvé"
   quantity_type:
     label: "Type de Quantité"
-  
+
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"
@@ -294,6 +304,7 @@ fr:
     phone: "Numéro de téléphone"
     day: "Jour"
     hours: "Horaires"
+    hour: "Heure"
     open_hour: "Horaire d'ouverture"
     close_hour: "Horaire de fermeture"
     market_type: "Type de point de vente"
@@ -306,6 +317,12 @@ fr:
     edit: "Éditer le point de vente"
     delete: "Supprimer le point de vente"
     validate: "Valider"
+    incorrect_hours: "Horaires incorrectes"
+    creation_error: "Une erreur s'est produite pendant la création"
+    creation_success: "Point de vente créé"
+    update_error: "Une erreur s'est produite pendant la modification"
+    update_success: "Modification(s) effectuée(s) avec succés"
+    delete_success: "Point de vente supprimé"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
@@ -314,9 +331,10 @@ fr:
     title: 'Mes carnets de recette'
     add: 'Créer un carnet de recette'
     delete: 'Supprimer'
+    edite: "Éditer"
     edit:
-      invalid: "L'edition est incorrect"
-      valid: "Carnet correctement modifié"
+      invalid: "Le carnet de recette n'est pas conforme"
+      invalid_image: "L'image est invalide"
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
@@ -331,3 +349,21 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+
+  slimselect:
+    ustensils:
+      placeholder: 'Ustensiles'
+      search_placeholder: 'Rechercher un ustensile...'
+      no_result: "Désolé il n'y a pas l'ustensile recherché dans la liste."
+    categories:
+      placeholder: 'Catégories'
+      search_placeholder: 'Rechercher une catégorie...'
+      no_result: "Désolé il n'y a pas la catégorie recherché dans la liste."
+    ingredients:
+      placeholder: 'Ingrédients'
+      search_placeholder: 'Rechercher un ingrédient...'
+      no_result: "Désolé il n'y a pas l'ingrédient recherché dans la liste."
+    ingredienttags:
+      placeholder: "Type d'ingrédient"
+      search_placeholder: "Rechercher un type d'ingrédient..."
+      no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."
