@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_153122) do
+ActiveRecord::Schema.define(version: 2019_06_06_200051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,17 +148,17 @@ ActiveRecord::Schema.define(version: 2019_05_31_153122) do
   create_table "openning_hours", force: :cascade do |t|
     t.time "open"
     t.time "close"
+    t.string "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "day"
   end
 
   create_table "point_of_sales", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "market_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "market_type"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_point_of_sales_on_user_id"
   end
@@ -281,7 +281,6 @@ ActiveRecord::Schema.define(version: 2019_05_31_153122) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.integer "score", default: 0
     t.text "description"
     t.text "step"
     t.integer "difficulty"
