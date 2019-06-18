@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :meal_plans
+  resources :meals
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"

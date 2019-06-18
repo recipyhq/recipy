@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <div class="uk-container uk-padding">
   <h2 class="title"><%= t('notebook.title') %></h2>
   <div class="uk-margin-bottom">
@@ -10,7 +12,7 @@
           <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
               <div class="uk-width-expand uk-text-center">
-                <h3 class="uk-card-title uk-margin-remove-bottom"><%= notebook.title %></h3>
+                <h3><%= link_to notebook.title, notebook, class: 'uk-card-title uk-margin-remove-bottom' %></h3>
               </div>
             </div>
           </div>
@@ -28,9 +30,12 @@
             </div>
           </div>
           <div class="uk-card-footer">
-            <%= link_to t('notebook.open'), notebook, class: 'uk-button uk-button-text' %>
-            <%= link_to t('notebook.edite'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
-            <%= link_to t('notebook.delete'), notebook, method: :delete, class: "uk-button uk-button-text", data: { confirm: t('notebook.confirm_delete') } %>
+            <%= link_to notebook, method: :delete, class: "uk-button uk-button-text uk-align-right", data: { confirm: t('notebook.confirm_delete') } do %>
+              <i class ="fa fa-lf fa-trash"></i>
+            <% end %>
+            <%= link_to edit_notebook_path(notebook), class: "uk-button uk-button-text uk-align-right" do %>
+              <i class="far fa-edit"></i>
+            <% end %>
           </div>
         </div>
       </div>
