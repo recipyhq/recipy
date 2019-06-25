@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :meal_plans
+  resources :meals
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
@@ -66,6 +68,7 @@ Rails.application.routes.draw do
       resources :recipes, param: :id do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
         post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
+        post 'add_ingredients_to_new_list' => "recipes#add_ingredients_to_new_list"
       end
 
       get 'search' => "search#index"
@@ -87,7 +90,11 @@ Rails.application.routes.draw do
     authenticated :user do
     end
 
-    get 'user', to: 'user#info'
+    scope :user do
+      get 'info', to: 'user#info'
+      post '/follow_producer', to: 'user#follow_producer'
+      post '/unfollow_producer', to: 'user#unfollow_producer'
+    end
 
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'

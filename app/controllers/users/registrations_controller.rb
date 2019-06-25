@@ -43,8 +43,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [
-      :first_name, :last_name,
-      :newsletters, :remember_me,
+      :first_name, :last_name, :newsletters,
+      :remember_me,
     ])
   end
 
@@ -54,10 +54,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    createproducer_path
+    '/beta/users/sign_in'
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    createproducer_path
+    '/beta/users/sign_in'
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    '/beta/users/sign_in'
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
 end

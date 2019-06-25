@@ -13,6 +13,7 @@ cache:
 before_install:
   - nvm install
   - npm install -g yarn@"$(jq -r '.engines.yarn' package.json)"
+  - gem install bundler -v '2.0.1'
 
 install:
   - bundle install --deployment --without development production

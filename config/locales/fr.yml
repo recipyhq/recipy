@@ -84,11 +84,15 @@ fr:
       action_follow: "Suivre"
       action_unfollow: "Ne plus suivre"
       link: "Les producteurs suivis"
+    api:
+      follow_ok: "Vous suivez ce producteur"
+      follow_ko: "Vous ne suivez plus ce producteur"
 
 
 
 
   producer:
+    list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
 
@@ -100,9 +104,12 @@ fr:
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
     my_recipes: 'Mes recettes'
-    courses: 'Listes de course'
+    shopping_lists: 'Mes listes de course'
     point_of_sales: "Points de vente"
-    notebooks: "Carnets de recette"
+    notebooks: "Mes carnets de recette"
+    producer:
+      list: "Liste des producteurs"
+      point_of_sales: "Points de vente"
 
   footer:
     infos: "Informations"
@@ -190,7 +197,8 @@ fr:
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
-        ingredient: "Ingrédient(s)"
+        ingredient: "Ingrédient"
+        ingredients: "Ingrédient(s)"
         preparation: "Préparation"
         preparation_time: "Temps de préparation"
         cooking_time: "Temps de cuisson"
@@ -238,6 +246,7 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
       name: "Recette"
       invalid_user_id: "Utilisateur non trouvé"
       my_recipes:
@@ -258,7 +267,7 @@ fr:
     no_null: "L'ingredient ne peut pas être nul"
     creation:
       valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
-      invalid: "Votre n'est pas valide."
+      invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
 
   search:
@@ -309,6 +318,7 @@ fr:
     phone: "Numéro de téléphone"
     day: "Jour"
     hours: "Horaires"
+    hour: "Heure"
     open_hour: "Horaire d'ouverture"
     close_hour: "Horaire de fermeture"
     market_type: "Type de point de vente"
@@ -321,6 +331,12 @@ fr:
     edit: "Éditer le point de vente"
     delete: "Supprimer le point de vente"
     validate: "Valider"
+    incorrect_hours: "Horaires incorrectes"
+    creation_error: "Une erreur s'est produite pendant la création"
+    creation_success: "Point de vente créé"
+    update_error: "Une erreur s'est produite pendant la modification"
+    update_success: "Modification(s) effectuée(s) avec succés"
+    delete_success: "Point de vente supprimé"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
@@ -329,9 +345,10 @@ fr:
     title: 'Mes carnets de recette'
     add: 'Créer un carnet de recette'
     delete: 'Supprimer'
+    edite: "Éditer"
     edit:
-      invalid: "L'edition est incorrect"
-      valid: "Carnet correctement modifié"
+      invalid: "Le carnet de recette n'est pas conforme"
+      invalid_image: "L'image est invalide"
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
@@ -351,3 +368,20 @@ fr:
     dashboard_welcome:
       welcome: "Bienvenue"
       call_to_action: "Action"
+  slimselect:
+    ustensils:
+      placeholder: 'Ustensiles'
+      search_placeholder: 'Rechercher un ustensile...'
+      no_result: "Désolé il n'y a pas l'ustensile recherché dans la liste."
+    categories:
+      placeholder: 'Catégories'
+      search_placeholder: 'Rechercher une catégorie...'
+      no_result: "Désolé il n'y a pas la catégorie recherché dans la liste."
+    ingredients:
+      placeholder: 'Ingrédients'
+      search_placeholder: 'Rechercher un ingrédient...'
+      no_result: "Désolé il n'y a pas l'ingrédient recherché dans la liste."
+    ingredienttags:
+      placeholder: "Type d'ingrédient"
+      search_placeholder: "Rechercher un type d'ingrédient..."
+      no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."

@@ -23,7 +23,7 @@ class Api::SearchController < Api::BaseController
     @recipes = @recipes.by_value_max(:cooking_time, @search_time)
     @recipes = @recipes.have_ingredients(@search_ingredients)
     if @sort == 'note_desc' || @sort == 'note_asc'
-      @recipes = @recipes.order(score: (@sort == 'note_desc') ? :desc : :asc)
+      @recipes = @recipes.select("recipes.*, COALESCE(avg(recipe_scores.value), 0) as score").left_joins(:recipe_scores).group("recipes.id").order(score: (@sort == 'note_desc') ? :desc : :asc)
     end
     @page_max = (@recipes.uniq.count / @@per_page).ceil
     @page_max = @page_max > 0 ? @page_max : 1
@@ -34,6 +34,7 @@ class Api::SearchController < Api::BaseController
       page_max: @page_max,
       ingredients: @ingredients_select,
       time_max: @time_max,
+      sort_possibilities: @@sort_possibilities,
       sort: @sort,
       search: {
         query: @search_query,

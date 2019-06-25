@@ -4,12 +4,14 @@ ActiveAdmin.register Ingredient do
   permit_params :name, :description, :quantity_equivalency_ids => [],
                                      :ingredient_tag_ids => []
 
-  includes :quantity_equivalencies => :quantity_type
+  includes :quantity_equivalencies, :related_quantity_equivalencies
 
   controller do
-    def scoped_collection
-      Ingredient.includes(:quantity_equivalencies => :quantity_type)
-    end
+    # Bullet.enable = false
+    #
+    # def scoped_collection
+    #   Ingredient.includes(:related_quantity_equivalencies, :quantity_equivalencies)
+    # end
 
     def update
       @ingredient = Ingredient.find_by_id(params[:id])
@@ -28,6 +30,7 @@ ActiveAdmin.register Ingredient do
       end
       super
     end
+    # Bullet.enable = true
   end
 
   index do

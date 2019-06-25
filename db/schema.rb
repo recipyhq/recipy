@@ -110,6 +110,21 @@ ActiveRecord::Schema.define(version: 2019_06_10_133256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "meal_plans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer "type"
+    t.date "date"
+    t.time "time"
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_meals_on_type"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.string "account_type"
@@ -205,6 +220,24 @@ ActiveRecord::Schema.define(version: 2019_06_10_133256) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "r_shp_lst_ing_quantities", force: :cascade do |t|
+    t.bigint "shopping_list_ingredient_id"
+    t.bigint "shopping_list_quantity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shopping_list_ingredient_id"], name: "index_r_shp_lst_ing_quantities_on_shopping_list_ingredient_id"
+    t.index ["shopping_list_quantity_id"], name: "index_r_shp_lst_ing_quantities_on_shopping_list_quantity_id"
+  end
+
+  create_table "r_shp_lst_quantities", force: :cascade do |t|
+    t.bigint "shopping_list_quantity_id"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_r_shp_lst_quantities_on_quantity_type_id"
+    t.index ["shopping_list_quantity_id"], name: "index_r_shp_lst_quantities_on_shopping_list_quantity_id"
   end
 
   create_table "recipe_categories", force: :cascade do |t|
@@ -395,6 +428,14 @@ ActiveRecord::Schema.define(version: 2019_06_10_133256) do
     t.boolean "checked", default: false
     t.index ["ingredient_id"], name: "index_shopping_list_ingredients_on_ingredient_id"
     t.index ["shopping_list_id"], name: "index_shopping_list_ingredients_on_shopping_list_id"
+  end
+
+  create_table "shopping_list_quantities", force: :cascade do |t|
+    t.integer "value"
+    t.bigint "quantity_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quantity_type_id"], name: "index_shopping_list_quantities_on_quantity_type_id"
   end
 
   create_table "shopping_lists", force: :cascade do |t|
