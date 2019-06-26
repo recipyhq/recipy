@@ -11,17 +11,19 @@
     <div class="uk-width-auto">
       <% unless @user.followed_users.empty? %>
         <h3><%= t("users.followed_producers.followed_label",
-                            nb: @user.followed_users.size) %></h3>
+                  nb: @user.followed_users.size) %></h3>
       <% end %>
-      <% if current_user.liked_producers.any? {|user| user.id == @user.id.to_i} %>
-        <%= simple_form_for @user, :url => unfollow_producer_url, :method => 'post' do |f| %>
-          <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
-          <%= f.button :submit, t("users.followed_producers.action_unfollow") %>
-        <% end %>
-      <% else %>
-        <%= simple_form_for @user, :url => follow_producer_url, :method => 'post' do |f| %>
-          <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
-          <%= f.button :submit, t("users.followed_producers.action_follow") %>
+      <% unless current_user.nil? %>
+        <% if current_user.liked_producers.any? {|user| user.id == @user.id.to_i} %>
+          <%= simple_form_for @user, :url => unfollow_producer_url, :method => 'post' do |f| %>
+            <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
+            <%= f.button :submit, t("users.followed_producers.action_unfollow") %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for @user, :url => follow_producer_url, :method => 'post' do |f| %>
+            <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
+            <%= f.button :submit, t("users.followed_producers.action_follow") %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
