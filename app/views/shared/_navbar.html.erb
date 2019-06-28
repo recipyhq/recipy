@@ -34,6 +34,11 @@
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
                 <% end %>
               </li>
+              <li class="<%= current_page_class?(liked_producers_path) %>">
+                <%= link_to liked_producers_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: heart"></span><%= t('users.followed_producers.link') %>
+                <% end %>
+              </li>
               <li class="<%= current_page_class?(notebooks_path) %>">
                 <%= link_to notebooks_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: bookmark"></span><%= t('navbar.notebooks') %>

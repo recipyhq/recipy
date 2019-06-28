@@ -79,7 +79,7 @@ class Api::ShoppingListsController < ApplicationController
           mrg = {
             :ingredient => elem.ingredient,
             :checked => elem.checked,
-            :quantity => nil
+            :quantity => nil,
           }
         else
           mrg = {

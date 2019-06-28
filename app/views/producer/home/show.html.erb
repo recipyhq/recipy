@@ -1,12 +1,32 @@
-
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
     <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= asset_path 'producer/producer_background.jpg' %>;)"></div>
   </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
-  <div class="uk-container">
-    <h2 class="title"><%= @user.first_name %> <%= @user.last_name %></h2>
+  <div class="uk-container uk-position-bottom-center uk-position-relative uk-grid-divider" uk-grid>
+    <div class="uk-width-expand">
+      <h2 class="title uk-margin-top"><%= @user.first_name %> <%= @user.last_name %></h2>
+    </div>
+    <div class="uk-width-auto">
+      <% unless @user.followed_users.empty? %>
+        <h3><%= t("users.followed_producers.followed_label",
+                  nb: @user.followed_users.size) %></h3>
+      <% end %>
+      <% unless current_user.nil? %>
+        <% if current_user.liked_producers.any? {|user| user.id == @user.id.to_i} %>
+          <%= simple_form_for @user, :url => unfollow_producer_url, :method => 'post' do |f| %>
+            <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
+            <%= f.button :submit, t("users.followed_producers.action_unfollow") %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for @user, :url => follow_producer_url, :method => 'post' do |f| %>
+            <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
+            <%= f.button :submit, t("users.followed_producers.action_follow") %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="uk-section uk-section-default">

@@ -76,6 +76,19 @@ fr:
         not_saved:
           one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
           other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+    followed_producers:
+      followed_label: "Suivi par %{nb} personne(s)"
+      liked_label: "Liste des producteurs que je suis (%{nb})"
+      no_follow: "Vous ne suivez aucun producteur !"
+      link_to_all_prod: "Voir tous les producteurs de la plateforme"
+      action_follow: "Suivre"
+      action_unfollow: "Ne plus suivre"
+      link: "Les producteurs suivis"
+    api:
+      follow_ok: "Vous suivez ce producteur"
+      follow_ko: "Vous ne suivez plus ce producteur"
+
+
 
 
   producer:
@@ -233,6 +246,7 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
       name: "Recette"
       invalid_user_id: "Utilisateur non trouvé"
       my_recipes:
@@ -349,7 +363,11 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
-
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Bienvenue"
+      call_to_action: "Action"
   slimselect:
     ustensils:
       placeholder: 'Ustensiles'

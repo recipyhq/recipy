@@ -64,7 +64,7 @@ class RecipesController < InheritedResources::Base
       new_recipe.user = current_user
       new_recipe.save
 
-      redirect_to recipe_path(Recipe.last.id), flash: {success: t("recipe.creation.valid")}
+      redirect_to recipe_path(Recipe.last.id), flash: { success: t("recipe.creation.valid") }
     end
   end
 
@@ -105,12 +105,12 @@ class RecipesController < InheritedResources::Base
       end
       if @recipe.update(@recipe_params)
         if @recipe.image.blob.content_type.starts_with?('image/')
-          redirect_to recipe_path, flash: {success: t("recipe.edit.valid")}
+          redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
         else
-          redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid_image")}
+          redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
         end
       else
-        redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid")}
+        redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
       end
     end
   end
@@ -120,7 +120,7 @@ class RecipesController < InheritedResources::Base
     find_recipe
     @recipe.image.purge_later
     @recipe.destroy
-    redirect_to recipes_path, flash: {success: t("recipe.destroy.valid")}
+    redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
   end
 
   def add_ingredients_to_list
@@ -147,7 +147,7 @@ class RecipesController < InheritedResources::Base
       Bullet.enable = previous_bullet
       if shopping_list.save
         redirect_to shopping_list_path(id: shopping_list.id),
-                    flash: {success: "Les ingrédients ont été ajoutés à la liste"}
+                    flash: { success: "Les ingrédients ont été ajoutés à la liste" }
       end
     end
   end
@@ -164,7 +164,7 @@ class RecipesController < InheritedResources::Base
       end
       if shopping_list.save
         redirect_to shopping_list_path(id: shopping_list.id),
-                    flash: {success: "Les ingrédients ont été ajoutés à la liste"}
+                    flash: { success: "Les ingrédients ont été ajoutés à la liste" }
       end
     end
   end
@@ -175,8 +175,9 @@ class RecipesController < InheritedResources::Base
     shopping_list.ingredients << elem.ingredient
     if elem.recipe_quantity
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
-        shopping_list_quantity = ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
-                                                              :quantity_type => elem.recipe_quantity.quantity_type)
+        shopping_list_quantity =
+          ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
+                                       :quantity_type => elem.recipe_quantity.quantity_type)
         last = shopping_list.shopping_list_ingredients.last
         last.shopping_list_quantity = shopping_list_quantity
       end
@@ -186,10 +187,12 @@ class RecipesController < InheritedResources::Base
   def sum_shopping_list_quantities(shopping_list, elem)
     if elem.recipe_quantity
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
-        ing = ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id, ingredient_id: elem.ingredient.id)
+        ing = ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id,
+                                             ingredient_id: elem.ingredient.id)
         if ing.shopping_list_quantity.nil?
-          ing.shopping_list_quantity = ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
-                                               :quantity_type => elem.recipe_quantity.quantity_type)
+          ing.shopping_list_quantity =
+            ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
+                                         :quantity_type => elem.recipe_quantity.quantity_type,)
           ing.save
         else
           quant = ing.shopping_list_quantity
@@ -224,8 +227,8 @@ class RecipesController < InheritedResources::Base
     params.require(:recipe).permit(:title, :score, :steps_raw, :cooking_time, :preparation_time,
                                    :description, :difficulty, :person,
                                    :image, :recipe_ingredients_attributes => {},
-                                   :utensil_ids => [],
-                                   :recipe_category_ids => [])
+                                           :utensil_ids => [],
+                                           :recipe_category_ids => [])
   end
 
   def new_list_params
@@ -243,8 +246,7 @@ class RecipesController < InheritedResources::Base
       "Non défini",
       "Noisette(s)",
       "Brin(s)",
-      "Feuille(s)"
+      "Feuille(s)",
     ].include? qt
   end
-
 end

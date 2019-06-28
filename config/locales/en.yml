@@ -104,6 +104,17 @@ en:
         not_saved:
           one: "1 error prohibited this %{resource} from being saved:"
           other: "%{count} errors prohibited this %{resource} from being saved:"
+    followed_producers:
+      followed_label: "Followed by %{nb} person(s)"
+      liked_label: "List of my liked producers (%{nb})"
+      no_follow: "You don't follow any producer"
+      link_to_all_prod: "See all producers of our platform"
+      action_follow: "Follow"
+      action_unfollow: "Unfollow"
+      link: "All liked producers"
+    api:
+      follow_ok: "You follow this producer"
+      follow_ko: "you no longer follow this producer"
 
   navbar:
     log_out: "Log out"
@@ -294,3 +305,9 @@ en:
     edit:
       invalid: "The notebook is invalid"
       invalid_image: "Image is not valid"
+
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Welcome"
+      call_to_action: "Action"
