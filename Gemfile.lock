@@ -422,6 +422,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   brakeman
   bullet
+  bundler (~> 2.0.1)
   bundler-audit
   byebug
   capybara
