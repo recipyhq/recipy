@@ -35,6 +35,7 @@ gem 'country_select'
 gem 'cocoon'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'bundler', '~> 2.0.1'
+gem "google-cloud-storage", "~> 1.11", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
