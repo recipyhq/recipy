@@ -29,7 +29,7 @@ google:
     token_uri: <%= ENV["GOOGLE_TOKEN_URI"] %>
     auth_provider_x509_cert_url: <%= ENV["GOOGLE_AUTH_PROVIDER_x509_CERT_URL"] %>
     client_x509_cert_url: <%= ENV["GOOGLE_CLIENT_X509_CERT_URL"] %>
-  bucket: recipy-storage
+  bucket: <%= ENV["GOOGLE_BUCKET"] %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
