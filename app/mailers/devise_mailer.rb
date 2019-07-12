@@ -1,5 +1,5 @@
 class DeviseMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'no-reply@recipy.com'
   layout 'mails/devise'
 
   def mail(headers)
