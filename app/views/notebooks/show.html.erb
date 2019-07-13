@@ -13,6 +13,9 @@
 </div>
 <div class="uk-section uk-section-secondary uk-light">
     <div class="uk-container">
+        <%= link_to notebooks_path, class: 'uk-button uk-button-secondary uk-button-small' do %>
+          <span uk-icon="icon: chevron-left"></span>Retourner à la liste des carnets de recette
+        <% end %>
         <h2 class="title"><%= @notebook.title %></h2>
         <p><%= @notebook.description %></p>
     </div>
