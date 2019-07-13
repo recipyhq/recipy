@@ -16,7 +16,7 @@
           <%= ff.input :value, label: t("recipe.title.quantity_value") %>
         </div>
         <div class="uk-width-1-2">
-          <%= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select, collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a %>
+          <%= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select, collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a %>
         </div>
       <% end %>
     </div>
