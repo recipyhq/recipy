@@ -6,20 +6,30 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-# Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-east-1
-#   bucket: your_own_bucket
+  # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
+  # amazon:
+  #   service: S3
+  #   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  #   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  #   region: us-east-1
+  #   bucket: your_own_bucket
 
-# Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+  #Remember not to checkin your GCS keyfile to a repository
+google:
+  service: GCS
+  project: recipy
+  credentials:
+    type: "service_account"
+    project_id: <%= ENV["GOOGLE_PROJECT_ID"] %>
+    private_key_id: <%= ENV["GOOGLE_PRIVATE_KEY_ID"] %>
+    private_key: <%= ENV["GOOGLE_PRIVATE_KEY"] %>
+    client_email: <%= ENV["GOOGLE_CLIENT_EMAIL"] %>
+    client_id: <%= ENV["GOOGLE_CLIENT_ID"] %>
+    auth_uri: <%= ENV["GOOGLE_AUTH_URI"] %>
+    token_uri: <%= ENV["GOOGLE_TOKEN_URI"] %>
+    auth_provider_x509_cert_url: <%= ENV["GOOGLE_AUTH_PROVIDER_x509_CERT_URL"] %>
+    client_x509_cert_url: <%= ENV["GOOGLE_CLIENT_X509_CERT_URL"] %>
+  bucket: <%= ENV["GOOGLE_BUCKET"] %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
