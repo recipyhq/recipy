@@ -14,6 +14,7 @@ class RecipesController < InheritedResources::Base
     if user_signed_in?
       @feedback_user = @recipe.recipe_scores.find_by(:user_id => current_user.id)
     end
+    @notebooks_available = Notebook.where(user_id: current_user.id).where.not(id: @recipe.notebooks).order(:title)
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
   end
@@ -169,6 +170,29 @@ class RecipesController < InheritedResources::Base
     end
   end
 
+  def add_to_notebook
+    notebooks_param = notebooks_params
+    puts notebooks_param
+    recipe = Recipe.find(params[:recipe_id])
+    if recipe
+      if (!notebooks_param[:notebooks])
+        return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.no_notebook") }
+      end
+      notebook = Notebook.find(notebooks_params[:notebooks])
+      if notebook
+        if notebook.recipes.find_by(id: recipe.id)
+          return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.already_in") }
+        end
+
+        notebook.recipes << recipe
+        notebook.save()
+      else
+        return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.no_notebook") }
+      end
+    end
+    redirect_to notebook_path(notebook.id), flash: { success: t("recipe.add_to_notebook.valid") }
+  end
+
   private
 
   def create_shopping_list_quantity(shopping_list, elem)
@@ -237,6 +261,10 @@ class RecipesController < InheritedResources::Base
 
   def shopping_list_params
     params.require(:recipe).permit(:shopping_lists, :id)
+  end
+
+  def notebooks_params
+    params.require(:recipe).permit(:notebooks, :id)
   end
 
   def is_quantity_type_abstract(qt)

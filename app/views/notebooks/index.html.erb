@@ -16,13 +16,12 @@
                 </div>
                 <div class="uk-width-expand">
                     <h3 class="uk-card-title uk-margin-remove-bottom"><%= link_to notebook.title, notebook, class: 'uk-card-title uk-margin-remove-bottom' %></h3>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t("recipe.title.count", count: notebook.recipes.count) %></p>
                 </div>
             </div>
           </div>
           <div class="uk-card-body">
-            <div class="uk-text-center">
-              <p><%= notebook.description %></p>
-            </div>
+            <p><%= notebook.description %></p>
           </div>
           <div class="uk-card-footer align-right">
             <%= link_to t('notebook.edite'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
