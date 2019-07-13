@@ -13,13 +13,16 @@
 </div>
 <div class="uk-section uk-section-secondary uk-light">
     <div class="uk-container">
+        <%= link_to notebooks_path, class: 'uk-button uk-button-secondary uk-button-small' do %>
+          <span uk-icon="icon: chevron-left"></span><%= t('notebook.back') %>
+        <% end %>
         <h2 class="title"><%= @notebook.title %></h2>
         <p><%= @notebook.description %></p>
     </div>
 </div>
 
 <div class="uk-container uk-padding">
-  <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>
+  <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
     <% @notebook.recipes.each do |recipe| %>
       <div>
         <div class="uk-card uk-card-default">
@@ -47,7 +50,12 @@
         <div class="uk-card-body">
           <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
             <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
-            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.all, as: :select %>
+            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, as: :select, input_class: false, input_html: {
+              slimselect: true,
+              slimselectNoResult: t('slimselect.recipes.no_result'),
+              slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+              slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+              }, defaults: {input_class: ""}  %>
             <%= f.button :submit, :value => "Ajouter cette recette" %>
           <% end %>
         </div>

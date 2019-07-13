@@ -11,31 +11,21 @@
         <div class="uk-card uk-card-default uk-width-1-1@m">
           <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
-              <div class="uk-width-expand uk-text-center">
-                <h3><%= link_to notebook.title, notebook, class: 'uk-card-title uk-margin-remove-bottom' %></h3>
-              </div>
+                <div class="uk-width-auto">
+                  <%= image_tag(notebook.image.attached? ? notebook.image.variant(resize: '400x400') : "https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png", class: 'uk-border-circle', width: 40, height: 40) %>
+                </div>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom"><%= link_to notebook.title, notebook, class: 'uk-card-title uk-margin-remove-bottom' %></h3>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t("recipe.title.count", count: notebook.recipes.count) %></p>
+                </div>
             </div>
           </div>
           <div class="uk-card-body">
-            <div class="uk-text-center">
-              <p><%= notebook.description %></p>
-            </div>
-
-            <div class="uk-margin-top uk-text-center">
-              <% if notebook.image.attached? %>
-                <%= image_tag(notebook.image.variant(resize: '400x400')) %>
-              <% else %>
-                <%= image_tag("https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png") %>
-              <% end %>
-            </div>
+            <p><%= notebook.description %></p>
           </div>
-          <div class="uk-card-footer">
-            <%= link_to notebook, method: :delete, class: "uk-button uk-button-text uk-align-right", data: { confirm: t('notebook.confirm_delete') } do %>
-              <i class ="fa fa-lf fa-trash"></i>
-            <% end %>
-            <%= link_to edit_notebook_path(notebook), class: "uk-button uk-button-text uk-align-right" do %>
-              <i class="far fa-edit"></i>
-            <% end %>
+          <div class="uk-card-footer align-right">
+            <%= link_to t('notebook.edite'), edit_notebook_path(notebook), class: "uk-button uk-button-text" %>
+            <%= link_to t('notebook.delete'), notebook, method: :delete, class: "uk-button uk-button-text", data: { confirm: t('notebook.confirm_delete') } %>
           </div>
         </div>
       </div>
