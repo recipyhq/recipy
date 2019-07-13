@@ -69,6 +69,7 @@ Rails.application.routes.draw do
         post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
         post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
         post 'add_ingredients_to_new_list' => "recipes#add_ingredients_to_new_list"
+        post 'add_to_notebook' => "recipes#add_to_notebook"
       end
 
       get 'search' => "search#index"

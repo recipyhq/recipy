@@ -185,6 +185,7 @@ fr:
 
   recipe:
       title:
+        count: "%{count} recette(s)"
         index: "Toutes les recettes"
         edit: "Modifier votre recette"
         new: "Création d'une recette"
@@ -218,6 +219,7 @@ fr:
         new_ingredient_elem: "Nouvel ingredient"
         number_views: "Nombre de vues :"
         number_feedbacks: "Nombre de commentaires :"
+        add_to_notebook: "Ajouter à un carnet de recette"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
@@ -252,6 +254,10 @@ fr:
       my_recipes:
         link: "Mes recettes"
         title: "Toutes mes recettes"
+      add_to_notebook:
+        valid: "La recette a bien été ajouté au carnet de recettes"
+        already_in: "La recette est déjà dans le carnet de recette choisit"
+        no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
 
   ingredient:
     title:
@@ -352,7 +358,7 @@ fr:
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
-    back: 'Retourner à la liste des carnets de recette'
+    back: 'Retourner à la liste des carnets de recettes'
     form:
       name: "Nom du carnet de recettes"
       desc: "Description du style de carnet que vous réalisez"
@@ -368,6 +374,7 @@ fr:
     dashboard_welcome:
       welcome: "Bienvenue"
       call_to_action: "Action"
+  
   slimselect:
     ustensils:
       placeholder: 'Ustensiles'
@@ -385,3 +392,13 @@ fr:
       placeholder: "Type d'ingrédient"
       search_placeholder: "Rechercher un type d'ingrédient..."
       no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."
+    recipes:
+      placeholder: "Recettes"
+      search_placeholder: "Rechercher une recette..."
+      no_result: "Désolé il n'y a pas la recette recherché dans la liste."
+    notebooks:
+      placeholder: "Carnets de recettes"
+      search_placeholder: "Rechercher un carnet de recettes..."
+      no_result: "Désolé il n'y a pas le carnet de recettes recherché dans la liste."
+
+  are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"

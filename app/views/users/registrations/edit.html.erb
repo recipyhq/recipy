@@ -2,7 +2,7 @@
   <div class="uk-padding">
     <h2 class="uk-text-bold uk-text-left title">
       <%= t("views.edit.title", resource: resource_name.to_s.humanize) %>
-      <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('.are_you_sure')}, method: :delete, class: "uk-text-small" %>
+      <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('are_you_sure')}, method: :delete, class: "uk-text-small" %>
     </h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
         <%= f.error_notification %>
