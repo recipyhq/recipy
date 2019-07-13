@@ -352,7 +352,7 @@ fr:
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
-    back: 'Retourner à la liste des carnets de recette'
+    back: 'Retourner à la liste des carnets de recettes'
     form:
       name: "Nom du carnet de recettes"
       desc: "Description du style de carnet que vous réalisez"
@@ -368,6 +368,7 @@ fr:
     dashboard_welcome:
       welcome: "Bienvenue"
       call_to_action: "Action"
+  
   slimselect:
     ustensils:
       placeholder: 'Ustensiles'
@@ -385,3 +386,7 @@ fr:
       placeholder: "Type d'ingrédient"
       search_placeholder: "Rechercher un type d'ingrédient..."
       no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."
+    recipes:
+      placeholder: "Recettes"
+      search_placeholder: "Rechercher une recette..."
+      no_result: "Désolé il n'y a pas la recette recherché dans la liste."

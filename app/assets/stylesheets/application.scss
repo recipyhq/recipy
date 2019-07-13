@@ -166,7 +166,7 @@ progress.uk-progress[value]::-webkit-progress-value {
   }
 }
 
-.ss-main .ss-multi-selected {
+.ss-main .ss-multi-selected, .ss-main .ss-single-selected {
   border: none;
   width:100%;
   height: 100%;
@@ -182,7 +182,8 @@ progress.uk-progress[value]::-webkit-progress-value {
   }
 }
 
-.ss-main .ss-multi-selected .ss-add {
+.ss-main .ss-multi-selected .ss-add,
+.ss-main .ss-single-selected .ss-arrow {
   margin: 14px 12px;
 }
 
