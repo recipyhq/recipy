@@ -4,7 +4,7 @@
 
   <%= f.input :name, label: "Titre", :input_html => { :value => @shopping_list.name } %>
 
-  <%= f.input :ingredient_ids, :label => false, :selected => @shopping_list.ingredient_ids, collection: Ingredient.where(:confirmed => true).all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+  <%= f.input :ingredient_ids, :label => false, :selected => @shopping_list.ingredient_ids, collection: Ingredient.order(:name).where(:confirmed => true).all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
     multiple: true,
     slimselect: true,
     slimselectNoResult: t('slimselect.ingredients.no_result'),

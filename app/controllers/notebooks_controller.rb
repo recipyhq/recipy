@@ -6,7 +6,7 @@ class NotebooksController < InheritedResources::Base
   def index
     skip_policy_scope
     # @notebooks = Notebook.all
-    @notebook_recipes_select = Recipe.all.map { |v| [v.title, v.id] }.to_a
+    @notebook_recipes_select = Recipe.order(:title).all.map { |v| [v.title, v.id] }.to_a
     if user_signed_in?
       @notebooks = Notebook.includes(:image_attachment => :blob).where(
         :user_id => current_user.id

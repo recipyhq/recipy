@@ -5,7 +5,7 @@ class RecipesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @recipes = Recipe.all.with_attached_image
+    @recipes = Recipe.order(:title).all.with_attached_image
   end
 
   def show

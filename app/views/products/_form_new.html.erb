@@ -3,23 +3,45 @@
   <%= f.error_notification message:
                              f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.association :product_tags, as: :check_boxes, :label => t("products.tag"),
+  <%= f.association :product_tags, as: :select, :label => t("products.tag"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: ProductTag.all %>
+                    collection: ProductTag.order(:name).all, input_html: {
+                      multiple: true,
+                      slimselect: true,
+                      slimselectNoResult: t('slimselect.tags.no_result'),
+                      slimselectSearchPlaceholder: t('slimselect.tags.search_placeholder'),
+                      slimselectPlaceholder: t('slimselect.tags.placeholder'),
+                    } %>
 
   <%= f.input :ingredient, collection: Ingredient.all.order(:name).map {|v| [v.name, v.id]}.to_a,
-              as: :select, :include_blank => false, :label => t("ingredient.label") %>
+              as: :select, :include_blank => false, :label => t("ingredient.label"), input_html: {
+                      slimselect: true,
+                      slimselectNoResult: t('slimselect.ingredients.no_result'),
+                      slimselectSearchPlaceholder: t('slimselect.ingredients.search_placeholder'),
+                      slimselectPlaceholder: t('slimselect.ingredients.placeholder')
+              } %>
 
-  <%= f.association :point_of_sales, as: :check_boxes, :label => t("point_of_sale.title"),
+  <%= f.association :point_of_sales, as: :select, :label => t("point_of_sale.title"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: PointOfSale.where(user: current_user).includes(:address).all.map {|t|
-                      [t.name + " (" + t.address.entilted + " / " + t.address.city + ")", t.id]} %>
+                    collection: PointOfSale.order(:name).where(user: current_user).includes(:address).all.map {|t|
+                      [t.name + " (" + t.address.entilted + " / " + t.address.city + ")", t.id]}, input_html: {
+                        multiple: true,
+                        slimselect: true,
+                        slimselectNoResult: t('slimselect.point_of_sales.no_result'),
+                        slimselectSearchPlaceholder: t('slimselect.point_of_sales.search_placeholder'),
+                        slimselectPlaceholder: t('slimselect.point_of_sales.placeholder')
+                } %>
 
   <%= f.simple_fields_for :price, @product.price do |a| %>
     <%= a.input :value, :label => t("products.price.label")%>
     <%= a.input :quantity_type, :label => t("quantity_type.label"),
                 collection: QuantityType.all.order(:name).map {|v| [v.name, v.id]}.to_a,
-                as: :select, :include_blank => false %>
+                as: :select, :include_blank => false, input_html: {
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.quantity_type.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.quantity_type.search_placeholder'),
+                  slimselectPlaceholder: t('slimselect.quantity_type.placeholder')
+                } %>
   <% end %>
 
   <div class="uk-margin-medium">
