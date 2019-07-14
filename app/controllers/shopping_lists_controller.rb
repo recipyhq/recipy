@@ -9,10 +9,22 @@ class ShoppingListsController < InheritedResources::Base
   end
 
   def show
+    Bullet.enable = false
     find_shopping_list
     if @shopping_list.nil? || @shopping_list == []
-      redirect_to shopping_lists_path, flash: { danger: "Liste de courses inconnue" }
+      redirect_to shopping_lists_path, flash: {danger: "Liste de courses inconnue"} and return
     end
+    ingredients = @shopping_list.shopping_list_ingredients
+                    .includes(:ingredient)
+                    .order('ingredients.shelf_tag desc')
+    @items = {}
+    ingredients.each do |x|
+      if @items[x.ingredient.shelf_tag].nil?
+        @items[x.ingredient.shelf_tag] = []
+      end
+      @items[x.ingredient.shelf_tag] << x
+    end
+    puts @items
   end
 
   def new
@@ -28,19 +40,19 @@ class ShoppingListsController < InheritedResources::Base
     new_shopping_list.user_id = current_user.id
     if new_shopping_list.valid?
       new_shopping_list.save
-      redirect_to shopping_list_path(new_shopping_list.id), flash: { success: "Grand succès !" }
+      redirect_to shopping_list_path(new_shopping_list.id), flash: {success: "Grand succès !"}
     else
       redirect_to new_shopping_list_path,
-                  flash: { danger: "Erreur lors de la création de la liste de courses" }
+                  flash: {danger: "Erreur lors de la création de la liste de courses"}
     end
   end
 
   def update
     find_shopping_list_edit
     if @shopping_list.update(shopping_list_params)
-      redirect_to shopping_list_path, flash: { success: "Votre liste a été modifiée avec succés !" }
+      redirect_to shopping_list_path, flash: {success: "Votre liste a été modifiée avec succés !"}
     else
-      redirect_to edit_shopping_list_path(@shopping_list), flash: { danger: "Paramètres invalides" }
+      redirect_to edit_shopping_list_path(@shopping_list), flash: {danger: "Paramètres invalides"}
     end
   end
 
@@ -48,7 +60,7 @@ class ShoppingListsController < InheritedResources::Base
     find_shopping_list_edit
     unless @shopping_list.nil?
       @shopping_list.destroy
-      redirect_to shopping_lists_path, flash: { success: "Votre liste a été supprimée" }
+      redirect_to shopping_lists_path, flash: {success: "Votre liste a été supprimée"}
     end
   end
 

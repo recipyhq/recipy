@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_133256) do
+ActiveRecord::Schema.define(version: 2019_07_14_145838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_133256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
+    t.string "shelf_tag"
   end
 
   create_table "liked_producers", force: :cascade do |t|
