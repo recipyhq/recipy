@@ -194,7 +194,7 @@ fr:
         score: "Note"
         new_ingredient: "Proposer un ingrédient"
         comment: "Commentaire"
-        step: "Etape(s)"
+        step: "Etape(s) : Passez une ligne pour créer une nouvelle étape"
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"

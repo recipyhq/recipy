@@ -11,12 +11,13 @@ class RecipesController < InheritedResources::Base
   def show
     find_recipe
     view = @recipe.view
+    @notebooks_available = []
     if user_signed_in?
       @feedback_user = @recipe.recipe_scores.find_by(:user_id => current_user.id)
+      @notebooks_available = Notebook.where(user_id: current_user.id).where.not(
+        id: @recipe.notebooks
+      ).order(:title)
     end
-    @notebooks_available = Notebook.where(user_id: current_user.id).where.not(
-      id: @recipe.notebooks
-    ).order(:title)
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
   end
