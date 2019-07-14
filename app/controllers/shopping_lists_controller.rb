@@ -5,7 +5,7 @@ class ShoppingListsController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @shopping_lists = current_user.shopping_lists
+    @shopping_lists = current_user.shopping_lists.order(:name)
   end
 
   def show

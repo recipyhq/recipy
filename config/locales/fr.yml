@@ -400,5 +400,17 @@ fr:
       placeholder: "Carnets de recettes"
       search_placeholder: "Rechercher un carnet de recettes..."
       no_result: "Désolé il n'y a pas le carnet de recettes recherché dans la liste."
-
+    point_of_sales:
+      placeholder: "Point de ventes"
+      search_placeholder: "Rechercher un point de ventes..."
+      no_result: "Désolé il n'y a pas le point de vente recherché dans la liste."
+    tags:
+      placeholder: "Tags"
+      search_placeholder: "Rechercher un tag..."
+      no_result: "Désolé il n'y a pas le tag recherché dans la liste."
+    quantity_type:
+      placeholder: "Type de quantité"
+      search_placeholder: "Rechercher un type de quantité..."
+      no_result: "Désolé il n'y a pas le type de quantité recherché dans la liste."
+  
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"

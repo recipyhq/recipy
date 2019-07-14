@@ -9,7 +9,7 @@
     <div class="uk-width-xxlarge">
       <%= f.input :title, label: t("recipe.title.title") %>
       <%= f.file_field :image %>
-      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+      <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
         multiple: true,
         slimselect: true,
         slimselectNoResult: t('slimselect.categories.no_result'),
@@ -35,7 +35,7 @@
   <hr class="uk-divider-icon">
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
-      <%= f.input :utensil_ids, :label => t("recipe.title.ustensil"), collection: Utensil.all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+      <%= f.input :utensil_ids, :label => t("recipe.title.ustensil"), collection: Utensil.order(:title).all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
         multiple: true,
         slimselect: true,
         slimselectNoResult: t('slimselect.ustensils.no_result'),
