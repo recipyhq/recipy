@@ -194,7 +194,7 @@ fr:
         score: "Note"
         new_ingredient: "Proposer un ingrédient"
         comment: "Commentaire"
-        step: "Etape(s)"
+        step: "Etape(s) : Passez une ligne pour créer une nouvelle étape"
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
@@ -374,7 +374,7 @@ fr:
     dashboard_welcome:
       welcome: "Bienvenue"
       call_to_action: "Action"
-  
+
   slimselect:
     ustensils:
       placeholder: 'Ustensiles'
@@ -412,5 +412,5 @@ fr:
       placeholder: "Type de quantité"
       search_placeholder: "Rechercher un type de quantité..."
       no_result: "Désolé il n'y a pas le type de quantité recherché dans la liste."
-  
+
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"

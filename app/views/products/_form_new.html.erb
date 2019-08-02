@@ -6,7 +6,7 @@
   <%= f.association :product_tags, as: :select, :label => t("products.tag"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
                     collection: ProductTag.order(:name).all, input_html: {
-                      multiple: true,              
+                      multiple: true,
                       slimselect: true,
                       slimselectNoResult: t('slimselect.tags.no_result'),
                       slimselectSearchPlaceholder: t('slimselect.tags.search_placeholder'),

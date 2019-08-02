@@ -11,10 +11,13 @@ class RecipesController < InheritedResources::Base
   def show
     find_recipe
     view = @recipe.view
+    @notebooks_available = []
     if user_signed_in?
       @feedback_user = @recipe.recipe_scores.find_by(:user_id => current_user.id)
+      @notebooks_available = Notebook.where(user_id: current_user.id).where.not(
+        id: @recipe.notebooks
+      ).order(:title)
     end
-    @notebooks_available = Notebook.where(user_id: current_user.id).where.not(id: @recipe.notebooks).order(:title)
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
   end
@@ -175,19 +178,25 @@ class RecipesController < InheritedResources::Base
     puts notebooks_param
     recipe = Recipe.find(params[:recipe_id])
     if recipe
-      if (!notebooks_param[:notebooks])
-        return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.no_notebook") }
+      if !notebooks_param[:notebooks]
+        return redirect_to recipe_path(recipe.id), flash: {
+          success: t("recipe.add_to_notebook.no_notebook"),
+        }
       end
       notebook = Notebook.find(notebooks_params[:notebooks])
       if notebook
         if notebook.recipes.find_by(id: recipe.id)
-          return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.already_in") }
+          return redirect_to recipe_path(recipe.id), flash: {
+            success: t("recipe.add_to_notebook.already_in"),
+          }
         end
 
         notebook.recipes << recipe
-        notebook.save()
+        notebook.save
       else
-        return redirect_to recipe_path(recipe.id), flash: { success: t("recipe.add_to_notebook.no_notebook") }
+        return redirect_to recipe_path(recipe.id), flash: {
+          success: t("recipe.add_to_notebook.no_notebook"),
+        }
       end
     end
     redirect_to notebook_path(notebook.id), flash: { success: t("recipe.add_to_notebook.valid") }

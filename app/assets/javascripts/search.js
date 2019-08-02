@@ -15,7 +15,7 @@ function addSlimSelect(el) {
     const slimselectNoResult = slimselectInput.getAttribute('slimselectNoResult') || 'Pas de résultat pour la recherche';
     const slimselectSearchPlaceholder = slimselectInput.getAttribute('slimselectSearchPlaceholder') || 'Rechercher...';
     const slimselectPlaceholder = slimselectInput.getAttribute('slimselectPlaceholder') || 'Choix multiple';
-    
+
     if (!slimselectIsSet) {
       slimselectInput.setAttribute('slimselectisset', true);
       new SlimSelect({
