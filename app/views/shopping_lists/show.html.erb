@@ -2,13 +2,17 @@
   <h2 class="title">Liste de courses : "<%= @shopping_list.name %>"</h2>
   <div class="uk-align-center">
     <ul class="uk-list uk-list-bullet">
-      <% @shopping_list.shopping_list_ingredients.each do |elem| %>
-        <li>
-          <%= elem.ingredient.name %>
-          <% if (elem.shopping_list_quantity) %>
-            <div class="uk-text-meta">Au moins <%= elem.shopping_list_quantity.value %> <%= elem.shopping_list_quantity.quantity_type.name %></div>
-          <% end %>
-        </li>
+      <% @items.each do |key, value| %>
+        <span class="uk-text-bold"><%= Ingredient.shelf_tags[key] %></span>
+        <% value.each do |elem| %>
+          <li>
+            <%= elem.ingredient.name %>
+            <% if (elem.shopping_list_quantity) %>
+              <div class="uk-text-meta">Au moins <%= elem.shopping_list_quantity.value %> <%= elem.shopping_list_quantity.quantity_type.name %></div>
+            <% end %>
+          </li>
+        <% end %>
+        </br>
       <% end %>
     </ul>
     <p class="uk-button uk-button-default"><%= link_to t("recipe.action.edit"), edit_shopping_list_path(@shopping_list) %></p>

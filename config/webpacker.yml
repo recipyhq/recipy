@@ -23,7 +23,7 @@ default: &default
     - .module.css
     - .png
     - .svg
-    - .gif
+    - .gifz
     - .jpeg
     - .jpg
 

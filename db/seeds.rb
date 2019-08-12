@@ -80,6 +80,9 @@ end
 IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Herbe"
 end
+IngredientTag.create! do |ingredient_tag|
+  ingredient_tag.name = "Épicerie"
+end
 
 # Quantity Type
 
@@ -205,6 +208,7 @@ Ingredient.create! do |ingredient|
   ingredient.quantity_equivalencies << [
     QuantityEquivalency.find(4),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -220,6 +224,7 @@ Ingredient.create! do |ingredient|
   ingredient.quantity_equivalencies << [
     QuantityEquivalency.find(4),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -231,6 +236,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Boulangerie"
 end
 
 # Ingredients (Tomates farcies)
@@ -249,6 +255,7 @@ Ingredient.create! do |ingredient|
   ingredient.quantity_equivalencies << [
     QuantityEquivalency.find(5),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -259,6 +266,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Viande"),
   ]
   ingredient.quantity_equivalencies << []
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -272,6 +280,7 @@ Ingredient.create! do |ingredient|
   ingredient.quantity_equivalencies << [
     QuantityEquivalency.find(6),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -285,6 +294,7 @@ Ingredient.create! do |ingredient|
   ingredient.quantity_equivalencies << [
     QuantityEquivalency.find(7),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -298,6 +308,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Été"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -311,6 +322,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Été"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -322,6 +334,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -333,6 +346,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -344,6 +358,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -355,6 +370,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -366,6 +382,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -378,6 +395,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Féculent"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -387,6 +405,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -398,6 +417,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -408,6 +428,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Viande"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -417,6 +438,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Corps gras"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredients for Ceasar salad
@@ -430,6 +452,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -440,6 +463,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Viande"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -450,6 +474,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Féculent"),
   ]
+  ingredient.shelf_tag = "Boulangerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -462,6 +487,7 @@ Fondement de la cuisine méditéranéenne et peut-être bénéfique pour la sant
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -472,6 +498,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Produits laitiers"
 end
 
 Ingredient.create! do |ingredient|
@@ -483,6 +510,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Corps gras"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -493,6 +521,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Corps gras"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -502,6 +531,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -513,6 +543,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 # Ingredients for Quiche au saumon
@@ -523,6 +554,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = ""
 end
 
 Ingredient.create! do |ingredient|
@@ -532,6 +564,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Poisson"),
   ]
+  ingredient.shelf_tag = "Poissons"
 end
 
 Ingredient.create! do |ingredient|
@@ -543,6 +576,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Produit laitier"),
     IngredientTag.find_by_name("Corps gras"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -553,6 +587,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 # Ingredients for Avocat crevettes
@@ -565,6 +600,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Poisson"),
   ]
+  ingredient.shelf_tag = "Poissons"
 end
 
 Ingredient.create! do |ingredient|
@@ -575,6 +611,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Crustacé"),
   ]
+  ingredient.shelf_tag = "Poissons"
 end
 
 Ingredient.create! do |ingredient|
@@ -585,6 +622,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Herbe"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 # Ingredinets for Melon & Jambon cru
@@ -599,6 +637,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -608,6 +647,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 # Ingredints for Mousse au chocolat
@@ -619,6 +659,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -629,6 +670,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Oeufs"
 end
 
 Ingredient.create! do |ingredient|
@@ -639,6 +681,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Oeufs"
 end
 
 Ingredient.create! do |ingredient|
@@ -650,6 +693,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -662,6 +706,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredients for salade de fruits
@@ -677,6 +722,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -689,6 +735,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Hiver"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -700,6 +747,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -711,6 +759,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -722,6 +771,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 Ingredient.create! do |ingredient|
@@ -733,6 +783,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Fruits"
 end
 
 # Ingredients for crêpes
@@ -746,6 +797,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -756,6 +808,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredients for Mayonnaise
@@ -769,6 +822,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 #Ingredients for Salade d'avocat
@@ -780,6 +834,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -790,6 +845,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -801,6 +857,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Fruit"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -812,6 +869,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -823,6 +881,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -834,6 +893,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredients for POulet au curry
@@ -847,6 +907,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -857,6 +918,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -868,6 +930,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 # Ingredient for palmier au basilic
@@ -879,6 +942,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -890,6 +954,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 Ingredient.create! do |ingredient|
@@ -901,6 +966,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredients for Welsh
@@ -913,6 +979,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Vegan"),
   ]
+  ingredient.shelf_tag = "Boulangerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -922,6 +989,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -931,6 +999,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Boisson"),
   ]
+  ingredient.shelf_tag = "Alcools"
 end
 
 Ingredient.create! do |ingredient|
@@ -940,6 +1009,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Ingredient for ratatouille
@@ -954,6 +1024,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -966,6 +1037,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -978,6 +1050,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -990,6 +1063,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1002,6 +1076,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1013,6 +1088,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Herbes"
 end
 
 # Ingredients for steaks végétaux
@@ -1026,6 +1102,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Légumineuses"
 end
 
 Ingredient.create! do |ingredient|
@@ -1038,6 +1115,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Hiver"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1049,6 +1127,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
