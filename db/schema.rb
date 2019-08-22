@@ -473,8 +473,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_093248) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters", default: false, null: false
-    t.boolean "isProducer", default: false, null: false
+    t.boolean "newsletters", null: false
+    t.boolean "isProducer", null: false
     t.text "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
