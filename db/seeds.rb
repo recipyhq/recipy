@@ -107,10 +107,6 @@ QuantityType.create! do |quantity_type|
 end
 
 QuantityType.create! do |quantity_type|
-  quantity_type.name = "Non défini"
-end
-
-QuantityType.create! do |quantity_type|
   quantity_type.name = "Pincée(s)"
 end
 
