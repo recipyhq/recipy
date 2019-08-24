@@ -50,6 +50,21 @@ class Api::ShoppingListsController < ApplicationController
     end
   end
 
+  def update_item_checkbox
+    find_shopping_list
+    if @shopping_list && checkbox_params
+      puts checkbox_params
+      item = ShoppingListIngredient.find_by(shopping_list_id: @shopping_list.id,
+                                            ingredient_id: checkbox_params[:ingredient_id])
+      item.checked = !item.checked
+      if item.save
+        render :json => { Status: "OK", Cause: "Liste modifiée avec succès !" }.as_json
+      end
+    else
+      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
+    end
+  end
+
   def destroy
     find_shopping_list
     unless @shopping_list.nil?
@@ -60,7 +75,10 @@ class Api::ShoppingListsController < ApplicationController
 
   private
 
-  # a
+  def checkbox_params
+    params.permit(:id, :ingredient_id)
+  end
+
   def find_shopping_list
     @shopping_list = ShoppingList.find(params[:id])
   end
@@ -70,6 +88,7 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def build_shopping_list_ingredients(shopping_list)
+    Bullet.enable = false
     @tab = []
     if shopping_list.shopping_list_ingredients.nil? || shopping_list.ingredients.nil?
       @tab.push([])
@@ -94,10 +113,12 @@ class Api::ShoppingListsController < ApplicationController
         @tab.push(mrg)
       end
     end
+    Bullet.enable = true
     @tab
   end
 
   def build_shopping_lists_ingredients()
+    Bullet.enable = false
     @shopping_lists_hash = @shopping_lists.as_json
 
     i = 0
@@ -105,5 +126,6 @@ class Api::ShoppingListsController < ApplicationController
       @shopping_lists_hash[i]['ingredients'] = build_shopping_list_ingredients(elem)
       i += 1
     end
+    Bullet.enable = true
   end
 end
