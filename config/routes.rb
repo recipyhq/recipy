@@ -104,7 +104,9 @@ Rails.application.routes.draw do
     resources :ingredients
     resources :point_of_sales
     resources :products
-    resources :shopping_lists
+    resources :shopping_lists, param: :id do
+      post 'update_item_checkbox', to: 'shopping_lists#update_item_checkbox'
+    end
     resources :notebooks
     resources :notebooks, param: :id do
       post 'add_recipe' => "notebooks#add_recipe"
