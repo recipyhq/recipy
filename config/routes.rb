@@ -101,6 +101,7 @@ Rails.application.routes.draw do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
     end
+    resources :quantity_type
     resources :ingredients
     resources :point_of_sales
     resources :products
