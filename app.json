@@ -12,6 +12,9 @@
     },
     "SECRET_KEY_BASE": {
       "generator": "secret"
+    },
+    "GOOGLE_TOKEN_URI": {
+      "value": "https://oauth2.googleapis.com/token"
     }
   },
   "formation": {
