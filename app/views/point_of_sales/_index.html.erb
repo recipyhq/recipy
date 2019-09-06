@@ -1,7 +1,12 @@
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
     <h3 class="title"><%= t('point_of_sale.title') %></h3>
-  
+
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+
+
     <table class="uk-table uk-table-divider">
       <thead>
         <tr>
@@ -32,3 +37,15 @@
     <% end %>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {
+      zoom: 1,
+    }, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

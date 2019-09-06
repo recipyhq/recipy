@@ -6,10 +6,17 @@ class PointOfSalesController < InheritedResources::Base
   def index
     skip_policy_scope
     @point_of_sales = PointOfSale.where.not(user: nil).order(:name).all
+    puts @point_of_sales
+
   end
 
   def show
     find_pointofsale_ingredients
+
+    @hash = Gmaps4rails.build_markers(@point_of_sale.address) do |address, marker|
+      marker.lat address.latitude
+      marker.lng address.longitude
+    end
     # puts "----###############################"
     # puts @point_of_sale.openning_hours[1]["open"].strftime("%H:%M")
     # puts @point_of_sale.openning_hours[1]["close"].strftime("%H:%M")

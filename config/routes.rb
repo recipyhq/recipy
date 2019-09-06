@@ -83,7 +83,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    mount_devise_token_auth_for 'User', at: 'users'
+    mount_devise_token_auth_for 'User', at: 'users', controllers: {
+      registrations: 'users/registrations',
+    }
+
 
     unauthenticated :user do
     end

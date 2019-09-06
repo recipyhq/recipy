@@ -17,6 +17,8 @@
 //= require turbolinks
 //= require uikit/dist/js/uikit
 //= require uikit/dist/js/uikit-icons
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 
 $(document).ready(() => {

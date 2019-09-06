@@ -23,7 +23,7 @@
           <%= simple_form_for @user, :url => follow_producer_url, :method => 'post' do |f| %>
             <%= f.input :user_id, :input_html => {:value => @user.id}, as: :hidden %>
             <%= f.button :submit, t("users.followed_producers.action_follow") %>
-          <% end %> 
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -36,4 +36,8 @@
   </div>
 </div>
 
-<%= render 'point_of_sales/index' %>
+<% if @user.point_of_sales.size <= 0 %>
+  <h2>Cet utilisateur n'a pas encore de point de vente</h2>
+<% else %>
+  <%= render 'point_of_sales/index' %>
+<% end %>

@@ -154,8 +154,10 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     google-api-client (0.30.3)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (>= 0.5, < 0.10.0)
@@ -483,6 +485,8 @@ DEPENDENCIES
   fasterer
   ffaker
   figaro
+  geocoder
+  gmaps4rails
   google-cloud-storage (~> 1.11)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -524,3 +528,6 @@ DEPENDENCIES
 
 RUBY VERSION
    ruby 2.5.1p57
+
+BUNDLED WITH
+   2.0.1

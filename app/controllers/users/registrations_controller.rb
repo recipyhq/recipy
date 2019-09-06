@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  skip_before_action :verify_authenticity_token
+
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -11,7 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+
+    user = User.new(sign_up_params)
+    if user.save
+      respond_to do |format|
+        format.json { render :json => user.as_json(:email => user.email ), :status=>201}
+        format.html { super }
+      end
+    end
   end
 
   # GET /resource/edit
@@ -42,9 +51,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [
+    devise_parameter_sanitizer.permit(:create, keys: [
       :first_name, :last_name, :newsletters,
-      :remember_me,
     ])
   end
 
@@ -66,6 +74,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.permit(:email, :password, :first_name, :password_confirmation, :last_name)
   end
 end

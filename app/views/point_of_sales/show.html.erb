@@ -21,6 +21,10 @@
       <dd><%= @point_of_sale.address[:country] %></dd>
       <dd><%= @point_of_sale.address[:phone] %></dd>
     </dl>
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+
   </div>
 </div>
 <div class="uk-section uk-section-default">
@@ -71,14 +75,23 @@
         <% end %>
       </tbody>
     </table>
+
     <% if current_user && current_user.id == @point_of_sale.user.id %>
       <%= link_to "Ajouter un produit", new_product_path, class: "uk-button uk-button-default" %><br><br>
     <% end %>
 
     <% if current_user && current_user.id == @point_of_sale.user.id %>
-      <%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(@point_of_sale) %> | 
+      <%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(@point_of_sale) %>
     <% end %>
-    <%= link_to t('point_of_sale.back'), point_of_sales_path %>
   </div>
 </div>
 
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: { maxZoom: 17,
+    }, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
