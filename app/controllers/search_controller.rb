@@ -26,7 +26,7 @@ class SearchController < ApplicationController
     if @sort == 'note_desc' || @sort == 'note_asc'
       @recipes = @recipes.select("recipes.*, COALESCE(avg(recipe_scores.value), 0) as score").left_joins(:recipe_scores).group("recipes.id").order(score: (@sort == 'note_desc') ? :desc : :asc)
     end
-    @page_max = (@recipes.uniq.count / @@per_page).ceil
+    @page_max = (@recipes.uniq.count.to_f / @@per_page.to_f).ceil
     @page_max = @page_max > 0 ? @page_max : 1
     @recipes = @recipes.order(:title).to_page(@page, @@per_page).includes(:image_attachment => :blob).all
   end

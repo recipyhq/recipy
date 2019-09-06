@@ -26,7 +26,11 @@ module Producer
       @user = current_user
       @user.isProducer = true
       @user.bio = params[:user][:bio]
-      @user.save
+      @user.save!
+      puts @user.errors.full_messages
+
+      puts @user.inspect
+
       redirect_to edit_user_registration_path
     end
   end

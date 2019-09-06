@@ -104,10 +104,13 @@ Rails.application.routes.draw do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
     end
+    resources :quantity_type
     resources :ingredients
     resources :point_of_sales
     resources :products
-    resources :shopping_lists
+    resources :shopping_lists, param: :id do
+      post 'update_item_checkbox', to: 'shopping_lists#update_item_checkbox'
+    end
     resources :notebooks
     resources :notebooks, param: :id do
       post 'add_recipe' => "notebooks#add_recipe"

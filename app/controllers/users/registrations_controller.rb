@@ -13,13 +13,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-
-    user = User.new(sign_up_params)
-    if user.save
-      respond_to do |format|
-        format.json { render :json => user.as_json(:email => user.email ), :status=>201}
-        format.html { super }
-      end
+    if api_request?
+        @user = User.create(sign_up_params)
+        respond_to do |format|
+          format.json {
+            @user.save ? (render :json => {:state => {:code => 0}, :data => @user }) : (render :json => {:state => {:code => 1, :messages => @user.errors.full_messages} })
+          }
+        end
+    else
+      super
     end
   end
 
@@ -73,7 +75,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     '/beta/users/sign_in'
   end
 
-  def sign_up_params
-    params.permit(:email, :password, :first_name, :password_confirmation, :last_name)
+  def after_update_path_for(resource)
+    '/beta/users/edit'
   end
+
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :first_name, :password_confirmation, :last_name)
+  end
+
+  def api_request?
+    request.format.json? || request.format.xml?
+  end
+
 end
