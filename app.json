@@ -27,6 +27,9 @@
     "heroku-postgresql",
     "heroku-redis"
   ],
+  "labs": [
+    "runtime-dyno-metadata"
+  ],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

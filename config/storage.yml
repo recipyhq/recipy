@@ -20,16 +20,16 @@ google:
   project: recipy
   credentials:
     type: "service_account"
-    project_id: <%= ENV["GOOGLE_PROJECT_ID"] %>
-    private_key_id: <%= ENV["GOOGLE_PRIVATE_KEY_ID"] %>
-    private_key: <%= ENV["GOOGLE_PRIVATE_KEY"] %>
-    client_email: <%= ENV["GOOGLE_CLIENT_EMAIL"] %>
-    client_id: <%= ENV["GOOGLE_CLIENT_ID"] %>
-    auth_uri: <%= ENV["GOOGLE_AUTH_URI"] %>
-    token_uri: <%= ENV["GOOGLE_TOKEN_URI"] %>
-    auth_provider_x509_cert_url: <%= ENV["GOOGLE_AUTH_PROVIDER_x509_CERT_URL"] %>
-    client_x509_cert_url: <%= ENV["GOOGLE_CLIENT_X509_CERT_URL"] %>
-  bucket: <%= ENV["GOOGLE_BUCKET"] %>
+    project_id: <%= ENV["GOOGLE_PROJECT_ID"] || Rails.application.credentials[:google_project_id]%>
+    private_key_id: <%= ENV["GOOGLE_PRIVATE_KEY_ID"] || Rails.application.credentials[:google_private_key_id] %>
+    private_key: <%= ENV["GOOGLE_PRIVATE_KEY"] || Rails.application.credentials[:google_private_key] %>
+    client_email: <%= ENV["GOOGLE_CLIENT_EMAIL"] || Rails.application.credentials[:google_client_email] %>
+    client_id: <%= ENV["GOOGLE_CLIENT_ID"] || Rails.application.credentials[:google_client_id] %>
+    auth_uri: <%= ENV["GOOGLE_AUTH_URI"] || Rails.application.credentials[:google_auth_uri] %>
+    token_uri: <%= ENV["GOOGLE_TOKEN_URI"] || Rails.application.credentials[:google_token_uri] %>
+    auth_provider_x509_cert_url: <%= ENV["GOOGLE_AUTH_PROVIDER_x509_CERT_URL"] || Rails.application.credentials[:google_auth_provider_x509_cert_url] %>
+    client_x509_cert_url: <%= ENV["GOOGLE_CLIENT_X509_CERT_URL"] || Rails.application.credentials[:google_client_x509_cert_url] %>
+  bucket: <%= ENV["GOOGLE_BUCKET"] || Rails.application.credentials[:google_bucket] %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
