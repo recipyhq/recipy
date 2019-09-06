@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'turbolinks', '~> 5'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker'
+gem 'webpacker', '<= 3.3.1'
 gem 'jbuilder', '~> 2.5'
 gem 'mjml-rails'
 gem 'mini_racer', platforms: :ruby
