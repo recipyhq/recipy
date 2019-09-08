@@ -68,24 +68,26 @@
     <% end %>
 </div>
 
-<% if (@page > 0 && @page <= @page_max) %>
 <ul class="uk-pagination uk-flex-center" uk-margin>
     <% if (@page > 1) %>
-    <li><%= link_to "<span uk-pagination-previous></span>".html_safe, request.params.merge(page: @page - 1) %></li>
-    <li><%= link_to "1", request.params.merge(page: 1) %></li>
+        <li><%= link_to "<span uk-pagination-previous></span>".html_safe, request.params.merge(page: @page - 1) %></li>
     <% end %>
-    <% if (@page > 2) %>
-    <li class="uk-disabled"><span>...</span></li>
-    <li><a href="#"><%= @page - 1 %></a></li>
+    <% if @page + 1 > 3  %>
+        <li><%= link_to "1", request.params.merge(page: 1) %></li>
+        <% if @page - 1 > 2  %>
+            <li class="uk-disabled"><span>...</span></li>
+        <% end %>
     <% end %>
-    <li class="uk-active"><span><%= @page %></span></li>
-    <% if (@page < @page_max - 1) %>
-    <li class="uk-disabled"><span>...</span></li>
-    <li><%= link_to "#{@page + 1}", request.params.merge(page: @page + 1) %></li>
+    <% for page in (@page - 1 <= 0 ? 1 : @page - 1)...(@page + 1 > @page_max ? @page_max + 1 : @page + 2) do %>
+        <li class="<%= @page == page ? 'uk-active' : '' %>"><%= link_to "#{page}", request.params.merge(page: page) %></li>
     <% end %>
-    <% if (@page != @page_max) %>
+    <% if @page_max - 1 > @page %>
+        <% if @page_max - 2 > @page  %>
+            <li class="uk-disabled"><span>...</span></li>
+        <% end %>
         <li><%= link_to "#{@page_max}", request.params.merge(page: @page_max) %></li>
+    <% end %>
+    <% if (@page < @page_max) %>
         <li><%= link_to "<span uk-pagination-next></span>".html_safe, request.params.merge(page: @page + 1) %></li>
     <% end %>
 </ul>
-<% end %>
