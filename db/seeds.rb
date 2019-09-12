@@ -615,6 +615,18 @@ Ingredient.create! do |ingredient|
 end
 
 Ingredient.create! do |ingredient|
+  ingredient.name = "Amande"
+  ingredient.confirmed = true
+  ingredient.description = "Fruit sec riche en bon gras."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre en moceaux"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2068,6 +2080,223 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Vegan")
   ]
+end
+
+Ingredient.create! do  |ingredient|
+  ingredient.name = "Oignon rouge"
+  ingredient.confirmed = true
+  ingredient.description = "Condiment basique"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do  |ingredient|
+  ingredient.name = "Pois chiche"
+  ingredient.confirmed = true
+  ingredient.description = "Légumineuse riche en fibres et protéines"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien")
+  ]
+  ingredient.shelf_tag = "Légumineuses"
+end
+
+Ingredient.create! do  |ingredient|
+  ingredient.name = "Protéines de soja texturées"
+  ingredient.confirmed = true
+  ingredient.description = "Soja sous forme désydrathé"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien")
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sauce barbecue"
+  ingredient.confirmed = true
+  ingredient.description = "Sauce sucrée"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Tomates concassées"
+  ingredient.confirmed = true
+  ingredient.description = "Tomates en conserve idéal pour les sauces"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Végétarien")
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Tomates séchées"
+  ingredient.confirmed = true
+  ingredient.description = "Tomates séchées dans leur huile"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Végétarien")
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Paprika fumé en poudre"
+  ingredient.confirmed = true
+  ingredient.description = "Papriké plus salé que l'original"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Épice"),
+  ]
+  ingredient.shelf_tag = "Herbes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Flocons d'avoine"
+  ingredient.confirmed = true
+  ingredient.description = "Avoine sous forme de flocons"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Céréale"),
+    IngredientTag.find_by_name("Bon marché"),
+  ]
+  ingredient.shelf_tag = "Céréales"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Noix de cajou"
+  ingredient.confirmed = true
+  ingredient.description = "Fruit sec riche en bon gras."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sirop d'agave"
+  ingredient.confirmed = true
+  ingredient.description = "Sirop idéal pour les pancakes"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Dattes"
+  ingredient.confirmed = true
+  ingredient.description = "Fruit très énergétique"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan")
+  ]
+  ingredient.shelf_tag = "Fruits"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Margarine"
+  ingredient.confirmed = true
+  ingredient.description = "Alternative au beurre"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan")
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sucre de canne"
+  ingredient.confirmed = true
+  ingredient.description = "Indispensable dans la patisserie"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Cacahuètes"
+  ingredient.confirmed = true
+  ingredient.description = "Habituellement utilisé en guise d'apéritif"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Lait d'amande"
+  ingredient.confirmed = true
+  ingredient.description = "Lait végétal"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Cornflakes"
+  ingredient.confirmed = true
+  ingredient.description = "Céréales de petit déjeuner"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Beurre de cacahuètes"
+  ingredient.confirmed = true
+  ingredient.description = "Pâte sucrée salée"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Champignon"
+  ingredient.confirmed = true
+  ingredient.description = "Idéal en salade ou sur des pizzas"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien")
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Purée d'amandes blanches"
+  ingredient.confirmed = true
+  ingredient.description = "Sert à la cuisine végétale"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 # Utensils
@@ -5539,6 +5768,499 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Cookies vegan au beurre de cacahuètes"
+  recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
+  recipe.person = 4
+  recipe.difficulty = 3
+  recipe.preparation_time = 10
+  recipe.cooking_time = 10
+  recipe.steps = [
+    "Dans un grand bol, mélangez le lait d'amande, le sucre, la vanille et le beurre de cacahuète.",
+    "Ajoutez en tamisant la farine, mélangez avec une grande cuillère ou spatule.",
+    "Hachez grossièrement les noix de pécan et le chocolat et ajoutez-les à la préparation.",
+    "Placez au frais 20 minutes, puis formez des boules de taille identique que vous aplatissez avec une fourchette (pour quadriller le dessus).",
+    "Enfournez à 180°C pendant 10 min, et laissez refroidir avant de déguster."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Beurre de cacahuètes")
+  recipe.ingredients << Ingredient.find_by_name("Lait d'amande")
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Noix de pécan")
+  recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
+  recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
+  recipe.ingredients << Ingredient.find_by_name("Levure chimique")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 80, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 120, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Four")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/cookies_vegan.jpg'),
+                      filename: 'cookies_vegan.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Roses des sables"
+  recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
+  recipe.person = 2
+  recipe.difficulty = 2
+  recipe.preparation_time = 15
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Faire fondre le chocolat dans un bol.",
+    "Verser les cornflakes dans le chocolat fondu et mélanger jusqu’à ce que tous les corn flakes soient enrobés de chocolat.",
+    "Sur une plaque recouverte de papier sulfurisé, faire des petits tas, puis laisser reposer une heure au réfrigérateur."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
+  recipe.ingredients << Ingredient.find_by_name("Cornflakes")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/roses_vegan.jpg'),
+                      filename: 'roses_vegan.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Snickers maisons"
+  recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
+  recipe.person = 10
+  recipe.difficulty = 5
+  recipe.preparation_time = 30
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Pour le biscuit : mixez les flocons d'avoine avec les noix de cajoux jusqu'à obtenir un résultat fin.",
+    "Versez dans un saladier avec le sirop d'agave et le beurre de cacahuète. Mélangez avec les mains jusqu'à obtenir une pâte consistante.",
+    "Placez du papier cuisson au fond d'un grand plat et étalez la pâte.",
+    "Pour le caramel : préparez 200 grammes de dattes dénoyautées. Rajoutez les dans une casserolle avec la margarine,
+    le sucre et l'extrait de vanille, puis faites revenir à feu doux.",
+    "Une fois que la margarine et le sucre sont réduits à l'état liquide, mixez le tout.",
+    "Quand le caramel est bien mixé, mélangez y les cacahuètes puis étalez le tout par dessus le biscuit.",
+    "Mettez le plat au congélateur pour 3 heures.",
+    "Une fois le temps écoulé, démoulez le tout et coupez le biscuit en petites parts égales.",
+    "Faites fondre le chocolat noir dans un grand bol ou un plat creux.",
+    "Trempez les bouts dans le chocolat et replacez les sur du papier cuisson.",
+    "Une fois tous les snickers prêts, laissez les refroidir au frigo 15 minutes. Fini !",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Flocons d'avoine")
+  recipe.ingredients << Ingredient.find_by_name("Noix de cajou")
+  recipe.ingredients << Ingredient.find_by_name("Sirop d'agave")
+  recipe.ingredients << Ingredient.find_by_name("Beurre de cacahuètes")
+  recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
+  recipe.ingredients << Ingredient.find_by_name("Dattes")
+  recipe.ingredients << Ingredient.find_by_name("Margarine")
+  recipe.ingredients << Ingredient.find_by_name("Sucre de canne")
+  recipe.ingredients << Ingredient.find_by_name("Cacahuètes")
+  recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/snickers.jpg'),
+                      filename: 'snickers.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Houmous aux tomates séchées"
+  recipe.description = "Purée de pois chiches délicieuse et relevé"
+  recipe.person = 4
+  recipe.difficulty = 3
+  recipe.preparation_time = 10
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Placez tous les ingrédients dans un robot mixeur.",
+    "Rajoutez 3 cuillières à soupe d'huile des tomates séchées.",
+    "Mixer jusqu'à obtenir une consistance de purée."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Tomates séchées")
+  recipe.ingredients << Ingredient.find_by_name("Pois chiche")
+  recipe.ingredients << Ingredient.find_by_name("Ail")
+  recipe.ingredients << Ingredient.find_by_name("Jus de citron")
+  recipe.ingredients << Ingredient.find_by_name("Paprika en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Paprika fumé en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 260, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tomato_humus.jpg'),
+                      filename: 'tomato_humus.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Bolognaise de lentilles"
+  recipe.description = "Bolognaise végé onctueuse !"
+  recipe.person = 2
+  recipe.difficulty = 4
+  recipe.preparation_time = 5
+  recipe.cooking_time = 20
+  recipe.steps = [
+    "Faire revenir l’oignon et les carottes coupées en dés dans de l’huile.",
+    "Rajouter les lentilles cuites et les tomates concassées, avec un demi verre d’eau et les herbes de Provence.",
+    "Laisser mijoter à couvert pendant 10 minutes.",
+    "Servir avec des pâtes."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Spaghetti")
+  recipe.ingredients << Ingredient.find_by_name("Lentilles")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Carotte")
+  recipe.ingredients << Ingredient.find_by_name("Tomates concassées")
+  recipe.ingredients << Ingredient.find_by_name("Herbes de Provence")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Casserole")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/lentils_bolognese.jpg'),
+                      filename: 'lentils_bolognese.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Wraps au soja"
+  recipe.description = "Wraps savoureux et riche en protéines"
+  recipe.person = 1
+  recipe.difficulty = 3
+  recipe.preparation_time = 10
+  recipe.cooking_time = 10
+  recipe.steps = [
+    "Faire bouillir un fond d'eau dans une casserole.",
+    "Une fois l'eau à ébullition, mettez le soja dans la casserole pour 2-3 minutes.",
+    "Egouttez le soja et pressez le un peu pour dégorger de l'eau.",
+    "Mélangez les sauces et épices pour rajouter un maximum de goût.",
+    "Mettez le tout au four pour 5-10 minutes.",
+    "Une fois prêt, savourez dans un wraps avec les condiments de votre choix !"
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Protéines de soja texturées")
+  recipe.ingredients << Ingredient.find_by_name("Tortilla")
+  recipe.ingredients << Ingredient.find_by_name("Sauce soja")
+  recipe.ingredients << Ingredient.find_by_name("Sauce barbecue")
+  recipe.ingredients << Ingredient.find_by_name("Ail en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Paprika en poudre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Presse-purée")
+  recipe.utensils << Utensil.find_by_title("Four")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/soy_wraps.jpg'),
+                      filename: 'soy_wraps.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Steaks à hamburgers végétaliens"
+  recipe.description = "Une galette maison à base de haricots rouges !"
+  recipe.person = 4
+  recipe.difficulty = 4
+  recipe.preparation_time = 10
+  recipe.cooking_time = 20
+  recipe.steps = [
+    "Préchauffez votre four à 200 degrés Celsius.",
+  "Rincez vos haricots rouges si vous les sortez d'une conserve.",
+    "Hachez votre oignon finement.",
+    "Mettez le tout dans un saladier avec 40 grammes de chapelure (10 grammes pour un steak).",
+    "Mélangez avec les différentes épices et le ketchup à la fin.",
+    "Verser le contenu dans un mixeur, et faire tourner jusqu'à ce que tout ait la même consistance.",
+    "Vous allez obtenir une pâte à la fois solide et collante.
+    Formez des boules de tailles régulières et applatissez les sur la plaque du four.",
+    "Mettez les steaks au four. Environ 10 minutes pour chaque face.",
+    "Une fois cuits, placez les dans des pains à hamburgers, avec les condiments de votre choix !"
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Haricot rouge")
+  recipe.ingredients << Ingredient.find_by_name("Chapelure")
+  recipe.ingredients << Ingredient.find_by_name("Oignon rouge")
+  recipe.ingredients << Ingredient.find_by_name("Ketchup")
+  recipe.ingredients << Ingredient.find_by_name("Cumin en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Ail en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Paprika en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Four")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/vegan_beans_burger.jpg'),
+                      filename: 'vegan_beans_burger.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Falafels"
+  recipe.description = "Délicieuses boulettes de pois chiches"
+  recipe.person = 4
+  recipe.difficulty = 4
+  recipe.preparation_time = 15
+  recipe.cooking_time = 15
+  recipe.steps = [
+    "Égoutter les pois chiches et mixer avec l’oignon épluché en morceaux, au robot mixeur.",
+    "Ajouter les herbes, les épices, le sel, la farine, et mixer pour obtenir un mélange homogène.",
+  "Verser dans un torchon propre, replier et « essorer » pour exprimer un maximum de jus, et assécher la pâte.",
+    "Reverser dans le robot et mixer pour obtenir une pâte bien fine.",
+    "La pâte reste granuleuse et n’est pas très collante, c’est normal.",
+    "Former 20 boulettes entre les mains, en pressant bien, plusieurs fois, de manière à obtenir des boulettes,
+    bien arrondies, qui se tiennent et les déposer sur une plaque recouverte de papier cuisson.",
+    "Huiler légèrement à l’aide d’un pinceau.",
+    "Cuire 10-15 minutes au four à 180°C.",
+    "Servir avec de la sauce tahini au citron ou une autre sauce de votre choix. Parfaits pour garnir des wraps, des sandwichs, les apéros…",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+
+  recipe.ingredients << Ingredient.find_by_name("Pois chiche")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Persil")
+  recipe.ingredients << Ingredient.find_by_name("Coriandre")
+  recipe.ingredients << Ingredient.find_by_name("Cumin en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Menthe")
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Brin(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Four")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/falafels.png'),
+                      filename: 'falafels.png', content_type: 'image/png')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Salade champignons sauce amande-citron"
+  recipe.description = "Salade fraîche pour l'été"
+  recipe.person = 2
+  recipe.difficulty = 3
+  recipe.preparation_time = 10
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Laver et couper les champignons en deux, puis les émincer le plus finement possible.",
+    "Mélanger tous les ingrédients pour réaliser la sauce.",
+    "Dresser les champignons dans une grande assiette, arroser généreusement de sauce puis parsemer de persil hachée et d’amandes.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Champignon")
+  recipe.ingredients << Ingredient.find_by_name("Purée d'amandes blanches")
+  recipe.ingredients << Ingredient.find_by_name("Amande")
+  recipe.ingredients << Ingredient.find_by_name("Citron")
+  recipe.ingredients << Ingredient.find_by_name("Ail en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Persil")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/salade_champignons.jpeg'),
+                      filename: 'salade_champignons.jpeg', content_type: 'image/jpeg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Tartinade aux haricots rouges"
+  recipe.description = "Idéal pour tartiner à l'apéritif !"
+  recipe.person = 2
+  recipe.difficulty = 3
+  recipe.preparation_time = 15
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Pressez le jus du demi-citron et mettez tous les ingrédients dans un robot culinaire, et mixez jusqu’à obtenir une purée lisse."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Haricot rouge")
+  recipe.ingredients << Ingredient.find_by_name("Citron")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Persil")
+  recipe.ingredients << Ingredient.find_by_name("Ciboulette")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 225, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 0.5, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+
+  recipe.utensils << Utensil.find_by_title("Mixeur")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tartinade_haricots.jpg'),
+                      filename: 'tartinade_haricots.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Mousse au chocolat vegan"
+  recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
+  recipe.person = 2
+  recipe.difficulty = 3
+  recipe.preparation_time = 15
+  recipe.cooking_time = 0
+  recipe.steps = [
+    "Faire fondre le chocolat dans un bol. Puis laisser tiédir quelques minutes.",
+    "Récupérez l'eau de la conserve de pois chiches et versez dans un saladier.",
+    "A l'aide du fouet, montez l'eau de pois chiches en neige avec une pincée de sel.",
+    "Incorporez délicatement et progressivement les blancs en neige au le chocolat noir fondu, en utilisant une spatule et en soulevant bien le mélange pour ne pas casser les blancs.",
+    "Disposez dans des verres et réservez au réfrigérateur pendant minimum 1h."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
+  recipe.ingredients << Ingredient.find_by_name("Pois chiche")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Fouet")
+
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/mousse_vegan.jpg'),
+                      filename: 'mousse_vegan.jpg', content_type: 'image/jpg')
 end
 
 # rubocop:enable all
