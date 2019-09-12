@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_200051) do
+ActiveRecord::Schema.define(version: 2019_08_12_093248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,29 @@ ActiveRecord::Schema.define(version: 2019_06_06_200051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
+    t.string "shelf_tag"
+  end
+
+  create_table "liked_producers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "liked_producer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meal_plans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.integer "type"
+    t.date "date"
+    t.time "time"
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_meals_on_type"
   end
 
   create_table "meal_plans", force: :cascade do |t|
@@ -465,8 +488,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_200051) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters"
-    t.boolean "isProducer"
+    t.boolean "newsletters", null: false
+    t.boolean "isProducer", null: false
     t.text "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

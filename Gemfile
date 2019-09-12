@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'turbolinks', '~> 5'
 gem 'sassc-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker'
+gem 'webpacker', '<= 3.3.1'
 gem 'jbuilder', '~> 2.5'
 gem 'mjml-rails'
 gem 'mini_racer', platforms: :ruby
@@ -34,6 +34,8 @@ gem 'bullet'
 gem 'country_select'
 gem 'cocoon'
 gem 'coffee-rails', '~> 5.0.0'
+gem 'bundler', '~> 2.0.1'
+gem "google-cloud-storage", "~> 1.11", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

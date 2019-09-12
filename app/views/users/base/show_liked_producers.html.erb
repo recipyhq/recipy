@@ -1,0 +1,13 @@
+<div class="uk-container uk-padding">
+  <% if @producers.empty? %>
+    <h2 class="title">Vous ne suivez aucun producteur !</h2>
+    <h3><%= link_to t("users.followed_producers.link_to_all_prod"),
+                    unauthenticated_producer_root_url %></h3>
+  <% else %>
+<!--    <h2 class="title">Liste des producteurs que je suis ( <%#= @producers.size %> )</h2>-->
+    <h2 class="title"><%= t("users.followed_producers.liked_label", nb: @producers.size) %></h2>
+    <% @producers.each do |user| %>
+      <li><%= link_to user.first_name + " " + user.last_name, show_producer_path(user.id)%></li>
+    <% end %>
+  <% end %>
+</div>

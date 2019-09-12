@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  after_initialize do |user|
+    user.newsletters = false
+    user.isProducer = false
+  end
+
   devise :database_authenticatable, :confirmable, :recoverable, :registerable,
          :rememberable, :trackable, :timeoutable, :validatable, :lockable,
          :omniauthable, omniauth_providers: %i(facebook google_oauth2)
@@ -30,6 +35,13 @@ class User < ActiveRecord::Base
   has_many :notebooks
   has_many :recipes
   has_many :point_of_sales
+
+  has_many :related_liked_producers, :class_name => 'LikedProducer'
+  has_many :liked_producers, through: :related_liked_producers, source: :liked_producer
+
+  has_many :inverse_related_liked_producers, class_name: 'LikedProducer',
+                                             :foreign_key => "liked_producer_id"
+  has_many :followed_users, through: :inverse_related_liked_producers, :source => :user
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

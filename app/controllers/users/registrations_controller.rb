@@ -65,8 +65,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     '/beta/users/sign_in'
   end
 
+  def after_update_path_for(resource)
+    '/beta/users/edit'
+  end
+
   def sign_up_params
     params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
-
 end

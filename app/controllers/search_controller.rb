@@ -11,7 +11,7 @@ class SearchController < ApplicationController
     skip_policy_scope
     @page = (params['page'] || 1).to_i.abs
     @time_max = Recipe.maximum("cooking_time") || 60
-    @ingredients_select = Ingredient.all.where(:confirmed => true).map { |v| [v.name, v.id] }.to_a
+    @ingredients_select = Ingredient.order(:name).all.where(:confirmed => true).map { |v| [v.name, v.id] }.to_a
     search_params = params['search'] || {}
     @search_query = search_params['q'] || ""
     @search_difficulty = search_params['difficulty'] || nil
@@ -26,9 +26,9 @@ class SearchController < ApplicationController
     if @sort == 'note_desc' || @sort == 'note_asc'
       @recipes = @recipes.select("recipes.*, COALESCE(avg(recipe_scores.value), 0) as score").left_joins(:recipe_scores).group("recipes.id").order(score: (@sort == 'note_desc') ? :desc : :asc)
     end
-    @page_max = (@recipes.uniq.count / @@per_page).ceil
+    @page_max = (@recipes.uniq.count.to_f / @@per_page.to_f).ceil
     @page_max = @page_max > 0 ? @page_max : 1
-    @recipes = @recipes.to_page(@page, @@per_page).includes(:image_attachment => :blob).all
+    @recipes = @recipes.order(:title).to_page(@page, @@per_page).includes(:image_attachment => :blob).all
   end
 end
 # rubocop:enable all

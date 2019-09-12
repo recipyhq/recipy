@@ -13,11 +13,12 @@
   <div class="form-inputs">
     <%= f.input :name, label: t("ingredient.title.name") %>
     <%= f.input :description, label: t("ingredient.title.description") %>
+    <%= f.input :shelf_tag, collection: Ingredient.shelf_tags.values, label: "Dans quel rayon se trouve votre produit ?" %>
   </div>
 
   <div class="uk-margin">
     <%= f.label t("ingredient.title.type"), class: "uk-form-label" %>
-    <%= f.input :ingredient_tag_ids, :label => false, :selected => @ingredient.ingredient_tags.map {|v| v.id}.to_a, collection: IngredientTag.all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+    <%= f.input :ingredient_tag_ids, :label => false, :selected => @ingredient.ingredient_tags.map {|v| v.id}.to_a, collection: IngredientTag.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
       multiple: true,
       slimselect: true,
       slimselectNoResult: t('slimselect.ingredienttags.no_result'),

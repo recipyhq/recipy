@@ -5,14 +5,26 @@ class ShoppingListsController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @shopping_lists = current_user.shopping_lists
+    @shopping_lists = current_user.shopping_lists.order(:name)
   end
 
   def show
+    Bullet.enable = false
     find_shopping_list
     if @shopping_list.nil? || @shopping_list == []
-      redirect_to shopping_lists_path, flash: {danger: "Liste de courses inconnue"}
+      redirect_to shopping_lists_path, flash: {danger: "Liste de courses inconnue"} and return
     end
+    ingredients = @shopping_list.shopping_list_ingredients
+                    .includes(:ingredient)
+                    .order('ingredients.shelf_tag desc')
+    @items = {}
+    ingredients.each do |x|
+      if @items[x.ingredient.shelf_tag].nil?
+        @items[x.ingredient.shelf_tag] = []
+      end
+      @items[x.ingredient.shelf_tag] << x
+    end
+    puts @items
   end
 
   def new

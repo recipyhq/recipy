@@ -76,6 +76,19 @@ fr:
         not_saved:
           one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
           other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+    followed_producers:
+      followed_label: "Suivi par %{nb} personne(s)"
+      liked_label: "Liste des producteurs que je suis (%{nb})"
+      no_follow: "Vous ne suivez aucun producteur !"
+      link_to_all_prod: "Voir tous les producteurs de la plateforme"
+      action_follow: "Suivre"
+      action_unfollow: "Ne plus suivre"
+      link: "Les producteurs suivis"
+    api:
+      follow_ok: "Vous suivez ce producteur"
+      follow_ko: "Vous ne suivez plus ce producteur"
+
+
 
 
   producer:
@@ -172,6 +185,7 @@ fr:
 
   recipe:
       title:
+        count: "%{count} recette(s)"
         index: "Toutes les recettes"
         edit: "Modifier votre recette"
         new: "Création d'une recette"
@@ -180,7 +194,7 @@ fr:
         score: "Note"
         new_ingredient: "Proposer un ingrédient"
         comment: "Commentaire"
-        step: "Etape(s)"
+        step: "Etape(s) : Passez une ligne pour créer une nouvelle étape"
         time: "Temps"
         description: "Description"
         difficulty: "Difficulté"
@@ -205,6 +219,7 @@ fr:
         new_ingredient_elem: "Nouvel ingredient"
         number_views: "Nombre de vues :"
         number_feedbacks: "Nombre de commentaires :"
+        add_to_notebook: "Ajouter à un carnet de recette"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
@@ -233,11 +248,16 @@ fr:
         valid: "Votre recette a été supprimée"
       api:
         invalid_id: "Recette introuvable, mauvais ID"
+        invalid_user_id: "Utilisateur non trouvé"
       name: "Recette"
       invalid_user_id: "Utilisateur non trouvé"
       my_recipes:
         link: "Mes recettes"
         title: "Toutes mes recettes"
+      add_to_notebook:
+        valid: "La recette a bien été ajouté au carnet de recettes"
+        already_in: "La recette est déjà dans le carnet de recette choisit"
+        no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
 
   ingredient:
     title:
@@ -338,7 +358,7 @@ fr:
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'
-    back: 'Retourner à la liste des carnets de recette'
+    back: 'Retourner à la liste des carnets de recettes'
     form:
       name: "Nom du carnet de recettes"
       desc: "Description du style de carnet que vous réalisez"
@@ -349,6 +369,11 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Bienvenue"
+      call_to_action: "Action"
 
   slimselect:
     ustensils:
@@ -367,3 +392,25 @@ fr:
       placeholder: "Type d'ingrédient"
       search_placeholder: "Rechercher un type d'ingrédient..."
       no_result: "Désolé il n'y a pas le type d'ingrédient recherché dans la liste."
+    recipes:
+      placeholder: "Recettes"
+      search_placeholder: "Rechercher une recette..."
+      no_result: "Désolé il n'y a pas la recette recherché dans la liste."
+    notebooks:
+      placeholder: "Carnets de recettes"
+      search_placeholder: "Rechercher un carnet de recettes..."
+      no_result: "Désolé il n'y a pas le carnet de recettes recherché dans la liste."
+    point_of_sales:
+      placeholder: "Point de ventes"
+      search_placeholder: "Rechercher un point de ventes..."
+      no_result: "Désolé il n'y a pas le point de vente recherché dans la liste."
+    tags:
+      placeholder: "Tags"
+      search_placeholder: "Rechercher un tag..."
+      no_result: "Désolé il n'y a pas le tag recherché dans la liste."
+    quantity_type:
+      placeholder: "Type de quantité"
+      search_placeholder: "Rechercher un type de quantité..."
+      no_result: "Désolé il n'y a pas le type de quantité recherché dans la liste."
+
+  are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
