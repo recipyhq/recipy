@@ -1,20 +1,22 @@
 class Ingredient < ApplicationRecord
-  enum shelf_tag: {meat: 'Viandes',
-                   fish: 'Poissons',
-                   veggie: 'Légumes',
-                   fruit: "Fruits",
-                   drink: "Boissons",
-                   cereal: "Céréales",
-                   grocery: "Epicerie",
-                   dairy: "Produits laitiers",
-                   egg: "Oeufs",
-                   dry: "Produits secs",
-                   herb: "Herbes",
-                   crustacean: "Crustacés",
-                   baking: "Boulangerie",
-                   fresh: "Rayon frais",
-                   alcohol: "Alcools",
-                   legumes: "Légumineuses"
+  enum shelf_tag: {
+    meat: 'Viandes',
+    fish: 'Poissons',
+    veggie: 'Légumes',
+    fruit: "Fruits",
+    drink: "Boissons",
+    cereal: "Céréales",
+    grocery: "Epicerie",
+    dairy: "Produits laitiers",
+    egg: "Oeufs",
+    dry: "Produits secs",
+    herb: "Herbes",
+    crustacean: "Crustacés",
+    baking: "Boulangerie",
+    fresh: "Rayon frais",
+    alcohol: "Alcools",
+    freezer: "Surgelé",
+    legumes: "Légumineuses",
   }
 
   validates :name, presence: true, uniqueness: true
