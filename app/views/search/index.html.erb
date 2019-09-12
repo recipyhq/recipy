@@ -34,15 +34,18 @@
         <% @recipes.each do |recipe| %>
             <div>
                 <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top">
+                    <div class="uk-card-media-top recipe-img recipe-search-img" style="background-image: url(
                         <% if recipe.image.attached? %>
-                            <%= image_tag recipe.image, :crop => :fill %>
+                            <%= rails_blob_url recipe.image %>
                         <% else %>
-                            <%= image_tag "https://picsum.photos/400/200" %>
+                            <%= "https://picsum.photos/400/200" %>
                         <% end %>
+                    )">
                     </div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title"><%= recipe.title %></h3>
+                        <div uk-tooltip="<%= recipe.title %>">
+                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"><%= recipe.title %></h3>
+                        </div>
                         <div class="star-ratings star-dark">
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>

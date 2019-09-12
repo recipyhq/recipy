@@ -209,3 +209,22 @@ body {
   width: 2000px;
   height: 200px;
 }
+
+.recipe-img {
+  width: 100%;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.recipe-search-img {
+  height: 225px;
+}
+
+.recipe-title {
+  display: block;
+  max-width: 100%;
+  color: red;
+  text-overflow: ellipsis;
+}
