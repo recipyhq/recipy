@@ -126,21 +126,6 @@ ActiveRecord::Schema.define(version: 2019_08_12_093248) do
     t.index ["type"], name: "index_meals_on_type"
   end
 
-  create_table "meal_plans", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "meals", force: :cascade do |t|
-    t.integer "type"
-    t.date "date"
-    t.time "time"
-    t.boolean "done"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_meals_on_type"
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.string "account_type"
