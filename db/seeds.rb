@@ -91,6 +91,10 @@ QuantityType.create! do |quantity_type|
 end
 
 QuantityType.create! do |quantity_type|
+  quantity_type.name = "Botte(s)"
+end
+
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Pièce(s)"
 end
 
@@ -322,6 +326,17 @@ Ingredient.create! do |ingredient|
 end
 
 Ingredient.create! do |ingredient|
+  ingredient.name = "Poivre blanc"
+  ingredient.confirmed = true
+  ingredient.description = "Condiment pour asaisonner"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Bon marché"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
   ingredient.name = "Avocat"
   ingredient.confirmed = true
   ingredient.description = "Fruit issu de l'avocatier. Provenant du Mexique."
@@ -506,6 +521,30 @@ Ingredient.create! do |ingredient|
   ingredient.confirmed = true
   ingredient.description = "Matière grasse extraite des olives.
 Fondement de la cuisine méditéranéenne et peut-être bénéfique pour la santé"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Corps gras"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Huile"
+  ingredient.confirmed = true
+  ingredient.description = "Matière grasse. Peut-être bénéfique pour la santé"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Corps gras"),
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Huile végétale"
+  ingredient.confirmed = true
+  ingredient.description = "Matière grasse extraite de plantes diverses. "
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Corps gras"),
     IngredientTag.find_by_name("Vegan"),
@@ -1626,6 +1665,16 @@ Ingredient.create! do |ingredient|
 end
 
 Ingredient.create! do |ingredient|
+  ingredient.name = "Bouillon de volaille"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
   ingredient.name = "Lait entier"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2299,6 +2348,210 @@ Ingredient.create! do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
+Ingredient.create! do |ingredient|
+  ingredient.name = "Farine de froment"
+  ingredient.confirmed = true
+  ingredient.description = "Farine riche en gluten qui peut provoquer des grumeaux si mal mélanger."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sucre"
+  ingredient.confirmed = true
+  ingredient.description = "Du sucre en grain très fin"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Tête et arêtes d'un saumon"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+
+end
+Ingredient.create! do |ingredient|
+  ingredient.name = "Quatre-épices"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Aneth"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Herbes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Laurier"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Herbe"),
+  ]
+  ingredient.shelf_tag = "Herbes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Filet de saumon sauvage"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Poisson"),
+  ]
+  ingredient.shelf_tag = "Poissons"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Pomme de terre ferme"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Féculent"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Crème entière"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Cordon bleu"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Bon marché"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Frites"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Surgelé"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Bouillon de boeuf"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Patate douce"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Vegan"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Crème semi-épaisse"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Thon"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Poisson"),
+  ]
+  ingredient.shelf_tag = "Poissons"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Pêche"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Fruit"),
+  ]
+  ingredient.shelf_tag = "Fruits"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Crème fraîche épaisse"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Thym"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Herbe"),
+  ]
+  ingredient.shelf_tag = "Herbes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Ratatouille"
+  ingredient.confirmed = true
+  ingredient.description = "Mélange de divers légumes du Soleil comme la tomate, la cougette ou encore l'aubergine."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Gruyère râpé"
+  ingredient.confirmed = true
+  ingredient.description = "Fromage suisse râpé, s'accomode avec des pâtes ou sur une pizza"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
 # Utensils
 Utensil.create! do |utensil|
   utensil.title = "Fouet"
@@ -2496,8 +2749,39 @@ Utensil.create! do |utensil|
 end
 
 Utensil.create! do |utensil|
+  utensil.title = "Cul de poule"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Billig"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Crêpière"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Gaufrier"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Pince à désarêter"
+end
+
+Utensil.create! do |utensil|
   utensil.title = "Grille à gâteaux"
 end
+
+Utensil.create! do |utensil|
+  utensil.title = "Auto-cuiseur"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Plat à tarte"
+end
+
+
+
 
 # Recipe Categories
 
@@ -6261,6 +6545,567 @@ Recipe.create! do |recipe|
 
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/mousse_vegan.jpg'),
                       filename: 'mousse_vegan.jpg', content_type: 'image/jpg')
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Crêpe de maître crêpier"
+  recipe.description = "Les meilleurs crêpes que l'on peut faire, recette venant directement de Bretagne ! Très simple et rapide, garantis sans grumeaux"
+  recipe.steps = [
+    "On commence par mettre tous les ingrédients secs dans un cul de poule, soit la farine, le sel et le sucre si vous le faite sur billig sinon ce n'est pas nécessaire. Mélanger.",
+    "Ajouter les oeufs et 250g de lait soit un peu plus de la moitié du lait, puis mélanger brièvement jusqu'à ce que la pâte devienne homogène et semblable à une pâte à gateau.",
+    "Puis on rajoute le reste du lait et on finit de mélanger. Si vous voulez ajouter un peu d'arôme vous pouvez y mettre un peu de beurre, de la vanille ou de la bière.",
+    "Faite reposer la pâte pendant 1h au moins.",
+    "Utiliser environ 9ml pour une crêpe et étaler régulièrement avec une roselle. Puis déguster nature ou agrémenter la avec d'autres ingrédients.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/crepes2.jpg'),
+                      filename: 'crepes2.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 2
+  recipe.preparation_time = 10
+  recipe.person = 5
+  recipe.difficulty = 6
+  recipe.ingredients << Ingredient.find_by_name("Lait entier")
+  recipe.ingredients << Ingredient.find_by_name("Farine de froment")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Cul de poule")
+  recipe.utensils << Utensil.find_by_title("Fouet")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Billig")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Gaufres"
+  recipe.description = "De delicieuses gaufres pour des gouters inoubliables !"
+  recipe.steps = [
+    "Mélangez la farine et le sel, faites un puits au centre et cassez-y les oeufs. Ajoutez le beurre fondu, le lait et l'eau. Fouettez avec un fouet manuel ou électrique. Ajoutez le sucre, le sucre vanillé, l'huile, la levure et éventuellement le rhum. Fouettez de nouveau. La pâte doit être liquide et fluide. Dans le cas contraire, rajoutez de l'eau.",
+    "Laissez reposer 30 minutes minimum. Versez la pâte dans les moules du gaufrier préalablement huilés. ",
+    "Faites cuire 3 minutes environ en retournant le gaufrier à mi-cuisson.",
+    "Mangez ces gaufres saupoudrées de sucre glace, avec de la confiture, du nutella, du sirop d'érable... ",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/gaufre.jpg'),
+                      filename: 'gaufre.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 3
+  recipe.preparation_time = 10
+  recipe.person = 5
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Lait entier")
+  recipe.ingredients << Ingredient.find_by_name("Farine de froment")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Sucre vanillé")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Eau")
+  recipe.ingredients << Ingredient.find_by_name("Huile")
+  recipe.ingredients << Ingredient.find_by_name("Levure chimique")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Gaufrier")
+  recipe.utensils << Utensil.find_by_title("Fouet")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Soupe au Saumon Sauvage"
+  recipe.description = "Un grand classique de la cuisine finlandaise, idéal pour réchauffer les longues soirées d'hiver!"
+  recipe.steps = [
+    "Preparez le bouillon : Bien rincer la tête du saumon et les arêtes, les mettre dans une grande casserole, ajoutez 1,5 litre d'eau froide. Ajouter les quatre-épices, le poivre blanc, le laurier et les tiges d'aneth. Faîtes bouillir puis continuez l'ébullition à feux doux pendant 20 minutes. Enlevez de temps en temps avec une cuillère la mousse qui se forme a la surface.",
+    "Pendant ce temps, préparez les ingrédients pour la soupe. Coupez l'oignon en petits dés, épluchez et coupez les pommes de terre en dés d'environ 2 cm de coté, les carottes en rondelles. Coupez finement l'aneth. Enlevez (à l'aide d'une pince par exemple) les arêtes des filets de saumon. Coupez les filets en dés d'environ 2,5 x 2,5 cm.",
+    "Faîtes fondre le beurre dans un grand récipient et ajoutez les oignons. Faîtes les revenir pendant quelques minutes afin qu'ils soient dorés (attention de ne pas les brûler !). Ajoutez ensuite les pommes de terre et les carottes, et faîtes revenir le tout encore quelques minutes.",
+    "Egouttez le bouillon dans une grande casserole ou se trouvent les pommes de terre, les carottes et les oignons. Faîtes bouillir le tout pendant environ 15 minutes, jusqu'à ce que les pommes de terre soient bien cuites. Salez.",
+    "Ajoutez la crème et le poisson, puis faîtes bouillir. Une fois à ebullition, ôtez du feu et mettez le couvercle. Le saumon devrait être à point après 4-5 minutes. Ajoutez généreusement l'aneth et servez avec du pain de seigle. Hyvää ruokahalua! (bon appétit en finnois)",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/soupSalmon.jpg'),
+                      filename: 'soupSalmon.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 3
+  recipe.preparation_time = 10
+  recipe.person = 5
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Tête et arêtes d'un saumon")
+  recipe.ingredients << Ingredient.find_by_name("Eau")
+  recipe.ingredients << Ingredient.find_by_name("Poivre blanc")
+  recipe.ingredients << Ingredient.find_by_name("Quatre-épices")
+  recipe.ingredients << Ingredient.find_by_name("Aneth")
+  recipe.ingredients << Ingredient.find_by_name("Laurier")
+  recipe.ingredients << Ingredient.find_by_name("Filet de saumon sauvage")
+  recipe.ingredients << Ingredient.find_by_name("Pomme de terre ferme")
+  recipe.ingredients << Ingredient.find_by_name("Carotte")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Crème entière")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Botte(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[11].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Marmite")
+  recipe.utensils << Utensil.find_by_title("Pince à désarêter")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Americain Cordon Bleu"
+  recipe.description = "Très peu diététique pour le corps mais un vrai médicament pour le moral !"
+  recipe.steps = [
+    "Prendre la demie baguette et la couper dans le sens de la longueur",
+    "Mettre le cordon bleu au four pendant 15 minutes jusqu'à ce qu'il soit baveux, puis y rajouter une ou deux tranches de cheddar.",
+    "Mettre les frites au four ou dans une friteuse.",
+    "Mettre de la mayonnaise à l'intérieur de la baguette ou une sauce de votre choix, puis y placer un petit lit de frites, déposer cordon bleu coupé en deux.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/americain.jpg'),
+                      filename: 'americain.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 20
+  recipe.preparation_time = 10
+  recipe.person = 1
+  recipe.difficulty = 1
+  recipe.ingredients << Ingredient.find_by_name("Baguette de pain")
+  recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
+  recipe.ingredients << Ingredient.find_by_name("Cordon bleu")
+  recipe.ingredients << Ingredient.find_by_name("Cheddar")
+  recipe.ingredients << Ingredient.find_by_name("Frites")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Purée de patate douce"
+  recipe.description = "Délicieuse purée"
+  recipe.steps = [
+    "Éplucher et couper en gros morceau les patates douces, les faire cuire 15-20 min dans de l'eau bouillante salée.",
+    "Une fois cuites, les égoutter y ajouter le beurre et la crème, saler, poivrer et les écraser avec un presse-purée.",
+    "Déguster, c'est prêt !",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/patatedouce.jpeg'),
+                      filename: 'patatedouce.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 20
+  recipe.preparation_time = 10
+  recipe.person = 4
+  recipe.difficulty = 3
+  recipe.ingredients << Ingredient.find_by_name("Patate douce")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Crème semi-épaisse")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 900, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Presse-purée")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Économe")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Velouté de courgette"
+  recipe.description = "Un velouté qui accompagne parfaitement un repas."
+  recipe.steps = [
+    "Epluchez les courgettes, coupez les en morceaux et mettez les avec le beurre dans un auto-cuiseur. Rajoutez le cube de bouillon et un verre d'eau.Fermez et laissez cuire 10 mn à partie du sifflement.",
+    "Mixer le tout avec les trois cuillères à soupe de crème fraîche.",
+    "Servir bien chaud.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/veloutecourgette.jpg'),
+                      filename: 'veloutecourgette.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 20
+  recipe.preparation_time = 20
+  recipe.person = 4
+  recipe.difficulty = 4
+  recipe.ingredients << Ingredient.find_by_name("Courgette")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
+  recipe.ingredients << Ingredient.find_by_name("Bouillon de boeuf")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Auto-cuiseur")
+  recipe.utensils << Utensil.find_by_title("Mixeur plongeant")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Ratatouille"
+  recipe.description = "Excellent élément à manger seul ou à incorporer dans une autre recette"
+  recipe.steps = [
+    "Coupez les tomates pelées en quartiers, Les aubergines et les courgettes en rondelles. Emincez les poivrons en lamelles et l'oignon en rouelles.",
+    "Chauffez 2 cuillères à soupe d'huile dans une poêle 	et faites-y fondre les oignons et les poivrons. Lorsqu'ils sont tendres, ajoutez les tomates, l'ail haché, le thym et le laurier. Salez, poivrez et laissez mijoter doucement à couvert durant 45 minutes. ",
+    "Pendant ce temps, préparez les aubergines et les courgettes. Faites les cuire séparemment ou non dans l'huile d'olive pendant 15 minutes. ",
+    "Vérifiez la cuisson des légumes pour qu'ils ne soient plus fermes. Ajoutez les alors au mélange de tomates et prolongez la cuisson sur tout petit feu pendant 10 min. ",
+    "Salez et poivrez si besoin. ",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ratatouille2.jpg'),
+                      filename: 'ratatouille2.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 55
+  recipe.preparation_time = 25
+  recipe.person = 4
+  recipe.difficulty = 7
+  recipe.ingredients << Ingredient.find_by_name("Aubergine")
+  recipe.ingredients << Ingredient.find_by_name("Courgette")
+  recipe.ingredients << Ingredient.find_by_name("Poivron rouge")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Tomate")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Thym")
+  recipe.ingredients << Ingredient.find_by_name("Laurier")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Brin(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Saladier")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Tarte à la ratatouille"
+  recipe.description = "Une tarte rapide à faire quand on a pas trop de temps mais qu'on veut manger des bons légumes."
+  recipe.steps = [
+    "Placer la pâte feuilleté dans le moule et y faire de léger trous dans le fond avec une fourchette",
+    "Etaler la ratatouille de manière homogène dans le plat.",
+    "Soupoudrer avec du Gruyère râpé pour recouvrir le plat.",
+    "Mettre au four pendant 30 minutes au moins à 200 degrés chaleur tournante, jusqu'à ce que le gruyère soit très légèrement doré.",
+    "Déguster !"
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarteratatouille.jpg'),
+                      filename: 'tarteratatouille.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 3
+  recipe.preparation_time = 10
+  recipe.person = 5
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Ratatouille")
+  recipe.ingredients << Ingredient.find_by_name("Pâte feuilletée")
+  recipe.ingredients << Ingredient.find_by_name("Gruyère râpé")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Plat à tarte")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Courgette Farcie"
+  recipe.description = "Excellent avec du riz"
+  recipe.steps = [
+    "Laver la courgette, en couper les extrémités, puis la couper en deux dans le sens de la longueur.",
+    "Enlever les pépins du centre avec une cuillère, puis creuser la courgette. Récupérer la chair, la détailler en cubes.",
+    "Faire revenir la chair quelques instants dans une poêle avec un peu d'huile d'olive, saler, poivrer.",
+    "Dans une casserole, faire fondre l'oignon haché. Lorsqu'il est blond, ajouter le haché de bœuf, le laisser cuire (à couvert) en remuant souvent pour bien défaire la viande.",
+    "Ajouter la boite de tomates pelées, couper grossièrement les tomates avec un couteau dans la casserole, ajouter 2 morceaux de sucre, une poignée d'herbes de Provence, le cube de bouillon de poule et l'ail pressé.",
+    "Laisser mijoter le tout environ 15 min, saler, poivrer. La sauce doit être épaisse.",
+    "Ajouter les dés de courgettes. Beurrer un plat allant au four, y déposer les courgettes côte à côte, les remplir de la préparation viande + cubes de courgettes.",
+    "Parsemer de gruyère râpé, mettre au four moyen pendant 30 min.",
+    "Régalez-vous !"
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/courgettefarcie.jpg'),
+                      filename: 'courgettefarcie.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 30
+  recipe.preparation_time = 25
+  recipe.person = 5
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Courgette")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Ail")
+  recipe.ingredients << Ingredient.find_by_name("Boeuf haché")
+  recipe.ingredients << Ingredient.find_by_name("Tomate")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Herbes de Provence")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Bouillon de volaille")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Gruyère râpé")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 480, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Couteau")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Crème patissière"
+  recipe.description = "Délicieux à la cuillière nature ou avec quelques fruits, base de nombreuses recettes de patisserie."
+  recipe.steps = [
+    "Mélanger les jaunes d'oeuf avec le sucre. Battre au fouet jusqu'à que le mélange blanchisse.",
+    "Ajouter la farine et bien mélanger avec le mélange sucre/oeufs. Ajouter 1/2 verre de lait pour que le mélange soit plus liquide.",
+    "Mettre à chauffer le lait. Lorsque le lait est tiède (au bout de 3-4 min) ajouter le mélange oeufs/farine/sucre/lait et la gousse de vanille fendue et grattée avec ses graines.",
+    "Mélanger au fouet jusqu'à ébullition.",
+    "A ce moment là, votre crème sera déjà bien épaisse et vous pouvez arrêter la cuisson.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/patissiere.jpg'),
+                      filename: 'patissiere.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 20
+  recipe.person = 4
+  recipe.difficulty = 8
+  recipe.ingredients << Ingredient.find_by_name("Lait")
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Gousse de vanille")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Litre(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Fouet")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Pêche au thon"
+  recipe.description = "Un sucré salé étonnant ! Excellent en début de repas."
+  recipe.steps = [
+    "Epluchez et coupez les pêches en 2.",
+    "Mélangez le thon et la mayonnaise, puis disposez-les sur chaque moitié de pêche.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/thonpeche.jpg'),
+                      filename: 'thonpeche.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 10
+  recipe.person = 1
+  recipe.difficulty = 1
+  recipe.ingredients << Ingredient.find_by_name("Thon")
+  recipe.ingredients << Ingredient.find_by_name("Pêche")
+  recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 3  , :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+end
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Salade Skagen"
+  recipe.description = "Une recette typiquement Suèdoise à base de crevette que l'on sert sur du pain polaire ou des blinis."
+  recipe.steps = [
+    "Décortiquer les crevettes et les couper en morceaux.",
+    "Mélanger les crevettes avec l'aneth, la crème, la mayonnaise, l'oignon, saler et poivrer un peu.",
+    "Faire griller le pain de mie ou servir avec du pain suédois en entrée avec des rondelles de citron.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/skagen.jpg'),
+                      filename: 'skagen.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 20
+  recipe.person = 5
+  recipe.difficulty = 2
+
+  recipe.ingredients << Ingredient.find_by_name("Crevette")
+  recipe.ingredients << Ingredient.find_by_name("Aneth")
+  recipe.ingredients << Ingredient.find_by_name("Crème fraîche épaisse")
+  recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Citron")
+  recipe.ingredients << Ingredient.find_by_name("Pain de campagne")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
 # rubocop:enable all
