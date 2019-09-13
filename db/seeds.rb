@@ -2552,6 +2552,151 @@ Ingredient.create! do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
+Ingredient.create! do |ingredient|
+  ingredient.name = "Riz"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Féculent"),
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Germe de soja"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Pousse d'épinard"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Noix de coco"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Fruits"
+end
+
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Steak de boeuf"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Viande"),
+  ]
+  ingredient.shelf_tag = "Viandes"
+end
+
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sucre roux"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Huile de sésame"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Caramel"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Poudre d'amande"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Canelle"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Ginbembre"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Lait écremé"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Navet"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Poireau"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
 # Utensils
 Utensil.create! do |utensil|
   utensil.title = "Fouet"
@@ -7106,6 +7251,511 @@ Recipe.create! do |recipe|
 
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Tartiflette"
+  recipe.description = "Le parfait repas entre amis pour passer un hiver au chaud!"
+  recipe.steps = [
+    "Eplucher les pommes de terre, les couper en dés, bien les rincer et les essuyer dans un torchon propre.",
+    "Faire chauffer l'huile dans une poêle, y faire fondre les oignons.",
+    "Lorsque les oignons sont fondus, ajouter les pommes de terre et les faire dorer de tous les côtés.",
+    "Lorsqu'elles sont dorées, ajouter les lardons et finir de cuire.",
+    "D'autre part, gratter la croûte du reblochon et le couper en deux (ou en quatre).",
+    "Préchauffer le four à 200°C (thermostat 6-7) et préparer un plat à gratin en frottant le fond et les bords avec la gousse d'ail épluchée.",
+    "Dans le plat à gratin, étaler une couche de pommes de terre aux lardons, disposer dessus la moitié du reblochon, puis de nouveau des pommes de terre. Terminer avec le reste du reblochon (croûte vers les pommes de terre).",
+    "Enfourner pour environ 20 minutes de cuisson.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tartiflette.jpeg'),
+                      filename: 'tartiflette.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 40
+  recipe.preparation_time = 30
+  recipe.person = 1
+  recipe.difficulty = 7
+  recipe.ingredients << Ingredient.find_by_name("Pomme de terre")
+  recipe.ingredients << Ingredient.find_by_name("Lardons")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Reblochon")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+  recipe.recipe_ingredients[7].recipe_quantity = nil
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+end
+
+
+
+Recipe.create! do |recipe|
+  recipe.title = "Pot au feu sans viande"
+  recipe.description = "Un repas équilibré sans viande"
+  recipe.steps = [
+    "Préparer la cocotte avec de l'eau et les 2 cubes Knorr. L'eau doit recouvrir les légumes.",
+    "Après avoir lavé et épluché les légumes, les couper en morceaux(moyens) et les mettre ensemble dans la cocotte.",
+    "Laisser cuire à couvert 1 heure. Puis découvert, si la quantité d'eau est trop importante.",
+    "Lorsqu'elles sont dorées, ajouter les lardons et finir de cuire.",
+    "Rajouter des herbes si besoin, pour le parfum.",
+    "Servir avec une viande cuite à part, du poulet grillé par exemple, le mélange est agréable.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pot-au-feu.jpeg'),
+                      filename: 'pot-au-feu.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 1
+  recipe.preparation_time = 15
+  recipe.person = 1
+  recipe.difficulty = 4
+  recipe.ingredients << Ingredient.find_by_name("Carotte")
+  recipe.ingredients << Ingredient.find_by_name("Navet")
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Herbes de Provence")
+  recipe.ingredients << Ingredient.find_by_name("Thym")
+  recipe.ingredients << Ingredient.find_by_name("Laurier")
+  recipe.ingredients << Ingredient.find_by_name("Cube de bouillon")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+  recipe.recipe_ingredients[7].recipe_quantity = nil
+  recipe.recipe_ingredients[8].recipe_quantity = nil
+  recipe.recipe_ingredients[9].recipe_quantity = nil
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Saladier")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Ravioli maison"
+  recipe.description = "Bien meilleur que ceux en boites!"
+  recipe.steps = [
+    "Battez les oeufs avec l'huile.",
+    "Versez les oeufs battus au centre de la farine et pétrissez, jusqu'à ce que la pâte soit homogène.",
+    "Continuez de pétrir pour développer l'élasticité de la pâte.",
+    "Couvrez et laissez reposer la pâte entre 30 min et 1 h.",
+    "Pendant ce temps, préparez la farce à raviolis: mixez la tranche de jambon et incorporez-la au fromage de chèvre frais. Assaisonnez de sel (peu), poivre et basilic.",
+    "Etendez au rouleau à pâtisserie la pâte le plus finement possible.",
+    "Couvrez-la et laissez-la reposer 1 h au moins.",
+    "A l'aide d'un couteau, commencez à tracer les carrés sur la moitié de la pâte, pour faciliter la découpe des raviolis.",
+    "Garnissez de la farce.",
+    "Passez du jaune d'oeuf sur les parties qui seront à souder (bord des raviolis).",
+    "Rabattez la seconde partie de pâte, et à l'aide de vos mains, soudez bien hermétiquement les raviolis autour de la farce.",
+    "Découpez les raviolis à l'aide d'une molette dentelée ou à défaut d'un couteau aiguisé.",
+    "Faites chauffer un grand volume d'eau salée, plongez les raviolis dedans et laissez cuire 8 à 10 min environ.",
+    "Egouttez les raviolis et servez-les accompagnés de sauce de votre choix.",
+    "Pour la farce vous pouvez mettre du parmesan ou de la chair à saucisse (accompagné de sauce tomate, excellent!).",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ravioli-maison.jpeg'),
+                      filename: 'ravioli-maison.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 20
+  recipe.person = 1
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Jambon blanc")
+  recipe.ingredients << Ingredient.find_by_name("Fromage de chèvre frais")
+  recipe.ingredients << Ingredient.find_by_name("Basilic")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity = nil
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Bol")
+  recipe.utensils << Utensil.find_by_title("Saladier")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Flan coco"
+  recipe.description = "Un flan rapide et délicieux"
+  recipe.steps = [
+    "Séparer les jaunes des blancs d'oeufs. Verser le lait concentré sucré avec la même dose de lait écrémé.",
+    "Ajouter la noix de coco et mélanger le tout.",
+    "Monter les blancs en neige. Les mélanger délicatement avec la pâte.",
+    "Caraméliser le fond du moule.",
+    "Faire cuire au four au bain-marie à thermostat 7-8 pendant 45 minutes.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/flan-coco.jpeg'),
+                      filename: 'flan-coco.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 20
+  recipe.person = 1
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Noix de coco")
+  recipe.ingredients << Ingredient.find_by_name("Lait")
+  recipe.ingredients << Ingredient.find_by_name("Lait écremé")
+  recipe.ingredients << Ingredient.find_by_name("Caramel")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity = nil
+
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+  recipe.utensils << Utensil.find_by_title("Fouet")
+  recipe.utensils << Utensil.find_by_title("Four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Tarte aux pommes"
+  recipe.description = "Une tarte qui régalera vos enfants !"
+  recipe.steps = [
+    "Éplucher et découper en morceaux 4 Golden.",
+    "Faire une compote : les mettre dans une casserole avec un peu d'eau (1 verre ou 2). Bien remuer. Quand les pommes commencent à ramollir, ajouter un sachet ou un sachet et demi de sucre vanillé. Ajouter un peu d'eau si nécessaire.",
+    "Vous saurez si la compote est prête une fois que les pommes ne seront plus dures du tout. Ce n'est pas grave s'il reste quelques morceaux.",
+    "Pendant que la compote cuit, éplucher et couper en quatre les deux dernières pommes, puis, couper les quartiers en fines lamelles (elles serviront à être posées sur la compote).",
+    "Préchauffer le four à 210°C (thermostat 7).",
+    "Laisser un peu refroidir la compote et étaler la pâte brisée dans un moule et la piquer avec une fourchette.",
+    "Verser la compote sur la pâte et placer les lamelles de pommes en formant une spirale ou plusieurs cercles, au choix ! Disposer des lamelles de beurre dessus.",
+    "Mettre au four et laisser cuire pendant 30 min max. Surveiller la cuisson. Vous pouvez ajouter un peu de sucre vanillé sur la tarte pendant que çà cuit pour caraméliser un peu.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarte-pomme.jpg'),
+                      filename: 'tarte-pomme.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 30
+  recipe.preparation_time = 25
+  recipe.person = 4
+  recipe.difficulty = 3
+  recipe.ingredients << Ingredient.find_by_name("Pâte brisée")
+  recipe.ingredients << Ingredient.find_by_name("Pomme")
+  recipe.ingredients << Ingredient.find_by_name("Sucre vanillé")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+  recipe.utensils << Utensil.find_by_title("Four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Galette des rois à la frangipane"
+  recipe.description = "Attention a vos dents !"
+  recipe.steps = [
+    "Placer une pâte feuilletée dans un moule à tarte, piquer la pâte avec une fourchette.",
+    "Dans un saladier, mélanger la poudre d'amandes, le sucre, les 2 oeufs et le beurre mou.",
+    "Placer la pâte obtenue dans le moule à tarte et y cacher la fève.",
+    "Recouvrir avec la 2ème pâte feuilletée, en collant bien les bords.",
+    "Faire des dessins sur le couvercle et badigeonner avec le jaune d'oeuf.",
+    "Enfourner pendant 20 à 30 min à 200°C (thermostat 6-7); vérifier régulièrement la cuisson !",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/galette-des-roi.jpeg'),
+                      filename: 'galette-des-roi.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 20
+  recipe.person = 1
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Pâte feuilletée")
+  recipe.ingredients << Ingredient.find_by_name("Poudre d'amande")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Jaune d'oeuf")
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Tarte tatin"
+  recipe.description = "Le dessert au pommes que tout le monde aime!"
+  recipe.steps = [
+    "Préchauffer le four à 180°C (thermostat 6). Dans un moule à tarte rond antiadhésif, faire fondre le beurre directement sur le feu.",
+    "Y ajouter le sucre fin",
+    "et baisser le feu pour faire un caramel.",
+    "Eplucher les 8 pommes golden entières. Les couper en deux et enlever le coeur sans défaire les moitiés. Disposer les pommes reconstituées en couronne dans le plat",
+    "en mettre une ou deux au milieu. Aplatir avec une spatule de temps en temps, les pommes doivent pocher dans le caramel, qui ne doit pas devenir noir, mais tout juste doré.",
+    "Saupoudrer les pommes de sucre vanillé et de cannelle.",
+    "Sortir le tout du feu et recouvrir de pâte feuilletée en appuyant bien sur les bords.",
+    "Mettre au four moyen pendant 35 à 40 minutes.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarte-tatin.jpeg'),
+                      filename: 'tarte-tatin.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 30
+  recipe.preparation_time = 40
+  recipe.person = 1
+  recipe.difficulty = 7
+  recipe.ingredients << Ingredient.find_by_name("Pomme")
+  recipe.ingredients << Ingredient.find_by_name("Pâte feuilletée")
+  recipe.ingredients << Ingredient.find_by_name("Sucre vanillé")
+  recipe.ingredients << Ingredient.find_by_name("Canelle")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
+
+
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Avocat au thon"
+  recipe.description = "Entrée végétarienne"
+  recipe.steps = [
+    "Coupez les avocats en deux. Ôtez les noyaux et découpez la chair en petits morceaux à l'aide d'une cuillère. Réservez.",
+    "Emiettez le thon et mélangez-le avec la chair des avocats et la mayonnaise.",
+    "Remplissez les avocats vides avec la préparation.",
+    "Servez.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/avocat-au-thon.jpg'),
+                      filename: 'avocat-au-thon.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 10
+  recipe.person = 1
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Avocat")
+  recipe.ingredients << Ingredient.find_by_name("Thon")
+  recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value =>2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Pain de poisson"
+  recipe.description = "Plat de poisson savoureux."
+  recipe.steps = [
+    "Battre les oeufs en omelette.",
+    "Ajouter la crème fraîche, le concentré de tomates, le gruyère puis le saumon coupé en moceaux (ou thon).",
+    "Beurrer un moule à cake et y verser la préparation.",
+    "Laisser cuire 1h15 au bain marie (Thermostat 6-7).",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pain-de-poisson.jpeg'),
+                      filename: 'pain-de-poisson.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 10
+  recipe.person = 1
+  recipe.difficulty = 4
+  recipe.ingredients << Ingredient.find_by_name("Saumon")
+  recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Concentré de tomate")
+  recipe.ingredients << Ingredient.find_by_name("Gruyère râpé")
+
+  recipe.recipe_ingredients[0].recipe_quantity = nil
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 70, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Terrine au saumon"
+  recipe.description = "terrine de poisson très agréable en été."
+  recipe.steps = [
+    "Plonger pendant 5 mn les filets de saumon dans l'eau à ébullition. Egoutter, mettre dans une assiette et couper en petits morceaux, puis couper de la même manière le saumon fumé.",
+    "Mixer les 2 saumons, y ajouter l'huile et le jus de citron. Ecraser le fromage à la fourchette, le saler et le poivrer.",
+    "Ajouter le saumon au fromage, mettre dans une terrine, décorer avec l'aneth ou la ciboulette.",
+    "Mettre au frais, servir le lendemain ou préparer le matin pour le soir.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/Terrine-aux-saumons.jpg'),
+                      filename: 'Terrine-aux-saumons.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 15
+  recipe.person = 1
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Saumon")
+  recipe.ingredients << Ingredient.find_by_name("Saumon fumé")
+  recipe.ingredients << Ingredient.find_by_name("Citron")
+  recipe.ingredients << Ingredient.find_by_name("Fromage frais")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Ciboulette")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Oeufs brouillés nature"
+  recipe.description = "Des oeufs rapide à manger en entrée"
+  recipe.steps = [
+    "Dans une casserole à fond épais, casser les œufs puis ajouter le lait, 30 g de beurre, le sel et le poivre.",
+    "Laisser cuire à feu très doux sans cesser de fouetter les œufs jusqu’à ce qu’ils prennent la consistance d’une crème.",
+    "Hors du feu, incorporer le reste du beurre en continuant de fouetter.",
+    "Déguster immédiatement.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/oeuf-brouiller.jpeg'),
+                      filename: 'oeuf-brouiller.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 10
+  recipe.preparation_time = 5
+  recipe.person = 1
+  recipe.difficulty = 5
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Lait")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity = nil
+  recipe.recipe_ingredients[4].recipe_quantity = nil
+
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Fouet")
 end
 
 # rubocop:enable all
