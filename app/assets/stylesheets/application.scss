@@ -228,3 +228,22 @@ body {
   color: red;
   text-overflow: ellipsis;
 }
+
+.meal-card {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.orange-card {
+  background-color: $recipy-primary-color;
+}
+
+.recipe-img-meal-plan {
+  max-height:100px;
+  background-color: $recipy-primary-color;
+
+  & .title {
+    text-shadow: 0px 0px 4px white;
+  }
+}
