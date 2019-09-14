@@ -7758,4 +7758,78 @@ Recipe.create! do |recipe|
   recipe.utensils << Utensil.find_by_title("Fouet")
 end
 
+Recipe.create! do |recipe|
+  recipe.title = "Bibimbap Corrén"
+  recipe.description = "Bol de riz avec des légumes"
+  recipe.steps = [
+    "Commencer par faire cuire le riz comme indiqué sur le sachet.",
+    "Mélanger le sucre, l'huile de sésame, le vinaigre de riz, l'ail que vous aurez écrasé et un petit morceau de gingembre découpé en petits morceaux dans un bol.",
+    "Couper le boeuf en très fines lamelles, placer les dans la sauce et mettre au frais. ",
+    "Couper les carottes et courgettes en fines lamelles. Émincer les champignons.",
+    "Dans une grande poêle ou un grand wok, faire revenir les légumes avec un peu d'huile de tournesol et un peu de sauce soja.",
+    "Faire cuire 2 minutes le boeuf dans un peu d'huile bien chaude.",
+    "Ensuite, faire cuire les oeufs (oeufs au plat)",
+    "Dresser l'ensemble dans des grands bols avec du riz au fond, des légumes autour, et la viande et/ou le riz au milieu.",
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/bibimbap.jpeg'),
+                      filename: 'bibimbap.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 5
+  recipe.preparation_time = 40
+  recipe.person = 1
+  recipe.difficulty = 6
+  recipe.ingredients << Ingredient.find_by_name("Riz")
+  recipe.ingredients << Ingredient.find_by_name("Carotte")
+  recipe.ingredients << Ingredient.find_by_name("Courgette")
+  recipe.ingredients << Ingredient.find_by_name("Germe de soja")
+  recipe.ingredients << Ingredient.find_by_name("Champignon")
+  recipe.ingredients << Ingredient.find_by_name("Pousse d'épinard")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Ginbembre")
+  recipe.ingredients << Ingredient.find_by_name("Steak de boeuf")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Sauce soja")
+  recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
+  recipe.ingredients << Ingredient.find_by_name("Sucre roux")
+  recipe.ingredients << Ingredient.find_by_name("Huile de sésame")
+
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[8].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[9].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[11].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[12].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[13].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Bol")
+  recipe.utensils << Utensil.find_by_title("Wok")
+
+end
+
 # rubocop:enable all
