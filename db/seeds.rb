@@ -2697,6 +2697,207 @@ Ingredient.create! do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
+Ingredient.create! do |ingredient|
+  ingredient.name = "Copeaux de chocolat"
+  ingredient.confirmed = true
+  ingredient.description = "Du chocolat en copeaux"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Jus d'orange"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Fruit"),
+    IngredientTag.find_by_name("Boisson"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Épinard"
+  ingredient.confirmed = true
+  ingredient.description = "Légume en feuille au goût particulier censé rendre plus fort..."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Légume"),
+    IngredientTag.find_by_name("Hiver"),
+  ]
+  ingredient.shelf_tag = "Légumes"
+end
+
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Vermouth"
+  ingredient.confirmed = true
+  ingredient.description = "Le vermouth est un vin aromatisé (apéritif à base de vin)"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Boisson"),
+  ]
+  ingredient.shelf_tag = "Alcools"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Fumet de poisson"
+  ingredient.confirmed = true
+  ingredient.description = "Un fumet de poisson est un fond préparé à partir de poisson"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Poisson"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Fécule"
+  ingredient.confirmed = true
+  ingredient.description = "La fécule est une matière extraite de divers organes végétaux"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Épicerie"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Yaourt nature"
+  ingredient.confirmed = true
+  ingredient.description = ""
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Rhum"
+  ingredient.confirmed = true
+  ingredient.description = "Le rhum est une eau-de-vie originaire des Amériques, transformée à partir de la canne à sucre. Il souvent utilisé en patisserie."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Boisson"),
+  ]
+  ingredient.shelf_tag = "Alcools"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Sucre glace"
+  ingredient.confirmed = true
+  ingredient.description = "Le sucre glace est obtenu par broyage du sucre cristallisé"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Fromage blanc"
+  ingredient.confirmed = true
+  ingredient.description = "Le fromage blanc est un fromage à pâte fraiche"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Framboise"
+  ingredient.confirmed = true
+  ingredient.description = "La framboise est un fruit rouge issu du framboisier"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Fruit"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Fruits"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Mascarpone"
+  ingredient.confirmed = true
+  ingredient.description = "Le mascarpone est un fromage italien, originaire des régions de Piémont-Lombardie. Ingrédient de choix de la cuisine italienne, il entre dans la composition de nombreuses recettes de cuisine et particulièrement dans les desserts, dont le célèbre tiramisu."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.shelf_tag = "Rayon frais"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Edulcorant"
+  ingredient.confirmed = true
+  ingredient.description = "Un substitut de sucre est un additif alimentaire qui donne un goût sucré similaire à celui du sucre tout en contenant beaucoup moins d'énergie alimentaire que les édulcorants à base de sucre, ce qui en fait un édulcorant dépourvu de calories ou hypocalorique."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Condiment"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Marsala"
+  ingredient.confirmed = true
+  ingredient.description = "Le marsala est un vin à dénomination d'origine contrôlée produit dans la région de la ville italienne Marsala en Sicile."
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Boisson"),
+  ]
+  ingredient.shelf_tag = "Alcools"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Spéculoos"
+  ingredient.confirmed = true
+  ingredient.description = "Le spéculoos est un biscuit traditionnel souvent consommé lors de la fête de la Saint Nicolas en Belgique"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Cacao"
+  ingredient.confirmed = true
+  ingredient.description = "Le cacao est la poudre obtenue après broyage de l'amande des fèves de cacao plates fermentées produites par le cacaoyer"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Épicerie"),
+    IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Vegan"),
+  ]
+  ingredient.shelf_tag = "Epicerie"
+end
+
+Ingredient.create! do |ingredient|
+  ingredient.name = "Viande des Grisons"
+  ingredient.confirmed = true
+  ingredient.description = "La viande des Grisons est une salaison de viande de bœuf élaborée en Suisse, spécialité du canton des Grisons"
+  ingredient.ingredient_tags << [
+    IngredientTag.find_by_name("Viande"),
+  ]
+  ingredient.shelf_tag = "Viandes"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Blender"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Plancha"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Rouleau à ptisserie"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Moule à cannelés"
+end
+
+Utensil.create! do |utensil|
+  utensil.title = "Réfrigérateur"
+end
+
 # Utensils
 Utensil.create! do |utensil|
   utensil.title = "Fouet"
@@ -7829,7 +8030,330 @@ Recipe.create! do |recipe|
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Bol")
   recipe.utensils << Utensil.find_by_title("Wok")
+end
 
+Recipe.create! do |recipe|
+  recipe.title = "Milkshake à la banane"
+  recipe.description = "Une boisson fraiche à déguster aussi bien l'après-midi pour un gouter entres amis ou après votre repas. Un délice !"
+  recipe.steps = [
+    "Pelez les bananes et coupez-les en rondelles. Assemblez-les avec la crème glacée à la vanille, le jus de citron et le lait dans le blender, puis mixez jusqu'à ce que le mélange soit bien mousseux.",
+    "Versez dans de grands verres. Servez immédiatement et décorez avec des copaux de chocolat."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Boisson"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/milkshake_banane.jpg'),
+                      filename: 'milkshake_banane.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 5
+  recipe.person = 4
+  recipe.difficulty = 1
+  recipe.ingredients << Ingredient.find_by_name("Banane")
+  recipe.ingredients << Ingredient.find_by_name("Glace vanille")
+  recipe.ingredients << Ingredient.find_by_name("Jus de citron")
+  recipe.ingredients << Ingredient.find_by_name("Lait")
+  recipe.ingredients << Ingredient.find_by_name("Copeaux de chocolat")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity = nil
+  recipe.utensils << Utensil.find_by_title("Blender")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Saumon à l'orange"
+  recipe.description = "Plat sucré-salé apprécié des amateurs de poisson et d'agrumes."
+  recipe.steps = [
+    "Pour la sauce, éplucher et couper l'oignon en dés, le faire revenir dans l'huile pour qu'il devienne translucide. Ajouter le jus d'orange et faire réduire de moitié. Verser le vermouth et le fulet de poisson, faire une liaison en versant la fécule déléyaée avec un peu d'eau froide , saler, poivrer et assaisonner de poivre de Cayenne.",
+    "Préchauffer le four à 120°C (chaleur trounante 100°C). Pour les épinards, éplucher et couper l'oignon en dés et le faire revenir dans l'huile pour qu'il devienne translucide. Ajouter les épinard et 50 ml d'eau. Faire décongeler à couvert à feu modéré. Saler, poivrer et assaisonner de noix de muscade.",
+    "Pour le saumon, saler et poivrer les filets, les saisir 1 minute de chaque côté dans l'huile d'olive. Tapisser un plat allat au four de 4 rondelles d'orange. Déposer dessus les filets de saumon et couvrir chacun d'eux d'une rondelle d'orange. Faire cuire le poisson 10 minutes au four. Servir avec les épinards et la sauce. Accompagner de tagiatelles ou de riz."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/saumon_orange.jpg'),
+                      filename: 'saumon_orange.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 15
+  recipe.preparation_time = 20
+  recipe.person = 4
+  recipe.difficulty = 4
+  recipe.ingredients << Ingredient.find_by_name("Oignon")
+  recipe.ingredients << Ingredient.find_by_name("Huile")
+  recipe.ingredients << Ingredient.find_by_name("Jus d'orange")
+  recipe.ingredients << Ingredient.find_by_name("Vermouth")
+  recipe.ingredients << Ingredient.find_by_name("Fumet de poisson")
+  recipe.ingredients << Ingredient.find_by_name("Crème liquide")
+  recipe.ingredients << Ingredient.find_by_name("Fécule")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Piment de Cayenne en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Épinard")
+  recipe.ingredients << Ingredient.find_by_name("Muscade")
+  recipe.ingredients << Ingredient.find_by_name("Saumon")
+  recipe.ingredients << Ingredient.find_by_name("Orange")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[7].recipe_quantity = nil
+  recipe.recipe_ingredients[8].recipe_quantity = nil
+  recipe.recipe_ingredients[9].recipe_quantity = nil
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[11].recipe_quantity = nil
+  recipe.recipe_ingredients[12].recipe_quantity =
+    RecipeQuantity.create!(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[13].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Plat au four")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Escalope de poulet au muesli, compotée d'aubergines"
+  recipe.description = "Plat simple et savoureux !"
+  recipe.steps = [
+    "Faites chauffer une poêle large et anti-adhérente sur un feu assez vif après y avoir incorporé un filé d'huile d'olive. Disposez des tranches d'Aubergines dans la poêle et faîtes griller la chair des deux côtés en pressant dessus avec une spatule sans toutefois les faire dégorger.",
+  "Consassez les noix de pécan, noix de cajou et pignon de pin à l'aide d'un rouleau à patisserie",
+    "Préparez la marinade avec le yaourt, le curry, le sel et le poivre.",
+    "Plogez les escalopes de poulet dans la marinade puis dans le muesli.",
+    "Faites chauffer la plancha à 200°C (th.7) avec un peu d'huilde d'olive. Faites cuire avec les escalopes entre 15 et 18 minutes et ajoutez les aubergines concassées avec un peu d'ail et les herbes hachées.",
+    "Assaisonnez et servez."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Plat"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/escalopes_poulet_muesli_aubergines.jpg'),
+                      filename: 'escalopes_poulet_muesli_aubergines.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 28
+  recipe.preparation_time = 10
+  recipe.person = 4
+  recipe.difficulty = 1
+  recipe.ingredients << Ingredient.find_by_name("Escalope de poulet")
+  recipe.ingredients << Ingredient.find_by_name("Aubergine")
+  recipe.ingredients << Ingredient.find_by_name("Yaourt nature")
+  recipe.ingredients << Ingredient.find_by_name("Curry en poudre")
+  recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
+  recipe.ingredients << Ingredient.find_by_name("Ciboulette")
+  recipe.ingredients << Ingredient.find_by_name("Persil")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.ingredients << Ingredient.find_by_name("Noix de pécan")
+  recipe.ingredients << Ingredient.find_by_name("Noix de cajou")
+  recipe.ingredients << Ingredient.find_by_name("Pignons de pin")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity = nil
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+  recipe.recipe_ingredients[7].recipe_quantity = nil
+  recipe.recipe_ingredients[8].recipe_quantity = nil
+  recipe.recipe_ingredients[9].recipe_quantity = nil
+  recipe.recipe_ingredients[10].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[11].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[12].recipe_quantity =
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.utensils << Utensil.find_by_title("Plancha")
+  recipe.utensils << Utensil.find_by_title("Poêle")
+  recipe.utensils << Utensil.find_by_title("Rouleau à pâtisserie")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Les cannelés bordelais"
+  recipe.description = "Le canelé est un petit gâteau, spécialité du Bordelais, à pâte molle et tendre, parfumée au rhum et à la vanille, et recouverte d’une fine croûte caramélisée, en forme de petit cylindre strié."
+  recipe.steps = [
+    "Faire bouillir le lait avec le beurre et la gousse de vanille fendu et grattée. Mélanger la cassonade, la farine et les oeufs (2 oeufs et 2 jaunes) dans un saladier. Ajouter le lait progressivement puis le rhum. Réserver la pâte au frais, 48 heures au moins.",
+    "Préchauffer le four à 180°C (th.6). Verser la pâte dans les moules à cannelés puis enfourner 1 heure."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/canneles_bordelais.jpg'),
+                      filename: 'canneles_bordelais.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 60
+  recipe.preparation_time = 15
+  recipe.person = 15
+  recipe.difficulty = 1
+  recipe.ingredients << Ingredient.find_by_name("Lait")
+  recipe.ingredients << Ingredient.find_by_name("Beurre")
+  recipe.ingredients << Ingredient.find_by_name("Gousse de vanille")
+  recipe.ingredients << Ingredient.find_by_name("Cassonade")
+  recipe.ingredients << Ingredient.find_by_name("Farine")
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Jaune d'oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Rhum")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.utensils << Utensil.find_by_title("Moule à cannelés")
+  recipe.utensils << Utensil.find_by_title("Four")
+  recipe.utensils << Utensil.find_by_title("Casserole")
+  recipe.utensils << Utensil.find_by_title("Réfrigérateur")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Verrines de mousse de fruits"
+  recipe.description = "Idéal pour faire manger des fruits aux enfants !"
+  recipe.steps = [
+    "Rincer rapidement les framboises sous l'eau fraiche. Réserver 50 grammes de fruits. Ecraser le reste à la fourchette. Ajouter le fromage blanc, le sucre glace et la vanille. Bien mélanger le tout.",
+    "Monter les blancs en neige ferme. Les incorporer délicatement à la préparation précédente. Répartir la mousse de fruits dans 4 verrines. Décorer avec les fruits entiers et réserver au frais jusqu'au moment de la dégustation."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/verrines_mousse_fraise.jpg'),
+                      filename: 'verrines_mousse_fraise.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 15
+  recipe.person = 4
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Framboise")
+  recipe.ingredients << Ingredient.find_by_name("Fromage blanc")
+  recipe.ingredients << Ingredient.find_by_name("Sucre glace")
+  recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
+  recipe.ingredients << Ingredient.find_by_name("Blanc d'oeuf")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 450, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.utensils << Utensil.find_by_title("Verrine")
+  recipe.utensils << Utensil.find_by_title("Fourchette")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Tiramisu aux fruits d'été"
+  recipe.description = "Dessert très rafraîchissant, savoureux avec un repas assez lourd !"
+  recipe.steps = [
+    "Séparer les blancs des jaunes d'oeufs. Dans un saladier, mélanger la mascarpone avec les jaunes d'oeufs, l'édulcorant et le marsala",
+    "Battre les blancs en neige avec une pincé de sel et les ajouter délicatement. Réserver au frais. Laver, sécher et équeter les fraises.",
+    "Emietter les spéculoos et les déposer au fond de 6 coupes fines et hautes (ou verres à pied). Puis verser une couche de mascarpone, une couche de fruits rouge et terminer par une couche de mascarpone. Soupourdrer de cacao et placer au frais 2 heures minimum."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Dessert"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tiramisu_fruit_ete.jpg'),
+                      filename: 'tiramisu_fruit_ete.jpg', content_type: 'image/jpg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 15
+  recipe.person = 4
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Oeuf")
+  recipe.ingredients << Ingredient.find_by_name("Mascarpone")
+  recipe.ingredients << Ingredient.find_by_name("Edulcorant")
+  recipe.ingredients << Ingredient.find_by_name("Marsala")
+  recipe.ingredients << Ingredient.find_by_name("Fraise")
+  recipe.ingredients << Ingredient.find_by_name("Spéculoos")
+  recipe.ingredients << Ingredient.find_by_name("Framboise")
+  recipe.ingredients << Ingredient.find_by_name("Cacao")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity =
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[6].recipe_quantity =
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[7].recipe_quantity =
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+  recipe.recipe_ingredients[8].recipe_quantity = nil
+  recipe.utensils << Utensil.find_by_title("Saladier")
+  recipe.utensils << Utensil.find_by_title("Batteur")
+  recipe.utensils << Utensil.find_by_title("Verrine")
+end
+
+Recipe.create! do |recipe|
+  recipe.title = "Millefeuille d'été"
+  recipe.description = "Entrée savoureuse qui équilibre parfaitement les légumes du Soleil et la viande des grisons !"
+  recipe.steps = [
+    "Rincer les légumes. Les découper en tranches fines de 0,5 centimètres d'épaisseur. Garder les chapeaux des tomates. A l'aide du spray, faire quelques pulvérisations d'huile sur les tranches de légumes. Allumer le gril.",
+    "Faire griller les tranches de légumes ainsi que les chapeaux des tomates, saler, poivrer. Dresser sur chaque assiette : 1 tranche d'aubergine, 1 tranche de tomate et une demi-tranche de viande des grisons, répéter l'opération jusqu'à épuisement des ingrédients. Terminer par le chapeau de la tomate. Couper le parmesan en copeaux.",
+    "Déposer harmonieusement, autour du millefeuille 1 cuillerée à café d'huile d'olive par assiette, du persil ciselé et quelques copeaux de parmesan."
+  ]
+  recipe.recipe_categories << [
+    RecipeCategory.find_by_name("Entrée"),
+  ]
+  recipe.image.attach(io: File.open('app/assets/images/recipes_examples/millefeuille_ete.jpeg'),
+                      filename: 'millefeuille_ete.jpeg', content_type: 'image/jpeg')
+  recipe.cooking_time = 0
+  recipe.preparation_time = 15
+  recipe.person = 4
+  recipe.difficulty = 2
+  recipe.ingredients << Ingredient.find_by_name("Tomate")
+  recipe.ingredients << Ingredient.find_by_name("Aubergine")
+  recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
+  recipe.ingredients << Ingredient.find_by_name("Parmesan")
+  recipe.ingredients << Ingredient.find_by_name("Viande des Grisons")
+  recipe.ingredients << Ingredient.find_by_name("Persil")
+  recipe.ingredients << Ingredient.find_by_name("Sel")
+  recipe.ingredients << Ingredient.find_by_name("Poivre")
+  recipe.recipe_ingredients[0].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[1].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+  recipe.recipe_ingredients[2].recipe_quantity =
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+  recipe.recipe_ingredients[3].recipe_quantity =
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+  recipe.recipe_ingredients[4].recipe_quantity =
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+  recipe.recipe_ingredients[5].recipe_quantity = nil
+  recipe.recipe_ingredients[6].recipe_quantity = nil
+  recipe.recipe_ingredients[7].recipe_quantity = nil
+  recipe.utensils << Utensil.find_by_title("Couteau")
+  recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
 # rubocop:enable all
