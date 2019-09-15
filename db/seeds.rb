@@ -1311,6 +1311,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Féculent"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1322,6 +1323,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Poisson"),
   ]
+  ingredient.shelf_tag = "Poissons"
 end
 
 Ingredient.create! do |ingredient|
@@ -1333,6 +1335,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 
@@ -1345,6 +1348,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Condiment"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1354,6 +1358,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -1365,6 +1370,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Herbe"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1375,6 +1381,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Produit laitier"),
     IngredientTag.find_by_name("Coûteux"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -1384,6 +1391,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Herbe"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1393,6 +1401,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1402,6 +1411,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Épice"),
   ]
+  ingredient.shelf_tag = "Légumes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1411,6 +1421,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1420,6 +1431,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
   ]
+  ingredient.shelf_tag = "Viandes"
 end
 
 Ingredient.create! do |ingredient|
@@ -1430,6 +1442,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1440,6 +1453,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
@@ -1449,6 +1463,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1459,6 +1474,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1470,6 +1486,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Vegan"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
@@ -1479,6 +1496,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.shelf_tag = "Rayon frais"
 end
 
 Ingredient.create! do |ingredient|
