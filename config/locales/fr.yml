@@ -87,6 +87,17 @@ fr:
     api:
       follow_ok: "Vous suivez ce producteur"
       follow_ko: "Vous ne suivez plus ce producteur"
+    edit_like_ingredients: "Modifier vos ingrédients préférés"
+    must_be_conected: "Vous devez être conecté !"
+    like:
+      update_success: "Vos goûts ont été mis à jour !"
+      update_fail: "Vous devez être connecté pour pouvoir modifié vos goûts !"
+      label: "Les aliments que vous aimez"
+      title: "Modifier ici vos goûts afin de nous permettre de vous générer un planning de repas selon ce vous voulez !"
+    unlike:
+      label: "Les aliments que vous détestez"
+    pref:
+      title: "Vos préférences ici..."
 
 
 
@@ -412,5 +423,8 @@ fr:
       placeholder: "Type de quantité"
       search_placeholder: "Rechercher un type de quantité..."
       no_result: "Désolé il n'y a pas le type de quantité recherché dans la liste."
+    like_unlike_ingredients:
+      no_result: "Cet ingrédient n'existe pas"
+      search_placeholder: "Rechercher un ingrédient..."
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"

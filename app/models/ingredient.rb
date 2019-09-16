@@ -31,6 +31,12 @@ class Ingredient < ApplicationRecord
   has_many :related_quantity_equivalencies
   has_many :quantity_equivalencies, through: :related_quantity_equivalencies
 
+  has_many :like_ingredients
+  has_many :users, :through => :like_ingredients
+
+  has_many :unlike_ingredients
+  has_many :no_users, :through => :unlike_ingredients, source: :user
+
   before_save :set_defaults
 
   def set_defaults
