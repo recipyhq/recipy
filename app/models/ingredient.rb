@@ -15,6 +15,7 @@ class Ingredient < ApplicationRecord
     baking: "Boulangerie",
     fresh: "Rayon frais",
     alcohol: "Alcools",
+    freezer: "Surgelé",
     legumes: "Légumineuses",
   }
 
