@@ -1,0 +1,34 @@
+<div class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin-medium">
+  <h3 class="uk-card-title"><%= t('users.like.title') %></h3>
+  <%= simple_form_for(:like, url: update_like_ingredients_path, :method => :post ,html: {
+    class: ""
+  },) do |f| %>
+    <%= f.input :ingredients, :label => t("users.like.label"),
+                :selected => @user.ingredients.map {|v| v.id}.to_a,
+                collection: Ingredient.order(:name).all.map {|v| [v.name, v.id]}.to_a,
+                as: :select,
+                input_class: false,
+                # wrapper_class: "uk-width-1-2",
+                input_html: {
+                  multiple: true,
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.like_unlike_ingredients.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.like_unlike_ingredients.search_placeholder'),
+                }, defaults: {input_class: ""} %>
+    <%= f.input :no_like_ingredients, :label => t("users.unlike.label"),
+                :selected => @user.no_like_ingredients.map {|v| v.id}.to_a,
+                collection: Ingredient.order(:name).all.map {|v| [v.name, v.id]}.to_a,
+                as: :select,
+                input_class: false,
+                # wrapper_class: "uk-width-1-2",
+                input_html: {
+                  multiple: true,
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.like_unlike_ingredients.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.like_unlike_ingredients.search_placeholder'),
+                }, defaults: {input_class: ""} %>
+    <div class="uk-text-center">
+      <%= f.button :submit, t("recipe.creation.confirm") %>
+    </div>
+  <% end %>
+</div>

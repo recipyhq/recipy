@@ -1,20 +1,21 @@
 class Ingredient < ApplicationRecord
-  enum shelf_tag: {meat: 'Viandes',
-                   fish: 'Poissons',
-                   veggie: 'Légumes',
-                   fruit: "Fruits",
-                   drink: "Boissons",
-                   cereal: "Céréales",
-                   grocery: "Epicerie",
-                   dairy: "Produits laitiers",
-                   egg: "Oeufs",
-                   dry: "Produits secs",
-                   herb: "Herbes",
-                   crustacean: "Crustacés",
-                   baking: "Boulangerie",
-                   fresh: "Rayon frais",
-                   alcohol: "Alcools",
-                   legumes: "Légumineuses"
+  enum shelf_tag: {
+    meat: 'Viandes',
+    fish: 'Poissons',
+    veggie: 'Légumes',
+    fruit: "Fruits",
+    drink: "Boissons",
+    cereal: "Céréales",
+    grocery: "Epicerie",
+    dairy: "Produits laitiers",
+    egg: "Oeufs",
+    dry: "Produits secs",
+    herb: "Herbes",
+    crustacean: "Crustacés",
+    baking: "Boulangerie",
+    fresh: "Rayon frais",
+    alcohol: "Alcools",
+    legumes: "Légumineuses",
   }
 
   validates :name, presence: true, uniqueness: true
@@ -28,6 +29,12 @@ class Ingredient < ApplicationRecord
   has_many :shopping_lists, through: :shopping_list_ingredients
   has_many :related_quantity_equivalencies
   has_many :quantity_equivalencies, through: :related_quantity_equivalencies
+
+  has_many :like_ingredients
+  has_many :users, :through => :like_ingredients
+
+  has_many :unlike_ingredients
+  has_many :no_users, :through => :unlike_ingredients, source: :user
 
   before_save :set_defaults
 

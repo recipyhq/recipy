@@ -6,7 +6,7 @@ class Api::UserController < ApplicationController
     begin
       current_user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
              status: :not_found
       return
     end
@@ -25,12 +25,37 @@ class Api::UserController < ApplicationController
         bio: current_user.bio,
         liked_producers: current_user.liked_producers,
         followed_users: current_user.followed_users,
+        liked_ingredients: current_user.ingredients,
+        unlike_ingredients: current_user.no_like_ingredients,
         url: current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : nil,
-      }.as_json}
+      }.as_json,
+    }
   end
 
   def show_liked_producers
     @producers = current_user.liked_producers
+  end
+
+  def update_like_ingredients
+    begin
+      current_user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
+      return
+    end
+    current_user.ingredients.destroy_all
+    current_user.no_like_ingredients.destroy_all
+    params[:liked_ingredients].each do |id|
+      ingredient = Ingredient.find(id)
+      current_user.ingredients << ingredient
+    end
+    params[:unliked_ingredients].each do |id|
+      ingredient = Ingredient.find(id)
+      current_user.no_like_ingredients << ingredient
+    end
+    render :json => { Status: "OK", Cause: t("users.like.update_success") }.as_json,
+           status: :no_content
   end
 
   def follow_producer
@@ -38,12 +63,12 @@ class Api::UserController < ApplicationController
       producer = User.find(params[:producer_id])
       current_user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
              status: :not_found
       return
     end
     current_user.liked_producers << producer
-    render :json => {Status: "OK", Cause: t("users.api.follow_ok")}.as_json,
+    render :json => { Status: "OK", Cause: t("users.api.follow_ok") }.as_json,
            status: :ok
   end
 
@@ -52,12 +77,12 @@ class Api::UserController < ApplicationController
       producer = User.find(params[:producer_id])
       current_user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
              status: :not_found
       return
     end
     current_user.liked_producers.destroy(producer)
-    render :json => {Status: "OK", Cause: t("users.api.follow_ko")}.as_json,
+    render :json => { Status: "OK", Cause: t("users.api.follow_ko") }.as_json,
            status: :ok
   end
 end

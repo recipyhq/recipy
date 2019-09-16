@@ -18,6 +18,36 @@ class Users::BaseController < ApplicationController
     end
   end
 
+  def edit_preferences
+    @user = current_user
+  end
+
+  def update_like_ingredients
+    unless current_user.nil?
+      @user = current_user
+      @params = like_params
+      @user.ingredients.destroy_all
+      @user.no_like_ingredients.destroy_all
+      new_like = @params[:ingredients].reject(&:empty?)
+      new_unlike = @params[:no_like_ingredients].reject(&:empty?)
+
+      puts new_like.inspect
+      puts new_unlike.inspect
+
+      new_like.each do |elem|
+        ingredient = Ingredient.find(elem)
+        @user.ingredients << ingredient
+      end
+      new_unlike.each do |elem|
+        ingredient = Ingredient.find(elem)
+        @user.no_like_ingredients << ingredient
+      end
+      redirect_to edit_user_registration_path, flash: { success: t("users.like.update_success") }
+      return
+    end
+    redirect_to new_user_session_path, flash: { error: t("users.like.update_fail") }
+  end
+
   def show_liked_producers
     @producers = current_user.liked_producers
     # redirect_to follow_producer_path
@@ -48,6 +78,10 @@ class Users::BaseController < ApplicationController
   end
 
   private
+
+  def like_params
+    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [])
+  end
 
   def user_params
     params.require(:user).permit(:id, :email, :encrypted_password, :image)
