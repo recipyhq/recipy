@@ -1,231 +1,199 @@
 # rubocop:disable all
 if Rails.env.development?
-  Administrator.first_or_create do |admin|
+
+  Administrator.destroy_all
+
+  Administrator.create! do |admin|
     admin.email = 'admin@recipy.com'
     admin.password = 'password'
     admin.password_confirmation = 'password'
   end
 end
 
-ProductTag.first_or_create do |product_tag|
-  product_tag.name = "Bio"
+ProductTag.destroy_all
+
+ProductTag.create! do |tag|
+  tag.name = "Bio"
 end
 
-ProductTag.first_or_create do |product_tag|
-  product_tag.name = "Sans Pesticide"
+ProductTag.create! do |tag|
+  tag.name = "Sans pesticide"
 end
 
 # Ingredient tags declaration
 
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.destroy_all
+
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Viande"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Poisson"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Légume"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Fruit"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Boisson"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Céréale"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Condiment"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Printemps"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Été"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Automne"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Hiver"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Bon marché"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Coûteux"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Produit laitier"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Végétarien"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Vegan"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Épice"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Corps gras"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Féculent"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Crustacé"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Herbe"
 end
-IngredientTag.first_or_create do |ingredient_tag|
+IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Épicerie"
 end
 
 # Quantity Type
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.destroy_all
+
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Tranche(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Botte(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Pièce(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Cuillère(s) à soupe"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Cuillère(s) à café"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Gramme(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Kilogramme(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Litre(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Centilitre(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Millilitre(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Pot(s) de yaourt"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Noisette(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Brin(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Feuille(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Sachet(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Conserve(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Verre(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Noix"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Boule(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Pincée(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Petite(s) Boîte(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Brique(s)"
 end
 
-QuantityType.first_or_create do |quantity_type|
+QuantityType.create! do |quantity_type|
   quantity_type.name = "Quartier(s)"
-end
-
-# Quantity Equivalencies
-
-# For Semoule ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 12
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Cuillère(s) à soupe")
-end
-
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 140
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Pot(s) de yaourt")
-end
-
-# For Beurre ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 3
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Noisette(s)")
-end
-
-# For Jambon ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 50
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Tranche(s)")
-end
-
-# For Tomate ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 100
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Pièce(s)")
-end
-
-# For Sel ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 1
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Pincée(s)")
-end
-
-# For Poivre ingredient
-QuantityEquivalency.first_or_create do |quantity_equivalency|
-  quantity_equivalency.gram_equivalency = 1
-  quantity_equivalency.quantity_type = QuantityType.find_by_name("Pincée(s)")
 end
 
 # Ingredients declaration
 
 # Ingredients (sandwich jambon beurre) declaration
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.destroy_all
+
+Ingredient.create! do |ingredient|
   ingredient.name = "Jambon blanc"
   ingredient.confirmed = true
   ingredient.description = "Viande de porc coupé en tranches."
@@ -233,13 +201,10 @@ Ingredient.first_or_create do |ingredient|
     IngredientTag.find_by_name("Viande"),
     IngredientTag.find_by_name("Bon marché"),
   ]
-  ingredient.quantity_equivalencies << [
-    QuantityEquivalency.find(4),
-  ]
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Beurre"
   ingredient.confirmed = true
   ingredient.description = "Corps gras utile pour la cuisson et la garniture"
@@ -249,13 +214,10 @@ Ingredient.first_or_create do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
   ]
-  ingredient.quantity_equivalencies << [
-    QuantityEquivalency.find(4),
-  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Baguette de pain"
   ingredient.confirmed = true
   ingredient.description = "Base de la boulangerie française"
@@ -269,7 +231,7 @@ end
 
 # Ingredients (Tomates farcies)
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tomate"
   ingredient.confirmed = true
   ingredient.description = "Fruit rouge typique des pays du sud."
@@ -280,24 +242,20 @@ Ingredient.first_or_create do |ingredient|
     IngredientTag.find_by_name("Été"),
     IngredientTag.find_by_name("Fruit"),
   ]
-  ingredient.quantity_equivalencies << [
-    QuantityEquivalency.find(5),
-  ]
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Chair à saucisse"
   ingredient.confirmed = true
   ingredient.description = "viande de porc hachée"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Viande"),
   ]
-  ingredient.quantity_equivalencies << []
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sel"
   ingredient.confirmed = true
   ingredient.description = "Condiment pour asaisonner"
@@ -305,13 +263,10 @@ Ingredient.first_or_create do |ingredient|
     IngredientTag.find_by_name("Condiment"),
     IngredientTag.find_by_name("Bon marché"),
   ]
-  ingredient.quantity_equivalencies << [
-    QuantityEquivalency.find(6),
-  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poivre"
   ingredient.confirmed = true
   ingredient.description = "Condiment pour asaisonner"
@@ -319,13 +274,11 @@ Ingredient.first_or_create do |ingredient|
     IngredientTag.find_by_name("Condiment"),
     IngredientTag.find_by_name("Bon marché"),
   ]
-  ingredient.quantity_equivalencies << [
-    QuantityEquivalency.find(7),
-  ]
+
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poivre blanc"
   ingredient.confirmed = true
   ingredient.description = "Condiment pour asaisonner"
@@ -336,7 +289,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Avocat"
   ingredient.confirmed = true
   ingredient.description = "Fruit issu de l'avocatier. Provenant du Mexique."
@@ -350,7 +303,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Citron"
   ingredient.confirmed = true
   ingredient.description = "Agrume estival très acide"
@@ -364,7 +317,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cumin en poudre"
   ingredient.confirmed = true
   ingredient.description = "Épice du Proche-Orient de la même famille que le persil."
@@ -376,7 +329,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ail en poudre"
   ingredient.confirmed = true
   ingredient.description = "Condiment très utilisé en cuisine au multiples bienfaits"
@@ -388,7 +341,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Paprika en poudre"
   ingredient.confirmed = true
   ingredient.description = "Appelé aussi piment doux. C'est une épice de couleur rouge d'origine hongroise"
@@ -400,7 +353,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Piment de Cayenne en poudre"
   ingredient.confirmed = true
   ingredient.description = "Piment particulièrement piquant."
@@ -412,7 +365,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tabasco"
   ingredient.confirmed = true
   ingredient.description = "Sauce pimentée faite à base de piments rouges, vianigre et sel."
@@ -424,7 +377,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Spaghetti"
   ingredient.confirmed = true
   ingredient.description = "Pate longue et fine, idéale pour les plats en sauce."
@@ -437,7 +390,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Oeuf"
   ingredient.confirmed = true
   ingredient.description = "Riche source de protéïne, il est un aliment de base pour préparer de bons gâteaux."
@@ -447,7 +400,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Parmesan"
   ingredient.confirmed = true
   ingredient.description = "D'origine italienne, il s'accomode parfaitement avec n'importe quel plat de pâtes."
@@ -459,7 +412,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lardons"
   ingredient.confirmed = true
   ingredient.description = "Produit à base de porc"
@@ -470,7 +423,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile d'olive extra vierge"
   ingredient.confirmed = true
   ingredient.description = "Corps gras utlisé pour les salades et les assaisonnements."
@@ -482,7 +435,7 @@ end
 
 # Ingredients for Ceasar salad
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Laitue iceberg"
   ingredient.confirmed = true
   ingredient.description = "C'est un type de salade réputé par sa fraîcheur. Elle a des feuilles très claires et très croquantes"
@@ -494,7 +447,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Blanc de poulet"
   ingredient.confirmed = true
   ingredient.description = "Partie la plus tendre du poulet et ingrédient de base dans de nombreux pas."
@@ -505,7 +458,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pain de mie"
   ingredient.confirmed = true
   ingredient.description = "Pain à la mie très blanche caractérisé par l'absence de croûte croustillante"
@@ -516,7 +469,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Boulangerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile d'olive"
   ingredient.confirmed = true
   ingredient.description = "Matière grasse extraite des olives.
@@ -529,7 +482,7 @@ Fondement de la cuisine méditéranéenne et peut-être bénéfique pour la sant
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile"
   ingredient.confirmed = true
   ingredient.description = "Matière grasse. Peut-être bénéfique pour la santé"
@@ -541,7 +494,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile végétale"
   ingredient.confirmed = true
   ingredient.description = "Matière grasse extraite de plantes diverses. "
@@ -553,7 +506,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lait"
   ingredient.confirmed = true
   ingredient.description = "Produit de base pour tous types de gâteaux."
@@ -564,7 +517,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits laitiers"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Mayonnaise"
   ingredient.confirmed = true
   ingredient.description = "Sause froide à base d'huile émulsionnée dans un mélange de jaune d'oeuf et jus de citron."
@@ -576,7 +529,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Jus de citron"
   ingredient.confirmed = true
   ingredient.description = "Jus extrait d'un citron."
@@ -587,7 +540,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Moutarde de Dijon"
   ingredient.confirmed = true
   ingredient.description = "Sauce piquante et spécialité de la ville de Dijon"
@@ -597,7 +550,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gousse d'ail"
   ingredient.confirmed = true
   ingredient.description = "Condiment très utilisé en cuisine au multiples bienfaits"
@@ -610,7 +563,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 # Ingredients for Quiche au saumon
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pâte brisée"
   ingredient.confirmed = true
   ingredient.description = "Élément de base pour tous types de tartes et de gâteaux"
@@ -620,7 +573,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = ""
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Saumon"
   ingredient.confirmed = true
   ingredient.description = "Poisson gras riche en oméga 3"
@@ -630,7 +583,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème fraîche"
   ingredient.confirmed = true
   ingredient.description = "La crème fraîche est une crème non stérilisée, maturée ou laissée en l'état."
@@ -642,7 +595,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Amande effilée"
   ingredient.confirmed = true
   ingredient.description = "Fruit sec aux vertus diverses."
@@ -653,7 +606,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Amande"
   ingredient.confirmed = true
   ingredient.description = "Fruit sec riche en bon gras."
@@ -665,7 +618,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre en moceaux"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -677,7 +630,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gruyère"
   ingredient.confirmed = true
   ingredient.description = "Le gruyère est un fromage suisse qui tire son nom de la Gruyère"
@@ -690,7 +643,7 @@ end
 
 # Ingredients for Avocat crevettes
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Surimi"
   ingredient.confirmed = true
   ingredient.description = "Aliment fait à base de poisson idéal en apéritif"
@@ -701,7 +654,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crevette"
   ingredient.confirmed = true
   ingredient.description = "Crustacé très commun"
@@ -712,7 +665,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ciboulette"
   ingredient.confirmed = true
   ingredient.description = "Herbe très savoureuse pour accompagner du poisson"
@@ -725,7 +678,7 @@ end
 
 # Ingredinets for Melon & Jambon cru
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Melon"
   ingredient.confirmed = true
   ingredient.description = "Fruit exotique très sucré et frais"
@@ -738,7 +691,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Jambon cru"
   ingredient.confirmed = true
   ingredient.description = "Aliment spécialité du Sud-Ouest et élément indispensable à la charcuterie."
@@ -749,7 +702,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre en morceaux"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -761,7 +714,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 # Ingredints for Mousse au chocolat
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Chocolat noir"
   ingredient.confirmed = true
   ingredient.description = "Il contentient entre 43% et 100% de cacao. Il est la base de la patisserie. "
@@ -772,7 +725,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Jaune d'oeuf"
   ingredient.confirmed = true
   ingredient.description = "C'est l'élément central de l'oeuf. Il est très riche en protéïnes."
@@ -783,7 +736,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Oeufs"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Blanc d'oeuf"
   ingredient.confirmed = true
   ingredient.description = "Base dans la patisserie. Il est utile dans beaucoup de plats."
@@ -794,7 +747,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Oeufs"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre en poudre"
   ingredient.confirmed = true
   ingredient.description = "Il est extrait de la betterave et est un dispensable dan sla patiseerie"
@@ -806,7 +759,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gousse de vanille"
   ingredient.confirmed = true
   ingredient.description = "Extrait de la vanille. Il peut apporter beaucoup de goût dans une recette."
@@ -821,7 +774,7 @@ end
 
 # Ingredients for salade de fruits
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pomme"
   ingredient.confirmed = true
   ingredient.description = "Fruit d'automne, idéal en compote ou pour manger cru."
@@ -835,7 +788,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Banane"
   ingredient.confirmed = true
   ingredient.description = "Fruit exotique jaune."
@@ -848,7 +801,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Orange"
   ingredient.confirmed = true
   ingredient.description = "Agrume acide et de couleur orange"
@@ -860,7 +813,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pamplemousse"
   ingredient.confirmed = true
   ingredient.description = "Agrume très amer"
@@ -872,7 +825,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Kiwi"
   ingredient.confirmed = true
   ingredient.description = "Fruit exotique originaire de Chine. Il possède une pulpe généralement verte."
@@ -884,7 +837,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Raisin noir"
   ingredient.confirmed = true
   ingredient.description = "Petit fruit très sucré de couleur noire. Utilisé dans la préparation u vin ou de jus."
@@ -898,7 +851,7 @@ end
 
 # Ingredients for crêpes
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Farine"
   ingredient.confirmed = true
   ingredient.description = "Poudre etraite du blé. Elle est la base de la patisserie et de la boulangerie."
@@ -910,7 +863,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Extrait de vanille"
   ingredient.confirmed = true
   ingredient.description = "Liquide extrait de la vanille. Il est très sucré et possède un goût très fort"
@@ -923,7 +876,7 @@ end
 
 # Ingredients for Mayonnaise
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile de tournesol"
   ingredient.confirmed = true
   ingredient.description = "Liquide extrait de la vanille. Il est très sucré et possède un goût très fort"
@@ -937,7 +890,7 @@ end
 
 #Ingredients for Salade d'avocat
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Feta"
   ingredient.confirmed = true
   ingredient.description = "Fromage de brebis très populaire en Grêce. Il est très frais et s'accommode dans tous types de salade."
@@ -947,7 +900,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pignons de pin"
   ingredient.confirmed = true
   ingredient.description = "Graine issue du pin. Permet d'ajouter du croquant dans une recette, une fois torrifier."
@@ -958,7 +911,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Olives noires"
   ingredient.confirmed = true
   ingredient.description = "Produit typiquement méditerranéen, l’olive noire est le fruit de l’olivier cueilli à complète maturité"
@@ -970,7 +923,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Vinaigre balsamique"
   ingredient.confirmed = true
   ingredient.description = "Vinaigre doux idéal pour accompagner différentes salades."
@@ -982,7 +935,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ketchup"
   ingredient.confirmed = true
   ingredient.description = "Sauce à base de tomates avec une note légèrement sucrée."
@@ -994,7 +947,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sauce soja"
   ingredient.confirmed = true
   ingredient.description = "Base de la cuisine asiatique."
@@ -1008,7 +961,7 @@ end
 
 # Ingredients for POulet au curry
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Curry en poudre"
   ingredient.confirmed = true
   ingredient.description = "C'est une épice très savoureuse de couleur jaune et base de la cuisine indienne."
@@ -1020,7 +973,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Persil"
   ingredient.confirmed = true
   ingredient.description = "Herbe aromatique très classique dans la cuisine."
@@ -1031,7 +984,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Oignon jaune"
   ingredient.confirmed = true
   ingredient.description = "Condiment de base dans la cuisine."
@@ -1045,7 +998,7 @@ end
 
 # Ingredient for palmier au basilic
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pâte feuilletée"
   ingredient.confirmed = true
   ingredient.description = "Base dans les tartes et les amuse-bouches."
@@ -1055,7 +1008,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Basilic"
   ingredient.confirmed = true
   ingredient.description = "Herbe très utilisée dans les plats du Sud."
@@ -1067,7 +1020,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fleur de sel"
   ingredient.confirmed = true
   ingredient.description = "Condiment très utilisé dans la finition d'un plat."
@@ -1081,7 +1034,7 @@ end
 
 # Ingredients for Welsh
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pain de campagne"
   ingredient.confirmed = true
   ingredient.description = "Pain ressemblant beaucoup aux pains fabriqués au Moyen-Âge."
@@ -1092,7 +1045,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Boulangerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cheddar"
   ingredient.confirmed = true
   ingredient.description = "Spécialité fromgère anglaise. Fait à base de lait de vache."
@@ -1102,7 +1055,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Escalope de poulet"
   ingredient.confirmed = true
   ingredient.description = "Extrait dans les blancs de poulet."
@@ -1112,7 +1065,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Chapelure"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1123,7 +1076,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Bière brune"
   ingredient.confirmed = true
   ingredient.description = "Spécialité belge"
@@ -1133,7 +1086,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Alcools"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Glace vanille"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1143,7 +1096,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Surgelé"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Glace au chocolat"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1153,7 +1106,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Surgelé"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Glace à la fraise"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1163,7 +1116,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Surgelé"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sauce Worcestershire"
   ingredient.confirmed = true
   ingredient.description = "Sauce anglaise à base de poisson."
@@ -1175,7 +1128,7 @@ end
 
 # Ingredient for ratatouille
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Courgette"
   ingredient.confirmed = true
   ingredient.description = "Légume d'été vert."
@@ -1188,7 +1141,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Aubergine"
   ingredient.confirmed = true
   ingredient.description = "Légume violet d'été"
@@ -1201,7 +1154,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poivron vert"
   ingredient.confirmed = true
   ingredient.description = "Légume d'été vert au goût amer"
@@ -1214,7 +1167,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poivron rouge"
   ingredient.confirmed = true
   ingredient.description = "Légume d'été rouge au goût amer."
@@ -1227,7 +1180,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Oignon"
   ingredient.confirmed = true
   ingredient.description = "Condiment qui est la base de la cuisine."
@@ -1240,7 +1193,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Bouquet garni"
   ingredient.confirmed = true
   ingredient.description = "Ensemble d'herbe afin de donner beaucoup de goût à un jus ou un plat."
@@ -1252,7 +1205,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Concombre"
   ingredient.confirmed = true
   ingredient.description = "légume"
@@ -1264,7 +1217,7 @@ end
 
 # Ingredients for steaks végétaux
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lentilles"
   ingredient.confirmed = true
   ingredient.description = "Légume de base dans la cuisine vegan."
@@ -1276,7 +1229,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Carotte"
   ingredient.confirmed = true
   ingredient.description = "Légume orange d'hiver."
@@ -1289,7 +1242,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Maïzena"
   ingredient.confirmed = true
   ingredient.description = "Farine de maïs."
@@ -1301,7 +1254,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Penne"
   ingredient.confirmed = true
   ingredient.description = "Pâte idéale pour les plat en sauce"
@@ -1314,7 +1267,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Filet d'anchois"
   ingredient.confirmed = true
   ingredient.description = "Met très bon surtout sur un bonne pizza"
@@ -1326,7 +1279,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Olive verte dénoyautée"
   ingredient.confirmed = true
   ingredient.description = "Fruit au goût doux, utilisé pour la conception d'huiles"
@@ -1339,7 +1292,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Olive noire dénoyautée"
   ingredient.confirmed = true
   ingredient.description = "Fruit au goût prononcé, utilisé pour les salades"
@@ -1351,7 +1304,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fromage de chèvre frais"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1361,7 +1314,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Origan"
   ingredient.confirmed = true
   ingredient.description = "Herbe très bonne sur une pizza ou au barbecue"
@@ -1373,7 +1326,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Mozzarella"
   ingredient.confirmed = true
   ingredient.description = "Fromage italien très frais et savoureux. Très bon sur une pizza ou avec des pâtes. "
@@ -1384,7 +1337,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Herbes de Provence"
   ingredient.confirmed = true
   ingredient.description = "Mélange d'herbes donnant beaucoup de goût aux plats."
@@ -1394,7 +1347,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Muscade"
   ingredient.confirmed = true
   ingredient.description = "Épice en poudre donnant beaucoup de goût à divers plats"
@@ -1404,7 +1357,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pomme de terre"
   ingredient.confirmed = true
   ingredient.description = "Épice en poudre donnant beaucoup de goût à divers plats"
@@ -1414,7 +1367,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Escalope de veau"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1424,7 +1377,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Jambon de Parme"
   ingredient.confirmed = true
   ingredient.description = "Jambon italien très bon et qui s'accorde avec de nombreux plats."
@@ -1434,7 +1387,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Brioche"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1445,7 +1398,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème"
   ingredient.confirmed = true
   ingredient.description = "Element de base dans la patisserie."
@@ -1456,7 +1409,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Miel liquide"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1466,7 +1419,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pain d'épices"
   ingredient.confirmed = true
   ingredient.description = "Le pain d'épices est un gâteau au miel parfumé aux épices. Il ravive des souvenirs d'enfance d'un gâteau moelleux, léger et si parfumé... "
@@ -1477,7 +1430,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cassonade"
   ingredient.confirmed = true
   ingredient.description = "Le pain d'épices est un gâteau au miel parfumé aux épices. Il ravive des souvenirs d'enfance d'un gâteau moelleux, léger et si parfumé... "
@@ -1489,7 +1442,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pâte brisée sucrée"
   ingredient.confirmed = true
   ingredient.description = "Ingrédient indispensable pour la réalisation de tartes"
@@ -1499,7 +1452,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème liquide"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1510,7 +1463,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Noix de pécan"
   ingredient.confirmed = true
   ingredient.description = "Fruit sec très utilisé en patisserie."
@@ -1519,7 +1472,7 @@ Ingredient.first_or_create do |ingredient|
   ]
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Levure"
   ingredient.confirmed = true
   ingredient.description = "Elément essentiel dans la boulangerie et la patisserie"
@@ -1529,7 +1482,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Boulangerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gruyère rapé"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1539,7 +1492,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Boeuf haché"
   ingredient.confirmed = true
   ingredient.description = "Viande de boeuf hachée"
@@ -1549,7 +1502,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Miel"
   ingredient.confirmed = true
   ingredient.description = "Extrait des ruches des abeilles, il est inpérissable !"
@@ -1559,7 +1512,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Magret de canard"
   ingredient.confirmed = true
   ingredient.description = "Meilleur morceau du canard, reconnu pour sa tendresse et son goût"
@@ -1569,7 +1522,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cuisse de poulet"
   ingredient.confirmed = true
   ingredient.description = "Morceau de poulet situé au niveau des pattes"
@@ -1579,7 +1532,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Épices pour tajine"
   ingredient.confirmed = true
   ingredient.description = "Mix d'épices idéale pour la tajine."
@@ -1589,7 +1542,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Eau"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1601,7 +1554,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Escargot"
   ingredient.confirmed = true
   ingredient.description = "Ingrédient typiquement français."
@@ -1611,7 +1564,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Échalote"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1621,7 +1574,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Calamars surgelés"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1631,7 +1584,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Chorizo"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1641,7 +1594,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pâte à pizza"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1651,7 +1604,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tomate confite"
   ingredient.confirmed = true
   ingredient.description = "Tomate trempée dans de l'huile d'olive afin d'améliorerle goût."
@@ -1661,7 +1614,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Châtaigne"
   ingredient.confirmed = true
   ingredient.description = "Fruit sec d'automne très apprécié quand il fait froid dehors "
@@ -1672,7 +1625,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits secs"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cube de bouillon de volaille"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1682,7 +1635,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Bouillon de volaille"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1692,7 +1645,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lait entier"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1702,7 +1655,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lard fumé"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1712,7 +1665,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Beurre salé"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1722,7 +1675,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème chantilly"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1732,7 +1685,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ail"
   ingredient.confirmed = true
   ingredient.description = "légume"
@@ -1742,7 +1695,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Menthe"
   ingredient.confirmed = true
   ingredient.description = "herbe"
@@ -1752,7 +1705,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Coriandre"
   ingredient.confirmed = true
   ingredient.description = "herbe"
@@ -1762,7 +1715,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Yaourt"
   ingredient.confirmed = true
   ingredient.description = "yaourt"
@@ -1772,7 +1725,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits laitiers"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Vermicel"
   ingredient.confirmed = true
   ingredient.description = "Vermicelle"
@@ -1782,7 +1735,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Vinaigre de Xérès"
   ingredient.confirmed = true
   ingredient.description = "Vinaigre"
@@ -1792,7 +1745,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Oeuf dur"
   ingredient.confirmed = true
   ingredient.description = "oeuf"
@@ -1802,7 +1755,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Oeufs"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Piment"
   ingredient.confirmed = true
   ingredient.description = "piment"
@@ -1812,7 +1765,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poulet"
   ingredient.confirmed = true
   ingredient.description = "Poulet"
@@ -1822,7 +1775,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Rôti de porc"
   ingredient.confirmed = true
   ingredient.description = "rôti de porc"
@@ -1832,7 +1785,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Concentré de tomate"
   ingredient.confirmed = true
   ingredient.description = "tomate"
@@ -1842,7 +1795,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cube de bouillon"
   ingredient.confirmed = true
   ingredient.description = "bouillon"
@@ -1852,7 +1805,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Piment d'Espelette"
   ingredient.confirmed = true
   ingredient.description = "Piment"
@@ -1862,7 +1815,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Origan séché"
   ingredient.confirmed = true
   ingredient.description = "Origan"
@@ -1872,7 +1825,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Soupe d'olive"
   ingredient.confirmed = true
   ingredient.description = "Soupe d'olive"
@@ -1882,7 +1835,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Haricot rouge"
   ingredient.confirmed = true
   ingredient.description = "Haricot"
@@ -1892,7 +1845,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits secs"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Chocolat blanc"
   ingredient.confirmed = true
   ingredient.description = "Chocolat"
@@ -1902,7 +1855,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits laitiers"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gouda"
   ingredient.confirmed = true
   ingredient.description = "Fromage"
@@ -1912,7 +1865,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Produits laitiers"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Bacon"
   ingredient.confirmed = true
   ingredient.description = "Bacon"
@@ -1922,7 +1875,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fraise"
   ingredient.confirmed = true
   ingredient.description = "Fruit d'été"
@@ -1932,7 +1885,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tortilla"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1942,7 +1895,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Oignon blanc"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1952,7 +1905,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Coulis de tomate"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1962,7 +1915,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Galette de riz"
   ingredient.confirmed = true
   ingredient.description = "Galette à base de riz"
@@ -1972,7 +1925,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Vermicelles de riz"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1982,7 +1935,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Porc"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -1992,7 +1945,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pâte levée"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2002,7 +1955,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Saumon fumé"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2012,7 +1965,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fromage frais"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2022,7 +1975,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Reblochon"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2032,7 +1985,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Carpaccio de boeuf"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2042,7 +1995,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Maasdam"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2052,7 +2005,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sauce Yakitori"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2062,7 +2015,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crêpe au Sarrasin"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2072,7 +2025,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Laitue"
   ingredient.confirmed = true
   ingredient.description = "C'est un type de salade réputé par sa fraîcheur. Elle a des feuilles très claires et très croquantes"
@@ -2084,7 +2037,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Maroilles"
   ingredient.confirmed = true
   ingredient.description = "Fromage typiquement du Nord de la France."
@@ -2094,7 +2047,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre vanillé"
   ingredient.confirmed = true
   ingredient.description = "Sucre qui a légèrement un goût vanillé"
@@ -2104,7 +2057,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cerise"
   ingredient.confirmed = true
   ingredient.description = "Fruit rouge"
@@ -2116,7 +2069,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile de friture"
   ingredient.confirmed = true
   ingredient.description = "Utilisé pour faire des plats fris"
@@ -2128,7 +2081,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Levure chimique"
   ingredient.confirmed = true
   ingredient.description = "Utilisé principalement pour les gâteaux"
@@ -2139,7 +2092,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Potiron"
   ingredient.confirmed = true
   ingredient.description = "Courge orange d'automne"
@@ -2149,7 +2102,7 @@ Ingredient.first_or_create do |ingredient|
   ]
 end
 
-Ingredient.first_or_create do  |ingredient|
+Ingredient.create! do  |ingredient|
   ingredient.name = "Oignon rouge"
   ingredient.confirmed = true
   ingredient.description = "Condiment basique"
@@ -2161,7 +2114,7 @@ Ingredient.first_or_create do  |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do  |ingredient|
+Ingredient.create! do  |ingredient|
   ingredient.name = "Pois chiche"
   ingredient.confirmed = true
   ingredient.description = "Légumineuse riche en fibres et protéines"
@@ -2172,7 +2125,7 @@ Ingredient.first_or_create do  |ingredient|
   ingredient.shelf_tag = "Légumineuses"
 end
 
-Ingredient.first_or_create do  |ingredient|
+Ingredient.create! do  |ingredient|
   ingredient.name = "Protéines de soja texturées"
   ingredient.confirmed = true
   ingredient.description = "Soja sous forme désydrathé"
@@ -2183,7 +2136,7 @@ Ingredient.first_or_create do  |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sauce barbecue"
   ingredient.confirmed = true
   ingredient.description = "Sauce sucrée"
@@ -2195,7 +2148,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tomates concassées"
   ingredient.confirmed = true
   ingredient.description = "Tomates en conserve idéal pour les sauces"
@@ -2207,7 +2160,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tomates séchées"
   ingredient.confirmed = true
   ingredient.description = "Tomates séchées dans leur huile"
@@ -2219,7 +2172,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Paprika fumé en poudre"
   ingredient.confirmed = true
   ingredient.description = "Papriké plus salé que l'original"
@@ -2231,7 +2184,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cannelle"
   ingredient.confirmed = true
   ingredient.description = "Epice orientale très odorante"
@@ -2242,7 +2195,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Flocons d'avoine"
   ingredient.confirmed = true
   ingredient.description = "Avoine sous forme de flocons"
@@ -2255,7 +2208,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Céréales"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Noix de cajou"
   ingredient.confirmed = true
   ingredient.description = "Fruit sec riche en bon gras."
@@ -2266,7 +2219,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sirop d'agave"
   ingredient.confirmed = true
   ingredient.description = "Sirop idéal pour les pancakes"
@@ -2277,7 +2230,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Dattes"
   ingredient.confirmed = true
   ingredient.description = "Fruit très énergétique"
@@ -2288,7 +2241,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Margarine"
   ingredient.confirmed = true
   ingredient.description = "Alternative au beurre"
@@ -2299,7 +2252,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre de canne"
   ingredient.confirmed = true
   ingredient.description = "Indispensable dans la patisserie"
@@ -2311,7 +2264,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cacahuètes"
   ingredient.confirmed = true
   ingredient.description = "Habituellement utilisé en guise d'apéritif"
@@ -2322,7 +2275,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lait d'amande"
   ingredient.confirmed = true
   ingredient.description = "Lait végétal"
@@ -2333,7 +2286,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cornflakes"
   ingredient.confirmed = true
   ingredient.description = "Céréales de petit déjeuner"
@@ -2344,7 +2297,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Beurre de cacahuètes"
   ingredient.confirmed = true
   ingredient.description = "Pâte sucrée salée"
@@ -2355,7 +2308,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Champignon"
   ingredient.confirmed = true
   ingredient.description = "Idéal en salade ou sur des pizzas"
@@ -2366,7 +2319,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Purée d'amandes blanches"
   ingredient.confirmed = true
   ingredient.description = "Sert à la cuisine végétale"
@@ -2377,7 +2330,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Farine de froment"
   ingredient.confirmed = true
   ingredient.description = "Farine riche en gluten qui peut provoquer des grumeaux si mal mélanger."
@@ -2388,7 +2341,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre"
   ingredient.confirmed = true
   ingredient.description = "Du sucre en grain très fin"
@@ -2398,7 +2351,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Tête et arêtes d'un saumon"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2408,7 +2361,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 
 end
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Quatre-épices"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2418,7 +2371,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Aneth"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2428,7 +2381,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Laurier"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2438,7 +2391,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Filet de saumon sauvage"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2448,7 +2401,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pomme de terre ferme"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2458,7 +2411,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème entière"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2468,7 +2421,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cordon bleu"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2478,7 +2431,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Frites"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2488,7 +2441,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Surgelé"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Bouillon de boeuf"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2498,7 +2451,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Patate douce"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2509,7 +2462,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème semi-épaisse"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2519,7 +2472,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Thon"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2529,7 +2482,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Poissons"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pêche"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2539,7 +2492,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Crème fraîche épaisse"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2549,7 +2502,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Thym"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2559,7 +2512,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Herbes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ratatouille"
   ingredient.confirmed = true
   ingredient.description = "Mélange de divers légumes du Soleil comme la tomate, la cougette ou encore l'aubergine."
@@ -2570,7 +2523,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Gruyère râpé"
   ingredient.confirmed = true
   ingredient.description = "Fromage suisse râpé, s'accomode avec des pâtes ou sur une pizza"
@@ -2581,7 +2534,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Riz"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2593,7 +2546,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Germe de soja"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2603,7 +2556,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Pousse d'épinard"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2613,7 +2566,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Noix de coco"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2624,7 +2577,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Steak de boeuf"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2635,7 +2588,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre roux"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2645,7 +2598,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Huile de sésame"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2655,7 +2608,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Caramel"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2665,7 +2618,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poudre d'amande"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2675,7 +2628,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Canelle"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2686,7 +2639,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Ginbembre"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2696,7 +2649,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Lait écremé"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2706,7 +2659,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Navet"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2716,7 +2669,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Poireau"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2726,7 +2679,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Légumes"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Copeaux de chocolat"
   ingredient.confirmed = true
   ingredient.description = "Du chocolat en copeaux"
@@ -2736,7 +2689,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Jus d'orange"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2747,7 +2700,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Épinard"
   ingredient.confirmed = true
   ingredient.description = "Légume en feuille au goût particulier censé rendre plus fort..."
@@ -2759,7 +2712,7 @@ Ingredient.first_or_create do |ingredient|
 end
 
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Vermouth"
   ingredient.confirmed = true
   ingredient.description = "Le vermouth est un vin aromatisé (apéritif à base de vin)"
@@ -2769,7 +2722,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Alcools"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fumet de poisson"
   ingredient.confirmed = true
   ingredient.description = "Un fumet de poisson est un fond préparé à partir de poisson"
@@ -2779,7 +2732,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fécule"
   ingredient.confirmed = true
   ingredient.description = "La fécule est une matière extraite de divers organes végétaux"
@@ -2789,7 +2742,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Yaourt nature"
   ingredient.confirmed = true
   ingredient.description = ""
@@ -2799,7 +2752,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Rhum"
   ingredient.confirmed = true
   ingredient.description = "Le rhum est une eau-de-vie originaire des Amériques, transformée à partir de la canne à sucre. Il souvent utilisé en patisserie."
@@ -2809,7 +2762,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Alcools"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Sucre glace"
   ingredient.confirmed = true
   ingredient.description = "Le sucre glace est obtenu par broyage du sucre cristallisé"
@@ -2821,7 +2774,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Fromage blanc"
   ingredient.confirmed = true
   ingredient.description = "Le fromage blanc est un fromage à pâte fraiche"
@@ -2831,7 +2784,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Framboise"
   ingredient.confirmed = true
   ingredient.description = "La framboise est un fruit rouge issu du framboisier"
@@ -2843,7 +2796,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Fruits"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Mascarpone"
   ingredient.confirmed = true
   ingredient.description = "Le mascarpone est un fromage italien, originaire des régions de Piémont-Lombardie. Ingrédient de choix de la cuisine italienne, il entre dans la composition de nombreuses recettes de cuisine et particulièrement dans les desserts, dont le célèbre tiramisu."
@@ -2853,7 +2806,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Rayon frais"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Edulcorant"
   ingredient.confirmed = true
   ingredient.description = "Un substitut de sucre est un additif alimentaire qui donne un goût sucré similaire à celui du sucre tout en contenant beaucoup moins d'énergie alimentaire que les édulcorants à base de sucre, ce qui en fait un édulcorant dépourvu de calories ou hypocalorique."
@@ -2865,7 +2818,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Marsala"
   ingredient.confirmed = true
   ingredient.description = "Le marsala est un vin à dénomination d'origine contrôlée produit dans la région de la ville italienne Marsala en Sicile."
@@ -2875,7 +2828,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Alcools"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Spéculoos"
   ingredient.confirmed = true
   ingredient.description = "Le spéculoos est un biscuit traditionnel souvent consommé lors de la fête de la Saint Nicolas en Belgique"
@@ -2885,7 +2838,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Cacao"
   ingredient.confirmed = true
   ingredient.description = "Le cacao est la poudre obtenue après broyage de l'amande des fèves de cacao plates fermentées produites par le cacaoyer"
@@ -2897,7 +2850,7 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-Ingredient.first_or_create do |ingredient|
+Ingredient.create! do |ingredient|
   ingredient.name = "Viande des Grisons"
   ingredient.confirmed = true
   ingredient.description = "La viande des Grisons est une salaison de viande de bœuf élaborée en Suisse, spécialité du canton des Grisons"
@@ -2907,309 +2860,313 @@ Ingredient.first_or_create do |ingredient|
   ingredient.shelf_tag = "Viandes"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.destroy_all
+
+Utensil.create! do |utensil|
   utensil.title = "Blender"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plancha"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Rouleau à ptisserie"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Moule à cannelés"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Réfrigérateur"
 end
 
 # Utensils
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Fouet"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Couteau"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cuillère"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Fourchette"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Saladier"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Mixeur"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Passoire"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Casserole"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Poêle"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Louche"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Spatule"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Ciseaux"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Wok"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cocotte minute"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Friteuse"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Four"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Micro-onde"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Marmite"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Bol"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Film plastique"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Moule à tarte"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Verre"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cure-dent"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cuillère parisienne"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Batteur"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Poche à douille"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plaque à patisserie"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plat au four"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Presse-purée"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Économe"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Moule à crème brulée"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Moule à brioche"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Pinceau"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Hachoir"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cocotte"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Rouleau de film en aluminium"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Mijoteuse électrique"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Grille"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plaque antiadhésive"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Mixeur plongeant"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cuillère à glace"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plat à dessert"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Râpe"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Réfrigérateur"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cuillère en bois"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Marmite"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Ramequin"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Sorbetière"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Chinois"
 end
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Rouleau à pâtisserie"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Pinceau"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Grille"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Rouleau à pâtisserie"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Papier cuisson"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Zesteur"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Presse agrume"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Verrine"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Écumoire"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Ramequin"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Moule à manquer"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Cul de poule"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Billig"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Crêpière"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Gaufrier"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Pince à désarêter"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Grille à gâteaux"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Auto-cuiseur"
 end
 
-Utensil.first_or_create do |utensil|
+Utensil.create! do |utensil|
   utensil.title = "Plat à tarte"
 end
 
 
-
+RecipeCategory.destroy_all
 
 # Recipe Categories
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Entrée"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Plat"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Dessert"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Boisson"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Autres"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Apéritif"
 end
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Accompagnement"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Bon marché"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Coûteux"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Végétarien"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Vegan"
 end
 
-RecipeCategory.first_or_create do |category|
+RecipeCategory.create! do |category|
   category.name = "Sauce"
 end
 
 # Recipes
 
-Recipe.first_or_create do |recipe|
+Recipe.destroy_all
+
+Recipe.create! do |recipe|
   recipe.title = "Sandwich jambon beurre"
   recipe.description = "Le sandwich français par excellence."
   recipe.steps = [
@@ -3231,15 +3188,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.ingredients << Ingredient.find_by_name("Baguette de pain")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Noisette(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Noisette(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tomates farcies"
   recipe.description = "Plat très bon marché et savoureux."
   recipe.steps = [
@@ -3263,9 +3220,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
@@ -3273,7 +3230,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Guacamole"
   recipe.description = "Sauce à base d'avocat. Délicieuse avec des tortillas chips"
   recipe.steps = [
@@ -3299,9 +3256,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Piment de Cayenne en poudre")
   recipe.ingredients << Ingredient.find_by_name("Tabasco")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
@@ -3313,7 +3270,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Bol")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Spaghetti à la carbonara (les vraies !)"
   recipe.description = "Plat typique italien. Simple et efficace !"
   recipe.steps = [
@@ -3344,15 +3301,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -3362,7 +3319,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade César"
   recipe.description = "Plat frais et savoureux. Idéal penant les fortes chaleurs "
   recipe.steps = [
@@ -3397,24 +3354,24 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[10].recipe_quantity = nil
   recipe.recipe_ingredients[11].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -3424,7 +3381,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Film plastique")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Quiche au saumon"
   recipe.description = "Entrée basique et très bonne"
   recipe.steps = [
@@ -3452,15 +3409,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -3470,7 +3427,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Moule à tarte")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Avocat crevettes"
   recipe.description = "Entrée fraîche et délicieuse en été"
   recipe.steps = [
@@ -3503,19 +3460,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Brin(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Brin(s)"))
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -3526,7 +3483,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Billes de melon et jambon cru"
   recipe.description = "Apéritif très frais et idéal sur une terrace."
   recipe.steps = [
@@ -3547,15 +3504,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Melon")
   recipe.ingredients << Ingredient.find_by_name("Jambon cru")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.utensils << Utensil.find_by_title("Cuillère parisienne")
   recipe.utensils << Utensil.find_by_title("Cure-dent")
   recipe.utensils << Utensil.find_by_title("Bol")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Mousse au chocolat"
   recipe.description = "Dessert très simple à réaliser. Il est aussi très savoureux"
   recipe.steps = [
@@ -3584,17 +3541,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
   recipe.ingredients << Ingredient.find_by_name("Gousse de vanille")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Couteau")
@@ -3602,7 +3559,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Poche à douille")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade de fruits"
   recipe.description = "Dessert très simple à réaliser. Riche en vitanime, il est rès savoureux"
   recipe.steps = [
@@ -3631,26 +3588,26 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Citron")
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crêpes"
   recipe.description = "Recette phare lors de la Chandeleur. Idéale avec de la confiture ou du sucre"
   recipe.steps = [
@@ -3682,26 +3639,26 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Louche")
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Mayonnaise"
   recipe.description = "Recette idéale pour accompagner des frites, des crustacés ou des grillades"
   recipe.steps = [
@@ -3728,22 +3685,22 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Jus de citron")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade grecque aux avocats"
   recipe.description = "Salade savoureuse et très fraîche. Idéale en été."
   recipe.steps = [
@@ -3772,23 +3729,23 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Ketchup")
   recipe.ingredients << Ingredient.find_by_name("Sauce soja")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 120, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 120, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -3796,7 +3753,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Poulet au curry"
   recipe.description = "Plat à base de poulet. Très savoureux."
   recipe.steps = [
@@ -3826,15 +3783,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -3843,7 +3800,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Palmiers au basilic"
   recipe.description = "Apéritif très savoureux pendant l'été."
   recipe.steps = [
@@ -3874,13 +3831,13 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Farine")
   recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
@@ -3893,7 +3850,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Welsh"
   recipe.description = "Plat typique nordiste. Un bon plat copieux très bon en hiver."
   recipe.steps = [
@@ -3923,25 +3880,25 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Tabasco")
   recipe.ingredients << Ingredient.find_by_name("Moutarde de Dijon")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Plat au four")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Ratatouille"
   recipe.description = "Accompagnement estivale, riche en vitamines."
   recipe.steps = [
@@ -3975,21 +3932,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity = nil
@@ -3997,7 +3954,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade de pâtes à la sicilienne"
   recipe.description = "Salade très fraîches en été."
   recipe.steps = [
@@ -4030,19 +3987,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Grammes(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Grammes(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Grammes(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Grammes(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
@@ -4052,7 +4009,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tartine tomate-mozzarella"
   recipe.description = "Plat d'été très simple mais parfait quand on n'a pas le temps de cuisiner"
   recipe.steps = [
@@ -4081,22 +4038,22 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Œuf mimosa au jambon"
   recipe.description = "Entrée très simple et parfaite en été"
   recipe.steps = [
@@ -4123,11 +4080,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -4136,7 +4093,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Purée de pommes de terre et carottes"
   recipe.description = "Accompagnement rapide à faire et idéal avec de la viande ou du poisson"
   recipe.steps = [
@@ -4165,15 +4122,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -4183,7 +4140,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Presse-purée")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Escalope de veau gratiné"
   recipe.description = "Plat savoureux avec une touche d'Italie pour garantir un bon repas."
   recipe.steps = [
@@ -4210,20 +4167,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Noisette(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Noisette(s)"))
   recipe.utensils << Utensil.find_by_title("Économe")
   recipe.utensils << Utensil.find_by_title("Plat au four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pain perdu"
   recipe.description = "Dessert très simple mais tellement délicieux."
   recipe.steps = [
@@ -4250,21 +4207,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fouet")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crème brulée vanillée au pain d'épices"
   recipe.description = "Dessert très simple mais tellement bon."
   recipe.steps = [
@@ -4293,17 +4250,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Miel liquide")
   recipe.ingredients << Ingredient.find_by_name("Pain d'épices")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -4311,7 +4268,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Plat au four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte au chocolat et noix de pécan"
   recipe.description = "Dessert savoureux que je fais dès que j'en ai l'occasion !"
   recipe.steps = [
@@ -4339,13 +4296,13 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Crème liquide")
   recipe.ingredients << Ingredient.find_by_name("Noix de pécan")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Moule à tarte")
   recipe.utensils << Utensil.find_by_title("Plat au four")
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -4353,7 +4310,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Brioche"
   recipe.description = "Dessert très facile et savoureux au petit déjeûner"
   recipe.steps = [
@@ -4384,26 +4341,26 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.utensils << Utensil.find_by_title("Moule à brioche")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte au sucre"
   recipe.description = "Très agréable après un repas copieux !"
   recipe.steps = [
@@ -4436,21 +4393,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Morceau(x)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Morceau(x)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 25, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 25, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Moule à tarte")
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -4459,7 +4416,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Îles flottantes"
   recipe.description = "Dessert très agréable après un bon repas"
   recipe.steps = [
@@ -4497,21 +4454,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Citron")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 110, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 110, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fouet")
@@ -4520,7 +4477,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Banana split"
   recipe.description = "Dessert d'été parfait pour se rafraîchir."
   recipe.steps = [
@@ -4547,23 +4504,23 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Crème chantilly")
   recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Cuillère à glace")
   recipe.utensils << Utensil.find_by_title("Plat à dessert")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Les meilleurs nugget's"
   recipe.description = "J'ai longtemps cherché comment faire des nuggets légers et savoureux et après plusieurs essais, voici ma recette."
   recipe.steps = [
@@ -4592,9 +4549,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Chapelure")
   recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
@@ -4604,7 +4561,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Mixeur")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Hachis parmentier"
   recipe.description = "Plat copieux et savoureux du Dimanche midi."
   recipe.steps = [
@@ -4640,27 +4597,27 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[11].recipe_quantity = nil
   recipe.recipe_ingredients[12].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Hachoir")
@@ -4671,7 +4628,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Plat au four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Magret de canard au miel"
   recipe.description = "Plat très savoureux qui met en avant ce met délicat."
   recipe.steps = [
@@ -4700,11 +4657,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
@@ -4713,7 +4670,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tajine de poulet facile !"
   recipe.description = "Plat oriental très savoureux. Je vous conseille de posséder un grand plat à tajine, sinon tous les ingrédients ne rentreront pas."
   recipe.steps = [
@@ -4744,28 +4701,28 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
   recipe.ingredients << Ingredient.find_by_name("Eau")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Mijoteuse électrique")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Escargots au beurre d'ail"
   recipe.description = "Entrée typiquement française !"
   recipe.steps = [
@@ -4796,26 +4753,26 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
   recipe.ingredients << Ingredient.find_by_name("Échalote")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Conserve(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Conserve(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 53, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 53, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 27, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 27, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 13, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 13, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Passoire")
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Fourchette")
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Anneaux de calamars au chorizo"
   recipe.description = "Tellement bon ! Mais on peut remplacer le chorizo par les des tranches épaisses de poitrine fumée que vous pourrez découper en cubes plus facilement."
   recipe.steps = [
@@ -4844,9 +4801,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
@@ -4858,7 +4815,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pizza italienne en forme de fleur"
   recipe.description = "Plat italien typique remis au goût du jour."
   recipe.steps = [
@@ -4890,27 +4847,27 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Tomate confite")
   recipe.ingredients << Ingredient.find_by_name("Mozzarella")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Boule(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Plaque antiadhésive")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Soupe rustique aux châtaignes"
   recipe.description = "Entrée très agréable lors de longues soirées en Hiver."
   recipe.steps = [
@@ -4939,18 +4896,18 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Beurre salé")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Verre(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Verre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Noix"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Noix"))
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Louche")
   recipe.utensils << Utensil.find_by_title("Mixeur plongeant")
@@ -4961,7 +4918,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Hachoir")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tzatziki"
   recipe.description = "Recette de ce classique de la cuisine grecque ! Pour l'apéro pour accompagner des bâtonnets de concombre ou bien des gressins. Un délice !"
   recipe.steps = [
@@ -4988,17 +4945,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Râpe")
@@ -5007,7 +4964,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Réfrigérateur")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Soupe à la tomate rapide"
   recipe.description = "Recette de soupe à la tomate simple et rapide. Un délice !"
   recipe.steps = [
@@ -5037,15 +4994,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.ingredients << Ingredient.find_by_name("Vermicel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
@@ -5057,7 +5014,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Gaspacho"
   recipe.description = "Très bonne recette de gaspacho facile et rapide à réaliser. Un délice !"
   recipe.steps = [
@@ -5092,23 +5049,23 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Piment")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 9, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 9, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity = nil
   recipe.recipe_ingredients[11].recipe_quantity = nil
@@ -5122,7 +5079,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Fourchette")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tortilla facile"
   recipe.description = "Très bonne recette de tortilla facile et rapide à réaliser. Un délice !"
   recipe.steps = [
@@ -5150,11 +5107,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 5, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 5, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity = nil
@@ -5166,7 +5123,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Pinceau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Poulet rôti et ses pommes de terre"
   recipe.description = "Ce plat est généralement apprécié par toute la famille... C'est facile à faire ! Un délice !"
   recipe.steps = [
@@ -5200,21 +5157,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Pomme de terre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Économe")
   recipe.utensils << Utensil.find_by_title("Plat au four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Rôti de porc à la moutarde et au miel"
   recipe.description = "Aussi bon chaud que froid! Délicieux avec une salade de pommes de terres primeurs et des crudités. Un délice !"
   recipe.steps = [
@@ -5242,17 +5199,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Oignon")
   recipe.ingredients << Ingredient.find_by_name("Cube de bouillon de volaille")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Pinceau")
@@ -5260,7 +5217,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Fourchette")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Chili con carne"
   recipe.description = "La dose de Tabasco permet de rendre le plat + ou - épicé sachant qu'avec les piments il est déjà bien relevé mais il n'y a que la pratique pour que ce plat soit comme on l'aime ! et surtout ne pas supprimer les épices. Un délice !"
   recipe.steps = [
@@ -5293,37 +5250,37 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Piment de Cayenne en poudre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 750, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 750, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[10].recipe_quantity = nil
   recipe.recipe_ingredients[11].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[12].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[13].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Hachoir")
   recipe.utensils << Utensil.find_by_title("Cocotte")
   recipe.utensils << Utensil.find_by_title("Cuillère en bois")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Compote de pomme simple"
   recipe.description = "Recette de compotte de pomme facile. Un délice !"
   recipe.steps = [
@@ -5346,19 +5303,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Eau")
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 800, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 800, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Mijoteuse électrique")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Sorbet à la fraise"
   recipe.description = "Recette de sorbet à la fraise. Un délice !"
   recipe.steps = [
@@ -5382,20 +5339,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Citron")
   recipe.ingredients << Ingredient.find_by_name("Eau")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6.5, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 6.5, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.utensils << Utensil.find_by_title("Sorbetière")
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Chinois")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pommes au four"
   recipe.description = "Recette de pommes au four. Un délice !"
   recipe.steps = [
@@ -5418,13 +5375,13 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Pomme")
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Fourchette")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Ganache au chocolat blanc"
   recipe.description = "Recette de ganache au chocolat blanc. Un délice !"
   recipe.steps = [
@@ -5447,16 +5404,16 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Chocolat blanc")
   recipe.ingredients << Ingredient.find_by_name("Crème liquide")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 25, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 25, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Rouleau à pâtisserie")
   recipe.utensils << Utensil.find_by_title("Spatule")
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Rôti de porc Orloff"
   recipe.description = "Recette de rôti de porc Orloff. Un délice !"
   recipe.steps = [
@@ -5481,19 +5438,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Bacon")
   recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 25, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 25, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Spatule")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Bruschetta (Italie)"
   recipe.description = "Entrée italienne à de pain, tomate et huile d'olive. Rapide et gourmande."
   recipe.steps = [
@@ -5516,20 +5473,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Gousse d'ail")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Grille")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Rouleaux de printemps"
   recipe.description = "Entrée asiatique fraîche agréable, surtout en plein été. Meilleur accompagner d'une sauce \"Nuc-mam\"(sauce chinoise)."
   recipe.steps = [
@@ -5557,21 +5514,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Laitue")
   recipe.ingredients << Ingredient.find_by_name("Menthe")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte au Maroilles"
   recipe.description = "Entrée typique du nord."
   recipe.steps = [
@@ -5595,20 +5552,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Jaune d'oeuf")
   recipe.ingredients << Ingredient.find_by_name("Paprika en poudre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Moule à tarte")
   recipe.utensils << Utensil.find_by_title("Rouleau à pâtisserie")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Wraps saumon"
   recipe.description = "Entrée froide à base de saumon, un régal frais, léger et très rapide."
   recipe.steps = [
@@ -5634,16 +5591,16 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Fromage frais")
   recipe.ingredients << Ingredient.find_by_name("Crème fraîche")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Ciseaux")
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tacos mexicain"
   recipe.description = "Spécialité mexicaine à base de viande, légumes et sauce épicée. On peut accompagner ces tacos de guacamole et/ou de maïs. Pour une version plus légère, les haricots rouges peuvent être supprimés."
   recipe.steps = [
@@ -5677,21 +5634,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Petite(s) Boîte(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Petite(s) Boîte(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity = nil
@@ -5700,7 +5657,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Wrap tartiflette"
   recipe.description = "Classique savoyard remis au goût du jour."
   recipe.steps = [
@@ -5726,20 +5683,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Oignon")
   recipe.ingredients << Ingredient.find_by_name("Pomme de terre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Papier cuisson")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Yakitori boeuf au fromage"
   recipe.description = "Brochette à la japonaise de la taille d'une bouchée."
   recipe.steps = [
@@ -5762,14 +5719,14 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Maasdam")
   recipe.ingredients << Ingredient.find_by_name("Sauce Yakitori")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil;
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crêpes au Sarrasin complête"
   recipe.description = "Crêpe de blé noir accompagné d'oeuf, gruyère et jambon"
   recipe.steps = [
@@ -5791,16 +5748,16 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Jambon blanc")
   recipe.ingredients << Ingredient.find_by_name("Gruyère rapé")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Lemon Curd"
   recipe.description = "Crème de citron à ajouter sur des biscuits."
   recipe.steps = [
@@ -5828,13 +5785,13 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Oeuf")
   recipe.ingredients << Ingredient.find_by_name("Maïzena")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Zesteur")
@@ -5844,7 +5801,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Verrine")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crème renversée"
   recipe.description = "Crème avec du caramel"
   recipe.steps = [
@@ -5876,15 +5833,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sucre vanillé")
   recipe.ingredients << Ingredient.find_by_name("Sucre en morceaux")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Litre(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Litre(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 15, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 15, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -5893,7 +5850,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Ramequin")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Gâteau à l'orange"
   recipe.description = "Gâteau savoureux à base d'orange. Un gâteau bien rafraichissant et fort apprécié en fin de repas."
   recipe.steps = [
@@ -5922,24 +5879,24 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Levure")
   recipe.ingredients << Ingredient.find_by_name("Orange")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 115, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Moule à manquer")
   recipe.utensils << Utensil.find_by_title("Grille à gâteaux")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pancake"
   recipe.description = "Il faut déguster les pancakes assez rapidement, car une fois refroidis ils sont un peu moins goûteux. Ils seront délicieux avec un filet de sirop d'érable, de la confiture de framboise ou encore un peu de sucre et jus de citron. Régalez-vous, et vite !!!"
   recipe.steps = [
@@ -5967,17 +5924,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Levure")
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Cuillère")
   recipe.utensils << Utensil.find_by_title("Grille à gâteaux")
@@ -5986,7 +5943,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Fouet")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Aubergine au four"
   recipe.description = "Repas simple et parfait pour la ligne !"
   recipe.steps = [
@@ -6009,7 +5966,7 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity = nil
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
@@ -6017,7 +5974,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Bananes au four"
   recipe.description = "Dessert délicieux"
   recipe.steps = [
@@ -6038,16 +5995,16 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Beurre")
   recipe.ingredients << Ingredient.find_by_name("Cassonade")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Brioche perdu"
   recipe.description = "Super dessert facile à faire"
   recipe.steps = [
@@ -6070,18 +6027,18 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 25, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 25, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Poêle")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Clafoutis"
   recipe.description = "Dessert simple et fruité !"
   recipe.steps = [
@@ -6110,24 +6067,24 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Farine")
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Bol")
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Casserole")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Frites"
   recipe.description = "Des bonnes frites comme on les aime"
   recipe.steps = [
@@ -6150,14 +6107,14 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Huile de friture")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity = nil
 
   recipe.utensils << Utensil.find_by_title("Friteuse")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Gateau aux carottes"
   recipe.description = "Répas simple et parfait pour la ligne !"
   recipe.steps = [
@@ -6183,17 +6140,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Farine")
   recipe.ingredients << Ingredient.find_by_name("Levure")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Sachet(s)"))
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -6201,7 +6158,7 @@ Recipe.first_or_create do |recipe|
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Gnocchis"
   recipe.description = "Petite boule de pomme de terre, délicieux"
   recipe.steps = [
@@ -6232,15 +6189,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
@@ -6250,7 +6207,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Casserole")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Oeufs aux herbes"
   recipe.description = "Simple et efficace"
   recipe.steps = [
@@ -6276,11 +6233,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Gruyère")
   recipe.ingredients << Ingredient.find_by_name("Basilic")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.recipe_ingredients[5].recipe_quantity = nil
@@ -6289,7 +6246,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pizza chèvre miel"
   recipe.description = "Délicieuse pizza à base de fromage de chèvre"
   recipe.steps = [
@@ -6321,14 +6278,14 @@ Recipe.first_or_create do |recipe|
   recipe.recipe_ingredients[1].recipe_quantity = nil
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
 
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Soupe de carottes"
   recipe.description = "Soupe très simple à faire à base de carottes"
   recipe.steps = [
@@ -6351,17 +6308,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Pomme de terre")
   recipe.ingredients << Ingredient.find_by_name("Huile d'olive")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.utensils << Utensil.find_by_title("Mixeur")
   recipe.utensils << Utensil.find_by_title("Cocotte")
   recipe.utensils << Utensil.find_by_title("Louche")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Soupe potiron"
   recipe.description = "Délicieuse soupe pour l'automne"
   recipe.steps = [
@@ -6385,9 +6342,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Quartier(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Quartier(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Brique(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Brique(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
@@ -6396,7 +6353,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Bol")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tomate mozzarella"
   recipe.description = "Entrée idéal en été"
   recipe.steps = [
@@ -6420,16 +6377,16 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Cookies vegan au beurre de cacahuètes"
   recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
   recipe.person = 4
@@ -6456,21 +6413,21 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Levure chimique")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 80, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 80, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 120, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 120, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Four")
@@ -6479,7 +6436,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'cookies_vegan.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Roses des sables"
   recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
   recipe.person = 2
@@ -6498,9 +6455,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Cornflakes")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
 
@@ -6508,7 +6465,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'roses_vegan.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Snickers maisons"
   recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
   recipe.person = 10
@@ -6544,25 +6501,25 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Mixeur")
@@ -6571,7 +6528,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'snickers.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Houmous aux tomates séchées"
   recipe.description = "Purée de pois chiches délicieuse et relevé"
   recipe.person = 4
@@ -6596,15 +6553,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 260, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 260, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Mixeur")
 
@@ -6612,7 +6569,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'tomato_humus.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Bolognaise de lentilles"
   recipe.description = "Bolognaise végé onctueuse !"
   recipe.person = 2
@@ -6637,17 +6594,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Huile de tournesol")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
 
   recipe.utensils << Utensil.find_by_title("Casserole")
 
@@ -6655,7 +6612,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'lentils_bolognese.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Wraps au soja"
   recipe.description = "Wraps savoureux et riche en protéines"
   recipe.person = 1
@@ -6681,17 +6638,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Paprika en poudre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Presse-purée")
@@ -6701,7 +6658,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'soy_wraps.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Steaks à hamburgers végétaliens"
   recipe.description = "Une galette maison à base de haricots rouges !"
   recipe.person = 4
@@ -6734,19 +6691,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Mixeur")
@@ -6757,7 +6714,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'vegan_beans_burger.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Falafels"
   recipe.description = "Délicieuses boulettes de pois chiches"
   recipe.person = 4
@@ -6792,19 +6749,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1.5, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Brin(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Brin(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Mixeur")
@@ -6815,7 +6772,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'falafels.png', content_type: 'image/png')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade champignons sauce amande-citron"
   recipe.description = "Salade fraîche pour l'été"
   recipe.person = 2
@@ -6840,15 +6797,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Mixeur")
 
@@ -6856,7 +6813,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'salade_champignons.jpeg', content_type: 'image/jpeg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tartinade aux haricots rouges"
   recipe.description = "Idéal pour tartiner à l'apéritif !"
   recipe.person = 2
@@ -6878,11 +6835,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 225, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 225, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 0.5, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 0.5, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
 
   recipe.utensils << Utensil.find_by_title("Mixeur")
 
@@ -6890,7 +6847,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'tartinade_haricots.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Mousse au chocolat vegan"
   recipe.description = "Dessert copieux et végétalien, ça se mange sans fin !"
   recipe.person = 2
@@ -6911,9 +6868,9 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Pois chiche")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fouet")
@@ -6922,7 +6879,7 @@ Recipe.first_or_create do |recipe|
                       filename: 'mousse_vegan.jpg', content_type: 'image/jpg')
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crêpe de maître crêpier"
   recipe.description = "Les meilleurs crêpes que l'on peut faire, recette venant directement de Bretagne ! Très simple et rapide, garantis sans grumeaux"
   recipe.steps = [
@@ -6948,15 +6905,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Cul de poule")
   recipe.utensils << Utensil.find_by_title("Fouet")
@@ -6965,7 +6922,7 @@ Recipe.first_or_create do |recipe|
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Gaufres"
   recipe.description = "De delicieuses gaufres pour des gouters inoubliables !"
   recipe.steps = [
@@ -6995,32 +6952,32 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Levure chimique")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 5, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Gaufrier")
   recipe.utensils << Utensil.find_by_title("Fouet")
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Soupe au Saumon Sauvage"
   recipe.description = "Un grand classique de la cuisine finlandaise, idéal pour réchauffer les longues soirées d'hiver!"
   recipe.steps = [
@@ -7054,29 +7011,29 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 1500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pincée(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Botte(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Botte(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[11].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Marmite")
@@ -7084,7 +7041,7 @@ Recipe.first_or_create do |recipe|
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Americain Cordon Bleu"
   recipe.description = "Très peu diététique pour le corps mais un vrai médicament pour le moral !"
   recipe.steps = [
@@ -7109,20 +7066,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Frites")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Purée de patate douce"
   recipe.description = "Délicieuse purée"
   recipe.steps = [
@@ -7146,15 +7103,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 900, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 900, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Presse-purée")
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -7162,7 +7119,7 @@ Recipe.first_or_create do |recipe|
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Velouté de courgette"
   recipe.description = "Un velouté qui accompagne parfaitement un repas."
   recipe.steps = [
@@ -7185,19 +7142,19 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Bouillon de boeuf")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 1500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 10, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 10, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
 
   recipe.utensils << Utensil.find_by_title("Auto-cuiseur")
   recipe.utensils << Utensil.find_by_title("Mixeur plongeant")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Ratatouille"
   recipe.description = "Excellent élément à manger seul ou à incorporer dans une autre recette"
   recipe.steps = [
@@ -7229,34 +7186,34 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 350, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Brin(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Brin(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Feuille(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte à la ratatouille"
   recipe.description = "Une tarte rapide à faire quand on a pas trop de temps mais qu'on veut manger des bons légumes."
   recipe.steps = [
@@ -7280,11 +7237,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Gruyère râpé")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Plat à tarte")
   recipe.utensils << Utensil.find_by_title("Four")
@@ -7292,7 +7249,7 @@ Recipe.first_or_create do |recipe|
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Courgette Farcie"
   recipe.description = "Excellent avec du riz"
   recipe.steps = [
@@ -7330,27 +7287,27 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 250, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 480, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 480, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Poêle")
@@ -7359,7 +7316,7 @@ Recipe.first_or_create do |recipe|
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Crème patissière"
   recipe.description = "Délicieux à la cuillière nature ou avec quelques fruits, base de nombreuses recettes de patisserie."
   recipe.steps = [
@@ -7385,15 +7342,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Gousse de vanille")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Litre(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Litre(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
 
   recipe.utensils << Utensil.find_by_title("Fouet")
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -7401,7 +7358,7 @@ Recipe.first_or_create do |recipe|
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pêche au thon"
   recipe.description = "Un sucré salé étonnant ! Excellent en début de repas."
   recipe.steps = [
@@ -7422,17 +7379,17 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3  , :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3  , :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
 
   recipe.utensils << Utensil.find_by_title("Couteau")
 end
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Salade Skagen"
   recipe.description = "Une recette typiquement Suèdoise à base de crevette que l'on sert sur du pain polaire ou des blinis."
   recipe.steps = [
@@ -7461,29 +7418,29 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Poivre")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
 
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tartiflette"
   recipe.description = "Le parfait repas entre amis pour passer un hiver au chaud!"
   recipe.steps = [
@@ -7516,17 +7473,17 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Kilogramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
 
@@ -7537,7 +7494,7 @@ end
 
 
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pot au feu sans viande"
   recipe.description = "Un repas équilibré sans viande"
   recipe.steps = [
@@ -7571,29 +7528,29 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
 
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Ravioli maison"
   recipe.description = "Bien meilleur que ceux en boites!"
   recipe.steps = [
@@ -7632,16 +7589,16 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity = nil
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity = nil
 
   recipe.utensils << Utensil.find_by_title("Couteau")
@@ -7649,7 +7606,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Saladier")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Flan coco"
   recipe.description = "Un flan rapide et délicieux"
   recipe.steps = [
@@ -7676,13 +7633,13 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 125, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
 
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -7690,7 +7647,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte aux pommes"
   recipe.description = "Une tarte qui régalera vos enfants !"
   recipe.steps = [
@@ -7719,13 +7676,13 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
 
   recipe.utensils << Utensil.find_by_title("Casserole")
@@ -7733,7 +7690,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Galette des rois à la frangipane"
   recipe.description = "Attention a vos dents !"
   recipe.steps = [
@@ -7762,17 +7719,17 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 140, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 75, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fourchette")
@@ -7781,7 +7738,7 @@ Recipe.first_or_create do |recipe|
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tarte tatin"
   recipe.description = "Le dessert au pommes que tout le monde aime!"
   recipe.steps = [
@@ -7813,17 +7770,17 @@ Recipe.first_or_create do |recipe|
 
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 8, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
 
   recipe.utensils << Utensil.find_by_title("Saladier")
@@ -7833,7 +7790,7 @@ Recipe.first_or_create do |recipe|
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Avocat au thon"
   recipe.description = "Entrée végétarienne"
   recipe.steps = [
@@ -7856,18 +7813,18 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Mayonnaise")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value =>2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value =>2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Cuillère")
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Pain de poisson"
   recipe.description = "Plat de poisson savoureux."
   recipe.steps = [
@@ -7893,13 +7850,13 @@ Recipe.first_or_create do |recipe|
 
   recipe.recipe_ingredients[0].recipe_quantity = nil
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 20, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 70, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 70, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
 
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Fourchette")
@@ -7907,7 +7864,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Cuillère")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Terrine au saumon"
   recipe.description = "terrine de poisson très agréable en été."
   recipe.steps = [
@@ -7933,15 +7890,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Ciboulette")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
 
   recipe.utensils << Utensil.find_by_title("Couteau")
@@ -7951,7 +7908,7 @@ Recipe.first_or_create do |recipe|
 
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Oeufs brouillés nature"
   recipe.description = "Des oeufs rapide à manger en entrée"
   recipe.steps = [
@@ -7976,11 +7933,11 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 12, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 60, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity = nil
 
@@ -7988,7 +7945,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Fouet")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Bibimbap Corrén"
   recipe.description = "Bol de riz avec des légumes"
   recipe.steps = [
@@ -8026,33 +7983,33 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Huile de sésame")
 
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[8].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[9].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[11].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[12].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[13].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
 
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Cuillère")
@@ -8061,7 +8018,7 @@ Recipe.first_or_create do |recipe|
   recipe.utensils << Utensil.find_by_title("Wok")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Milkshake à la banane"
   recipe.description = "Une boisson fraiche à déguster aussi bien l'après-midi pour un gouter entres amis ou après votre repas. Un délice !"
   recipe.steps = [
@@ -8084,18 +8041,18 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Lait")
   recipe.ingredients << Ingredient.find_by_name("Copeaux de chocolat")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Boule(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Boule(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Centilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Blender")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Saumon à l'orange"
   recipe.description = "Plat sucré-salé apprécié des amateurs de poisson et d'agrumes."
   recipe.steps = [
@@ -8127,36 +8084,36 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Saumon")
   recipe.ingredients << Ingredient.find_by_name("Orange")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 300, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[11].recipe_quantity = nil
   recipe.recipe_ingredients[12].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 600, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[13].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Couteau")
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Plat au four")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Escalope de poulet au muesli, compotée d'aubergines"
   recipe.description = "Plat simple et savoureux !"
   recipe.steps = [
@@ -8190,31 +8147,31 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Noix de cajou")
   recipe.ingredients << Ingredient.find_by_name("Pignons de pin")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.recipe_ingredients[9].recipe_quantity = nil
   recipe.recipe_ingredients[10].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[11].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[12].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 50, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.utensils << Utensil.find_by_title("Plancha")
   recipe.utensils << Utensil.find_by_title("Poêle")
   recipe.utensils << Utensil.find_by_title("Rouleau à pâtisserie")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Les cannelés bordelais"
   recipe.description = "Le canelé est un petit gâteau, spécialité du Bordelais, à pâte molle et tendre, parfumée au rhum et à la vanille, et recouverte d’une fine croûte caramélisée, en forme de petit cylindre strié."
   recipe.steps = [
@@ -8239,28 +8196,28 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Jaune d'oeuf")
   recipe.ingredients << Ingredient.find_by_name("Rhum")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
+    RecipeQuantity.create!(:value => 500, :quantity_type => QuantityType.find_by_name("Millilitre(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 100, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.utensils << Utensil.find_by_title("Moule à cannelés")
   recipe.utensils << Utensil.find_by_title("Four")
   recipe.utensils << Utensil.find_by_title("Casserole")
   recipe.utensils << Utensil.find_by_title("Réfrigérateur")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Verrines de mousse de fruits"
   recipe.description = "Idéal pour faire manger des fruits aux enfants !"
   recipe.steps = [
@@ -8282,20 +8239,20 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Extrait de vanille")
   recipe.ingredients << Ingredient.find_by_name("Blanc d'oeuf")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 450, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 450, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 400, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 4, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.utensils << Utensil.find_by_title("Verrine")
   recipe.utensils << Utensil.find_by_title("Fourchette")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Tiramisu aux fruits d'été"
   recipe.description = "Dessert très rafraîchissant, savoureux avec un repas assez lourd !"
   recipe.steps = [
@@ -8322,28 +8279,28 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Cacao")
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 200, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 40, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[5].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 6, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[6].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 150, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[7].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[8].recipe_quantity = nil
   recipe.utensils << Utensil.find_by_title("Saladier")
   recipe.utensils << Utensil.find_by_title("Batteur")
   recipe.utensils << Utensil.find_by_title("Verrine")
 end
 
-Recipe.first_or_create do |recipe|
+Recipe.create! do |recipe|
   recipe.title = "Millefeuille d'été"
   recipe.description = "Entrée savoureuse qui équilibre parfaitement les légumes du Soleil et la viande des grisons !"
   recipe.steps = [
@@ -8369,15 +8326,15 @@ Recipe.first_or_create do |recipe|
   recipe.ingredients << Ingredient.find_by_name("Sel")
   recipe.ingredients << Ingredient.find_by_name("Poivre")
   recipe.recipe_ingredients[0].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[2].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
+    RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[3].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
+    RecipeQuantity.create!(:value => 30, :quantity_type => QuantityType.find_by_name("Gramme(s)"))
   recipe.recipe_ingredients[4].recipe_quantity =
-    RecipeQuantity.first_or_create(:value => 3, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
+    RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Tranche(s)"))
   recipe.recipe_ingredients[5].recipe_quantity = nil
   recipe.recipe_ingredients[6].recipe_quantity = nil
   recipe.recipe_ingredients[7].recipe_quantity = nil
