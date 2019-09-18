@@ -115,6 +115,17 @@ en:
     api:
       follow_ok: "You follow this producer"
       follow_ko: "you no longer follow this producer"
+    edit_like_ingredients: "Edit your liked ingredients"
+    must_be_conected: "You have to be connected !"
+    like:
+      update_success: "Your tastes have been updated !"
+      update_fail: "You must be logged to update your tastes !"
+      label: "Ingredients you love"
+      title: "Modify your tastes here to allow us to generate a meal schedule according to what you want!"
+    unlike:
+      label: "Ingredients you hate"
+    pref:
+      title: "Your preferences here...."
 
   navbar:
     log_out: "Log out"
@@ -311,3 +322,7 @@ en:
     dashboard_welcome:
       welcome: "Welcome"
       call_to_action: "Action"
+  slimselect:
+    like_unlike_ingredients:
+      no_result: "This ingredient does not exist"
+      search_placeholder: "Search an ingredient..."
