@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  skip_before_action :verify_authenticity_token
+
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
@@ -11,7 +13,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    if api_request?
+      @user = User.create(sign_up_params)
+      respond_to do |format|
+        format.json {
+          @user.save ? (render :json => {:state => {:code => 0}, :data => @user }) : (render :json => {:state => {:code => 1, :messages => @user.errors.full_messages} })
+        }
+      end
+    else
+      super
+    end
   end
 
   # GET /resource/edit
@@ -70,6 +81,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :first_name, :password_confirmation, :last_name)
+  end
+
+  def api_request?
+    request.format.json? || request.format.xml?
   end
 end
