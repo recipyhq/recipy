@@ -61,7 +61,7 @@
   <div class="uk-child-width-1-2@m" uk-grid>
     <div>
       <div class="uk-padding">
-        <% if @recipe.utensils.count > 1 %>
+        <% if @recipe.recipe_ingredients.count > 1 %>
           <h2 class="title"><%= "Ingrédients" %></h2>
         <% else %>
           <h2 class="title"><%= "Ingrédient" %></h2>
