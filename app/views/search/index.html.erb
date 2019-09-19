@@ -29,20 +29,23 @@
     <%= f.input :sort, :label => t("search.sort_by"), :prompt => t("search.sort_by"), :selected => @sort, collection: @sort_possibilities, as: :select, input_html: { class: 'uk-select' }, wrapper_class: "uk-width-1-4@s", :label_method => lambda { |el| t "search.sort.#{el.first}" } %>
 <% end %>
 <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m uk-padding" uk-grid>
-    <p class="uk-text-small uk-width-1-1"><%= @recipes.uniq.count %> résultats trouvés</p>
+    <p class="uk-text-small uk-width-1-1"><%= @recipe_count %> résultats trouvés</p>
     <% if (@recipes.uniq.count > 0) %>
         <% @recipes.each do |recipe| %>
             <div>
                 <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top">
+                    <div class="uk-card-media-top recipe-img recipe-search-img" style="background-image: url(
                         <% if recipe.image.attached? %>
-                            <%= image_tag recipe.image, :crop => :fill %>
+                            <%= rails_blob_url recipe.image %>
                         <% else %>
-                            <%= image_tag "https://picsum.photos/400/200" %>
+                            <%= "https://picsum.photos/400/200" %>
                         <% end %>
+                    )">
                     </div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title"><%= recipe.title %></h3>
+                        <div uk-tooltip="<%= recipe.title %>">
+                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"><%= recipe.title %></h3>
+                        </div>
                         <div class="star-ratings star-dark">
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
