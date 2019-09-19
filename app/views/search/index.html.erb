@@ -55,9 +55,10 @@
                           <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
                         </div>
                         <div class="info-recipe">
-                            <span class="info"> <i class="fas fa-hourglass-end"></i>  </b> <%= recipe.cooking_time + recipe.preparation_time%> minutes</span>
-                            <span class="name"><%= t("recipe.title.ingredient_number")  %></span>
-                            <span class="info"><%= recipe.ingredients.count %></span>
+                          <span class="info"> <i class="fas fa-hourglass-end"></i>  </b> <%= recipe.cooking_time + recipe.preparation_time%> minutes</span>
+                          <span class="info"> <%= "Nombre d'ingrédients :" %>
+                            <%= recipe.ingredients.count %>
+                          </span>
                         </div>
                     </div>
                 </div>
