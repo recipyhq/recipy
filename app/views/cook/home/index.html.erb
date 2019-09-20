@@ -41,7 +41,7 @@
                     </div>
                     <div class="uk-card-body">
                         <div uk-tooltip="<%= recipe.title %>">
-                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text" %></h3>
+                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
                         </div>
                         <div class="star-ratings star-dark">
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
