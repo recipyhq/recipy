@@ -32,13 +32,16 @@
           <% @recipes.each do |recipe| %>
             <div>
                 <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top recipe-img" style="background-image: url(
-                        <% if recipe.image.attached? %>
-                            <%= rails_blob_url recipe.image %>
-                        <% else %>
-                            <%= "https://picsum.photos/400/200" %>
-                        <% end %>)">
+                  <%= link_to recipe do %>
+                    <div class="uk-card-media-top recipe-img recipe-search-img" style="
+                    <% if recipe.image.attached? %>
+                      background-image: url(<%= rails_blob_url recipe.image %>);
+                      <% else %>
+                      <%= "https://picsum.photos/400/200" %>
+                      <% end %>
+                    ">
                     </div>
+                  <% end %>
                     <div class="uk-card-body">
                         <div uk-tooltip="<%= recipe.title %>">
                           <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
