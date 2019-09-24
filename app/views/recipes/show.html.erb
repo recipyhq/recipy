@@ -61,7 +61,11 @@
   <div class="uk-child-width-1-2@m" uk-grid>
     <div>
       <div class="uk-padding">
-        <h2 class="title"><%= t("recipe.title.ingredients") %></h2>
+        <% if @recipe.recipe_ingredients.count > 1 %>
+          <h2 class="title"><%= "Ingrédients" %></h2>
+        <% else %>
+          <h2 class="title"><%= "Ingrédient" %></h2>
+        <% end %>
         <div class="uk-card uk-card-default uk-card-body">
           <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
             <div class="uk-grid-small" uk-grid>
@@ -84,7 +88,11 @@
         </div>
       </div>
       <div class="uk-padding">
-        <h2 class="title"><%= t("recipe.title.ustensil") %></h2>
+        <% if @recipe.utensils.count > 1 %>
+          <h2 class="title"><%= "Ustensiles" %></h2>
+        <% else %>
+          <h2 class="title"><%= "Ustensile" %></h2>
+        <% end %>
         <div class="uk-card uk-card-default uk-card-body">
           <ul>
             <% @recipe.utensils.each do |ustensile| %>

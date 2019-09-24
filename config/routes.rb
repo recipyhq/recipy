@@ -1,8 +1,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :meal_plans
-  resources :meals
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
@@ -58,6 +56,8 @@ Rails.application.routes.draw do
         patch 'createproducer' => 'home#patch'
       end
 
+      get 'meal_plans' => 'meal_plans#index'
+      # resources :meals
       resources :shopping_lists
       resources :recipes
       resources :point_of_sales
