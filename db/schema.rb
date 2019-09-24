@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_143443) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "longitude"
-    t.integer "latitude"
+    t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "administrators", force: :cascade do |t|
