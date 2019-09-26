@@ -230,6 +230,7 @@ body {
 }
 
 .meal-card {
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
   a:hover {
     text-decoration: none;
   }
@@ -239,11 +240,76 @@ body {
   background-color: $recipy-primary-color;
 }
 
+.day-moment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-left: 3px solid black;
+}
+
+.meals {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.recipe-meal-link {
+  flex: 1;
+}
+
+.day-name {
+  width: 200px;
+}
+
 .recipe-img-meal-plan {
-  max-height:100px;
+  height:100%;
+  position: relative;
   background-color: $recipy-primary-color;
+  z-index: 1;
+  transition: height 0.5s ease;
 
   & .title {
-    text-shadow: 0px 0px 4px white;
+    color: white;
+    opacity: 1;
+    padding: 5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    z-index: 11000 !important;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover {
+    .title {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background: rgba(0,0,0,0.3);
+  }
+}
+
+@media (max-width: 800px) {
+  .meals {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+	.recipe-img-meal-plan {
+    height: 100px;
+  
+    & .title {
+      opacity: 1;
+    }
   }
 }

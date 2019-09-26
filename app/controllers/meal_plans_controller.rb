@@ -8,112 +8,81 @@ class MealPlansController < ApplicationController
   # GET /meal_plans.json
   def index
     skip_policy_scope
-    @meal_plans = MealPlan.all
-    monday = prior_monday(Date.new(2019, 6, 5))
+    @date_begin = Date.today - 3.day
+    @date_end = Date.today + 3.day
+    # @meal_plans = MealPlan.all
+    # monday = prior_monday(Date.new(2019, 6, 5))
+    @day_meals = []
 
-    hex = (Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16)).to_f
-    seed = Random.new(hex).rand
-    query = Recipe.joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').limit(14)
-    
-    Recipe.connection.execute("select setseed(#{seed})")
-    dishes = query.where(:recipe_categories => { :name => "Plat" })
-    starters = query.where(:recipe_categories => { :name => "Entrée" })
-    desserts = query.where(:recipe_categories => { :name => "Dessert" })
-    @midday_meals = []
-    @evening_meals = []
-    @days = [
-       "Lundi",
-       "Mardi",
-       "Mercredi",
-       "Jeudi",
-       "Vendredi",
-       "Samedi",
-       "Dimanche"
-    ]
-    (0..6).each do |n|
-      @midday_meals.push({
-        :starter => starters[n % starters.count],
-        :dish => dishes[n % dishes.count],
-        :dessert => desserts[n % desserts.count],
-      })
-    
-      @evening_meals.push({
-        :starter => starters[(n + 7)% starters.count],
-        :dish => dishes[(n + 7)% dishes.count],
-        :dessert => desserts[(n + 7)% desserts.count],
-      })
+    (@date_begin..@date_end).each do |day|
+      @day_meals.push(get_by_date(day))
     end
+
+    # hex = (Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16)).to_f
+    # seed = Random.new(hex).rand
+    # query = Recipe.joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').limit(14)
+
+    
+    # Recipe.connection.execute("select setseed(#{seed})")
+    # dishes = query.where(:recipe_categories => { :name => "Plat" })
+    # starters = query.where(:recipe_categories => { :name => "Entrée" })
+    # desserts = query.where(:recipe_categories => { :name => "Dessert" })
+    # @midday_meals = []
+    # @evening_meals = []
+    # @days = [
+    #    "Lundi",
+    #    "Mardi",
+    #    "Mercredi",
+    #    "Jeudi",
+    #    "Vendredi",
+    #    "Samedi",
+    #    "Dimanche"
+    # ]
+    # (0..6).each do |n|
+    #   @midday_meals.push({
+    #     :starter => starters[n % starters.count],
+    #     :dish => dishes[n % dishes.count],
+    #     :dessert => desserts[n % desserts.count],
+    #   })
+    
+    #   @evening_meals.push({
+    #     :starter => starters[(n + 7)% starters.count],
+    #     :dish => dishes[(n + 7)% dishes.count],
+    #     :dessert => desserts[(n + 7)% desserts.count],
+    #   })
+    # end
   end
 
-  # # GET /meal_plans/1
-  # # GET /meal_plans/1.json
-  # def show
-  # end
-
-  # # GET /meal_plans/new
-  # def new
-  #   skip_authorization
-  #   @meal_plan = MealPlan.new
-  # end
-
-  # # GET /meal_plans/1/edit
-  # def edit
-  # end
-
-  # # POST /meal_plans
-  # # POST /meal_plans.json
-  # def create
-  #   @meal_plan = MealPlan.new(meal_plan_params)
-
-  #   respond_to do |format|
-  #     if @meal_plan.save
-  #       format.html { redirect_to @meal_plan, notice: 'Meal plan was successfully created.' }
-  #       format.json { render :show, status: :created, location: @meal_plan }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @meal_plan.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # PATCH/PUT /meal_plans/1
-  # # PATCH/PUT /meal_plans/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @meal_plan.update(meal_plan_params)
-  #       format.html { redirect_to @meal_plan, notice: 'Meal plan was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @meal_plan }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @meal_plan.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /meal_plans/1
-  # # DELETE /meal_plans/1.json
-  # def destroy
-  #   @meal_plan.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to meal_plans_url, notice: 'Meal plan was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
   private
+
+  def get_by_date(date)
+    Bullet.enable = false
+    monday = prior_monday(date)
+    hex = (Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16)).to_f
+    seed = Random.new(hex).rand
+    diff_date = (date - monday).to_i
+    
+    day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
+      query = Recipe.joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
+      dishes = query.where(:recipe_categories => { :name => "Plat" })
+      starters = query.where(:recipe_categories => { :name => "Entrée" })
+      desserts = query.where(:recipe_categories => { :name => "Dessert" })
+
+      mp.midday_starter_recipe = starters[0];
+      mp.midday_dish_recipe = dishes[0];
+      mp.midday_dessert_recipe = desserts[0];
+      mp.evening_starter_recipe = starters[1];
+      mp.evening_dish_recipe = dishes[1];
+      mp.evening_dessert_recipe = desserts[1];
+      
+    end
+
+    # day_plan
+  end
   
   def prior_monday(date)
+    return date if date.monday?
     days_before = (date.wday + 5) % 7 + 1
     date.to_date - days_before
   end
-
-  
-
-  # def set_meal_plan
-  #   @meal_plan = MealPlan.find(params[:id])
-  # end
-
-  # def meal_plan_params
-  #   params.fetch(:meal_plan)
-  # end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_25_143443) do
+ActiveRecord::Schema.define(version: 2019_09_26_075129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_143443) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "longitude"
-    t.float "latitude"
+    t.integer "longitude"
+    t.integer "latitude"
   end
 
   create_table "administrators", force: :cascade do |t|
@@ -121,18 +121,23 @@ ActiveRecord::Schema.define(version: 2019_08_25_143443) do
   end
 
   create_table "meal_plans", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "user_id"
+    t.bigint "midday_starter_recipe_id"
+    t.bigint "midday_dish_recipe_id"
+    t.bigint "midday_dessert_recipe_id"
+    t.bigint "evening_starter_recipe_id"
+    t.bigint "evening_dish_recipe_id"
+    t.bigint "evening_dessert_recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "meals", force: :cascade do |t|
-    t.integer "type"
-    t.date "date"
-    t.time "time"
-    t.boolean "done"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_meals_on_type"
+    t.index ["evening_dessert_recipe_id"], name: "index_meal_plans_on_evening_dessert_recipe_id"
+    t.index ["evening_dish_recipe_id"], name: "index_meal_plans_on_evening_dish_recipe_id"
+    t.index ["evening_starter_recipe_id"], name: "index_meal_plans_on_evening_starter_recipe_id"
+    t.index ["midday_dessert_recipe_id"], name: "index_meal_plans_on_midday_dessert_recipe_id"
+    t.index ["midday_dish_recipe_id"], name: "index_meal_plans_on_midday_dish_recipe_id"
+    t.index ["midday_starter_recipe_id"], name: "index_meal_plans_on_midday_starter_recipe_id"
+    t.index ["user_id"], name: "index_meal_plans_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -507,6 +512,13 @@ ActiveRecord::Schema.define(version: 2019_08_25_143443) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "meal_plans", "recipes", column: "evening_dessert_recipe_id"
+  add_foreign_key "meal_plans", "recipes", column: "evening_dish_recipe_id"
+  add_foreign_key "meal_plans", "recipes", column: "evening_starter_recipe_id"
+  add_foreign_key "meal_plans", "recipes", column: "midday_dessert_recipe_id"
+  add_foreign_key "meal_plans", "recipes", column: "midday_dish_recipe_id"
+  add_foreign_key "meal_plans", "recipes", column: "midday_starter_recipe_id"
+  add_foreign_key "meal_plans", "users"
   add_foreign_key "memberships", "users"
   add_foreign_key "notebook_recipes", "notebooks"
   add_foreign_key "notebook_recipes", "recipes"

@@ -1,4 +1,7 @@
 fr:
+  date:
+    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+  
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
   placeholder_first_name: "Prénom"

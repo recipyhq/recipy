@@ -1,88 +1,96 @@
 <div class="uk-container uk-padding">
   <h1 class="title">Mon planning de repas</h1>
 </div>
-<div class="uk-grid-match uk-grid-small .uk-child-width-2 uk-child-width-1-4@s uk-child-width-1-2@m uk-child-width-1-4@l uk-child-width-1-6@xl uk-flex-center uk-margin uk-margin-left uk-margin-right" uk-grid>
-  <% (0..6).each do |n| %>
-    <div>
-        <div class="uk-card uk-card-default <% if (n + 1) % 7 == Time.now.wday %> <%= "orange-card" %> <% end %> meal-card">
-          <h4 class="title uk-padding uk-padding-remove-bottom"><%= @days[n] %></h4>
-          <h5 class="title uk-padding-small uk-padding-remove-top">Midi</h5>
-          <div>
-            <%= link_to @midday_meals[n][:starter] do %>
-              <div class="recipe-img recipe-img-meal-plan" style="
-                <% if @midday_meals[n][:starter].image.attached? %>
-                  background-image: url(<%= rails_blob_url @midday_meals[n][:starter].image %>);
-                <% end %>
-              ">
-                <p class="title uk-padding-small">
-                  <%= @midday_meals[n][:starter].title %>
-                </p>
-              </div>
-            <% end %>
-
-            <%= link_to @midday_meals[n][:dish] do %>
-              <div class="recipe-img recipe-img-meal-plan" style="
-                <% if @midday_meals[n][:dish].image.attached? %>
-                  background-image: url(<%= rails_blob_url @midday_meals[n][:dish].image %>);
-                <% end %>
-              ">
-                <p class="title uk-padding-small">
-                  <%= @midday_meals[n][:dish].title %>
-                </p>
-              </div>
-            <% end %>
-
-            <%= link_to @midday_meals[n][:dessert] do %>
-              <div class="recipe-img recipe-img-meal-plan" style="
-                <% if @midday_meals[n][:dessert].image.attached? %>
-                  background-image: url(<%= rails_blob_url @midday_meals[n][:dessert].image %>);
-                <% end %>
-              ">
-                <p class="title uk-padding-small">
-                  <%= @midday_meals[n][:dessert].title %>
-                </p>
-              </div>
-            <% end %>
-          </div>
-          <h5 class="title uk-padding-small uk-padding-remove-top">Soir</h5>
-          <div>
-            <%= link_to @evening_meals[n][:starter] do %>
-              <div class="recipe-img recipe-img-meal-plan" style="
-                <% if @evening_meals[n][:starter].image.attached? %>
-                  background-image: url(<%= rails_blob_url @evening_meals[n][:starter].image %>);
-                <% end %>
-              ">
-                <p class="title uk-padding-small">
-                  <%= @evening_meals[n][:starter].title %>
-                </p>
-              </div>
-            <% end %>
-
-            <%= link_to @evening_meals[n][:dish] do %>
-            <div class="recipe-img recipe-img-meal-plan" style="
-              <% if @evening_meals[n][:dish].image.attached? %>
-                background-image: url(<%= rails_blob_url @evening_meals[n][:dish].image %>);
-              <% end %>
-            ">
-              <p class="title uk-padding-small">
-                <%= @evening_meals[n][:dish].title %>
-              </p>
+<div class="uk-margin">
+  <div class="uk-grid-match uk-grid-small .uk-child-width-1-1 uk-flex-center" uk-grid>
+    <% @day_meals.each do |day_meal| %>
+      <div>
+          <div class="uk-card uk-card-default <% if day_meal.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
+            <div class="day-name">
+              <h4 class="title uk-padding"><%= t('date.day_names')[day_meal.date.wday] %></h4>
             </div>
-            <% end %>
+            <div class="day-moment">
+              <h5 class="title">Midi</h5>
+            </div>
+            <div class="meals">
+              <%= link_to day_meal.midday_starter_recipe, { class: 'recipe-meal-link' } do %>
+                <div class="recipe-img recipe-img-meal-plan" style="
+                  <% if day_meal.midday_starter_recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url day_meal.midday_starter_recipe.image %>);
+                  <% end %>
+                ">
+                  <p class="title">
+                    <%= day_meal.midday_starter_recipe.title %>
+                  </p>
+                </div>
+              <% end %>
 
-            <%= link_to @evening_meals[n][:desert] do %>
+              <%= link_to day_meal.midday_dish_recipe, { class: 'recipe-meal-link' } do %>
+                <div class="recipe-img recipe-img-meal-plan" style="
+                  <% if day_meal.midday_dish_recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url day_meal.midday_dish_recipe.image %>);
+                  <% end %>
+                ">
+                  <p class="title">
+                    <%= day_meal.midday_dish_recipe.title %>
+                  </p>
+                </div>
+              <% end %>
+
+              <%= link_to day_meal.midday_dessert_recipe, { class: 'recipe-meal-link' } do %>
+                <div class="recipe-img recipe-img-meal-plan" style="
+                  <% if day_meal.midday_dessert_recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url day_meal.midday_dessert_recipe.image %>);
+                  <% end %>
+                ">
+                  <p class="title">
+                    <%= day_meal.midday_dessert_recipe.title %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+            <div class="day-moment">
+              <h5 class="title">Soir</h5>
+            </div>
+            <div class="meals">
+              <%= link_to day_meal.evening_starter_recipe, { class: 'recipe-meal-link' } do %>
+                <div class="recipe-img recipe-img-meal-plan" style="
+                  <% if day_meal.evening_starter_recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url day_meal.evening_starter_recipe.image %>);
+                  <% end %>
+                ">
+                  <p class="title">
+                    <%= day_meal.evening_starter_recipe.title %>
+                  </p>
+                </div>
+              <% end %>
+
+              <%= link_to day_meal.evening_dish_recipe, { class: 'recipe-meal-link' } do %>
               <div class="recipe-img recipe-img-meal-plan" style="
-                <% if @evening_meals[n][:dessert].image.attached? %>
-                  background-image: url(<%= rails_blob_url @evening_meals[n][:dessert].image %>);
+                <% if day_meal.evening_dish_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url day_meal.evening_dish_recipe.image %>);
                 <% end %>
               ">
-                <p class="title uk-padding-small">
-                  <%= @evening_meals[n][:dessert].title %>
+                <p class="title">
+                  <%= day_meal.evening_dish_recipe.title %>
                 </p>
               </div>
-            <% end %>
+              <% end %>
+
+              <%= link_to day_meal.evening_dessert_recipe, { class: 'recipe-meal-link' } do %>
+                <div class="recipe-img recipe-img-meal-plan" style="
+                  <% if day_meal.evening_dessert_recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url day_meal.evening_dessert_recipe.image %>);
+                  <% end %>
+                ">
+                  <p class="title">
+                    <%= day_meal.evening_dessert_recipe.title %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
           </div>
-        </div>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
