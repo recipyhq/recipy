@@ -37,7 +37,12 @@
     </div>
     <% if current_user && @notebooks_available.count > 0 %>
       <a href="#addToNotebook" class="uk-button uk-button-default uk-button-small" uk-toggle><%= t('recipe.title.add_to_notebook') %></a>
-    <% end %>
+    <% else %>
+      <%= simple_form_for :notebook, :url => create_notebook_url, :method => 'post' do |f| %>
+        <%= f.input :recipe_id, :input_html => {:value => @recipe.id}, as: :hidden %>
+        <%= f.button :submit, t('recipe.create_notebook') %>
+      <% end %>
+  <% end %>
   </div>
 </div>
 <div id="addToNotebook" uk-modal>

@@ -244,6 +244,7 @@ en:
     my_recipes:
       link: "My recipes"
       title: "All my recipes"
+    create_notebook: "Create a new notebook"
 
   ingredient:
     title:
