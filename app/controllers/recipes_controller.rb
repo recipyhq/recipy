@@ -192,6 +192,9 @@ class RecipesController < InheritedResources::Base
   def add_to_notebook
     notebooks_param = notebooks_params
     puts notebooks_param
+    if params[:recipe_id].nil?
+      return
+    end
     recipe = Recipe.find(params[:recipe_id])
     if recipe
       if !notebooks_param[:notebooks]
