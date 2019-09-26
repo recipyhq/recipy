@@ -98,6 +98,9 @@ fr:
       label: "Les aliments que vous détestez"
     pref:
       title: "Vos préférences ici..."
+    profile:
+      picture:
+        error: "Votre image de profil doit être une image"
 
 
 
@@ -429,3 +432,8 @@ fr:
       search_placeholder: "Rechercher un ingrédient..."
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
+  landing:
+    download_app:
+      title: "Téléchargez l'app ici !"
+      link: "Cliquez ici pour télécharger l'application"
+      qrCode: "Scannez le qr-code ci-dessous"

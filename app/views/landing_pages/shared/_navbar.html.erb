@@ -14,6 +14,7 @@
       <div class="uk-navbar-right uk-visible@m">
         <ul class="uk-navbar-nav">
           <li><a href="/beta">Accéder à la beta</a></li>
+          <li><a href="#dowloadApp" uk-toggle>Télécharger l'application</a></li>
           <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
         </ul>
       </div>
@@ -38,6 +39,27 @@
       <li><a href="/beta">Accéder à la beta</a></li>
       <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
     </ul>
+  </div>
+</div>
+
+<div id="dowloadApp" class="" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <button class="uk-modal-close-outside" type="button" uk-close></button>
+    <div class="uk-modal-header">
+      <h2 class="uk-modal-title"><%= t('landing.download_app.title')%></h2>
+    </div>
+      <div class="uk-margin-medium-top uk-text-center">
+          <a class="uk-button uk-button-text" href="https://expo.io/artifacts/e1a0f1d6-eba9-45d9-87ee-fa60721fd419" target="_blank">
+            <h3 class="uk-margin-remove">
+            <%= t('landing.download_app.link') %>
+            </h3>
+          </a>
+      </div>
+      <hr class="uk-divider-icon">
+      <div class="uk-text-center uk-align-center">
+        <h4 class="uk-margin-remove"><%= t('landing.download_app.qrCode')%></h4>
+        <img data-src="<%= asset_path 'landing/qrCode.png' %>" alt="Install mobile app" uk-img width="50%" height="50%">
+      </div>
   </div>
 </div>
 

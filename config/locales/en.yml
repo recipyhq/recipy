@@ -126,6 +126,9 @@ en:
       label: "Ingredients you hate"
     pref:
       title: "Your preferences here...."
+    profile:
+      picture:
+        error: "Your profile picture must be an image"
 
   navbar:
     log_out: "Log out"
@@ -327,3 +330,8 @@ en:
     like_unlike_ingredients:
       no_result: "This ingredient does not exist"
       search_placeholder: "Search an ingredient..."
+  landing:
+    download_app:
+      title: "Download the app here !"
+      link: "Click here to download the app"
+      qrCode: "Scan the qr-code below"
