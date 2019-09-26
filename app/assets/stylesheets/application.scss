@@ -238,6 +238,10 @@ body {
 
 .orange-card {
   background-color: $recipy-primary-color;
+
+  .uk-text-meta {
+    color: white;
+  }
 }
 
 .day-moment {
@@ -303,6 +307,10 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  .day-moment {
+    border: none;
   }
 
 	.recipe-img-meal-plan {

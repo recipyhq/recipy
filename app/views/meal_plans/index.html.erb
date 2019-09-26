@@ -7,7 +7,7 @@
       <div>
           <div class="uk-card uk-card-default <% if day_meal.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
             <div class="day-name">
-              <h4 class="title uk-padding"><%= t('date.day_names')[day_meal.date.wday] %></h4>
+              <h4 class="title uk-padding"><%= t('date.day_names')[day_meal.date.wday] %> <span class="uk-text-meta"><%= day_meal.date.strftime("%d/%m/%Y") %></span></h4>
             </div>
             <div class="day-moment">
               <h5 class="title">Midi</h5>

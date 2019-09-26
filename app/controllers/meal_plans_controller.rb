@@ -8,49 +8,13 @@ class MealPlansController < ApplicationController
   # GET /meal_plans.json
   def index
     skip_policy_scope
-    @date_begin = Date.today - 3.day
-    @date_end = Date.today + 3.day
-    # @meal_plans = MealPlan.all
-    # monday = prior_monday(Date.new(2019, 6, 5))
+    @date_begin = Date.today
+    @date_end = Date.today + 6.day
     @day_meals = []
 
     (@date_begin..@date_end).each do |day|
       @day_meals.push(get_by_date(day))
     end
-
-    # hex = (Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16)).to_f
-    # seed = Random.new(hex).rand
-    # query = Recipe.joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').limit(14)
-
-    
-    # Recipe.connection.execute("select setseed(#{seed})")
-    # dishes = query.where(:recipe_categories => { :name => "Plat" })
-    # starters = query.where(:recipe_categories => { :name => "Entrée" })
-    # desserts = query.where(:recipe_categories => { :name => "Dessert" })
-    # @midday_meals = []
-    # @evening_meals = []
-    # @days = [
-    #    "Lundi",
-    #    "Mardi",
-    #    "Mercredi",
-    #    "Jeudi",
-    #    "Vendredi",
-    #    "Samedi",
-    #    "Dimanche"
-    # ]
-    # (0..6).each do |n|
-    #   @midday_meals.push({
-    #     :starter => starters[n % starters.count],
-    #     :dish => dishes[n % dishes.count],
-    #     :dessert => desserts[n % desserts.count],
-    #   })
-    
-    #   @evening_meals.push({
-    #     :starter => starters[(n + 7)% starters.count],
-    #     :dish => dishes[(n + 7)% dishes.count],
-    #     :dessert => desserts[(n + 7)% desserts.count],
-    #   })
-    # end
   end
 
   private
@@ -76,8 +40,6 @@ class MealPlansController < ApplicationController
       mp.evening_dessert_recipe = desserts[1];
       
     end
-
-    # day_plan
   end
   
   def prior_monday(date)
