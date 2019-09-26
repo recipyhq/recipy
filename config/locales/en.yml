@@ -126,6 +126,9 @@ en:
       label: "Ingredients you hate"
     pref:
       title: "Your preferences here...."
+    profile:
+      picture:
+        error: "Your profile picture must be an image"
 
   navbar:
     log_out: "Log out"

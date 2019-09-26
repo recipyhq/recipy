@@ -16,9 +16,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if api_request?
       @user = User.create(sign_up_params)
       respond_to do |format|
-        format.json {
-          @user.save ? (render :json => {:state => {:code => 0}, :data => @user }) : (render :json => {:state => {:code => 1, :messages => @user.errors.full_messages} })
-        }
+        format.json do
+          if @user.save
+            (render :json => { :state => { :code => 0 }, :data => @user })
+          else
+            (render :json => { :state => { :code => 1, :messages => @user.errors.full_messages } })
+          end
+        end
       end
     else
       super
@@ -32,6 +36,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
+    unless params[:user][:avatar].content_type.starts_with?('image/')
+      redirect_to edit_user_registration_path(current_user.id),
+                  flash: { error: t("users.profile.picture.error") }
+      return
+    end
     super
   end
 

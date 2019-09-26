@@ -98,6 +98,9 @@ fr:
       label: "Les aliments que vous détestez"
     pref:
       title: "Vos préférences ici..."
+    profile:
+      picture:
+        error: "Votre image de profil doit être une image"
 
 
 
