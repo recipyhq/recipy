@@ -35,18 +35,23 @@
         </div>
       </div>
     </div>
-    <% if current_user && @notebooks_available.count > 0 %>
+    <% if current_user && current_user.notebooks.count > 0 %>
       <a href="#addToNotebook" class="uk-button uk-button-default uk-button-small" uk-toggle><%= t('recipe.title.add_to_notebook') %></a>
-    <% end %>
+    <% else %>
+      <%= simple_form_for :notebook, :url => create_notebook_url, :method => 'post' do |f| %>
+        <%= f.input :recipe_id, :input_html => {:value => @recipe.id}, as: :hidden %>
+        <%= f.button :submit, t('recipe.create_notebook') %>
+      <% end %>
+  <% end %>
   </div>
 </div>
 <div id="addToNotebook" uk-modal>
   <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
     <button class="uk-modal-close-outside" type="button" uk-close></button>
     <h2 class="uk-modal-title landing-title"><%= t('recipe.title.add_to_notebook') %></h2>
-    <% if @notebooks_available.count > 0 %>
+    <% if current_user.notebooks.count > 0 %>
       <%= simple_form_for @recipe, :url => recipe_add_to_notebook_url(@recipe), :method => 'post' do |f| %>
-        <%= f.input :notebooks, collection: @notebooks_available, label: false, as: :select, input_html: {
+        <%= f.input :notebooks, collection: current_user.notebooks, label: false, as: :select, input_html: {
         slimselect: true,
         slimselectNoResult: t('slimselect.notebooks.no_result'),
         slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),

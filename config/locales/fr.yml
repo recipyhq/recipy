@@ -269,6 +269,7 @@ fr:
         valid: "La recette a bien été ajouté au carnet de recettes"
         already_in: "La recette est déjà dans le carnet de recette choisit"
         no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
+      create_notebook: "Créer un carnet de recette"
 
   ingredient:
     title:

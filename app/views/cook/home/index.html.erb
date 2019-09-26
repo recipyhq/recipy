@@ -1,7 +1,7 @@
   <div class="uk-cover-container uk-height-medium">
     <img src="<%= asset_path 'wallpapers/home_blured.jpg' %>" alt="cover" uk-cover>
     <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle">
-      <h1 class="title title-light uk-padding uk-padding-remove-bottom">Vous avez faim ?</h1>
+      <h1 class="title title-light uk-padding uk-padding-remove-bottom"><%= @sentence %></h1>
       <div class="uk-width-1-1 uk-padding uk-text-center">
         <%= simple_form_for :search,
                             url: search_path,
