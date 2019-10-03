@@ -45,6 +45,6 @@ class Ingredient < ApplicationRecord
   before_save :set_defaults
 
   def set_defaults
-    self.confirmed ||= false
+    self.confirmed ||= true
   end
 end
