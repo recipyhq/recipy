@@ -104,6 +104,8 @@ fr:
     allergens:
       title: "Indiquez ci-dessous vos allergènes pour affiner vos recherches"
       label: "Vos allergènes"
+    utensils:
+      title: "Les ustensiles que vous possédez"
 
 
 
@@ -442,6 +444,9 @@ fr:
     allergens:
       no_result: "Aucun allergène trouvé"
       search_placeholder: "Vos allergène"
+    utensils:
+      no_result: "Ustensile non trouvé"
+      search_placeholder: "Vos ustensiles"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:

@@ -29,10 +29,12 @@ class Users::BaseController < ApplicationController
       @user.ingredients.destroy_all
       @user.no_like_ingredients.destroy_all
       @user.allergens.destroy_all
+      @user.utensils.destroy_all
 
       new_like = @params[:ingredients].drop(1).reject(&:empty?)
       new_unlike = @params[:no_like_ingredients].drop(1).reject(&:empty?)
       new_allergens = @params[:allergens].drop(1).reject(&:empty?)
+      new_utensils = @params[:utensils].drop(1).reject(&:empty?)
 
       new_like.each do |elem|
         ingredient = Ingredient.find(elem)
@@ -45,6 +47,10 @@ class Users::BaseController < ApplicationController
       new_allergens.each do |elem|
         allergen = AllergenTag.find(elem)
         @user.allergens << allergen
+      end
+      new_utensils.each do |elem|
+        utensil = Utensil.find(elem)
+        @user.utensils << utensil
       end
       redirect_to edit_preferences_path, flash: { success: t("users.like.update_success") }
       return
@@ -84,7 +90,7 @@ class Users::BaseController < ApplicationController
   private
 
   def like_params
-    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [])
+    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [], :utensils => [])
   end
 
   def user_params

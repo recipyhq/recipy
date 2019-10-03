@@ -263,6 +263,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Viande"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Arachides"),
+  ]
   ingredient.shelf_tag = "Viandes"
 end
 
@@ -3098,10 +3101,6 @@ Utensil.create! do |utensil|
 end
 Utensil.create! do |utensil|
   utensil.title = "Rouleau à pâtisserie"
-end
-
-Utensil.create! do |utensil|
-  utensil.title = "Pinceau"
 end
 
 Utensil.create! do |utensil|

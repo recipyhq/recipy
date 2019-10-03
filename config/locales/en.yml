@@ -132,6 +132,8 @@ en:
     allergens:
       title: "Indicate below your allergens to refine your search"
       label: "Your allergens"
+    utensils:
+      title: "Your utensils"
 
   navbar:
     log_out: "Log out"
@@ -342,8 +344,14 @@ en:
     allergens:
       no_result: "No found allergen"
       search_placeholder: "Your allergens"
+    utensils:
+      no_result: "Utensil not found"
+      search_placeholder: "Your utensils"
   landing:
     download_app:
       title: "Download the app here !"
       link: "Click here to download the app"
       qrCode: "Scan the qr-code below"
+  producer:
+    new:
+      welcome: "You are now a producer ! Welcome"
