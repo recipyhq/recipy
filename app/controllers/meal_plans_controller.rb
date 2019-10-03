@@ -27,7 +27,8 @@ class MealPlansController < ApplicationController
     diff_date = (date - monday).to_i
     
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
-      query = Recipe.joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
+      no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
+      query = Recipe.no_have_ingredients(no_ingredients).joins(:recipe_categories).includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
       dishes = query.where(:recipe_categories => { :name => "Plat" })
       starters = query.where(:recipe_categories => { :name => "Entrée" })
       desserts = query.where(:recipe_categories => { :name => "Dessert" })
