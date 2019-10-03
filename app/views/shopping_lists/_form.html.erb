@@ -1,20 +1,16 @@
-<%= simple_form_for(ShoppingList.new) do |f| %>
+<%= simple_form_for(@shopping_list) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, label: "Titre"%>
+  <%= f.input :name, label: "Titre", :input_html => { :value => @shopping_list.name } %>
 
-  <%= f.simple_fields_for ShoppingListIngredient.new do |ff| %>
-    <div id="shopping_list_ingredients" uk-grid="masonry: true">
-    </div>
-  <% end %>
-  <div>
-    <div class="uk-text-center uk-margin-small-top">
-      <h3><%= link_to_add_association t("recipe.action.new_ingredient"), f, :shopping_list_ingredients, partial: 'shopping_list_ingredient_fields', data: {
-        association_insertion_node: '#shopping_list_ingredients', association_insertion_method: :append
-      }, class: "uk-link" %></h3>
-    </div>
-  </div>
+  <%= f.input :ingredient_ids, :label => false, :selected => @shopping_list.ingredient_ids, collection: Ingredient.order(:name).where(:confirmed => true).all.map { |v| [v.name, v.id] }.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+    multiple: true,
+    slimselect: true,
+    slimselectNoResult: t('slimselect.ingredients.no_result'),
+    slimselectSearchPlaceholder: t('slimselect.ingredients.search_placeholder'),
+    slimselectPlaceholder: t('slimselect.ingredients.placeholder'),
+  } , wrapper_class: "", defaults: { input_class: "" } %>
 
   <div class="uk-margin-medium">
     <div class="uk-text-center">
