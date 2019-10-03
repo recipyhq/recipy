@@ -50,7 +50,9 @@
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
-                        <p><%= truncate recipe.description, length: 150, separator: /\w+/ %></p>
+                      <div uk-tooltip="<%= recipe.description %>">
+                        <p><%= truncate recipe.description, length: 50, separator: /\w+/%></p>
+                      </div>
                     </div>
                 </div>
             </div>
