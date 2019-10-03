@@ -173,9 +173,28 @@ class RecipesController < InheritedResources::Base
     end
   end
 
+  def create_notebook
+    if current_user.nil?
+      redirect_to new_user_session_path, flash: { warning: "Vous n'êtes pas connecté." }
+    end
+    recipe = Recipe.find(params[:notebook][:recipe_id])
+    new_notebook = current_user.notebooks.build(
+      :title => "Mon nouveau carnet de recette",
+      :description => "Une description de mon carnet de recette."
+    )
+    new_notebook.image.attach(io: File.open('app/assets/images/notebook_examples/recipe-book.png'),
+                              filename: 'recipe_book.jpeg', content_type: 'image/jpeg')
+    new_notebook.recipes << recipe
+    new_notebook.save!
+    redirect_to notebook_url(new_notebook.id), flash: { success: "Nouveau notebook créée." }
+  end
+
   def add_to_notebook
     notebooks_param = notebooks_params
     puts notebooks_param
+    if params[:recipe_id].nil?
+      return
+    end
     recipe = Recipe.find(params[:recipe_id])
     if recipe
       if !notebooks_param[:notebooks]
