@@ -265,6 +265,8 @@ en:
       valid: "Your request has been taken into account and will be processed within 48 hours."
       invalid: "Your request is not valid. This ingredient must already be in the database."
     label: "Ingredient"
+    create:
+      label: "In which shelf is your product located ?"
 
   products:
     missing_price_element: "Missing an element in the price"
@@ -330,6 +332,9 @@ en:
     like_unlike_ingredients:
       no_result: "This ingredient does not exist"
       search_placeholder: "Search an ingredient..."
+    shelf_tag:
+      no_result: "No shelf found"
+      search_placeholder: "Select a store shelf"
   landing:
     download_app:
       title: "Download the app here !"
