@@ -15,6 +15,7 @@
                   slimselectNoResult: t('slimselect.like_unlike_ingredients.no_result'),
                   slimselectSearchPlaceholder: t('slimselect.like_unlike_ingredients.search_placeholder'),
                 }, defaults: {input_class: ""} %>
+
     <%= f.input :no_like_ingredients, :label => t("users.unlike.label"),
                 :selected => @user.no_like_ingredients.map {|v| v.id}.to_a,
                 collection: Ingredient.order(:name).all.map {|v| [v.name, v.id]}.to_a,
@@ -26,6 +27,19 @@
                   slimselect: true,
                   slimselectNoResult: t('slimselect.like_unlike_ingredients.no_result'),
                   slimselectSearchPlaceholder: t('slimselect.like_unlike_ingredients.search_placeholder'),
+                }, defaults: {input_class: ""} %>
+
+    <%= f.input :allergens, :label => t("users.allergens.label"),
+                :selected => @user.allergens.map {|v| v.id}.to_a,
+                collection: AllergenTag.order(:name).all.map {|v| [v.name, v.id]}.to_a,
+                as: :select,
+                input_class: false,
+                # wrapper_class: "uk-width-1-2",
+                input_html: {
+                  multiple: true,
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.allergens.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.allergens.search_placeholder'),
                 }, defaults: {input_class: ""} %>
     <div class="uk-text-center">
       <%= f.button :submit, t("recipe.creation.confirm") %>

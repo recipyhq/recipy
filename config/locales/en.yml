@@ -115,26 +115,30 @@ en:
     api:
       follow_ok: "You follow this producer"
       follow_ko: "you no longer follow this producer"
-    edit_like_ingredients: "Edit your liked ingredients"
+    edit_like_ingredients: "Edit your preferences"
     must_be_conected: "You have to be connected !"
     like:
-      update_success: "Your tastes have been updated !"
-      update_fail: "You must be logged to update your tastes !"
+      update_success: "Your preferences have been updated !"
+      update_fail: "You must be logged to update your preferences !"
       label: "Ingredients you love"
-      title: "Modify your tastes here to allow us to generate a meal schedule according to what you want!"
+      title: "Modify your preferences here to refine your searches"
     unlike:
-      label: "Ingredients you hate"
+      label: "Ingredients you don't like"
     pref:
       title: "Your preferences here...."
     profile:
       picture:
         error: "Your profile picture must be an image"
+    allergens:
+      title: "Indicate below your allergens to refine your search"
+      label: "Your allergens"
 
   navbar:
     log_out: "Log out"
     sign_in: "Sign in"
     sign_up: "Sign up"
     my_profil: "My profil"
+    edit_pref: "My preferences"
 
   shared_links:
     no_account: "No account ?"
@@ -335,6 +339,9 @@ en:
     shelf_tag:
       no_result: "No shelf found"
       search_placeholder: "Select a store shelf"
+    allergens:
+      no_result: "No found allergen"
+      search_placeholder: "Your allergens"
   landing:
     download_app:
       title: "Download the app here !"

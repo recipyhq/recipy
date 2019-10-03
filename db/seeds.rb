@@ -91,6 +91,68 @@ IngredientTag.create! do |ingredient_tag|
   ingredient_tag.name = "Épicerie"
 end
 
+# Allergen Tag
+
+AllergenTag.destroy_all
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Arachides"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Crustacés"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Gluten"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Soja"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Lactose"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Fruit à coques"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Oeuf"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Céléri"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Graines de sésame"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Moutarde"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Anhydride sulfureux"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Mollusques"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "Lupin"
+end
+
+AllergenTag.create! do |allergen_tag|
+  allergen_tag.name = "poisson"
+end
+
+
+
 # Quantity Type
 
 QuantityType.destroy_all
