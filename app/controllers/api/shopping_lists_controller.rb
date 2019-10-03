@@ -29,10 +29,21 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def create
-    new_shopping_list = ShoppingList.new(shopping_list_params)
-    if new_shopping_list.valid?
+    @shopping_list_params = shopping_list_params
+    new_ingredients = @shopping_list_params[:list_ingredients]
+    @shopping_list_params.delete(:list_ingredients)
+    new_shopping_list = ShoppingList.new(@shopping_list_params)
+    if new_shopping_list.valid? && check_ingredients_attributes(new_ingredients)
+      new_ingredients.each do |elem|
+        new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
+        shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
+                                                              :quantity_type =>
+                                                                QuantityType.find(elem[:quantity_type_id]))
+        last = new_shopping_list.shopping_list_ingredients.last
+        last.shopping_list_quantity = shopping_list_quantity
+      end
       new_shopping_list.save
-      render :json => { Status: "OK", Cause: "Nouvelle liste créée !" }.as_json
+      render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
     else
       render :json => {
         Status: "KO",
@@ -44,24 +55,23 @@ class Api::ShoppingListsController < ApplicationController
   def update
     find_shopping_list
     if @shopping_list.update(shopping_list_params)
-      render :json => { Status: "OK", Cause: "Votre liste a été modifiée avec succés !" }.as_json
+      render :json => {Status: "OK", Cause: "Votre liste a été modifiée avec succés !"}.as_json
     else
-      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
+      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
     end
   end
 
   def update_item_checkbox
     find_shopping_list
     if @shopping_list && checkbox_params
-      puts checkbox_params
       item = ShoppingListIngredient.find_by(shopping_list_id: @shopping_list.id,
                                             ingredient_id: checkbox_params[:ingredient_id])
       item.checked = !item.checked
       if item.save
-        render :json => { Status: "OK", Cause: "Liste modifiée avec succès !" }.as_json
+        render :json => {Status: "OK", Cause: "Liste modifiée avec succès !"}.as_json
       end
     else
-      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
+      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
     end
   end
 
@@ -69,11 +79,22 @@ class Api::ShoppingListsController < ApplicationController
     find_shopping_list
     unless @shopping_list.nil?
       @shopping_list.destroy
-      render :json => { Status: "OK", Cause: "Votre liste a bien été supprimée" }.as_json
+      render :json => {Status: "OK", Cause: "Votre liste a bien été supprimée"}.as_json
     end
   end
 
   private
+
+  def check_ingredients_attributes(x)
+    return false if x.empty? || x.nil?
+
+    x.each do |y|
+      return false if y[:ingredient_id].nil? || !y[:ingredient_id].is_a?(Numeric)
+      return false if !y[:quantity_type_id].is_a?(Numeric)
+      return false if !y[:quantity].is_a?(Numeric)
+    end
+    return true
+  end
 
   def checkbox_params
     params.permit(:id, :ingredient_id)
@@ -84,7 +105,7 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def shopping_list_params
-    params.require(:shopping_list).permit(:name, :user_id, :ingredient_ids => [])
+    params.require(:shopping_list).permit(:name, :user_id, list_ingredients: [:ingredient_id, :quantity_type_id, :quantity])
   end
 
   def build_shopping_list_ingredients(shopping_list)

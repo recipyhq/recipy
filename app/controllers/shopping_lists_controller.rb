@@ -24,7 +24,6 @@ class ShoppingListsController < InheritedResources::Base
       end
       @items[x.ingredient.shelf_tag] << x
     end
-    puts @items
   end
 
   def new
@@ -37,7 +36,6 @@ class ShoppingListsController < InheritedResources::Base
 
   def create
     @shopping_list_params = shopping_list_params
-    puts @shopping_list_params
     new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
     @shopping_list_params.delete(:shopping_list_ingredients_attributes)
     new_shopping_list = ShoppingList.new(@shopping_list_params)
