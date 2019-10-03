@@ -263,9 +263,6 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Viande"),
     IngredientTag.find_by_name("Bon marché"),
   ]
-  ingredient.allergen_tags << [
-    AllergenTag.find_by_name("Arachides"),
-  ]
   ingredient.shelf_tag = "Viandes"
 end
 
@@ -278,6 +275,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -452,6 +452,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Féculent"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
@@ -461,6 +464,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Riche source de protéïne, il est un aliment de base pour préparer de bons gâteaux."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -473,6 +479,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Produit laitier"),
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -579,6 +588,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Produits laitiers"
 end
 
@@ -590,6 +602,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Corps gras"),
     IngredientTag.find_by_name("Condiment"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -635,6 +650,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+    AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = ""
 end
 
@@ -656,6 +675,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Produit laitier"),
     IngredientTag.find_by_name("Corps gras"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -682,19 +704,6 @@ Ingredient.create! do |ingredient|
   ingredient.shelf_tag = "Epicerie"
 end
 
-
-Ingredient.create! do |ingredient|
-  ingredient.name = "Sucre en moceaux"
-  ingredient.confirmed = true
-  ingredient.description = ""
-  ingredient.ingredient_tags << [
-    IngredientTag.find_by_name("Végétarien"),
-    IngredientTag.find_by_name("Vegan"),
-    IngredientTag.find_by_name("Bon marché"),
-  ]
-  ingredient.shelf_tag = "Epicerie"
-end
-
 Ingredient.create! do |ingredient|
   ingredient.name = "Gruyère"
   ingredient.confirmed = true
@@ -702,6 +711,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -798,6 +810,9 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Bon marché"),
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Oeufs"
 end
 
@@ -808,6 +823,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Bon marché"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
   ]
   ingredient.shelf_tag = "Oeufs"
 end
@@ -962,6 +980,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1070,6 +1091,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+    AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1117,6 +1142,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1158,6 +1186,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Surgelé"
 end
 
@@ -1168,6 +1200,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Surgelé"
 end
 
@@ -1177,6 +1213,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Surgelé"
 end
@@ -1376,6 +1415,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1398,6 +1440,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
     IngredientTag.find_by_name("Coûteux"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -1460,6 +1505,10 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Bon marché"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
@@ -1470,6 +1519,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -1492,13 +1544,17 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
 Ingredient.create! do |ingredient|
   ingredient.name = "Cassonade"
   ingredient.confirmed = true
-  ingredient.description = "Le pain d'épices est un gâteau au miel parfumé aux épices. Il ravive des souvenirs d'enfance d'un gâteau moelleux, léger et si parfumé... "
+  ingredient.description = "sucre roux"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Vegan"),
@@ -1514,6 +1570,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1524,6 +1584,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -1553,6 +1616,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -1666,6 +1732,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
@@ -1717,6 +1787,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1737,6 +1810,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -1746,6 +1822,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -1816,6 +1895,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "oeuf"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Oeuf"),
   ]
   ingredient.shelf_tag = "Oeufs"
 end
@@ -1917,6 +1999,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Produits laitiers"
 end
 
@@ -2017,6 +2102,10 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
+  ]
   ingredient.shelf_tag = "Epicerie"
 end
 
@@ -2037,6 +2126,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2046,6 +2138,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2067,6 +2162,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2086,6 +2184,10 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+      AllergenTag.find_by_name("Oeuf"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -2108,6 +2210,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Fromage typiquement du Nord de la France."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2483,6 +2588,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2534,6 +2642,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2563,6 +2674,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2595,6 +2709,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2721,6 +2838,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2750,6 +2870,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Du chocolat en copeaux"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -2814,6 +2937,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2846,6 +2972,9 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
   ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
+  ]
   ingredient.shelf_tag = "Rayon frais"
 end
 
@@ -2867,6 +2996,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Le mascarpone est un fromage italien, originaire des régions de Piémont-Lombardie. Ingrédient de choix de la cuisine italienne, il entre dans la composition de nombreuses recettes de cuisine et particulièrement dans les desserts, dont le célèbre tiramisu."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Produit laitier"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2899,6 +3031,9 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Le spéculoos est un biscuit traditionnel souvent consommé lors de la fête de la Saint Nicolas en Belgique"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+  ]
+  ingredient.allergen_tags << [
+    AllergenTag.find_by_name("Lactose"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
