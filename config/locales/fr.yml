@@ -290,6 +290,8 @@ fr:
       valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
       invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
+    create:
+      label: "Dans quel rayon se trouve votre produit ?"
 
   search:
     title: "Rechercher"
@@ -430,6 +432,9 @@ fr:
     like_unlike_ingredients:
       no_result: "Cet ingrédient n'existe pas"
       search_placeholder: "Rechercher un ingrédient..."
+    shelf_tag:
+      no_result: "Aucun rayon trouvé"
+      search_placeholder: "Sélectionnez un rayon de supermarché"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:

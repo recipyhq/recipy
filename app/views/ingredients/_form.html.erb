@@ -13,7 +13,13 @@
   <div class="form-inputs">
     <%= f.input :name, label: t("ingredient.title.name") %>
     <%= f.input :description, label: t("ingredient.title.description") %>
-    <%= f.input :shelf_tag, collection: Ingredient.shelf_tags.values, label: "Dans quel rayon se trouve votre produit ?" %>
+    <%#= f.input :shelf_tag, collection: Ingredient.shelf_tags.values, label: "Dans quel rayon se trouve votre produit ?" %>
+    <%= f.input :shelf_tag, :label => t("ingredient.create.label"), collection: Ingredient.shelf_tags.values.sort_by!(&:downcase), as: :select, :include_blank => false, input_class: false, input_html: {
+      slimselect: true,
+      slimselectNoResult: t('slimselect.shelf_tag.no_result'),
+      slimselectSearchPlaceholder: t('slimselect.shelf_tag.search_placeholder'),
+      slimselectPlaceholder: "",
+    }, defaults: {input_class: ""} %>
   </div>
 
   <div class="uk-margin">
