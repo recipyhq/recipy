@@ -51,7 +51,7 @@
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
                       <div uk-tooltip="<%= recipe.description %>">
-                        <p><%= truncate recipe.description, length: 150, separator: /\w+/, class: "uk-text-truncate"%></p>
+                        <p><%= truncate recipe.description, length: 50, separator: /\w+/%></p>
                       </div>
                     </div>
                 </div>
