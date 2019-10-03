@@ -12,7 +12,7 @@
     <% end %>
   </div>
   <div>
-    <div class="uk-text-center">
+    <div class="uk-text-center uk-margin-small-top">
       <h3><%= link_to_add_association t("recipe.action.new_ingredient"), f, :shopping_list_ingredients, partial: 'edit_shopping_list_ingredient_fields', data: {
         association_insertion_node: '#shopping_list_ingredients', association_insertion_method: :append
       }, class: "uk-link" %></h3>
