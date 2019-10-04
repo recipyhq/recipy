@@ -41,16 +41,18 @@ class ShoppingListsController < InheritedResources::Base
     new_shopping_list = ShoppingList.new(@shopping_list_params)
     new_shopping_list.user = current_user
     if new_shopping_list.valid?
-      new_ingredients.each do |elem|
-        unless new_shopping_list.ingredients.any? {|ingredient| ingredient.id == elem[1].values[0].to_i}
-          new_shopping_list.ingredients << Ingredient.find(elem[1].values[0])
-          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
-            value = elem[1].values[1]
-            shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
-                                                                  :quantity_type =>
-                                                                    QuantityType.find(value.values[1]))
-            last = new_shopping_list.shopping_list_ingredients.last
-            last.shopping_list_quantity = shopping_list_quantity
+      if !new_ingredients.nil?
+        new_ingredients.each do |elem|
+          unless new_shopping_list.ingredients.any? {|ingredient| ingredient.id == elem[1].values[0].to_i}
+            new_shopping_list.ingredients << Ingredient.find(elem[1].values[0])
+            if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+              value = elem[1].values[1]
+              shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
+                                                                    :quantity_type =>
+                                                                      QuantityType.find(value.values[1]))
+              last = new_shopping_list.shopping_list_ingredients.last
+              last.shopping_list_quantity = shopping_list_quantity
+            end
           end
         end
       end
@@ -74,8 +76,8 @@ class ShoppingListsController < InheritedResources::Base
         if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
           value = elem[1].values[1]
           shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
-                                                   :quantity_type =>
-                                                     QuantityType.find(value.values[1]))
+                                                                :quantity_type =>
+                                                                  QuantityType.find(value.values[1]))
           last = @shopping_list.shopping_list_ingredients.last
           last.shopping_list_quantity = shopping_list_quantity
         end

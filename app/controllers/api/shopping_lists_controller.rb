@@ -33,14 +33,16 @@ class Api::ShoppingListsController < ApplicationController
     new_ingredients = @shopping_list_params[:list_ingredients]
     @shopping_list_params.delete(:list_ingredients)
     new_shopping_list = ShoppingList.new(@shopping_list_params)
-    if new_shopping_list.valid? && check_ingredients_attributes(new_ingredients)
-      new_ingredients.each do |elem|
-        new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
-        shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
-                                                              :quantity_type =>
-                                                                QuantityType.find(elem[:quantity_type_id]))
-        last = new_shopping_list.shopping_list_ingredients.last
-        last.shopping_list_quantity = shopping_list_quantity
+    if new_shopping_list.valid?
+      if !new_ingredients.nil? && check_ingredients_attributes(new_ingredients)
+        new_ingredients.each do |elem|
+          new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
+          shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
+                                                                :quantity_type =>
+                                                                  QuantityType.find(elem[:quantity_type_id]))
+          last = new_shopping_list.shopping_list_ingredients.last
+          last.shopping_list_quantity = shopping_list_quantity
+        end
       end
       new_shopping_list.save
       render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
