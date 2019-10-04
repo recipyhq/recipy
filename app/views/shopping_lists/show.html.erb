@@ -9,7 +9,6 @@
         <span class="uk-text-bold"><%= Ingredient.shelf_tags[key] %></span>
         <% value.each do |elem| %>
           <li>
-
             <%= elem.ingredient.name %>
             <% if (elem.shopping_list_quantity) %>
               <div class="uk-text-meta">Au moins <%= elem.shopping_list_quantity.value %> <%= elem.shopping_list_quantity.quantity_type.name %></div>
