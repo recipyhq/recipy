@@ -236,11 +236,34 @@ body {
   }
 }
 
+.meal-plan-link {
+  transition: 0.4s background-color ease;
+  .uk-text-meta {
+    transition: 0.4s color ease;
+  }
+
+  &:hover {
+    background-color: $recipy-primary-color;
+    .uk-text-meta {
+      color: white;
+    }
+  }
+}
+
 .orange-card {
   background-color: $recipy-primary-color;
 
   .uk-text-meta {
     color: white;
+  }
+
+  .meal-plan-link {
+    &:hover {
+      background-color: white;
+      .uk-text-meta {
+        color: #999999;
+      }
+    }
   }
 }
 
@@ -249,6 +272,9 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  & > * {
+    color: black !important;
+  }
   border-left: 3px solid black;
 }
 

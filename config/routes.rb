@@ -56,7 +56,7 @@ Rails.application.routes.draw do
         patch 'createproducer' => 'home#patch'
       end
 
-      get 'meal_plans' => 'meal_plans#index'
+      resources :meal_plans, :only => [:index, :show, :update]
       # resources :meals
       resources :shopping_lists
       resources :recipes
@@ -70,6 +70,10 @@ Rails.application.routes.draw do
         post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
         post 'add_ingredients_to_new_list' => "recipes#add_ingredients_to_new_list"
         post 'add_to_notebook' => "recipes#add_to_notebook"
+      end
+
+      resources :meal_plans, param: :id do
+        post 'reload' => "meal_plans#reload_day_plan"
       end
 
       get 'search' => "search#index"
