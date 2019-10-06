@@ -34,6 +34,39 @@ class ShoppingListsController < InheritedResources::Base
     find_shopping_list_edit
   end
 
+  def create_shopping_list_quantity(shopping_list, elem)
+    shopping_list.ingredients << elem.ingredient
+    if elem.shopping_list_quantity
+      unless is_quantity_type_abstract(elem.shopping_list_quantity.quantity_type.name)
+        shopping_list_quantity =
+          ShoppingListQuantity.create!(:value => elem.shopping_list_quantity.value,
+                                       :quantity_type_id => elem.shopping_list_quantity.quantity_type.id,
+                                       :quantity_type => elem.shopping_list_quantity.quantity_type)
+        last = shopping_list.shopping_list_ingredients.last
+        last.shopping_list_quantity = shopping_list_quantity
+      end
+    end
+  end
+
+  def sum_shopping_list_quantities(shopping_list, elem)
+    if elem.shopping_list_quantity
+      unless is_quantity_type_abstract(elem.shopping_list_quantity.quantity_type.name)
+        ings = ShoppingListIngredient.where(shopping_list_id: shopping_list.id,
+                                            ingredient_id: elem.ingredient.id)
+
+        ings.each do |ing|
+          if ing.shopping_list_quantity.quantity_type.id == elem.shopping_list_quantity.quantity_type.id
+            quant = ing.shopping_list_quantity
+            quant.value += elem.shopping_list_quantity.value
+            quant.save
+            return
+          end
+        end
+        create_shopping_list_quantity(shopping_list, elem)
+      end
+    end
+  end
+
   def create
     @shopping_list_params = shopping_list_params
     new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
@@ -47,6 +80,11 @@ class ShoppingListsController < InheritedResources::Base
             new_shopping_list.ingredients << Ingredient.find(elem[1].values[0])
             if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
               value = elem[1].values[1]
+              # if shopping_list.ingredients.find_by(id: elem.ingredient.id)
+              #   sum_shopping_list_quantities(shopping_list, elem)
+              # else
+              #   create_shopping_list_quantity(shopping_list, elem)
+              # end
               shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
                                                                     :quantity_type =>
                                                                       QuantityType.find(value.values[1]))

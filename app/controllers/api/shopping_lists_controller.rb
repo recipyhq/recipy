@@ -37,9 +37,11 @@ class Api::ShoppingListsController < ApplicationController
       if !new_ingredients.nil? && check_ingredients_attributes(new_ingredients)
         new_ingredients.each do |elem|
           new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
-          shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
-                                                                :quantity_type =>
-                                                                  QuantityType.find(elem[:quantity_type_id]))
+          if check_quantity(elem)
+            shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
+                                                                  :quantity_type =>
+                                                                    QuantityType.find(elem[:quantity_type_id]))
+          end
           last = new_shopping_list.shopping_list_ingredients.last
           last.shopping_list_quantity = shopping_list_quantity
         end
@@ -87,13 +89,21 @@ class Api::ShoppingListsController < ApplicationController
 
   private
 
+  def check_quantity(x)
+    return !x[:quantity_type_id].nil? && !x[:quantity].nil?
+  end
+
   def check_ingredients_attributes(x)
     return false if x.empty? || x.nil?
 
     x.each do |y|
       return false if y[:ingredient_id].nil? || !y[:ingredient_id].is_a?(Numeric)
-      return false if !y[:quantity_type_id].is_a?(Numeric)
-      return false if !y[:quantity].is_a?(Numeric)
+      if y[:quantity_type_id]
+        return false if !y[:quantity_type_id].is_a?(Numeric)
+      end
+      if y[:quantity]
+        return false if !y[:quantity].is_a?(Numeric)
+      end
     end
     return true
   end
