@@ -18,6 +18,7 @@ ActiveAdmin.register Ingredient do
       @ingredient.update(params.require(:ingredient).permit(:name,
                                                             :description,
                                                             :confirmed,
+                                                            :shelf_tag,
                                                             :quantity_equivalency_ids => [],
                                                             :ingredient_tag_ids => []))
       super
@@ -75,6 +76,7 @@ ActiveAdmin.register Ingredient do
       #   end
       # end
       row :description
+      row :shelf_tag
       row :created_at
       row :confirmed
       table_for ingredient.ingredient_tags.order('name ASC') do
@@ -97,6 +99,7 @@ ActiveAdmin.register Ingredient do
       f.input :description
       # f.input :image, :as => :file
       f.input :ingredient_tags, :as => :check_boxes
+      f.input :shelf_tag, :as => :select
       f.input :quantity_equivalencies,
               :as => :check_boxes,
               collection: QuantityEquivalency.includes(:quantity_type).all.map { |t|

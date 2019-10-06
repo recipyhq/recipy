@@ -1,7 +1,7 @@
   <div class="uk-cover-container uk-height-medium">
     <img src="<%= asset_path 'wallpapers/home_blured.jpg' %>" alt="cover" uk-cover>
     <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle">
-      <h1 class="title title-light uk-padding uk-padding-remove-bottom">Vous avez faim ?</h1>
+      <h1 class="title title-light uk-padding uk-padding-remove-bottom"><%= @sentence %></h1>
       <div class="uk-width-1-1 uk-padding uk-text-center">
         <%= simple_form_for :search,
                             url: search_path,
@@ -50,7 +50,9 @@
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
-                        <p><%= truncate recipe.description, length: 150, separator: /\w+/ %></p>
+                      <div uk-tooltip="<%= recipe.description %>">
+                        <p><%= truncate recipe.description, length: 50, separator: /\w+/%></p>
+                      </div>
                     </div>
                 </div>
             </div>

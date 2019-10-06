@@ -4,35 +4,42 @@
   <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>
     <% @recipes.each do |recipe| %>
       <div>
-          <div class="uk-card uk-card-default">
-              <div class="uk-card-media-top">
-                  <% if recipe.image.attached? %>
-                      <%= image_tag recipe.image, :crop => :fill %>
-                  <% else %>
-                      <%= image_tag "https://picsum.photos/400/200" %>
-                  <% end %>
-              </div>
-              <div class="uk-card-body">
-                  <h3 class="uk-card-title"><%= recipe.title %></h3>
-                  <div class="star-ratings star-dark">
-                      <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                  </div>
-                  <p class="uk-text-truncate"><%= recipe.description %></p>
-                  <div class="info-recipe">
-                    <span class="name"><%= t("recipe.title.number_views") %></span>
-                    <span class="info"><%= recipe.view.to_s %></span>
-                    <span class="name"><%= t("recipe.title.number_feedbacks") %></span>
-                    <span class="info"><%= recipe.score_count.to_s %></span>
-                  </div>
-              </div>
-              <div class="uk-card-footer">
-                <%= link_to t("recipe.action.show"), recipe, class: "uk-button uk-button-text" %>
-                <%= link_to t("recipe.action.edit"), edit_recipe_path(recipe), class: "uk-button uk-button-text" %>
-                <%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>   
-              </div>
+        <div class="uk-card uk-card-default">
+          <%= link_to recipe do %>
+            <div class="uk-card-media-top recipe-img recipe-search-img" style="
+            <% if recipe.image.attached? %>
+              background-image: url(<%= rails_blob_url recipe.image %>);
+              <% else %>
+              <%= "https://picsum.photos/400/200" %>
+              <% end %>
+            ">
+            </div>
+          <% end %>
+        </div>
+        <div class="uk-card-body">
+          <div uk-tooltip="<%= recipe.title %>">
+            <h3 class="uk-card-title"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
           </div>
+          <div class="star-ratings star-dark">
+            <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div uk-tooltip="<%= recipe.description %>">
+            <p class="uk-text-truncate"><%= recipe.description %></p>
+          </div>
+          <div class="info-recipe">
+            <span class="name"><%= t("recipe.title.number_views") %></span>
+            <span class="info"><%= recipe.view.to_s %></span>
+            <span class="name"><%= t("recipe.title.number_feedbacks") %></span>
+            <span class="info"><%= recipe.score_count.to_s %></span>
+          </div>
+        </div>
+        <div class="uk-card-footer">
+          <%= link_to t("recipe.action.edit"), edit_recipe_path(recipe), class: "uk-button uk-button-text" %>
+          <%= link_to t("recipe.action.destroy"), recipe, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>
+        </div>
+      </div>
       </div>
     <% end %>
-  </div>
+    </div>
 </div>
