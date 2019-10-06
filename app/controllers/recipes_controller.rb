@@ -19,7 +19,7 @@ class RecipesController < InheritedResources::Base
     @recipe_user_allergens = []
     unless current_user.nil?
       current_user.allergens.each do |aller|
-        if allergenSet.include?(aller)
+        if allergen_set.include?(aller)
           @recipe_user_allergens.push(aller)
         end
       end
