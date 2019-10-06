@@ -25,7 +25,7 @@ class RecipesController < InheritedResources::Base
       end
     end
 
-    @allergen_array = allergenSet.uniq
+    @allergen_array = allergen_set.uniq
 
     view = @recipe.view
     @notebooks_available = []
