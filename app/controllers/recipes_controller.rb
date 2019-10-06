@@ -10,6 +10,23 @@ class RecipesController < InheritedResources::Base
 
   def show
     find_recipe
+
+    allergen_set = []
+    @recipe.recipe_ingredients.each do |ingr|
+      allergen_set.concat(ingr.ingredient.allergen_tags)
+    end
+
+    @recipe_user_allergens = []
+    unless current_user.nil?
+      current_user.allergens.each do |aller|
+        if allergenSet.include?(aller)
+          @recipe_user_allergens.push(aller)
+        end
+      end
+    end
+
+    @allergen_array = allergenSet.uniq
+
     view = @recipe.view
     @notebooks_available = []
     if user_signed_in?
@@ -269,7 +286,7 @@ class RecipesController < InheritedResources::Base
 
   def find_recipe
     @recipe = Recipe.includes(:recipe_ingredients => [
-      :ingredient,
+      :ingredient => [:allergen_tags],
       :recipe_quantity => :quantity_type,
     ],
                               :recipe_scores => [:user => [:avatar_attachment]]).find(params[:id])
