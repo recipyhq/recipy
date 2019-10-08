@@ -8,8 +8,11 @@
     <h2 class="title"><%= @recipe.title %></h2>
     <p><%= @recipe.description %></p>
     <% if !@recipe_user_allergens.empty? %>
-      <div class="uk-alert-warning" uk-alert>
-      <p>Attention cette recette contient certains de vos allergènes :</p>
+      <div class="allergen-alert uk-position-fixed uk-position-z-index
+      uk-position-top-left uk-alert-warning" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h3>Attention</h3>
+        <p>Cette recette contient certains de vos allergènes :</p>
       <ul class="">
         <% @recipe_user_allergens.each do |elem| %>
           <li><%= elem.name %></li>
