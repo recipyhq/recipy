@@ -234,6 +234,12 @@ body {
   a:hover {
     text-decoration: none;
   }
+
+  &:hover {
+    [uk-icon="icon: pencil"] {
+      opacity: 1;
+    }
+  }
 }
 
 .meal-plan-link {
@@ -289,7 +295,29 @@ body {
 }
 
 .day-name {
-  width: 200px;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
+
+  .title {
+    margin-bottom: 5px;
+  }
+
+  [uk-icon="icon: pencil"] {
+    opacity: 0.3;
+    transition: 0.4s opacity ease;
+
+    @media screen and (max-width: 1200px) {
+      opacity: 1;
+    }
+  }
 }
 
 .recipe-img-meal-plan {

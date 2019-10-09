@@ -8,7 +8,8 @@
           <div class="uk-card uk-card-default <% if day_meal.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
             <%= link_to meal_plan_path(day_meal), { :class => "meal-plan-link" } do %>
               <div class="day-name">
-                <h4 class="title uk-padding"><%= t('date.day_names')[day_meal.date.wday] %> <span class="uk-text-meta"><%= day_meal.date.strftime("%d/%m/%Y") %></span></h4>
+                <h4 class="title"><%= t('date.day_names')[day_meal.date.wday] %> <span uk-icon="icon: pencil"></span></h4>
+                <span class="uk-text-meta"><%= day_meal.date.strftime("%d/%m/%Y") %></span>
               </div>
             <% end %>
             <div class="day-moment">
