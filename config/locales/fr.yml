@@ -140,6 +140,7 @@ fr:
     shopping_lists: 'Mes listes de course'
     point_of_sales: "Points de vente"
     notebooks: "Mes carnets de recette"
+    my_meal_plan: "Mon planning de repas"
     producer:
       list: "Liste des producteurs"
       point_of_sales: "Points de vente"
