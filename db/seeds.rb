@@ -148,7 +148,7 @@ AllergenTag.create! do |allergen_tag|
 end
 
 AllergenTag.create! do |allergen_tag|
-  allergen_tag.name = "poisson"
+  allergen_tag.name = "Poisson"
 end
 
 

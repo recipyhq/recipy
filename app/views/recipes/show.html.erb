@@ -89,7 +89,14 @@
         <div class="uk-card uk-card-default uk-card-body">
           <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
             <div class="uk-grid-small" uk-grid>
-              <div class="uk-width-expand" uk-leader="fill: -"><%= recipe_ingredient.ingredient.name %></div>
+              <div class="uk-width-expand" uk-leader="fill: -">
+                <%= recipe_ingredient.ingredient.name %>
+                <% unless recipe_ingredient.ingredient.allergen_tags.empty? %>
+                  <% recipe_ingredient.ingredient.allergen_tags.each do |allergen| %>
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= allergen.name %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
+                    <% end %>
+                <% end %>
+              </div>
               <% if (recipe_ingredient.recipe_quantity) %>
                 <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
               <% end %>
