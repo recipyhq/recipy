@@ -1,0 +1,48 @@
+<div class="nested-fields uk-width-1-2">
+  <div class="uk-card uk-card-default uk-card-body">
+    <div class=" uk-grid">
+      <div class="uk-width-1-1">
+        <% if !f.object.ingredient.nil? %>
+          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.order(:name).where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, selected: f.object.ingredient.id,
+                      :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"}, input_html: {
+              slimselect: true,
+              slimselectNoResult: t('slimselect.ustensils.no_result'),
+              slimselectSearchPlaceholder: t('slimselect.ustensils.search_placeholder'),
+              slimselectPlaceholder: t('slimselect.ustensils.placeholder'),
+            } %>
+        <% else %>
+          <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.order(:name).where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select,
+                      :include_blank => false, input_class: false, input_html: {class: "uk-select"}, defaults: {input_class: "uk-select"}, input_html: {
+              slimselect: true,
+              slimselectNoResult: t('slimselect.ustensils.no_result'),
+              slimselectSearchPlaceholder: t('slimselect.ustensils.search_placeholder'),
+              slimselectPlaceholder: t('slimselect.ustensils.placeholder'),
+            } %>
+        <% end %>
+      </div>
+      <% if f.object.shopping_list_quantity.nil? %>
+        <%= f.simple_fields_for ShoppingListQuantity.new do |ff| %>
+          <div class="uk-width-1-2 uk-margin-small-top">
+            <%= ff.input :value, label: t("recipe.title.quantity_value") %>
+          </div>
+          <div class="uk-width-1-2 uk-margin-small-top">
+            <%= ff.input :quantity_type, label: "Type", as: :select, collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a, input_html: {class: "uk-select"} %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= f.simple_fields_for :shopping_list_quantity do |ff| %>
+          <div class="uk-width-1-2 uk-margin-small-top">
+            <%= ff.input :value, label: t("recipe.title.quantity_value") %>
+          </div>
+          <div class="uk-width-1-2 uk-margin-small-top">
+            <%= ff.input :quantity_type, label: "Type", as: :select,
+                         collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a, input_html: {class: "uk-select"}, selected: f.object.shopping_list_quantity.quantity_type.id %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="uk-text-center uk-margin-medium-top">
+      <h4 class="uk-margin-remove"><%= link_to_remove_association t("recipe.action.delete_ingredient"), f, class: "uk-link" %></h4>
+    </div>
+  </div>
+</div>
