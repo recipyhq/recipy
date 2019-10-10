@@ -15,7 +15,7 @@ class SearchController < ApplicationController
     search_params = params['search'] || {}
     @search_query = search_params['q'] || ""
     @search_difficulty = search_params['difficulty'] || nil
-    @search_ingredients = search_params['ingredients'] || []
+    @search_ingredients = search_params['ingredients'] ? search_params['ingredients'].map{ |i| i.length > 0 ? i.to_i : nil }.reject! { |x| x.nil? } : []
     @search_time = search_params['cooking_time'] || nil
     @sort = search_params['sort'] || 'no'
     @sort_possibilities = @@sort_possibilities
