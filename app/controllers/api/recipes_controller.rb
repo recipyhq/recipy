@@ -106,7 +106,7 @@ class Api::RecipesController < Api::BaseController
       ]).find(shopping_list_params[:shopping_lists])
       recipe.recipe_ingredients.each do |elem|
         # If ingredient is already in list, just sum the quantities
-        if shopping_list.ingredients.find_by(name: elem.ingredient.name)
+        if shopping_list.ingredients.find_by(id: elem.ingredient.id)
           sum_shopping_list_quantities(shopping_list, elem)
         else
           create_shopping_list_quantity(shopping_list, elem)
@@ -160,16 +160,18 @@ class Api::RecipesController < Api::BaseController
   def sum_shopping_list_quantities(shopping_list, elem)
     if elem.recipe_quantity
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
-        ing = ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id, ingredient_id: elem.ingredient.id)
-        if ing.shopping_list_quantity.nil?
-          ing.shopping_list_quantity = ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
-                                                                    :quantity_type => elem.recipe_quantity.quantity_type)
-          ing.save
-        else
-          quant = ing.shopping_list_quantity
-          quant.value += elem.recipe_quantity.value
-          quant.save
+        ings = ShoppingListIngredient.where(shopping_list_id: shopping_list.id,
+                                            ingredient_id: elem.ingredient.id)
+
+        ings.each do |ing|
+          if ing.shopping_list_quantity.quantity_type.id == elem.recipe_quantity.quantity_type.id
+            quant = ing.shopping_list_quantity
+            quant.value += elem.recipe_quantity.value
+            quant.save
+            return
+          end
         end
+        create_shopping_list_quantity(shopping_list, elem)
       end
     end
   end
