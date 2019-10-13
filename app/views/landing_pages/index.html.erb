@@ -3,15 +3,19 @@
   <div class="uk-cover-container" uk-height-viewport  uk-parallax="blur: 10">
     <img src="<%= asset_path 'cover.jpg' %>" alt="cover" uk-cover>
     <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container uk-text-justify">
-      <h1>Cassez votre routine alimentaire</h1>
-      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s uk-padding project-info uk-text-center">
+      <h1 class="uk-visible@m">Cassez votre routine alimentaire</h1>
+      <h2 class="uk-hidden@m">Cassez votre routine alimentaire</h2>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s project-info uk-text-center uk-text-large uk-margin-medium-bottom uk-visible@m">
         Recipy est la première application intelligente qui permet de diversifier son alimentation tout en mangeant local.
       </p>
-      <p class="uk-text-small">
-        <a href="#concept" uk-scroll>Cliquez ici pour en savoir plus</a>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s project-info uk-text-center uk-hidden@m uk-padding">
+        Recipy est la première application intelligente qui permet de diversifier son alimentation tout en mangeant local.
+      </p>
+      <p class="uk-text-large uk-margin-medium-bottom">
+        <a class="uk-button uk-button-default uk-button-primary" href="/beta">Je veux cuisiner !</a>
       </p>
       <div class="info uk-flex uk-flex-column uk-flex-middle">
-        <a href="#concept" uk-scroll>
+        <a href="#concept" uk-scroll class="uk-visible@m">
           <span class="down-icon bounce" uk-icon="icon: chevron-down; ratio: 2"></span>
         </a>
       </div>
@@ -49,19 +53,19 @@
   </div>
 </div>
 
-
-<div class="cover">
-  <div class="uk-section uk-section-secondary" id="join-us">
-    <div class="uk-cover-container" uk-height-viewport>
-      <img src="<%= asset_path 'landing/team.jpg' %>" alt="cover" style="opacity: 0.5">
-      <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container uk-text-justify">
-        <h2 class="landing-title">NOTRE EQUIPE</h2>
-        <p class="uk-text-large"> 8 collaborateurs issus de l'Epitech - Promo 2020</p>
-      </div>
+<div class="uk-section uk-section-secondary uk-padding-remove" id="our-team">
+  <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+    <div class="uk-padding">
+      <h2 class="landing-title uk-margin uk-text-center">NOTRE EQUIPE</h2>
+      <p class="uk-text-large uk-text-center uk-padding uk-flex uk-flex-center uk-flex-column uk-text-italic">
+        8 collaborateurs, tous issues de l'Epitech - Promo 2020
+      </p>
+    </div>
+    <div class="uk-width-2-3@m">
+      <img src="<%= asset_path 'landing/team.jpg' %>" alt="team" style="opacity: 0.85"/>
     </div>
   </div>
 </div>
-
 
 <div class="uk-section uk-section-small uk-section-default">
   <div class="uk-container uk-text-center uk-padding">
