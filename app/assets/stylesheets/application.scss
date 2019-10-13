@@ -230,20 +230,148 @@ body {
 }
 
 .meal-card {
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
   a:hover {
     text-decoration: none;
+  }
+
+  &:hover {
+    [uk-icon="icon: pencil"] {
+      opacity: 1;
+    }
+  }
+}
+
+.meal-plan-link {
+  transition: 0.4s background-color ease;
+  .uk-text-meta {
+    transition: 0.4s color ease;
+  }
+
+  &:hover {
+    background-color: $recipy-primary-color;
+    .uk-text-meta {
+      color: white;
+    }
   }
 }
 
 .orange-card {
   background-color: $recipy-primary-color;
+
+  .uk-text-meta {
+    color: white;
+  }
+
+  .meal-plan-link {
+    &:hover {
+      background-color: white;
+      .uk-text-meta {
+        color: #999999;
+      }
+    }
+  }
+}
+
+.day-moment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  & > * {
+    color: black !important;
+  }
+  border-left: 3px solid black;
+}
+
+.meals {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.recipe-meal-link {
+  flex: 1;
+}
+
+.day-name {
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
+
+  .title {
+    margin-bottom: 5px;
+  }
+
+  [uk-icon="icon: pencil"] {
+    opacity: 0.3;
+    transition: 0.4s opacity ease;
+
+    @media screen and (max-width: 1200px) {
+      opacity: 1;
+    }
+  }
 }
 
 .recipe-img-meal-plan {
-  max-height:100px;
+  height:100%;
+  position: relative;
   background-color: $recipy-primary-color;
+  z-index: 1;
+  transition: height 0.5s ease;
 
   & .title {
-    text-shadow: 0px 0px 4px white;
+    color: white;
+    opacity: 1;
+    padding: 5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    z-index: 11000 !important;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover {
+    .title {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background: rgba(0,0,0,0.3);
+  }
+}
+
+@media (max-width: 800px) {
+  .meals {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-moment {
+    border: none;
+  }
+
+	.recipe-img-meal-plan {
+    height: 100px;
+  
+    & .title {
+      opacity: 1;
+    }
   }
 }

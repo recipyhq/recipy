@@ -1,4 +1,8 @@
 fr:
+  back: 'Retour'
+  date:
+    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+  
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
   placeholder_first_name: "Prénom"
@@ -6,6 +10,21 @@ fr:
   devise:
     facebook: "Se connecter avec Facebook"
     google_oauth2: "Se connecter avec Google +"
+
+  meal_plan:
+    see: 'Voir'
+    reload: 'Recharger un nouveau planning pour ce jour'
+    not_found: "Ce planning de repas ne vous appartient pas ou n\'existe pas"
+    reload_success: "Le planning de ce jour a bien été refait"
+    reload_error: "Une erreur c'est produite lors de la réedition de ce planning"
+    edit: 'Personnaliser'
+    starter: 'Entrée'
+    dish: 'Plat'
+    dessert: 'Dessert'
+    midday: 'Midi'
+    evening: 'Soir'
+    edit_success: "L'édition s'est bien passé"
+    edit_error: "Problème lors de l'édition, veuillez réessayer plus tard"
 
   users:
     confirmations:
@@ -121,6 +140,7 @@ fr:
     shopping_lists: 'Mes listes de course'
     point_of_sales: "Points de vente"
     notebooks: "Mes carnets de recette"
+    my_meal_plan: "Mon planning de repas"
     producer:
       list: "Liste des producteurs"
       point_of_sales: "Points de vente"

@@ -36,7 +36,7 @@
               </li>
               <li class="<%= current_page_class?(meal_plans_path) %>">
                 <%= link_to meal_plans_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: calendar"></span>Mon planning de repas
+                  <span class="uk-margin-small-right" uk-icon="icon: calendar"></span><%= t('navbar.my_meal_plan')  %>
                 <% end %>
               </li>
               <li class="<%= current_page_class?(liked_producers_path) %>">
@@ -113,6 +113,11 @@
             <li class="<%= current_page_class?(my_recipes_path) %>">
               <%= link_to my_recipes_path do %>
                 <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
+              <% end %>
+            </li>
+            <li class="<%= current_page_class?(meal_plans_path) %>">
+              <%= link_to meal_plans_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: calendar"></span><%= t('navbar.my_meal_plan')  %>
               <% end %>
             </li>
             <li class="<%= current_page_class?(notebooks_path) %>">

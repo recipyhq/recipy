@@ -1,4 +1,154 @@
-<p id="notice"><%= notice %></p>
+  <div class="uk-section uk-section-secondary uk-light">
+    <div class="uk-container">
+      <h2 class="uk-heading-line title"><span>
+        <%= link_to meal_plans_path, { class: 'uk-button uk-button-default' } do %> <span uk-icon="icon: arrow-left"></span> <% end %>
+        <%= t('date.day_names')[@day_plan.date.wday] %> <span class="uk-text-meta"><%= @day_plan.date.strftime("%d/%m/%Y") %>
+      </span></h2>
+      <div>
+        <div class="uk-card uk-card-default <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
+          <div class="day-moment">
+            <h5 class="title">Midi</h5>
+          </div>
+          <div class="meals">
+            <%= link_to @day_plan.midday_starter_recipe, { class: 'recipe-meal-link' } do %>
+              <div class="recipe-img recipe-img-meal-plan" style="
+                <% if @day_plan.midday_starter_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url @day_plan.midday_starter_recipe.image %>);
+                <% end %>
+              ">
+                <p class="title">
+                  <%= @day_plan.midday_starter_recipe.title %>
+                </p>
+              </div>
+            <% end %>
 
-<%= link_to 'Edit', edit_meal_plan_path(@meal_plan) %> |
-<%= link_to 'Back', meal_plans_path %>
+            <%= link_to @day_plan.midday_dish_recipe, { class: 'recipe-meal-link' } do %>
+              <div class="recipe-img recipe-img-meal-plan" style="
+                <% if @day_plan.midday_dish_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url @day_plan.midday_dish_recipe.image %>);
+                <% end %>
+              ">
+                <p class="title">
+                  <%= @day_plan.midday_dish_recipe.title %>
+                </p>
+              </div>
+            <% end %>
+
+            <%= link_to @day_plan.midday_dessert_recipe, { class: 'recipe-meal-link' } do %>
+              <div class="recipe-img recipe-img-meal-plan" style="
+                <% if @day_plan.midday_dessert_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url @day_plan.midday_dessert_recipe.image %>);
+                <% end %>
+              ">
+                <p class="title">
+                  <%= @day_plan.midday_dessert_recipe.title %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <div class="day-moment">
+            <h5 class="title">Soir</h5>
+          </div>
+          <div class="meals">
+            <%= link_to @day_plan.evening_starter_recipe, { class: 'recipe-meal-link' } do %>
+              <div class="recipe-img recipe-img-meal-plan" style="
+                <% if @day_plan.evening_starter_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url @day_plan.evening_starter_recipe.image %>);
+                <% end %>
+              ">
+                <p class="title">
+                  <%= @day_plan.evening_starter_recipe.title %>
+                </p>
+              </div>
+            <% end %>
+
+            <%= link_to @day_plan.evening_dish_recipe, { class: 'recipe-meal-link' } do %>
+            <div class="recipe-img recipe-img-meal-plan" style="
+              <% if @day_plan.evening_dish_recipe.image.attached? %>
+                background-image: url(<%= rails_blob_url @day_plan.evening_dish_recipe.image %>);
+              <% end %>
+            ">
+              <p class="title">
+                <%= @day_plan.evening_dish_recipe.title %>
+              </p>
+            </div>
+            <% end %>
+
+            <%= link_to @day_plan.evening_dessert_recipe, { class: 'recipe-meal-link' } do %>
+              <div class="recipe-img recipe-img-meal-plan" style="
+                <% if @day_plan.evening_dessert_recipe.image.attached? %>
+                  background-image: url(<%= rails_blob_url @day_plan.evening_dessert_recipe.image %>);
+                <% end %>
+              ">
+                <p class="title">
+                  <%= @day_plan.evening_dessert_recipe.title %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= link_to t('meal_plan.reload'), meal_plan_reload_path(@day_plan), {  method: :post, class: 'uk-button uk-button-default uk-margin' } %>
+    </div>
+  </div>
+  <div class="uk-section uk-section-default">
+    <div class="uk-container">
+      <h2 class="title"><%= t('meal_plan.edit') %></h2>
+      <%= simple_form_for :plan,
+                    url: meal_plan_path(@day_plan),
+                    method: :put,
+                    html: {
+                        class: "uk-grid-small uk-grid uk-padding"
+                    },
+                    defaults: {
+                        wrapper_class: "uk-width-1-1",
+                        required: false
+                    } do |f| %>
+        <div class="uk-width-1-1 uk-margin">
+          <h3 class="title"><%= t("meal_plan.midday") %></h3>
+        </div>
+        <%= f.input :midday_starter, :label => t("meal_plan.starter"), selected: @day_plan.midday_starter_recipe.id, collection: @starters, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <%= f.input :midday_dish, :label => t("meal_plan.dish"), selected: @day_plan.midday_dish_recipe.id, collection: @dishes, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <%= f.input :midday_dessert, :label => t("meal_plan.dessert"), selected: @day_plan.midday_dessert_recipe.id, collection: @desserts, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <div class="uk-width-1-1 uk-margin">
+          <h3 class="title"><%= t("meal_plan.evening") %></h3>
+        </div>
+        <%= f.input :evening_starter, :label => t("meal_plan.starter"), selected: @day_plan.evening_starter_recipe.id, collection: @starters, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <%= f.input :evening_dish, :label => t("meal_plan.dish"), selected: @day_plan.evening_dish_recipe.id, collection: @dishes, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <%= f.input :evening_dessert, :label => t("meal_plan.dessert"), selected: @day_plan.evening_dessert_recipe.id, collection: @desserts, as: :select, :include_blank => false, input_class: false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.recipes.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.recipes.placeholder'),
+        } , wrapper_class: "uk-width-1-3@s", defaults: { input_class: "" } %>
+        <div class="uk-width-1-1@s uk-margin">
+          <%= f.button :submit, t("meal_plan.edit"), class: "uk-width-1-1" %>
+        </div>
+    <% end %>
+    </div>
+  </div>
