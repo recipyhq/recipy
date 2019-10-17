@@ -61,10 +61,19 @@ class Recipe < ApplicationRecord
   end
 
   def self.have_ingredients(igs)
-    ingredients = igs.select { |ig| ig.length > 0 }
-    if !ingredients.nil? && ingredients.length > 0
-      logger.info(ingredients)
-      joins(:ingredients).where("ingredients.id": ingredients.to_a).group("recipes.id")
+    if !igs.nil? && igs.length > 0
+      logger.info(igs)
+      joins(:ingredients).where(ingredients: { id: igs.to_a }).group(:id)
+    else
+      all
+    end
+  end
+
+  def self.no_have_ingredients(igs)
+    if !igs.nil? && igs.length > 0
+      logger.info(igs)
+      recipes_to_remove = Recipe.joins(:ingredients).where(ingredients: { id: igs.to_a }).group(:id).select(:id).map{|r| r.id}
+      joins(:ingredients).where.not(id: recipes_to_remove.to_a).group(:id)
     else
       all
     end
