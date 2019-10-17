@@ -63,7 +63,7 @@ class RecipesController < InheritedResources::Base
       @recipe_params.delete(:recipe_ingredients_attributes)
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
-        redirect_to new_recipe_path, flash: {
+        render :new, flash: {
           danger: new_recipe.errors.values.to_sentence(words_connector: ' ',
                                                        last_word_connector: ' '),
         }

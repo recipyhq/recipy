@@ -279,6 +279,7 @@ fr:
         already_in: "La recette est déjà dans le carnet de recette choisit"
         no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
       create_notebook: "Créer un carnet de recette"
+      allergen: "Contient l'allergène %{allergen}"
 
   ingredient:
     title:
@@ -288,6 +289,7 @@ fr:
       description: "Descriptif de l'ingrédient"
       type: "Type d'ingrédient"
       quantity: "Équivalence en quantité d'ingrédients"
+      allergen: "Les allergènes de l'ingrédient"
     unrecognized: "Ingredient non reconnu par l'application"
     no_title: "Titre de l'ingrédient manquant"
     not_created: "L'ingrédient n'a pas pu être créé"
@@ -447,6 +449,10 @@ fr:
     utensils:
       no_result: "Ustensile non trouvé"
       search_placeholder: "Vos ustensiles"
+    ingredient_allergens:
+      no_result: "Pas d'allergène trouvé"
+      search_placeholder: "Recherchez les allergènes ici"
+      placeholder: "Sélectionnez les allergènes"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:
@@ -454,3 +460,21 @@ fr:
       title: "Téléchargez l'app ici !"
       link: "Cliquez ici pour télécharger l'application"
       qrCode: "Scannez le qr-code ci-dessous"
+  user:
+    recipe:
+      allergen: "Attention à l'allergène %{allergen}"
+  allergen_list:
+    Lactose: "Lactose"
+    Oeuf: "Oeuf"
+    Mollusques: "Mollusques"
+    Poissons: "Poissons"
+    Anhydride_sulfureux: "Anhydride sulfureux ou sulfites"
+    Moutarde: "Moutarde"
+    Lupin: "Lupin"
+    Fruit_a_coques: "Fruits à coque"
+    Graine_de_sesame: "Graines de sesame"
+    Gluten: "Gluten"
+    Soja: "Soja"
+    Arachides: "Arachides"
+    Celeri: "Céléri"
+    Crustaces: "Crustacés"

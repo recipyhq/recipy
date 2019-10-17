@@ -254,6 +254,7 @@ en:
       link: "My recipes"
       title: "All my recipes"
     create_notebook: "Create a new notebook"
+    allergen: "Contain the allergen %{allergen}"
 
   ingredient:
     title:
@@ -263,6 +264,7 @@ en:
       description: "Ingredient description"
       type: "Ingredient type"
       quantity: "Equivalence in grams of the ingredient in a certain type of quantity "
+      allergen: "Ingredient allergens"
     unrecognized: "Unrecognized ingredient"
     no_title: "Missing ingredient name"
     not_created: "The ingredient did not be created"
@@ -347,6 +349,10 @@ en:
     utensils:
       no_result: "Utensil not found"
       search_placeholder: "Your utensils"
+    ingredient_allergens:
+      no_result: "No allergen found"
+      search_placeholder: "Select your allergens"
+      placeholder: "Select you allergens"
   landing:
     download_app:
       title: "Download the app here !"
@@ -355,3 +361,23 @@ en:
   producer:
     new:
       welcome: "You are now a producer ! Welcome"
+  user:
+    recipe:
+      allergen: "Warning to the allergen %{allergen}"
+  allergen_list:
+    Lactose: "Lactose"
+    Oeuf: "Egg"
+    Mollusques: "Molluscs"
+    Poissons: "Fishes"
+    Anhydride_sulfureux: "Sulphur dioxide and sulphites"
+    Moutarde: "Mustard"
+    Lupin: "Lupin"
+    Fruit_a_coques: "Nuts"
+    Graines_de_sesame: "Sesame seeds"
+    Gluten: "Gluten"
+    Soja: "Soybeans"
+    Arachides: "Peanuts"
+    Celeri: "Celery"
+    Crustaces: "Crustaceans"
+
+

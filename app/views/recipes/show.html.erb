@@ -5,21 +5,22 @@
 </div>
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
-    <h2 class="title"><%= @recipe.title %></h2>
+    <h2 class="title"><%= @recipe.title %>
+    </h2>
+<!--    <div style="display: inline-block">-->
+
+<!--    </div>-->
     <p><%= @recipe.description %></p>
-    <% if !@recipe_user_allergens.empty? %>
-      <div class="allergen-alert uk-position-fixed uk-position-z-index
-      uk-position-top-left" uk-alert>
-        <a class="uk-alert-close" uk-close></a>
-        <h3>Attention</h3>
-        <p>Cette recette contient certains de vos allergènes :</p>
-      <ul class="">
-        <% @recipe_user_allergens.each do |elem| %>
-          <li><%= elem.name %></li>
+    <div style="margin-bottom: 40px;">
+      Allergènes :
+      <% @allergen_array.each do |allergen| %>
+        <% if !current_user.nil? && @recipe_user_allergens.include?(allergen) %>
+          <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
+        <% else %>
+          <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-title.svg' %>" />
         <% end %>
-      </ul>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     <div class="uk-child-width-1-3@m" uk-grid>
       <div>
         <div class="uk-text-center">
@@ -82,9 +83,15 @@
     <div>
       <div class="uk-padding">
         <% if @recipe.recipe_ingredients.count > 1 %>
-          <h2 class="title"><%= "Ingrédients" %></h2>
+          <h2 class="title"><%= "Ingrédients" %>
+            <% if !current_user.nil? && @allergen_array.include?(@recipe_user_allergens[0]) %>
+            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+              <% end %>
+          </h2>
         <% else %>
-          <h2 class="title"><%= "Ingrédient" %></h2>
+          <h2 class="title"><%= "Ingrédient" %>
+            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+          </h2>
         <% end %>
         <div class="uk-card uk-card-default uk-card-body">
           <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
@@ -93,8 +100,12 @@
                 <%= recipe_ingredient.ingredient.name %>
                 <% unless recipe_ingredient.ingredient.allergen_tags.empty? %>
                   <% recipe_ingredient.ingredient.allergen_tags.each do |allergen| %>
-                      <img alt="<%= allergen.name %>" uk-tooltip="<%= allergen.name %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
+                    <% if @recipe_user_allergens.include?(allergen) %>
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon-red" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
+                    <% else %>
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
                     <% end %>
+                  <% end %>
                 <% end %>
               </div>
               <% if (recipe_ingredient.recipe_quantity) %>
