@@ -5036,7 +5036,7 @@ Recipe.create! do |recipe|
   recipe.recipe_ingredients[0].recipe_quantity =
     RecipeQuantity.create!(:value => 2, :quantity_type => QuantityType.find_by_name("Pièce(s)"))
   recipe.recipe_ingredients[1].recipe_quantity =
-    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillière(s) à soupe"))
+    RecipeQuantity.create!(:value => 1, :quantity_type => QuantityType.find_by_name("Cuillère(s) à soupe"))
   recipe.recipe_ingredients[2].recipe_quantity =
     RecipeQuantity.create!(:value => 3, :quantity_type => QuantityType.find_by_name("Cuillère(s) à café"))
   recipe.recipe_ingredients[3].recipe_quantity = nil
