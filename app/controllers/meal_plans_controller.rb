@@ -126,6 +126,10 @@ class MealPlansController < ApplicationController
       mp.evening_dessert_recipe = desserts[1];
       
     end
+
+    puts day_plan.date.inspect
+
+    day_plan
   end
   
   def prior_monday(date)
