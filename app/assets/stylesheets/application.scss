@@ -230,7 +230,7 @@ body {
 }
 
 .meal-card {
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.3);
   a:hover {
     text-decoration: none;
   }
@@ -243,6 +243,8 @@ body {
 }
 
 .meal-plan-link {
+  display: flex;
+  justify-content: center;
   transition: 0.4s background-color ease;
   .uk-text-meta {
     transition: 0.4s color ease;
@@ -323,6 +325,7 @@ body {
 .recipe-img-meal-plan {
   height:100%;
   position: relative;
+  min-height: 150px;
   background-color: $recipy-primary-color;
   z-index: 1;
   transition: height 0.5s ease;
