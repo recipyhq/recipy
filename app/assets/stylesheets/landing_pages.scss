@@ -99,11 +99,18 @@
   h1 {
     font-family: 'Lobster Two', cursive;
     text-align: center;
+    font-size: 4em;
+  }
+
+  h2 {
+    font-family: 'Lobster Two', cursive;
+    text-align: center;
+    font-size: 3em;
   }
 
   & * {
     color: $recipy-default-color !important;
-    text-shadow: 1px 2px 4px $recipy-secondary-color;
+    text-shadow: 2px 4px 8px $recipy-secondary-color;
   }
 
   & .project-info {
@@ -192,4 +199,8 @@
     color: $recipy-secondary-color;
     text-decoration: none;
   }
+}
+
+#our-team-photo {
+  background-size: cover;
 }

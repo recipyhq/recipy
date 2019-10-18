@@ -3,15 +3,19 @@
   <div class="uk-cover-container" uk-height-viewport  uk-parallax="blur: 10">
     <img src="<%= asset_path 'cover.jpg' %>" alt="cover" uk-cover>
     <div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-middle cover-text-container uk-text-justify">
-      <h1>Ensemble gaspillons moins, mangeons mieux.</h1>
-      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s uk-padding project-info uk-text-center">
-        Recipy est la première application à proposer des recettes personnalisées en réduisant le gaspillage alimentaire. En effet, Recipy propose à ses utilisateurs de découvrir de nouvelles recettes basées sur leurs goûts tout en consommant de manière locale. Enfin, l’application permet à l’utilisateur de ne pas se soucier de sa liste de courses hebdomadaire car elle directement générée et intégrée dans les outils d’aujourd’hui et de demain.
+      <h1 class="uk-visible@m">Cassez votre routine alimentaire</h1>
+      <h2 class="uk-hidden@m">Cassez votre routine alimentaire</h2>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s project-info uk-text-center uk-text-large uk-margin-medium-bottom uk-visible@m">
+        Recipy est la première application intelligente qui permet de diversifier son alimentation tout en mangeant local.
       </p>
-      <p class="uk-text-small">
-        <a href="#concept" uk-scroll>Cliquez ici pour en savoir plus</a>
+      <p class="uk-width-1-2@l uk-width-1-1@m uk-width-2-4@s project-info uk-text-center uk-hidden@m uk-padding">
+        Recipy est la première application intelligente qui permet de diversifier son alimentation tout en mangeant local.
+      </p>
+      <p class="uk-text-large uk-margin-medium-bottom">
+        <a class="uk-button uk-button-default uk-button-primary" href="/beta">Je veux cuisiner !</a>
       </p>
       <div class="info uk-flex uk-flex-column uk-flex-middle">
-        <a href="#concept" uk-scroll>
+        <a href="#concept" uk-scroll class="uk-visible@m">
           <span class="down-icon bounce" uk-icon="icon: chevron-down; ratio: 2"></span>
         </a>
       </div>
@@ -24,7 +28,7 @@
     <div class="uk-container uk-text-justify">
       <h2 class="landing-title uk-margin">CONCEPT</h2>
       <p class="uk-text-small">
-        Recipy est votre nouveau compagnon pour la réalisation de tous vos plats au quotidien. Il vous assiste dans la découverte de nouveaux plats succulents et dans leur réalisation. De plus, nous nous engageons à vous apprendre une nouvelle manière de consommer plus respectueuse de l’environnement tout en restant dans vos frais. En effet, Recipy vous propose de vous compagnier lors des achats de vos produits manquants auprès de producteurs locaux partenaires. Recipy est connecté aux technologies d’aujourd’hui et de demain pour vous proposer tous les jours la manière la plus simple de rendre agréables des moments du quotidien : « que va-t-on manger cette semaine ? » ou encore « où ai-je donc mis ma liste de courses ? ». Plus d'embarras, grâce aux nombreuses de Recipy qui faciliteront votre vie de cuisinier amateur ou professionnel. Recipy va vous prouver qu’il peut être simple d’éviter le gaspillage tout en mangeant mieux !
+        Recipy prend en compte vos exigences alimentaires que vous soyez vegan ou intolérant au lactose, nous vous proposons une configuration des plannings de repas totalement personnalisée. En un clic, générez votre liste de course avec tous les ingrédients du planning de la semaine. Garde vos meilleurs recettes en les stockants dans un carnet de recette en ligne. Recipy améliore aussi la qualité de vos ingrédients en vous mettant en relation avec des producteurs locaux.
       </p>
     </div>
   </div>
@@ -49,35 +53,20 @@
   </div>
 </div>
 
-<div class="uk-section uk-section-large uk-section-muted uk-section-secondary" id="join-us">
-  <div class="uk-container uk-margin">
-    <h2 class="landing-title">RECIPY ARRIVE BIENTÔT</h2>
-    <p class="uk-text-saml">Inscrivez vous pour recevoir les informations sur l'évolution du projet.</p>
-  </div>
-  <div class="uk-container">
-    <div class="uk-container uk-container-large">
-      <%= simple_form_for Prospect.new,  url: landing_pages_path(Prospect.new), defaults: { input_html: { class: 'uk-input' }, label:false } do |f| %>
-        <div class="uk-margin">
-        <%= f.input :last_name, type: "text", placeholder: "Nom" %>
-        </div>
-        <div class="uk-margin">
-        <%= f.input :first_name, placeholder: "Prénom"%>
-        </div>
-          <div class="uk-margin">
-          <%= f.input :email, placeholder: "Email"%>
-          </div>
-        <%= f.button :submit, "Valider" ,class: 'uk-button uk-button-primary' %>
-      <% end %>
-
-      <p class="rgpd-small">
-        *RECIPY, responsable du traitement, collecte votre nom, prénom et adresse email pour vous envoyer les actualités concernant RECIPY. Vous bénéficiez d'un droit d’accès, de rectification et d'opposition. Pour plus d'information sur vos droits informatique & Liberté cliquez <a href="#">ici</a>
+<div class="uk-section uk-section-secondary uk-padding-remove" id="our-team">
+  <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+    <div class="uk-padding">
+      <h2 class="landing-title uk-margin uk-text-center">NOTRE EQUIPE</h2>
+      <p class="uk-text-large uk-text-center uk-padding uk-text-italic">
+        8 collaborateurs, tous issues de l'Epitech - Promo 2020
       </p>
     </div>
+    <div class="uk-width-2-3@m">
+      <img src="<%= asset_path 'landing/team.jpg' %>" alt="team" style="opacity: 0.85"/>
+    </div>
   </div>
-
-
-
 </div>
+
 <div class="uk-section uk-section-small uk-section-default">
   <div class="uk-container uk-text-center uk-padding">
     <h2 class="landing-title uk-margin">ESSAYEZ LA BETA DÈS MAINTENANT</h2>
