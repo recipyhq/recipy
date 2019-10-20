@@ -17,7 +17,7 @@
         <% if !current_user.nil? && @recipe_user_allergens.include?(allergen) %>
           <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
         <% else %>
-          <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-title.svg' %>" />
+          <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-title.svg' %>" />
         <% end %>
       <% end %>
     </div>
@@ -101,9 +101,9 @@
                 <% unless recipe_ingredient.ingredient.allergen_tags.empty? %>
                   <% recipe_ingredient.ingredient.allergen_tags.each do |allergen| %>
                     <% if @recipe_user_allergens.include?(allergen) %>
-                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon-red" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-red" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
                     <% else %>
-                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: allergen.name) %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
                     <% end %>
                   <% end %>
                 <% end %>

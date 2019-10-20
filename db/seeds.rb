@@ -116,7 +116,7 @@ AllergenTag.create! do |allergen_tag|
 end
 
 AllergenTag.create! do |allergen_tag|
-  allergen_tag.name = "Fruit_a_coques"
+  allergen_tag.name = "Fruits_a_coque"
 end
 
 AllergenTag.create! do |allergen_tag|
@@ -1522,7 +1522,7 @@ Ingredient.create! do |ingredient|
     IngredientTag.find_by_name("Épice"),
   ]
   ingredient.allergen_tags << [
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -1660,7 +1660,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
 end
 
@@ -1826,7 +1826,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-      AllergenTag.find_by_name("Fruit_a_coques"),
+      AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Produits secs"
 end
@@ -2093,7 +2093,7 @@ Ingredient.create! do |ingredient|
     AllergenTag.find_by_name("Lactose"),
     AllergenTag.find_by_name("Soja"),
     AllergenTag.find_by_name("Gluten"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Produits laitiers"
 end
@@ -2548,7 +2548,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2575,7 +2575,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques")
+    AllergenTag.find_by_name("Fruits_a_coque")
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -2590,7 +2590,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques")
+    AllergenTag.find_by_name("Fruits_a_coque")
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -2605,7 +2605,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Soja"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
     AllergenTag.find_by_name("Lupin"),
     AllergenTag.find_by_name("Graines_de_sesame"),
   ]
@@ -2622,7 +2622,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -2648,7 +2648,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
@@ -2974,7 +2974,7 @@ Ingredient.create! do |ingredient|
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Arachides"),
-    AllergenTag.find_by_name("Fruit_a_coques"),
+    AllergenTag.find_by_name("Fruits_a_coque"),
   ]
   ingredient.shelf_tag = "Epicerie"
 end
