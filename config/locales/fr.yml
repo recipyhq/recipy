@@ -2,7 +2,7 @@ fr:
   back: 'Retour'
   date:
     day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
-  
+
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
   placeholder_first_name: "Prénom"
@@ -133,6 +133,7 @@ fr:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
     log_out: "Déconnexion"
+    welcome_msg: "Bienvenue %{name} !"
     sign_in: "Se connecter"
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
@@ -141,8 +142,10 @@ fr:
     point_of_sales: "Points de vente"
     notebooks: "Mes carnets de recette"
     my_meal_plan: "Mon planning de repas"
+    who_we_are: "En savoir plus sur Recipy"
+
     producer:
-      list: "Liste des producteurs"
+      list: "Producteurs près de chez moi"
       point_of_sales: "Points de vente"
 
   footer:
@@ -314,7 +317,7 @@ fr:
       label: "Dans quel rayon se trouve votre produit ?"
 
   search:
-    title: "Rechercher"
+    title: "Rechercher une recette"
     read_more: "Lire la suite"
     search: "Rechercher..."
     search_btn: "Rechercher"

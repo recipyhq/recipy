@@ -135,6 +135,8 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     my_profil: "My profil"
+    welcome_msg: "Welcome %{name} !"
+    who_we_are: "About Recipy"
 
   shared_links:
     no_account: "No account ?"
