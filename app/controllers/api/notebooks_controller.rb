@@ -88,8 +88,10 @@ class Api::NotebooksController < InheritedResources::Base
              status: :not_found
       return
     end
-    notebooks = Notebook.where(:user => user).all
-    notebook_json = notebooks.as_json
+    notebooks = Notebook.includes(:recipes).where(:user => user).all.with_attached_image
+    notebook_json = notebooks.as_json(include: [
+      :recipes,
+    ], methods: %i(image_url))
     if notebooks.empty?
       render json: notebook_json, status: :not_found
     else

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <%= stylesheet_link_tag 'search' %>
 
 <%= simple_form_for :search,
@@ -34,34 +35,33 @@
         <% @recipes.each do |recipe| %>
             <div>
                 <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top recipe-img recipe-search-img" style="background-image: url(
-                        <% if recipe.image.attached? %>
-                            <%= rails_blob_url recipe.image %>
-                        <% else %>
-                            <%= "https://picsum.photos/400/200" %>
-                        <% end %>
-                    )">
+                  <%= link_to recipe do %>
+                    <div class="uk-card-media-top recipe-img recipe-search-img" style="
+                    <% if recipe.image.attached? %>
+                      background-image: url(<%= rails_blob_url recipe.image %>);
+                      <% else %>
+                        <%= "https://picsum.photos/400/200" %>
+                      <% end %>
+                    ">
                     </div>
+                  <% end %>
                     <div class="uk-card-body">
                         <div uk-tooltip="<%= recipe.title %>">
-                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"><%= recipe.title %></h3>
+                          <h3 class="uk-card-title uk-text-truncate" alt="<%= recipe.title %>%"><%= link_to recipe.title, recipe, class: "uk-card-title uk-button uk-button-text uk-text-truncate" %></h3>
                         </div>
                         <div class="star-ratings star-dark">
                             <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
-                        <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
-                        <div class="info-recipe">
-                            <span class="name"><%= t("recipe.title.difficulty") %> (<%= recipe.difficulty %> / 10)</span>
-                            <progress class="uk-progress" value="<%= recipe.difficulty %>" max="10"></progress>
-                            <span class="name"><%= t("recipe.title.cooking_time") %></span>
-                            <span class="info"><%= recipe.cooking_time %></span>
-                            <span class="name"><%= t("recipe.title.ingredient_number") %></span>
-                            <span class="info"><%= recipe.ingredients.count %></span>
+                        <div uk-tooltip="<%= recipe.description %>">
+                          <p><%= truncate recipe.description, length: 42, separator: /\w+/ %></p>
                         </div>
-                    </div>
-                    <div class="uk-card-footer">
-                        <%= link_to t("search.read_more"), recipe, class: "uk-button uk-button-text" %>
+                        <div class="info-recipe">
+                          <span class="info"> <i class="fas fa-hourglass-end"></i>  </b> <%= recipe.cooking_time + recipe.preparation_time%> minutes</span>
+                          <span class="info"> <%= "Nombre d'ingrédients :" %>
+                            <%= recipe.ingredients.count %>
+                          </span>
+                        </div>
                     </div>
                 </div>
             </div>

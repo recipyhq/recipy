@@ -27,15 +27,24 @@
       <div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
+              <%= link_to recipe do %>
+                <div class="uk-card-media-top recipe-img recipe-search-img" style="
                 <% if recipe.image.attached? %>
-                    <%= image_tag recipe.image, :crop => :fill %>
-                <% else %>
+                    background-image: url(<%= rails_blob_url recipe.image %>);
+                  <% else %>
                     <%= image_tag "https://picsum.photos/400/200" %>
-                <% end %>
+                  <% end %>
+                ">
+                </div>
+              <% end %>
             </div>
             <div class="uk-card-body">
-                <h3 class="uk-card-title"> <%= link_to recipe.title , recipe, class: "uk-button uk-button-text" %></h3>
-                <p class="uk-text"> <%= recipe.description %></p>
+              <div uk-tooltip="<%= recipe.title %>">
+                <h3 class="uk-card-title uk-text-truncate"> <%= link_to recipe.title , recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
+              </div>
+              <div uk-tooltip="<%= recipe.description %>">
+                <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
+              </div>
             </div>
             <div class="uk-card-footer">
               <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button uk-button-text uk-align-right', method: :post do %> </td>
