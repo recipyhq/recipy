@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       registrations: 'users/registrations',
       confirmations: 'users/confirmations',
+      passwords: 'users/passwords',
+      unlocks: 'users/unlocks',
     }
 
     scope '(:locale)', locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
