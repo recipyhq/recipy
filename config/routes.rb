@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       end
 
       resources :meal_plans, :only => [:index, :show, :update]
+      post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
       # resources :meals
       resources :shopping_lists
       resources :recipes

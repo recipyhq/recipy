@@ -1,5 +1,16 @@
 <div class="uk-container uk-padding">
-  <h1 class="title">Mon planning de repas</h1>
+  <div class="uk-grid-match uk-grid-small uk-child-width-1-2@l uk-child-width-1-1@s" uk-grid>
+    <div>
+      <h1 class="title">Mon planning de repas</h1>
+    </div>
+    <div>
+      <% if @shopping_list %>
+        <%= link_to 'Voir la liste de course', shopping_list_path(id: @shopping_list.id), class: "uk-button uk-button-default uk-margin-small-top" %>      
+      <% else %>
+        <%= button_to 'Générer une liste de course pour la semaine', meal_plan_create_list_path, method: :post, class: "uk-button uk-button-default uk-margin-small-top" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="uk-margin">
   <div class="uk-grid-match uk-grid-small uk-child-width-1 uk-flex-center" uk-grid>
