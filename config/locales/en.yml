@@ -379,5 +379,16 @@ en:
     Arachides: "Peanuts"
     Celeri: "Celery"
     Crustaces: "Crustaceans"
+    title: "Allergen(s):"
+  recipe_popular:
+    title: "Most popular recipes"
+  author:
+    title: "Offered by :"
+    title_recipy: "Offered by Recipy with"
+  difficulty:
+    easy: "easy"
+    medium: "medium"
+    hard: "hard"
+    very_hard: "very hard"
 
 

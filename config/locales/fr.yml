@@ -157,7 +157,7 @@ fr:
     contact_us: "Nous contacter"
     legal_notice: "Mentions légales"
     privacy_policy: "Politique de confidentitalité"
-    quote: "Ensemble, gaspillons moins. Mangeons mieux."
+    quote: "Cassez votre routine culinaire !"
 
   avatar:
     not_found: "Aucun avatar"
@@ -181,6 +181,7 @@ fr:
               blank: "Le champ Courriel ne doit pas être vide"
             password:
               blank: "Le champ Mot de passe ne doit pas être vide"
+              too_short: "Mot de passe trop court (8 caractères minimum)"
             password_confirmation:
               confirmation: "Vérification du mot de passe incorrect. Veuillez réessayer"
             current_password:
@@ -498,3 +499,14 @@ fr:
     Arachides: "Arachides"
     Celeri: "Céléri"
     Crustaces: "Crustacés"
+    title: "Allergène(s) :"
+  recipe_popular:
+    title: "Nos recettes les plus populaires"
+  author:
+    title: "Proposé par:"
+    title_recipy: "Proposé par Recipy avec"
+  difficulty:
+    easy: "facile"
+    medium: "moyen"
+    hard: "difficile"
+    very_hard: "Très difficile"

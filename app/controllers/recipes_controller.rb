@@ -23,6 +23,7 @@ class RecipesController < InheritedResources::Base
           @recipe_user_allergens.push(aller)
         end
       end
+      @difficulty_front = get_difficulty
     end
 
     @allergen_array = allergen_set.uniq
@@ -41,6 +42,20 @@ class RecipesController < InheritedResources::Base
 
   def show_user_recipes
     find_recipes_by_user_id
+  end
+
+  def get_difficulty
+    find_recipe
+
+    if @recipe.difficulty <= 3
+      return t('difficulty.easy')
+    elsif @recipe.difficulty <= 6
+      return t('difficulty.medium')
+    elsif @recipe.difficulty <= 9
+      return t('difficulty.hard')
+    elsif @recipe.difficulty > 9
+      return t('difficulty.very_hard')
+    end
   end
 
   def new
