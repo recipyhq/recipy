@@ -39,6 +39,7 @@ en:
   devise:
     facebook: "Sign in with Facebook"
     google_oauth2: "Sign in with Google +"
+    reset_password: "Send new password instructions"
 
   users:
     confirmations:
