@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
   get '/legal_notice', to: "landing_pages#legal_notice"
+  get 'sitemap.xml' => 'sitemaps#index', :defaults => {:format => 'xml'}
 
   ActiveAdmin.routes(self)
   devise_for :administrators, ActiveAdmin::Devise.config
