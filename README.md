@@ -47,13 +47,28 @@ Don't forget to reset the database at the first launch and after each time you p
 
 Then enter each following command in a different terminal (or in background) at the root of the project:
 
-`./bin/wepback-dev-server` is used for JS, learn more about it [here](https://webpack.js.org/configuration/dev-server/)
+`./bin/webpack-dev-server` is used for JS, learn more about it [here](https://webpack.js.org/configuration/dev-server/)
 
 `bundle exec sidekiq -t 25` is used for the [mailcatcher](https://www.npmjs.com/package/maildev), you can learn more about it [here](https://github.com/mperham/sidekiq)
 
 `rails s` simply start the server
 
 The mailtrap is available at `http://localhost:8084/#/`
+
+## Troubleshooting
+
+### Rake Aborted
+
+**Problem:** ```rake aborted!
+NoMethodError: undefined method `[]' for nil:NilClass```
+
+**Solution:** The master.key is missing in `/config` (Ask us by e-mail or on Discord !)
+
+### Error with Minimagick
+
+**Problem:** Minimagick is missing.
+
+**Solution:** You just need to install the missing package.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
