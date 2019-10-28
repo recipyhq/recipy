@@ -1,3 +1,4 @@
+
 # Recipy
 
 Recipy is the first application to offer customized recipes by reducing food waste. 
@@ -5,7 +6,7 @@ Indeed, Recipy offers its users the opportunity to discover new recipes based on
 by consuming locally. Finally, the application allows the user not to worry about his weekly shopping 
 list, because it is directly generated and integrated into the tools of today and tomorrow. 
 
-You can found us at [www.recipy.fr](https://recipy.fr)
+You can find us at [www.recipy.fr](https://recipy.fr)
 ## Installation
 
 #### Docker Compose
@@ -21,10 +22,12 @@ You can found us at [www.recipy.fr](https://recipy.fr)
 * `bundle`
 #### nvm
 * Follow the instruction : [nvm](https://github.com/nvm-sh/nvm)
-* `nvm install` (If this doesn't work, try installing [ruby-build](https://github.com/rbenv/ruby-build))
+* `nvm use` (If this doesn't work, try installing [ruby-build](https://github.com/rbenv/ruby-build), don't forget to add it to your bash/zsh with [this](https://github.com/nvm-sh/nvm#bash))
 * `nvm alias default $(cat .nvmrc)`
-* `npm i -g yarn@latest`
+* `npm i -g yarn@1.13.0`
 * `yarn`
+
+After that you need to ask us the master.key by e-mail or on Discord.
 
 #### PosgreSQL
 
@@ -35,6 +38,12 @@ You can found us at [www.recipy.fr](https://recipy.fr)
 ## Start the project
 
 First you need to start all dockers with `docker-compose up -d`
+
+Don't forget to reset the database at the first launch and after each time you pull :
+
+`bundle exec rake db:reset`
+`rake db:create`
+`rake db:migrate`
 
 Then enter each following command in a different terminal (or in background) at the root of the project:
 
@@ -54,4 +63,3 @@ Please make sure to update tests as appropriate.
 ## Contact
 
 If you have any question, you can contact us at recipyhq@gmail.com
-
