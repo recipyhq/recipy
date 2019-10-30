@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "longitude"
-    t.float "latitude"
+    t.integer "longitude"
+    t.integer "latitude"
   end
 
   create_table "administrators", force: :cascade do |t|
@@ -496,8 +496,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters", null: false
-    t.boolean "isProducer", null: false
+    t.boolean "newsletters", default: false, null: false
+    t.boolean "isProducer", default: false, null: false
     t.text "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
