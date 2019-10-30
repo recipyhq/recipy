@@ -24,7 +24,6 @@ class ShoppingListsController < InheritedResources::Base
       end
       @items[x.ingredient.shelf_tag] << x
     end
-    puts @items
   end
 
   def new
@@ -35,10 +34,66 @@ class ShoppingListsController < InheritedResources::Base
     find_shopping_list_edit
   end
 
+  def create_shopping_list_quantity(shopping_list, elem)
+    shopping_list.ingredients << elem.ingredient
+    if elem.shopping_list_quantity
+      unless is_quantity_type_abstract(elem.shopping_list_quantity.quantity_type.name)
+        shopping_list_quantity =
+          ShoppingListQuantity.create!(:value => elem.shopping_list_quantity.value,
+                                       :quantity_type_id => elem.shopping_list_quantity.quantity_type.id,
+                                       :quantity_type => elem.shopping_list_quantity.quantity_type)
+        last = shopping_list.shopping_list_ingredients.last
+        last.shopping_list_quantity = shopping_list_quantity
+      end
+    end
+  end
+
+  def sum_shopping_list_quantities(shopping_list, elem)
+    if elem.shopping_list_quantity
+      unless is_quantity_type_abstract(elem.shopping_list_quantity.quantity_type.name)
+        ings = ShoppingListIngredient.where(shopping_list_id: shopping_list.id,
+                                            ingredient_id: elem.ingredient.id)
+
+        ings.each do |ing|
+          if ing.shopping_list_quantity.quantity_type.id == elem.shopping_list_quantity.quantity_type.id
+            quant = ing.shopping_list_quantity
+            quant.value += elem.shopping_list_quantity.value
+            quant.save
+            return
+          end
+        end
+        create_shopping_list_quantity(shopping_list, elem)
+      end
+    end
+  end
+
   def create
-    new_shopping_list = ShoppingList.new(shopping_list_params)
-    new_shopping_list.user_id = current_user.id
+    @shopping_list_params = shopping_list_params
+    new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
+    @shopping_list_params.delete(:shopping_list_ingredients_attributes)
+    new_shopping_list = ShoppingList.new(@shopping_list_params)
+    new_shopping_list.user = current_user
     if new_shopping_list.valid?
+      if !new_ingredients.nil?
+        new_ingredients.each do |elem|
+          unless new_shopping_list.ingredients.any? {|ingredient| ingredient.id == elem[1].values[0].to_i}
+            new_shopping_list.ingredients << Ingredient.find(elem[1].values[0])
+            if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+              value = elem[1].values[1]
+              # if shopping_list.ingredients.find_by(id: elem.ingredient.id)
+              #   sum_shopping_list_quantities(shopping_list, elem)
+              # else
+              #   create_shopping_list_quantity(shopping_list, elem)
+              # end
+              shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
+                                                                    :quantity_type =>
+                                                                      QuantityType.find(value.values[1]))
+              last = new_shopping_list.shopping_list_ingredients.last
+              last.shopping_list_quantity = shopping_list_quantity
+            end
+          end
+        end
+      end
       new_shopping_list.save
       redirect_to shopping_list_path(new_shopping_list.id), flash: {success: "Grand succès !"}
     else
@@ -49,7 +104,24 @@ class ShoppingListsController < InheritedResources::Base
 
   def update
     find_shopping_list_edit
-    if @shopping_list.update(shopping_list_params)
+    @shopping_list_params = shopping_list_params
+    new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
+    @shopping_list_params.delete(:shopping_list_ingredients_attributes)
+    @shopping_list.shopping_list_ingredients.destroy_all
+    new_ingredients.each do |elem|
+      if elem[1].values[2] == "false"
+        @shopping_list.ingredients << Ingredient.find(elem[1].values[0])
+        if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+          value = elem[1].values[1]
+          shopping_list_quantity = ShoppingListQuantity.create!(:value => value.values[0],
+                                                                :quantity_type =>
+                                                                  QuantityType.find(value.values[1]))
+          last = @shopping_list.shopping_list_ingredients.last
+          last.shopping_list_quantity = shopping_list_quantity
+        end
+      end
+    end
+    if @shopping_list.update(@shopping_list_params)
       redirect_to shopping_list_path, flash: {success: "Votre liste a été modifiée avec succés !"}
     else
       redirect_to edit_shopping_list_path(@shopping_list), flash: {danger: "Paramètres invalides"}
@@ -78,6 +150,6 @@ class ShoppingListsController < InheritedResources::Base
   end
 
   def shopping_list_params
-    params.require(:shopping_list).permit(:name, :ingredient_ids => [])
+    params.require(:shopping_list).permit(:name, :shopping_list_ingredients_attributes => {})
   end
 end
