@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
     <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= @recipe.image.attached? ? url_for(@recipe.image.variant resize: '1000x1000') : "https://picsum.photos/400/200" %>;)"></div>
@@ -5,8 +7,29 @@
 </div>
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
-    <h2 class="title"><%= @recipe.title %></h2>
+    <h2 class="title"><%= @recipe.title %>
+    </h2>
+<!--    <div style="display: inline-block">-->
+
+<!--    </div>-->
     <p><%= @recipe.description %></p>
+    <% if @recipe.user %>
+    <p> <%= t('author.title') %> <%= @recipe.user.first_name %> <%= @recipe.user.last_name[0] %>.</p>
+      <% else %>
+    <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
+      <%end %>
+    <div style="margin-bottom: 40px;">
+      <% if !@allergen_array.empty? %>
+        <%= t('allergen_list.title') %>
+        <% @allergen_array.each do |allergen| %>
+          <% if !current_user.nil? && @recipe_user_allergens.include?(allergen) %>
+            <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
+          <% else %>
+            <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-title" src="<%= asset_path 'icons/allergens/' + allergen.name + '-title.svg' %>" />
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="uk-child-width-1-3@m" uk-grid>
       <div>
         <div class="uk-text-center">
@@ -53,7 +76,7 @@
     <h2 class="uk-modal-title landing-title"><%= t('recipe.title.add_to_notebook') %></h2>
     <% if current_user && current_user.notebooks.count > 0 %>
       <%= simple_form_for @recipe, :url => recipe_add_to_notebook_url(@recipe), :method => 'post' do |f| %>
-        <%= f.input :notebooks, collection: current_user.notebooks, label: false, as: :select, input_html: {
+        <%= f.input :notebooks, collection: current_user.notebooks, :include_blank => false, label: false, as: :select, input_html: {
         slimselect: true,
         slimselectNoResult: t('slimselect.notebooks.no_result'),
         slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),
@@ -69,14 +92,31 @@
     <div>
       <div class="uk-padding">
         <% if @recipe.recipe_ingredients.count > 1 %>
-          <h2 class="title"><%= "Ingrédients" %></h2>
+          <h2 class="title"><%= "Ingrédients" %>
+            <% if !current_user.nil? && @allergen_array.include?(@recipe_user_allergens[0]) %>
+            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+              <% end %>
+          </h2>
         <% else %>
-          <h2 class="title"><%= "Ingrédient" %></h2>
+          <h2 class="title"><%= "Ingrédient" %>
+            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+          </h2>
         <% end %>
         <div class="uk-card uk-card-default uk-card-body">
           <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
             <div class="uk-grid-small" uk-grid>
-              <div class="uk-width-expand" uk-leader="fill: -"><%= recipe_ingredient.ingredient.name %></div>
+              <div class="uk-width-expand" uk-leader="fill: -">
+                <%= recipe_ingredient.ingredient.name %>
+                <% unless recipe_ingredient.ingredient.allergen_tags.empty? %>
+                  <% recipe_ingredient.ingredient.allergen_tags.each do |allergen| %>
+                    <% if @recipe_user_allergens.include?(allergen) %>
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("user.recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon-red" src="<%= asset_path 'icons/allergens/' + allergen.name + '-red.svg' %>" />
+                    <% else %>
+                      <img alt="<%= allergen.name %>" uk-tooltip="<%= t("recipe.allergen", allergen: t("allergen_list." + allergen.name)) %>" class="allergen-tag-icon" src="<%= asset_path 'icons/allergens/' + allergen.name + '.svg' %>" />
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
               <% if (recipe_ingredient.recipe_quantity) %>
                 <div><%= recipe_ingredient.recipe_quantity.value %> <%= recipe_ingredient.recipe_quantity.quantity_type.name %></div>
               <% end %>
@@ -158,7 +198,7 @@
             <% end %>
             <div class="uk-width-expand">
               <h4 class="uk-comment-title uk-margin-remove">
-                <a class="uk-link-reset" href="#"><%= recipe_feedback.user.email %></a></h4>
+                <a class="uk-link-reset" href="#"><%= recipe_feedback.user.first_name %> <%= recipe_feedback.user.last_name[0] %>.</a></h4>
               <% if recipe_feedback.value %>
                 <div class="star-ratings star-dark">
                   <div class="star-ratings-value" style="width: <%= recipe_feedback.value * 20 %>%">

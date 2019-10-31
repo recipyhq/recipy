@@ -10,6 +10,24 @@ class RecipesController < InheritedResources::Base
 
   def show
     find_recipe
+
+    allergen_set = []
+    @recipe.recipe_ingredients.each do |ingr|
+      allergen_set.concat(ingr.ingredient.allergen_tags)
+    end
+
+    @recipe_user_allergens = []
+    unless current_user.nil?
+      current_user.allergens.each do |aller|
+        if allergen_set.include?(aller)
+          @recipe_user_allergens.push(aller)
+        end
+      end
+      @difficulty_front = get_difficulty
+    end
+
+    @allergen_array = allergen_set.uniq
+
     view = @recipe.view
     @notebooks_available = []
     if user_signed_in?
@@ -24,6 +42,20 @@ class RecipesController < InheritedResources::Base
 
   def show_user_recipes
     find_recipes_by_user_id
+  end
+
+  def get_difficulty
+    find_recipe
+
+    if @recipe.difficulty <= 3
+      return t('difficulty.easy')
+    elsif @recipe.difficulty <= 6
+      return t('difficulty.medium')
+    elsif @recipe.difficulty <= 9
+      return t('difficulty.hard')
+    elsif @recipe.difficulty > 9
+      return t('difficulty.very_hard')
+    end
   end
 
   def new
@@ -47,14 +79,14 @@ class RecipesController < InheritedResources::Base
       @recipe_params.delete(:recipe_ingredients_attributes)
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
-        redirect_to new_recipe_path, flash: {
+        render :new, flash: {
           danger: new_recipe.errors.values.to_sentence(words_connector: ' ',
                                                        last_word_connector: ' '),
         }
         return
       end
       new_ingredients.each do |elem|
-        unless new_recipe.ingredients.any? {|ingredient| ingredient.id == elem[1].values[0].to_i}
+        unless new_recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
           new_recipe.ingredients << Ingredient.find(elem[1].values[0])
           if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
             value = elem[1].values[1]
@@ -69,7 +101,7 @@ class RecipesController < InheritedResources::Base
       new_recipe.user = current_user
       new_recipe.save
 
-      redirect_to recipe_path(Recipe.last.id), flash: {success: t("recipe.creation.valid")}
+      redirect_to recipe_path(Recipe.last.id), flash: { success: t("recipe.creation.valid") }
     end
   end
 
@@ -95,7 +127,7 @@ class RecipesController < InheritedResources::Base
       @recipe.recipe_ingredients.destroy_all
       new_ingredients.each do |elem|
         if elem[1].values[2] == "false"
-          unless @recipe.ingredients.any? {|ingredient| ingredient.id == elem[1].values[0].to_i}
+          unless @recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
             @recipe.ingredients << Ingredient.find(elem[1].values[0])
             if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
               value = elem[1].values[1]
@@ -110,12 +142,12 @@ class RecipesController < InheritedResources::Base
       end
       if @recipe.update(@recipe_params)
         if @recipe.image.blob.content_type.starts_with?('image/')
-          redirect_to recipe_path, flash: {success: t("recipe.edit.valid")}
+          redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
         else
-          redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid_image")}
+          redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
         end
       else
-        redirect_to edit_recipe_path(@recipe), flash: {danger: t("recipe.edit.invalid")}
+        redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
       end
     end
   end
@@ -125,13 +157,13 @@ class RecipesController < InheritedResources::Base
     find_recipe
     @recipe.image.purge_later
     @recipe.destroy
-    redirect_to recipes_path, flash: {success: t("recipe.destroy.valid")}
+    redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
   end
 
   def add_ingredients_to_list
     if shopping_list_params[:shopping_lists].empty?
       redirect_to recipe_path(id: params[:recipe_id]),
-                  flash: {success: "Vous devez sélectionner une liste"} and return
+                  flash: { success: "Vous devez sélectionner une liste" } && return
     end
     previous_bullet = Bullet.enable?
     Bullet.enable = false
@@ -156,7 +188,7 @@ class RecipesController < InheritedResources::Base
       Bullet.enable = previous_bullet
       if shopping_list.save
         redirect_to shopping_list_path(id: shopping_list.id),
-                    flash: {success: "Les ingrédients ont été ajoutés à la liste"}
+                    flash: { success: "Les ingrédients ont été ajoutés à la liste" }
       end
     end
   end
@@ -173,14 +205,14 @@ class RecipesController < InheritedResources::Base
       end
       if shopping_list.save
         redirect_to shopping_list_path(id: shopping_list.id),
-                    flash: {success: "Les ingrédients ont été ajoutés à la liste"}
+                    flash: { success: "Les ingrédients ont été ajoutés à la liste" }
       end
     end
   end
 
   def create_notebook
     if current_user.nil?
-      redirect_to new_user_session_path, flash: {warning: "Vous n'êtes pas connecté."}
+      redirect_to new_user_session_path, flash: { warning: "Vous n'êtes pas connecté." }
     end
     recipe = Recipe.find(params[:notebook][:recipe_id])
     new_notebook = current_user.notebooks.build(
@@ -191,7 +223,7 @@ class RecipesController < InheritedResources::Base
                               filename: 'recipe_book.jpeg', content_type: 'image/jpeg')
     new_notebook.recipes << recipe
     new_notebook.save!
-    redirect_to notebook_url(new_notebook.id), flash: {success: "Nouveau notebook créée."}
+    redirect_to notebook_url(new_notebook.id), flash: { success: "Nouveau notebook créée." }
   end
 
   def add_to_notebook
@@ -223,7 +255,7 @@ class RecipesController < InheritedResources::Base
         }
       end
     end
-    redirect_to notebook_path(notebook.id), flash: {success: t("recipe.add_to_notebook.valid")}
+    redirect_to notebook_path(notebook.id), flash: { success: t("recipe.add_to_notebook.valid") }
   end
 
   private
@@ -275,7 +307,7 @@ class RecipesController < InheritedResources::Base
 
   def find_recipe
     @recipe = Recipe.includes(:recipe_ingredients => [
-      :ingredient,
+      :ingredient => [:allergen_tags],
       :recipe_quantity => :quantity_type,
     ],
                               :recipe_scores => [:user => [:avatar_attachment]]).find(params[:id])
@@ -285,8 +317,8 @@ class RecipesController < InheritedResources::Base
     params.require(:recipe).permit(:title, :score, :steps_raw, :cooking_time, :preparation_time,
                                    :description, :difficulty, :person,
                                    :image, :recipe_ingredients_attributes => {},
-                                   :utensil_ids => [],
-                                   :recipe_category_ids => [])
+                                           :utensil_ids => [],
+                                           :recipe_category_ids => [])
   end
 
   def new_list_params
@@ -311,5 +343,4 @@ class RecipesController < InheritedResources::Base
       "Feuille(s)",
     ].include? qt
   end
-
 end

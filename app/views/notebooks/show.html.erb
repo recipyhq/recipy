@@ -46,20 +46,20 @@
                 <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
               </div>
             </div>
-            <div class="uk-card-footer">
-              <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button uk-button-text uk-align-right', method: :post do %> </td>
-                  <i class="far fa-trash-alt"></i>
+            <div class="uk-card-footer" style="display: flex;justify-content: center;align-items: center">
+              <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button', method: :post do %> </td>
+                  <i uk-tooltip="<%= t('notebook.delete') %>" class="far fa-trash-alt fa-2x"></i>
                 <% end %>
             </div>
         </div>
       </div>
     <% end %>
     <div>
-      <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ">
+      <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
         <div class="uk-card-body">
           <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
             <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
-            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, as: :select, input_class: false, input_html: {
+            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, as: :select, input_class: "", input_html: {
               slimselect: true,
               slimselectNoResult: t('slimselect.recipes.no_result'),
               slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),

@@ -185,11 +185,13 @@ class Api::RecipesController < Api::BaseController
         if elem.recipe_quantity.nil?
           mrg = {
             :ingredient => elem.ingredient,
+            :allergen => elem.ingredient.allergen_tags,
             :quantity => nil,
           }
         else
           mrg = {
             :ingredient => elem.ingredient,
+            :allergen => elem.ingredient.allergen_tags,
             :quantity => [
               elem.recipe_quantity.value,
               elem.recipe_quantity.quantity_type.name,
@@ -243,7 +245,7 @@ class Api::RecipesController < Api::BaseController
     if !Recipe.find_by_id(params[:id]).nil?
       @recipe = Recipe.includes(:recipe_ingredients, :recipe_utensils, :utensils,
                                 :image_attachment, recipe_ingredients: [
-                                  :ingredient,
+                                  :ingredient => :allergen_tags,
                                   :recipe_quantity => :quantity_type,
                                 ], :recipe_scores => [:user => [:avatar_attachment]],
                                                    :image_attachment => :blob).find(params[:id])

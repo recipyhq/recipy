@@ -116,26 +116,32 @@ en:
     api:
       follow_ok: "You follow this producer"
       follow_ko: "you no longer follow this producer"
-    edit_like_ingredients: "Edit your liked ingredients"
+    edit_like_ingredients: "Edit your preferences"
     must_be_conected: "You have to be connected !"
     like:
-      update_success: "Your tastes have been updated !"
-      update_fail: "You must be logged to update your tastes !"
+      update_success: "Your preferences have been updated !"
+      update_fail: "You must be logged to update your preferences !"
       label: "Ingredients you love"
-      title: "Modify your tastes here to allow us to generate a meal schedule according to what you want!"
+      title: "Modify your preferences here to refine your searches"
     unlike:
-      label: "Ingredients you hate"
+      label: "Ingredients you don't like"
     pref:
       title: "Your preferences here...."
     profile:
       picture:
         error: "Your profile picture must be an image"
+    allergens:
+      title: "Indicate below your allergens to refine your search"
+      label: "Your allergens"
+    utensils:
+      title: "Your utensils"
 
   navbar:
     log_out: "Log out"
     sign_in: "Sign in"
     sign_up: "Sign up"
     my_profil: "My profil"
+    edit_pref: "My preferences"
 
   shared_links:
     no_account: "No account ?"
@@ -249,6 +255,7 @@ en:
       link: "My recipes"
       title: "All my recipes"
     create_notebook: "Create a new notebook"
+    allergen: "Contain the allergen %{allergen}"
 
   ingredient:
     title:
@@ -258,6 +265,7 @@ en:
       description: "Ingredient description"
       type: "Ingredient type"
       quantity: "Equivalence in grams of the ingredient in a certain type of quantity "
+      allergen: "Ingredient allergens"
     unrecognized: "Unrecognized ingredient"
     no_title: "Missing ingredient name"
     not_created: "The ingredient did not be created"
@@ -336,8 +344,52 @@ en:
     shelf_tag:
       no_result: "No shelf found"
       search_placeholder: "Select a store shelf"
+    allergens:
+      no_result: "No found allergen"
+      search_placeholder: "Your allergens"
+    utensils:
+      no_result: "Utensil not found"
+      search_placeholder: "Your utensils"
+    ingredient_allergens:
+      no_result: "No allergen found"
+      search_placeholder: "Select your allergens"
+      placeholder: "Select you allergens"
   landing:
     download_app:
       title: "Download the app here !"
       link: "Click here to download the app"
       qrCode: "Scan the qr-code below"
+  producer:
+    new:
+      welcome: "You are now a producer ! Welcome"
+  user:
+    recipe:
+      allergen: "Warning to the allergen %{allergen}"
+  allergen_list:
+    Lactose: "Lactose"
+    Oeuf: "Egg"
+    Mollusques: "Molluscs"
+    Poissons: "Fishes"
+    Anhydride_sulfureux: "Sulphur dioxide and sulphites"
+    Moutarde: "Mustard"
+    Lupin: "Lupin"
+    Fruits_a_coque: "Nuts"
+    Graines_de_sesame: "Sesame seeds"
+    Gluten: "Gluten"
+    Soja: "Soybeans"
+    Arachides: "Peanuts"
+    Celeri: "Celery"
+    Crustaces: "Crustaceans"
+    title: "Allergen(s):"
+  recipe_popular:
+    title: "Most popular recipes"
+  author:
+    title: "Offered by :"
+    title_recipy: "Offered by Recipy with"
+  difficulty:
+    easy: "easy"
+    medium: "medium"
+    hard: "hard"
+    very_hard: "very hard"
+
+

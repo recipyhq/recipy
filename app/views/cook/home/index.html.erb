@@ -27,7 +27,7 @@
   <% if @recipes.length > 0 %>
     <div class="uk-section uk-section-default">
       <div class="uk-container">
-        <h2 class="title">Nos recettes les plus populaires</h2>
+        <h2 class="title"><%= t('recipe_popular.title') %></h2>
         <div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid>
           <% @recipes.each do |recipe| %>
             <div>
@@ -51,7 +51,7 @@
                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                         </div>
                       <div uk-tooltip="<%= recipe.description %>">
-                        <p><%= truncate recipe.description, length: 50, separator: /\w+/%></p>
+                        <p class="uk-text-truncate"><%= recipe.description %></p>
                       </div>
                     </div>
                 </div>

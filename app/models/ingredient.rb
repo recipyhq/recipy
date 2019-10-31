@@ -24,8 +24,13 @@ class Ingredient < ApplicationRecord
   # validates :image, presence: true
   has_many :recipe_ingredients
   has_many :recipes, :through => :recipe_ingredients
+
   has_many :related_ingredient_tags
   has_many :ingredient_tags, through: :related_ingredient_tags
+
+  has_many :related_allergen_tags
+  has_many :allergen_tags, through: :related_allergen_tags
+
   has_many :shopping_list_ingredients, :dependent => :destroy
   has_many :shopping_lists, through: :shopping_list_ingredients
   has_many :related_quantity_equivalencies

@@ -87,6 +87,7 @@ Rails.application.routes.draw do
       get 'liked_producers' => "users/base#show_liked_producers"
       get 'edit_preferences' => "users/base#edit_preferences"
       post 'update_like_ingredients' => "users/base#update_like_ingredients"
+      post '/update_allergens', to: 'users/base#update_allergens'
       post 'create_notebook' => 'recipes#create_notebook'
     end
   end
@@ -106,7 +107,7 @@ Rails.application.routes.draw do
       get 'info', to: 'user#info'
       post '/follow_producer', to: 'user#follow_producer'
       post '/unfollow_producer', to: 'user#unfollow_producer'
-      post '/update_like_ingredients', to: 'user#update_like_ingredients'
+      post '/update_preferences', to: 'user#update_like_ingredients'
     end
 
     resources :recipes, param: :id do

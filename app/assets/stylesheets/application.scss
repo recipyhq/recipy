@@ -372,9 +372,43 @@ body {
 
 	.recipe-img-meal-plan {
     height: 100px;
-  
+
     & .title {
       opacity: 1;
     }
   }
+}
+
+.allergen-tag-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+.allergen-tag-icon-red {
+  width: 30px;
+  height: 30px;
+  margin-left: 2px;
+}
+
+.allergen-tag-icon-title {
+  width: 30px;
+  height: 30px;
+  margin-left: 2px;
+}
+
+.allergen-alert {
+  left: 10px;
+  color: #666 !important;
+  border: 1px solid #3C3C3C;
+  border-radius: 3px;
+}
+
+.allergen-alert h3 {
+  color: red !important;
+}
+
+.allergen-alert a {
+  color: black !important;
+  opacity: 0.7;
 }
