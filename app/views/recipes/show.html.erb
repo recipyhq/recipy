@@ -54,7 +54,7 @@
       <div>
         <div class="uk-text-center">
           <h5 class="title"><%= t("recipe.title.difficulty") %></h5>
-          <p ><%= @difficulty_front %></p>
+          <progress id="js-progressbar" class="uk-progress" value="<%= @recipe.difficulty %>" max="10"></progress>
         </div>
       </div>
     </div>
