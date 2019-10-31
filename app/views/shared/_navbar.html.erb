@@ -25,7 +25,7 @@
       <% if user_signed_in? %>
         <li>
           <a href="#">
-            <%= current_user.email %>
+            <%= current_user.first_name %>
           </a>
           <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
             <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -57,6 +57,11 @@
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
+                <% end %>
+              </li>
+              <li class="<%= current_page_class?(edit_preferences_path) %>">
+                <%= link_to edit_preferences_path do %>
+                  <span class="uk-margin-small-right" uk-icon="icon: settings"></span><%= t('navbar.edit_pref') %>
                 <% end %>
               </li>
               <% if current_user.isProducer == true %>
@@ -108,7 +113,7 @@
       </li>
       <% if user_signed_in? %>
         <li class="uk-parent">
-          <a href="#"><%= current_user.email %></a>
+          <a href="#"><%= current_user.first_name %></a>
           <ul class="uk-nav-sub">
             <li class="<%= current_page_class?(my_recipes_path) %>">
               <%= link_to my_recipes_path do %>
@@ -135,6 +140,11 @@
                 <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
               <% end %>
             </li>
+            <li class="<%= current_page_class?(edit_preferences_path) %>">
+              <%= link_to edit_preferences_path do %>
+                <span class="uk-margin-small-right" uk-icon="icon: settings"></span><%= t('navbar.edit_pref') %>
+              <% end %>
+            </li>
             <% if current_user.isProducer == true %>
               <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
                 <%= link_to show_producer_path(current_user.id) do %>
@@ -158,4 +168,3 @@
     </ul>
   </div>
 </div>
-
