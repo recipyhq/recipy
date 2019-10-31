@@ -10,6 +10,7 @@ fr:
   devise:
     facebook: "Se connecter avec Facebook"
     google_oauth2: "Se connecter avec Google +"
+    reset_password: "Envoyer les instructions par mail"
 
   meal_plan:
     see: 'Voir'
