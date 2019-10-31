@@ -71,8 +71,10 @@ fr:
         signed_up_but_unconfirmed: "Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte."
         update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
         updated: "Votre compte a été modifié avec succès."
+        email: "Adresse e-mail"
       edit:
         update: "Mettre à jour"
+        email: "Adresse e-mail"
         leave_blank_if_you_don_t_want_to_change_it: "Ne rien ecrire si vous ne voulez pas modifier"
         we_need_your_current_password_to_confirm_your_changes: "Nous avons besoin de votre mot de passe actuel"
         cancel_my_account: "Supprimer mon compte"
@@ -82,6 +84,7 @@ fr:
         signed_in: "Connecté."
         signed_out: "Déconnecté."
         already_signed_out: "Déconnecté."
+        email: "Adresse e-mail"
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants"
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
@@ -179,7 +182,7 @@ fr:
               blank: "Le champ Nom ne doit pas être vide"
             email:
               taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
-              blank: "Le champ Courriel ne doit pas être vide"
+              blank: "L'adresse e-mail ne doit pas être vide"
             password:
               blank: "Le champ Mot de passe ne doit pas être vide"
               too_short: "Mot de passe trop court (8 caractères minimum)"
@@ -192,7 +195,7 @@ fr:
           attributes:
             email:
               taken: "Un compte existe déjà avec cette adresse mail. Veuillez réessayer"
-              blank: "Le champ Courriel ne doit pas être vide"
+              blank: "L'adresse e-mail ne doit pas être vide"
             avatar:
               not_found: "Aucun avatar n'a été trouvé"
         recipe:
@@ -223,7 +226,7 @@ fr:
 
   views:
     edit:
-      title: "Editer son profil"
+      title: "Editer mon profil"
 
   recipe:
       title:

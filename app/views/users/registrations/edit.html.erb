@@ -2,10 +2,9 @@
   <div class="uk-padding">
     <h2 class="uk-text-bold uk-text-left title">
       <%= t("views.edit.title", resource: resource_name.to_s.humanize) %>
-      <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('are_you_sure')}, method: :delete, class: "uk-text-small" %>
     </h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
-        <%= f.input :email, required: true, autofocus: true, input_html: {class: 'uk-input'} %>
+        <%= f.input :email, label: t('.email'),required: true, autofocus: true, input_html: {class: 'uk-input'} %>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></p>
         <% end %>
@@ -39,6 +38,11 @@
         <% end %>
       </div>
     <% end %>
+
+
+    <div class="uk-margin-small uk-text-center">
+      <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: {confirm: t('are_you_sure')}, method: :delete, class: "uk-text-small" %>
+    </div>
 
 
     <div class="uk-text-center">

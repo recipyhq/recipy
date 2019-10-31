@@ -3,7 +3,7 @@
     <h2 class="uk-text-center title"><%= t('.resend_confirmation_instructions') %></h2>
 
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
-      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :email, autofocus: true %>
 
       <div class="uk-margin-medium">
         <%= f.button :submit, t('.resend_confirmation_instructions'), class: 'uk-width-1-1' %>
