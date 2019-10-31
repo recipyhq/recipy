@@ -1,27 +1,27 @@
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
   <div class="uk-position-absolute uk-position-top">
     <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-      <div class="uk-navbar-left uk-visible@m">
+      <div class="uk-navbar-left uk-visible@xl">
         <ul class="uk-navbar-nav">
           <li><a href="/" <% if action_name == 'index' %>uk-scroll<% end %>>Accueil</a></li>
           <li><a href="/#concept" <% if action_name == 'index' %>uk-scroll<% end %>>Concept</a></li>
           <li><a href="/#our-team" <% if action_name == 'index' %>uk-scroll<% end %>>Notre equipe</a></li>
         </ul>
       </div>
-      <div class="uk-navbar-center uk-visible@m">
+      <div class="uk-navbar-center uk-visible@xl">
         <a class="uk-navbar-item uk-logo" href="/">Recipy</a>
       </div>
-      <div class="uk-navbar-right uk-visible@m">
+      <div class="uk-navbar-right uk-visible@xl">
         <ul class="uk-navbar-nav">
           <li><a href="/beta">Accéder à la beta</a></li>
           <li><a href="#dowloadApp" uk-toggle>Télécharger l'application</a></li>
           <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
         </ul>
       </div>
-      <div class="uk-navbar-left uk-hidden@m">
+      <div class="uk-navbar-left uk-hidden@xl">
         <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
       </div>
-      <div class="uk-navbar-right uk-hidden@m">
+      <div class="uk-navbar-right uk-hidden@xl">
         <a class="uk-navbar-item uk-logo" href="#" <% if action_name == 'index' %>uk-scroll<% end %>>Recipy</a>
       </div>
     </nav>
@@ -37,6 +37,7 @@
       <li><a href="#concept" <% if action_name == 'index' %>uk-scroll<% end %>>Concept</a></li>
       <li><a href="#joinUs" <% if action_name == 'index' %>uk-scroll<% end %>>Rejoignez Nous</a></li>
       <li><a href="/beta">Accéder à la beta</a></li>
+      <li><a href="#dowloadApp" uk-toggle>Télécharger l'application</a></li>
       <li><a href="#feedback" uk-toggle>Donnez nous votre avis !</a></li>
     </ul>
   </div>
@@ -49,7 +50,7 @@
       <h2 class="uk-modal-title"><%= t('landing.download_app.title')%></h2>
     </div>
       <div class="uk-margin-medium-top uk-text-center">
-          <a class="uk-button uk-button-text" href="https://play.google.com/store/apps/details?id=com.recipy.recipy" target="_blank"> 
+          <a class="uk-button uk-button-text" href="https://play.google.com/store/apps/details?id=com.recipy.recipy" target="_blank">
             <h3 class="uk-margin-remove">
             <%= t('landing.download_app.link') %>
             </h3>

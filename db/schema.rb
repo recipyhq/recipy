@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_075129) do
+ActiveRecord::Schema.define(version: 2019_10_03_150804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,18 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.index ["email"], name: "index_administrators_on_email", unique: true
     t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_administrators_on_unlock_token", unique: true
+  end
+
+  create_table "allergen_tag", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "allergen_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cook_accounts", force: :cascade do |t|
@@ -318,6 +330,24 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
+  create_table "related_allergen_tags", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "allergen_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allergen_tag_id"], name: "index_related_allergen_tags_on_allergen_tag_id"
+    t.index ["ingredient_id"], name: "index_related_allergen_tags_on_ingredient_id"
+  end
+
+  create_table "related_allergens", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "allergen_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allergen_tag_id"], name: "index_related_allergens_on_allergen_tag_id"
+    t.index ["user_id"], name: "index_related_allergens_on_user_id"
+  end
+
   create_table "related_ingr_products", force: :cascade do |t|
     t.bigint "ingredient_id"
     t.bigint "product_id"
@@ -435,6 +465,15 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.index ["product_id"], name: "index_related_sale_products_on_product_id"
   end
 
+  create_table "related_user_utensils", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "utensil_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_related_user_utensils_on_user_id"
+    t.index ["utensil_id"], name: "index_related_user_utensils_on_utensil_id"
+  end
+
   create_table "shopping_list_ingredients", force: :cascade do |t|
     t.bigint "shopping_list_id"
     t.bigint "ingredient_id"
@@ -496,8 +535,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_075129) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters", default: false, null: false
-    t.boolean "isProducer", default: false, null: false
+    t.boolean "newsletters", null: false
+    t.boolean "isProducer", null: false
     t.text "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
