@@ -89,28 +89,30 @@ class Api::ShoppingListsController < ApplicationController
 
   def build_shopping_list_ingredients(shopping_list)
     Bullet.enable = false
-    @tab = []
-    if shopping_list.shopping_list_ingredients.nil? || shopping_list.ingredients.nil?
-      @tab.push([])
-    else
-      shopping_list.shopping_list_ingredients.each do |elem|
-        if elem.shopping_list_quantity.nil?
-          mrg = {
-            :ingredient => elem.ingredient,
-            :checked => elem.checked,
-            :quantity => nil,
-          }
+    @tab = {}
+    # if shopping_list.shopping_list_ingredients.nil? || shopping_list.ingredients.nil?
+    #   @tab.push([])
+    unless shopping_list.shopping_list_ingredients.nil? || shopping_list.ingredients.nil?
+      x = shopping_list.
+          shopping_list_ingredients.
+          includes(:ingredient).
+          sort_by{|i| i.ingredient.shelf_tag}
+      x.each do |elem|
+        tag = elem.ingredient.shelf_tag
+        @tab[tag] = [] if @tab[tag].nil?
+        quantity = if elem.shopping_list_quantity.nil?
+          nil
         else
-          mrg = {
-            :ingredient => elem.ingredient,
-            :checked => elem.checked,
-            :quantity => [
-              elem.shopping_list_quantity.value,
-              elem.shopping_list_quantity.quantity_type.name,
-            ],
-          }
+          [
+            elem.shopping_list_quantity.value,
+            elem.shopping_list_quantity.quantity_type.name,
+          ]
         end
-        @tab.push(mrg)
+        @tab[tag].push({
+          :ingredient => elem.ingredient,
+          :checked => elem.checked,
+          :quantity => quantity
+        })
       end
     end
     Bullet.enable = true

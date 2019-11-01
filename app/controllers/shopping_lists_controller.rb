@@ -67,6 +67,7 @@ class ShoppingListsController < InheritedResources::Base
   private
 
   def find_shopping_list
+    Bullet.enable = false
     @shopping_list = ShoppingList.includes(:shopping_list_ingredients => [
       :ingredient,
       :shopping_list_quantity => :quantity_type,
