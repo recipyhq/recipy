@@ -43,9 +43,6 @@ class RecipesController < InheritedResources::Base
       @recipe = Recipe.new(@recipe_params)
       flash.now[:danger] = t('recipe.creation.missing_ingredients')
       render :new
-      # redirect_to @recipe, flash: {
-      #   danger: t('recipe.creation.missing_ingredients'),
-      # } and return
     else
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
