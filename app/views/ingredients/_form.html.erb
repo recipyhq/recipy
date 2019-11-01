@@ -33,6 +33,17 @@
     }, wrapper_class: "", defaults: {input_class: ""} %>
   </div>
 
+  <div class="uk-margin">
+    <%= f.label t("ingredient.title.allergen"), class: "uk-form-label" %>
+    <%= f.input :allergen_tag_ids, :label => false, :selected => @ingredient.allergen_tags.map {|v| v.id}.to_a, collection: AllergenTag.order(:name).all.map {|v| [t(v.name), v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+      multiple: true,
+      slimselect: true,
+      slimselectNoResult: t('slimselect.ingredient_allergens.no_result'),
+      slimselectSearchPlaceholder: t('slimselect.ingredient_allergens.search_placeholder'),
+      slimselectPlaceholder: t('slimselect.ingredient_allergens.placeholder'),
+    }, wrapper_class: "", defaults: {input_class: ""} %>
+  </div>
+
   <div class="uk-margin-medium">
     <%= f.button :submit, t("ingredient.title.create") %>
   </div>
