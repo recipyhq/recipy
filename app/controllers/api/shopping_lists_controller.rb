@@ -29,8 +29,24 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def create
-    new_shopping_list = ShoppingList.new(shopping_list_params)
+    @shopping_list_params = shopping_list_params
+    new_ingredients = @shopping_list_params[:list_ingredients]
+    @shopping_list_params.delete(:list_ingredients)
+    new_shopping_list = ShoppingList.new(@shopping_list_params)
     if new_shopping_list.valid?
+      if !new_ingredients.nil? && check_ingredients_attributes(new_ingredients)
+        new_ingredients.each do |elem|
+          new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
+          if check_quantity(elem)
+            shopping_list_quantity = ShoppingListQuantity.create!(
+              :value => elem[:quantity],
+              :quantity_type => QuantityType.find(elem[:quantity_type_id])
+            )
+          end
+          last = new_shopping_list.shopping_list_ingredients.last
+          last.shopping_list_quantity = shopping_list_quantity
+        end
+      end
       new_shopping_list.save
       render :json => { Status: "OK", Cause: "Nouvelle liste créée !" }.as_json
     else
@@ -53,7 +69,6 @@ class Api::ShoppingListsController < ApplicationController
   def update_item_checkbox
     find_shopping_list
     if @shopping_list && checkbox_params
-      puts checkbox_params
       item = ShoppingListIngredient.find_by(shopping_list_id: @shopping_list.id,
                                             ingredient_id: checkbox_params[:ingredient_id])
       item.checked = !item.checked
@@ -75,6 +90,29 @@ class Api::ShoppingListsController < ApplicationController
 
   private
 
+  def check_quantity(x)
+    !x[:quantity_type_id].nil? && !x[:quantity].nil?
+  end
+
+  def check_ingredients_attributes(x)
+    if x.empty? || x.nil?
+      return false
+    end
+
+    x.each do |y|
+      if y[:ingredient_id].nil? || !y[:ingredient_id].is_a?(Numeric)
+        return false
+      end
+      if y[:quantity_type_id]
+        return false unless y[:quantity_type_id].is_a?(Numeric)
+      end
+      if y[:quantity]
+        return false unless y[:quantity].is_a?(Numeric)
+      end
+    end
+    true
+  end
+
   def checkbox_params
     params.permit(:id, :ingredient_id)
   end
@@ -84,7 +122,9 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def shopping_list_params
-    params.require(:shopping_list).permit(:name, :user_id, :ingredient_ids => [])
+    params.require(:shopping_list).permit(:name, :user_id,
+                                          list_ingredients:
+                                            [:ingredient_id, :quantity_type_id, :quantity])
   end
 
   def build_shopping_list_ingredients(shopping_list)
