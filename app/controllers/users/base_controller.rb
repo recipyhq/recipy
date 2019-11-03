@@ -1,5 +1,5 @@
 class Users::BaseController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   skip_after_action :verify_authorized
 
   def show
@@ -28,11 +28,13 @@ class Users::BaseController < ApplicationController
       @params = like_params
       @user.ingredients.destroy_all
       @user.no_like_ingredients.destroy_all
-      new_like = @params[:ingredients].reject(&:empty?)
-      new_unlike = @params[:no_like_ingredients].reject(&:empty?)
+      @user.allergens.destroy_all
+      @user.utensils.destroy_all
 
-      puts new_like.inspect
-      puts new_unlike.inspect
+      new_like = @params[:ingredients].drop(1).reject(&:empty?)
+      new_unlike = @params[:no_like_ingredients].drop(1).reject(&:empty?)
+      new_allergens = @params[:allergens].drop(1).reject(&:empty?)
+      new_utensils = @params[:utensils].drop(1).reject(&:empty?)
 
       new_like.each do |elem|
         ingredient = Ingredient.find(elem)
@@ -42,7 +44,15 @@ class Users::BaseController < ApplicationController
         ingredient = Ingredient.find(elem)
         @user.no_like_ingredients << ingredient
       end
-      redirect_to edit_user_registration_path, flash: { success: t("users.like.update_success") }
+      new_allergens.each do |elem|
+        allergen = AllergenTag.find(elem)
+        @user.allergens << allergen
+      end
+      new_utensils.each do |elem|
+        utensil = Utensil.find(elem)
+        @user.utensils << utensil
+      end
+      redirect_to edit_preferences_path, flash: { success: t("users.like.update_success") }
       return
     end
     redirect_to new_user_session_path, flash: { error: t("users.like.update_fail") }
@@ -80,7 +90,7 @@ class Users::BaseController < ApplicationController
   private
 
   def like_params
-    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [])
+    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [], :utensils => [])
   end
 
   def user_params

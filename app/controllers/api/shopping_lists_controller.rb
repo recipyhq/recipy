@@ -38,16 +38,17 @@ class Api::ShoppingListsController < ApplicationController
         new_ingredients.each do |elem|
           new_shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
           if check_quantity(elem)
-            shopping_list_quantity = ShoppingListQuantity.create!(:value => elem[:quantity],
-                                                                  :quantity_type =>
-                                                                    QuantityType.find(elem[:quantity_type_id]))
+            shopping_list_quantity = ShoppingListQuantity.create!(
+              :value => elem[:quantity],
+              :quantity_type => QuantityType.find(elem[:quantity_type_id])
+            )
           end
           last = new_shopping_list.shopping_list_ingredients.last
           last.shopping_list_quantity = shopping_list_quantity
         end
       end
       new_shopping_list.save
-      render :json => {Status: "OK", Cause: "Nouvelle liste créée !"}.as_json
+      render :json => { Status: "OK", Cause: "Nouvelle liste créée !" }.as_json
     else
       render :json => {
         Status: "KO",
@@ -59,9 +60,9 @@ class Api::ShoppingListsController < ApplicationController
   def update
     find_shopping_list
     if @shopping_list.update(shopping_list_params)
-      render :json => {Status: "OK", Cause: "Votre liste a été modifiée avec succés !"}.as_json
+      render :json => { Status: "OK", Cause: "Votre liste a été modifiée avec succés !" }.as_json
     else
-      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
+      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
     end
   end
 
@@ -72,10 +73,10 @@ class Api::ShoppingListsController < ApplicationController
                                             ingredient_id: checkbox_params[:ingredient_id])
       item.checked = !item.checked
       if item.save
-        render :json => {Status: "OK", Cause: "Liste modifiée avec succès !"}.as_json
+        render :json => { Status: "OK", Cause: "Liste modifiée avec succès !" }.as_json
       end
     else
-      render :json => {Status: "KO", Cause: "Paramètres invalides"}.as_json
+      render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
     end
   end
 
@@ -83,29 +84,33 @@ class Api::ShoppingListsController < ApplicationController
     find_shopping_list
     unless @shopping_list.nil?
       @shopping_list.destroy
-      render :json => {Status: "OK", Cause: "Votre liste a bien été supprimée"}.as_json
+      render :json => { Status: "OK", Cause: "Votre liste a bien été supprimée" }.as_json
     end
   end
 
   private
 
   def check_quantity(x)
-    return !x[:quantity_type_id].nil? && !x[:quantity].nil?
+    !x[:quantity_type_id].nil? && !x[:quantity].nil?
   end
 
   def check_ingredients_attributes(x)
-    return false if x.empty? || x.nil?
+    if x.empty? || x.nil?
+      return false
+    end
 
     x.each do |y|
-      return false if y[:ingredient_id].nil? || !y[:ingredient_id].is_a?(Numeric)
+      if y[:ingredient_id].nil? || !y[:ingredient_id].is_a?(Numeric)
+        return false
+      end
       if y[:quantity_type_id]
-        return false if !y[:quantity_type_id].is_a?(Numeric)
+        return false unless y[:quantity_type_id].is_a?(Numeric)
       end
       if y[:quantity]
-        return false if !y[:quantity].is_a?(Numeric)
+        return false unless y[:quantity].is_a?(Numeric)
       end
     end
-    return true
+    true
   end
 
   def checkbox_params
@@ -117,7 +122,9 @@ class Api::ShoppingListsController < ApplicationController
   end
 
   def shopping_list_params
-    params.require(:shopping_list).permit(:name, :user_id, list_ingredients: [:ingredient_id, :quantity_type_id, :quantity])
+    params.require(:shopping_list).permit(:name, :user_id,
+                                          list_ingredients:
+                                            [:ingredient_id, :quantity_type_id, :quantity])
   end
 
   def build_shopping_list_ingredients(shopping_list)
