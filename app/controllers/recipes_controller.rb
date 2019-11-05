@@ -10,6 +10,24 @@ class RecipesController < InheritedResources::Base
 
   def show
     find_recipe
+
+    allergen_set = []
+    @recipe.recipe_ingredients.each do |ingr|
+      allergen_set.concat(ingr.ingredient.allergen_tags)
+    end
+
+    @recipe_user_allergens = []
+    unless current_user.nil?
+      current_user.allergens.each do |aller|
+        if allergen_set.include?(aller)
+          @recipe_user_allergens.push(aller)
+        end
+      end
+      @difficulty_front = get_difficulty
+    end
+
+    @allergen_array = allergen_set.uniq
+
     view = @recipe.view
     @notebooks_available = []
     if user_signed_in?
@@ -26,6 +44,20 @@ class RecipesController < InheritedResources::Base
     find_recipes_by_user_id
   end
 
+  def get_difficulty
+    find_recipe
+
+    if @recipe.difficulty <= 3
+      return t('difficulty.easy')
+    elsif @recipe.difficulty <= 6
+      return t('difficulty.medium')
+    elsif @recipe.difficulty <= 9
+      return t('difficulty.hard')
+    elsif @recipe.difficulty > 9
+      return t('difficulty.very_hard')
+    end
+  end
+
   def new
     @recipe = Recipe.new
     @recipe.recipe_ingredients.build
@@ -33,6 +65,7 @@ class RecipesController < InheritedResources::Base
 
   def create
     @recipe_params = recipe_params
+    puts @recipe_params
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
     if new_ingredients.nil?
       redirect_to new_recipe_path, flash: {
@@ -46,7 +79,7 @@ class RecipesController < InheritedResources::Base
       @recipe_params.delete(:recipe_ingredients_attributes)
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
-        redirect_to new_recipe_path, flash: {
+        render :new, flash: {
           danger: new_recipe.errors.values.to_sentence(words_connector: ' ',
                                                        last_word_connector: ' '),
         }
@@ -128,6 +161,10 @@ class RecipesController < InheritedResources::Base
   end
 
   def add_ingredients_to_list
+    if shopping_list_params[:shopping_lists].empty?
+      redirect_to recipe_path(id: params[:recipe_id]),
+                  flash: { success: "Vous devez sélectionner une liste" } && return
+    end
     previous_bullet = Bullet.enable?
     Bullet.enable = false
     # Temporary disabling Bullet because there's too many exceptions in the method to handle
@@ -142,7 +179,7 @@ class RecipesController < InheritedResources::Base
       ]).find(shopping_list_params[:shopping_lists])
       recipe.recipe_ingredients.each do |elem|
         # If ingredient is already in list, just sum the quantities
-        if shopping_list.ingredients.find_by(name: elem.ingredient.name)
+        if shopping_list.ingredients.find_by(id: elem.ingredient.id)
           sum_shopping_list_quantities(shopping_list, elem)
         else
           create_shopping_list_quantity(shopping_list, elem)
@@ -229,6 +266,7 @@ class RecipesController < InheritedResources::Base
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
         shopping_list_quantity =
           ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
+                                       :quantity_type_id => elem.recipe_quantity.quantity_type.id,
                                        :quantity_type => elem.recipe_quantity.quantity_type)
         last = shopping_list.shopping_list_ingredients.last
         last.shopping_list_quantity = shopping_list_quantity
@@ -239,18 +277,18 @@ class RecipesController < InheritedResources::Base
   def sum_shopping_list_quantities(shopping_list, elem)
     if elem.recipe_quantity
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
-        ing = ShoppingListIngredient.find_by(shopping_list_id: shopping_list.id,
-                                             ingredient_id: elem.ingredient.id)
-        if ing.shopping_list_quantity.nil?
-          ing.shopping_list_quantity =
-            ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
-                                         :quantity_type => elem.recipe_quantity.quantity_type,)
-          ing.save
-        else
-          quant = ing.shopping_list_quantity
-          quant.value += elem.recipe_quantity.value
-          quant.save
+        ings = ShoppingListIngredient.where(shopping_list_id: shopping_list.id,
+                                            ingredient_id: elem.ingredient.id)
+
+        ings.each do |ing|
+          if ing.shopping_list_quantity.quantity_type.id == elem.recipe_quantity.quantity_type.id
+            quant = ing.shopping_list_quantity
+            quant.value += elem.recipe_quantity.value
+            quant.save
+            return
+          end
         end
+        create_shopping_list_quantity(shopping_list, elem)
       end
     end
   end
@@ -269,7 +307,7 @@ class RecipesController < InheritedResources::Base
 
   def find_recipe
     @recipe = Recipe.includes(:recipe_ingredients => [
-      :ingredient,
+      :ingredient => [:allergen_tags],
       :recipe_quantity => :quantity_type,
     ],
                               :recipe_scores => [:user => [:avatar_attachment]]).find(params[:id])

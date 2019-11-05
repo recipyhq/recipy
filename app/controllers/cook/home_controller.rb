@@ -1,8 +1,9 @@
 module Cook
   class HomeController < Cook::BaseController
     def index
+      @user = current_user
       skip_policy_scope
-      @recipes = Recipe.order(:created_at).includes(:image_attachment => :blob).first(4)
+      @recipes = Recipe.order(view: :desc).includes(:image_attachment => :blob).first(4)
       @random_recipe = Recipe.order("RANDOM()").first
       if @random_recipe.nil?
         puts "Les recettes ne sont pas disponibles"

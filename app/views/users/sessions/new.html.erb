@@ -2,15 +2,13 @@
   <div class="uk-width-large uk-align-center">
     <h2 class="uk-text-center title"><%= t('.sign_in') %></h2>
 
-    <%#= render 'devise/shared/omniauth' %>
-
     <hr class="uk-divider-icon">
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name, :next => params[:next] || nil)) do |f| %>
       <%= f.error_notification %>
 
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :password, required: true %>
+      <%= f.input :email, label: t('.email'),autofocus: true %>
+      <%= f.input :password %>
 
       <%= f.input :remember_me, input_html: { class: 'uk-checkbox uk-margin-left'}, as: 'boolean' %>
 
