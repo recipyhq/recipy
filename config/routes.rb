@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'author/index'
+  get 'author/show'
+  get 'author/new'
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
