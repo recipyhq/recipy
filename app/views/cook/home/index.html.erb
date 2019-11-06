@@ -19,7 +19,10 @@
           <%= f.input_field "q", label: false, :autofocus => true, :placeholder => "Rechercher un plat...", as: :string %>
         <% end %>
         <% if @random_recipe %>
-          <a class="link-light" href="<%= recipe_path(@random_recipe) %>">Trouver une recette aléatoire</a>
+          <a class="link-light" href="<%= recipe_path(@random_recipe) %>">
+            <i class="fa fa-dice"></i>
+            Trouver une recette aléatoire
+          </a>
         <% end %>
       </div>
     </div>

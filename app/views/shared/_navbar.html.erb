@@ -1,34 +1,21 @@
-<nav class="uk-navbar-container navbar-recipy" uk-navbar>
-  <%= link_to 'Recipy', unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' %>
-  <div class="uk-navbar-right">
+<nav class="uk-navbar-container navbar-recipy" uk-navbar="mode: click">
+  <%= link_to unauthenticated_cook_root_path, class: 'uk-navbar-item uk-logo' do %>
+    <img src="<%= asset_path 'logo.png' %>" alt="recipy">
+  <% end %>
+  <div class="uk-navbar-right uk-nav">
     <ul class="uk-navbar-nav uk-visible@s">
-      <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
       <li>
         <a href="#">
-          <%= t('navbar.producers') %>
+          <span uk-icon="icon: user"></span>
         </a>
         <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
           <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>">
-              <%= link_to unauthenticated_producer_root_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: folder"></span><%= t('navbar.producer.list') %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(point_of_sales_path) %>">
-              <%= link_to point_of_sales_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: cart"></span><%= t('navbar.producer.point_of_sales') %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <% if user_signed_in? %>
-        <li>
-          <a href="#">
-            <%= current_user.first_name %>
-          </a>
-          <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
-            <ul class="uk-nav uk-navbar-dropdown-nav">
+            <% if user_signed_in? %>
+              <li>
+                <%= t('navbar.welcome_msg', name: current_user.first_name) %>
+                <a href="<%= meal_plans_path %>">Qu'est-ce qu'on mange ?</a>
+              </li>
+              <li class="uk-nav-divider"></li>
               <li class="<%= current_page_class?(my_recipes_path) %>">
                 <%= link_to my_recipes_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
@@ -59,45 +46,37 @@
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
                 <% end %>
               </li>
-              <li class="<%= current_page_class?(edit_preferences_path) %>">
-                <%= link_to edit_preferences_path do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: settings"></span><%= t('navbar.edit_pref') %>
-                <% end %>
-              </li>
-              <% if current_user.isProducer == true %>
-                <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
-                  <%= link_to show_producer_path(current_user.id) do %>
-                    <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('navbar.my_producer_profile') %>
-                  <% end %>
-                </li>
-              <% end %>
               <li class="uk-nav-divider"></li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
                 <% end %>
               </li>
-            </ul>
-          </div>
-        </li>
-      <% else %>
-        <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
-      <% end %>
+            <% else %>
+                <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
     </ul>
-    <div class="uk-hidden@s">
-      <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
-    </div>
+    <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav"></a>
   </div>
 </nav>
 
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+<div id="offcanvas-nav" uk-offcanvas="flip: true; overlay: true;">
   <div class="uk-offcanvas-bar">
     <button class="uk-offcanvas-close" type="button" uk-close></button>
-    <h3>Navigation</h3>
     <ul class="uk-nav uk-nav-default">
-      <li class="<%= current_page_class?(search_path) %>"><%= link_to t('search.title'), search_path %></li>
+      <li class="<%= current_page_class?(search_path) %>">
+        <%= link_to search_path do %>
+          <span uk-icon="icon: search"></span> <%= t('search.title') %>
+        <% end %>
+      </li>
       <li>
-        <a href="#"><%= t('navbar.producers') %></a>
+        <a href="#">
+          <span uk-icon="icon: happy"></span>
+          <%= t('navbar.producers') %>
+        </a>
         <ul class="uk-nav-sub">
           <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>">
             <%= link_to unauthenticated_producer_root_path do %>
@@ -111,60 +90,19 @@
           </li>
         </ul>
       </li>
-      <% if user_signed_in? %>
-        <li class="uk-parent">
-          <a href="#"><%= current_user.first_name %></a>
-          <ul class="uk-nav-sub">
-            <li class="<%= current_page_class?(my_recipes_path) %>">
-              <%= link_to my_recipes_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: file-text"></span><%= t('navbar.my_recipes') %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(meal_plans_path) %>">
-              <%= link_to meal_plans_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: calendar"></span><%= t('navbar.my_meal_plan')  %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(notebooks_path) %>">
-              <%= link_to notebooks_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: bookmark"></span><%= t('navbar.notebooks') %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(shopping_lists_path) %>">
-              <%= link_to shopping_lists_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: list"></span><%= t('navbar.shopping_lists') %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(edit_user_registration_path) %>">
-              <%= link_to edit_user_registration_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>
-              <% end %>
-            </li>
-            <li class="<%= current_page_class?(edit_preferences_path) %>">
-              <%= link_to edit_preferences_path do %>
-                <span class="uk-margin-small-right" uk-icon="icon: settings"></span><%= t('navbar.edit_pref') %>
-              <% end %>
-            </li>
-            <% if current_user.isProducer == true %>
-              <li class="<%= current_page_class?(show_producer_path(current_user.id)) %>">
-                <%= link_to show_producer_path(current_user.id) do %>
-                  <span class="uk-margin-small-right" uk-icon="icon: user"></span><%= t('navbar.my_producer_profile') %>
-                <% end %>
-              </li>
-            <% end %>
-            <li class="uk-nav-divider"></li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span><%= t('navbar.log_out') %>
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      <% else %>
-        <li class="<%= current_page_class?(unauthenticated_producer_root_path) %>"><%= link_to t('navbar.producers'), unauthenticated_producer_root_path %></li>
-        <li class="<%= current_page_class?(point_of_sales_path) %>"><%= link_to t('navbar.point_of_sales'), point_of_sales_path %></li>
-        <li class="<%= current_page_class?(new_user_session_path) %>"><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
-      <% end %>
     </ul>
+    <div class="uk-position-bottom uk-padding">
+      <ul class="uk-nav uk-nav-default ">
+        <li>
+          <%= link_to landing_pages_path do %>
+            <%= t('navbar.who_we_are') %>
+          <% end %>
+        </li>
+      </ul>
+      <p class="uk-text-small">
+        &copy; Recipy 2019
+      </p>
+    </div>
+
   </div>
 </div>
