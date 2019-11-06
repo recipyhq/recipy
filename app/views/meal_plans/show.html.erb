@@ -1,9 +1,11 @@
   <div class="uk-section uk-section-secondary uk-light">
     <div class="uk-container">
-      <h2 class="uk-heading-line title"><span>
-        <%= link_to meal_plans_path, { class: 'uk-button uk-button-default' } do %> <span uk-icon="icon: arrow-left"></span> <% end %>
-        <%= t('date.day_names')[@day_plan.date.wday] %> <span class="uk-text-meta"><%= @day_plan.date.strftime("%d/%m/%Y") %>
-      </span></h2>
+      <h2 class="uk-heading-line title">
+        <%= link_to meal_plans_path, { class: 'uk-button uk-button-default' } do %>
+          <span uk-icon="icon: arrow-left"></span>
+        <% end %>
+        <%= t('date.day_names')[@day_plan.date.wday] %> <span class="uk-text-meta"></span><%= @day_plan.date.strftime("%d/%m/%Y") %>
+      </h2>
       <div>
         <div class="uk-card uk-card-default <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
           <div class="day-moment">
