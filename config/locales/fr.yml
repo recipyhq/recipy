@@ -110,6 +110,8 @@ fr:
     api:
       follow_ok: "Vous suivez ce producteur"
       follow_ko: "Vous ne suivez plus ce producteur"
+    edit_like_ingredients: "Modifier vos ingrédients préférés"
+    become_producer: "Obtenir des fonctionnalités réservées aux producteurs"
     edit_like_ingredients: "Modifier vos préférences"
     must_be_conected: "Vous devez être conecté !"
     like:
