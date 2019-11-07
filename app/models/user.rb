@@ -42,6 +42,12 @@ class User < ActiveRecord::Base
   has_many :unlike_ingredients, dependent: :destroy
   has_many :no_like_ingredients, through: :unlike_ingredients, source: :ingredient
 
+  has_many :related_allergens, dependent: :destroy
+  has_many :allergens, through: :related_allergens, source: :allergen_tag
+
+  has_many :related_user_utensils, dependent: :destroy
+  has_many :utensils, through: :related_user_utensils, source: :utensil
+
   has_many :related_liked_producers, :class_name => 'LikedProducer'
   has_many :liked_producers, through: :related_liked_producers, source: :liked_producer
 

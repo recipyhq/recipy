@@ -41,10 +41,7 @@ module Producer
       @user.isProducer = true
       @user.bio = params[:user][:bio]
       @user.save!
-
-      puts "\n\n\n\n\n\n#{@user.inspect}\n\n\n\n\n\n\n\n"
-
-      redirect_to edit_user_registration_path
+      redirect_to edit_user_registration_path, flash: { success: t("producer.new.welcome") }
     end
   end
 end
