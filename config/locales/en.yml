@@ -345,3 +345,4 @@ en:
     number_point_of_sale: "Number of points of sale %{number}"
     no_product: "No registered product"
     number_product: "Number of product: %{number}"
+    no_bio: "No provided description"

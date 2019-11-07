@@ -27,18 +27,23 @@ module Producer
 
     def new
       @user = current_user
+      @user.isProducer = true
       @user.save
     end
 
     def create
       @user.isProducer = true
+      @user.save
     end
 
-    def patch
+    def update
       @user = current_user
       @user.isProducer = true
       @user.bio = params[:user][:bio]
-      @user.save
+      @user.save!
+
+      puts "\n\n\n\n\n\n#{@user.inspect}\n\n\n\n\n\n\n\n"
+
       redirect_to edit_user_registration_path
     end
   end

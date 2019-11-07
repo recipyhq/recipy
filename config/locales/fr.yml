@@ -132,6 +132,7 @@ fr:
     number_point_of_sale: "Nombre de points de vente %{number}"
     no_product: "Aucun produit enregistré"
     number_product: "Nombre de produits : %{number}"
+    no_bio: "Pas de description fournie"
 
   navbar:
     producers: "Producteurs"

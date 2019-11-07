@@ -53,7 +53,7 @@ Rails.application.routes.draw do
         end
         get 'createproducer' => 'home#new'
         get 'producer/:id' => 'home#show', as: :show_producer
-        patch 'createproducer' => 'home#patch'
+        patch 'createproducer' => 'home#update'
       end
 
       resources :meal_plans, :only => [:index, :show, :update]

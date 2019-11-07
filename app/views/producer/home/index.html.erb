@@ -28,7 +28,7 @@
           <div class="uk-card-body">
             <% if user.bio.nil? %>
               <p class="uk-text-truncate" alt="<%= user.bio %>%">
-                <%= "No description provided" %>
+                <%= t('producer.no_bio') %>
               </p>
             <% else %>
               <p class="uk-text-truncate" alt="<%= user.bio %>%">
