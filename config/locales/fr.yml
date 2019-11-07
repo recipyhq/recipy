@@ -2,7 +2,7 @@ fr:
   back: 'Retour'
   date:
     day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
-  
+
   placeholder_email: "Adresse e-mail"
   placeholder_password: "Mot de passe"
   placeholder_first_name: "Prénom"
@@ -128,6 +128,10 @@ fr:
     list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
+    no_point_of_sale: "Aucun point de vente enregistré"
+    number_point_of_sale: "Nombre de points de vente %{number}"
+    no_product: "Aucun produit enregistré"
+    number_product: "Nombre de produits : %{number}"
 
   navbar:
     producers: "Producteurs"

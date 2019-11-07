@@ -340,3 +340,8 @@ en:
       title: "Download the app here !"
       link: "Click here to download the app"
       qrCode: "Scan the qr-code below"
+  producer:
+    no_point_of_sale: "No registered points of sale"
+    number_point_of_sale: "Number of points of sale %{number}"
+    no_product: "No registered product"
+    number_product: "Number of product: %{number}"
