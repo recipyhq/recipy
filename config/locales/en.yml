@@ -144,6 +144,7 @@ en:
     welcome_msg: "Welcome %{name} !"
     who_we_are: "About Recipy"
     edit_pref: "My preferences"
+    my_producer_profile: "My producer profile"
   shared_links:
     no_account: "No account ?"
   activerecord:
@@ -292,6 +293,16 @@ en:
     edit_title: "Edit the product"
     deleted: "Product correctly removed"
     not_found: "Product not found"
+    list_title: "All products"
+    name: "Name"
+    associated_point: "Associated point of sale"
+    new: "New product"
+    Bio: "Organic"
+    Sans_pesticide: "Pesticide free"
+    empty: "No linked tag"
+    edit: "Edit the product"
+    delete: "Delete this product"
+    confirm_delete: "Are you sure to delete this product ?"
 
   quantity_type:
     label: "Quantity type"
@@ -311,7 +322,7 @@ en:
     hours: "Hours"
     open_hour: "Openning Hours"
     close_hour: "Closing Hours"
-    market_type: "Point of sale's type"
+    market_type: "Type"
     remove: "Remove"
     add_opening_hour: "Add Openning Hours"
     add: "Add point of sale"

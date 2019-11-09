@@ -54,7 +54,8 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
         get 'createproducer' => 'home#new'
-        get 'producer/:id' => 'home#show', as: :show_producer
+        get ':id' => 'home#show', as: :show_producer
+        get ':id/my_profile' => "home#show", as: :show_producer_profile
         patch 'createproducer' => 'home#update'
       end
 

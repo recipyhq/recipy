@@ -14,15 +14,31 @@ module Producer
         @user_products[user.email] = []
         user.point_of_sales.each do |point|
           point.products.each do |prod|
-            @user_products[user.email].push(prod.ingredient.name)
+            unless prod.ingredient.nil?
+              @user_products[user.email].push(prod.ingredient.name)
+            end
           end
         end
       end
-      # puts "\n\n\n\n#{@user_products.to_s}\n\n\n\n\n"
+      puts "\n\n\n\n#{@user_products.inspect}\n\n\n\n\n"
     end
 
     def show
-      @user = User.find(params[:id])
+      @user = User.includes(:point_of_sales => [
+        :address, :products => [
+          :ingredient, :product_tags, :price => [:quantity_type],
+        ],
+      ]).find(params[:id])
+      @products = {}
+      @user.point_of_sales.each do |point|
+        @products[point.id] = []
+        point.products.each do |prod|
+          unless prod.ingredient.nil?
+            @products[point.id].push(prod)
+          end
+        end
+      end
+      puts "\n\n#{@products.inspect}\n\n\n"
     end
 
     def new

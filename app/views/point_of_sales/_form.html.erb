@@ -2,18 +2,30 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, label: t('point_of_sale.name') %>
-  <%= f.input :description, label: t('point_of_sale.desc') %>
-  <%= f.input :market_type, label: t('point_of_sale.market_type') %>
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.input :name, label: t('point_of_sale.name') %>
+      <%= f.input :description, label: t('point_of_sale.desc') %>
+      <%= f.input :market_type, label: t('point_of_sale.market_type') %>
+    </div>
+  </div>
 
-  <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
-    <%= a.input :entilted, label: t('point_of_sale.entilted') %>
-    <%= a.input :city, label: t('point_of_sale.city') %>
-    <%= a.input :zip, label: t('point_of_sale.zip') %>
-    <%= a.input :state, label: t('point_of_sale.state') %>
-    <%= a.input :country, label: t('point_of_sale.country') %>
-    <%= a.input :phone, label: t('point_of_sale.phone') %>
-  <% end %>
+  <hr class="uk-divider-icon">
+
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
+        <%= a.input :entilted, label: t('point_of_sale.entilted') %>
+        <%= a.input :city, label: t('point_of_sale.city') %>
+        <%= a.input :zip, label: t('point_of_sale.zip') %>
+        <%= a.input :state, label: t('point_of_sale.state') %>
+        <%= a.input :country, label: t('point_of_sale.country') %>
+        <%= a.input :phone, label: t('point_of_sale.phone') %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="uk-divider-icon">
 
   <%= f.simple_fields_for OpenningHour.new do |ff| %>
     <div id="openning_hours" uk-grid>
@@ -30,6 +42,8 @@
   </div>
 
   <div class="uk-margin-medium">
-    <%= f.button :submit, t('point_of_sale.validate'), class: "uk-button uk-button-primary" %>
+    <div class="uk-text-center">
+      <%= f.button :submit, t("recipe.creation.confirm") %>
+    </div>
   </div>
 <% end %>
