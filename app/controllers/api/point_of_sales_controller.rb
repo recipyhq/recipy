@@ -16,14 +16,12 @@ class Api::PointOfSalesController < ApplicationController
   end
 
   def show
-    begin
-      User.find(params[:user_id])
-    rescue ActiveRecord::RecordNotFound
-      render :json => { Status: "KO", Cause: "invalid user" }.as_json, status: :not_found
-      return
+    find_pointofsale_by_id
+    if @point_of_sale.empty?
+      render :json => { Status: "KO", Cause: "invalid id" }.as_json, status: :not_found
+    else
+      render json: @point_of_sale.as_json(:include => [:address, :products, :openning_hours])
     end
-    find_pointofsale
-    render json: @point_of_sale.as_json(:include => [:address, :products, :openning_hours])
   end
 
   def new
@@ -77,6 +75,11 @@ class Api::PointOfSalesController < ApplicationController
     id = params[:id]
     user = User.find(params[:user_id])
     @point_of_sale = PointOfSale.where(:id => id).where(:user => user)
+  end
+
+  def find_pointofsale_by_id
+    id = params[:id]
+    @point_of_sale = PointOfSale.where(:id => id)
   end
 
   def point_of_sale_params
