@@ -1,12 +1,22 @@
-<%= simple_form_for(PointOfSale.new) do |f| %>
+<%= stylesheet_link_tag 'recipe_form' %>
+
+<%= simple_form_for(PointOfSale.new, html: {
+  class: "uk-padding recipe_form"
+},) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :name, label: t('point_of_sale.name') %>
-      <%= f.input :description, label: t('point_of_sale.desc') %>
-      <%= f.input :market_type, label: t('point_of_sale.market_type') %>
+      <%= f.input :market_type, :label => t("point_of_sale.market_type"), collection: ["Magasin", "Coopérative", "Chez l'habitant"].to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+        slimselect: true,
+        slimselectNoResult: t('slimselect.market_type.no_result'),
+        slimselectSearchPlaceholder: t('slimselect.market_type.search_placeholder'),
+        slimselectPlaceholder: t('slimselect.market_type.search_placeholder'),
+      }, defaults: {input_class: ""} %>
+      <%= f.input :description, :as => :text, label: t('point_of_sale.desc'), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
+
     </div>
   </div>
 
@@ -19,7 +29,7 @@
         <%= a.input :city, label: t('point_of_sale.city') %>
         <%= a.input :zip, label: t('point_of_sale.zip') %>
         <%= a.input :state, label: t('point_of_sale.state') %>
-        <%= a.input :country, label: t('point_of_sale.country') %>
+        <%= a.input :country, label: t('point_of_sale.country'), input_html: {class: "uk-select"} %>
         <%= a.input :phone, label: t('point_of_sale.phone') %>
       <% end %>
     </div>

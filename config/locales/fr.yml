@@ -498,6 +498,9 @@ fr:
       no_result: "Pas d'allergène trouvé"
       search_placeholder: "Recherchez les allergènes ici"
       placeholder: "Sélectionnez les allergènes"
+    market_type:
+      no_result: "Type non trouvé"
+      search_placeholder: "Sélectionnez un type de point de vente"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:
