@@ -328,6 +328,8 @@ en:
     update_success: "Point of sale has been updated"
     delete_success: "Point of sale deleted with success"
     hour: "Hour"
+    api:
+      not_found: "Point of sale is not found"
   notebook:
     edit:
       invalid: "The notebook is invalid"

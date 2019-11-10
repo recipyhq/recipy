@@ -398,6 +398,8 @@ fr:
     update_error: "Une erreur s'est produite pendant la modification"
     update_success: "Modification(s) effectuée(s) avec succés"
     delete_success: "Point de vente supprimé"
+    api:
+      not_found: "Le point de vente est introuvable"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."

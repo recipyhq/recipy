@@ -16,12 +16,15 @@ class Api::PointOfSalesController < ApplicationController
   end
 
   def show
-    find_pointofsale_by_id
-    if @point_of_sale.empty?
-      render :json => { Status: "KO", Cause: "invalid id" }.as_json, status: :not_found
-    else
-      render json: @point_of_sale.as_json(:include => [:address, :products, :openning_hours])
+    begin
+      @point_of_sale = PointOfSale.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("point_of_sale.api.not_found") }.as_json,
+             status: :not_found
+      return
     end
+    point_of_sale = @point_of_sale.as_json(:include => [:address, :products, :openning_hours])
+    render json: point_of_sale, status: :ok
   end
 
   def new
@@ -48,11 +51,11 @@ class Api::PointOfSalesController < ApplicationController
   end
 
   def edit
-    find_pointofsale
+    find_point_of_sale
   end
 
   def update
-    find_pointofsale
+    find_point_of_sale
     adress_params = point_of_sale_params[:address]
     @point_of_sale_param.extract!(:address)
     pointofsale = @point_of_sale_param
@@ -64,22 +67,17 @@ class Api::PointOfSalesController < ApplicationController
   end
 
   def destroy
-    find_pointofsale
+    find_point_of_sale
     @point_of_sale.destroy
     redirect_to api_point_of_sales_path
   end
 
   private
 
-  def find_pointofsale
+  def find_point_of_sale
     id = params[:id]
     user = User.find(params[:user_id])
     @point_of_sale = PointOfSale.where(:id => id).where(:user => user)
-  end
-
-  def find_pointofsale_by_id
-    id = params[:id]
-    @point_of_sale = PointOfSale.where(:id => id)
   end
 
   def point_of_sale_params
