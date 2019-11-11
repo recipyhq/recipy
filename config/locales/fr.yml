@@ -144,6 +144,7 @@ fr:
     no_product: "Aucun produit enregistré"
     number_product: "Nombre de produits : %{number}"
     no_bio: "Pas de description fournie"
+    back_to_profile: "Retourner sur mon profil producteur"
 
   navbar:
     producers: "Producteurs"
@@ -415,6 +416,7 @@ fr:
     delete_success: "Point de vente supprimé"
     api:
       not_found: "Le point de vente est introuvable"
+    address: "Adresse"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."

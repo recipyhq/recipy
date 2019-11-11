@@ -341,6 +341,7 @@ en:
     hour: "Hour"
     api:
       not_found: "Point of sale is not found"
+    address: "Address"
   notebook:
     edit:
       invalid: "The notebook is invalid"
@@ -386,6 +387,7 @@ en:
     no_bio: "No provided description"
     new:
       welcome: "You are now a producer ! Welcome"
+    back_to_profile: "Return to my producer profile"
   user:
     recipe:
       allergen: "Warning to the allergen %{allergen}"
