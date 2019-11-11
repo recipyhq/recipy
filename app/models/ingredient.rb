@@ -47,4 +47,13 @@ class Ingredient < ApplicationRecord
   def set_defaults
     self.confirmed ||= true
   end
+
+  def self.have_allergens(allergens)
+    if !allergens.nil? && allergens.length > 0
+      allergen_ids = allergens.map{|a| a.id}
+      joins(:allergen_tags).where(allergen_tags: { id: allergen_ids.to_a })
+    else
+      all
+    end
+  end
 end

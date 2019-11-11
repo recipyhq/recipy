@@ -40,8 +40,6 @@ class MealPlansController < ApplicationController
     @day_plan.evening_dish_recipe = get_recipe("Plat", plan_params[:evening_dish])
     @day_plan.evening_dessert_recipe = get_recipe("Dessert", plan_params[:evening_dessert])
 
-    puts @day_plan.inspect
-
     if @day_plan.save
       redirect_to meal_plan_path(@day_plan), flash: { success: t('meal_plan.edit_success') }
     else
@@ -111,8 +109,9 @@ class MealPlansController < ApplicationController
     seed = Random.new(hex).rand
     diff_date = (date - monday).to_i
 
+    no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
     no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
-    query = Recipe.no_have_ingredients(no_ingredients).joins(:recipe_categories).
+    query = Recipe.no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories).
       includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
     dishes = query.where(:recipe_categories => { :name => "Plat" })
     starters = query.where(:recipe_categories => { :name => "Entrée" })
@@ -215,8 +214,9 @@ class MealPlansController < ApplicationController
     diff_date = (date - monday).to_i
 
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
+      no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
       no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
-      query = Recipe.no_have_ingredients(no_ingredients).joins(:recipe_categories).
+      query = Recipe.no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories).
         includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
       dishes = query.where(:recipe_categories => { :name => "Plat" })
       starters = query.where(:recipe_categories => { :name => "Entrée" })
