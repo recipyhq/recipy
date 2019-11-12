@@ -110,6 +110,8 @@ fr:
     api:
       follow_ok: "Vous suivez ce producteur"
       follow_ko: "Vous ne suivez plus ce producteur"
+    edit_like_ingredients: "Modifier vos ingrédients préférés"
+    become_producer: "Obtenir des fonctionnalités réservées aux producteurs"
     edit_like_ingredients: "Modifier vos préférences"
     must_be_conected: "Vous devez être conecté !"
     like:
@@ -142,6 +144,7 @@ fr:
     producers: "Producteurs"
     my_producer_profile: "Mon profil producteur"
     log_out: "Déconnexion"
+    welcome_msg: "Bienvenue %{name} !"
     sign_in: "Se connecter"
     sign_up: "M'inscrire"
     edit_user: 'Modifier mon profil'
@@ -150,8 +153,10 @@ fr:
     point_of_sales: "Points de vente"
     notebooks: "Mes carnets de recette"
     my_meal_plan: "Mon planning de repas"
+    who_we_are: "En savoir plus sur Recipy"
+
     producer:
-      list: "Liste des producteurs"
+      list: "Producteurs près de chez moi"
       point_of_sales: "Points de vente"
     edit_pref: "Mes préférences"
 
@@ -327,7 +332,7 @@ fr:
       label: "Dans quel rayon se trouve votre produit ?"
 
   search:
-    title: "Rechercher"
+    title: "Rechercher une recette"
     read_more: "Lire la suite"
     search: "Rechercher..."
     search_btn: "Rechercher"
@@ -393,6 +398,8 @@ fr:
     update_error: "Une erreur s'est produite pendant la modification"
     update_success: "Modification(s) effectuée(s) avec succés"
     delete_success: "Point de vente supprimé"
+    api:
+      not_found: "Le point de vente est introuvable"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
