@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ActiveRecord::Base
+class  User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   validates :first_name, presence: true
@@ -54,8 +54,6 @@ class User < ActiveRecord::Base
   has_many :inverse_related_liked_producers, class_name: 'LikedProducer',
                                              :foreign_key => "liked_producer_id"
   has_many :followed_users, through: :inverse_related_liked_producers, :source => :user
-
-  belongs_to :author
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

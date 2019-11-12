@@ -25,7 +25,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
       end
     else
-      @author = Author.create(sign_up_params_author)
       super
     end
   end
