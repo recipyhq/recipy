@@ -14,7 +14,7 @@
 <!--    </div>-->
     <p><%= @recipe.description %></p>
     <% if @recipe.user %>
-    <p> <%= t('author.title') %> <%= @recipe.user.first_name %> <%= @recipe.user.last_name[0] %>.</p>
+    <p> <%= t('author.title') %> <%= link_to @recipe.user.first_name, author_path(@recipe.user) %> <%= @recipe.user.last_name[0] %>.</p>
       <% else %>
     <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
       <%end %>

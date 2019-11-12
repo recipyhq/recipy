@@ -87,6 +87,15 @@ class Users::BaseController < ApplicationController
     end
   end
 
+  def show_author
+    find_user
+    @notebooks = Notebook.includes(:image_attachment => :blob).where(
+      :user_id => @user.id
+    ).order(:title)
+    @recipes = Recipe.where(user: @user).where.
+      not(user: nil).order(:view => :desc).all.with_attached_image
+  end
+
   private
 
   def like_params
