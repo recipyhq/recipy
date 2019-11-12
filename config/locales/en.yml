@@ -303,6 +303,7 @@ en:
     edit: "Edit the product"
     delete: "Delete this product"
     confirm_delete: "Are you sure to delete this product ?"
+    not_found_list: "No associated product for this producer"
 
   quantity_type:
     label: "Quantity type"
@@ -342,6 +343,7 @@ en:
     api:
       not_found: "Point of sale is not found"
     address: "Address"
+    not_found: "No associated point of sale for this producer"
   notebook:
     edit:
       invalid: "The notebook is invalid"
@@ -374,6 +376,9 @@ en:
       search_placeholder: "Select a market type"
     ustensils:
       search_placeholder: "Select your ustensils"
+    pos_day:
+      no_result: "Not found"
+      search_placeholder: "Select a day"
   landing:
     download_app:
       title: "Download the app here !"

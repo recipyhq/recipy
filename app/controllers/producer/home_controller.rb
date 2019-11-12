@@ -20,7 +20,7 @@ module Producer
           end
         end
       end
-      puts "\n\n\n\n#{@user_products.inspect}\n\n\n\n\n"
+      # puts "\n\n\n\n products : #{@user_products.inspect}\n\n\n\n\n"
     end
 
     def show
@@ -30,15 +30,17 @@ module Producer
         ],
       ]).find(params[:id])
       @products = {}
+      @products_length = 0
       @user.point_of_sales.each do |point|
         @products[point.id] = []
         point.products.each do |prod|
           unless prod.ingredient.nil?
             @products[point.id].push(prod)
+            @products_length += 1
           end
         end
       end
-      puts "\n\n#{@products.inspect}\n\n\n"
+      puts "\n\n products : #{@products_length}\n\n\n"
     end
 
     def new

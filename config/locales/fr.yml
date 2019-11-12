@@ -378,6 +378,7 @@ fr:
     edit: "Modifier le produit"
     delete: "Supprimer ce produit"
     confirm_delete: "Êtes-vous sûr de vouloir supprimer ce produit ?"
+    not_found_list: "Aucun produit ajouté par ce producteur"
   quantity_type:
     label: "Type de Quantité"
 
@@ -417,6 +418,7 @@ fr:
     api:
       not_found: "Le point de vente est introuvable"
     address: "Adresse"
+    not_found: "Aucun point de vente pour ce producteur"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
@@ -505,6 +507,9 @@ fr:
     market_type:
       no_result: "Type non trouvé"
       search_placeholder: "Sélectionnez un type de point de vente"
+    pos_day:
+      no_result: "Non trouvé"
+      search_placeholder: "Sélectionnez un jour"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:

@@ -12,6 +12,9 @@
         <% end %>
       </div>
       <div class="uk-card uk-card-default uk-card-body">
+        <% if @user.point_of_sales.length <= 0 %>
+          <h3><%= t('point_of_sale.not_found') %></h3>
+        <% else %>
         <table class="uk-table uk-table-responsive uk-table-divider">
           <thead>
           <tr>
@@ -53,6 +56,7 @@
           <% end %>
           </tbody>
         </table>
+          <% end %>
       </div>
     </div>
   </div>
@@ -68,42 +72,46 @@
       <% end %>
     </div>
     <div class="uk-card uk-card-default uk-card-body">
-      <table class="uk-table uk-table-responsive uk-table-divider uk-table-middle">
-        <thead>
-        <tr>
-          <th><%= t('products.tag') %></th>
-          <th><%= t('products.name') %></th>
-          <th><%= t('products.price.label') %></th>
-          <th class="uk-table-expand"><%= t('products.associated_point') %></th>
-        </tr>
-        </thead>
+      <% if @products_length <= 0 %>
+        <h3><%= t('products.not_found_list') %></h3>
+      <% else %>
+        <table class="uk-table uk-table-responsive uk-table-divider uk-table-middle">
+          <thead>
+          <tr>
+            <th><%= t('products.tag') %></th>
+            <th><%= t('products.name') %></th>
+            <th><%= t('products.price.label') %></th>
+            <th class="uk-table-expand"><%= t('products.associated_point') %></th>
+          </tr>
+          </thead>
 
-        <tbody>
-        <% @user.point_of_sales.each do |point| %>
-          <li>
-            <% point.products.each do |prod| %>
-              <% unless prod.ingredient.nil? %>
-                <tr>
-                  <td>
-                    <% if prod.product_tags.empty? %>
-                      <img uk-tooltip="<%= t("products.empty") %>" alt="<%= "empty" %>" class="product-tag-empty-icon" src="<%= asset_path "icons/product_tags/empty.svg" %>" />
-                    <% else %>
-                      <% prod.product_tags.each do |tag| %>
-                        <img uk-tooltip="<%= t("products.#{tag.name }") %>" alt="<%= tag.name %>" class="product-tag-icon" src="<%= asset_path "icons/product_tags/#{tag.name}.svg" %>" />
+          <tbody>
+          <% @user.point_of_sales.each do |point| %>
+            <li>
+              <% point.products.each do |prod| %>
+                <% unless prod.ingredient.nil? %>
+                  <tr>
+                    <td>
+                      <% if prod.product_tags.empty? %>
+                        <img uk-tooltip="<%= t("products.empty") %>" alt="<%= "empty" %>" class="product-tag-empty-icon" src="<%= asset_path "icons/product_tags/empty.svg" %>" />
+                      <% else %>
+                        <% prod.product_tags.each do |tag| %>
+                          <img uk-tooltip="<%= t("products.#{tag.name }") %>" alt="<%= tag.name %>" class="product-tag-icon" src="<%= asset_path "icons/product_tags/#{tag.name}.svg" %>" />
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </td>
-                  <td><%= prod.ingredient.name %></td>
-                  <td><%= "#{prod.price.value}€ / #{prod.price.quantity_type.name}" %></td>
-                  <td><span class="uk-text-bold uk-text-uppercase"><%= "#{point.name}"%></span>
-                    <%="(#{point.address.entilted} #{point.address.zip} #{point.address.city} #{point.address.country})" %></td>
-                </tr>
+                    </td>
+                    <td><%= prod.ingredient.name %></td>
+                    <td><%= "#{prod.price.value}€ / #{prod.price.quantity_type.name}" %></td>
+                    <td><span class="uk-text-bold uk-text-uppercase"><%= "#{point.name}"%></span>
+                      <%="(#{point.address.entilted} #{point.address.zip} #{point.address.city} #{point.address.country})" %></td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-        <% end %>
-        </tbody>
-      </table>
+            </li>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
