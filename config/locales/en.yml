@@ -393,6 +393,7 @@ en:
     new:
       welcome: "You are now a producer ! Welcome"
     back_to_profile: "Return to my producer profile"
+    no_list: "No producer on the plateform"
   user:
     recipe:
       allergen: "Warning to the allergen %{allergen}"

@@ -145,6 +145,7 @@ fr:
     number_product: "Nombre de produits : %{number}"
     no_bio: "Pas de description fournie"
     back_to_profile: "Retourner sur mon profil producteur"
+    no_list: "Aucun producteur sur la plateforme !"
 
   navbar:
     producers: "Producteurs"
