@@ -67,16 +67,16 @@ class RecipesController < InheritedResources::Base
     @recipe_params = recipe_params
     puts @recipe_params
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
+    steps = @recipe_params[:steps_raw]
+    split_steps = steps.split("\r\n")
+    @recipe_params[:steps] = split_steps.collect(&:strip)
+    @recipe_params.delete(:steps_raw)
+    @recipe_params.delete(:recipe_ingredients_attributes)
     if new_ingredients.nil?
-      redirect_to new_recipe_path, flash: {
-        danger: t('recipe.creation.missing_ingredients'),
-      }
+      @recipe = Recipe.new(@recipe_params)
+      flash.now[:danger] = t('recipe.creation.missing_ingredients')
+      render :new
     else
-      steps = @recipe_params[:steps_raw]
-      split_steps = steps.split("\r\n")
-      @recipe_params[:steps] = split_steps.collect(&:strip)
-      @recipe_params.delete(:steps_raw)
-      @recipe_params.delete(:recipe_ingredients_attributes)
       new_recipe = Recipe.new(@recipe_params)
       if new_recipe.invalid?
         render :new, flash: {

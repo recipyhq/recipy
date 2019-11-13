@@ -84,12 +84,6 @@ ActiveRecord::Schema.define(version: 2019_10_03_150804) do
     t.index ["unlock_token"], name: "index_administrators_on_unlock_token", unique: true
   end
 
-  create_table "allergen_tag", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "allergen_tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -535,8 +529,8 @@ ActiveRecord::Schema.define(version: 2019_10_03_150804) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters", null: false
-    t.boolean "isProducer", null: false
+    t.boolean "newsletters", default: false, null: false
+    t.boolean "isProducer", default: false, null: false
     t.text "bio"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

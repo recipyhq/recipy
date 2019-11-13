@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<head>
+  <meta property="og:title" content=<% @recipe.title %> />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content=<% recipe_url(@recipe.id) %> />
+  <meta property="og:image" content=<%= @recipe.image.attached? ? url_for(@recipe.image.variant resize: '400x200') : "https://picsum.photos/400/200" %> />
+</head>
 
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
