@@ -94,6 +94,11 @@ class Users::BaseController < ApplicationController
     ).order(:title)
     @recipes = Recipe.where(user: @user).where.
       not(user: nil).order(:view => :desc).all.with_attached_image
+    @recipes_view = 0
+    @recipes.each do |r|
+      @recipes_view = @recipes_view + r.view
+    end
+    @comments = @user.recipe_scores
   end
 
   private

@@ -14,8 +14,11 @@
     </div>
     <div class="uk-card-body">
       <p>
-        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes." %>
+        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes. Ses recettes ont étaient vu plus de #{@recipes_view} fois !" %>
       </p>
+    </div>
+    <div class="uk-card-footer">
+      <%= "#{@user.bio}" %>
     </div>
   </div>
 </div>
@@ -23,7 +26,7 @@
 <div>
   <% unless @recipes.empty? %>
     <div class="uk-container uk-padding">
-      <div class="uk-text-lead"> <%= "Les carnets de recettes de #{@user.first_name}" %> </div>
+      <div class="uk-text-lead"> <%= "Les recettes de #{@user.first_name} :" %> </div>
     </div>
 
     <div class="uk-container uk-padding">
@@ -45,7 +48,9 @@
               </div>
               <div class="uk-card-body">
                 <div uk-tooltip="<%= recipe.title %>">
-                  <h3 class="uk-card-title uk-text-truncate"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
+                  <h3 class="uk-card-title uk-text-truncate">
+                    <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %>
+                  </h3>
                 </div>
                 <div uk-tooltip="<%= recipe.description %>">
                   <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
@@ -62,7 +67,7 @@
 <div>
   <% unless @notebooks.empty? %>
     <div class="uk-container">
-      <div class="uk-text-lead"> <%= "Les carnets de recettes de #{@user.first_name}" %> </div>
+      <div class="uk-text-lead"> <%= "Les carnets de recettes de #{@user.first_name} :" %> </div>
     </div>
 
     <div class="uk-container uk-padding">
@@ -84,10 +89,35 @@
               </div>
               <div class="uk-card-body">
                 <div uk-tooltip="<%= notebook.title %>">
-                  <h3 class="uk-card-title uk-text-truncate"> <%= link_to notebook.title, notebook, class: "uk-button uk-button-text uk-text-truncate" %></h3>
+                  <p class="uk-button uk-button-text uk-text-truncate"> <%= notebook.title %></p>
                 </div>
                 <div uk-tooltip="<%= notebook.description %>">
                   <p class="uk-text uk-text-truncate"> <%= notebook.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div>
+  <% unless @comments.empty? %>
+    <div class="uk-container">
+      <div class="uk-text-lead"> <%= "Les commentaires de #{@user.first_name} :" %> </div>
+    </div>
+
+    <div class="uk-container uk-padding">
+      <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
+        <% @comments.each do |comment| %>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-body">
+                <div>
+                  <p class="uk-text uk-text-truncate"> <%= comment.content %></p>
                 </div>
               </div>
             </div>
