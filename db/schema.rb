@@ -84,12 +84,6 @@ ActiveRecord::Schema.define(version: 2019_10_03_150804) do
     t.index ["unlock_token"], name: "index_administrators_on_unlock_token", unique: true
   end
 
-  create_table "allergen_tag", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "allergen_tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
