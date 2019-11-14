@@ -98,7 +98,7 @@ class Users::BaseController < ApplicationController
     @recipes.each do |r|
       @recipes_view += r.view
     end
-    @comments = @user.recipe_scores
+    @comments = @user.recipe_scores.last(4)
   end
 
   private

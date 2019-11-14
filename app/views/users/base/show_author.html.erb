@@ -52,11 +52,6 @@
                     <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %>
                   </h3>
                 </div>
-                <!--<div class="star-ratings star-dark">
-                  <div class="star-ratings-value" style="width: <%#= recipe.recipe_scores.value * 20 %>%">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>-->
                 <div uk-tooltip="<%= recipe.description %>">
                   <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
                 </div>
@@ -122,7 +117,9 @@
             <div class="uk-card uk-card-default">
               <div class="uk-card-body">
                 <div uk-tooltip="<%= comment.recipe.title %>">
-                  <p class="uk-button uk-button-text uk-text-truncate"> <%= "#{comment.recipe.title}" %></p>
+                  <p class="uk-button uk-button-text uk-text-truncate">
+                    <%= link_to comment.recipe.title, comment.recipe, class: "uk-button uk-button-text uk-text-truncate" %>
+                  </p>
                 </div>
                 <div class="star-ratings star-dark">
                   <div class="star-ratings-value" style="width: <%= comment.value * 20 %>%">
