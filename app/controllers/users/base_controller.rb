@@ -88,7 +88,7 @@ class Users::BaseController < ApplicationController
   end
 
   def show_author
-    find_user
+    find_user_recipe_scores
     @notebooks = Notebook.includes(:image_attachment => :blob).where(
       :user_id => @user.id
     ).order(:title)
@@ -96,7 +96,7 @@ class Users::BaseController < ApplicationController
       not(user: nil).order(:view => :desc).all.with_attached_image
     @recipes_view = 0
     @recipes.each do |r|
-      @recipes_view = @recipes_view + r.view
+      @recipes_view += r.view
     end
     @comments = @user.recipe_scores
   end
@@ -113,5 +113,9 @@ class Users::BaseController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def find_user_recipe_scores
+    @user = User.includes(:recipe_scores => [:recipe]).find(params[:id])
   end
 end
