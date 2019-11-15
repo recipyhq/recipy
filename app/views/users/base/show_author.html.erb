@@ -1,0 +1,142 @@
+<div class="uk-container uk-padding">
+  <div class="uk-card uk-card-default uk-width-1-2@m">
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <% if @user.avatar.attached? %>
+        <div class="uk-width-auto">
+          <img class="uk-border-circle" width="70" height="70" src="<%= url_for(@user.avatar.variant resize: '200x200') %>">
+        </div>
+        <% end %>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom">
+            <%= "#{@user.first_name} #{@user.last_name}" %>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <p>
+        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes. Ses recettes ont étaient vu plus de #{@recipes_view} fois !" %>
+      </p>
+    </div>
+    <!--<div class="uk-card-footer">
+      <%#= "Mimir ne périra jamais !" %>
+    </div>-->
+  </div>
+</div>
+
+<div>
+  <% unless @recipes.empty? %>
+    <div class="uk-container">
+      <div class="uk-text-lead"> <%= "Les recettes de #{@user.first_name} :" %> </div>
+    </div>
+
+    <div class="uk-container uk-padding">
+      <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
+        <% @recipes.each do |recipe| %>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-media-top">
+                <%= link_to recipe do %>
+                  <div class="uk-card-media-top recipe-img recipe-search-img" style="
+                  <% if recipe.image.attached? %>
+                    background-image: url(<%= rails_blob_url recipe.image %>);
+                    <% else %>
+                    <%= image_tag "https://picsum.photos/400/200" %>
+                    <% end %>
+                  ">
+                  </div>
+                <% end %>
+              </div>
+              <div class="uk-card-body">
+                <div uk-tooltip="<%= recipe.title %>">
+                  <h3 class="uk-card-title uk-text-truncate">
+                    <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %>
+                  </h3>
+                </div>
+                <div uk-tooltip="<%= recipe.description %>">
+                  <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <% unless @notebooks.empty? %>
+    <div class="uk-container">
+      <div class="uk-text-lead"> <%= "Les carnets de recettes de #{@user.first_name} :" %> </div>
+    </div>
+
+    <div class="uk-container uk-padding">
+      <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
+        <% @notebooks.each do |notebook| %>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-media-top">
+                <%= link_to notebook do %>
+                  <div class="uk-card-media-top recipe-img recipe-search-img" style="
+                  <% if notebook.image.attached? %>
+                    background-image: url(<%= rails_blob_url notebook.image %>);
+                    <% else %>
+                    <%= image_tag "https://picsum.photos/400/200" %>
+                    <% end %>
+                  ">
+                  </div>
+                <% end %>
+              </div>
+              <div class="uk-card-body">
+                <div uk-tooltip="<%= notebook.title %>">
+                  <p class="uk-button uk-button-text uk-text-truncate"> <%= notebook.title %></p>
+                </div>
+                <div uk-tooltip="<%= notebook.description %>">
+                  <p class="uk-text uk-text-truncate"> <%= notebook.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div>
+  <% unless @comments.empty? %>
+    <div class="uk-container">
+      <div class="uk-text-lead"> <%= "Les derniers commentaires de #{@user.first_name} :" %> </div>
+    </div>
+
+    <div class="uk-container uk-padding">
+      <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-2@m uk-child-width-1-4@l" uk-grid>
+        <% @comments.each do |comment| %>
+          <div>
+            <div class="uk-card uk-card-default">
+              <div class="uk-card-body">
+                <div uk-tooltip="<%= comment.recipe.title %>">
+                  <p class="uk-button uk-button-text uk-text-truncate">
+                    <%= link_to comment.recipe.title, comment.recipe, class: "uk-button uk-button-text uk-text-truncate" %>
+                  </p>
+                </div>
+                <div class="star-ratings star-dark">
+                  <div class="star-ratings-value" style="width: <%= comment.value * 20 %>%">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div uk-tooltip="<%= comment.content %>">
+                  <br>
+                  <p class="uk-text uk-text-truncate"> <%= comment.content %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

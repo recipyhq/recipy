@@ -12,7 +12,7 @@
           <ul class="uk-nav uk-navbar-dropdown-nav">
             <% if user_signed_in? %>
               <li>
-                <%= t('navbar.welcome_msg', name: current_user.first_name) %>
+                <%= link_to "Mon profil" , author_path(current_user), class: "uk-button-text uk-text-truncate" %>
                 <a href="<%= meal_plans_path %>">Qu'est-ce qu'on mange ?</a>
               </li>
               <li class="uk-nav-divider"></li>
