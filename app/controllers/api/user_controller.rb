@@ -97,22 +97,6 @@ class Api::UserController < ApplicationController
            status: :ok
   end
 
-  def show_author_test
-    p params[:id]
-    begin
-      @user = User.includes(:recipe_scores => [:recipe]).find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
-             status: :not_found
-      return
-    end
-    render :json => {
-      data: {
-        id: @user.id,
-      }.as_json,
-    }
-  end
-
   def show_author
     begin
       @user = User.find(params[:id])
