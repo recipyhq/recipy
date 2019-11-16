@@ -96,4 +96,67 @@ class Api::UserController < ApplicationController
     render :json => { Status: "OK", Cause: t("users.api.follow_ko") }.as_json,
            status: :ok
   end
+
+  def show_author_test
+    p params[:id]
+    begin
+      @user = User.includes(:recipe_scores => [:recipe]).find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+             status: :not_found
+      return
+    end
+    render :json => {
+      data: {
+        id: @user.id,
+      }.as_json,
+    }
+  end
+
+  def show_author
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+             status: :not_found
+      return
+    end
+
+    begin
+      @notebooks = Notebook.where(
+        :user_id => @user.id
+      ).order(:title)
+    rescue ActiveRecord::RecordNotFound
+      render :json => {Status: "KO", Cause: "Carnet de recettes non trouvé"}.as_json,
+             status: :not_found
+      return
+    end
+
+    begin
+      @recipes = Recipe.where(user: @user).where.
+        not(user: nil).order(:view => :desc).all
+      @recipes_view = 0
+      @recipes.each do |r|
+        @recipes_view += r.view
+      end
+      @comments = @user.recipe_scores.last(4)
+    rescue ActiveRecord::RecordNotFound
+      render :json => {Status: "KO", Cause: "Recette non trouvé"}.as_json,
+             status: :not_found
+      return
+    end
+    render :json => {
+      Status: "OK",
+      data: {
+        id: @user.id,
+        avatar: @user.avatar.attached? ? rails_blob_url(@user.avatar) : nil,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        comments: @comments,
+        recipes: @recipes,
+        recipes_view: @recipes_view,
+        notebooks: @notebooks,
+      }.as_json,
+    }
+  end
 end
