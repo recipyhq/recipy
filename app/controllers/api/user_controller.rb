@@ -107,9 +107,9 @@ class Api::UserController < ApplicationController
     end
 
     begin
-      @notebooks_ids = Notebook.where(
+      @notebooks = Notebook.where(
         :user_id => @user.id
-      ).order(:title).ids
+      ).order(:title)
     rescue ActiveRecord::RecordNotFound
       render :json => {Status: "KO", Cause: "Carnet de recettes non trouvé"}.as_json,
              status: :not_found
@@ -123,7 +123,6 @@ class Api::UserController < ApplicationController
       @recipes.each do |r|
         @recipes_view += r.view
       end
-      @recipes_ids = @recipes.ids
       @comments = @user.recipe_scores.last(4)
     rescue ActiveRecord::RecordNotFound
       render :json => {Status: "KO", Cause: "Recette non trouvé"}.as_json,
@@ -138,9 +137,9 @@ class Api::UserController < ApplicationController
         first_name: @user.first_name,
         last_name: @user.last_name,
         comments: @comments,
-        recipes_ids: @recipes_ids,
+        recipes: @recipes,
         recipes_view: @recipes_view,
-        notebooks_ids: @notebooks_ids,
+        notebooks: @notebooks,
       }.as_json,
     }
   end
