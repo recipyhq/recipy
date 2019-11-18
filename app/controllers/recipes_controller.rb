@@ -38,6 +38,18 @@ class RecipesController < InheritedResources::Base
     end
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
+    puts "\n\n"
+    ip = request.ip.inspect
+    puts request.ip.inspect
+    puts "\n\n"
+    city = Geocoder.search(ip).first.city
+    puts Geocoder.search(ip).first.city
+    puts "\n\n"
+    coor = Geocoder.search(ip).first.coordinates
+    puts Geocoder.search(ip).first.coordinates
+    puts "\n\n"
+    @tata = "ip and city:"
+    @toto = ip + " " + city + " " + coor
   end
 
   def show_user_recipes

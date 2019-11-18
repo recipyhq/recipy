@@ -73,6 +73,9 @@ class ShoppingListsController < InheritedResources::Base
     @shopping_list_params = shopping_list_params
     new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
     @shopping_list_params.delete(:shopping_list_ingredients_attributes)
+    puts '\n\n'
+    puts Geocoder.request.ip.inspect
+    puts '\n\n'
     new_shopping_list = ShoppingList.new(@shopping_list_params)
     new_shopping_list.user = current_user
     if new_shopping_list.valid?
