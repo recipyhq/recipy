@@ -11,7 +11,7 @@ class MealPlansController < ApplicationController
     @date_begin = Date.today
     @date_end = Date.today + 6.day
     @day_meals = []
-    @shopping_list = ShoppingList.where(:name => "Semaine du #{(@date_begin + 1.day).strftime("%d/%m/%Y")} au #{@date_end.strftime("%d/%m/%Y")}").first
+    @shopping_list = ShoppingList.where(:name => "Semaine du #{(@date_begin + 1.day).strftime("%d/%m/%Y")} au #{@date_end.strftime("%d/%m/%Y")}", :user_id => current_user.id).first
 
     (@date_begin..@date_end).each do |day|
       @day_meals.push(get_by_date(day))
