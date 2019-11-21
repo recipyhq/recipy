@@ -2,21 +2,11 @@
 class Api::MealPlansController < Api::BaseController
 
   def index
+    verify_user
     skip_policy_scope
     @date_begin = Date.today
     @date_end = Date.today + 6.day
     @day_meals = []
-    if (!params[:user_id])
-      render json: {error: 'Vous devez mettre un params user_id pour l\'id de l\'utilisateur'}.as_json
-      return
-    end
-
-    @current_user = User.where(:id => params[:user_id]).first
-
-    if (!@current_user)
-      render json: {error: 'L\'user_id utilisé est incorrect'}.as_json
-      return
-    end
 
     @shopping_list = ShoppingList.where(:name => "Semaine du #{(@date_begin + 1.day).strftime("%d/%m/%Y")} au #{@date_end.strftime("%d/%m/%Y")}", :user_id => @current_user.id).first
 
@@ -80,6 +70,20 @@ class Api::MealPlansController < Api::BaseController
     return date if date.monday?
     days_before = (date.wday + 5) % 7 + 1
     date.to_date - days_before
+  end
+
+  def verify_user
+    if (!params[:user_id])
+      render json: {error: 'Vous devez mettre un params user_id pour l\'id de l\'utilisateur'}.as_json
+      return
+    end
+
+    @current_user = User.where(:id => params[:user_id]).first
+
+    if (!@current_user)
+      render json: {error: 'L\'user_id utilisé est incorrect'}.as_json
+      return
+    end
   end
 end
 # rubocop:enable all
