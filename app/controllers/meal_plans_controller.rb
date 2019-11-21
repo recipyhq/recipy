@@ -135,7 +135,7 @@ class MealPlansController < ApplicationController
 
   def create_shopping_list_quantity(shopping_list, elem)
     shopping_list.ingredients << elem.ingredient
-    if elem.recipe_quantity
+    if elem.recipe_quantity && elem.recipe_quantity.quantity_type
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
         shopping_list_quantity =
           ShoppingListQuantity.create!(:value => elem.recipe_quantity.value,
@@ -148,7 +148,7 @@ class MealPlansController < ApplicationController
   end
 
   def sum_shopping_list_quantities(shopping_list, elem)
-    if elem.recipe_quantity
+    if elem.recipe_quantity && elem.recipe_quantity.quantity_type
       unless is_quantity_type_abstract(elem.recipe_quantity.quantity_type.name)
         ings = ShoppingListIngredient.where(shopping_list_id: shopping_list.id,
                                             ingredient_id: elem.ingredient.id)
