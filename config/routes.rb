@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
   get '/legal_notice', to: "landing_pages#legal_notice"
+  get 'sitemap.xml' => 'sitemaps#index', :defaults => {:format => 'xml'}
 
   ActiveAdmin.routes(self)
   devise_for :administrators, ActiveAdmin::Devise.config
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
         patch 'createproducer' => 'home#patch'
       end
 
+      # resources :authors
       resources :meal_plans, :only => [:index, :show, :update]
       post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
       # resources :meals
@@ -79,6 +81,7 @@ Rails.application.routes.draw do
         post 'reload' => "meal_plans#reload_day_plan"
       end
 
+      get 'author/:id' => "users/base#show_author", as: 'author'
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
       post 'follow_producer' => "users/base#follow_producer"
