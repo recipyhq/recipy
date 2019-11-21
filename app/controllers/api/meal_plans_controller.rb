@@ -1,5 +1,7 @@
 # rubocop:disable all
 class Api::MealPlansController < Api::BaseController
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
 
   def index
     verify_user
@@ -7,6 +9,10 @@ class Api::MealPlansController < Api::BaseController
     @date_begin = Date.today
     @date_end = Date.today + 6.day
     @day_meals = []
+
+    if (!params[:user_id] || !@current_user)
+      return
+    end
 
     @shopping_list = ShoppingList.where(:name => "Semaine du #{(@date_begin + 1.day).strftime("%d/%m/%Y")} au #{@date_end.strftime("%d/%m/%Y")}", :user_id => @current_user.id).first
 
@@ -35,6 +41,52 @@ class Api::MealPlansController < Api::BaseController
     }
 
     render json: values.as_json
+  end
+
+  def show
+    verify_user
+    skip_policy_scope
+    if (!params[:user_id] || !@current_user)
+      return
+    end
+    find_my_plan(params[:id])
+    if !@day_plan || @day_plan.user != @current_user
+      render json: { error: t("meal_plan.not_found") }
+      return
+    end
+    query = Recipe.joins(:recipe_categories)
+    @dishes = query.where(:recipe_categories => { :name => "Plat" }).all.map { |v| [v.title, v.id] }.to_a
+    @starters = query.where(:recipe_categories => { :name => "Entrée" }).all.map { |v| [v.title, v.id] }.to_a
+    @desserts = query.where(:recipe_categories => { :name => "Dessert" }).all.map { |v| [v.title, v.id] }.to_a
+
+    day_plan_json = {
+      id: @day_plan.id,
+      date: @day_plan.date,
+      midday_starter_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_starter_recipe_id]).as_json(methods: %i(image_url)),
+      midday_dish_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_dish_recipe_id]).as_json(methods: %i(image_url)),
+      midday_dessert_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_dessert_recipe_id]).as_json(methods: %i(image_url)),
+      evening_starter_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_starter_recipe_id]).as_json(methods: %i(image_url)),
+      evening_dish_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_dish_recipe_id]).as_json(methods: %i(image_url)),
+      evening_dessert_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_dessert_recipe_id]).as_json(methods: %i(image_url)) 
+    }
+    
+    values = {
+      dishes: @dishes,
+      starters: @starters,
+      desserts: @desserts,
+      day_plan: day_plan_json
+    }
+
+    render json: values.as_json
+  end
+
+  def find_my_plan(id)
+    begin
+      @day_plan = MealPlan.find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      @day_plan = nil
+    end
+    @day_plan
   end
 
   def get_by_date(date)
