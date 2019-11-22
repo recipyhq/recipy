@@ -80,6 +80,73 @@ class Api::MealPlansController < Api::BaseController
     render json: values.as_json
   end
 
+  def update
+    verify_user
+    if (!params[:user_id] || !@current_user)
+      return
+    end
+    find_my_plan(params[:id])
+    if !@day_plan || @day_plan.user != @current_user
+      render json: { error: t("meal_plan.not_found") }
+      return
+    end
+
+    @plan_params = plan_params
+    if !@plan_params
+      return
+    end
+
+    @day_plan.midday_starter_recipe = get_recipe("Entrée", plan_params[:midday_starter])
+    @day_plan.midday_dish_recipe = get_recipe("Plat", plan_params[:midday_dish])
+    @day_plan.midday_dessert_recipe = get_recipe("Dessert", plan_params[:midday_dessert])
+    @day_plan.evening_starter_recipe = get_recipe("Entrée", plan_params[:evening_starter])
+    @day_plan.evening_dish_recipe = get_recipe("Plat", plan_params[:evening_dish])
+    @day_plan.evening_dessert_recipe = get_recipe("Dessert", plan_params[:evening_dessert])
+
+    if @day_plan.save
+      day_plan_json = {
+        id: @day_plan.id,
+        date: @day_plan.date,
+        midday_starter_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_starter_recipe_id]).as_json(methods: %i(image_url)),
+        midday_dish_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_dish_recipe_id]).as_json(methods: %i(image_url)),
+        midday_dessert_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:midday_dessert_recipe_id]).as_json(methods: %i(image_url)),
+        evening_starter_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_starter_recipe_id]).as_json(methods: %i(image_url)),
+        evening_dish_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_dish_recipe_id]).as_json(methods: %i(image_url)),
+        evening_dessert_recipe: Recipe.includes(:image_attachment => :blob).find(@day_plan[:evening_dessert_recipe_id]).as_json(methods: %i(image_url)) 
+      }
+
+      values = {
+        day_plan: day_plan_json
+      }
+
+      render json: values
+    else
+      render json: { error: 'Impossible de sauvegarder le planning pour ce jour' }
+    end
+  end
+
+  def plan_params
+    begin
+      plan_params = params.require(:plan).permit(
+        :midday_starter, :midday_dish, :midday_dessert,
+        :evening_starter, :evening_dish, :evening_dessert
+      )
+    rescue
+      render json: { error: "Besoin des valeurs: {midday_starter, midday_dish, midday_dessert, evening_starter, evening_dish, evening_dessert} dans le body" }
+    end
+    plan_params
+  end
+
+  def get_recipe(type, id)
+    begin
+      recipe = Recipe.joins(:recipe_categories).
+        where(:recipe_categories => { :name => type }).find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      recipe = nil
+    end
+    recipe
+  end
+
   def find_my_plan(id)
     begin
       @day_plan = MealPlan.find(id)
