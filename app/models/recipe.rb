@@ -29,31 +29,6 @@ class Recipe < ApplicationRecord
 
   before_save :set_diets
 
-  def set_diets
-    diets.destroy_all
-    diets << Diet.find_by(name: "Végétarien") if recipe_is_vegetarian
-    diets << Diet.find_by(name: "Vegan") if recipe_is_vegan
-  end
-
-  def recipe_is_vegetarian
-    ingredients.includes(:ingredient_tags)
-                .where(ingredient_tags: 
-                        {name: ["Viande", "Poisson", "Crustacé"]}
-                      ).empty?
-  end
-
-  def recipe_is_vegan
-    ingredients.includes(:ingredient_tags)
-                .where(ingredient_tags: 
-                        {name: ["Viande", "Poisson", "Crustacé", "Produit laitier"]}
-                      ).empty? &&
-    ingredients.includes(:allergen_tags)
-                .where(allergen_tags: 
-                  {name: ["Oeuf"]}
-                ).empty? &&
-    ingredients.where(name: "Miel").empty?                  
-  end
-
   def steps_raw
     steps.join("\r\n") unless steps.nil?
   end
@@ -118,6 +93,32 @@ class Recipe < ApplicationRecord
 
   def self.to_page(num, per_page)
     limit(per_page).offset((num - 1) * per_page)
+  end
+
+  private
+  def set_diets
+    diets.destroy_all
+    diets << Diet.find_by(name: "Végétarien") if recipe_is_vegetarian
+    diets << Diet.find_by(name: "Vegan") if recipe_is_vegan
+  end
+
+  def recipe_is_vegetarian
+    ingredients.includes(:ingredient_tags)
+                .where(ingredient_tags: 
+                        {name: ["Viande", "Poisson", "Crustacé"]}
+                      ).empty?
+  end
+
+  def recipe_is_vegan
+    ingredients.includes(:ingredient_tags)
+                .where(ingredient_tags: 
+                        {name: ["Viande", "Poisson", "Crustacé", "Produit laitier"]}
+                      ).empty? &&
+    ingredients.includes(:allergen_tags)
+                .where(allergen_tags: 
+                  {name: ["Oeuf"]}
+                ).empty? &&
+    ingredients.where(name: "Miel").empty?                  
   end
 end
 # rubocop:enable all
