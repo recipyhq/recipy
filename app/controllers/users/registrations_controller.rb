@@ -93,6 +93,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:email, :password, :first_name, :password_confirmation, :last_name)
   end
 
+  def sign_up_params_author
+    params.require(:user).permit(:first_name, :last_name)
+  end
   def api_request?
     request.format.json? || request.format.xml?
   end

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
         patch 'createproducer' => 'home#patch'
       end
 
+      # resources :authors
       resources :meal_plans, :only => [:index, :show, :update]
       # resources :meals
       resources :shopping_lists
@@ -79,6 +80,7 @@ Rails.application.routes.draw do
         post 'reload' => "meal_plans#reload_day_plan"
       end
 
+      get 'author/:id' => "users/base#show_author", as: 'author'
       get 'search' => "search#index"
       post 'add_recipe' => "notebooks#add_recipe"
       post 'follow_producer' => "users/base#follow_producer"
