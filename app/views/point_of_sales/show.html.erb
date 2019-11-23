@@ -1,84 +1,133 @@
-<div class="uk-section uk-section-default">
-  <div class="uk-container">
-    <h2 class="title">
-      <%= @point_of_sale.name %>
-    </h2>
-    <p><%= @point_of_sale.description %></p>
-    <dl>
-      <dt><%= t('point_of_sale.market_type') %></dt>
-      <dd><%= @point_of_sale.market_type %></dd>
-    </dl>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<div class="uk-child-width-1-1@m" uk-grid>
+  <div>
+    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-background-center-center uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= asset_path 'producer/point_of_sale_background.jpg' %>;)"></div>
   </div>
 </div>
+
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
-    <h3 class="title"><%= t('point_of_sale.entilted') %></h3>
-    <dl>
-      <dd><%= @point_of_sale.address[:entilted] %></dd>
-      <dd><%= @point_of_sale.address[:city] %></dd>
-      <dd><%= @point_of_sale.address[:zip] %></dd>
-      <dd><%= @point_of_sale.address[:state] %></dd>
-      <dd><%= @point_of_sale.address[:country] %></dd>
-      <dd><%= @point_of_sale.address[:phone] %></dd>
-    </dl>
+    <div class="uk-child-width-1-3@m" uk-grid>
+      <div>
+        <h2 class="title">
+          <%= @point_of_sale.name %>
+        </h2>
+        <p><%= @point_of_sale.description %></p>
+      </div>
+      <div class="uk-container">
+        <h3 class="title"><%= t('point_of_sale.entilted') %></h3>
+
+        <h4 class="uk-margin-remove">
+          <%= "#{@point_of_sale.address[:entilted]}" %>
+          <%= "#{@point_of_sale.address[:zip]} #{@point_of_sale.address[:city]}" %>
+        </h4>
+        <h4 class="uk-margin-remove">
+          <%= "#{@point_of_sale.address[:state]} (#{@point_of_sale.address[:country]})" %>
+        </h4>
+      </div>
+      <div class="uk-container">
+        <h3 class="title"><%= t('point_of_sale.phone') %></h3>
+
+        <div class="uk-flex">
+          <span class="uk-margin-small-right">(Tel.)</span>
+          <h4 class="uk-margin-remove">
+            <%= "#{@point_of_sale.address[:phone]}" %>
+          </h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
 <div class="uk-section uk-section-default">
-  <div class="uk-container">
-    <h3 class="title"><%= t('point_of_sale.hours') %></h3>
-    <table class="uk-table uk-table-divided">
-      <thead>
-        <tr>
-          <th><%= t('point_of_sale.day') %></th>
-          <th><%= t('point_of_sale.open_hour') %></th>
-          <th><%= t('point_of_sale.close_hour') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if !@point_of_sale.openning_hours.nil? %>
-          <% @point_of_sale.openning_hours.each do |hours| %>
-            <tr>
-              <td><%= hours["day"] %></td>
-              <td><%= hours["open"].strftime("%H:%M") %></td>
-              <td><%= hours["close"].strftime("%H:%M") %></td>
-            </tr>
+  <div class="" uk-grid>
+    <div class="uk-width-1-3@m uk-margin-medium uk-margin-medium-left uk-margin-medium-right">
+      <div class="uk-flex uk-flex-left">
+        <h3 class="title"><%= t('point_of_sale.hours') %></h3>
+      </div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <table class="uk-table uk-table-responsive uk-table-divider uk-table-striped">
+          <thead>
+          <tr>
+            <th class="uk-table-expand"><%= t('point_of_sale.day') %></th>
+            <th><%= t('point_of_sale.open_hour') %></th>
+            <th><%= t('point_of_sale.close_hour') %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if !@point_of_sale.openning_hours.nil? %>
+            <% @point_of_sale.openning_hours.each do |hours| %>
+              <tr>
+                <td><%= hours["day"] %></td>
+                <td><%= hours["open"].strftime("%H:%M") %></td>
+                <td><%= hours["close"].strftime("%H:%M") %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="uk-width-expand@m uk-margin-medium-left uk-margin-medium-right">
+      <div class="uk-flex uk-flex-left">
+        <h3 class="title"><%= t('products.list_title') %></h3>
+        <%= puts "\n\n\ncurrent : #{current_user}\n\n\n" %>
+        <% if current_user && current_user.id == @user.id %>
+          <%= link_to  new_product_path, class: "uk-button uk-margin-top-small" do %>
+            <i style="margin-top: 4px" uk-tooltip="<%= t('products.new') %>" class="far fa-plus-square fa-2x"></i>
           <% end %>
         <% end %>
-      </tbody>
-    </table>
-    <h3 class="title">Produits</h3>
-    <table class="uk-table uk-table-divided">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prix</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if !@point_of_sale.products.nil? %>
-          <% @point_of_sale.products.each do |product| %>
-            <tr>
-              <td><%= product.ingredient.name %></td>
-              <td><%= product.price.value.to_s + "€ / " + product.price.quantity_type.name %></td>
-              <% if current_user && current_user.id == @point_of_sale.user.id %>
-                <td><%= link_to "Éditer le produit", edit_product_path(product) %></td>
-                <td><%= link_to "Supprimer le produit", product, method: :delete, data: { confirm: 'Êtes vous sûr ?' } %></td>
-
+      </div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <table class="uk-table uk-table-responsive uk-table-divider uk-table-striped uk-table-middle">
+          <thead>
+          <tr>
+            <th><%= "TRAD TAGS" %></th>
+            <th><%= "TRAD INGR NAME" %></th>
+            <th><%= "TRAD PRICE" %></th>
+            <th colspan="2"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if !@point_of_sale.openning_hours.nil? %>
+            <% @point_of_sale.products.each do |prod| %>
+              <% unless prod.ingredient.nil? %>
+                <tr>
+                  <td>
+                    <% if prod.product_tags.empty? %>
+                      <img uk-tooltip="<%= t("products.empty") %>" alt="<%= "empty" %>" class="product-tag-empty-icon" src="<%= asset_path "icons/product_tags/empty.svg" %>" />
+                    <% else %>
+                      <% prod.product_tags.each do |tag| %>
+                        <img uk-tooltip="<%= t("products.#{tag.name }") %>" alt="<%= tag.name %>" class="product-tag-icon" src="<%= asset_path "icons/product_tags/#{tag.name}.svg" %>" />
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= prod.ingredient.name %></td>
+                  <td><%= "#{prod.price.value}€ / #{prod.price.quantity_type.name}" %></td>
+                  <td>
+                    <% if current_user && current_user.id == @point_of_sale.user.id %>
+                      <%= link_to edit_product_path(prod), class: "uk-button" do %>
+                        <i uk-tooltip="<%= t('products.edit') %>" class="far fa-edit fa-2x"></i>
+                      <% end%>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if current_user && current_user.id == @point_of_sale.user.id %>
+                      <%= link_to  prod, method: :delete, class: "uk-button", data: { confirm: t('products.confirm_delete') } do %>
+                        <i uk-tooltip="<%= t('products.delete') %>" class="far fa-trash-alt fa-2x"></i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
               <% end %>
-            </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-    </table>
-    <% if current_user && current_user.id == @point_of_sale.user.id %>
-      <%= link_to "Ajouter un produit", new_product_path, class: "uk-button uk-button-default" %><br><br>
-    <% end %>
-
-    <% if current_user && current_user.id == @point_of_sale.user.id %>
-      <%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(@point_of_sale) %> | 
-    <% end %>
-    <%= link_to t('point_of_sale.back'), point_of_sales_path %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-

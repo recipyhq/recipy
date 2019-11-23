@@ -41,6 +41,13 @@
                   <span class="uk-margin-small-right" uk-icon="icon: list"></span><%= t('navbar.shopping_lists') %>
                 <% end %>
               </li>
+              <% if current_user&.isProducer %>
+                <li class="<%= current_page_class?(show_producer_profile_path(id: current_user.id)) %>">
+                  <%= link_to show_producer_profile_path(id: current_user.id) do %>
+                    <span class="uk-margin-small-right" uk-icon="icon: info"></span><%= t('navbar.my_producer_profile') %>
+                  <% end %>
+                </li>
+              <% end %>
               <li class="<%= current_page_class?(edit_user_registration_path) %>">
                 <%= link_to edit_user_registration_path do %>
                   <span class="uk-margin-small-right" uk-icon="icon: pencil"></span><%= t('navbar.edit_user') %>

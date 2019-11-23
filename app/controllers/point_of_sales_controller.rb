@@ -5,15 +5,14 @@ class PointOfSalesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @point_of_sales = PointOfSale.where.not(user: nil).order(:name).all
+    @point_of_sales = PointOfSale.includes(
+      :products => [:ingredient, :price => :quantity_type]
+    ).where.not(user: nil).order(:name).all
   end
 
   def show
     find_pointofsale_ingredients
-    # puts "----###############################"
-    # puts @point_of_sale.openning_hours[1]["open"].strftime("%H:%M")
-    # puts @point_of_sale.openning_hours[1]["close"].strftime("%H:%M")
-    # puts "###############################----"
+    @user = @point_of_sale.user
   end
 
   def new

@@ -1,19 +1,41 @@
-<%= simple_form_for(PointOfSale.new) do |f| %>
+<%= stylesheet_link_tag 'recipe_form' %>
+
+<%= simple_form_for(PointOfSale.new, html: {
+  class: "uk-padding recipe_form"
+},) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name, label: t('point_of_sale.name') %>
-  <%= f.input :description, label: t('point_of_sale.desc') %>
-  <%= f.input :market_type, label: t('point_of_sale.market_type') %>
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.input :name, label: t('point_of_sale.name') %>
+      <%= f.input :market_type, :label => t("point_of_sale.market_type"), collection: ["Magasin", "Coopérative", "Chez l'habitant"].to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+        slimselect: true,
+        slimselectNoResult: t('slimselect.market_type.no_result'),
+        slimselectSearchPlaceholder: t('slimselect.market_type.search_placeholder'),
+        slimselectPlaceholder: t('slimselect.market_type.search_placeholder'),
+      }, defaults: {input_class: ""} %>
+      <%= f.input :description, :as => :text, label: t('point_of_sale.desc'), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
 
-  <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
-    <%= a.input :entilted, label: t('point_of_sale.entilted') %>
-    <%= a.input :city, label: t('point_of_sale.city') %>
-    <%= a.input :zip, label: t('point_of_sale.zip') %>
-    <%= a.input :state, label: t('point_of_sale.state') %>
-    <%= a.input :country, label: t('point_of_sale.country') %>
-    <%= a.input :phone, label: t('point_of_sale.phone') %>
-  <% end %>
+    </div>
+  </div>
+
+  <hr class="uk-divider-icon">
+
+  <div class="uk-position-bottom-center uk-position-relative">
+    <div class="uk-width-xxlarge">
+      <%= f.simple_fields_for :address, @point_of_sale.address do |a| %>
+        <%= a.input :entilted, label: t('point_of_sale.entilted') %>
+        <%= a.input :city, label: t('point_of_sale.city') %>
+        <%= a.input :zip, label: t('point_of_sale.zip') %>
+        <%= a.input :state, label: t('point_of_sale.state') %>
+        <%= a.input :country, label: t('point_of_sale.country'), input_html: {class: "uk-select"} %>
+        <%= a.input :phone, label: t('point_of_sale.phone') %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="uk-divider-icon">
 
   <%= f.simple_fields_for OpenningHour.new do |ff| %>
     <div id="openning_hours" uk-grid>
@@ -30,6 +52,8 @@
   </div>
 
   <div class="uk-margin-medium">
-    <%= f.button :submit, t('point_of_sale.validate'), class: "uk-button uk-button-primary" %>
+    <div class="uk-text-center">
+      <%= f.button :submit, t("recipe.creation.confirm") %>
+    </div>
   </div>
 <% end %>
