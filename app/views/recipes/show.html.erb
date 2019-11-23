@@ -4,6 +4,7 @@
   <meta property="og:url" content=<% recipe_url(@recipe.id) %> />
   <meta property="og:image" content=<%= @recipe.image.attached? ? url_for(@recipe.image.variant resize: '400x200') : "https://picsum.photos/400/200" %> />
 </head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
@@ -25,7 +26,7 @@
 <!--    </div>-->
     <p><%= @recipe.description %></p>
     <% if @recipe.user %>
-    <p> <%= t('author.title') %> <%= @recipe.user.first_name %> <%= @recipe.user.last_name[0] %>.</p>
+    <p> <%= t('author.title') %> <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name[0]}" , author_path(@recipe.user), class: "uk-button-text uk-text-truncate" %>.</p>
       <% else %>
     <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
       <%end %>
@@ -209,7 +210,7 @@
             <% end %>
             <div class="uk-width-expand">
               <h4 class="uk-comment-title uk-margin-remove">
-                <a class="uk-link-reset" href="#"><%= recipe_feedback.user.first_name %> <%= recipe_feedback.user.last_name[0] %>.</a></h4>
+                <a class="uk-link-reset" href="#"> <%= link_to "#{recipe_feedback.user.first_name} #{recipe_feedback.user.last_name[0]}" , author_path(recipe_feedback.user), class: "uk-button-text uk-text-truncate" %>.</a></h4>
               <% if recipe_feedback.value %>
                 <div class="star-ratings star-dark">
                   <div class="star-ratings-value" style="width: <%= recipe_feedback.value * 20 %>%">
