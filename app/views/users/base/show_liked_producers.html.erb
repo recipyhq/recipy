@@ -1,13 +1,56 @@
+
+
 <div class="uk-container uk-padding">
-  <% if @producers.empty? %>
-    <h2 class="title">Vous ne suivez aucun producteur !</h2>
-    <h3><%= link_to t("users.followed_producers.link_to_all_prod"),
-                    unauthenticated_producer_root_url %></h3>
+  <% if @producers.length <= 0 %>
+    <h2 class="title"><%= t('users.followed_producers.no_follow') %></h2>
+    <div class="uk-margin-medium">
+      <div class="uk-text-center">
+        <%= link_to 'Voir tous les producteurs de la plateforme', authenticate_producer_root_path, class: 'uk-button uk-button-default' %>
+      </div>
+    </div>
   <% else %>
-<!--    <h2 class="title">Liste des producteurs que je suis ( <%#= @producers.size %> )</h2>-->
-    <h2 class="title"><%= t("users.followed_producers.liked_label", nb: @producers.size) %></h2>
-    <% @producers.each do |user| %>
-      <li><%= link_to user.first_name + " " + user.last_name, show_producer_path(user.id)%></li>
-    <% end %>
+    <h2 class="title"><%= t('users.followed_producers.liked_label', nb: @producers.length) %></h2>
+    <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-3@l uk-padding" uk-grid>
+      <% @producers.each do |user| %>
+        <div class="uk-card uk-card-default uk-card-small">
+          <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-center" uk-grid>
+              <div class="uk-width-auto">
+                <img width="70" height="70" src="<%= asset_path 'logo-icon-orange.png' %>">
+              </div>
+              <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">
+                  <%= link_to user.first_name + " " + user.last_name, show_producer_path(user.id), class: "uk-card-title uk-button uk-button-text uk-text-truncate" %>
+                  <% if user.point_of_sales.length <= 0 %>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t('producer.no_point_of_sale') %></p>
+                  <% else %>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t('producer.number_point_of_sale', number: user.point_of_sales.length) %></p>
+                  <% end %>
+                  <% if @user_products[user.email].length == 0 %>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t('producer.no_product') %></p>
+                  <% else %>
+                    <p class="uk-text-meta uk-margin-remove-top"><%= t('producer.number_product', number: @user_products[user.email].length) %></p>
+                  <% end %>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="uk-card-body">
+            <% if user.bio.nil? %>
+              <p class="uk-text-truncate" alt="<%= user.bio %>%">
+                <%= t('producer.no_bio') %>
+              </p>
+            <% else %>
+              <p class="uk-text-truncate" alt="<%= user.bio %>%">
+                <%= user.bio %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
+  <%# @users.each do |user| %>
+  <!--    <li><%#= link_to user.first_name + " " + user.last_name, show_producer_path(user.id)%></li>-->
+  <%# end %>
 </div>
