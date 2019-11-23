@@ -29,6 +29,7 @@ class Api::UserController < ApplicationController
         unlike_ingredients: current_user.no_like_ingredients,
         allergens: current_user.allergens,
         utensils: current_user.utensils,
+        diets: current_user.diets,
         url: current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : nil,
       }.as_json,
     }
@@ -65,6 +66,10 @@ class Api::UserController < ApplicationController
     params[:utensils].each do |id|
       utensil = Utensil.find(id)
       current_user.utensils << utensil
+    end
+    params[:diets].each do |id|
+      diet = Diet.find(id)
+      current_user.diets << diet
     end
     render :json => { Status: "OK", Cause: t("users.like.update_success") }.as_json, status: :ok
   end

@@ -24,6 +24,8 @@ class RecipesController < InheritedResources::Base
         end
       end
       @difficulty_front = get_difficulty
+
+      @diet_compatible = !@recipe.diets.where(id: current_user.diets).empty?
     end
 
     @allergen_array = allergen_set.uniq
