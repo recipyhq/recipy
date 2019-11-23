@@ -133,9 +133,10 @@ class Api::UserController < ApplicationController
       Status: "OK",
       data: {
         id: @user.id,
-        avatar: @user.avatar.attached? ? rails_blob_url(@user.avatar) : nil,
         first_name: @user.first_name,
         last_name: @user.last_name,
+        email: @user.email,
+        url: @user.avatar.attached? ? rails_blob_url(@user.avatar) : nil,
         comments: @comments,
         recipes: @recipes,
         recipes_view: @recipes_view,
