@@ -12,7 +12,7 @@
           <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-middle" uk-grid>
                 <div class="uk-width-auto">
-                  <%= image_tag(notebook.image.attached? ? notebook.image.variant(resize: '400x400') : "https://pngimage.net/wp-content/uploads/2018/06/not-found-png-3.png", class: 'uk-border-circle', width: 40, height: 40) %>
+                  <%= image_tag(notebook.image.attached? ? notebook.image.variant(resize: '400x400') : asset_path('not_found.png'), class: 'uk-border-circle', width: 40, height: 40) %>
                 </div>
                 <div class="uk-width-expand">
                     <h3 class="uk-card-title uk-margin-remove-bottom"><%= link_to notebook.title, notebook, class: 'uk-card-title uk-margin-remove-bottom' %></h3>
