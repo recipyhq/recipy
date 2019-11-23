@@ -1,10 +1,10 @@
 # rubocop:disable all
 class Recipe < ApplicationRecord
   validates :title, presence: true
-  validates :cooking_time, presence: true
-  validates :preparation_time, presence: true
+  validates :cooking_time, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :preparation_time, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :person, presence: true
-  validates :difficulty, presence: true
+  validates :difficulty, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :description, presence: true
   has_many :related_recipe_categories, dependent: :destroy
   has_many :recipe_categories, :through => :related_recipe_categories
