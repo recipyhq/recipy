@@ -19,7 +19,7 @@
 <!--    </div>-->
     <p><%= @recipe.description %></p>
     <% if @recipe.user %>
-    <p> <%= t('author.title') %> <%= @recipe.user.first_name %> <%= @recipe.user.last_name[0] %>.</p>
+    <p> <%= t('author.title') %> <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name[0]}" , author_path(@recipe.user), class: "uk-button-text uk-text-truncate" %>.</p>
       <% else %>
     <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
       <%end %>
@@ -203,7 +203,7 @@
             <% end %>
             <div class="uk-width-expand">
               <h4 class="uk-comment-title uk-margin-remove">
-                <a class="uk-link-reset" href="#"><%= recipe_feedback.user.first_name %> <%= recipe_feedback.user.last_name[0] %>.</a></h4>
+                <a class="uk-link-reset" href="#"> <%= link_to "#{recipe_feedback.user.first_name} #{recipe_feedback.user.last_name[0]}" , author_path(recipe_feedback.user), class: "uk-button-text uk-text-truncate" %>.</a></h4>
               <% if recipe_feedback.value %>
                 <div class="star-ratings star-dark">
                   <div class="star-ratings-value" style="width: <%= recipe_feedback.value * 20 %>%">
