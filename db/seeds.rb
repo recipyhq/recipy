@@ -20,6 +20,18 @@ ProductTag.create! do |tag|
   tag.name = "Sans pesticide"
 end
 
+# Diets declaration
+
+Diet.create! do |diet|
+  diet.name = "Végétarien"
+  diet.description = "Absence de viande, poisson et crustacés"
+end
+
+Diet.create! do |diet|
+  diet.name = "Vegan"
+  diet.description = "Absence de viande, poisson, crustacés, produits laitiers, oeufs et miel"
+end
+
 # Ingredient tags declaration
 
 IngredientTag.destroy_all
