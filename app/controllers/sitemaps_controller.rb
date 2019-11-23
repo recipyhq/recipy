@@ -1,5 +1,4 @@
 class SitemapsController < ApplicationController
-
   def index
     skip_policy_scope
     headers['Content-Type'] = 'application/xml'
