@@ -101,7 +101,7 @@ class Api::UserController < ApplicationController
     begin
       @user = User.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: t("recipe.api.invalid_user_id")}.as_json,
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
              status: :not_found
       return
     end
@@ -111,7 +111,7 @@ class Api::UserController < ApplicationController
         :user_id => @user.id
       ).order(:title)
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: "Carnet de recettes non trouvé"}.as_json,
+      render :json => { Status: "KO", Cause: "Carnet de recettes non trouvé" }.as_json,
              status: :not_found
       return
     end
@@ -125,7 +125,7 @@ class Api::UserController < ApplicationController
       end
       @comments = @user.recipe_scores.last(4)
     rescue ActiveRecord::RecordNotFound
-      render :json => {Status: "KO", Cause: "Recette non trouvé"}.as_json,
+      render :json => { Status: "KO", Cause: "Recette non trouvé" }.as_json,
              status: :not_found
       return
     end
@@ -138,9 +138,9 @@ class Api::UserController < ApplicationController
         email: @user.email,
         url: @user.avatar.attached? ? rails_blob_url(@user.avatar) : nil,
         comments: @comments,
-        recipes: @recipes,
-        recipes_view: @recipes_view,
         notebooks: @notebooks,
+        recipes_ids: @recipes.ids,
+        recipes_view: @recipes_view,
       }.as_json,
     }
   end
