@@ -85,6 +85,7 @@ fr:
         signed_out: "Déconnecté."
         already_signed_out: "Déconnecté."
         email: "Adresse e-mail"
+        sign_up: "S'inscrire"
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants"
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
@@ -317,6 +318,7 @@ fr:
         no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
       create_notebook: "Créer un carnet de recette"
       allergen: "Contient l'allergène %{allergen}"
+      image_not_found: "Pas d'image disponible pour cette recette"
 
   ingredient:
     title:
@@ -441,6 +443,7 @@ fr:
       desc: "Description du style de carnet que vous réalisez"
       img: "Image illustrant votre carnet"
     destroy: "Carnet correctement supprimé"
+    image_not_found: "Pas d'image disponible pour ce carnet"
 
   shopping_list:
     title: "Listes de course"

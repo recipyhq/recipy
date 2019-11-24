@@ -8,8 +8,14 @@
 
 <div class="uk-child-width-1-1@m" uk-grid>
   <div>
-    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= @recipe.image.attached? ? url_for(@recipe.image.variant resize: '1000x1000') : "https://picsum.photos/400/200" %>;)"></div>
-  </div>
+    <% if @recipe.image.attached? %>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@recipe.image.variant resize: '1000x1000') %>;)"></div>
+    <% else %>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= asset_path('wallpapers/home_blured.jpg') %>;)">
+        <h1 style="color: white;font-weight: bold"><%= t('recipe.image_not_found') %></h1>
+      </div>
+    <% end %>
+      </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">

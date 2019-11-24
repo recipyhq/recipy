@@ -5,10 +5,11 @@
     <% if @notebook.image.attached? %>
       <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= url_for(@notebook.image.variant resize: '1000x1000') %>;)"></div>
     <% else %>
-      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed">
-        <%= image_tag "https://bitsofco.de/content/images/2018/12/broken-1.png" %>
+      <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle uk-background-fixed" uk-parallax="blur: 4" style="background-image: url(<%= asset_path('recipeImage.jpg') %>;)">
+        <h1 style="color: white;font-weight: bold"><%= t('notebook.image_not_found') %></h1>
       </div>
-    <% end %>
+
+  <% end %>
   </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
@@ -32,7 +33,7 @@
                 <% if recipe.image.attached? %>
                     background-image: url(<%= rails_blob_url recipe.image %>);
                   <% else %>
-                    <%= image_tag "https://picsum.photos/400/200" %>
+                  background-image: url(<%= asset_path('not_found.png') %>);
                   <% end %>
                 ">
                 </div>
