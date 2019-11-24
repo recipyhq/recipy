@@ -6,9 +6,9 @@ class  User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  after_initialize do |user|
-    user.newsletters = false
-    user.isProducer = false
+  before_save do |user|
+    user.newsletters ||= false
+    user.isProducer ||= false
   end
 
   devise :database_authenticatable, :confirmable, :recoverable, :registerable,

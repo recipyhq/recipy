@@ -1,10 +1,10 @@
 
 # Recipy
 
-Recipy is the first application to offer customized recipes by reducing food waste. 
-Indeed, Recipy offers its users the opportunity to discover new recipes based on their tastes, 
-by consuming locally. Finally, the application allows the user not to worry about his weekly shopping 
-list, because it is directly generated and integrated into the tools of today and tomorrow. 
+Recipy is the first application to offer customized recipes by reducing food waste.
+Indeed, Recipy offers its users the opportunity to discover new recipes based on their tastes,
+by consuming locally. Finally, the application allows the user not to worry about his weekly shopping
+list, because it is directly generated and integrated into the tools of today and tomorrow.
 
 You can find us at [www.recipy.fr](https://recipy.fr)
 ## Installation
@@ -15,7 +15,7 @@ You can find us at [www.recipy.fr](https://recipy.fr)
 * `sudo systemctl start docker`
 * `sudo systemctl enable docker`
 
-#### Rbenv 
+#### Rbenv
 * Follow the instruction : [rbenv](https://github.com/rbenv/rbenv)
 * `rbenv install`
 * `gem install bundler`

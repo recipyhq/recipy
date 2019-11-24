@@ -8,7 +8,7 @@
                     <% if recipe.image.attached? %>
                         <%= image_tag recipe.image, :crop => :fill %>
                     <% else %>
-                        <%= image_tag "https://picsum.photos/400/200" %>
+                        <%= image_tag asset_path('not_found.png') %>
                     <% end %>
                 </div>
                 <div class="uk-card-body">
