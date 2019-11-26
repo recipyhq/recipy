@@ -60,8 +60,8 @@
         <div class="uk-card-body">
           <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
             <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
-            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, as: :select, input_class: "", input_html: {
-              slimselect: true,
+            <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, :include_blank => false, label: false, as: :select, input_class: "", input_html: {
+                slimselect: true,
               slimselectNoResult: t('slimselect.recipes.no_result'),
               slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
               slimselectPlaceholder: t('slimselect.recipes.placeholder'),
