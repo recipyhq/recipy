@@ -106,7 +106,8 @@ class Recipe < ApplicationRecord
     ingredients.includes(:ingredient_tags)
                 .where(ingredient_tags: 
                         {name: ["Viande", "Poisson", "Crustacé"]}
-                      ).empty?
+                      ).empty? &&
+    !recipe_categories.where(name: "Végétarien").empty?
   end
 
   def recipe_is_vegan
@@ -118,7 +119,8 @@ class Recipe < ApplicationRecord
                 .where(allergen_tags: 
                   {name: ["Oeuf"]}
                 ).empty? &&
-    ingredients.where(name: "Miel").empty?                  
+    ingredients.where(name: "Miel").empty? &&
+    !recipe_categories.where(name: "Vegan").empty?                
   end
 end
 # rubocop:enable all

@@ -3630,6 +3630,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Autres"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/guacamole.jpg'),
                       filename: 'guacamole.jpg', content_type: 'image/jpg')
@@ -3916,6 +3918,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/mousse_chocolat.jpg'),
                       filename: 'mousse_chocolat.jpg', content_type: 'image/jpg')
@@ -3961,6 +3964,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/salade_de_fruits.jpeg'),
                       filename: 'salade_de_fruits.jpeg', content_type: 'image/jpeg')
@@ -4013,6 +4018,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/crepes.jpg'),
                       filename: 'crepes.jpg', content_type: 'image/jpg')
@@ -4060,6 +4066,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Autres"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/mayonnaise.jpg'),
                       filename: 'mayonnaise.jpg', content_type: 'image/jpg')
@@ -4101,6 +4108,7 @@ Recipe.create! do |recipe|
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Accompagnement"),
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/salade_avocats.jpg'),
                       filename: 'salade_avocats.jpg', content_type: 'image/jpg')
@@ -4205,6 +4213,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Apéritif"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/palmier_basilic.jpg'),
                       filename: 'palmier_basilic.jpg', content_type: 'image/jpg')
@@ -4302,6 +4311,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Accompagnement"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ratatouille.jpg'),
                       filename: 'ratatouille.jpg', content_type: 'image/jpg')
@@ -5220,6 +5231,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pizza_fleur.jpg'),
                       filename: 'pizza_fleur.jpg', content_type: 'image/jpg')
@@ -5318,6 +5330,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tzatziki.jpg'),
                       filename: 'tzatziki.jpg', content_type: 'image/jpg')
@@ -5363,6 +5377,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
@@ -5416,6 +5432,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/gaspacho.jpg'),
                       filename: 'gaspacho.jpg', content_type: 'image/jpg')
@@ -5482,6 +5499,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tortilla_facile.jpeg'),
                       filename: 'tortilla_facile.jpeg', content_type: 'image/jpeg')
@@ -5680,6 +5698,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/compotte_de_pomme_facile.jpg'),
                       filename: 'compotte_de_pomme_facile.jpg', content_type: 'image/jpg')
@@ -5716,6 +5736,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/sorbet_a_la_fraise.jpg'),
                       filename: 'sorbet_a_la_fraise.jpg', content_type: 'image/jpg')
@@ -5754,6 +5776,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pomme_au_four.jpg'),
                       filename: 'pomme_au_four.jpg', content_type: 'image/jpg')
@@ -5783,6 +5807,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ganache_au_chocolat_blanc.jpeg'),
                       filename: 'ganache_au_chocolat_blanc.jpeg', content_type: 'image/jpeg')
@@ -5849,6 +5874,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/bruschetta-italie.jpg'),
                       filename: 'bruschetta-italie.jpg', content_type: 'image/jpg')
@@ -5928,6 +5955,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarte-au-maroilles.jpg'),
                       filename: 'tarte-au-maroilles.jpg', content_type: 'image/jpg')
@@ -6162,6 +6190,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/lemon-curd.jpg'),
                       filename: 'lemon-curd.jpg', content_type: 'image/jpg')
@@ -6209,6 +6238,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/creme-renversee.jpg'),
                       filename: 'creme-renversee.jpg', content_type: 'image/jpg')
@@ -6254,6 +6284,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/gateau-orange.jpg'),
                       filename: 'gateau-orange.jpg', content_type: 'image/jpg')
@@ -6299,6 +6330,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pancake.jpg'),
                       filename: 'pancake.jpg', content_type: 'image/jpg')
@@ -6343,6 +6375,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/Aubergine-au-four.jpg'),
                       filename: 'Aubergine-au-four.jpg', content_type: 'image/jpg')
@@ -6373,6 +6407,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/Banane-au-four.jpg'),
                       filename: 'Banane-au-four.jpg', content_type: 'image/jpg')
@@ -6403,6 +6438,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/Brioche-perdu-.jpg'),
                       filename: 'Brioche-perdu-.jpg', content_type: 'image/jpg')
@@ -6442,6 +6478,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/clafoutis.jpg'),
                       filename: 'clafoutis.jpg', content_type: 'image/jpg')
@@ -6485,6 +6522,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/frites.jpg'),
                       filename: 'frites.jpg', content_type: 'image/jpg')
@@ -6561,6 +6600,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/gnocchi.jpg'),
                       filename: 'gnocchi.jpg', content_type: 'image/jpg')
@@ -6650,6 +6690,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pizza-chèvre-miel.jpg'),
                       filename: 'pizza-chèvre-miel.jpg', content_type: 'image/jpg')
@@ -6686,6 +6727,8 @@ Recipe.create! do |recipe|
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Autres"),
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/soupe-de-carottes.jpeg'),
                       filename: 'soupe-de-carottes.jpeg', content_type: 'image/jpeg')
@@ -6718,6 +6761,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/Soupe-potiron.jpg'),
                       filename: 'Soupe-potiron.jpg', content_type: 'image/jpg')
@@ -6753,6 +6797,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tomate-mozzarella.jpg'),
                       filename: 'tomate-mozzarella.jpg', content_type: 'image/jpg')
@@ -6791,6 +6836,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Sucre en poudre")
   recipe.ingredients << Ingredient.find_by_name("Beurre de cacahuètes")
@@ -6839,6 +6886,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
   recipe.ingredients << Ingredient.find_by_name("Cornflakes")
@@ -6877,6 +6926,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Flocons d'avoine")
   recipe.ingredients << Ingredient.find_by_name("Noix de cajou")
@@ -6931,6 +6982,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Tomates séchées")
   recipe.ingredients << Ingredient.find_by_name("Pois chiche")
@@ -6973,6 +7026,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.ingredients << Ingredient.find_by_name("Spaghetti")
   recipe.ingredients << Ingredient.find_by_name("Lentilles")
@@ -7018,6 +7072,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Protéines de soja texturées")
   recipe.ingredients << Ingredient.find_by_name("Tortilla")
@@ -7068,6 +7124,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Haricot rouge")
   recipe.ingredients << Ingredient.find_by_name("Chapelure")
@@ -7125,6 +7183,8 @@ Recipe.create! do |recipe|
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
 
   recipe.ingredients << Ingredient.find_by_name("Pois chiche")
@@ -7175,6 +7235,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Champignon")
   recipe.ingredients << Ingredient.find_by_name("Purée d'amandes blanches")
@@ -7214,6 +7276,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Haricot rouge")
   recipe.ingredients << Ingredient.find_by_name("Citron")
@@ -7252,6 +7316,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.ingredients << Ingredient.find_by_name("Chocolat noir")
   recipe.ingredients << Ingredient.find_by_name("Pois chiche")
@@ -7280,6 +7346,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/crepes2.jpg'),
                       filename: 'crepes2.jpg', content_type: 'image/jpg')
@@ -7322,6 +7389,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/gaufre.jpg'),
                       filename: 'gaufre.jpg', content_type: 'image/jpg')
@@ -7478,6 +7546,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/patatedouce.jpeg'),
                       filename: 'patatedouce.jpeg', content_type: 'image/jpeg')
@@ -7518,6 +7587,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/veloutecourgette.jpg'),
                       filename: 'veloutecourgette.jpg', content_type: 'image/jpg')
@@ -7555,6 +7625,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/ratatouille2.jpg'),
                       filename: 'ratatouille2.jpg', content_type: 'image/jpg')
@@ -7614,6 +7686,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarteratatouille.jpg'),
                       filename: 'tarteratatouille.jpg', content_type: 'image/jpg')
@@ -7717,6 +7790,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/patissiere.jpg'),
                       filename: 'patissiere.jpg', content_type: 'image/jpg')
@@ -7896,6 +7970,8 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Plat"),
+    RecipeCategory.find_by_name("Végétarien"),
+    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/pot-au-feu.jpeg'),
                       filename: 'pot-au-feu.jpeg', content_type: 'image/jpeg')
@@ -8007,6 +8083,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/flan-coco.jpeg'),
                       filename: 'flan-coco.jpeg', content_type: 'image/jpeg')
@@ -8051,6 +8128,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarte-pomme.jpg'),
                       filename: 'tarte-pomme.jpg', content_type: 'image/jpg')
@@ -8092,6 +8170,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/galette-des-roi.jpeg'),
                       filename: 'galette-des-roi.jpeg', content_type: 'image/jpeg')
@@ -8142,6 +8221,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tarte-tatin.jpeg'),
                       filename: 'tarte-tatin.jpeg', content_type: 'image/jpeg')
@@ -8308,6 +8388,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/oeuf-brouiller.jpeg'),
                       filename: 'oeuf-brouiller.jpeg', content_type: 'image/jpeg')
@@ -8417,6 +8498,7 @@ Recipe.create! do |recipe|
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
     RecipeCategory.find_by_name("Boisson"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/milkshake_banane.jpg'),
                       filename: 'milkshake_banane.jpg', content_type: 'image/jpg')
@@ -8569,6 +8651,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/canneles_bordelais.jpg'),
                       filename: 'canneles_bordelais.jpg', content_type: 'image/jpg')
@@ -8615,6 +8698,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/verrines_mousse_fraise.jpg'),
                       filename: 'verrines_mousse_fraise.jpg', content_type: 'image/jpg')
@@ -8651,6 +8735,7 @@ Recipe.create! do |recipe|
   ]
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Dessert"),
+    RecipeCategory.find_by_name("Végétarien")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tiramisu_fruit_ete.jpg'),
                       filename: 'tiramisu_fruit_ete.jpg', content_type: 'image/jpg')
