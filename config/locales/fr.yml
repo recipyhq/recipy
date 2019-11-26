@@ -85,6 +85,7 @@ fr:
         signed_out: "Déconnecté."
         already_signed_out: "Déconnecté."
         email: "Adresse e-mail"
+        sign_up: "S'inscrire"
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants"
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
@@ -139,6 +140,13 @@ fr:
     list: "Liste des producteurs"
     new:
       welcome: "Devenir producteur"
+    no_point_of_sale: "Aucun point de vente enregistré"
+    number_point_of_sale: "Nombre de points de vente %{number}"
+    no_product: "Aucun produit enregistré"
+    number_product: "Nombre de produits : %{number}"
+    no_bio: "Pas de description fournie"
+    back_to_profile: "Retourner sur mon profil producteur"
+    no_list: "Aucun producteur sur la plateforme !"
 
   navbar:
     producers: "Producteurs"
@@ -310,6 +318,7 @@ fr:
         no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
       create_notebook: "Créer un carnet de recette"
       allergen: "Contient l'allergène %{allergen}"
+      image_not_found: "Pas d'image disponible pour cette recette"
 
   ingredient:
     title:
@@ -362,13 +371,24 @@ fr:
     edit_title: "Editer le produit"
     deleted: "Produit correctement supprimé"
     not_found: "Produit non trouvé"
+    list_title: "Tous les produits"
+    name: "Nom"
+    associated_point: "Point de vente associé"
+    new: "Nouveau produit"
+    Bio: "Bio"
+    Sans_pesticide: "Sans pesticide"
+    empty: "Aucun tag associé"
+    edit: "Modifier le produit"
+    delete: "Supprimer ce produit"
+    confirm_delete: "Êtes-vous sûr de vouloir supprimer ce produit ?"
+    not_found_list: "Aucun produit ajouté par ce producteur"
   quantity_type:
     label: "Type de Quantité"
 
   point_of_sale:
     missing_address: "Adresse manquante"
     wrong_address: "Votre adress est incorrect"
-    title: "Point de vente(s)"
+    title: "Point(s) de vente"
     name: "Nom"
     desc: "Description"
     entilted: "Adresse"
@@ -382,7 +402,7 @@ fr:
     hour: "Heure"
     open_hour: "Horaire d'ouverture"
     close_hour: "Horaire de fermeture"
-    market_type: "Type de point de vente"
+    market_type: "Type"
     remove: "Retirer"
     add_opening_hour: "Ajouter horaire d'ouverture"
     add: "Ajouter un point de vente"
@@ -400,6 +420,8 @@ fr:
     delete_success: "Point de vente supprimé"
     api:
       not_found: "Le point de vente est introuvable"
+    address: "Adresse"
+    not_found: "Aucun point de vente pour ce producteur"
 
   feedback:
     notification: "Votre avis a bien été pris en compte."
@@ -421,6 +443,7 @@ fr:
       desc: "Description du style de carnet que vous réalisez"
       img: "Image illustrant votre carnet"
     destroy: "Carnet correctement supprimé"
+    image_not_found: "Pas d'image disponible pour ce carnet"
 
   shopping_list:
     title: "Listes de course"
@@ -485,6 +508,12 @@ fr:
       no_result: "Pas d'allergène trouvé"
       search_placeholder: "Recherchez les allergènes ici"
       placeholder: "Sélectionnez les allergènes"
+    market_type:
+      no_result: "Type non trouvé"
+      search_placeholder: "Sélectionnez un type de point de vente"
+    pos_day:
+      no_result: "Non trouvé"
+      search_placeholder: "Sélectionnez un jour"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:

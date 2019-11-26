@@ -87,10 +87,13 @@ en:
         update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
         updated: "Your account has been updated successfully."
         updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+        sign_up: "Sign up"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      new:
+        sign_in: "Sign up"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
@@ -144,6 +147,7 @@ en:
     welcome_msg: "Welcome %{name} !"
     who_we_are: "About Recipy"
     edit_pref: "My preferences"
+    my_producer_profile: "My producer profile"
   shared_links:
     no_account: "No account ?"
   activerecord:
@@ -257,6 +261,7 @@ en:
       title: "All my recipes"
     create_notebook: "Create a new notebook"
     allergen: "Contain the allergen %{allergen}"
+    image_not_found: "No available image for this recipe"
 
   ingredient:
     title:
@@ -292,13 +297,24 @@ en:
     edit_title: "Edit the product"
     deleted: "Product correctly removed"
     not_found: "Product not found"
+    list_title: "All products"
+    name: "Name"
+    associated_point: "Associated point of sale"
+    new: "New product"
+    Bio: "Organic"
+    Sans_pesticide: "Pesticide free"
+    empty: "No linked tag"
+    edit: "Edit the product"
+    delete: "Delete this product"
+    confirm_delete: "Are you sure to delete this product ?"
+    not_found_list: "No associated product for this producer"
 
   quantity_type:
     label: "Quantity type"
   point_of_sale:
     missing_address: "Missing address"
     wrong_address: "You address is incorrect"
-    title: "Point(s) of sales"
+    title: "Point(s) of sale"
     name: "Name"
     desc: "Description"
     entilted: "Address"
@@ -311,7 +327,7 @@ en:
     hours: "Hours"
     open_hour: "Openning Hours"
     close_hour: "Closing Hours"
-    market_type: "Point of sale's type"
+    market_type: "Type"
     remove: "Remove"
     add_opening_hour: "Add Openning Hours"
     add: "Add point of sale"
@@ -330,10 +346,13 @@ en:
     hour: "Hour"
     api:
       not_found: "Point of sale is not found"
+    address: "Address"
+    not_found: "No associated point of sale for this producer"
   notebook:
     edit:
       invalid: "The notebook is invalid"
       invalid_image: "Image is not valid"
+    image_not_found: "No available image for this notebook"
 
   active_admin:
     dashboard: "Dashboard"
@@ -357,14 +376,29 @@ en:
       no_result: "No allergen found"
       search_placeholder: "Select your allergens"
       placeholder: "Select you allergens"
+    market_type:
+      no_result: "No type found"
+      search_placeholder: "Select a market type"
+    ustensils:
+      search_placeholder: "Select your ustensils"
+    pos_day:
+      no_result: "Not found"
+      search_placeholder: "Select a day"
   landing:
     download_app:
       title: "Download the app here !"
       link: "Click here to download the app"
       qrCode: "Scan the qr-code below"
   producer:
+    no_point_of_sale: "No registered points of sale"
+    number_point_of_sale: "Number of points of sale %{number}"
+    no_product: "No registered product"
+    number_product: "Number of product: %{number}"
+    no_bio: "No provided description"
     new:
       welcome: "You are now a producer ! Welcome"
+    back_to_profile: "Return to my producer profile"
+    no_list: "No producer on the plateform"
   user:
     recipe:
       allergen: "Warning to the allergen %{allergen}"
@@ -394,5 +428,3 @@ en:
     medium: "medium"
     hard: "hard"
     very_hard: "very hard"
-
-

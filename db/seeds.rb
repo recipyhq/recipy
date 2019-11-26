@@ -17,7 +17,7 @@ ProductTag.create! do |tag|
 end
 
 ProductTag.create! do |tag|
-  tag.name = "Sans pesticide"
+  tag.name = "Sans_pesticide"
 end
 
 # Diets declaration

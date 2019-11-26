@@ -3,7 +3,17 @@
     <h3 class="uk-card-title"><%= t('point_of_sale.hour') %></h3>
     <div class=" uk-grid">
       <div class="uk-width-1-1">
-        <%= f.input :day, label: t('point_of_sale.day') %>
+
+        <%= f.input :day, :label => t("point_of_sale.day"),
+                    collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "En semaine", "Le Week-end", "Jours fériés"].to_a,
+                    as: :select, :include_blank => false, input_html: {
+            slimselect: true,
+            slimselectNoResult: t('slimselect.pos_day.no_result'),
+            slimselectSearchPlaceholder: t('slimselect.pos_day.search_placeholder'),
+            slimselectPlaceholder: t('slimselect.pos_day.search_placeholder')
+          } %>
+
+        <%#= f.input :day, label: t('point_of_sale.day') %>
       </div>
       <div class="uk-width-1-2">
         <%= f.input :open, label: t('point_of_sale.open_hour') %>

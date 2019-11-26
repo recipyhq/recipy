@@ -66,6 +66,18 @@ class Users::BaseController < ApplicationController
 
   def show_liked_producers
     @producers = current_user.liked_producers
+
+    @user_products = {}
+    @producers.each do |user|
+      @user_products[user.email] = []
+      user.point_of_sales.each do |point|
+        point.products.each do |prod|
+          unless prod.ingredient.nil?
+            @user_products[user.email].push(prod.ingredient.name)
+          end
+        end
+      end
+    end
     # redirect_to follow_producer_path
   end
 

@@ -5,7 +5,7 @@
 
       <%#= f.input :first_name, required: true, autofocus: true %>
       <%#= f.input :last_name, required: true, autofocus: true %>
-      <%= f.input :bio, label: "Parlez-nous un peu de votre activité...", input_html: {style: "height: 200px",class: "uk-textarea textarea", rows: "5"}, input_class: false %>
+      <%= f.input :bio, as: :text, label: "Parlez-nous un peu de votre activité...", input_html: {style: "height: 200px",class: "uk-textarea textarea", rows: "5"}, input_class: false %>
 
 
       <div class="uk-margin-medium">

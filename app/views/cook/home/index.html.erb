@@ -40,7 +40,7 @@
                     <% if recipe.image.attached? %>
                       background-image: url(<%= rails_blob_url recipe.image %>);
                       <% else %>
-                      <%= "https://picsum.photos/400/200" %>
+                      background-image: url(<%= asset_path('not_found.png') %>);
                       <% end %>
                     ">
                     </div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
   get '/legal_notice', to: "landing_pages#legal_notice"
-  get 'sitemap.xml' => 'sitemaps#index', :defaults => {:format => 'xml'}
+  get 'sitemap.xml' => 'sitemaps#index', :defaults => { :format => 'xml' }
 
   ActiveAdmin.routes(self)
   devise_for :administrators, ActiveAdmin::Devise.config
@@ -55,8 +55,9 @@ Rails.application.routes.draw do
           root to: 'home#index', as: :authenticated_producer_root
         end
         get 'createproducer' => 'home#new'
-        get 'producer/:id' => 'home#show', as: :show_producer
-        patch 'createproducer' => 'home#patch'
+        get ':id' => 'home#show', as: :show_producer
+        get ':id/my_profile' => "home#show", as: :show_producer_profile
+        patch 'createproducer' => 'home#update'
       end
 
       # resources :authors

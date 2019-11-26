@@ -23,7 +23,9 @@ class Api::PointOfSalesController < ApplicationController
              status: :not_found
       return
     end
-    point_of_sale = @point_of_sale.as_json(:include => [:address, :products, :openning_hours, :user])
+    point_of_sale = @point_of_sale.as_json(:include => [
+      :address, :products, :openning_hours, :user,
+    ])
     render json: point_of_sale, status: :ok
   end
 
