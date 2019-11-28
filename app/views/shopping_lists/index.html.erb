@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <div class="uk-container uk-padding">
   <h2 class="title"><%= t("shopping_list.title") %></h2>
 
@@ -10,7 +12,7 @@
             <div class="uk-card-body">
               <div class="uk-text-center">
                 <h3 class="uk-card-title">
-                  <%= shopping_list.name %>
+                  <%= link_to shopping_list.name, shopping_list, class: 'uk-card-title uk-margin-remove-bottom' %>
                 </h3>
               </div>
               <ul class="uk-list uk-text-center">
@@ -26,10 +28,17 @@
                 <% end %>
               </ul>
             </div>
-            <div class="uk-card-footer">
-              <%= link_to t("recipe.action.show"), shopping_list, class: "uk-button uk-button-text" %>
-              <%= link_to t("recipe.action.edit"), edit_shopping_list_path(shopping_list), class: "uk-button uk-button-text" %>
-              <%= link_to t("recipe.action.destroy"), shopping_list, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>
+            <div class="uk-card-footer uk-flex uk-flex-center">
+              <%= link_to edit_shopping_list_path(shopping_list), class: "uk-button" do %>
+                <i uk-tooltip="<%= t('notebook.edite') %>" class="far fa-edit fa-2x"></i>
+              <% end %>
+              <%= link_to  shopping_list, method: :delete, class: "uk-button", data: { confirm: t('notebook.confirm_delete') } do %>
+                <i uk-tooltip="<%= t('notebook.delete') %>" class="far fa-trash-alt fa-2x"></i>
+              <% end %>
+
+              <%#= link_to t("recipe.action.show"), shopping_list, class: "uk-button uk-button-text" %>
+              <%#= link_to t("recipe.action.edit"), edit_shopping_list_path(shopping_list), class: "uk-button uk-button-text" %>
+              <%#= link_to t("recipe.action.destroy"), shopping_list, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>
             </div>
           </div>
         </div>
