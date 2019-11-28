@@ -123,7 +123,7 @@ class Api::UserController < ApplicationController
       @recipes.each do |r|
         @recipes_view += r.view
       end
-      @comments = @user.recipe_scores.last(4)
+      @comments = @user.recipe_scores
     rescue ActiveRecord::RecordNotFound
       render :json => { Status: "KO", Cause: "Recette non trouvé" }.as_json,
              status: :not_found
