@@ -30,7 +30,6 @@
     <% else %>
       <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
     <%end %>
-    <p><%= "diets : " + @recipe.diets.inspect %></p>
     <div style="margin-bottom: 20px;">
       <% unless @recipe.diets.empty? %>
         Corresponds au(x) régime(s) :
