@@ -13,9 +13,19 @@ class Api::NotebooksController < InheritedResources::Base
   end
 
   def show
-    find_notebook
-    notebook = @notebook.as_json(:include => [:recipes])
-    render json: notebook, status: :ok
+    find_notebook_show
+    recipes = @notebook.recipes.with_attached_image
+    # notebook = @notebook.as_json(include: [
+    #  :recipes,
+    # ], methods: %i(image_url))
+    # render json: notebook, status: :ok
+    render :json => {
+      Status: "OK",
+      data: {
+        notebook: @notebook,
+        recipes: recipes,
+      }.as_json(methods: %i(image_url)),
+    }
   end
 
   def new
@@ -107,6 +117,18 @@ class Api::NotebooksController < InheritedResources::Base
         @notebook = Notebook.find(params[:notebook][:id])
       else
         @notebook = Notebook.includes(:recipes).find(params[:id])
+      end
+    else
+      render :json => { Status: "KO", Cause: "Carnet introuvable, mauvais id." }.as_json
+    end
+  end
+
+  def find_notebook_show
+    if !Notebook.find_by_id(params[:id]).nil?
+      if params[:id].nil?
+        @notebook = Notebook.find(params[:notebook][:id])
+      else
+        @notebook = Notebook.find(params[:id])
       end
     else
       render :json => { Status: "KO", Cause: "Carnet introuvable, mauvais id." }.as_json
