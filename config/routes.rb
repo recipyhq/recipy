@@ -112,6 +112,7 @@ Rails.application.routes.draw do
       post '/follow_producer', to: 'user#follow_producer'
       post '/unfollow_producer', to: 'user#unfollow_producer'
       post '/update_preferences', to: 'user#update_like_ingredients'
+      get 'author', param: :id, to: "user#show_author"
     end
 
     resources :recipes, param: :id do
@@ -133,6 +134,7 @@ Rails.application.routes.draw do
     get 'my_notebooks' => "notebooks#user_notebook_id"
     get 'search' => "search#index"
     get 'my_recipes' => "recipes#show_user_recipes"
+
   end
 
   match "/404", :to => "errors#not_found", :via => :all

@@ -12,7 +12,12 @@
           <ul class="uk-nav uk-navbar-dropdown-nav">
             <% if user_signed_in? %>
               <li>
-                <%= link_to "Mon profil" , author_path(current_user), class: "uk-button-text uk-text-truncate" %>
+                <%= link_to author_path(current_user), class: "uk-margin-small-right" do %>
+                  <% if current_user.avatar.attached? %>
+                    <img class="uk-border-circle" width="30" height="30" src="<%= url_for(current_user.avatar.variant resize: '200x200') %>">
+                  <% end %>
+                  <%= "  Bienvenue #{current_user.first_name}" %>
+                <% end %>
                 <a href="<%= meal_plans_path %>">Qu'est-ce qu'on mange ?</a>
               </li>
               <li class="uk-nav-divider"></li>
