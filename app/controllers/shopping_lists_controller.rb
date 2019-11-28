@@ -18,12 +18,77 @@ class ShoppingListsController < InheritedResources::Base
       includes(:ingredient).
       order('ingredients.shelf_tag desc')
     @items = {}
+    @nearset_pointofsale = {}
     ingredients.each do |x|
+      neartesyPointofsale = find_nearest_pointofsale(x.ingredient)
+      @nearset_pointofsale[x.ingredient] = []
+      if neartesyPointofsale
+        @nearset_pointofsale[x.ingredient] << neartesyPointofsale
+      end
       if @items[x.ingredient.shelf_tag].nil?
         @items[x.ingredient.shelf_tag] = []
       end
-      @items[x.ingredient.shelf_tag] << x
+      @items[x.ingredient.shelf_tag] << {:ingredient => x, :point_of_sale => nil}
     end
+  end
+
+  def find_nearest_pointofsale(ingredient)
+    @products = Product.includes(:ingredient, :point_of_sales).all
+    nearPointofsale = nil
+    if current_user.address and current_user.city
+      address_user = current_user.address + ", " + current_user.city
+    end
+    @products.each do |product|
+      if product.ingredient.id === ingredient.id
+        product.point_of_sales.each do |p|
+          if is_near(p, address_user)
+            nearPointofsale = p
+          end
+          puts nearPointofsale
+        end
+      end
+    end
+    nearPointofsale
+  end
+
+  def is_near(p, address_user)
+    if Geocoder.search(address_user).first
+    geocoder_user = Geocoder.search(address_user).first.coordinates
+    coordinate_pof = [p.address.latitude, p.address.longitude]
+    # puts "##################"
+    # puts p.inspect
+    # puts p.address.inspect
+    # puts p.address.latitude
+    # puts p.address.longitude
+    # puts coordinate_pof
+    # puts "---------------"
+    # puts geocoder_user
+    # puts "##################"
+    if coordinate_pof[0] and geocoder_user
+      result1 = coordinate_pof
+      result2 = geocoder_user
+      (distance(result1, result2) <= 200) ? true : false
+    end
+    else
+      false
+    end
+  end
+
+  def distance loc1, loc2
+    rad_per_deg = Math::PI/180  # PI / 180
+    rkm = 6371                  # Earth radius in kilometers
+    rm = rkm * 1000             # Radius in meters
+
+    dlat_rad = (loc2[0]-loc1[0]) * rad_per_deg  # Delta, converted to rad
+    dlon_rad = (loc2[1]-loc1[1]) * rad_per_deg
+
+    lat1_rad, lon1_rad = loc1.map {|i| i * rad_per_deg }
+    lat2_rad, lon2_rad = loc2.map {|i| i * rad_per_deg }
+
+    a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
+    c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
+
+    ((rm * c) / 1000).round # Delta in km
   end
 
   def new
@@ -73,9 +138,6 @@ class ShoppingListsController < InheritedResources::Base
     @shopping_list_params = shopping_list_params
     new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
     @shopping_list_params.delete(:shopping_list_ingredients_attributes)
-    puts '\n\n'
-    puts Geocoder.request.ip.inspect
-    puts '\n\n'
     new_shopping_list = ShoppingList.new(@shopping_list_params)
     new_shopping_list.user = current_user
     if new_shopping_list.valid?

@@ -424,6 +424,8 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+    pof_title: "Disponible ici:"
+    pof_bad_address: "Veuillez ajouter ou modifier votre adresse pour voir les points de ventes près de chez vous"
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:

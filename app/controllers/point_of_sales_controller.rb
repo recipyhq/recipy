@@ -10,10 +10,6 @@ class PointOfSalesController < InheritedResources::Base
 
   def show
     find_pointofsale_ingredients
-    # puts "----###############################"
-    # puts @point_of_sale.openning_hours[1]["open"].strftime("%H:%M")
-    # puts @point_of_sale.openning_hours[1]["close"].strftime("%H:%M")
-    # puts "###############################----"
   end
 
   def new
@@ -68,6 +64,21 @@ class PointOfSalesController < InheritedResources::Base
       if new_address.valid?
         new_address.save!
         new_pointofsale.address = new_address
+        adress_pos = new_pointofsale.address.entilted + ", " + new_pointofsale.address.city
+        if Geocoder.search(adress_pos).first
+        coordinates = Geocoder.search(adress_pos).first.coordinates
+        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+        puts coordinates[0]
+        puts coordinates[1]
+        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+        if Geocoder.search(adress_pos).first.coordinates
+          new_pointofsale.address.latitude = coordinates[0]
+          new_pointofsale.address.longitude = coordinates[1]
+        end
+        else
+          redirect_to new_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
+          return
+        end
         new_pointofsale.save
         redirect_to point_of_sale_path(new_pointofsale.id),
                     flash: { success: t('point_of_sale.creation_success') }
@@ -97,9 +108,9 @@ class PointOfSalesController < InheritedResources::Base
     @point_of_sale.openning_hours.destroy_all
     if !new_openning_hours.nil?
       new_openning_hours.each do |hour|
-        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-        puts hour[1]["_destroy"]
-        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+        # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+        # puts hour[1]["_destroy"]
+        # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
         if hour[1]["_destroy"] == "false"
           day = hour[1]["day"]
           open = DateTime.new(hour[1]["open(1i)"].to_i,
@@ -129,7 +140,22 @@ class PointOfSalesController < InheritedResources::Base
       @point_of_sale.address.destroy
       @point_of_sale.address = new_address
     end
-
+    adress_pos = @point_of_sale.address.entilted + ", " + @point_of_sale.address.city
+    if Geocoder.search(adress_pos).first
+    coordinates = Geocoder.search(adress_pos).first.coordinates
+    # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    # puts coordinates[0]
+    # puts coordinates[1]
+    # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    if coordinates
+      @point_of_sale.address.latitude = coordinates[0]
+      @point_of_sale.address.longitude = coordinates[1]
+    end
+    @point_of_sale.address.save()
+    else
+      redirect_to new_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
+      return
+    end
     if @point_of_sale.update(@point_of_sale_param)
       redirect_to point_of_sale_path, flash: { success: t('point_of_sale.update_success') }
     else
