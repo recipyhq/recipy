@@ -319,6 +319,7 @@ fr:
       create_notebook: "Créer un carnet de recette"
       allergen: "Contient l'allergène %{allergen}"
       image_not_found: "Pas d'image disponible pour cette recette"
+      add_to_shopping_list: "Ajouter à une liste de courses :"
 
   ingredient:
     title:
@@ -514,6 +515,9 @@ fr:
     pos_day:
       no_result: "Non trouvé"
       search_placeholder: "Sélectionnez un jour"
+    shopping_list:
+      no_result: "LIste de courses non trouvée"
+      placeholder: "Sélectionnez une liste de courses"
 
   are_you_sure: "Êtes vous sûr de vouloir effectuer cette action ?"
   landing:

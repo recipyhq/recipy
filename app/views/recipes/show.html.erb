@@ -139,7 +139,13 @@
           <% if current_user %>
             <% if ShoppingList.where(user_id: current_user.id).count > 0 %>
               <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
-                <%= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id).order(:name), label: "Ajouter à une liste de courses :" %>
+                <%#= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id).order(:name), label: "Ajouter à une liste de courses :" %>
+                <%= f.input :shopping_lists, :label => t("recipe.add_to_shopping_list"), collection: ShoppingList.where(user_id: current_user.id).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.shopping_list.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.shopping_list.placeholder'),
+                  slimselectPlaceholder: t('slimselect.shopping_list.placeholder'),
+                }, defaults: {input_class: ""} %>
                 <%= f.button :submit, "Confirmer" %>
               <% end %>
             <% else %>
