@@ -114,10 +114,12 @@
         <% if @recipe.recipe_ingredients.count > 1 %>
           <h2 class="title"><%= "Ingrédients" %>
             <% if !current_user.nil? && @allergen_array.include?(@recipe_user_allergens[0]) %>
+              <% unless @diet_compatible %></br><% end %>
               <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
             <% end %>
             <% unless @diet_compatible %>
-              <span style="display: inline-block; font-size: 22px; color: #e84141 ">(Non compatible avec vos régimes)</span>
+            </br>
+              <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Non compatible avec vos régimes)</span>
             <% end %>
           </h2>
         <% else %>
