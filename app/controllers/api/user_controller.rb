@@ -29,6 +29,7 @@ class Api::UserController < ApplicationController
         unlike_ingredients: current_user.no_like_ingredients,
         allergens: current_user.allergens,
         utensils: current_user.utensils,
+        diets: current_user.diets,
         url: current_user.avatar.attached? ? rails_blob_url(current_user.avatar) : nil,
       }.as_json,
     }
@@ -66,6 +67,10 @@ class Api::UserController < ApplicationController
       utensil = Utensil.find(id)
       current_user.utensils << utensil
     end
+    params[:diets].each do |id|
+      diet = Diet.find(id)
+      current_user.diets << diet
+    end
     render :json => { Status: "OK", Cause: t("users.like.update_success") }.as_json, status: :ok
   end
 
@@ -95,5 +100,53 @@ class Api::UserController < ApplicationController
     current_user.liked_producers.destroy(producer)
     render :json => { Status: "OK", Cause: t("users.api.follow_ko") }.as_json,
            status: :ok
+  end
+
+  def show_author
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
+      return
+    end
+
+    begin
+      @notebooks = Notebook.where(
+        :user_id => @user.id
+      ).order(:title)
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: "Carnet de recettes non trouvé" }.as_json,
+             status: :not_found
+      return
+    end
+
+    begin
+      @recipes = Recipe.where(user: @user).where.
+        not(user: nil).order(:view => :desc).all
+      @recipes_view = 0
+      @recipes.each do |r|
+        @recipes_view += r.view
+      end
+      @comments = @user.recipe_scores
+    rescue ActiveRecord::RecordNotFound
+      render :json => { Status: "KO", Cause: "Recette non trouvé" }.as_json,
+             status: :not_found
+      return
+    end
+    render :json => {
+      Status: "OK",
+      data: {
+        id: @user.id,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        email: @user.email,
+        url: @user.avatar.attached? ? rails_blob_url(@user.avatar) : nil,
+        comments: @comments,
+        notebooks: @notebooks,
+        recipes_ids: @recipes.ids,
+        recipes_view: @recipes_view,
+      }.as_json,
+    }
   end
 end

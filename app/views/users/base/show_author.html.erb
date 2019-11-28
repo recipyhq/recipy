@@ -16,7 +16,7 @@
     </div>
     <div class="uk-card-body">
       <p>
-        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes. Ses recettes ont étaient vu plus de #{@recipes_view} fois !" %>
+        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes. Ses recettes ont étaient vus plus de #{@recipes_view} fois !" %>
       </p>
     </div>
     <!--<div class="uk-card-footer">
@@ -42,7 +42,7 @@
                   <% if recipe.image.attached? %>
                     background-image: url(<%= rails_blob_url recipe.image %>);
                     <% else %>
-                    <%= image_tag "https://picsum.photos/400/200" %>
+                    background-image: url(<%= asset_path('not_found.png') %>);
                     <% end %>
                   ">
                   </div>
@@ -83,7 +83,7 @@
                   <% if notebook.image.attached? %>
                     background-image: url(<%= rails_blob_url notebook.image %>);
                     <% else %>
-                    <%= image_tag "https://picsum.photos/400/200" %>
+                    background-image: url(<%= asset_path('not_found.png') %>);
                     <% end %>
                   ">
                   </div>
