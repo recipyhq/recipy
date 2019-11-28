@@ -30,6 +30,14 @@
       <% else %>
     <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
       <%end %>
+      <div style="margin-bottom: 20px;">
+      <% unless @recipe.diets.empty? %>
+        Corresponds au(x) régime(s) :
+        <% @recipe.diets.each do |diet| %>
+          <u uk-tooltip="<%=diet.description%>"><%= diet.name %></u>
+        <% end%>
+      <% end %>
+      </div>
     <div style="margin-bottom: 40px;">
       <% if !@allergen_array.empty? %>
         <%= t('allergen_list.title') %>
@@ -106,8 +114,13 @@
         <% if @recipe.recipe_ingredients.count > 1 %>
           <h2 class="title"><%= "Ingrédients" %>
             <% if !current_user.nil? && @allergen_array.include?(@recipe_user_allergens[0]) %>
-            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
-              <% end %>
+              <% unless @diet_compatible %></br><% end %>
+              <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+            <% end %>
+            <% unless @diet_compatible %>
+            </br>
+              <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Non compatible avec vos régimes)</span>
+            <% end %>
           </h2>
         <% else %>
           <h2 class="title"><%= "Ingrédient" %>

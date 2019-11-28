@@ -53,6 +53,18 @@
                   slimselectNoResult: t('slimselect.utensils.no_result'),
                   slimselectSearchPlaceholder: t('slimselect.utensils.search_placeholder'),
                 }, defaults: {input_class: ""} %>
+    <%= f.input :diets, :label => "Vos régimes",
+                :selected => @user.diets.map {|v| v.id}.to_a,
+                collection: Diet.order(:name).all.map {|v| [v.name, v.id]}.to_a,
+                as: :select,
+                input_class: false,
+                # wrapper_class: "uk-width-1-2",
+                input_html: {
+                  multiple: true,
+                  slimselect: true,
+                  slimselectNoResult: "Régime non trouvé",
+                  slimselectSearchPlaceholder: "Recherchez les régimes aussi",
+                }, defaults: {input_class: ""} %>
     <div class="uk-text-center">
       <%= f.button :submit, t("recipe.creation.confirm") %>
     </div>

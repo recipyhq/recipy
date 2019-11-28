@@ -17,6 +17,7 @@ class RecipesController < InheritedResources::Base
     end
 
     @recipe_user_allergens = []
+    @diet_compatible = true
     unless current_user.nil?
       current_user.allergens.each do |aller|
         if allergen_set.include?(aller)
@@ -24,6 +25,8 @@ class RecipesController < InheritedResources::Base
         end
       end
       @difficulty_front = get_difficulty
+
+      @diet_compatible = current_user.diets.empty? ? true : !@recipe.diets.where(id: current_user.diets).empty?
     end
 
     @allergen_array = allergen_set.uniq
