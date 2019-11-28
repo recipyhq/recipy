@@ -96,7 +96,7 @@
     <h2 class="uk-modal-title landing-title"><%= t('recipe.title.add_to_notebook') %></h2>
     <% if current_user && current_user.notebooks.count > 0 %>
       <%= simple_form_for @recipe, :url => recipe_add_to_notebook_url(@recipe), :method => 'post' do |f| %>
-        <%= f.input :notebooks, collection: current_user.notebooks, :include_blank => false, label: false, as: :select, input_html: {
+        <%= f.input :notebooks, collection: current_user.notebooks.map {|v| [v.title, v.id]}.to_a.unshift(["Create a new notebook", -1]), :include_blank => false, label: false, as: :select, input_html: {
           slimselect: true,
           slimselectNoResult: t('slimselect.notebooks.no_result'),
           slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),
