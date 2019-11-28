@@ -1,34 +1,118 @@
-<div class="uk-section uk-section-secondary uk-light">
-  <div class="uk-container">
-    <h3 class="title"><%= t('point_of_sale.title') %></h3>
-  
-    <table class="uk-table uk-table-divider">
-      <thead>
-        <tr>
-          <th><%= t('point_of_sale.name') %></th>
-          <th><%= t('point_of_sale.desc') %></th>
-          <th><%= t('point_of_sale.market_type') %></th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-      <tbody>
-        <% @user.point_of_sales.each do |point_of_sale| %>
-          <tr>
-            <td><%= point_of_sale.name %></td>
-            <td><%= point_of_sale.description %></td>
-            <td><%= point_of_sale.market_type %></td>
-            <td><%= link_to t('point_of_sale.show'), point_of_sale %></td>
-            <% if current_user && current_user.id == @user.id %>
-              <td><%= link_to t('point_of_sale.edit'), edit_point_of_sale_path(point_of_sale) %></td>
-              <td><%= link_to t('point_of_sale.delete'), point_of_sale, method: :delete, data: { confirm: 'Êtes vous sûr ?' } %></td>
-            <% end %>
-          </tr>
+<div class="uk-section uk-section-default">
+  <div class="uk-child-width-1-1@m uk-flex-center" uk-grid>
+    <div class="uk-margin-medium uk-margin-medium-left uk-margin-medium-right">
+      <div class="uk-flex uk-flex-left">
+        <h3 class="title"><%= t('point_of_sale.title') %></h3>
+        <% if current_user && current_user.id == @user.id %>
+          <%= link_to  new_point_of_sale_path, class: "uk-button uk-margin-top-small" do %>
+            <i style="margin-top: 6px" uk-tooltip="<%= t('point_of_sale.new') %>" class="far fa-plus-square fa-2x"></i>
+          <% end %>
         <% end %>
-      </tbody>
-    </table>
-    <% if current_user && current_user.id == @user.id %>
-      <%= link_to t('point_of_sale.add'), new_point_of_sale_path, class: "uk-button uk-button-default" %>
-    <% end %>
+      </div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <% if @user.point_of_sales.length <= 0 %>
+          <h3><%= t('point_of_sale.not_found') %></h3>
+        <% else %>
+        <table class="uk-table uk-table-responsive uk-table-divider">
+          <thead>
+          <tr>
+            <th><%= t('point_of_sale.name') %></th>
+            <th class="uk-table-expand"><%= t('point_of_sale.desc') %></th>
+            <th><%= t('point_of_sale.market_type') %></th>
+            <th><%= t('point_of_sale.address') %></th>
+            <th><%= t('point_of_sale.phone') %></th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @user.point_of_sales.each do |point_of_sale| %>
+            <tr>
+              <td><%= point_of_sale.name %></td>
+              <td class="uk-text-truncate"><%= point_of_sale.description %></td>
+              <td><%= point_of_sale.market_type %></td>
+              <td><%= "#{point_of_sale.address.entilted} #{point_of_sale.address.zip} #{point_of_sale.address.city} #{point_of_sale.address.country}" %></td>
+              <td><%= point_of_sale.address.phone %></td>
+              <td>
+                <%= link_to point_of_sale, class: "uk-button" do %>
+                  <i uk-tooltip="<%= t('point_of_sale.show') %>" class="fas fa-info fa-2x"></i>
+                <% end%>
+              </td>
+              <% if current_user && current_user.id == @user.id %>
+                <td>
+                  <%= link_to edit_point_of_sale_path(point_of_sale), class: "uk-button" do %>
+                    <i uk-tooltip="<%= t('point_of_sale.edit') %>" class="far fa-edit fa-2x"></i>
+                  <% end%>
+                </td>
+                <td>
+                  <%= link_to  point_of_sale, method: :delete, class: "uk-button", data: { confirm: t('notebook.confirm_delete') } do %>
+                    <i uk-tooltip="<%= t('point_of_sale.delete') %>" class="far fa-trash-alt fa-2x"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+          <% end %>
+      </div>
+    </div>
   </div>
+
+  <div class="uk-child-width-1-2@m uk-flex-center" uk-grid>
+  <div class="uk-margin-medium uk-margin-medium-left uk-margin-medium-right">
+    <div class="uk-flex uk-flex-left">
+      <h3 class="title"><%= t('products.list_title') %></h3>
+      <% if current_user && current_user.id == @user.id %>
+        <%= link_to  new_product_path, class: "uk-button uk-margin-top-small" do %>
+          <i style="margin-top: 6px" uk-tooltip="<%= t('products.new') %>" class="far fa-plus-square fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <% if @products_length <= 0 %>
+        <h3><%= t('products.not_found_list') %></h3>
+      <% else %>
+        <table class="uk-table uk-table-responsive uk-table-divider uk-table-middle">
+          <thead>
+          <tr>
+            <th><%= t('products.tag') %></th>
+            <th><%= t('products.name') %></th>
+            <th><%= t('products.price.label') %></th>
+            <th class="uk-table-expand"><%= t('products.associated_point') %></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @user.point_of_sales.each do |point| %>
+            <li>
+              <% point.products.each do |prod| %>
+                <% unless prod.ingredient.nil? %>
+                  <tr>
+                    <td>
+                      <% if prod.product_tags.empty? %>
+                        <img uk-tooltip="<%= t("products.empty") %>" alt="<%= "empty" %>" class="product-tag-empty-icon" src="<%= asset_path "icons/product_tags/empty.svg" %>" />
+                      <% else %>
+                        <% prod.product_tags.each do |tag| %>
+                          <img uk-tooltip="<%= t("products.#{tag.name }") %>" alt="<%= tag.name %>" class="product-tag-icon" src="<%= asset_path "icons/product_tags/#{tag.name}.svg" %>" />
+                        <% end %>
+                      <% end %>
+                    </td>
+                    <td><%= prod.ingredient.name %></td>
+                    <td><%= "#{prod.price.value}€ / #{prod.price.quantity_type.name}" %></td>
+                    <td><span class="uk-text-bold uk-text-uppercase"><%= "#{point.name}"%></span>
+                      <%="(#{point.address.entilted} #{point.address.zip} #{point.address.city} #{point.address.country})" %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>

@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'recipe_form' %>
 
-<%= simple_form_for(recipe, html: {
+<%= simple_form_for(@recipe, html: {
   class: "uk-padding recipe_form"
 },) do |f| %>
   <%= f.error_notification %>
@@ -45,13 +45,13 @@
       <%= f.input :difficulty, as: :range, label: "#{t("recipe.title.difficulty")}:", input_class: false, input_html: {class: "uk-range", step: 1, max: 10, min: 0, oninput: "changeRangeValue()"} %>
       <div class="uk-margin-medium" uk-grid>
         <div class="uk-width-1-2">
-          <%= f.input :cooking_time, label: t("recipe.title.cooking_time") %>
+          <%= f.input :cooking_time, as: :integer, label: t("recipe.title.cooking_time"), input_html: {min: 0} %>
         </div>
         <div class="uk-width-1-2">
-          <%= f.input :preparation_time, label: t("recipe.title.preparation_time") %>
+          <%= f.input :preparation_time, as: :integer, label: t("recipe.title.preparation_time"), input_html: {min: 0} %>
         </div>
       </div>
-      <%= f.input :person, label: t("recipe.title.nb_person") %>
+      <%= f.input :person, as: :integer, label: t("recipe.title.nb_person"), input_html: {min: 0} %>
     </div>
   </div>
 

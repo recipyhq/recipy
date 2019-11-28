@@ -107,6 +107,7 @@ class MealPlansController < ApplicationController
     monday = prior_monday(date)
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday} #{Time.now}").to_i(16).to_f
     seed = Random.new(hex).rand
+    puts seed
     diff_date = (date - monday).to_i
 
     no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
@@ -181,6 +182,7 @@ class MealPlansController < ApplicationController
     begin
       @day_plan = MealPlan.find(id)
     rescue ActiveRecord::RecordNotFound => e
+      puts e
       @day_plan = nil
     end
     if !@day_plan || @day_plan.user != current_user
@@ -194,6 +196,7 @@ class MealPlansController < ApplicationController
       recipe = Recipe.joins(:recipe_categories).
         where(:recipe_categories => { :name => type }).find(id)
     rescue ActiveRecord::RecordNotFound => e
+      puts e
       recipe = nil
     end
     recipe
@@ -211,6 +214,7 @@ class MealPlansController < ApplicationController
     monday = prior_monday(date)
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16).to_f
     seed = Random.new(hex).rand
+    puts seed
     diff_date = (date - monday).to_i
 
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
