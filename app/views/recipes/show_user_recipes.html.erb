@@ -1,51 +1,56 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<%= stylesheet_link_tag 'search' %>
 
+
+<!--<div class="uk-section uk-section-default">-->
 <div class="uk-container uk-padding">
   <h2 class="title"><%= t("recipe.my_recipes.title") %></h2>
   <%= link_to t("recipe.action.new"), new_recipe_path, class: "uk-button uk-button-default uk-width-1 uk-margin-bottom" %>
-  <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>
+  <div class="uk-grid-small uk-child-width-1-4@l uk-child-width-1-2@m uk-child-width-1-2@s" uk-grid>
+    <!--  <div class="uk-grid-small uk-child-width-1@s uk-child-width-1-4@m" uk-grid>-->
     <% @recipes.each do |recipe| %>
-      <div>
-        <div class="uk-card uk-card-default">
-          <%= link_to recipe do %>
-            <div class="uk-card-media-top recipe-img recipe-search-img" style="
-            <% if recipe.image.attached? %>
-              background-image: url(<%= rails_blob_url recipe.image %>);
-              <% else %>
-              background-image: url(<%= asset_path('not_found.png') %>);
-              <% end %>
-            ">
-            </div>
-          <% end %>
-          <div class="uk-card-body">
-            <div uk-tooltip="<%= recipe.title %>">
-              <h3 class="uk-card-title"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
-            </div>
-            <div class="star-ratings star-dark">
-              <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-            </div>
-            <div uk-tooltip="<%= recipe.description %>">
-              <p class="uk-text-truncate"><%= recipe.description %></p>
-            </div>
-            <div class="info-recipe">
-              <span class="name"><%= t("recipe.title.number_views") %></span>
-              <span class="info"><%= recipe.view.to_s %></span>
-              <span class="name"><%= t("recipe.title.number_feedbacks") %></span>
-              <span class="info"><%= recipe.score_count.to_s %></span>
-            </div>
+      <!--      <div>-->
+      <div class="uk-card uk-card-default uk-padding-small uk-padding-remove-vertical">
+        <%= link_to recipe do %>
+          <div class="uk-card-media-top recipe-img recipe-search-img" style="
+          <% if recipe.image.attached? %>
+            background-image: url(<%= rails_blob_url recipe.image %>);
+            <% else %>
+            background-image: url(<%= asset_path('not_found.png') %>);
+            <% end %>
+          ">
           </div>
-          <div class="uk-card-footer" style="display: flex; align-items: center; justify-content: center">
-            <%= link_to edit_recipe_path(recipe), class: "uk-button" do %>
-              <i uk-tooltip="<%= t('recipe.action.edit') %>" class="far fa-edit fa-2x"></i>
-            <% end%>
-            <%= link_to recipe, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button" do %>
-              <i uk-tooltip="<%= t('recipe.action.destroy') %>" class="far fa-trash-alt fa-2x"></i>
-            <% end%>
+        <% end %>
+        <div class="uk-card-body">
+          <div uk-tooltip="<%= recipe.title %>">
+            <h3 class="uk-card-title"> <%= link_to recipe.title, recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
+          </div>
+          <div class="star-ratings star-dark">
+            <div class="star-ratings-value" style="width: <%= recipe.score * 20 %>%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div uk-tooltip="<%= recipe.description %>">
+            <p class="uk-text-truncate"><%= recipe.description %></p>
+          </div>
+          <div class="info-recipe">
+            <span class="name"><%= t("recipe.title.number_views") %></span>
+            <span class="info"><%= recipe.view.to_s %></span>
+            <span class="name"><%= t("recipe.title.number_feedbacks") %></span>
+            <span class="info"><%= recipe.score_count.to_s %></span>
           </div>
         </div>
+        <div class="uk-card-footer" style="display: flex; align-items: center; justify-content: center">
+          <%= link_to edit_recipe_path(recipe), class: "uk-button" do %>
+            <i uk-tooltip="<%= t('recipe.action.edit') %>" class="far fa-edit fa-2x"></i>
+          <% end%>
+          <%= link_to recipe, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button" do %>
+            <i uk-tooltip="<%= t('recipe.action.destroy') %>" class="far fa-trash-alt fa-2x"></i>
+          <% end%>
+        </div>
       </div>
-      </div>
+<!--      </div>-->
+      <!--      </div>-->
     <% end %>
     </div>
 </div>
+<!--</div>-->

@@ -134,7 +134,6 @@ Rails.application.routes.draw do
     get 'my_notebooks' => "notebooks#user_notebook_id"
     get 'search' => "search#index"
     get 'my_recipes' => "recipes#show_user_recipes"
-
   end
 
   match "/404", :to => "errors#not_found", :via => :all

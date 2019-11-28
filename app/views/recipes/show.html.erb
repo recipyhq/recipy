@@ -15,29 +15,29 @@
         <h1 style="color: white;font-weight: bold"><%= t('recipe.image_not_found') %></h1>
       </div>
     <% end %>
-      </div>
+  </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
     <h2 class="title"><%= @recipe.title %>
     </h2>
-<!--    <div style="display: inline-block">-->
+    <!--    <div style="display: inline-block">-->
 
-<!--    </div>-->
+    <!--    </div>-->
     <p><%= @recipe.description %></p>
     <% if @recipe.user %>
-    <p> <%= t('author.title') %> <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name[0]}" , author_path(@recipe.user), class: "uk-button-text uk-text-truncate" %>.</p>
-      <% else %>
-    <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
-      <%end %>
-      <div style="margin-bottom: 20px;">
+      <p> <%= t('author.title') %> <%= link_to "#{@recipe.user.first_name} #{@recipe.user.last_name[0]}" , author_path(@recipe.user), class: "uk-button-text uk-text-truncate" %>.</p>
+    <% else %>
+      <p> <%= t('author.title_recipy') %> <i class="fas fa-heart"></i> </p>
+    <%end %>
+    <div style="margin-bottom: 20px;">
       <% unless @recipe.diets.empty? %>
         Corresponds au(x) régime(s) :
         <% @recipe.diets.each do |diet| %>
           <u uk-tooltip="<%=diet.description%>"><%= diet.name %></u>
         <% end%>
       <% end %>
-      </div>
+    </div>
     <div style="margin-bottom: 40px;">
       <% if !@allergen_array.empty? %>
         <%= t('allergen_list.title') %>
@@ -97,10 +97,10 @@
     <% if current_user && current_user.notebooks.count > 0 %>
       <%= simple_form_for @recipe, :url => recipe_add_to_notebook_url(@recipe), :method => 'post' do |f| %>
         <%= f.input :notebooks, collection: current_user.notebooks, :include_blank => false, label: false, as: :select, input_html: {
-        slimselect: true,
-        slimselectNoResult: t('slimselect.notebooks.no_result'),
-        slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),
-        slimselectPlaceholder: t('slimselect.notebooks.placeholder'),
+          slimselect: true,
+          slimselectNoResult: t('slimselect.notebooks.no_result'),
+          slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),
+          slimselectPlaceholder: t('slimselect.notebooks.placeholder'),
         } %>
         <%= f.button :submit, "Confirmer", class: 'uk-button uk-button-secondary uk-button-small', input_html: { 'uk-close': true } %>
       <% end %>
@@ -118,13 +118,15 @@
               <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
             <% end %>
             <% unless @diet_compatible %>
-            </br>
+              </br>
               <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Non compatible avec vos régimes)</span>
             <% end %>
           </h2>
         <% else %>
           <h2 class="title"><%= "Ingrédient" %>
-            <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+            <% if !current_user.nil? && @allergen_array.include?(@recipe_user_allergens[0]) %>
+              <span style="display: inline-block; font-size: 22px; color: #e84141 ">&nbsp;(Contient certains de vos allergènes)</span>
+            <% end %>
           </h2>
         <% end %>
         <div class="uk-card uk-card-default uk-card-body">
@@ -150,7 +152,13 @@
           <% if current_user %>
             <% if ShoppingList.where(user_id: current_user.id).count > 0 %>
               <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
-                <%= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id).order(:name), label: "Ajouter à une liste de courses :" %>
+                <%#= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id).order(:name), label: "Ajouter à une liste de courses :" %>
+                <%= f.input :shopping_lists, :label => t("recipe.add_to_shopping_list"), collection: ShoppingList.where(user_id: current_user.id).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+                  slimselect: true,
+                  slimselectNoResult: t('slimselect.shopping_list.no_result'),
+                  slimselectSearchPlaceholder: t('slimselect.shopping_list.placeholder'),
+                  slimselectPlaceholder: t('slimselect.shopping_list.placeholder'),
+                }, defaults: {input_class: ""} %>
                 <%= f.button :submit, "Confirmer" %>
               <% end %>
             <% else %>

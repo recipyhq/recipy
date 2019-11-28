@@ -9,7 +9,11 @@
           <div class="uk-card-header">
             <div class="uk-grid-small uk-flex-center" uk-grid>
               <div class="uk-width-auto">
-                <img width="70" height="70" src="<%= asset_path 'logo-icon-orange.png' %>">
+                <% unless user.avatar.attached? %>
+                  <img width="70" height="70" src="<%= asset_path 'logo-icon-orange.png' %>">
+                <% else %>
+                  <img class="uk-border-rounded" width="70" height="70" src="<%= url_for(user.avatar.variant resize: '200x200') %>">
+                <% end %>
               </div>
               <div class="uk-width-expand">
                 <h3 class="uk-card-title uk-margin-remove-bottom">

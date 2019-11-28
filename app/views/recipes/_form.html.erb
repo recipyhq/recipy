@@ -8,6 +8,7 @@
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :title, label: t("recipe.title.title") %>
+      <%= f.file_field :image, accept:'image/*' %>
       <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
         multiple: true,
         slimselect: true,
@@ -18,7 +19,7 @@
       <%= f.input :description, label: t("recipe.title.description"), input_html: {class: "uk-textarea textarea", rows: "5"}, input_class: false %>
     </div>
   </div>
-  <hr class="uk-divider-icon">
+  <hr class="uk-divider-icon z-index-negative">
   <%= f.simple_fields_for RecipeIngredient.new do |ff| %>
     <div id="recipe_ingredients" uk-grid="masonry: true">
     </div>
@@ -31,7 +32,7 @@
       <%= f.label :utensil_ids, label: ("(#{link_to t("recipe.title.new_ingredient"), new_ingredient_path, {:class => "uk-text-medium"}})").html_safe %>
     </div>
   </div>
-  <hr class="uk-divider-icon">
+  <hr class="uk-divider-icon z-index-negative">
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :utensil_ids, :label => t("recipe.title.ustensil"), collection: Utensil.order(:title).all.map {|v| [v.title, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
@@ -45,10 +46,10 @@
       <%= f.input :difficulty, as: :range, label: "#{t("recipe.title.difficulty")}:", input_class: false, input_html: {class: "uk-range", step: 1, max: 10, min: 0, oninput: "changeRangeValue()"} %>
       <div class="uk-margin-medium" uk-grid>
         <div class="uk-width-1-2">
-          <%= f.input :cooking_time, as: :integer, label: t("recipe.title.cooking_time"), input_html: {min: 0} %>
+          <%= f.input :cooking_time, as: :integer, label: t("recipe.title.cooking_time"), input_html: {min: 0, value: 0} %>
         </div>
         <div class="uk-width-1-2">
-          <%= f.input :preparation_time, as: :integer, label: t("recipe.title.preparation_time"), input_html: {min: 0} %>
+          <%= f.input :preparation_time, as: :integer, label: t("recipe.title.preparation_time"), input_html: {min: 0, value: 0} %>
         </div>
       </div>
       <%= f.input :person, as: :integer, label: t("recipe.title.nb_person"), input_html: {min: 0} %>

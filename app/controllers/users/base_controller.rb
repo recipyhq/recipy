@@ -122,7 +122,8 @@ class Users::BaseController < ApplicationController
   private
 
   def like_params
-    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [], :utensils => [], :diets => [])
+    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [],
+                                 :utensils => [], :diets => [])
   end
 
   def user_params

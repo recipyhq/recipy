@@ -23,7 +23,8 @@ class Api::RecipesController < Api::BaseController
     begin
       user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
-      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json, status: :not_found
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
       return
     end
     @recipes = Recipe.where(:user => user).includes(:recipe_utensils,

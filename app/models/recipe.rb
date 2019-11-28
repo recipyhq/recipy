@@ -103,24 +103,20 @@ class Recipe < ApplicationRecord
   end
 
   def recipe_is_vegetarian
-    ingredients.includes(:ingredient_tags)
-                .where(ingredient_tags: 
+    ingredients.includes(:ingredient_tags).where(ingredient_tags:
                         {name: ["Viande", "Poisson", "Crustacé"]}
                       ).empty? &&
     !recipe_categories.where(name: "Végétarien").empty?
   end
 
   def recipe_is_vegan
-    ingredients.includes(:ingredient_tags)
-                .where(ingredient_tags: 
+    ingredients.includes(:ingredient_tags).where(ingredient_tags:
                         {name: ["Viande", "Poisson", "Crustacé", "Produit laitier"]}
                       ).empty? &&
-    ingredients.includes(:allergen_tags)
-                .where(allergen_tags: 
+    ingredients.includes(:allergen_tags).where(allergen_tags:
                   {name: ["Oeuf"]}
                 ).empty? &&
-    ingredients.where(name: "Miel").empty? &&
-    !recipe_categories.where(name: "Vegan").empty?                
+    ingredients.where(name: "Miel").empty? && !recipe_categories.where(name: "Vegan").empty?
   end
 end
 # rubocop:enable all
