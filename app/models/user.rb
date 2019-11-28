@@ -55,6 +55,9 @@ class  User < ActiveRecord::Base
                                              :foreign_key => "liked_producer_id"
   has_many :followed_users, through: :inverse_related_liked_producers, :source => :user
 
+  has_many :user_diets
+  has_many :diets, through: :user_diets
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

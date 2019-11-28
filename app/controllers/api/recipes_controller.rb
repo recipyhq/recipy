@@ -44,7 +44,7 @@ class Api::RecipesController < Api::BaseController
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
 
-    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
+    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories, :diets], methods: %i(image_url))
     recipe['score'] = @recipe.recipe_scores.average(:value)
     recipe['ingredients'] = build_recipe_ingredients(@recipe)
     recipe['scores'] = build_recipe_scores(@recipe)
