@@ -18,18 +18,27 @@ class ShoppingListsController < InheritedResources::Base
       includes(:ingredient).
       order('ingredients.shelf_tag desc')
     @items = {}
+    @cpt = 0
     @nearset_pointofsale = {}
+    # puts "(((((((((((((((((((((((((((((((("
+    # puts @nearset_pointofsale.empty?
+    # puts "(((((((((((((((((((((((((((((((("
     ingredients.each do |x|
       neartesyPointofsale = find_nearest_pointofsale(x.ingredient)
       @nearset_pointofsale[x.ingredient] = []
       if neartesyPointofsale
         @nearset_pointofsale[x.ingredient] << neartesyPointofsale
+        @cpt += 1
       end
       if @items[x.ingredient.shelf_tag].nil?
         @items[x.ingredient.shelf_tag] = []
       end
       @items[x.ingredient.shelf_tag] << {:ingredient => x, :point_of_sale => nil}
     end
+    # puts "=============================="
+    # puts @nearset_pointofsale.empty?
+    # puts @nearset_pointofsale.inspect
+    # puts "=============================="
   end
 
   def find_nearest_pointofsale(ingredient)
@@ -44,7 +53,7 @@ class ShoppingListsController < InheritedResources::Base
           if is_near(p, address_user)
             nearPointofsale = p
           end
-          puts nearPointofsale
+          #puts nearPointofsale
         end
       end
     end

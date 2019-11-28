@@ -2,10 +2,10 @@
 
 <div class="uk-container uk-padding">
   <h2 class="title">Liste de courses : "<%= @shopping_list.name %>"</h2>
-  <% if !@nearset_pointofsale.nil? %>
+  <% if @cpt == 0 %>
     <h4><%= t("shopping_list.pof_bad_address") %></h4>
     <%= link_to t("navbar.edit_user"), edit_user_registration_path(), class:"uk-button uk-button-secondary" %>
-<% end %>
+  <% end %>
   <div class="uk-align-center">
     <ul class="uk-list uk-list-bullet">
       <% @items.each do |key, value| %>
@@ -20,7 +20,7 @@
                 <div class="uk-text-meta">Au moins <%= elem[:ingredient].shopping_list_quantity.value %> <%= elem[:ingredient].shopping_list_quantity.quantity_type.name %></div>
               <% end %>
             </div>
-            <% if @nearset_pointofsale[elem[:ingredient].ingredient][0] %>
+            <% if @cpt > 0 and @nearset_pointofsale[elem[:ingredient].ingredient][0] %>
               <div class="uk-float-left uk-margin-medium-left">
                 <span class="uk-text-bold"><%= t('shopping_list.pof_title') %></span>
                 <div>

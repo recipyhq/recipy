@@ -5,11 +5,14 @@ class PointOfSalesController < InheritedResources::Base
 
   def index
     skip_policy_scope
-    @point_of_sales = PointOfSale.where.not(user: nil).order(:name).all
+    @point_of_sales = PointOfSale.includes(
+      :products => [:ingredient, :price => :quantity_type]
+    ).where.not(user: nil).order(:name).all
   end
 
   def show
     find_pointofsale_ingredients
+    @user = @point_of_sale.user
   end
 
   def new
@@ -137,11 +140,13 @@ class PointOfSalesController < InheritedResources::Base
     if !new_address_params.nil?
       new_address = Address.new(new_address_params)
       new_address.save
-      @point_of_sale.address.destroy
-      @point_of_sale.address = new_address
+      #@point_of_sale.address.destroy
+      #@point_of_sale.address = new_address
     end
-    adress_pos = @point_of_sale.address.entilted + ", " + @point_of_sale.address.city
+    adress_pos = new_address.entilted + ", " + new_address.city
     if Geocoder.search(adress_pos).first
+    @point_of_sale.address.destroy
+    @point_of_sale.address = new_address
     coordinates = Geocoder.search(adress_pos).first.coordinates
     # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
     # puts coordinates[0]
@@ -150,10 +155,10 @@ class PointOfSalesController < InheritedResources::Base
     if coordinates
       @point_of_sale.address.latitude = coordinates[0]
       @point_of_sale.address.longitude = coordinates[1]
+      @point_of_sale.address.save()
     end
-    @point_of_sale.address.save()
     else
-      redirect_to new_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
+      redirect_to edit_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
       return
     end
     if @point_of_sale.update(@point_of_sale_param)

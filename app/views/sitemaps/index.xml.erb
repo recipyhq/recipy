@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc><%= @host %></loc>
+   </url>
+   <url>
+      <loc><%= "#{@host}/beta" %></loc>
+   </url>
+   <url>
+      <loc><%= "#{@host}#{recipes_path}" %></loc>
+   </url>
+   <% @recipes.each do |recipe| %>
+     <url>
+        <loc><%= "#{@host}/beta/fr/recipes/#{recipe.id}" %></loc>
+     </url>
+   <% end %>
+</urlset>

@@ -1,10 +1,10 @@
 # rubocop:disable all
 class Recipe < ApplicationRecord
   validates :title, presence: true
-  validates :cooking_time, presence: true
-  validates :preparation_time, presence: true
+  validates :cooking_time, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :preparation_time, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :person, presence: true
-  validates :difficulty, presence: true
+  validates :difficulty, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :description, presence: true
   has_many :related_recipe_categories, dependent: :destroy
   has_many :recipe_categories, :through => :related_recipe_categories
@@ -16,6 +16,8 @@ class Recipe < ApplicationRecord
   has_many :notebooks, through: :notebook_recipes
   has_many :recipe_scores, dependent: :destroy
   has_many :shopping_lists, through: :ingredients
+  has_many :recipe_diets
+  has_many :diets, through: :recipe_diets
   has_one_attached :image
   validates :image, presence: true
 
@@ -24,6 +26,8 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :notebooks, allow_destroy: true
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
   accepts_nested_attributes_for :recipe_utensils, allow_destroy: true
+
+  before_save :set_diets
 
   def steps_raw
     steps.join("\r\n") unless steps.nil?
@@ -79,8 +83,40 @@ class Recipe < ApplicationRecord
     end
   end
 
+  def self.diets_compliant(user)
+    if user
+      Recipe.joins(:diets).where(:diets => {id: user.diets.pluck(:id)}).group(:id)
+    else
+      all
+    end
+  end
+
   def self.to_page(num, per_page)
     limit(per_page).offset((num - 1) * per_page)
+  end
+
+  private
+  def set_diets
+    diets.destroy_all
+    diets << Diet.find_by(name: "Végétarien") if recipe_is_vegetarian
+    diets << Diet.find_by(name: "Vegan") if recipe_is_vegan
+  end
+
+  def recipe_is_vegetarian
+    ingredients.includes(:ingredient_tags).where(ingredient_tags:
+                        {name: ["Viande", "Poisson", "Crustacé"]}
+                      ).empty? &&
+    !recipe_categories.where(name: "Végétarien").empty?
+  end
+
+  def recipe_is_vegan
+    ingredients.includes(:ingredient_tags).where(ingredient_tags:
+                        {name: ["Viande", "Poisson", "Crustacé", "Produit laitier"]}
+                      ).empty? &&
+    ingredients.includes(:allergen_tags).where(allergen_tags:
+                  {name: ["Oeuf"]}
+                ).empty? &&
+    ingredients.where(name: "Miel").empty? && !recipe_categories.where(name: "Vegan").empty?
   end
 end
 # rubocop:enable all

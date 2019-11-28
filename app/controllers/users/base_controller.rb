@@ -32,11 +32,13 @@ class Users::BaseController < ApplicationController
       @user.no_like_ingredients.destroy_all
       @user.allergens.destroy_all
       @user.utensils.destroy_all
+      @user.diets.destroy_all
 
       new_like = @params[:ingredients].drop(1).reject(&:empty?)
       new_unlike = @params[:no_like_ingredients].drop(1).reject(&:empty?)
       new_allergens = @params[:allergens].drop(1).reject(&:empty?)
       new_utensils = @params[:utensils].drop(1).reject(&:empty?)
+      new_diets = @params[:diets].drop(1).reject(&:empty?)
 
       new_like.each do |elem|
         ingredient = Ingredient.find(elem)
@@ -54,6 +56,10 @@ class Users::BaseController < ApplicationController
         utensil = Utensil.find(elem)
         @user.utensils << utensil
       end
+      new_diets.each do |elem|
+        diet = Diet.find(elem)
+        @user.diets << diet
+      end
       redirect_to edit_preferences_path, flash: { success: t("users.like.update_success") }
       return
     end
@@ -62,6 +68,18 @@ class Users::BaseController < ApplicationController
 
   def show_liked_producers
     @producers = current_user.liked_producers
+
+    @user_products = {}
+    @producers.each do |user|
+      @user_products[user.email] = []
+      user.point_of_sales.each do |point|
+        point.products.each do |prod|
+          unless prod.ingredient.nil?
+            @user_products[user.email].push(prod.ingredient.name)
+          end
+        end
+      end
+    end
     # redirect_to follow_producer_path
   end
 
@@ -89,10 +107,25 @@ class Users::BaseController < ApplicationController
     end
   end
 
+  def show_author
+    find_user_recipe_scores
+    @notebooks = Notebook.includes(:image_attachment => :blob).where(
+      :user_id => @user.id
+    ).order(:title)
+    @recipes = Recipe.where(user: @user).where.
+      not(user: nil).order(:view => :desc).all.with_attached_image
+    @recipes_view = 0
+    @recipes.each do |r|
+      @recipes_view += r.view
+    end
+    @comments = @user.recipe_scores.last(4)
+  end
+
   private
 
   def like_params
-    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [], :utensils => [])
+    params.require(:like).permit(:ingredients => [], :no_like_ingredients => [], :allergens => [],
+                                 :utensils => [], :diets => [])
   end
 
   def user_params
@@ -101,5 +134,9 @@ class Users::BaseController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def find_user_recipe_scores
+    @user = User.includes(:recipe_scores => [:recipe]).find(params[:id])
   end
 end

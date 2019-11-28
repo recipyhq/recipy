@@ -17,6 +17,7 @@ class RecipesController < InheritedResources::Base
     end
 
     @recipe_user_allergens = []
+    @diet_compatible = true
     unless current_user.nil?
       current_user.allergens.each do |aller|
         if allergen_set.include?(aller)
@@ -24,6 +25,14 @@ class RecipesController < InheritedResources::Base
         end
       end
       @difficulty_front = get_difficulty
+
+      @diet_compatible = if current_user.diets.empty?
+                           true
+                         else
+                           !@recipe.diets.where(
+                             id: current_user.diets
+                           ).empty?
+                         end
     end
 
     @allergen_array = allergen_set.uniq
@@ -87,17 +96,23 @@ class RecipesController < InheritedResources::Base
     @recipe_params = recipe_params
     puts @recipe_params
     new_ingredients = @recipe_params[:recipe_ingredients_attributes]
+    steps = @recipe_params[:steps_raw]
+    split_steps = steps.split("\r\n")
+    @recipe_params[:steps] = split_steps.collect(&:strip)
+    @recipe_params.delete(:steps_raw)
+    @recipe_params.delete(:recipe_ingredients_attributes)
     if new_ingredients.nil?
-      redirect_to new_recipe_path, flash: {
-        danger: t('recipe.creation.missing_ingredients'),
-      }
+      @recipe = Recipe.new(@recipe_params)
+      flash.now[:danger] = t('recipe.creation.missing_ingredients')
+      render :new
     else
-      steps = @recipe_params[:steps_raw]
-      split_steps = steps.split("\r\n")
-      @recipe_params[:steps] = split_steps.collect(&:strip)
-      @recipe_params.delete(:steps_raw)
-      @recipe_params.delete(:recipe_ingredients_attributes)
       new_recipe = Recipe.new(@recipe_params)
+      unless @recipe_params[:image].nil?
+        unless new_recipe.image.blob.content_type.starts_with?('image/')
+          redirect_back fallback_location: :new, flash: { alert: t("recipe.edit.invalid_image") }
+          return
+        end
+      end
       if new_recipe.invalid?
         render :new, flash: {
           danger: new_recipe.errors.values.to_sentence(words_connector: ' ',

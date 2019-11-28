@@ -130,11 +130,11 @@ progress.uk-progress[value]::-webkit-progress-value {
   position: fixed;
   z-index: 1000;
   right: 0;
-  top: 0;
+  top: 80px;
   height: 100vh;
   max-width: 400px;
   min-width: 200px;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   .notification {
     width: 90%;
@@ -385,6 +385,18 @@ body {
   margin-left: 2px;
 }
 
+.product-tag-icon {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.product-tag-empty-icon {
+  width: 27px;
+  height: 27px;
+  margin-left: 10px;
+}
+
 .allergen-tag-icon-red {
   width: 30px;
   height: 30px;
@@ -411,4 +423,8 @@ body {
 .allergen-alert a {
   color: black !important;
   opacity: 0.7;
+}
+
+.z-index-negative {
+  z-index: -1;
 }

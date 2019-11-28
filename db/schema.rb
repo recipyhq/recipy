@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_204239) do
+ActiveRecord::Schema.define(version: 2019_11_23_172136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,12 +84,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_204239) do
     t.index ["unlock_token"], name: "index_administrators_on_unlock_token", unique: true
   end
 
-  create_table "allergen_tag", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "allergen_tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -97,6 +91,13 @@ ActiveRecord::Schema.define(version: 2019_11_18_204239) do
   end
 
   create_table "cook_accounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diets", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -269,6 +270,13 @@ ActiveRecord::Schema.define(version: 2019_11_18_204239) do
 
   create_table "recipe_categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_diets", force: :cascade do |t|
+    t.integer "diet_id"
+    t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -507,6 +515,13 @@ ActiveRecord::Schema.define(version: 2019_11_18_204239) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_unlike_ingredients_on_ingredient_id"
     t.index ["user_id"], name: "index_unlike_ingredients_on_user_id"
+  end
+
+  create_table "user_diets", force: :cascade do |t|
+    t.integer "diet_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
