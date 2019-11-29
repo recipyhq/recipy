@@ -178,7 +178,10 @@ class RecipesController < InheritedResources::Base
   def add_ingredients_to_list
     if shopping_list_params[:shopping_lists].empty?
       redirect_to recipe_path(id: params[:recipe_id]),
-                  flash: { success: "Vous devez sélectionner une liste" } && return
+                  flash: { danger: "Vous devez sélectionner une liste" } && return
+    end
+    if shopping_list_params[:shopping_lists].to_i == -1
+      return add_ingredients_to_new_list
     end
     previous_bullet = Bullet.enable?
     Bullet.enable = false
