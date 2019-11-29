@@ -215,22 +215,37 @@ class MealPlansController < ApplicationController
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16).to_f
     seed = Random.new(hex).rand
     diff_date = (date - monday).to_i
-    no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
-    no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
-
+    
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
-      query = Recipe.no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories).
-        includes(:image_attachment => :blob).order('RANDOM()')
+      no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
+      no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
+      no_ingredients_vegan = Ingredient.get_all_where_not_vegan
+      no_ingredients_vegetarian = Ingredient.get_all_where_not_vegetarian
+      user_is_vegan = current_user.diets.where(name: 'Vegan').count
+      user_is_vegetarian = current_user.diets.where(name: 'Végétarien').count
+
+      query = Recipe.no_have_ingredients(no_ingredients)
+      .no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories)
+      .includes(:image_attachment => :blob).order('RANDOM()')
+
+      if user_is_vegan
+        query = query.no_have_ingredients(no_ingredients_vegan)
+      end
+
+      if user_is_vegetarian
+        query = query.no_have_ingredients(no_ingredients_vegetarian)
+      end
+
       dishes = query.where(:recipe_categories => { :name => "Plat" }).offset(diff_date * 2).limit(2)
       starters = query.where(:recipe_categories => { :name => "Entrée" }).offset(diff_date * 2).limit(2)
       desserts = query.where(:recipe_categories => { :name => "Dessert" }).offset(diff_date * 2).limit(2)
 
-      mp.midday_starter_recipe = starters[0] || query.first
-      mp.midday_dish_recipe = dishes[0] || query.first
-      mp.midday_dessert_recipe = desserts[0] || query.first
-      mp.evening_starter_recipe = starters[1] || query.first
-      mp.evening_dish_recipe = dishes[1] || query.first
-      mp.evening_dessert_recipe = desserts[1] || query.first
+      mp.midday_starter_recipe = starters[0] || query.where(:recipe_categories => { :name => "Entrée" }).first
+      mp.midday_dish_recipe = dishes[0] || query.where(:recipe_categories => { :name => "Plat" }).first
+      mp.midday_dessert_recipe = desserts[0] || query.where(:recipe_categories => { :name => "Dessert" }).first
+      mp.evening_starter_recipe = starters[1] || query.where(:recipe_categories => { :name => "Entrée" }).first
+      mp.evening_dish_recipe = dishes[1] || query.where(:recipe_categories => { :name => "Plat" }).first
+      mp.evening_dessert_recipe = desserts[1] || query.where(:recipe_categories => { :name => "Dessert" }).first
     end
 
     day_plan

@@ -81,14 +81,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def self.diets_compliant(user)
-    if user
-      Recipe.joins(:diets).where(:diets => {id: user.diets.pluck(:id)}).group(:id)
-    else
-      all
-    end
-  end
-
   def self.to_page(num, per_page)
     limit(per_page).offset((num - 1) * per_page)
   end
