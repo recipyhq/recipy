@@ -217,6 +217,7 @@ class Api::RecipesController < Api::BaseController
           :updatedAt => score.updated_at,
           :user => {
             :email => score.user.email,
+            :first_name => score.user.first_name,
             :avatar => score.user.avatar.attached? ? rails_blob_url(score.user.avatar) : nil,
           }
         }
