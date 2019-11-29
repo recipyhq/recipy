@@ -107,23 +107,37 @@ class MealPlansController < ApplicationController
     monday = prior_monday(date)
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday} #{Time.now}").to_i(16).to_f
     seed = Random.new(hex).rand
-    puts seed
     diff_date = (date - monday).to_i
 
     no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
     no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
-    query = Recipe.no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories).
-      includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
-    dishes = query.where(:recipe_categories => { :name => "Plat" })
-    starters = query.where(:recipe_categories => { :name => "Entrée" })
-    desserts = query.where(:recipe_categories => { :name => "Dessert" })
+    no_ingredients_vegan = Ingredient.get_all_where_not_vegan
+    no_ingredients_vegetarian = Ingredient.get_all_where_not_vegetarian
+    user_is_vegan = current_user.diets.where(name: 'Vegan').count
+    user_is_vegetarian = current_user.diets.where(name: 'Végétarien').count
 
-    @day_plan.midday_starter_recipe = starters[0]
-    @day_plan.midday_dish_recipe = dishes[0]
-    @day_plan.midday_dessert_recipe = desserts[0]
-    @day_plan.evening_starter_recipe = starters[1]
-    @day_plan.evening_dish_recipe = dishes[1]
-    @day_plan.evening_dessert_recipe = desserts[1]
+    query = Recipe.no_have_ingredients(no_ingredients)
+    .no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories)
+    .includes(:image_attachment => :blob).order('RANDOM()')
+
+    if user_is_vegan
+      query = query.no_have_ingredients(no_ingredients_vegan)
+    end
+
+    if user_is_vegetarian
+      query = query.no_have_ingredients(no_ingredients_vegetarian)
+    end
+
+    dishes = query.where(:recipe_categories => { :name => "Plat" }).offset(diff_date * 2).limit(2)
+    starters = query.where(:recipe_categories => { :name => "Entrée" }).offset(diff_date * 2).limit(2)
+    desserts = query.where(:recipe_categories => { :name => "Dessert" }).offset(diff_date * 2).limit(2)
+
+    @day_plan.midday_starter_recipe = starters[0] || (query.where(:recipe_categories => { :name => "Entrée" }).limit(100).all).shuffle[0]
+    @day_plan.midday_dish_recipe = dishes[0] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0]
+    @day_plan.midday_dessert_recipe = desserts[0] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0]
+    @day_plan.evening_starter_recipe = starters[1] || (query.where(:recipe_categories => { :name => "Entrée" }).limit(100).all).shuffle[0]
+    @day_plan.evening_dish_recipe = dishes[1] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0]
+    @day_plan.evening_dessert_recipe = desserts[1] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0]
 
     if @day_plan.save
       redirect_to meal_plan_path(@day_plan), flash: { success: t('meal_plan.reload_success') }
@@ -240,12 +254,12 @@ class MealPlansController < ApplicationController
       starters = query.where(:recipe_categories => { :name => "Entrée" }).offset(diff_date * 2).limit(2)
       desserts = query.where(:recipe_categories => { :name => "Dessert" }).offset(diff_date * 2).limit(2)
 
-      mp.midday_starter_recipe = starters[0] || query.where(:recipe_categories => { :name => "Entrée" }).first
-      mp.midday_dish_recipe = dishes[0] || query.where(:recipe_categories => { :name => "Plat" }).first
-      mp.midday_dessert_recipe = desserts[0] || query.where(:recipe_categories => { :name => "Dessert" }).first
-      mp.evening_starter_recipe = starters[1] || query.where(:recipe_categories => { :name => "Entrée" }).first
-      mp.evening_dish_recipe = dishes[1] || query.where(:recipe_categories => { :name => "Plat" }).first
-      mp.evening_dessert_recipe = desserts[1] || query.where(:recipe_categories => { :name => "Dessert" }).first
+      mp.midday_starter_recipe = starters[0] || (query.where(:recipe_categories => { :name => "Entrée" }).limit(100).all).shuffle[0]
+      mp.midday_dish_recipe = dishes[0] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0]
+      mp.midday_dessert_recipe = desserts[0] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0]
+      mp.evening_starter_recipe = starters[1] || (query.where(:recipe_categories => { :name => "Entrée" }).limit(100).all).shuffle[0]
+      mp.evening_dish_recipe = dishes[1] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0]
+      mp.evening_dessert_recipe = desserts[1] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0]
     end
 
     day_plan
