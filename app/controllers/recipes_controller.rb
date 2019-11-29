@@ -47,26 +47,26 @@ class RecipesController < InheritedResources::Base
     end
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
-      #puts "\n\n"
-    #ip = request.ip.inspect
-    #puts request.ip.inspect
-    #puts "\n\n"
-    #city = Geocoder.search(ip).first.city
-    #puts Geocoder.search(ip).first.city
-    #puts "\n\n"
-    #coor = Geocoder.search(ip).first.coordinates
-    #puts Geocoder.search(ip).first.coordinates
-    #result1 = Geocoder.search('rue de leglise, La Flamengrie').first.coordinates
-    #result2 = Geocoder.search('cite saint maurice, Lille').first.coordinates
-    #puts "\n\n"
-    #puts result1
-    #puts "\n\n"
-    #puts result2
-    #puts "\n\n"
-    #puts distance(result1, result2)
-    #@tata = 'la Flamengrie - Lille: ' + distance(result1, result2).to_s
+    # puts "\n\n"
+    # ip = request.ip.inspect
+    # puts request.ip.inspect
+    # puts "\n\n"
+    # city = Geocoder.search(ip).first.city
+    # puts Geocoder.search(ip).first.city
+    # puts "\n\n"
+    # coor = Geocoder.search(ip).first.coordinates
+    # puts Geocoder.search(ip).first.coordinates
+    # result1 = Geocoder.search('rue de leglise, La Flamengrie').first.coordinates
+    # result2 = Geocoder.search('cite saint maurice, Lille').first.coordinates
+    # puts "\n\n"
+    # puts result1
+    # puts "\n\n"
+    # puts result2
+    # puts "\n\n"
+    # puts distance(result1, result2)
+    # @tata = 'la Flamengrie - Lille: ' + distance(result1, result2).to_s
 
-    #@toto = ip + " " + city + " " + coor
+    # @toto = ip + " " + city + " " + coor
   end
 
   def show_user_recipes
@@ -198,7 +198,10 @@ class RecipesController < InheritedResources::Base
   def add_ingredients_to_list
     if shopping_list_params[:shopping_lists].empty?
       redirect_to recipe_path(id: params[:recipe_id]),
-                  flash: { success: "Vous devez sélectionner une liste" } && return
+                  flash: { danger: "Vous devez sélectionner une liste" } && return
+    end
+    if shopping_list_params[:shopping_lists].to_i == -1
+      return add_ingredients_to_new_list
     end
     previous_bullet = Bullet.enable?
     Bullet.enable = false
@@ -263,7 +266,6 @@ class RecipesController < InheritedResources::Base
 
   def add_to_notebook
     notebooks_param = notebooks_params
-    puts notebooks_param
     if params[:recipe_id].nil?
       return
     end
@@ -273,6 +275,20 @@ class RecipesController < InheritedResources::Base
         return redirect_to recipe_path(recipe.id), flash: {
           success: t("recipe.add_to_notebook.no_notebook"),
         }
+      end
+      if notebooks_params[:notebooks].to_i == -1
+        new_notebook = current_user.notebooks.build(
+          :title => "Mon nouveau carnet de recette",
+          :description => "Une description de mon carnet de recette."
+        )
+        new_notebook.image.attach(
+          io: File.open('app/assets/images/notebook_examples/recipe-book.png'),
+          filename: 'recipe_book.jpeg', content_type: 'image/jpeg'
+        )
+        new_notebook.recipes << recipe
+        new_notebook.save!
+        redirect_to notebook_url(new_notebook.id), flash: { success: "Nouveau notebook créée." }
+        return
       end
       notebook = Notebook.find(notebooks_params[:notebooks])
       if notebook

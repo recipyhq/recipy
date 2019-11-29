@@ -139,8 +139,8 @@ en:
     utensils:
       title: "Your utensils"
     address:
-      example: "Place rihour"
-      city: "Lille"
+      example: "ex: Place rihour"
+      city: "ex : Lille"
 
   navbar:
     log_out: "Log out"
@@ -266,6 +266,9 @@ en:
     allergen: "Contain the allergen %{allergen}"
     image_not_found: "No available image for this recipe"
     add_to_shopping_list: "Add to a shopping list:"
+    shopping_list_new: "Create a new shopping list"
+    notebook:
+      new_notebook: "Create a new notebook"
 
   ingredient:
     title:
@@ -406,6 +409,9 @@ en:
   user:
     recipe:
       allergen: "Warning to the allergen %{allergen}"
+    address:
+      label: "Address (label)"
+      city: "City"
   allergen_list:
     Lactose: "Lactose"
     Oeuf: "Egg"

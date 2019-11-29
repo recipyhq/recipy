@@ -133,8 +133,8 @@ fr:
     utensils:
       title: "Les ustensiles que vous possédez"
     address:
-      example: "Place Rihour"
-      city: "Lille"
+      example: "ex: Place Rihour"
+      city: "ex: Lille"
 
 
 
@@ -318,11 +318,14 @@ fr:
       add_to_notebook:
         valid: "La recette a bien été ajouté au carnet de recettes"
         already_in: "La recette est déjà dans le carnet de recette choisit"
-        no_notebook: "Le carnet de recette n'a pas été trouvé ou choisit"
+        no_notebook: "Le carnet de recette n'a pas été trouvé ou choisi"
       create_notebook: "Créer un carnet de recette"
       allergen: "Contient l'allergène %{allergen}"
       image_not_found: "Pas d'image disponible pour cette recette"
       add_to_shopping_list: "Ajouter à une liste de courses :"
+      shopping_list_new: "Créer une nouvelle liste de courses"
+      notebook:
+        new_notebook: "Créer un nouveau carnet de recettes"
 
   ingredient:
     title:
@@ -534,6 +537,9 @@ fr:
   user:
     recipe:
       allergen: "Attention à l'allergène %{allergen}"
+    address:
+      label: "Adresse (libellé)"
+      city: "Ville"
   allergen_list:
     Lactose: "Lactose"
     Oeuf: "Oeuf"
