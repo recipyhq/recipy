@@ -321,6 +321,8 @@ fr:
       image_not_found: "Pas d'image disponible pour cette recette"
       add_to_shopping_list: "Ajouter à une liste de courses :"
       shopping_list_new: "Créer une nouvelle liste de courses"
+      notebook:
+        new_notebook: "Créer un nouveau carnet de recettes"
 
   ingredient:
     title:

@@ -256,9 +256,6 @@ class RecipesController < InheritedResources::Base
           success: t("recipe.add_to_notebook.no_notebook"),
         }
       end
-      puts "\n\n\n\n\n\n"
-      puts notebooks_params[:notebooks]
-      puts "\n\n\n\n\n\n"
       if notebooks_params[:notebooks].to_i == -1
         new_notebook = current_user.notebooks.build(
           :title => "Mon nouveau carnet de recette",
