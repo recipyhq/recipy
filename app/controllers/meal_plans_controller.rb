@@ -215,22 +215,22 @@ class MealPlansController < ApplicationController
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16).to_f
     seed = Random.new(hex).rand
     diff_date = (date - monday).to_i
+    no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
+    no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
 
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
-      no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
-      no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
       query = Recipe.no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories).
-        includes(:image_attachment => :blob).order('RANDOM()').offset(diff_date * 2).limit(2)
-      dishes = query.where(:recipe_categories => { :name => "Plat" })
-      starters = query.where(:recipe_categories => { :name => "Entrée" })
-      desserts = query.where(:recipe_categories => { :name => "Dessert" })
+        includes(:image_attachment => :blob).order('RANDOM()')
+      dishes = query.where(:recipe_categories => { :name => "Plat" }).offset(diff_date * 2).limit(2)
+      starters = query.where(:recipe_categories => { :name => "Entrée" }).offset(diff_date * 2).limit(2)
+      desserts = query.where(:recipe_categories => { :name => "Dessert" }).offset(diff_date * 2).limit(2)
 
-      mp.midday_starter_recipe = starters[0]
-      mp.midday_dish_recipe = dishes[0]
-      mp.midday_dessert_recipe = desserts[0]
-      mp.evening_starter_recipe = starters[1]
-      mp.evening_dish_recipe = dishes[1]
-      mp.evening_dessert_recipe = desserts[1]
+      mp.midday_starter_recipe = starters[0] || query.first
+      mp.midday_dish_recipe = dishes[0] || query.first
+      mp.midday_dessert_recipe = desserts[0] || query.first
+      mp.evening_starter_recipe = starters[1] || query.first
+      mp.evening_dish_recipe = dishes[1] || query.first
+      mp.evening_dessert_recipe = desserts[1] || query.first
     end
 
     day_plan
