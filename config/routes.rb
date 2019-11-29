@@ -116,6 +116,7 @@ Rails.application.routes.draw do
     end
 
     resources :meal_plans, :only => [:index, :show, :update]
+    post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
 
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
