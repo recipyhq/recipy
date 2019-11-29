@@ -2,9 +2,11 @@
 
 <div class="uk-container uk-padding">
   <h2 class="title">Liste de courses : "<%= @shopping_list.name %>"</h2>
-  <% if @cpt == 0 %>
+  <% if @cpt == -1 %>
     <h4><%= t("shopping_list.pof_bad_address") %></h4>
     <%= link_to t("navbar.edit_user"), edit_user_registration_path(), class:"uk-button uk-button-secondary" %>
+  <% elsif @cpt == 0 %>
+      <h4><%= t("shopping_list.pof_too_far") %></h4>
   <% end %>
   <div class="uk-align-center">
     <ul class="uk-list uk-list-bullet">
@@ -22,14 +24,14 @@
             </div>
             <% if @cpt > 0 and @nearset_pointofsale[elem[:ingredient].ingredient][0] %>
               <div class="uk-float-left uk-margin-medium-left">
-                <span class="uk-text-bold"><%= t('shopping_list.pof_title') %></span>
+                <span class="uk-text-bold"><%= t('shopping_list.pof_title')%></span>
                 <div>
                   <%= link_to t(@nearset_pointofsale[elem[:ingredient].ingredient][0].name), point_of_sale_path(@nearset_pointofsale[elem[:ingredient].ingredient][0].id), class:"uk-link uk-text-bold" %>
                   <%= "-" %>
                 </div>
               </div>
               <div class="uk-float-left  uk-margin-small-left">
-                <br>
+                <div class="uk-text-bold"><%= @nearset_pointofsale[elem[:ingredient].ingredient][0].products.select{|e| e.ingredient.name == elem[:ingredient].ingredient.name}[0].price.value.to_s + '€ / ' + @nearset_pointofsale[elem[:ingredient].ingredient][0].products.select{|e| e.ingredient.name == elem[:ingredient].ingredient.name}[0].price.quantity_type.name %></div>
                 <div class="uk-text-bold"><%= @nearset_pointofsale[elem[:ingredient].ingredient][0].address.entilted + ', ' + @nearset_pointofsale[elem[:ingredient].ingredient][0].address.city + ' - (' + @nearset_pointofsale[elem[:ingredient].ingredient][0].address.phone + ')' %></div>
               </div>
             <% end %>

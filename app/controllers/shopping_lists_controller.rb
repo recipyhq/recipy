@@ -46,11 +46,16 @@ class ShoppingListsController < InheritedResources::Base
     nearPointofsale = nil
     if current_user.address and current_user.city
       address_user = current_user.address + ", " + current_user.city
+      if Geocoder.search(address_user).first
+        geocoder_user = Geocoder.search(address_user).first.coordinates
+      else
+        @cpt = -1;
+      end
     end
     @products.each do |product|
       if product.ingredient.id === ingredient.id
         product.point_of_sales.each do |p|
-          if is_near(p, address_user)
+          if is_near(p, geocoder_user)
             nearPointofsale = p
           end
           #puts nearPointofsale
@@ -60,9 +65,9 @@ class ShoppingListsController < InheritedResources::Base
     nearPointofsale
   end
 
-  def is_near(p, address_user)
-    if Geocoder.search(address_user).first
-    geocoder_user = Geocoder.search(address_user).first.coordinates
+  def is_near(p, geocoder_user)
+    # if Geocoder.search(address_user).first
+    # geocoder_user = Geocoder.search(address_user).first.coordinates
     coordinate_pof = [p.address.latitude, p.address.longitude]
     # puts "##################"
     # puts p.inspect
@@ -77,7 +82,6 @@ class ShoppingListsController < InheritedResources::Base
       result1 = coordinate_pof
       result2 = geocoder_user
       (distance(result1, result2) <= 15) ? true : false
-    end
     else
       false
     end

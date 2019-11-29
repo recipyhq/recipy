@@ -455,6 +455,7 @@ fr:
     new: "Créer une liste de course"
     pof_title: "Disponible ici:"
     pof_bad_address: "Veuillez ajouter ou modifier votre adresse pour voir les points de ventes près de chez vous"
+    pof_too_far: "Aucun point de vente ne propose ces produits proche de chez vous"
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:
