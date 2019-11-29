@@ -138,6 +138,9 @@ en:
       label: "Your allergens"
     utensils:
       title: "Your utensils"
+    address:
+      example: "Place rihour"
+      city: "Lille"
 
   navbar:
     log_out: "Log out"

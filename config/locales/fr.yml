@@ -132,6 +132,9 @@ fr:
       label: "Vos allergènes"
     utensils:
       title: "Les ustensiles que vous possédez"
+    address:
+      example: "Place Rihour"
+      city: "Lille"
 
 
 

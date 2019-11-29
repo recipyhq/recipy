@@ -76,7 +76,7 @@ class ShoppingListsController < InheritedResources::Base
     if coordinate_pof[0] and geocoder_user
       result1 = coordinate_pof
       result2 = geocoder_user
-      (distance(result1, result2) <= 200) ? true : false
+      (distance(result1, result2) <= 15) ? true : false
     end
     else
       false
