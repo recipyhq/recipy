@@ -25,6 +25,9 @@ class ShoppingListsController < InheritedResources::Base
     # puts "(((((((((((((((((((((((((((((((("
     ingredients.each do |x|
       neartesyPointofsale = find_nearest_pointofsale(x.ingredient)
+      # puts "\n\n\n\n"
+      # neartesyPointofsale
+      # puts "\n\n\n\n"
       @nearset_pointofsale[x.ingredient] = []
       if neartesyPointofsale
         @nearset_pointofsale[x.ingredient] << neartesyPointofsale
@@ -33,7 +36,7 @@ class ShoppingListsController < InheritedResources::Base
       if @items[x.ingredient.shelf_tag].nil?
         @items[x.ingredient.shelf_tag] = []
       end
-      @items[x.ingredient.shelf_tag] << {:ingredient => x, :point_of_sale => nil}
+      @items[x.ingredient.shelf_tag] << { :ingredient => x, :point_of_sale => nil }
     end
     # puts "=============================="
     # puts @nearset_pointofsale.empty?
@@ -44,7 +47,7 @@ class ShoppingListsController < InheritedResources::Base
   def find_nearest_pointofsale(ingredient)
     @products = Product.includes(:ingredient, :point_of_sales).all
     nearPointofsale = nil
-    if current_user.address and current_user.city
+    if current_user.address && current_user.city
       address_user = current_user.address + ", " + current_user.city
       if Geocoder.search(address_user).first
         geocoder_user = Geocoder.search(address_user).first.coordinates
@@ -53,12 +56,15 @@ class ShoppingListsController < InheritedResources::Base
       end
     end
     @products.each do |product|
+      # puts "\n\n\n\nprod : #{product.ingredient.name} / #{ingredient.name} \n\n"
       if product.ingredient.id === ingredient.id
         product.point_of_sales.each do |p|
           if is_near(p, geocoder_user)
             nearPointofsale = p
           end
-          #puts nearPointofsale
+          # puts "\n\n\n\n"
+          # puts nearPointofsale.inspect
+          # puts "\n\n\n\n"
         end
       end
     end
@@ -69,7 +75,7 @@ class ShoppingListsController < InheritedResources::Base
     # if Geocoder.search(address_user).first
     # geocoder_user = Geocoder.search(address_user).first.coordinates
     coordinate_pof = [p.address.latitude, p.address.longitude]
-    # puts "##################"
+    # puts "\n\n\n\n##################"
     # puts p.inspect
     # puts p.address.inspect
     # puts p.address.latitude
@@ -77,8 +83,8 @@ class ShoppingListsController < InheritedResources::Base
     # puts coordinate_pof
     # puts "---------------"
     # puts geocoder_user
-    # puts "##################"
-    if coordinate_pof[0] and geocoder_user
+    # puts "\n\n\n\n##################"
+    if coordinate_pof[0] && geocoder_user
       result1 = coordinate_pof
       result2 = geocoder_user
       (distance(result1, result2) <= 15) ? true : false
@@ -87,19 +93,20 @@ class ShoppingListsController < InheritedResources::Base
     end
   end
 
-  def distance loc1, loc2
-    rad_per_deg = Math::PI/180  # PI / 180
+  def distance(loc1, loc2)
+    rad_per_deg = Math::PI / 180 # PI / 180
     rkm = 6371                  # Earth radius in kilometers
     rm = rkm * 1000             # Radius in meters
 
-    dlat_rad = (loc2[0]-loc1[0]) * rad_per_deg  # Delta, converted to rad
-    dlon_rad = (loc2[1]-loc1[1]) * rad_per_deg
+    dlat_rad = (loc2[0] - loc1[0]) * rad_per_deg # Delta, converted to rad
+    dlon_rad = (loc2[1] - loc1[1]) * rad_per_deg
 
-    lat1_rad, lon1_rad = loc1.map {|i| i * rad_per_deg }
-    lat2_rad, lon2_rad = loc2.map {|i| i * rad_per_deg }
+    lat1_rad, lon1_rad = loc1.map { |i| i * rad_per_deg }
+    lat2_rad, lon2_rad = loc2.map { |i| i * rad_per_deg }
 
-    a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
-    c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
+    a = Math.sin(dlat_rad / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) *
+      Math.sin(dlon_rad / 2)**2
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
     ((rm * c) / 1000).round # Delta in km
   end
