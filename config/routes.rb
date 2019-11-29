@@ -119,6 +119,10 @@ Rails.application.routes.draw do
     resources :meal_plans, :only => [:index, :show, :update]
     post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
 
+    resources :meal_plans, param: :id do
+      post 'reload' => "meal_plans#reload_day_plan"
+    end
+
     resources :recipes, param: :id do
       post '/feedback', to: 'scores#set_value_and_content', as: 'feedback'
       post 'add_ingredients_to_list' => "recipes#add_ingredients_to_list"
