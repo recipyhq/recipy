@@ -23,7 +23,8 @@ class Api::RecipesController < Api::BaseController
     begin
       user = User.find(params[:user_id])
     rescue ActiveRecord::RecordNotFound
-      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json, status: :not_found
+      render :json => { Status: "KO", Cause: t("recipe.api.invalid_user_id") }.as_json,
+             status: :not_found
       return
     end
     @recipes = Recipe.where(:user => user).includes(:recipe_utensils,
@@ -44,7 +45,7 @@ class Api::RecipesController < Api::BaseController
     view = @recipe.view
     @recipe.update_attribute(:view, view + 1)
 
-    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories], methods: %i(image_url))
+    recipe = @recipe.as_json(:include => [:utensils, :recipe_categories, :diets], methods: %i(image_url))
     recipe['score'] = @recipe.recipe_scores.average(:value)
     recipe['ingredients'] = build_recipe_ingredients(@recipe)
     recipe['scores'] = build_recipe_scores(@recipe)

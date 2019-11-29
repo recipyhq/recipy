@@ -30,7 +30,7 @@
   </head>
 
   <body>
-    <%= render 'shared/notification' %>
+    <%= render 'shared/notification' unless flash.empty? %>
     <div class="app">
       <%= render 'shared/navbar' unless @disable_nav %>
       <%= yield %>

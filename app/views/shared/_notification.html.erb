@@ -1,7 +1,9 @@
 <div class="notification-wrapper">
   <% flash.each do |key, value| %>
-    <div class="notification <%= key %>" id="notification">
-      <%= value %>
-    </div>
+    <% if value != true && value.kind_of?(String) %>
+      <div class="notification <%= key %>" id="notification">
+        <%= value %>
+      </div>
+    <% end %>
   <% end %>
 </div>

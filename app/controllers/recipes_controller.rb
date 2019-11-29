@@ -17,6 +17,7 @@ class RecipesController < InheritedResources::Base
     end
 
     @recipe_user_allergens = []
+    @diet_compatible = true
     unless current_user.nil?
       current_user.allergens.each do |aller|
         if allergen_set.include?(aller)
@@ -24,6 +25,14 @@ class RecipesController < InheritedResources::Base
         end
       end
       @difficulty_front = get_difficulty
+
+      @diet_compatible = if current_user.diets.empty?
+                           true
+                         else
+                           !@recipe.diets.where(
+                             id: current_user.diets
+                           ).empty?
+                         end
     end
 
     @allergen_array = allergen_set.uniq
@@ -78,6 +87,12 @@ class RecipesController < InheritedResources::Base
       render :new
     else
       new_recipe = Recipe.new(@recipe_params)
+      unless @recipe_params[:image].nil?
+        unless new_recipe.image.blob.content_type.starts_with?('image/')
+          redirect_back fallback_location: :new, flash: { alert: t("recipe.edit.invalid_image") }
+          return
+        end
+      end
       if new_recipe.invalid?
         render :new, flash: {
           danger: new_recipe.errors.values.to_sentence(words_connector: ' ',

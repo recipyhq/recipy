@@ -113,6 +113,7 @@ Rails.application.routes.draw do
       post '/follow_producer', to: 'user#follow_producer'
       post '/unfollow_producer', to: 'user#unfollow_producer'
       post '/update_preferences', to: 'user#update_like_ingredients'
+      get 'author', param: :id, to: "user#show_author"
     end
 
     resources :meal_plans, :only => [:index, :show, :update]
