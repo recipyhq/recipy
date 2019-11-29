@@ -5,7 +5,7 @@
 
   <%= f.association :product_tags, as: :select, :label => t("products.tag"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: ProductTag.order(:name).all, input_html: {
+                    collection: ProductTag.order(:name).all.map {|v| [t("products.#{v.name}"), v.id]}, input_html: {
                       multiple: true,
                       slimselect: true,
                       slimselectNoResult: t('slimselect.tags.no_result'),
@@ -61,6 +61,6 @@
 
 <div class="uk-margin-medium">
   <div class="uk-text-center">
-    <%= link_to t("producer.back_to_profile"), :back, class: "uk-button uk-button-default" %>
+    <%= link_to t("producer.back_to_profile"), show_producer_profile_path(id: current_user.id), class: "uk-button uk-button-default" %>
   </div>
 </div>
