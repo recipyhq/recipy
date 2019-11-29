@@ -214,7 +214,6 @@ class MealPlansController < ApplicationController
     monday = prior_monday(date)
     hex = Digest::MD5.hexdigest("#{current_user.uid}  #{monday}").to_i(16).to_f
     seed = Random.new(hex).rand
-    puts seed
     diff_date = (date - monday).to_i
 
     day_plan = MealPlan.find_or_create_by(date: date, user_id: current_user.id) do |mp|
@@ -233,8 +232,6 @@ class MealPlansController < ApplicationController
       mp.evening_dish_recipe = dishes[1]
       mp.evening_dessert_recipe = desserts[1]
     end
-
-    puts day_plan.date.inspect
 
     day_plan
   end
