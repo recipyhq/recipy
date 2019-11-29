@@ -263,6 +263,9 @@ en:
     allergen: "Contain the allergen %{allergen}"
     image_not_found: "No available image for this recipe"
     add_to_shopping_list: "Add to a shopping list:"
+    shopping_list_new: "Create a new shopping list"
+    notebook:
+      new_notebook: "Create a new notebook"
 
   ingredient:
     title:
