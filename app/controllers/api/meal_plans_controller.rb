@@ -44,6 +44,8 @@ class Api::MealPlansController < Api::BaseController
   end
 
   def reload_day_plan
+    previous_bullet = Bullet.enable?
+    Bullet.enable = false
     verify_user
     skip_policy_scope
     if (!params[:user_id] || !@current_user)
@@ -87,6 +89,7 @@ class Api::MealPlansController < Api::BaseController
     @day_plan.evening_starter_recipe = starters[1] || (query.where(:recipe_categories => { :name => "Entrée" }).limit(100).all).shuffle[0]
     @day_plan.evening_dish_recipe = dishes[1] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0]
     @day_plan.evening_dessert_recipe = desserts[1] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0]
+    Bullet.enable = previous_bullet
 
     if @day_plan.save
 
