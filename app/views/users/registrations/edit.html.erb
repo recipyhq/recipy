@@ -14,7 +14,8 @@
           <p><%= t('avatar.not_found') %></p>
         <% end %>
         <%= f.file_field :avatar, accept:'image/*' %>
-
+        <%= f.input :address, label: t('user.address.label'), placeholder: t('users.address.example'), require: 'false', input_html: {class: 'uk-input'}%>
+        <%= f.input :city, label: t('user.address.city'), placeholder: t('users.address.city'), require: 'false', input_html: {class: 'uk-input'}%>
         <%= f.input :password, autocomplete: "off", placeholder: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false, input_html: {class: 'uk-input'} %>
         <%= f.input :password_confirmation, required: false, input_html: {class: 'uk-input'} %>
         <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true, input_html: {class: 'uk-input'} %>

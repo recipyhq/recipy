@@ -138,6 +138,9 @@ en:
       label: "Your allergens"
     utensils:
       title: "Your utensils"
+    address:
+      example: "ex: Place rihour"
+      city: "ex : Lille"
 
   navbar:
     log_out: "Log out"
@@ -406,6 +409,9 @@ en:
   user:
     recipe:
       allergen: "Warning to the allergen %{allergen}"
+    address:
+      label: "Address (label)"
+      city: "City"
   allergen_list:
     Lactose: "Lactose"
     Oeuf: "Egg"
@@ -432,3 +438,5 @@ en:
     medium: "medium"
     hard: "hard"
     very_hard: "very hard"
+  shopping_list:
+    pof_too_far: "We can't find any point of sale close to you"

@@ -55,9 +55,9 @@ class PointOfSalesController < InheritedResources::Base
         # puts new_hours
         # puts new_hours.class
         # puts new_hours[:openning_hour_id]
-        puts new_hours[:day]
-        puts new_hours[:open]
-        puts new_hours[:close]
+        # puts new_hours[:day]
+        # puts new_hours[:open]
+        # puts new_hours[:close]
         new_hours.save
         new_pointofsale.openning_hours << new_hours
       end
@@ -67,6 +67,21 @@ class PointOfSalesController < InheritedResources::Base
       if new_address.valid?
         new_address.save!
         new_pointofsale.address = new_address
+        adress_pos = new_pointofsale.address.entilted + ", " + new_pointofsale.address.city
+        if Geocoder.search(adress_pos).first
+          coordinates = Geocoder.search(adress_pos).first.coordinates
+          # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+          # puts coordinates[0]
+          # puts coordinates[1]
+          # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+          if Geocoder.search(adress_pos).first.coordinates
+            new_pointofsale.address.latitude = coordinates[0]
+            new_pointofsale.address.longitude = coordinates[1]
+          end
+        else
+          redirect_to new_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
+          return
+        end
         new_pointofsale.save
         redirect_to point_of_sale_path(new_pointofsale.id),
                     flash: { success: t('point_of_sale.creation_success') }
@@ -96,9 +111,6 @@ class PointOfSalesController < InheritedResources::Base
     @point_of_sale.openning_hours.destroy_all
     if !new_openning_hours.nil?
       new_openning_hours.each do |hour|
-        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-        puts hour[1]["_destroy"]
-        puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
         if hour[1]["_destroy"] == "false"
           day = hour[1]["day"]
           open = DateTime.new(hour[1]["open(1i)"].to_i,
@@ -125,10 +137,27 @@ class PointOfSalesController < InheritedResources::Base
     if !new_address_params.nil?
       new_address = Address.new(new_address_params)
       new_address.save
+      # @point_of_sale.address.destroy
+      # @point_of_sale.address = new_address
+    end
+    adress_pos = new_address.entilted + ", " + new_address.city
+    if Geocoder.search(adress_pos).first
       @point_of_sale.address.destroy
       @point_of_sale.address = new_address
+      coordinates = Geocoder.search(adress_pos).first.coordinates
+      # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      # puts coordinates[0]
+      # puts coordinates[1]
+      # puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      if coordinates
+        @point_of_sale.address.latitude = coordinates[0]
+        @point_of_sale.address.longitude = coordinates[1]
+        @point_of_sale.address.save
+      end
+    else
+      redirect_to edit_point_of_sale_path, flash: { danger: t('point_of_sale.wrong_address') }
+      return
     end
-
     if @point_of_sale.update(@point_of_sale_param)
       redirect_to point_of_sale_path, flash: { success: t('point_of_sale.update_success') }
     else
@@ -159,17 +188,17 @@ class PointOfSalesController < InheritedResources::Base
     @point_of_sale_param = params.require(:point_of_sale).permit(:name, :description,
                                                                  :market_type,
                                                                  openning_hours_attributes:
-                                                                 [
-                                                                   :day,
-                                                                   :open,
-                                                                   :close,
-                                                                   :_destroy,
-                                                                 ],
+                                                                   [
+                                                                     :day,
+                                                                     :open,
+                                                                     :close,
+                                                                     :_destroy,
+                                                                   ],
                                                                  address_attributes:
-                                                                 [
-                                                                   :entilted,
-                                                                   :city, :zip, :state,
-                                                                   :country, :phone,
-                                                                 ])
+                                                                   [
+                                                                     :entilted,
+                                                                     :city, :zip, :state,
+                                                                     :country, :phone,
+                                                                   ])
   end
 end

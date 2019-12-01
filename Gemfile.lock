@@ -155,6 +155,7 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geocoder (1.5.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.31.0)
@@ -483,6 +484,7 @@ DEPENDENCIES
   fasterer
   ffaker
   figaro
+  geocoder
   google-cloud-storage (~> 1.11)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
