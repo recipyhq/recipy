@@ -16,7 +16,7 @@ class ShoppingListsController < InheritedResources::Base
     end
     ingredients = @shopping_list.shopping_list_ingredients.
       includes(:ingredient).
-      order('ingredients.shelf_tag desc')
+      order('ingredients.shelf_tag desc, ingredients.name asc')
     @items = {}
     ingredients.each do |x|
       if @items[x.ingredient.shelf_tag].nil?
