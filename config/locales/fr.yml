@@ -132,6 +132,9 @@ fr:
       label: "Vos allergènes"
     utensils:
       title: "Les ustensiles que vous possédez"
+    address:
+      example: "ex: Place Rihour"
+      city: "ex: Lille"
 
 
 
@@ -453,6 +456,9 @@ fr:
     title: "Listes de course"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de course"
+    pof_title: "Disponible ici:"
+    pof_bad_address: "Veuillez ajouter ou modifier votre adresse pour voir les points de ventes près de chez vous"
+    pof_too_far: "Aucun point de vente ne propose ces produits proche de chez vous"
   active_admin:
     dashboard: "Dashboard"
     dashboard_welcome:
@@ -531,6 +537,9 @@ fr:
   user:
     recipe:
       allergen: "Attention à l'allergène %{allergen}"
+    address:
+      label: "Adresse (libellé)"
+      city: "Ville"
   allergen_list:
     Lactose: "Lactose"
     Oeuf: "Oeuf"

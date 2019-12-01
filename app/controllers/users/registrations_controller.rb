@@ -36,10 +36,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    unless params[:user][:avatar].content_type.starts_with?('image/')
-      redirect_to edit_user_registration_path(current_user.id),
-                  flash: { error: t("users.profile.picture.error") }
-      return
+    unless params[:user][:avatar].nil?
+      unless params[:user][:avatar].content_type.starts_with?('image/')
+        redirect_to edit_user_registration_path(current_user.id),
+                    flash: { error: t("users.profile.picture.error") }
+        return
+      end
     end
     super
   end
@@ -70,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :avatar, :address, :city])
   end
 
   def after_sign_up_path_for(resource)

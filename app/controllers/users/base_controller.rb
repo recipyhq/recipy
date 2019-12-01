@@ -12,9 +12,11 @@ class Users::BaseController < ApplicationController
 
   def update
     find_user
-    @user.image.attach(params[:image])
-    if @user.update(user_params)
-      redirect_to edit_user_registration
+    unless params[:image].nil?
+      @user.image.attach(params[:image])
+      if @user.update(user_params)
+        redirect_to edit_user_registration
+      end
     end
   end
 
@@ -127,7 +129,7 @@ class Users::BaseController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:id, :email, :encrypted_password, :image)
+    params.require(:user).permit(:id, :email, :encrypted_password, :image, :address, :city)
   end
 
   def find_user
