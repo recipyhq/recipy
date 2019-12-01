@@ -20,17 +20,11 @@ class ShoppingListsController < InheritedResources::Base
     @items = {}
     @cpt = 0
     @nearset_pointofsale = {}
-    # puts "(((((((((((((((((((((((((((((((("
-    # puts @nearset_pointofsale.empty?
-    # puts "(((((((((((((((((((((((((((((((("
     ingredients.each do |x|
-      neartesyPointofsale = find_nearest_pointofsale(x.ingredient)
-      # puts "\n\n\n\n"
-      # neartesyPointofsale
-      # puts "\n\n\n\n"
+      near_test_pointofsale = find_nearest_pointofsale(x.ingredient)
       @nearset_pointofsale[x.ingredient] = []
-      if neartesyPointofsale
-        @nearset_pointofsale[x.ingredient] << neartesyPointofsale
+      if near_test_pointofsale
+        @nearset_pointofsale[x.ingredient] << near_test_pointofsale
         @cpt += 1
       end
       if @items[x.ingredient.shelf_tag].nil?
@@ -46,13 +40,13 @@ class ShoppingListsController < InheritedResources::Base
 
   def find_nearest_pointofsale(ingredient)
     @products = Product.includes(:ingredient, :point_of_sales).all
-    nearPointofsale = nil
+    near_pointofsale = nil
     if current_user.address && current_user.city
       address_user = current_user.address + ", " + current_user.city
       if Geocoder.search(address_user).first
         geocoder_user = Geocoder.search(address_user).first.coordinates
       else
-        @cpt = -1;
+        @cpt = -1
       end
     end
     @products.each do |product|
@@ -60,15 +54,15 @@ class ShoppingListsController < InheritedResources::Base
       if product.ingredient.id === ingredient.id
         product.point_of_sales.each do |p|
           if is_near(p, geocoder_user)
-            nearPointofsale = p
+            near_pointofsale = p
           end
           # puts "\n\n\n\n"
-          # puts nearPointofsale.inspect
+          # puts near_pointofsale.inspect
           # puts "\n\n\n\n"
         end
       end
     end
-    nearPointofsale
+    near_pointofsale
   end
 
   def is_near(p, geocoder_user)
