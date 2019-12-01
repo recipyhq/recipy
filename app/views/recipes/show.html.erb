@@ -96,7 +96,7 @@
     <h2 class="uk-modal-title landing-title"><%= t('recipe.title.add_to_notebook') %></h2>
     <% if current_user && current_user.notebooks.count > 0 %>
       <%= simple_form_for @recipe, :url => recipe_add_to_notebook_url(@recipe), :method => 'post' do |f| %>
-        <%= f.input :notebooks, collection: current_user.notebooks, :include_blank => false, label: false, as: :select, input_html: {
+        <%= f.input :notebooks, collection: current_user.notebooks.map {|v| [v.title, v.id]}.to_a.unshift([t('recipe.notebook.new_notebook'), -1]), :include_blank => false, label: false, as: :select, input_html: {
           slimselect: true,
           slimselectNoResult: t('slimselect.notebooks.no_result'),
           slimselectSearchPlaceholder: t('slimselect.notebooks.search_placeholder'),
@@ -153,7 +153,7 @@
             <% if ShoppingList.where(user_id: current_user.id).count > 0 %>
               <%= simple_form_for @recipe, :url => recipe_add_ingredients_to_list_url(@recipe), :method => 'post' do |f| %>
                 <%#= f.input :shopping_lists, collection: ShoppingList.where(user_id: current_user.id).order(:name), label: "Ajouter à une liste de courses :" %>
-                <%= f.input :shopping_lists, :label => t("recipe.add_to_shopping_list"), collection: ShoppingList.where(user_id: current_user.id).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+                <%= f.input :shopping_lists, :label => t("recipe.add_to_shopping_list"), collection: ShoppingList.where(user_id: current_user.id).order(:name).all.map {|v| [v.name, v.id]}.to_a.unshift([t('recipe.shopping_list_new'), -1]), as: :select, :include_blank => false, input_class: false, input_html: {
                   slimselect: true,
                   slimselectNoResult: t('slimselect.shopping_list.no_result'),
                   slimselectSearchPlaceholder: t('slimselect.shopping_list.placeholder'),

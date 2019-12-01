@@ -178,7 +178,10 @@ class RecipesController < InheritedResources::Base
   def add_ingredients_to_list
     if shopping_list_params[:shopping_lists].empty?
       redirect_to recipe_path(id: params[:recipe_id]),
-                  flash: { success: "Vous devez sélectionner une liste" } && return
+                  flash: { danger: "Vous devez sélectionner une liste" } && return
+    end
+    if shopping_list_params[:shopping_lists].to_i == -1
+      return add_ingredients_to_new_list
     end
     previous_bullet = Bullet.enable?
     Bullet.enable = false
@@ -243,7 +246,6 @@ class RecipesController < InheritedResources::Base
 
   def add_to_notebook
     notebooks_param = notebooks_params
-    puts notebooks_param
     if params[:recipe_id].nil?
       return
     end
@@ -253,6 +255,20 @@ class RecipesController < InheritedResources::Base
         return redirect_to recipe_path(recipe.id), flash: {
           success: t("recipe.add_to_notebook.no_notebook"),
         }
+      end
+      if notebooks_params[:notebooks].to_i == -1
+        new_notebook = current_user.notebooks.build(
+          :title => "Mon nouveau carnet de recette",
+          :description => "Une description de mon carnet de recette."
+        )
+        new_notebook.image.attach(
+          io: File.open('app/assets/images/notebook_examples/recipe-book.png'),
+          filename: 'recipe_book.jpeg', content_type: 'image/jpeg'
+        )
+        new_notebook.recipes << recipe
+        new_notebook.save!
+        redirect_to notebook_url(new_notebook.id), flash: { success: "Nouveau notebook créée." }
+        return
       end
       notebook = Notebook.find(notebooks_params[:notebooks])
       if notebook
