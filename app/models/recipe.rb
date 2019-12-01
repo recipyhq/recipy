@@ -66,7 +66,6 @@ class Recipe < ApplicationRecord
 
   def self.have_ingredients(igs)
     if !igs.nil? && igs.length > 0
-      logger.info(igs)
       joins(:ingredients).where(ingredients: { id: igs.to_a }).group(:id)
     else
       all
@@ -75,17 +74,8 @@ class Recipe < ApplicationRecord
 
   def self.no_have_ingredients(igs)
     if !igs.nil? && igs.length > 0
-      logger.info(igs)
       recipes_to_remove = Recipe.joins(:ingredients).where(ingredients: { id: igs.to_a }).group(:id).select(:id).map{|r| r.id}
       joins(:ingredients).where.not(id: recipes_to_remove.to_a).group(:id)
-    else
-      all
-    end
-  end
-
-  def self.diets_compliant(user)
-    if user
-      Recipe.joins(:diets).where(:diets => {id: user.diets.pluck(:id)}).group(:id)
     else
       all
     end

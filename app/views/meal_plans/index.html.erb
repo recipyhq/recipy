@@ -1,8 +1,26 @@
 <div class="uk-container uk-padding">
-  <h1 class="title">Mon planning de repas</h1>
+  <div class="uk-grid-match uk-grid-small uk-child-width-1-2@l uk-child-width-1-1@s" uk-grid>
+    <div>
+      <h1 class="title">Mon planning de repas</h1>
+    </div>
+    <div>
+      <% if @shopping_list %>
+        <%= link_to 'Voir la liste de course', shopping_list_path(id: @shopping_list.id), class: "uk-button uk-button-default uk-margin-small-top" %>      
+      <% else %>
+        <%= button_to 'Générer une liste de course pour la semaine', meal_plan_create_list_path, method: :post, class: "uk-button uk-button-default uk-margin-small-top" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="uk-margin">
-  <div class="uk-grid-match uk-grid-small .uk-child-width-1-1 uk-flex-center" uk-grid>
+  <div class="uk-grid-match uk-grid-small uk-child-width-1 uk-flex-center" uk-grid>
+    <div>
+      <div class="uk-card uk-card-default meal-info">
+        <div class="day">Jour</div>
+        <div class="meal-time">Midi</div>
+        <div class="meal-time">Soir</div>
+      </div>
+    </div>
     <% @day_meals.each do |day_meal| %>
       <div>
           <div class="uk-card uk-card-default <% if day_meal.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
@@ -12,10 +30,10 @@
                 <span class="uk-text-meta"><%= day_meal.date.strftime("%d/%m/%Y") %></span>
               </div>
             <% end %>
-            <div class="day-moment">
-              <h5 class="title">Midi</h5>
-            </div>
             <div class="meals">
+              <div class="day-moment just-small">
+                <h5 class="title">Midi</h5>
+              </div>
               <%= link_to day_meal.midday_starter_recipe, { class: 'recipe-meal-link' } do %>
                 <div class="recipe-img recipe-img-meal-plan" style="
                   <% if day_meal.midday_starter_recipe.image.attached? %>
@@ -52,10 +70,10 @@
                 </div>
               <% end %>
             </div>
-            <div class="day-moment">
-              <h5 class="title">Soir</h5>
-            </div>
             <div class="meals">
+              <div class="day-moment just-small">
+                <h5 class="title">Soir</h5>
+              </div>
               <%= link_to day_meal.evening_starter_recipe, { class: 'recipe-meal-link' } do %>
                 <div class="recipe-img recipe-img-meal-plan" style="
                   <% if day_meal.evening_starter_recipe.image.attached? %>

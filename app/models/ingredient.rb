@@ -47,4 +47,30 @@ class Ingredient < ApplicationRecord
   def set_defaults
     self.confirmed ||= true
   end
+
+  def self.have_allergens(allergens)
+    if !allergens.nil? && allergens.length > 0
+      allergen_ids = allergens.map{|a| a.id}
+      joins(:allergen_tags).where(allergen_tags: { id: allergen_ids.to_a })
+    else
+      []
+    end
+  end
+
+  def self.get_all_where_not_vegan
+    with_tags = Ingredient.joins(:ingredient_tags).where(ingredient_tags:
+      {name: ["Viande", "Poisson", "Crustacé", "Produit laitier"]}
+    ).all
+    with_allergens = Ingredient.joins(:allergen_tags).where(allergen_tags:
+      {name: ["Oeuf"]}
+    ).all
+
+    return [with_tags, with_allergens].flatten
+  end
+
+  def self.get_all_where_not_vegetarian
+    Ingredient.joins(:ingredient_tags).where(ingredient_tags:
+      {name: ["Viande", "Poisson", "Crustacé"]}
+    ).all
+  end
 end

@@ -258,6 +258,33 @@ body {
   }
 }
 
+.meal-info {
+  display: flex;
+  color: $recipy-secondary-color;
+  font-family: 'Montserrat', sans-serif;
+  flex-wrap: wrap;
+  .day {
+    width: 220px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1200px) {
+      flex: 1 1 100%;
+      width:100%;
+    }
+  }
+
+  .meal-time {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+  }
+}
+
 .orange-card {
   background-color: $recipy-primary-color;
 
@@ -280,16 +307,26 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 0px 20px;
+  width: 120px;
   & > * {
     color: black !important;
   }
-  border-left: 3px solid black;
+
+  &.just-small {
+    display: none;
+    @media screen and (max-width: 800px) {
+      display: flex;
+    }
+  }
 }
 
 .meals {
   flex: 1;
   display: flex;
   flex-direction: row;
+  padding: 0;
 }
 
 .recipe-meal-link {
@@ -329,11 +366,15 @@ body {
   background-color: $recipy-primary-color;
   z-index: 1;
   transition: height 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   & .title {
     color: white;
     opacity: 1;
     padding: 5px;
+    text-align: center;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
     z-index: 11000 !important;
@@ -364,6 +405,10 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  .meal-info {
+    display: none;
   }
 
   .day-moment {

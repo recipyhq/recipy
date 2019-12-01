@@ -62,6 +62,7 @@ Rails.application.routes.draw do
 
       # resources :authors
       resources :meal_plans, :only => [:index, :show, :update]
+      post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
       # resources :meals
       resources :shopping_lists
       resources :recipes
@@ -113,6 +114,13 @@ Rails.application.routes.draw do
       post '/unfollow_producer', to: 'user#unfollow_producer'
       post '/update_preferences', to: 'user#update_like_ingredients'
       get 'author', param: :id, to: "user#show_author"
+    end
+
+    resources :meal_plans, :only => [:index, :show, :update]
+    post '/meal_plans/create_list', to: "meal_plans#create_list", as: 'meal_plan_create_list'
+
+    resources :meal_plans, param: :id do
+      post 'reload' => "meal_plans#reload_day_plan"
     end
 
     resources :recipes, param: :id do

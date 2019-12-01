@@ -14,7 +14,7 @@ fr:
 
   meal_plan:
     see: 'Voir'
-    reload: 'Recharger le planning'
+    reload: 'Générer un nouveau planning pour ce jour'
     not_found: "Ce planning de repas ne vous appartient pas ou n\'existe pas"
     reload_success: "Le planning de ce jour a bien été refait"
     reload_error: "Une erreur c'est produite lors de la réedition de ce planning"

@@ -7,7 +7,7 @@
         <%= t('date.day_names')[@day_plan.date.wday] %> <span class="uk-text-meta"></span><%= @day_plan.date.strftime("%d/%m/%Y") %>
       </h2>
       <div>
-        <div class="uk-card uk-card-default <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
+        <div class="uk-card uk-card-default meal-card <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
           <div class="day-moment">
             <h5 class="title">Midi</h5>
           </div>
@@ -49,7 +49,7 @@
             <% end %>
           </div>
         </div>
-        <div class="uk-card uk-card-default <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
+        <div class="uk-card uk-card-default meal-card <% if @day_plan.date == Date.today %> <%= "orange-card" %> <% end %> meal-card uk-child-width-1-1@s uk-child-width-auto@l" uk-grid>
           <div class="day-moment">
             <h5 class="title">Soir</h5>
           </div>
