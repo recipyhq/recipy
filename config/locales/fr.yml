@@ -95,7 +95,9 @@ fr:
         already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"
         confirmation_period_expired: "à confirmer dans les %{period}, merci de faire une nouvelle demande"
         expired: "a expiré, merci d'en faire une nouvelle demande"
+        external_error_page: "Une erreur côté serveur est survenue"
         not_found: "n'a pas été trouvé(e)"
+        not_found_page: "La page n'a pas été trouvée"
         not_locked: "n'était pas verrouillé(e)"
         not_saved:
           one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
@@ -566,3 +568,6 @@ fr:
     medium: "moyen"
     hard: "difficile"
     very_hard: "Très difficile"
+  errors:
+    external_error_page: "Erreur côté serveur"
+    not_found_page: "La page n'a pas été trouvée"
