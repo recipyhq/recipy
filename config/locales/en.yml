@@ -103,7 +103,9 @@ en:
         already_confirmed: "was already confirmed, please try signing in"
         confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
         expired: "has expired, please request a new one"
+        external_error_page: "External error"
         not_found: "not found"
+        not_found_page: "Page not found"
         not_locked: "was not locked"
         not_saved:
           one: "1 error prohibited this %{resource} from being saved:"
@@ -440,3 +442,6 @@ en:
     very_hard: "very hard"
   shopping_list:
     pof_too_far: "We can't find any point of sale close to you"
+  errors:
+    external_error_page: "External error"
+    not_found_page: ""

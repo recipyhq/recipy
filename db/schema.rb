@@ -550,8 +550,8 @@ ActiveRecord::Schema.define(version: 2019_11_29_160307) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "newsletters", default: false, null: false
-    t.boolean "isProducer", default: false, null: false
+    t.boolean "newsletters", null: false
+    t.boolean "isProducer", null: false
     t.text "bio"
     t.string "address"
     t.string "city"
