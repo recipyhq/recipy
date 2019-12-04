@@ -144,7 +144,7 @@ fr:
   producer:
     list: "Liste des producteurs"
     new:
-      welcome: "Devenir producteur"
+      welcome: "Vous êtes maintenant producteur ! Bravo !"
     no_point_of_sale: "Aucun point de vente enregistré"
     number_point_of_sale: "Nombre de points de vente %{number}"
     no_product: "Aucun produit enregistré"
@@ -391,6 +391,8 @@ fr:
     delete: "Supprimer ce produit"
     confirm_delete: "Êtes-vous sûr de vouloir supprimer ce produit ?"
     not_found_list: "Aucun produit ajouté par ce producteur"
+    wrong_price: "Mauvaise valeur de prix"
+    missing_creation_element: "Il manque un point de vente"
   quantity_type:
     label: "Type de Quantité"
 
@@ -441,8 +443,8 @@ fr:
     delete: 'Supprimer'
     edite: "Éditer"
     edit:
-      invalid: "Le carnet de recette n'est pas conforme"
-      invalid_image: "L'image est invalide"
+      valid: "Le carnet de recette a été correctement modifié"
+      invalid: ""
     edit_name: 'Édition du carnet "%{name}"'
     open: 'Consulter'
     confirm_delete: 'Êtes vous sûr de vouloir supprimer ce carnet de recette ?'

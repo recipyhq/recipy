@@ -3,9 +3,9 @@
     <div class="uk-card-header">
       <div class="uk-grid-small uk-flex-middle" uk-grid>
         <% if @user.avatar.attached? %>
-        <div class="uk-width-auto">
-          <img class="uk-border-circle" width="70" height="70" src="<%= url_for(@user.avatar.variant resize: '200x200') %>">
-        </div>
+          <div class="uk-width-auto">
+            <img class="uk-border-circle" width="70" height="70" src="<%= url_for(@user.avatar.variant resize: '200x200') %>">
+          </div>
         <% end %>
         <div class="uk-width-expand">
           <h3 class="uk-card-title uk-margin-remove-bottom">
@@ -15,9 +15,12 @@
       </div>
     </div>
     <div class="uk-card-body">
-      <p>
-        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes. Ses recettes ont étaient vus plus de #{@recipes_view} fois !" %>
-      </p>
+      <h4 class="uk-margin-remove-bottom">
+        <%= "#{@user.first_name} détient #{@notebooks.count} carnet de recette, ainsi que #{@recipes.count} recettes."%>
+      </h4>
+      <h4 class="uk-margin-remove-top">
+        <%= "Ses recettes ont étaient vus plus de #{@recipes_view} fois !" if @recipes_view > 0 %>
+      </h4>
     </div>
     <!--<div class="uk-card-footer">
       <%#= "Mimir ne périra jamais !" %>

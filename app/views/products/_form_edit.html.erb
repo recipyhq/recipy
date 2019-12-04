@@ -3,6 +3,17 @@
   <%= f.error_notification message:
                              f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
+  <%= f.association :point_of_sales, as: :select, :label => t("point_of_sale.title"),
+                    input_html: {class: 'uk-checkbox uk-margin-left'},
+                    collection: PointOfSale.order(:name).where(user: current_user).includes(:address).all.map {|t|
+                      [t.name + " (" + t.address.entilted + " / " + t.address.city + ")", t.id]}, input_html: {
+      multiple: true,
+      slimselect: true,
+      slimselectNoResult: t('slimselect.point_of_sales.no_result'),
+      slimselectSearchPlaceholder: t('slimselect.point_of_sales.search_placeholder'),
+      slimselectPlaceholder: t('slimselect.point_of_sales.placeholder')
+    } %>
+
   <%= f.association :product_tags, as: :select, :label => t("products.tag"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
                     collection: ProductTag.order(:name).all, input_html: {
@@ -22,17 +33,6 @@
         slimselectPlaceholder: t('slimselect.ingredients.placeholder'),
       } %>
 
-  <%= f.association :point_of_sales, as: :select, :label => t("point_of_sale.title"),
-                    input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: PointOfSale.order(:name).where(user: current_user).includes(:address).all.map {|t|
-                      [t.name + " (" + t.address.entilted + " / " + t.address.city + ")", t.id]}, input_html: {
-                        multiple: true,
-                        slimselect: true,
-                        slimselectNoResult: t('slimselect.point_of_sales.no_result'),
-                        slimselectSearchPlaceholder: t('slimselect.point_of_sales.search_placeholder'),
-                        slimselectPlaceholder: t('slimselect.point_of_sales.placeholder')
-                } %>
-
   <%= f.simple_fields_for :price, @product.price do |a| %>
     <%= a.input :value, :label => t("products.price.label")%>
     <%= a.input :quantity_type, :label => t("quantity_type.label"),
@@ -50,3 +50,10 @@
     <%= f.button :submit, "Mettre à jour" %>
   </div>
 <% end %>
+
+
+<div class="uk-margin-medium">
+  <div class="uk-text-center">
+    <%= link_to t("producer.back_to_profile"), show_producer_profile_path(id: current_user.id), class: "uk-button uk-button-default" %>
+  </div>
+</div>

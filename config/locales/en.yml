@@ -317,6 +317,8 @@ en:
     delete: "Delete this product"
     confirm_delete: "Are you sure to delete this product ?"
     not_found_list: "No associated product for this producer"
+    wrong_price: "You entered a wrong price value"
+    missing_creation_element: "The point of sale is missing"
 
   quantity_type:
     label: "Quantity type"
@@ -359,8 +361,8 @@ en:
     not_found: "No associated point of sale for this producer"
   notebook:
     edit:
-      invalid: "The notebook is invalid"
-      invalid_image: "Image is not valid"
+      valid: "Notebook is correctly modified"
+      invalid: "Notebook is invalid"
     image_not_found: "No available image for this notebook"
 
   active_admin:
@@ -405,7 +407,7 @@ en:
     number_product: "Number of product: %{number}"
     no_bio: "No provided description"
     new:
-      welcome: "You are now a producer ! Welcome"
+      welcome: "You are now a producer ! Congra tulation !"
     back_to_profile: "Return to my producer profile"
     no_list: "No producer on the plateform"
   user:

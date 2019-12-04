@@ -26,7 +26,7 @@
               <div class="uk-float-left uk-margin-medium-left">
                 <span class="uk-text-bold"><%= t('shopping_list.pof_title')%></span>
                 <div>
-                  <%= link_to t(@nearset_pointofsale[elem[:ingredient].ingredient][0].name), point_of_sale_path(@nearset_pointofsale[elem[:ingredient].ingredient][0].id), class:"uk-link uk-text-bold" %>
+                  <%= link_to @nearset_pointofsale[elem[:ingredient].ingredient][0].name, point_of_sale_path(@nearset_pointofsale[elem[:ingredient].ingredient][0].id), class:"uk-link uk-text-bold" %>
                   <%= "-" %>
                 </div>
               </div>

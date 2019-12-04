@@ -9,17 +9,23 @@
         <h1 style="color: white;font-weight: bold"><%= t('notebook.image_not_found') %></h1>
       </div>
 
-  <% end %>
+    <% end %>
   </div>
 </div>
 <div class="uk-section uk-section-secondary uk-light">
-    <div class="uk-container">
-        <%= link_to notebooks_path, class: 'uk-button uk-button-secondary uk-button-small' do %>
-          <span uk-icon="icon: chevron-left"></span><%= t('notebook.back') %>
-        <% end %>
-        <h2 class="title"><%= @notebook.title %></h2>
-        <p><%= @notebook.description %></p>
-    </div>
+  <div class="uk-container">
+    <%= link_to notebooks_path, class: 'uk-button uk-button-secondary uk-button-small' do %>
+      <span uk-icon="icon: chevron-left"></span><%= t('notebook.back') %>
+    <% end %>
+    <h2 class="title"><%= @notebook.title %>
+      <% if current_user == @notebook.user %>
+        <%= link_to edit_notebook_path(@notebook), class: "uk-button" do %>
+          <i uk-tooltip="<%= t('notebook.edite') %>" class="far fa-edit fa-2x"></i>
+        <% end%>
+      <% end %>
+    </h2>
+    <p><%= @notebook.description %></p>
+  </div>
 </div>
 
 <div class="uk-container uk-padding">
@@ -27,31 +33,31 @@
     <% @notebook.recipes.each do |recipe| %>
       <div>
         <div class="uk-card uk-card-default">
-            <div class="uk-card-media-top">
-              <%= link_to recipe do %>
-                <div class="uk-card-media-top recipe-img recipe-search-img" style="
-                <% if recipe.image.attached? %>
-                    background-image: url(<%= rails_blob_url recipe.image %>);
-                  <% else %>
-                  background-image: url(<%= asset_path('not_found.png') %>);
-                  <% end %>
-                ">
-                </div>
-              <% end %>
-            </div>
-            <div class="uk-card-body">
-              <div uk-tooltip="<%= recipe.title %>">
-                <h3 class="uk-card-title uk-text-truncate"> <%= link_to recipe.title , recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
-              </div>
-              <div uk-tooltip="<%= recipe.description %>">
-                <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
-              </div>
-            </div>
-            <div class="uk-card-footer" style="display: flex;justify-content: center;align-items: center">
-              <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button', method: :post do %> </td>
-                  <i uk-tooltip="<%= t('notebook.delete') %>" class="far fa-trash-alt fa-2x"></i>
+          <div class="uk-card-media-top">
+            <%= link_to recipe do %>
+              <div class="uk-card-media-top recipe-img recipe-search-img" style="
+              <% if recipe.image.attached? %>
+                background-image: url(<%= rails_blob_url recipe.image %>);
+                <% else %>
+                background-image: url(<%= asset_path('not_found.png') %>);
                 <% end %>
+              ">
+              </div>
+            <% end %>
+          </div>
+          <div class="uk-card-body">
+            <div uk-tooltip="<%= recipe.title %>">
+              <h3 class="uk-card-title uk-text-truncate"> <%= link_to recipe.title , recipe, class: "uk-button uk-button-text uk-text-truncate" %></h3>
             </div>
+            <div uk-tooltip="<%= recipe.description %>">
+              <p class="uk-text uk-text-truncate"> <%= recipe.description %></p>
+            </div>
+          </div>
+          <div class="uk-card-footer" style="display: flex;justify-content: center;align-items: center">
+            <td> <%= link_to remove_recipe_path(:notebook => @notebook, :id => recipe.id), class: 'uk-button', method: :post do %> </td>
+                <i uk-tooltip="<%= t('notebook.delete') %>" class="far fa-trash-alt fa-2x"></i>
+              <% end %>
+              </div>
         </div>
       </div>
     <% end %>
@@ -61,11 +67,11 @@
           <%= simple_form_for @notebook, :url => add_recipe_url, :method => 'post' do |f| %>
             <%= f.input :id, :input_html => {:value => @notebook.id}, as: :hidden %>
             <%= f.input :recipes, label: t('recipe.name'), collection: Recipe.order('title').all, :include_blank => false, label: false, as: :select, input_class: "", input_html: {
-                slimselect: true,
+              slimselect: true,
               slimselectNoResult: t('slimselect.recipes.no_result'),
               slimselectSearchPlaceholder: t('slimselect.recipes.search_placeholder'),
               slimselectPlaceholder: t('slimselect.recipes.placeholder'),
-              }, defaults: {input_class: ""}  %>
+            }, defaults: {input_class: ""}  %>
             <%= f.button :submit, :value => "Ajouter cette recette" %>
           <% end %>
         </div>
