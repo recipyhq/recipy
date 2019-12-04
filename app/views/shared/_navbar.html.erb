@@ -97,12 +97,14 @@
           </li>
         </ul>
       </li>
-      <li class="<%= current_page_class?(new_user_session_path) %>">
-        <%= link_to new_user_session_path do %>
-          <span uk-icon="icon: user"> </span>
-          <%= t('navbar.sign_in') %>
-        <% end %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="<%= current_page_class?(new_user_session_path) %>">
+          <%= link_to new_user_session_path do %>
+            <span uk-icon="icon: user"> </span>
+            <%= t('navbar.sign_in') %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
     <div class="uk-position-bottom uk-padding">
       <ul class="uk-nav uk-nav-default ">
