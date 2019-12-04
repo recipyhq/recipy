@@ -3,16 +3,6 @@
   <%= f.error_notification message:
                              f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.association :product_tags, as: :select, :label => t("products.tag"),
-                    input_html: {class: 'uk-checkbox uk-margin-left'},
-                    collection: ProductTag.order(:name).all.map {|v| [t("products.#{v.name}"), v.id]}, input_html: {
-                      multiple: true,
-                      slimselect: true,
-                      slimselectNoResult: t('slimselect.tags.no_result'),
-                      slimselectSearchPlaceholder: t('slimselect.tags.search_placeholder'),
-                      slimselectPlaceholder: t('slimselect.tags.placeholder'),
-                    } %>
-
   <%= f.association :point_of_sales, as: :select, :label => t("point_of_sale.title"),
                     input_html: {class: 'uk-checkbox uk-margin-left'},
                     collection: PointOfSale.order(:name).where(user: current_user).includes(:address).all.map {|t|
@@ -23,6 +13,16 @@
       slimselectSearchPlaceholder: t('slimselect.point_of_sales.search_placeholder'),
       slimselectPlaceholder: t('slimselect.point_of_sales.placeholder')
     } %>
+
+  <%= f.association :product_tags, as: :select, :label => t("products.tag"),
+                    input_html: {class: 'uk-checkbox uk-margin-left'},
+                    collection: ProductTag.order(:name).all.map {|v| [t("products.#{v.name}"), v.id]}, input_html: {
+                      multiple: true,
+                      slimselect: true,
+                      slimselectNoResult: t('slimselect.tags.no_result'),
+                      slimselectSearchPlaceholder: t('slimselect.tags.search_placeholder'),
+                      slimselectPlaceholder: t('slimselect.tags.placeholder'),
+                    } %>
 
   <%= f.input :ingredient, collection: Ingredient.all.order(:name).map {|v| [v.name, v.id]}.to_a,
               as: :select, :include_blank => false, :label => t("ingredient.label"), input_html: {
@@ -36,7 +36,7 @@
 
     <div class="uk-margin-medium" uk-grid>
       <div class="uk-width-1-2">
-        <%= a.input :value, :label => t("products.price.label")%>
+        <%= a.input :value, :label => t("products.price.label"), input_html: { max: "999999", min: "0", type: "number"}%>
       </div>
       <div class="uk-width-1-2">
         <%= a.input :quantity_type, :label => t("quantity_type.label"),

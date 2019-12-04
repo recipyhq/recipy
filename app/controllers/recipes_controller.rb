@@ -175,14 +175,20 @@ class RecipesController < InheritedResources::Base
           end
         end
       end
+
       if @recipe.update(@recipe_params)
-        if @recipe.image.blob.content_type.starts_with?('image/')
-          redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
+        unless @recipe_params[:image].nil?
+          if @recipe.image.blob.content_type.starts_with?('image/')
+            redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
+          else
+            redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
+          end
         else
-          redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid_image") }
+          redirect_to recipe_path, flash: { success: t("recipe.edit.valid") }
         end
       else
         redirect_to edit_recipe_path(@recipe), flash: { danger: t("recipe.edit.invalid") }
+        return
       end
     end
   end

@@ -28,9 +28,9 @@
           </thead>
 
           <tbody>
-          <% @user.point_of_sales.each do |point_of_sale| %>
+          <% @user.point_of_sales.each do | point_of_sale | %>
             <tr>
-              <td><%= point_of_sale.name %></td>
+              <td><%= link_to point_of_sale.name, point_of_sale, :class => "uk-link" %></td>
               <td class="uk-text-truncate"><%= point_of_sale.description %></td>
               <td><%= point_of_sale.market_type %></td>
               <td><%= "#{point_of_sale.address.entilted} #{point_of_sale.address.zip} #{point_of_sale.address.city} #{point_of_sale.address.country}" %></td>
@@ -65,7 +65,7 @@
   <div class="uk-margin-medium uk-margin-medium-left uk-margin-medium-right">
     <div class="uk-flex uk-flex-left">
       <h3 class="title"><%= t('products.list_title') %></h3>
-      <% if current_user && current_user.id == @user.id %>
+      <% if current_user && current_user.id == @user.id && @user.point_of_sales.length > 0 %>
         <%= link_to  new_product_path, class: "uk-button uk-margin-top-small" do %>
           <i style="margin-top: 6px" uk-tooltip="<%= t('products.new') %>" class="far fa-plus-square fa-2x"></i>
         <% end %>

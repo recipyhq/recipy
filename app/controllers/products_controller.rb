@@ -8,16 +8,27 @@ class ProductsController < ApplicationController
 
   def create
     product_params
+    if @product_params[:point_of_sale_ids].length <= 1
+      redirect_to new_product_path, flash: { danger: t("products.missing_creation_element") }
+      return
+    end
     ingredient_id = @product_params[:ingredient]
     price = @product_params[:price_attributes]
     if price.nil? || price[:value].empty? || price[:quantity_type].empty?
       redirect_to new_product_path, flash: { danger: t("products.missing_price_element") }
     else
+      if price[:value].to_i < 0 or price[:value].to_i > 999999
+        redirect_to new_product_path, flash: { danger: t("products.wrong_price") }
+        return
+      end
+
       new_price = Price.new(:value => price[:value], :quantity_type_id => price[:quantity_type],
                             :quantity_type => QuantityType.find(price[:quantity_type]))
-      if !new_price.save!
+
+      unless new_price.save!
         redirect_to new_product_path, flash: { danger: t("products.missing_price_element") }
       end
+
       @product_params.delete(:price_attributes)
       @product_params.delete(:ingredient)
       @product = Product.new(@product_params)
@@ -47,6 +58,12 @@ class ProductsController < ApplicationController
   def update
     Bullet.enable = false
     product_params_edit
+
+    if @product_params[:point_of_sale_ids].length <= 1
+      redirect_to edit_product_path, flash: { danger: t("products.missing_creation_element") }
+      return
+    end
+
     ingredient_id = @product_params[:ingredient]
     price = Price.find(@product_params[:price_attributes][:id])
     price.quantity_type = QuantityType.find(@product_params[:price_attributes][:quantity_type])
@@ -54,6 +71,12 @@ class ProductsController < ApplicationController
 
     @product_params[:price_attributes].delete(:id)
     @product_params[:price_attributes].delete(:quantity_type)
+
+
+    if price[:value].to_i < 0 or price[:value].to_i > 999999
+      redirect_to edit_product_path, flash: { danger: t("products.wrong_price") }
+      return
+    end
 
     unless price.update(@product_params[:price_attributes])
       redirect_to edit_product_path, flash: { danger: t("products.price.not_valid") }
@@ -64,6 +87,7 @@ class ProductsController < ApplicationController
     @product_params.delete(:ingredient)
     @product.price = price
     @product.ingredient = Ingredient.find(ingredient_id)
+
 
     if @product.update!(@product_params)
       redirect_to edit_product_path, flash: { success: t("products.edited") }
