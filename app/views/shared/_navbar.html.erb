@@ -97,7 +97,7 @@
           </li>
         </ul>
       </li>
-      <% if user_signed_in? %>
+      <% unless user_signed_in? %>
         <li class="<%= current_page_class?(new_user_session_path) %>">
           <%= link_to new_user_session_path do %>
             <span uk-icon="icon: user"> </span>
