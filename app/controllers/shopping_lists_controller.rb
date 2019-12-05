@@ -15,8 +15,8 @@ class ShoppingListsController < InheritedResources::Base
       redirect_to(shopping_lists_path, flash: { danger: "Liste de courses inconnue" }) && return
     end
     ingredients = @shopping_list.shopping_list_ingredients.
-      includes(:ingredient).
-      order('ingredients.shelf_tag desc, ingredients.name asc')
+        includes(:ingredient).
+        order('ingredients.shelf_tag desc, ingredients.name asc')
     @items = {}
     @cpt = 0
     @nearset_pointofsale = {}
@@ -99,7 +99,7 @@ class ShoppingListsController < InheritedResources::Base
     lat2_rad, lon2_rad = loc2.map { |i| i * rad_per_deg }
 
     a = Math.sin(dlat_rad / 2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) *
-      Math.sin(dlon_rad / 2)**2
+        Math.sin(dlon_rad / 2)**2
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
     ((rm * c) / 1000).round # Delta in km
@@ -118,10 +118,10 @@ class ShoppingListsController < InheritedResources::Base
     if elem.shopping_list_quantity
       unless is_quantity_type_abstract(elem.shopping_list_quantity.quantity_type.name)
         shopping_list_quantity =
-          ShoppingListQuantity.create!(:value => elem.shopping_list_quantity.value,
-                                       :quantity_type_id =>
-                                         elem.shopping_list_quantity.quantity_type.id,
-                                       :quantity_type => elem.shopping_list_quantity.quantity_type)
+            ShoppingListQuantity.create!(:value => elem.shopping_list_quantity.value,
+                                         :quantity_type_id =>
+                                             elem.shopping_list_quantity.quantity_type.id,
+                                         :quantity_type => elem.shopping_list_quantity.quantity_type)
         last = shopping_list.shopping_list_ingredients.last
         last.shopping_list_quantity = shopping_list_quantity
       end
@@ -155,7 +155,7 @@ class ShoppingListsController < InheritedResources::Base
     new_shopping_list = ShoppingList.new(@shopping_list_params)
     new_shopping_list.user = current_user
     if new_shopping_list.valid?
-      if !new_ingredients.nil?
+      unless new_ingredients.nil?
         new_ingredients.each do |elem|
           unless new_shopping_list.ingredients.any? do |ingredient|
             ingredient.id == elem[1].values[0].to_i
@@ -169,8 +169,8 @@ class ShoppingListsController < InheritedResources::Base
               #   create_shopping_list_quantity(shopping_list, elem)
               # end
               shopping_list_quantity = ShoppingListQuantity.
-                create!(:value => value.values[0],
-                        :quantity_type => QuantityType.find(value.values[1]))
+                  create!(:value => value.values[0],
+                          :quantity_type => QuantityType.find(value.values[1]))
               last = new_shopping_list.shopping_list_ingredients.last
               last.shopping_list_quantity = shopping_list_quantity
             end
@@ -178,7 +178,7 @@ class ShoppingListsController < InheritedResources::Base
         end
       end
       new_shopping_list.save
-      redirect_to shopping_list_path(new_shopping_list.id), flash: { success: "Grand succès !" }
+      redirect_to shopping_list_path(new_shopping_list.id), flash: { success: t("shopping_list.validation") }
     else
       redirect_to new_shopping_list_path,
                   flash: { danger: "Erreur lors de la création de la liste de courses" }
@@ -191,17 +191,19 @@ class ShoppingListsController < InheritedResources::Base
     new_ingredients = @shopping_list_params[:shopping_list_ingredients_attributes]
     @shopping_list_params.delete(:shopping_list_ingredients_attributes)
     @shopping_list.shopping_list_ingredients.destroy_all
-    new_ingredients.each do |elem|
-      if elem[1].values[2] == "false"
-        @shopping_list.ingredients << Ingredient.find(elem[1].values[0])
-        if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
-          value = elem[1].values[1]
-          shopping_list_quantity = ShoppingListQuantity.create!(
-            :value => value.values[0],
-            :quantity_type => QuantityType.find(value.values[1])
-          )
-          last = @shopping_list.shopping_list_ingredients.last
-          last.shopping_list_quantity = shopping_list_quantity
+    unless new_ingredients.nil?
+      new_ingredients.each do |elem|
+        if elem[1].values[2] == "false"
+          @shopping_list.ingredients << Ingredient.find(elem[1].values[0])
+          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+            value = elem[1].values[1]
+            shopping_list_quantity = ShoppingListQuantity.create!(
+                :value => value.values[0],
+                :quantity_type => QuantityType.find(value.values[1])
+            )
+            last = @shopping_list.shopping_list_ingredients.last
+            last.shopping_list_quantity = shopping_list_quantity
+          end
         end
       end
     end
@@ -224,8 +226,8 @@ class ShoppingListsController < InheritedResources::Base
 
   def find_shopping_list
     @shopping_list = ShoppingList.includes(:shopping_list_ingredients => [
-      :ingredient,
-      :shopping_list_quantity => :quantity_type,
+        :ingredient,
+        :shopping_list_quantity => :quantity_type,
     ]).find_by(id: params[:id], user_id: current_user.id)
   end
 
