@@ -59,7 +59,23 @@ class Api::ShoppingListsController < ApplicationController
 
   def update
     find_shopping_list
-    if @shopping_list.update(shopping_list_params)
+    @shopping_list_params = shopping_list_params
+    new_ingredients = @shopping_list_params[:list_ingredients]
+    if !new_ingredients.nil? && check_ingredients_attributes(new_ingredients)
+      @shopping_list.shopping_list_ingredients.destroy_all
+      new_ingredients.each do |elem|
+        @shopping_list.ingredients << Ingredient.find(elem[:ingredient_id])
+        if check_quantity(elem)
+          shopping_list_quantity = ShoppingListQuantity.create!(
+            :value => elem[:quantity],
+            :quantity_type => QuantityType.find(elem[:quantity_type_id])
+          )
+        end
+        last = @shopping_list.shopping_list_ingredients.last
+        last.shopping_list_quantity = shopping_list_quantity
+      end
+    end
+    if @shopping_list.save
       render :json => { Status: "OK", Cause: "Votre liste a été modifiée avec succés !" }.as_json
     else
       render :json => { Status: "KO", Cause: "Paramètres invalides" }.as_json
