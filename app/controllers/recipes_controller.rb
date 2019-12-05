@@ -47,7 +47,7 @@ class RecipesController < InheritedResources::Base
     end
     @recipe.update_attribute(:view, view + 1)
     @recipe_feedbacks = @recipe.recipe_scores
-    puts "\n\n\n\n\n"
+    # puts "\n\n\n\n\n"
     # ip = request.ip
     # puts request.ip.inspect
     # puts "\n\n"
@@ -57,15 +57,15 @@ class RecipesController < InheritedResources::Base
     # coor = Geocoder.search(ip).first.coordinates
     # result2 =  Geocoder.search("#{current_user.address},
     # #{current_user.city}").first.coordinates.inspect
-    result1 = Geocoder.search('Boulevard Gambetta, Calais').first.inspect
-    result2 = Geocoder.search('Rue Royale, Calais').first.inspect
-    puts "\n\n"
-    puts result1
-    puts "\n\n"
-    puts result2
+    # result1 = Geocoder.search('Boulevard Gambetta, Calais').first.inspect
+    # result2 = Geocoder.search('Rue Royale, Calais').first.inspect
+    # puts "\n\n"
+    # puts result1
+    # puts "\n\n"
+    # puts result2
     # puts distance(result1, result2)
     # @tata = " : " + distance(result1, result2).to_s
-    puts "\n\n"
+    # puts "\n\n"
     # @toto = ip + " " + city + " " + coor
   end
 
