@@ -88,6 +88,8 @@ en:
         updated: "Your account has been updated successfully."
         updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
         sign_up: "Sign up"
+      edit:
+        cancel_my_account: "Send us an email to delete your account"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
@@ -454,3 +456,5 @@ en:
   errors:
     external_error_page: "External error"
     not_found_page: ""
+  delete:
+    my_account: "I want to delete my account on Recipy.fr"

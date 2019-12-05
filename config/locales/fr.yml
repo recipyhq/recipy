@@ -77,7 +77,7 @@ fr:
         email: "Adresse e-mail"
         leave_blank_if_you_don_t_want_to_change_it: "Ne rien ecrire si vous ne voulez pas modifier"
         we_need_your_current_password_to_confirm_your_changes: "Nous avons besoin de votre mot de passe actuel"
-        cancel_my_account: "Supprimer mon compte"
+        cancel_my_account: "Envoyer un mail pour supprimer votre compte"
     sessions:
       new:
         sign_in: "Se connecter"
@@ -579,3 +579,5 @@ fr:
   errors:
     external_error_page: "Erreur côté serveur"
     not_found_page: "La page n'a pas été trouvée"
+  delete:
+    my_account: ""
