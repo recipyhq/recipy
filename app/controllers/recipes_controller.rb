@@ -57,14 +57,14 @@ class RecipesController < InheritedResources::Base
     # coor = Geocoder.search(ip).first.coordinates
     # result2 =  Geocoder.search("#{current_user.address},
     # #{current_user.city}").first.coordinates.inspect
-    # result1 = Geocoder.search('Place Rihour, Lille').first.coordinates
-    # result2 = Geocoder.search('cite saint maurice, Lille').first.coordinates
+    # result1 = Geocoder.search('Boulevard Gambetta, Calais').first.inspect
+    # result2 = Geocoder.search('Rue Royale, Calais').first.inspect
     # puts "\n\n"
     # puts result1
     # puts "\n\n"
     # puts result2
     # puts distance(result1, result2)
-    # @tata = "#{current_user.address} - Lille : " + distance(result1, result2).to_s
+    # @tata = " : " + distance(result1, result2).to_s
     # puts "\n\n"
     # @toto = ip + " " + city + " " + coor
   end

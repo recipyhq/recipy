@@ -671,6 +671,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Élément de base pour tous types de tartes et de gâteaux"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Produit laitier")
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1141,6 +1142,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Base dans les tartes et les amuse-bouches."
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1256,6 +1258,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1270,6 +1273,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1576,6 +1580,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Oeuf"),
@@ -1615,6 +1620,7 @@ Ingredient.create! do |ingredient|
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
     IngredientTag.find_by_name("Coûteux"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1641,6 +1647,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Ingrédient indispensable pour la réalisation de tartes"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1695,6 +1702,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1810,6 +1818,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -1948,6 +1957,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = "yaourt"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -2116,6 +2126,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = "Fromage"
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -2303,6 +2314,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -2774,6 +2786,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Bon marché"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.shelf_tag = "Rayon frais"
 end
@@ -3018,6 +3031,7 @@ Ingredient.create! do |ingredient|
   ingredient.description = ""
   ingredient.ingredient_tags << [
     IngredientTag.find_by_name("Végétarien"),
+    IngredientTag.find_by_name("Produit laitier"),
   ]
   ingredient.allergen_tags << [
     AllergenTag.find_by_name("Lactose"),
@@ -5331,7 +5345,6 @@ Recipe.create! do |recipe|
   recipe.recipe_categories << [
     RecipeCategory.find_by_name("Entrée"),
     RecipeCategory.find_by_name("Végétarien"),
-    RecipeCategory.find_by_name("Vegan")
   ]
   recipe.image.attach(io: File.open('app/assets/images/recipes_examples/tzatziki.jpg'),
                       filename: 'tzatziki.jpg', content_type: 'image/jpg')
