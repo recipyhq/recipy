@@ -71,11 +71,11 @@ class Api::MealPlansController < Api::BaseController
     .no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories)
     .includes(:image_attachment => :blob).order('RANDOM()')
 
-    if user_is_vegan
+    if user_is_vegan > 0
       query = query.no_have_ingredients(no_ingredients_vegan)
     end
 
-    if user_is_vegetarian
+    if user_is_vegetarian > 0
       query = query.no_have_ingredients(no_ingredients_vegetarian)
     end
 
@@ -357,11 +357,11 @@ class Api::MealPlansController < Api::BaseController
       .no_have_ingredients(no_ingredients_allergen).joins(:recipe_categories)
       .includes(:image_attachment => :blob).order('RANDOM()')
 
-      if user_is_vegan
+      if user_is_vegan > 0
         query = query.no_have_ingredients(no_ingredients_vegan)
       end
 
-      if user_is_vegetarian
+      if user_is_vegetarian > 0
         query = query.no_have_ingredients(no_ingredients_vegetarian)
       end
 
