@@ -30,15 +30,11 @@
             </div>
             <div class="uk-card-footer uk-flex uk-flex-center">
               <%= link_to edit_shopping_list_path(shopping_list), class: "uk-button" do %>
-                <i uk-tooltip="<%= t('notebook.edite') %>" class="far fa-edit fa-2x"></i>
+                <i uk-tooltip="<%= t('shopping_list.edite') %>" class="far fa-edit fa-2x"></i>
               <% end %>
-              <%= link_to  shopping_list, method: :delete, class: "uk-button", data: { confirm: t('notebook.confirm_delete') } do %>
-                <i uk-tooltip="<%= t('notebook.delete') %>" class="far fa-trash-alt fa-2x"></i>
+              <%= link_to  shopping_list, method: :delete, class: "uk-button", data: { confirm: t('shopping_list.confirm_delete') } do %>
+                <i uk-tooltip="<%= t('shopping_list.delete') %>" class="far fa-trash-alt fa-2x"></i>
               <% end %>
-
-              <%#= link_to t("recipe.action.show"), shopping_list, class: "uk-button uk-button-text" %>
-              <%#= link_to t("recipe.action.edit"), edit_shopping_list_path(shopping_list), class: "uk-button uk-button-text" %>
-              <%#= link_to t("recipe.action.destroy"), shopping_list, method: :delete, data: {confirm: t("recipe.action.confirm")}, class: "uk-button uk-button-text" %>
             </div>
           </div>
         </div>
