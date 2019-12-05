@@ -125,7 +125,7 @@ class RecipesController < InheritedResources::Base
       new_ingredients.each do |elem|
         unless new_recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
           new_recipe.ingredients << Ingredient.find(elem[1].values[0])
-          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].valus[1] == "")
+          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
             value = elem[1].values[1]
             recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
                                                      :quantity_type =>
