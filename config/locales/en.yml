@@ -444,6 +444,10 @@ en:
     very_hard: "very hard"
   shopping_list:
     pof_too_far: "We can't find any point of sale close to you"
+    edite: "Edit your shopping list"
+    delete: "Delete the shopping list"
+    confirm_delete: "Do you really want to delete this shopping list"
+    validation: "Great success !"
   errors:
     external_error_page: "External error"
     not_found_page: ""
