@@ -200,7 +200,7 @@ class RecipesController < InheritedResources::Base
     find_recipe
     @recipe.image.purge_later
     @recipe.destroy
-    redirect_to recipes_path, flash: { success: t("recipe.destroy.valid") }
+    redirect_to my_recipes_path, flash: { success: t("recipe.destroy.valid") }
   end
 
   def add_ingredients_to_list
