@@ -448,6 +448,7 @@ en:
     delete: "Delete the shopping list"
     confirm_delete: "Do you really want to delete this shopping list"
     validation: "Great success !"
+    title: "Shopping lists"
   errors:
     external_error_page: "External error"
     not_found_page: ""

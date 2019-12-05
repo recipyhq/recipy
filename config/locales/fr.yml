@@ -457,15 +457,15 @@ fr:
     image_not_found: "Pas d'image disponible pour ce carnet"
 
   shopping_list:
-    title: "Listes de course"
+    title: "Listes de courses"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de courses"
     pof_title: "Disponible ici:"
     pof_bad_address: "Veuillez ajouter ou modifier votre adresse pour voir les points de ventes près de chez vous"
     pof_too_far: "Aucun point de vente ne propose ces produits proche de chez vous"
-    edite: "Editer votre liste de course"
-    delete: "Supprimer la liste de course"
-    confirm_delete: "Êtes vous sûr de vouloir supprimer cette liste de course ?"
+    edite: "Editer votre liste de courses"
+    delete: "Supprimer la liste de courses"
+    confirm_delete: "Êtes vous sûr de vouloir supprimer cette liste de courses ?"
     validation: "La liste est créée"
   active_admin:
     dashboard: "Dashboard"
