@@ -88,6 +88,8 @@ en:
         updated: "Your account has been updated successfully."
         updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
         sign_up: "Sign up"
+      edit:
+        cancel_my_account: "Send us an email to delete your account"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
@@ -251,11 +253,13 @@ en:
       valid: "New recipe created! Thank you"
       confirm: "Validate"
       invalid_image: "Invalid image file"
+      element: "Required element is missing"
     edit:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"
       invalid_image: "Invalid image file"
       wrong_user: "You are not allowed to modify this recipe!"
+      wrong_argument: "Argument invalid"
     destroy:
       valid: "Your recipe have been deleted"
     api:
@@ -448,6 +452,9 @@ en:
     delete: "Delete the shopping list"
     confirm_delete: "Do you really want to delete this shopping list"
     validation: "Great success !"
+    title: "Shopping lists"
   errors:
     external_error_page: "External error"
     not_found_page: ""
+  delete:
+    my_account: "I want to delete my account on Recipy.fr"

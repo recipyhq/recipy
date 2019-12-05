@@ -26,7 +26,15 @@
             <%= ff.input :value, label: t("recipe.title.quantity_value") %>
           </div>
           <div class="uk-width-1-2">
-            <%= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select, collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a, input_html: {class: "uk-select"} %>
+            <%#= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select, collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a, input_html: {class: "uk-select"} %>
+
+            <%= ff.input :quantity_type, :label => t("recipe.title.quantity_type"), collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+              slimselect: true,
+              slimselectNoResult: t('slimselect.quantity_type.no_result'),
+              slimselectSearchPlaceholder: t('slimselect.quantity_type.placeholder'),
+              slimselectPlaceholder: t('slimselect.quantity_type.placeholder'),
+            }, defaults: {input_class: ""} %>
+
           </div>
         <% end %>
       <% else %>
@@ -35,11 +43,8 @@
             <%= ff.input :value, label: t("recipe.title.quantity_value") %>
           </div>
           <div class="uk-width-1-2">
-            <%= ff.input :quantity_type, label: t("recipe.title.quantity_type"), as: :select,
-                         collection: QuantityType.all.map {|v| [v.name, v.id]}.to_a,
-                         input_html: {class: "uk-select"}, selected: f.object.recipe_quantity.quantity_type.id %>
-
-            <%= ff.input :quantity_type, :label => t("recipe.title.ingredient "), collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+            
+            <%= ff.input :quantity_type, :label => t("recipe.title.quantity_type"), collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
               slimselect: true,
               slimselectNoResult: t('slimselect.quantity_type.no_result'),
               slimselectSearchPlaceholder: t('slimselect.quantity_type.placeholder'),

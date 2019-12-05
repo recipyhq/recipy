@@ -77,7 +77,7 @@ fr:
         email: "Adresse e-mail"
         leave_blank_if_you_don_t_want_to_change_it: "Ne rien ecrire si vous ne voulez pas modifier"
         we_need_your_current_password_to_confirm_your_changes: "Nous avons besoin de votre mot de passe actuel"
-        cancel_my_account: "Supprimer mon compte"
+        cancel_my_account: "Envoyer un mail pour supprimer votre compte"
     sessions:
       new:
         sign_in: "Se connecter"
@@ -302,11 +302,13 @@ fr:
         invalid_image: "Fichier image invalide"
         feedback:
           valid: "Votre avis a bien été pris en compte! Merci"
+        element: "Un element obligatoire est manquant"
       edit:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
         invalid_image: "Fichier image invalide"
         wrong_user: "Vous n'êtes pas autorisé à modifier cette recette !"
+        wrong_argument: "Un argument invalide"
       destroy:
         valid: "Votre recette a été supprimée"
       api:
@@ -457,15 +459,15 @@ fr:
     image_not_found: "Pas d'image disponible pour ce carnet"
 
   shopping_list:
-    title: "Listes de course"
+    title: "Listes de courses"
     go_back: 'Revenir à mes listes'
     new: "Créer une liste de courses"
     pof_title: "Disponible ici:"
     pof_bad_address: "Veuillez ajouter ou modifier votre adresse pour voir les points de ventes près de chez vous"
     pof_too_far: "Aucun point de vente ne propose ces produits proche de chez vous"
-    edite: "Editer votre liste de course"
-    delete: "Supprimer la liste de course"
-    confirm_delete: "Êtes vous sûr de vouloir supprimer cette liste de course ?"
+    edite: "Editer votre liste de courses"
+    delete: "Supprimer la liste de courses"
+    confirm_delete: "Êtes vous sûr de vouloir supprimer cette liste de courses ?"
     validation: "La liste est créée"
   active_admin:
     dashboard: "Dashboard"
@@ -577,3 +579,5 @@ fr:
   errors:
     external_error_page: "Erreur côté serveur"
     not_found_page: "La page n'a pas été trouvée"
+  delete:
+    my_account: ""
