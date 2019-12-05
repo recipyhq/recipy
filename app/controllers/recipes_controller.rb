@@ -111,14 +111,14 @@ class RecipesController < InheritedResources::Base
       unless @recipe_params[:image].nil?
         unless new_recipe.image.blob.content_type.starts_with?('image/')
           @recipe = Recipe.new(@recipe_params)
-          flash.now[:danger] = t('recipe.creation.missing_ingredients')
+          flash.now[:danger] = t('recipe.creation.element')
           render :new
           return
         end
       end
       if new_recipe.invalid?
         @recipe = Recipe.new(@recipe_params)
-        flash.now[:danger] = t('recipe.creation.missing_ingredients')
+        flash.now[:danger] = t('recipe.creation.element')
         render :new
         return
       end

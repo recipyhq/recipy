@@ -251,6 +251,7 @@ en:
       valid: "New recipe created! Thank you"
       confirm: "Validate"
       invalid_image: "Invalid image file"
+      element: "Required element is missing"
     edit:
       invalid: "Your recipe is invalide, please make sure to fill the required fields"
       valid: "Your recipe has been successfully modified!"

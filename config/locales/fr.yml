@@ -302,6 +302,7 @@ fr:
         invalid_image: "Fichier image invalide"
         feedback:
           valid: "Votre avis a bien été pris en compte! Merci"
+        element: "Un element obligatoire est manquant"
       edit:
         invalid: "Votre recette est invalide, veuillez vous assurer de bien remplir les champs obligatoires."
         valid: "Votre recette a été modifiée avec succés!"
