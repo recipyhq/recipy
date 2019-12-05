@@ -89,6 +89,7 @@ class RecipesController < InheritedResources::Base
 
   def new
     @recipe = Recipe.new
+    p "Recipe: #{@recipe.inspect}"
     @recipe.recipe_ingredients.build
   end
 
@@ -109,21 +110,22 @@ class RecipesController < InheritedResources::Base
       new_recipe = Recipe.new(@recipe_params)
       unless @recipe_params[:image].nil?
         unless new_recipe.image.blob.content_type.starts_with?('image/')
-          redirect_back fallback_location: :new, flash: { alert: t("recipe.edit.invalid_image") }
+          @recipe = Recipe.new(@recipe_params)
+          flash.now[:danger] = t('recipe.creation.missing_ingredients')
+          render :new
           return
         end
       end
       if new_recipe.invalid?
-        render :new, flash: {
-          danger: new_recipe.errors.values.to_sentence(words_connector: ' ',
-                                                       last_word_connector: ' '),
-        }
+        @recipe = Recipe.new(@recipe_params)
+        flash.now[:danger] = t('recipe.creation.missing_ingredients')
+        render :new
         return
       end
       new_ingredients.each do |elem|
         unless new_recipe.ingredients.any? { |ingredient| ingredient.id == elem[1].values[0].to_i }
           new_recipe.ingredients << Ingredient.find(elem[1].values[0])
-          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].values[1] == "")
+          if !(elem[1].values[1].values[0] == "" || elem[1].values[1].valus[1] == "")
             value = elem[1].values[1]
             recipe_quantity = RecipeQuantity.create!(:value => value.values[0],
                                                      :quantity_type =>

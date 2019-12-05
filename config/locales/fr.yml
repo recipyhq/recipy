@@ -307,6 +307,7 @@ fr:
         valid: "Votre recette a été modifiée avec succés!"
         invalid_image: "Fichier image invalide"
         wrong_user: "Vous n'êtes pas autorisé à modifier cette recette !"
+        wrong_argument: "Un argument invalide"
       destroy:
         valid: "Votre recette a été supprimée"
       api:

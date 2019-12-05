@@ -256,6 +256,7 @@ en:
       valid: "Your recipe has been successfully modified!"
       invalid_image: "Invalid image file"
       wrong_user: "You are not allowed to modify this recipe!"
+      wrong_argument: "Argument invalid"
     destroy:
       valid: "Your recipe have been deleted"
     api:
