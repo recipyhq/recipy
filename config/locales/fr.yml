@@ -145,6 +145,7 @@ fr:
     list: "Liste des producteurs"
     new:
       welcome: "Vous êtes maintenant producteur ! Bravo !"
+      welcome_create: "Bienvenue dans la famille des producteurs de Recipy"
     no_point_of_sale: "Aucun point de vente enregistré"
     number_point_of_sale: "Nombre de points de vente %{number}"
     no_product: "Aucun produit enregistré"
@@ -345,7 +346,7 @@ fr:
     not_created: "L'ingrédient n'a pas pu être créé"
     no_null: "L'ingredient ne peut pas être nul"
     creation:
-      valid: "Votre demande a bien été pris en compte et sera traitée dans les 48h."
+      valid: "Votre ingrédien a bien été ajouté. Merci de votre participation !"
       invalid: "Votre proposition n'est pas valide. Cet ingrédient doit déjà être dans la base de données"
     label: "Ingrédient"
     create:

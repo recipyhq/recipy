@@ -290,7 +290,7 @@ en:
     not_created: "The ingredient did not be created"
     no_null: "The ingredient cannot be empty"
     creation:
-      valid: "Your request has been taken into account and will be processed within 48 hours."
+      valid: "The ingredient has been added, thank you ."
       invalid: "Your request is not valid. This ingredient must already be in the database."
     label: "Ingredient"
     create:
@@ -412,6 +412,7 @@ en:
     no_bio: "No provided description"
     new:
       welcome: "You are now a producer ! Congra tulation !"
+      welcome_create: "Welcome to the Recipy producer family !"
     back_to_profile: "Return to my producer profile"
     no_list: "No producer on the plateform"
   user:
