@@ -145,6 +145,7 @@ fr:
     list: "Liste des producteurs"
     new:
       welcome: "Vous êtes maintenant producteur ! Bravo !"
+      welcome_create: "Bienvenue dans la famille des producteurs de Recipy"
     no_point_of_sale: "Aucun point de vente enregistré"
     number_point_of_sale: "Nombre de points de vente %{number}"
     no_product: "Aucun produit enregistré"

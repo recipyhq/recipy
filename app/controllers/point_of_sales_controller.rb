@@ -169,7 +169,7 @@ class PointOfSalesController < InheritedResources::Base
   def destroy
     find_pointofsale
     @point_of_sale.destroy
-    redirect_to point_of_sales_path, flash: { success: t('point_of_sale.delete_success') }
+    redirect_to show_producer_profile_path(id: current_user.id), flash: { success: t('point_of_sale.delete_success') }
   end
 
   private

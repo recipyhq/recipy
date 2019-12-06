@@ -412,6 +412,7 @@ en:
     no_bio: "No provided description"
     new:
       welcome: "You are now a producer ! Congra tulation !"
+      welcome_create: "Welcome to the Recipy producer family !"
     back_to_profile: "Return to my producer profile"
     no_list: "No producer on the plateform"
   user:
