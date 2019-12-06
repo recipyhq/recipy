@@ -280,7 +280,7 @@ GEM
       activerecord (>= 5.0)
     powerpack (0.1.2)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.7)
@@ -498,7 +498,7 @@ DEPENDENCIES
   overcommit
   pg (>= 0.18, < 2.0)
   phony_rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   pundit
   rack-timeout
   rails (~> 5.2.0)
