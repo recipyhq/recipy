@@ -5,41 +5,47 @@ class EpitechExpController < ApplicationController
   def index
     skip_policy_scope
     skip_authorization
+    @disable_nav = true
   end
 
   def create
     @date_begin = Date.today
     @date_end = Date.today + 6.day
     @day_meals = []
+    infos = create_plan_params
 
-    (@date_begin..@date_end).each do |day|
-      @day_meals.push(get_by_date(day, 'vdnet59@gmail.com', false, false))
+    if infos[:email].match(/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
+      (@date_begin..@date_end).each do |day|
+        @day_meals.push(get_by_date(day, infos))
+      end
+
+      EipExpMailer.meal_plan(@day_meals, infos[:email]).deliver_later
+      redirect_to epiexp_index_path, flash: { success: 'Votre planning vous a bien été envoyé par mail' }
+    else
+      redirect_to epiexp_index_path(params: infos), flash: { error: 'L\'adresse email n\'est pas correct' }
     end
-
-    EipExpMailer.meal_plan(@day_meals, 'vdnet59@gmail.com').deliver_later
-    redirect_to epiexp_index_path, flash: { success: 'Votre planning vous a bien été envoyé par mail' }
   end
 
-  def get_by_date(date, email, is_vegan, is_vegetarian)
+  def get_by_date(date, infos)
     Bullet.enable = false
     monday = prior_monday(date)
-    hex = Digest::MD5.hexdigest("#{email}  #{monday}").to_i(16).to_f
+    hex = Digest::MD5.hexdigest("#{infos[:email]}  #{monday}").to_i(16).to_f
     seed = Random.new(hex).rand
     diff_date = (date - monday).to_i
+    allergens = AllergenTag.where(id: infos[:allergens]).all
+    no_ingredients = Ingredient.where(id: infos[:no_like_ingredients])
 
     no_ingredients_vegan = Ingredient.get_all_where_not_vegan
     no_ingredients_vegetarian = Ingredient.get_all_where_not_vegetarian
 
-    # .no_have_ingredients(no_ingredients)
-    # .no_have_ingredients(no_ingredients_allergen)
-    query = Recipe.joins(:recipe_categories)
-      .includes(:image_attachment => :blob).order('RANDOM()')
+    no_ingredients_allergen = Ingredient.have_allergens(allergens)
+    query = Recipe.joins(:recipe_categories).no_have_ingredients(no_ingredients).no_have_ingredients(no_ingredients_allergen).order('RANDOM()')
 
-    if is_vegan
+    if infos[:diet] == 'vegan'
       query = query.no_have_ingredients(no_ingredients_vegan)
     end
 
-    if is_vegetarian
+    if infos[:diet] == 'vegetarian'
       query = query.no_have_ingredients(no_ingredients_vegetarian)
     end
     
@@ -56,12 +62,8 @@ class EpitechExpController < ApplicationController
       evening_dish_recipe: dishes[1] || (query.where(:recipe_categories => { :name => "Plat" }).limit(100).all).shuffle[0],
       evening_dessert_recipe: desserts[1] || (query.where(:recipe_categories => { :name => "Dessert" }).limit(100).all).shuffle[0],
     }
-    # no_ingredients_allergen = Ingredient.have_allergens(current_user.allergens)
-    # no_ingredients = current_user.no_like_ingredients.map { |i| i.id }
-    # user_is_vegan = current_user.diets.where(name: 'Vegan').count
-    # user_is_vegetarian = current_user.diets.where(name: 'Végétarien').count
 
-    puts day_plan
+    puts no_ingredients.inspect
 
     day_plan
   end
@@ -70,5 +72,11 @@ class EpitechExpController < ApplicationController
     return date if date.monday?
     days_before = (date.wday + 5) % 7 + 1
     date.to_date - days_before
+  end
+
+  def create_plan_params
+    params.require(:meal_plan_infos).permit(
+      :email, :diet, :allergens => [], :no_like_ingredients => []
+    )
   end
 end
