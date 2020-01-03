@@ -1,0 +1,20 @@
+<% content_for :title do %>
+  Votre planning de repas
+<% end %>
+<mj-text>
+  <% @day_meals.each do |day_meal| %>
+    <h5><%= day_meal[:day] %></h5>
+    <p>Midi</p>
+    <ul>
+      <li>Entrée: <a href="<%= recipe_url(:id => day_meal[:midday_starter_recipe].id) %>"><%= day_meal[:midday_starter_recipe].title %></a></li>
+      <li>Plat: <a href="<%= recipe_url(:id => day_meal[:midday_dish_recipe].id) %>"><%= day_meal[:midday_dish_recipe].title %></a></li>
+      <li>Dessert: <a href="<%= recipe_url(:id => day_meal[:midday_dessert_recipe].id) %>"><%= day_meal[:midday_dessert_recipe].title %></a></li>
+    </ul>
+    <p>Soir</p>
+    <ul>
+      <li>Entrée: <a href="<%= recipe_url(:id => day_meal[:evening_starter_recipe].id) %>"><%= day_meal[:evening_starter_recipe].title %></a></li>
+      <li>Plat: <a href="<%= recipe_url(:id => day_meal[:evening_dish_recipe].id) %>"><%= day_meal[:evening_dish_recipe].title %></li>
+      <li>Dessert: <a href="<%= recipe_url(:id => day_meal[:evening_dessert_recipe].id) %>"><%= day_meal[:evening_dessert_recipe].title %></li>
+    </ul>
+  <% end %>
+</mj-text>
