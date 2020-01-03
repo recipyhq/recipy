@@ -20,7 +20,7 @@
 <div class="uk-section uk-section-secondary uk-light">
   <div class="uk-container">
     <h2 class="title"><%= @recipe.title %>
-      <% if current_user == @recipe.user %>
+      <% if current_user != nil && current_user == @recipe.user %>
         <%= link_to edit_recipe_path(@recipe), class: "uk-button" do %>
           <i uk-tooltip="<%= t('recipe.action.edit') %>" class="far fa-edit fa-2x"></i>
         <% end%>
