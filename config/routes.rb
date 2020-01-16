@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get '/epitech-experience', to: 'epitech_exp#index', as: 'epiexp_index'
+  post '/epitech-experience', to: 'epitech_exp#create', as: 'epiexp_create_meal_plan'
   resources :landing_pages, path: '/', :only => [:index, :new, :create]
 
   get '/privacy_policy', to: "landing_pages#privacy_policy"
