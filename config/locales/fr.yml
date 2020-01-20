@@ -284,6 +284,7 @@ fr:
         number_views: "Nombre de vues :"
         number_feedbacks: "Nombre de commentaires :"
         add_to_notebook: "Ajouter à un carnet de recette"
+        no_quantity_type: "Non défini"
       action:
         give_feedback: "Donner votre avis"
         feedback: "Donner mon avis"
