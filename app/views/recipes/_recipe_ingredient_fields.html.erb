@@ -3,7 +3,7 @@
     <h3 class="uk-card-title"><%= t("recipe.title.new_ingredient_elem") %></h3>
     <div class=" uk-grid">
       <div id="select_container" class="uk-width-1-1">
-        <%= f.input :ingredient, :label => t("recipe.title.ingredient "), collection: Ingredient.where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+        <%= f.input :ingredient, :label => t("recipe.title.ingredient"), collection: Ingredient.where(:confirmed => true).order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
           slimselect: true,
           slimselectNoResult: t('slimselect.ustensils.no_result'),
           slimselectSearchPlaceholder: t('slimselect.ustensils.search_placeholder'),
@@ -17,7 +17,7 @@
         </div>
         <div class="uk-width-1-2">
 
-          <%= ff.input :quantity_type, :label => t("recipe.title.ingredient "), collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
+          <%= ff.input :quantity_type, :label => t("recipe.title.quantity_type"), collection: QuantityType.order(:name).all.map {|v| [v.name, v.id]}.to_a.unshift([t('recipe.title.no_quantity_type'), -1]), as: :select, :include_blank => false, input_class: false, input_html: {
             slimselect: true,
             slimselectNoResult: t('slimselect.quantity_type.no_result'),
             slimselectSearchPlaceholder: t('slimselect.quantity_type.placeholder'),

@@ -9,7 +9,7 @@
   <div class="uk-position-bottom-center uk-position-relative">
     <div class="uk-width-xxlarge">
       <%= f.input :title, label: t("recipe.title.title"), input_class: false %>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, accept:'image/*' %>
       <%= f.input :recipe_category_ids, :label => t("recipe.title.category"), collection: RecipeCategory.order(:name).all.map {|v| [v.name, v.id]}.to_a, as: :select, :include_blank => false, input_class: false, input_html: {
         multiple: true,
         slimselect: true,
