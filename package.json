@@ -9,7 +9,7 @@
     "uikit": "^3.0.0-rc.11",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.4.1",
-    "yarn": "^1.19.0"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
