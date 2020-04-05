@@ -6,7 +6,7 @@ Indeed, Recipy offers its users the opportunity to discover new recipes based on
 by consuming locally. Finally, the application allows the user not to worry about his weekly shopping
 list, because it is directly generated and integrated into the tools of today and tomorrow.
 
-You can find us at [www.recipy.fr](https://recipy.fr)
+You can find us at [www.recipy.fr](https://production-recipy.herokuapp.com/)
 ## Installation
 
 #### Docker Compose
