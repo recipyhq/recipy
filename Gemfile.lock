@@ -274,7 +274,7 @@ GEM
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     public_suffix (4.0.2)
-    puma (3.12.2)
+    puma (3.12.6)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.8)
@@ -495,7 +495,7 @@ DEPENDENCIES
   overcommit
   pg (>= 0.18, < 2.0)
   phony_rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   pundit
   rack-timeout
   rails (~> 5.2.0)
