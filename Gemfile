@@ -7,7 +7,7 @@ gem 'omniauth-oauth2', git: 'https://github.com/omniauth/omniauth-oauth2.git'
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'redis', '~> 4.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'sidekiq'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'turbolinks', '~> 5'
